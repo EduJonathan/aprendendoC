@@ -10,7 +10,7 @@
 9. Trabalhando com Arquivos
 10. Classes de Armazenamento, Modificadores e Tipos Definidos (Structs, Enums, Unions, Typedef)
 11. Diretivas de Pré-Processadores
-12. e os também trabalhando com includes da linguagem C (stdlib.h, string.h, math.h, time.h) dentre outras
+12. Também trabalhando com includes da linguagem C (stdlib.h, string.h, math.h, time.h) dentre outras
 
 **Além de temos utilizado a linguagem para exemplificar a implementação de estruturas de dados e algoritmos**
 1. TAD (Tipos Abstratos De Dados)
