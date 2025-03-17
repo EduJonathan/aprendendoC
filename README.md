@@ -17,4 +17,10 @@
 2. Estrutura Lineares (Arrays, Listas, Listas-Encadeadas, Pilhas e Filas)
 3. Estruturas Não-Lineares (Árvores e Grafos)
 4. Estruturas Associativas (Map, Dicts, Set, Hash)
-5. Algoritmos de (Buscas, Sorts, Arrays, Grafos)
+5. Algoritmos de (Buscas, Sorts, Arrays, Grafos e Problema Computacionais)
+
+🛠️ Tecnologias Utilizadas
+Editor de Código: Vs-Code
+Linguagem: C
+Sistemas Operacionais Suportados: Windows
+Compilador: MSYS2(GCC/CLANG)
