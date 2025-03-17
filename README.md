@@ -19,8 +19,8 @@
 4. Estruturas Associativas (Map, Dicts, Set, Hash)
 5. Algoritmos de (Buscas, Sorts, Arrays, Grafos e Problema Computacionais)
 
-🛠️ Tecnologias Utilizadas
-Editor de Código: Vs-Code
-Linguagem: C
-Sistemas Operacionais Suportados: Windows
-Compilador: MSYS2(GCC/CLANG)
+**🛠️ Tecnologias Utilizadas**
+- Editor de Código: Vs-Code
+- Linguagem: C
+- Sistemas Operacionais: Windows
+- Compilador: MSYS2(GCC/CLANG)
