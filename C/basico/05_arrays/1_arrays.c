@@ -134,11 +134,11 @@ int main(int argc, char **argv)
     }
 
     /*
+     * GARBAGE MEMORY: Valor armazenado sem uma inicialização, ou atribuído a um valor adequado.
      * Caso tentar imprimir uma posição a mais sem que ela exista, e que por mais
      * que você adicione no final da última posição do vetor sem alterar o limite,
      * passando do limite a qual você inseriu no índice do vetor irá gerar um número
      * totalmente aleátorio, conhecido como lixo de memória.
-     * GARBAGE MEMORY: Valor armazenado sem uma inicialização, ou atribuído a um valor adequado.
      */
 
     printf("\n=======================================================================\n");

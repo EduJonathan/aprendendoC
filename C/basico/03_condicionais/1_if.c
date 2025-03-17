@@ -80,7 +80,11 @@ int main(int argc, char **argv)
     printf("\n====================================================\n");
     printf("\n\t>>IF ANINHADOS<<\n");
 
-    /* IF ANINHADO: Significa ter uma instrução condicional dentro de outra. */
+    /**
+     * IF ANINHADO: Permite fazer verificações dentro de outras verificações. No exemplo a
+     * seguir, o segundo "if" verifica se o número é menor que 15, enquanto o terceiro "if"
+     * verifica se o número é maior que 12, com um "else" associado ao último "if".
+     */
 
     int number = 10; // Variável para comparação
 
@@ -100,12 +104,6 @@ int main(int argc, char **argv)
             printf("A VARIÁVEL 'number' É MENOR QUE OS VALORES COMBINADOS\n");
         }
     }
-
-    /**
-     * IF ANINHADO: Permite fazer verificações dentro de outras verificações. No exemplo,
-     * o segundo "if" verifica se o número é menor que 15, enquanto o terceiro "if" verifica
-     * se o número é maior que 12, com um "else" associado ao último "if".
-     */
 
     return 0;
 }

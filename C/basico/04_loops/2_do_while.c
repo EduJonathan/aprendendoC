@@ -43,14 +43,6 @@ int main(int argc, char **argv)
         i++;              // Incremente 'i' enquanto o valor não for menor que 10
     } while (i < 10);
 
-    /*
-     * Neste exemplo, a variável "i" é inicializada com o valor 0, e o código dentro do loop
-     * imprime o valor de "i" em cada iteração, e o incremento "i++" é executado após cada
-     * iteração. A condição "i < 10" é verificada após cada iteração e o loop é executado
-     * até 10 vezes, até que a condição se torne falsa. A nota que é importante que a
-     * variável "i" seja atualizada dentro do loop, para que ele não execute infinitamente.
-     */
-
     printf("\n====================================================\n");
     printf("\n\t>>EXEMPLO 03: DO-WHILE SIMPLES COM OPERADORES BITWISE<<\n");
 

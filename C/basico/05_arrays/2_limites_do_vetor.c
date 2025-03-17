@@ -34,9 +34,9 @@ int main(int argc, char **argv)
 	/*
 	 * => PASSO 1: Compile ou execute o código 2 vezes. Observe a saída do printf
 	 * na linha 30 quando executado. Perceba que o valor da variável array[3]
-	 * será imprevisível, já que ultrapassamos os limites do vetor. O valor impresso
-	 * pode ser lixo de memória ou qualquer valor residual da memória alocada.
-
+	 * em "End. de Memoria Alocadas", já que ultrapassamos os limites do vetor.
+	 * O valor impresso pode ser lixo de memória ou qualquer valor residual da memória alocada.
+	 *
 	 * Nota: Embora o compilador não emita um erro, o comportamento é indefinido,
 	 * e acessar posições fora do vetor pode sobrescrever áreas de memória não alocadas.
 	 * Esse comportamento pode variar de uma execução para outra, dependendo do ambiente
