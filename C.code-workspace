@@ -1,0 +1,61 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "fenv.h": "c",
+      "errno.h": "c",
+      "string.h": "c",
+      "algorithm": "c",
+      "format": "c",
+      "stdfix.h": "c",
+      "fcntl.h": "c",
+      "stddef.h": "c",
+      "stdio.h": "c",
+      "unistd.h": "c",
+      "setjmp.h": "c",
+      "time.h": "c",
+      "stdlib.h": "c",
+      "implementacao.h": "c",
+      "functions.h": "c",
+      "list_iterator.h": "c",
+      "random": "c",
+      "stdbool.h": "c",
+      "isarmstrong.h": "c",
+      "operacoes_aritmeticas.h": "c",
+      "limits": "c",
+      "stringapiset.h": "c",
+      "array": "c",
+      "charconv": "c",
+      "compare": "c",
+      "complex": "c",
+      "functional": "c",
+      "tuple": "c",
+      "type_traits": "c",
+      "utility": "c",
+      "variant": "c",
+      "corecrt_stdio_config.h": "c",
+      "corecrt.h": "c",
+      "vadefs.h": "c",
+      "_mingw_ddk.h": "c",
+      "ctype.h": "c",
+      "sstream": "c",
+      "pthread.h": "c",
+      "semaphore.h": "c",
+      "cstdlib": "c",
+      "header_soma.h": "c",
+      "math.h": "c",
+      "operationscomplex.h": "c",
+      "limits.h": "c",
+      "iso646.h": "c",
+      "signal.h": "c",
+      "wchar.h": "c",
+      "crtdbg.h": "c",
+      "regex.h": "c",
+      "stdexcpt.h": "c"
+    }
+  }
+}
