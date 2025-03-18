@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 
 	/*
 	 * => PASSO 1: Compile ou execute o código 2 vezes. Observe a saída do printf
-	 * na linha 30 quando executado. Perceba que o valor da variável array[3]
+	 * na linha 25 quando executado. Perceba que o valor da variável array[3]
 	 * em "End. de Memoria Alocadas", já que ultrapassamos os limites do vetor.
 	 * O valor impresso pode ser lixo de memória ou qualquer valor residual da memória alocada.
 	 *
