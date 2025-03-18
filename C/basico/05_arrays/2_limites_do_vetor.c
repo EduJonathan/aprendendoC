@@ -10,6 +10,10 @@
 
 int main(int argc, char **argv)
 {
+	/* NÃO RETIRE ESSES OS COMENTÁRIOS DESTAS 2 LINHAS POR ENQUANTO */
+	// int adicionarEndereco = 0;
+	// printf("Valor de \"adicionarEndereco\": %d\t Endereço de \"adicionarEndereco\": %p\n", adicionarEndereco, &adicionarEndereco);
+
 	// array de 3 posições
 	int array[3];
 
@@ -33,24 +37,25 @@ int main(int argc, char **argv)
 
 	/*
 	 * => PASSO 1: Compile ou execute o código 2 vezes. Observe a saída do printf
-	 * na linha 25 quando executado. Perceba que o valor da variável array[3]
+	 * na linha 25 quando executado nas duas vezes. Perceba que o valor de array[3]
 	 * em "End. de Memoria Alocadas", já que ultrapassamos os limites do vetor.
 	 * O valor impresso pode ser lixo de memória ou qualquer valor residual da memória alocada.
 	 *
-	 * Nota: Embora o compilador não emita um erro, o comportamento é indefinido,
-	 * e acessar posições fora do vetor pode sobrescrever áreas de memória não alocadas.
-	 * Esse comportamento pode variar de uma execução para outra, dependendo do ambiente
-	 * de execução.
+	 * Nota: Caso o compilador não emita um erro, o comportamento é indefinido e tem
+	 * efeitos negativos, com acesso posições fora do vetor pode sobrescrever áreas
+	 * de memória não alocadas. Esse comportamento pode variar de uma execução para outra,
+	 * dependendo do ambiente de execução.
 	 */
 
 	// ==============================================================================
 
 	/*
-	 * => PASSO 2: Agora, retire os comentários das linhas 13 e 14, compile e execute novamente.
-	 * Observe que agora o valor atribuído ao array[3] corresponderá ao endereço de memória
-	 * da variável 'adicional'. Isso ocorre porque, ao acessar fora do limite do vetor,
-	 * a memória pode ser sobrescrita, e o endereço da variável 'adicional' será atribuído
-	 * ao índice fora do limite do vetor.
+	 * => PASSO 2: Agora retire os comentários das linhas 14 e 15 e compile ou execute
+	 * novamente. Observe que agora o valor atribuído de "End. de Memoria Alocadas" ao
+	 * array[3] corresponderá ao endereço de memória da variável 'adicionarEndereco'.
+	 * Isso ocorre porque, ao acessar fora do limite do vetor, a memória sobrescreve, e o
+	 * endereço da variável 'adicionarEndereco' será atribuído ao índice fora do limite
+	 * do vetor, porém fazer o código ter este tipo de comportamento é totalmente perigoso.
 	 */
 
 	// ==============================================================================
