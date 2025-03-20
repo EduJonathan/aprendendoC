@@ -55,10 +55,16 @@ void calcular_dias_para_aniversario(const char *aniversario)
     data_aniversario.tm_year = ano - 1900; // Anos começam de 1900, então subtraímos 1900
 
     // Verifica se o aniversário já passou neste ano
-    if (difftime(mktime(&data_aniversario), agora) < 0)
+    if (data_aniversario.tm_mon < data_atual->tm_mon ||
+        (data_aniversario.tm_mon == data_atual->tm_mon && data_aniversario.tm_mday < data_atual->tm_mday))
     {
         // Se o aniversário já passou, ajusta para o próximo ano
         data_aniversario.tm_year = data_atual->tm_year + 1;
+    }
+    else
+    {
+        // Caso o aniversário não tenha passado, mantemos o ano atual
+        data_aniversario.tm_year = data_atual->tm_year;
     }
 
     // Converte a data do aniversário para time_t (segundos desde a "época")
