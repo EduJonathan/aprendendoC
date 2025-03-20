@@ -32,7 +32,7 @@ void imprimirTempo(time_t tempo)
     // Imprimindo o tempo atual
     if (tempo != (time_t)(-1))
     {
-        printf("O tempo atual é %s(%ld segundos desde a 'época')\n", asctime(gmtime(&tempo)), tempo);
+        printf("O tempo atual é %s(%lld segundos desde a 'época')\n", asctime(gmtime(&tempo)), tempo);
     }
 
     /**
@@ -140,7 +140,7 @@ int main(int argc, char **argv)
     // Obtendo o tempo atual
     time(&now);
 
-    printf("Tempo atual em segundos: %ld\n", now);
+    printf("Tempo atual em segundos: %lld\n", now);
 
     // Imprimindo o tempo atual em string
     imprimirTempo(now);

@@ -4,6 +4,11 @@
 
 /**
  * @brief Estrutura de um item da lista (armazena um ponteiro para qualquer tipo).
+ *
+ * Lista: Estrutura de dados usadas para armazenar coleções de elementos, Uma lista
+ * geralmente se refere a uma lista dinâmica implementada com um array, Os dados são
+ * armazenados em um único bloco contíguo de memória. Isso significa que todos os
+ * elementos estão localizados em locais de memória sequenciais.
  */
 typedef struct item
 {

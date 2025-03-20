@@ -48,7 +48,7 @@ int main(int argc, char **argv)
     size_t n_Elementos = sizeof(array) / sizeof(array[0]); // Obtém o número de elementos no vetor
 
     /**
-     * SIZET: O size_t é um tipo de dado usado para representar o tamanho de objetos em bytes.
+     * SIZE_T: O size_t é um tipo de dado usado para representar o tamanho de objetos em bytes.
      * O principal propósito do size_t é fornecer um tipo de dado que é grande o
      * suficiente para representar o tamanho do objeto. Utilizado para:
      *

@@ -6,6 +6,11 @@
 
 /**
  * @brief Estrutura para representar um nó de uma lista circular.
+ * 
+ * LISTA CIRCULAR é uma variação da lista encadeada onde o último nó não aponta para NULL, 
+ * como nas listas tradicionais, mas sim para o primeiro nó da lista. Isso cria um ciclo, 
+ * ou seja, ao tentar acessar o "próximo" de um nó que é o último, o ponteiro "próximo" 
+ * aponta para o primeiro nó, formando um loop contínuo.
  */
 typedef struct lista
 {

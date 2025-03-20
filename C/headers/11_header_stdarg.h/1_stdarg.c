@@ -2,12 +2,17 @@
 #include <stdarg.h>
 
 /**
- * stdarg.h: Biblioteca que fornece um mecanismo para criar funções que 
+ * stdarg.h: Biblioteca que fornece um mecanismo para criar funções que
  * aceitam um número variável de argumentos.
  */
 
 /**
- * @brief: Função que aceita um número variável de argumentos inteiros e retorna a soma.
+ * @brief Função que aceita um número variável de argumentos inteiros e retorna a soma.
+ *
+ * @note O operador "..." é descrito como operador de propagação(em inglês, spread operator)
+ * Na linguagem C introduzido para que indique uma lista de parâmetros de uma função, recebendo
+ * um números variável de argumentos, cada linguagem, como JavaScript e Python, tem seu uso
+ * próprio para esta operação
  *
  * @param count O número total de argumentos inteiros a serem somados.
  * @param ... Lista de argumentos inteiros a serem somados.
@@ -16,7 +21,7 @@
 int Var_args(int count, ...)
 {
     // Variável para armazenar o resultado
-    int result = 0; 
+    int result = 0;
 
     // Declara uma lista de argumentos variáveis
     va_list args;

@@ -2,7 +2,7 @@
 #include <stdbool.h>
 
 /**
- * WHILETRUE: Como o nome do loop indica, a condição vai se repetir enquanto a
+ * WHILE_TRUE: Como o nome do loop indica, a condição vai se repetir enquanto a
  * condição for verdadeira, devemos ser cuidadoso como se trata de um programa que
  * não vai parar de executar, até que haja uma condição ou escolha, ou uma forçação
  * para quebrar o loop como break.

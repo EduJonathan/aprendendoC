@@ -114,7 +114,7 @@ void operadorBitOr(int bit1, int bit2)
 
     printf("\n=================================\n");
 
-    printf("\n or_eq(|=): ");
+    printf("\nor_eq(|=): ");
 
     int BitOrEq = bit1 or_eq bit2; // bit1 |= bit2
     printf("BitOrEq é : %d\n", BitOrEq);
@@ -157,10 +157,10 @@ void operadorBitNot(int bit1)
 {
     printf("\nnot(~):");
     int bitNot = compl(bit1); // ~bit1
-    printf("\n bitNot é : %d\n", bitNot);
+    printf("\nbitNot é : %d\n", bitNot);
 
     int bitNot2 = compl(compl(bit1)); // ~(~bit1)
-    printf(" bitNot2 é : %d\n", bitNot2);
+    printf("bitNot2 é : %d\n", bitNot2);
     printf("\n=================================\n");
 }
 
