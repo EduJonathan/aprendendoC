@@ -77,29 +77,43 @@ void printLinhas(int n)
     }
 }
 
+/**
+ * @brief Concatena duas strings, com um espaço em branco entre elas.
+ *
+ * Esta função recebe duas strings como parâmetros, calcula seus comprimentos, aloca
+ * memória suficiente para armazenar a concatenação delas com um espaço em branco
+ * entre elas, e retorna o resultado como uma nova string.
+ *
+ * @param str1 A primeira string a ser concatenada.
+ * @param str2 A segunda string a ser concatenada.
+ *
+ * @return Um ponteiro para a nova string concatenada, com um espaço em branco
+ * entre as duas strings originais. A string retornada deve ser liberada com `free`
+ * após o uso.
+ */
 char *concatenar(const char *str1, const char *str2)
 {
-    int i = 0,
-        j = 0;
+    int i = 0, j = 0;
 
-    /* Calcula o comprimento das strings. */
+    /* Calcula o comprimento da primeira string. */
     while (str1[i] != '\0')
     {
         i++;
     }
 
+    /* Calcula o comprimento da segunda string. */
     while (str2[j] != '\0')
     {
         j++;
     }
 
     /*
-     * Aloca memória para a concatenação o tamanho das duas strings(str1 + str2 e +1 para o '\0')
-     * E +1 para o ' '(espaço em branco).
+     * Aloca memória suficiente para armazenar a concatenação das duas strings,
+     * mais 1 para o espaço em branco e +1 para o caractere de finalização '\0'.
      */
     char *concatenaString = (char *)malloc((i + j + 2) * sizeof(char));
 
-    /* Copia a primeira string para a concatenação. */
+    /* Copia a primeira string para a nova string. */
     int copy = 0;
     for (; copy < i; copy++)
     {
@@ -109,15 +123,15 @@ char *concatenar(const char *str1, const char *str2)
     /* Adiciona um espaço em branco no final da primeira string. */
     concatenaString[copy++] = ' ';
 
-    /* Copia a segunda string para a concatenação. */
+    /* Copia a segunda string para a nova string. */
     for (int len = 0; len < j; len++, copy++)
     {
         concatenaString[copy] = str2[len];
     }
 
-    /* Adiciona o '\0' no final da concatenação. */
+    /* Adiciona o '\0' no final da nova string. */
     concatenaString[copy] = '\0';
 
-    /* Retorna a concatenação. */
+    /* Retorna a string concatenada. */
     return concatenaString;
 }
