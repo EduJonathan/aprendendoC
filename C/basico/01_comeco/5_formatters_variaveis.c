@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// Na linguagem C valores booleanos: true é representado por 1 e false por 0.
-// O #include <stdbool.h> torna possível o uso de tipos booleanos 'bool', 'true', 'false'.
-
 int main(int argc, char **argv)
 {
     /// FORMATTERS: Formatadores são responsáveis por realizar a exibição,
@@ -116,10 +113,10 @@ int main(int argc, char **argv)
     printf(" O VALOR DA VARIÁVEL 'LD' É : %Lf\n", LD);    // %Lf -> para tipo Long Double
     printf(" O VALOR DA VARIÁVEL 'LD' É : %.10LF\n", LD); // %LF -> para tipo Long Double
 
-    // Se no seu programa estiver imprimindo apenas 0.000000000000000000?
-    // o sistema operacional windows Não tem suporte para um número desse tamanho
-    // de precisão (16 bytes - 128 bits) e caso possa acontecer! podemos utilizar uma
-    // função própria do núcleo do compilador.
+    // Se o seu programa estiver imprimindo apenas 0.000000000000000, pode ser devido à
+    // falta de suporte nativo do Windows para números de alta precisão (128 bits).
+    // Nesse caso, pode-se utilizar uma função específica do compilador ou bibliotecas
+    // externas para manipulação de alta precisão.
 
     __mingw_printf(" O VALOR DA VARIÁVEL 'LD' É : %.18Lf\n", LD);
 
@@ -134,7 +131,7 @@ int main(int argc, char **argv)
      * 2. Usar tipos como `double`, se a precisão extra não for necessária.
      * 3. Explorar bibliotecas de alta precisão como `MPFR` ou `GMP`.
      *
-     * Evite usar funções específicas de compilador sempre que possíve  l,
+     * Evite usar funções específicas de compilador sempre que possível,
      * para manter o código portável.
      */
 

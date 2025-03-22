@@ -42,9 +42,15 @@ int main(int argc, char **argv)
   }
 
   /*
-   * Digitando meu nome sem espaços "eduardojonathan" ele imprime até "eduardojo" (9 caracteres)
-   * mas porque 9 caracteres sendo que eu tenho entrada até 10 caracteres? porque no segundo
-   * parâmetro do tamanho da string conta com -1, ou seja, está reservado para o '\0'
+   * O fgets() lê a entrada até encontrar um '\n' ou atingir o tamanho máximo do buffer,
+   * garantindo espaço para o '\0'. Como o buffer tem um tamanho fixo, parte da entrada
+   * pode ser truncada. Além disso, se outro fgets() for chamado em seguida, caracteres
+   * remanescentes do buffer de entrada podem ser lidos automaticamente, causando efeitos
+   * colaterais na próxima leitura.
+   * No caso "eduardojonathan\n" é preenchido os 8 índices do primeiro fgets() com "eduardo"
+   * enquanto o "nathan\n" preenche os outros índices do próximo fgets().
+   * Mas porque 8 caracteres no primeiro fgets() sendo que eu tenho entrada até 10 caracteres?
+   * Como explicado a função garante o '\0' contabilizando -1, ainda mais se ultrapassar o limite.
    */
 
   printf("\n-----------------------------------------------------\n");

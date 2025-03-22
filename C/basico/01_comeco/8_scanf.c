@@ -39,23 +39,33 @@ int main(int argc, char **argv)
     /**
      * No código utilizamos a função fflush, acontece que quando usamos o scanf ou
      * qualquer outro uso de input quando é digitado um conteúdo acontece o buffer
-     * de teclado. (BUFFER DE MEMÓRIA: Aréa de memória específica para o armazenamento
-     * das teclas que são digitadas pelo usuário, ou seja, cada tecla pressionada ela
-     * será guardada no buffer de teclado, e a informação irá ficar lá até o programar
-     * encerrar ou o computador seja desligado).
-
-     * FFLUSH: Função que limpa essa memória, existem outras como a setbuf e a fpurge,
-     * Essa limpeza de buffer é utilizada muito em char e para strings na linguagem C.
+     * de teclado.
+     * (BUFFER DE MEMÓRIA: Aréa de memória específica para o armazenamento das teclas que
+     * são digitadas pelo usuário, ou seja, cada tecla pressionada ela será guardada no buffer
+     * de teclado, e a informação irá ficar lá até o programar encerrar ou o computador seja desligado).
+     *
+     * fflush(): Função que limpa o buffer de saída de um fluxo de dados, como `stdin` ou
+     * `stdout`. É comumente usada para evitar problemas ao ler entradas do teclado após uma
+     * operação de `scanf()`. No entanto, seu comportamento em `stdin` não é padronizado e pode
+     * não funcionar em todas as implementações.
+     *
+     * setbuf(): Permite configurar o buffer de um fluxo, podendo desativá-lo (`NULL`)
+     * ou definir um buffer específico. Diferente do `fflush()`, que apenas limpa o buffer,
+     * `setbuf()` dá mais controle sobre o uso do buffer de entrada e saída. Mais recomendado!
+     *
+     * fpurge(): Similar ao `fflush()`, mas especificamente projetada para limpar o
+     * buffer de entrada (`stdin`). No entanto, essa função não faz parte do padrão ANSI C e
+     * pode não estar disponível em todas as plataformas.
      */
 
     unsigned char caractere;
     unsigned char letter;
 
-    printf("\n Digite um caractere: ");
+    printf(">> Digite um caractere: ");
     scanf(" %c", &caractere);
     printf("\n Você inseriu a letra : %c\n", caractere);
 
-    printf("\n Digite uma letra : ");
+    printf(">> Digite uma letra : ");
     scanf(" %c", &letter);
     printf(" Você inseriu a letra : %c\n", letter);
 

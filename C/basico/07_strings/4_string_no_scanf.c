@@ -51,11 +51,12 @@ int main(int argc, char **argv)
 		printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, string_segundo_nome[i], &string_segundo_nome[i]);
 	}
 
-	/*
-	 * O problema de buffer ocorre quando dados ficam armazenados na memória e precisam
-	 * ser limpos. Para limpar, usamos funções como fflush (com argumento stdin), setbuf e
-	 * fpurge (no Linux). Isso é importante quando manipulamos várias strings e dados como
-	 * nome, e-mail, telefone, etc., para evitar "sujeira" no buffer durante o cadastro.
+	/**
+	 * @note Na linguagem C, cuidado com os buffers de memória? O problema de buffer ocorre
+	 * quando dados ficam armazenados na memória e precisam ser limpos. Para limpar, usamos
+	 * funções como fflush(), setbuf() e fpurge. Isso é importante quando manipulamos várias
+	 * strings e dados como nome, e-mail, telefone, etc., para evitar "sujeira" no buffer durante
+	 * o cadastro.
 	 */
 
 	printf("\n-----------------------------------------------------\n");
@@ -83,20 +84,20 @@ int main(int argc, char **argv)
 	char input_string_aprimorado[10];
 
 	printf("Digite seu primeiro e segundo nome: ");
-	scanf("%10[^\n]", input_string_aprimorado);
+	scanf("%9[^\n]", input_string_aprimorado);
 
-	printf(" Seu nome completo é: %s\n", input_string_aprimorado);
+	printf("Seu nome completo é: %s\n", input_string_aprimorado);
 	setbuf(stdin, NULL);
 
 	/**
-	 * scanf("%[^\n]", input_string_aprimorado);
+	 * @note scanf("%[^\n]", input_string_aprimorado);
 	 * Deixando o scanf assim ainda terá o erro de acontecer novamente o estouro da
 	 * variável passando mais do que o vetor possue e no final do scanf se ultrapassar o
 	 * vetor por mais que imprima, o programa não vai encerrar, e para encerrar "Crtl + c"
 	 * no terminal.
 	 *
 	 * Sendo assim, limitar é recomendado para o quanto ele terá de caracteres,
-	 * no nosso caso 10, ou deixar somente 9 caracteres para que o último seja para o '\0'.
+	 * deixar somente 9 caracteres para que o último seja para o '\0'.
 	 *
 	 * CUIDADO: Podemos ignorar o tamanho do vetor quantidade de caracteres que quisermos
 	 * scanf("%20[^\n]", input_string_aprimorado); que irá compilar sem problemas,
