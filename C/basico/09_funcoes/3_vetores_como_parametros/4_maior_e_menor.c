@@ -16,6 +16,8 @@ void maior_e_menor(int *arr, int *maior, int *menor, size_t tamV)
     *menor = arr[0];
 
     // Iterando sobre o array para encontrar o maior e o menor número
+    // porque o i começa com 1? por conta dos ponteiros maior e menor que já apontam
+    // para o primeiro elemento do índice array `arr`.
     for (int i = 1; i < tamV; i++)
     {
         // Verificando se o elemento atual é maior que o máximo encontrado até agora

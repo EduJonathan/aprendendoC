@@ -60,7 +60,7 @@ int main(int argc, char **argv)
     printf(" NA MAIN: Valor da varíavel pela referencia: %d\n", referencia); // 18
 
     /*
-     * A função `soma_com_ponteiros` recebe o endereço de`'referencia` e modifica
+     * A função `soma_com_ponteiros` recebe o endereço de `referencia` e modifica
      * seu valor diretamente na memória. O valor de 'referencia' é alterado fora da função.
      */
     return 0;

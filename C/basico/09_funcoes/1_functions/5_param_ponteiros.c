@@ -12,7 +12,7 @@ void argGeneric(void *arg)
 {
     // Suponhamos que o ponteiro aponta para um inteiro
     int *valorint = (int *)arg;
-    printf("Valor como int: %d\n", *valorint);
+    printf("\nValor como int: %d\n", *valorint);
 
     // Ponteiro também pode apontar para um float
     float *valorfloat = (float *)arg;
@@ -20,7 +20,7 @@ void argGeneric(void *arg)
 
     // Ponteiro também pode apontar para um char
     char *valorchar = (char *)arg;
-    printf("Valor como char: %c\n", *valorchar);
+    printf("Valor como char: %c\n\n", *valorchar);
 }
 
 /**

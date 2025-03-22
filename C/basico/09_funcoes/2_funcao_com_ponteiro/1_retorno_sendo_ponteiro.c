@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * @brief Retorna o ponteiro para o maior valor entre dois valores flutuantes.
@@ -78,11 +79,30 @@ int main(int argc, char **argv)
 
     printf("\n----------------------------------\n");
 
-    float floatN1 = 60.0F;
-    float floatN2 = 59.0F;
+    float *floatN1 = (float *)malloc(sizeof(float));
+    float *floatN2 = (float *)malloc(sizeof(float));
 
-    float *Min = minimo(&floatN1, &floatN2);
-    printf("O maior numero e: %f\n", *Min);
+    // Verificação correta da alocação de memória
+    if (floatN1 == NULL || floatN2 == NULL)
+    {
+        printf("Erro de alocação de memória!\n");
+        return 1;
+    }
+
+    *floatN1 = 4.4F;
+    *floatN2 = 4.5F;
+
+    /*
+     * Como as variáveis floatN1 e floatN2 já são ponteiros, não é necessário usar "&" ao
+     * passá-las como argumento. Elas já armazenam endereços de memória, permitindo que a
+     * função *minimo() receba e manipule diretamente os valores alocados.
+     */
+    float *Min = minimo(floatN1, floatN2);
+    printf("O menor numero e: %f\n", *Min);
+
+    // Liberando memória alocada
+    free(floatN1);
+    free(floatN2);
 
     printf("\n----------------------------------\n");
 
