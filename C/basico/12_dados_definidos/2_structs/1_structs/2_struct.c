@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 	printf(" dados_do_usuario.nome  : %s\n", dados_do_usuario.nome_do_usuario);
 
 	printf("\n=========================================================\n");
-	printf("\n\tDEIXANDO O USUARIO ESCOLHER OS VALORES\n");
+	printf("\n\tVALORES DA STRUCT ATRAVÉS DO SCANF()\n");
 
 	printf(" INSIRA A IDADE DO USUARIO: ");
 	scanf("%hu", &dados_do_usuario.idade_do_usuario);

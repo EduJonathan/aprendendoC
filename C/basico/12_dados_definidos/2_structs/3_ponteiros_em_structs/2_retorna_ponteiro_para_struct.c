@@ -17,8 +17,7 @@ struct funcao_pointer_struct
  * funcao_pointer_struct.
  *
  * @param valor_x atribui os valores fornecidos aos seus campos e retorna um ponteiro para a
- * estrutura alocada.
- * 
+ * estrutura alocada. 
  * @param valor_y atribui os valores fornecidos aos seus campos e retorna um ponteiro para a
  * estrutura alocada.
  * 

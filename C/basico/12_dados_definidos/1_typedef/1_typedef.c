@@ -8,7 +8,7 @@
  * @note typedef NÃO cria um novo tipo de dado, ele cria um sinônimo para o tipo de dado
  */
 
-typedef char charactere_Global; // Redefinindo o tipo de dado char global para charactere
+typedef char charactere_Global; // Redefinindo o tipo de dado char global para charactere_Global
 typedef float *pointerToFloat;  // Redefinindo um ponteiro global para um tipo float
 
 int main(int argc, char **argv)

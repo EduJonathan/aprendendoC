@@ -37,11 +37,11 @@ int main(int argc, char **argv)
     struct IMC LOCAL_IMC;
 
     /* O mesmo para a instância global, atribuindo valor para altura e peso. */
-    LOCAL_IMC.altura = 1.54L;
-    LOCAL_IMC.peso = 50.4L;
+    LOCAL_IMC.altura = 1.54F;
+    LOCAL_IMC.peso = 50.4F;
 
     /* Obtendo os valores para calcular uma expressão de IMC e imprimindo o valor. */
-    double IMC_LOCAL = LOCAL_IMC.peso / (LOCAL_IMC.altura * LOCAL_IMC.altura);
+    float IMC_LOCAL = LOCAL_IMC.peso / (LOCAL_IMC.altura * LOCAL_IMC.altura);
     printf(" O RESULTADO DE IMC_LOCAL E : %.2f\n", IMC_LOCAL);
     return 0;
 }

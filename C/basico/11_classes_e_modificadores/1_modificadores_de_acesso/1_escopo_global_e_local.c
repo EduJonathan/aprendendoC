@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     // A variável 'i' está unicamente visivel dentro do for
     for (int i = 0; n[i] != '\0'; i++)
     {
-        // Se o caractere for uma virgula
+        // Se o caractere for diferente da virgula
         if (n[i] != ',')
         {
             // Imprime o caractere sem a virgula
@@ -99,9 +99,9 @@ int main(int argc, char **argv)
         bool isStringEqual = (compareString == 0) ? true : false;
         printf("As strings '%s' e '%s' %s iguais\n", str1, str2, isStringEqual ? "Sim" : "Não");
 
-        /* 
+        /*
          * Sair do while, se não o printf iria entrar em loop devido a condição
-         * while (variavel_global != variavel_local). 
+         * while (variavel_global != variavel_local).
          */
         break;
     }
