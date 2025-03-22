@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 
     // Utilização de precisão alargada para resultados intermédios, onde
     // 0: não utilizado, 1: é utilizado o double em vez do float, 2: é utilizado o long double.
-    printf(" FLT_EVAL_METHOD  = %d\n", FLT_EVAL_METHOD);
+    // printf(" FLT_EVAL_METHOD  = %d\n", FLT_EVAL_METHOD);
 
     // Tipos suportam números subnormais (denormais): -1: indeterminável, 0: ausente, 1: presente.
     printf(" FLT_HAS_SUBNORM  = %d\n", FLT_HAS_SUBNORM);

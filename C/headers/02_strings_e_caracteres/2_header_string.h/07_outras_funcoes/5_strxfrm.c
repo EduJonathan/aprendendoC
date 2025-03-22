@@ -57,10 +57,10 @@ int main(int argc, char **argv)
     const char *original = "cadeira";
     char transformed[100]; // Buffer para armazenar a string transformada
 
-    // Transforma a string original
-    size_t result = strxfrm(transformed, original, sizeof(transformed));
+    // Chama a função transform_string
+    int result = transform_string(transformed, original, sizeof(transformed));
 
-    if (result >= sizeof(transformed))
+    if (result == -1)
     {
         printf("Buffer insuficiente para a string transformada.\n");
     }
@@ -69,5 +69,6 @@ int main(int argc, char **argv)
         printf("Original: %s\n", original);
         printf("Transformada: %s\n", transformed);
     }
+
     return 0;
 }
