@@ -105,5 +105,13 @@ int main(int argc, char **argv)
 
     // Acessa e exibe o valor de var através de pointer1, pointer2, pointer3 e pointer4
     printf(" POINTER4->POINTER3->POINTER2->POINTER1->END. DE MEMÓRIA DE var->CONTEÚDO DE var: %d\n", ****pointer4);
+
+    /**
+     * @note para quem desejar a especialização de C/C++, ponteiros e uso dos chains of pointers
+     * é de entendimento bastante desejado, para o tratamento e segurança do endereçamento da
+     * memória e evitar brechas de invasão ou de overflow, uma ressalva sobre chains of pointers
+     * é que dificilmente você irá passar dos ponteiros duplos "**", podendo chegar no máximo
+     * ao ponteiro triplo "***".
+     */
     return 0;
 }

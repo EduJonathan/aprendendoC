@@ -7,8 +7,7 @@
  *
  * Realiza uma contagem de 1 a 5 e imprime na tela o valor da contagem.
  *
- * @param arg Ponteiro para dados adicionais (não utilizado, deve ser nulo).
- *
+ * @param arg Ponteiro para dados adicionais (não utilizado, deve ser nulo). *
  * @return NULL (não retorna nenhum valor significativo).
  */
 void *task1(void *arg)
@@ -20,7 +19,7 @@ void *task1(void *arg)
     }
 
     // Encerra a execução da thread
-    pthread_exit(NULL);
+    return NULL;
 }
 
 /**
@@ -28,8 +27,7 @@ void *task1(void *arg)
  *
  * Realiza uma contagem de 10 a 15 e imprime na tela o valor da contagem.
  *
- * @param arg Ponteiro para dados adicionais (não utilizado, deve ser nulo).
- *
+ * @param arg Ponteiro para dados adicionais (não utilizado, deve ser nulo). *
  * @return NULL (não retorna nenhum valor significativo).
  */
 void *task2(void *arg)
@@ -41,7 +39,7 @@ void *task2(void *arg)
     }
 
     // Encerra a execução da thread
-    pthread_exit(NULL);
+    return NULL;
 }
 
 // Cada função de thread utiliza pthread_exit(NULL) para encerrar sua execução.
@@ -80,5 +78,14 @@ int main(int argc, char **argv)
     }
 
     printf("Programa principal Concluído.\n");
+
+    /**
+     * @note Caso você esteja executando seu programa e não funcionar aconselho
+     * compilar e executar para melhor execução principalmente das threads.
+     * Como compilar? No terminal
+     *
+     * "C:\Users\NomeDeSuaMaquina\Documents\aprendendoC\C\headers\07_header_pthreads.h>"
+     * gcc -o philosopher philosopher.c -pthread
+     */
     return 0;
 }
