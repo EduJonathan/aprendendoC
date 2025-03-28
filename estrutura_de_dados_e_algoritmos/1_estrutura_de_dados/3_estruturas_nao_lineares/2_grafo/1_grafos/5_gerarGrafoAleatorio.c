@@ -43,7 +43,6 @@ Vertice *criarGrafo(int numeroDeVertices)
     {
         grafo[i].arestas = NULL;
     }
-
     return grafo;
 }
 
@@ -104,7 +103,6 @@ void liberarGrafo(Vertice *grafo, int numeroDeVertices)
             free(temp);
         }
     }
-
     free(grafo);
 }
 

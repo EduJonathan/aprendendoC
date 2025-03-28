@@ -43,9 +43,9 @@ typedef struct
 /**
  * @brief Função para calcular o tempo de espera e o tempo de turnaround para um processo específico.
  *
- * Esta função é executada em cada thread e calcula os tempos de espera e de turnaround para um processo,
- * de acordo com o algoritmo FCFS. O tempo de chegada acumulado e o tempo de execução são calculados com base
- * no tempo de chegada do processo e no tempo de burst.
+ * Esta função é executada em cada thread e calcula os tempos de espera e de turnaround
+ * para um processo, de acordo com o algoritmo FCFS. O tempo de chegada acumulado e o tempo de
+ * execução são calculados com base no tempo de chegada do processo e no tempo de burst.
  *
  * @param args Ponteiro para a estrutura thread_args que contém os parâmetros necessários.
  * @return NULL

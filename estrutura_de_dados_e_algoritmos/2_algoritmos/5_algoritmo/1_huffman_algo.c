@@ -224,7 +224,6 @@ struct MinHeapNode *buildHuffmanTree(char data[], int freq[], int size)
         top->right = right;
         insertMinHeap(minHeap, top);
     }
-
     return extractMin(minHeap);
 }
 

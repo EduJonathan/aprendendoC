@@ -64,7 +64,6 @@ int find(int parent[], int vertex)
     {
         parent[vertex] = find(parent, parent[vertex]); // Caminho comprimido
     }
-
     return parent[vertex];
 }
 

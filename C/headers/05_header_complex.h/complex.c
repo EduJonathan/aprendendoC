@@ -8,7 +8,7 @@
  * 𝑎 => é a parte real,
  * 𝑏 => é a parte imaginária,
  * 𝑖 => é a unidade imaginária, tal que 𝑖² = −1
- * 
+ *
  * a biblioteca <complex.h> oferece uma maneira prática de manipular números complexos.
  * Usando o tipo complex e as funções fornecidas, você pode realizar operações como
  * soma, multiplicação, conjugado, cálculo de módulo e argumento com facilidade.
@@ -52,15 +52,15 @@ int main(int argc, char **argv)
     // cimag(z) : Retorna a parte imaginária de um número complexo z.
 
     /**
-     * Na biblioteca <complex.h>, Os números complexos tem funções de retornos semelhantes 
+     * Na biblioteca <complex.h>, Os números complexos tem funções de retornos semelhantes
      * ao math.h para se trabalhar com resultados dos tipos flutuantes(float, double e long double)
-     * e retornos de funções, exemplo no math.h, temos o (pow, sqrt, etc...), o complex.h possue 
-     * essas funções porém com uma diferença na nomeação que basta inserir um 'c' antes da função, 
+     * e retornos de funções, exemplo no math.h, temos o (pow, sqrt, etc...), o complex.h possue
+     * essas funções porém com uma diferença na nomeação que basta inserir um 'c' antes da função,
      * exemplo (cpow, csqrt, etc...), tendo suas variações para outros tipos de dados flutuantes.
      *
      * FUNÇÕES DA BIBLIOTECA <complex.h> e dentre várias outras funções,
      * a cppreference é uma documentação bastante completa tanto para C e C++:
-     * @link https://en.cppreference.com/w/c/header/complex (ctrl + botão esquerdo do mouse para acessar)
+     * @link https://en.cppreference.com/w/c/header/complex (ctrl + botão esquerdo do mouse para acessar no VsCode)
      */
     return 0;
 }

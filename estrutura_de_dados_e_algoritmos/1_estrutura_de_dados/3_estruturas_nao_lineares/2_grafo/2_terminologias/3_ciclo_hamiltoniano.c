@@ -29,7 +29,6 @@ bool isSafe(int v, bool graph[V][V], int path[], int pos)
             return false;
         }
     }
-
     return true;
 }
 
@@ -67,7 +66,6 @@ bool hamCycleUtil(bool graph[V][V], int path[], int pos)
             path[pos] = -1;
         }
     }
-
     return false;
 }
 

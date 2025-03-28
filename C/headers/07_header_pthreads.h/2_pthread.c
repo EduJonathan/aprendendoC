@@ -108,8 +108,11 @@ int main(int argc, char **argv)
      * Dentre eles, temos:
      *
      * pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg): Cria uma nova thread.
+     *
      * pthread_join(pthread_t thread, void **retval): Aguarda uma thread terminar.
+     *
      * pthread_exit(void *retval): Finaliza a thread atual.
+     *
      * pthread_self(): Retorna o identificador da thread atual.
      * Dentre várias outras encontrada no #include <pthread.h>
      */

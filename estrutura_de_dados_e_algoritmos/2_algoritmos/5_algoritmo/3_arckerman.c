@@ -77,7 +77,6 @@ int ackermannRecursiva(int mValor, int nValor)
     {
         return ackermannRecursiva(mValor - 1, 1);
     }
-
     return ackermannRecursiva(mValor - 1, ackermannRecursiva(mValor, nValor - 1));
 }
 

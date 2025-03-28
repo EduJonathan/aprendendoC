@@ -51,7 +51,8 @@ void insertFront(int *deque, int *front, int *rear, int key)
     }
 
     if (*front == -1)
-    { // Se o deque estiver vazio
+    { 
+        // Se o deque estiver vazio
         *front = 0;
         *rear = 0;
     }

@@ -44,7 +44,6 @@ void enQueue(struct node **front, struct node **rear, float valor)
         (*rear)->next = newNode; ///< Conecta o nó anterior ao novo
         *rear = newNode;         ///< Atualiza o ponteiro `rear` para o novo nó
     }
-
     printf("Valor %f inserido na fila\n", valor);
 }
 

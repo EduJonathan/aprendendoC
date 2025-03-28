@@ -23,7 +23,7 @@ typedef struct
  * @brief Função que simula a ação de um filósofo pensando e comendo.
  *
  * O Problema dos Filósofos é um problema clássico de sincronização e concorrência.
- * O problema descreve uma situação em que vários filósofos sentam-se à mesa de jantar(circular) e 
+ * O problema descreve uma situação em que vários filósofos sentam-se à mesa de jantar(circular) e
  * alternam entre pensar e comer. Para comer, um filósofo precisa de dois garfos, mas os garfos são
  * compartilhados entre os filósofos, criando um problema de deadlock (interbloqueio) e
  * starvation (fome). O filósofo pega dois garfos, come e, em seguida, solta os garfos.
@@ -60,8 +60,80 @@ void *thread_func(void *arg)
     return NULL;
 }
 
+sem_t semaforo_verde,  /*Semáforo para controlar a luz verde. veículos podem passar */
+    semaforo_amarelo,  /* Semáforo para controlar a luz amarela. Indicando preparar para parar.*/
+    semaforo_vermelho; /* Semáforo para controlar a luz vermelha. Informando para parar */
+
+int executando = 1; /* Variável de controle para parar a execução. */
+
+/**
+ * @brief Função que simula o ciclo de troca das luzes do semáforo.
+ *
+ * Esta função simula o comportamento de um semáforo, trocando as luzes
+ * entre verde, amarela e vermelha. A luz verde acende primeiro, seguida
+ * pela luz amarela e por fim pela luz vermelha. A cada troca, a thread
+ * aguarda o semáforo correspondente para simular o tempo em que cada luz
+ * fica acesa.
+ *
+ * @param arg Argumento (não utilizado nesta função).
+ * @return NULL Retorna NULL ao final da execução da thread.
+ */
+void *semaforo_func(void *arg)
+{
+    while (executando)
+    { // O loop continua enquanto 'executando' for 1
+        // Luz verde: veículo pode passar
+        sem_wait(&semaforo_verde);
+        printf("Luz verde: Veículos podem passar!\n");
+        sleep(3);                    /**< Simula o tempo que a luz verde fica acesa */
+        sem_post(&semaforo_amarelo); /**< Passa para a luz amarela */
+
+        // Luz amarela: atenção, vai mudar para vermelho
+        sem_wait(&semaforo_amarelo);
+        printf("Luz amarela: Prepare-se para parar!\n");
+        sleep(1);                     /**< Simula o tempo que a luz amarela fica acesa */
+        sem_post(&semaforo_vermelho); /**< Passa para a luz vermelha */
+
+        // Luz vermelha: veículos devem parar
+        sem_wait(&semaforo_vermelho);
+        printf("Luz vermelha: Veículos devem parar!\n");
+        sleep(3);                  /**< Simula o tempo que a luz vermelha fica acesa */
+        sem_post(&semaforo_verde); /**< Passa para a luz verde */
+    }
+
+    printf("Simulação do semáforo encerrada.\n");
+    return NULL;
+}
+
 int main(int argc, char **argv)
 {
+    pthread_t semaforo_thread;
+
+    // Inicializando os semáforos
+    sem_init(&semaforo_verde, 0, 1);    /**< A luz verde começa acesa */
+    sem_init(&semaforo_amarelo, 0, 0);  /**< A luz amarela começa apagada */
+    sem_init(&semaforo_vermelho, 0, 0); /**< A luz vermelha começa apagada */
+
+    // Criando a thread para simulação
+    pthread_create(&semaforo_thread, NULL, semaforo_func, NULL);
+
+    // Aguardando a execução por 10 segundos antes de parar
+    sleep(10);
+    printf("Parando a simulação...\n");
+
+    // Mudando a variável de controle para 0, para parar o loop de simulação
+    executando = 0;
+
+    // Aguardando a execução da thread até que ela finalize
+    pthread_join(semaforo_thread, NULL);
+
+    // Destruindo semáforos após o uso
+    sem_destroy(&semaforo_verde);
+    sem_destroy(&semaforo_amarelo);
+    sem_destroy(&semaforo_vermelho);
+
+    printf("\n========================================\n");
+
     int n;
     printf("\nEntre com a quantidade de filosofos: ");
     scanf("%d", &n);
@@ -140,7 +212,7 @@ int main(int argc, char **argv)
      *
      * int sem_destroy(sem_t *sem): Destrói o semáforo e libera seus recursos.
      *
-     * Dentre outras
+     * Dentre outras inclusas em #include <semaphore.h>
      */
 
     return 0;

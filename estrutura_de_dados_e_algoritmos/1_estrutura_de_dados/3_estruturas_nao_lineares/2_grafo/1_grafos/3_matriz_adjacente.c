@@ -104,7 +104,6 @@ void transversal(struct grafo *g)
             // Imprime o valor da célula [i][j]
             printf("%d ", g->matrizAdj[i][j]);
         }
-
         printf("\n");
     }
 }

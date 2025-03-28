@@ -81,8 +81,11 @@ int sequential(fila *queue, int chave)
  * vértices de um grafo de maneira por níveis, começando de um vértice inicial. Ele visita
  * todos os vizinhos de um nó antes de passar para os nós mais distantes.Útil para encontrar
  * o caminho mais curto em grafos não ponderados, onde todos os passos entre nós são
- * considerados iguais. O tempo de execução da BFS é O(V + E) V é o número de vértices e o
- * E é o número de arestas no grafo.
+ * considerados iguais. O tempo de execução da BFS é O(V + E) 'V' é o número de vértices e o
+ * 'E' é o número de arestas no grafo.
+ * A fila é a estrutura de dados mais adequada, pois ela segue o princípio FIFO
+ * (First In, First Out), ou seja, o primeiro nó a ser inserido é o primeiro a ser removido,
+ * o que permite que os nós sejam explorados por "níveis" de profundidade.
  */
 void BFS(int key, int adj[MAX_VERTICES][MAX_VERTICES], int v)
 {

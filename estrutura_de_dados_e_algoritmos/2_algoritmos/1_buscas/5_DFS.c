@@ -55,10 +55,14 @@ void insert(pilha *stack, int valor)
  * @param adj Matriz de adjacência do grafo.
  * @param v Número de vértices no grafo.
  * @param visitados Vetor que mantém o controle dos vértices visitados.
+ *
  * @note A Busca em Profundidade (DFS) é um algoritmo de travessia de grafos que explora os
  * vértices de um grafo indo o mais fundo possível ao longo de cada ramo antes de retroceder
  * (backtrack) e explorar outros ramos. A complexidade de tempo de execução da DFS é:
  * 𝑂(𝑉+𝐸) Onde: 𝑉 é o número de vértices no grafo. 𝐸 é o número de arestas no grafo.
+ * A pilha é a estrutura de dados mais indicada porque ela segue o princípio
+ * LIFO (Last In, First Out), ou seja, o último elemento inserido é o primeiro a ser removido,
+ * o que é ideal para o comportamento de retrocesso do DFS.
  */
 void DFS(int start, int adj[MAX_VERTICES][MAX_VERTICES], int v, int visitados[MAX_VERTICES])
 {

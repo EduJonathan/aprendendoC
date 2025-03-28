@@ -111,7 +111,6 @@ void bellmanFordAlgoritmo(struct Graph *g, int src)
             return; /**< Se houver ciclo negativo, o algoritmo termina */
         }
     }
-
     printGraph(distancias, V); /**< Imprime as distâncias finais */
 }
 

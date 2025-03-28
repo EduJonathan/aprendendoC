@@ -84,8 +84,9 @@ int main(int argc, char **argv)
      * compilar e executar para melhor execução principalmente das threads.
      * Como compilar? No terminal
      *
-     * "C:\Users\NomeDeSuaMaquina\Documents\aprendendoC\C\headers\07_header_pthreads.h>"
-     * gcc -o philosopher philosopher.c -pthread
+     * > "C:\Users\NomeDeSuaMaquina\Documents\aprendendoC\C\headers\07_header_pthreads.h>"
+     * > gcc -o nome arquivo.c -pthread
+     * > .\nome.exe
      */
     return 0;
 }
