@@ -14,3 +14,17 @@
  * @note É uma maneira eficaz de monitorar e gerenciar a posição do cursor ao trabalhar com
  * arquivos em C.
  */
+
+int main(int argc, char **argv)
+{
+    FILE *arquivo = fopen("dados.bin", "rb");
+
+    fseek(arquivo, 0, SEEK_END); // Move o ponteiro para o final do arquivo
+
+    // Obtém a posição atual e retorna o número de bytes já lidos ou escritos no arquivo.
+    long tamanho = ftell(arquivo);
+
+    fclose(arquivo);
+    printf("Tamanho do arquivo: %ld bytes\n", tamanho);
+    return 0;
+}

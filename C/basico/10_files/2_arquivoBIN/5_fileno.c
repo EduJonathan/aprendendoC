@@ -16,3 +16,16 @@
  * ponteiro para um objeto FILE, que pode ser usado em chamadas de sistema de baixo
  * nível.
  */
+
+int main(int argc, char **argv)
+{
+    FILE *arquivo = fopen("dados.bin", "rb");
+
+    // Obtém descritor do arquivo e retorna o identificador de arquivo que o
+    // sistema operacional usa internamente.
+    int descritor = fileno(arquivo);
+    printf("Descritor do arquivo: %d\n", descritor);
+
+    fclose(arquivo);
+    return 0;
+}

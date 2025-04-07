@@ -1,2 +1,0 @@
-/** Em processo... */
-#pragma once

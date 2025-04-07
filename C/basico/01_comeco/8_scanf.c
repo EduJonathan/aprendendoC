@@ -75,18 +75,18 @@ int main(int argc, char **argv)
      * não deixando o valor ser digitado, existe uma maneira de burlar esse problema,
      * sem utilizar o fflush, não sendo uma boa prática, trata-se de inserir um espaço
      * antes do formatador.
-
+     *
      * scanf(" %c", &caractere);
      * scanf(" %c", &letter);
-
+     *
      * ou poderia utilizar também uma função chamada getchar(), onde poderiámos:
-
+     *
      * scanf("%c", &caractere);
      * getchar();
      *
      * scanf("%c", &letter);
      * getchar();
-
+     *
      * perceba, que os espaços antes do formatador não se encontram, mas como dito
      * não se torna uma boa prática, Existem outras maneiras de tratar strings e limpeza
      * de buffer além do fflush, veremos adiante.

@@ -16,3 +16,19 @@
  * em arquivos, pois permite identificar se uma operação falhou e obter informações sobre
  * o tipo de erro que ocorreu.
  */
+
+int main(int argc, char **argv)
+{
+    FILE *arquivo = fopen("dados.bin", "rb"); // Tenta abrir arquivo para leitura
+
+    /* verifica se houve erro ao abrir ou acessar o arquivo. */
+    if (!arquivo || ferror(arquivo))
+    {
+        printf("Erro ao abrir o arquivo!\n");
+        return 1;
+    }
+
+    fclose(arquivo);
+    printf("Arquivo lido com sucesso!\n");
+    return 0;
+}
