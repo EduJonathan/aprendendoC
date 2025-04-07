@@ -9,7 +9,7 @@
 8. Ponteiros
 9. Arquivos (.txt / .bin)
 10. Modificadores de acesso (Variáveis Globais, Locais e Blocos, Parâmetros, Volatile).
-11. Classes de Armazenamento(Extern, Static, Volatile, Registers, Auto)
+11. Classes de Armazenamento(Extern, Static, Volatile, Register, Auto)
 12. Tipos Definidos (Structs, Enums, Unions, Typedef, Bit Fields)
 13. Diretivas de Pré-Processadores (#Include, #Define, #If, #Elif, #Ifdef e #Ifndef, #Defined, #Erro, #Line, #Pragmas).
 14. Palavras-Chaves (Keywords)
