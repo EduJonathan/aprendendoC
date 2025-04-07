@@ -42,7 +42,6 @@ char *AlocandoComMalloc(void)
     {
         printf("O ponteiro está vazio (alocação falhou)\n");
     }
-
     return caractere;
 }
 

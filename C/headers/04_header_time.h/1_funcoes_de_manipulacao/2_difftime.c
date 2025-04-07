@@ -24,7 +24,7 @@
  * @param data_referencia Ponteiro para uma estrutura `tm` contendo a data de referência
  * (25 de setembro do ano atual).
  */
-void calcular_diferença_data(struct tm *data_referencia)
+void calcular_diferenca_data(struct tm *data_referencia)
 {
     // Obtém a data e hora atual
     time_t agora;
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
 
     printf("\n===============================================\n");
 
-    calcular_diferença_data(&beg);
+    calcular_diferenca_data(&beg);
 
     printf("\n===============================================\n");
 
