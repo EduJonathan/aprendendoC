@@ -20,7 +20,7 @@
 2. Estrutura Lineares (Arrays, Listas, Listas-Encadeadas, Pilhas e Filas)
 3. Estruturas Não-Lineares (Árvores e Grafos)
 4. Estruturas Associativas (Map, Dict, Set, Hash)
-5. Algoritmos de (Buscas, Sorts, Arrays, Grafos e Problemas Computacionais)
+5. Algoritmos de ((Search) Buscas, (Sorts) Ordenação, Arrays, Grafos e Problemas Computacionais)
 
 **🛠️ Tecnologias Utilizadas**
 - Editor de Código: Vs-Code
