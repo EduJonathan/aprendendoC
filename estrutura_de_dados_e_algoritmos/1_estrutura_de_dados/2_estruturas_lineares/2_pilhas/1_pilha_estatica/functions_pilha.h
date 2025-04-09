@@ -24,7 +24,6 @@ int push(int items[], int topo, int item)
         printf("Pilha cheia\n");
         return topo; // Retorna o topo sem alterações
     }
-
     items[++topo] = item; // Insere o item no topo da pilha
     return topo;          // Retorna o novo topo
 }
@@ -60,7 +59,6 @@ int pop(int items[], int topo)
         printf("Pilha vazia\n");
         return topo; // Retorna o topo sem alterações
     }
-
     topo--;      // Decrementa o topo e "remove" o item
     return topo; // Retorna o novo topo
 }
@@ -82,9 +80,7 @@ int stackTop(int items[], int topo)
         printf("Pilha vazia\n");
         return -1; // Retorna um valor de erro
     }
-
-    // Retorna o item no topo
-    return items[topo];
+    return items[topo]; // Retorna o item no topo
 }
 
 /**

@@ -90,7 +90,6 @@ unsigned int funcaoHash(char *key)
     {
         hash += *key++;
     }
-
     return hash % SIZETABLEHASH;
 }
 
@@ -139,7 +138,6 @@ char *buscaMap(Table *table, char *key)
         }
         atual = atual->next;
     }
-
     return NULL;
 }
 
@@ -164,7 +162,6 @@ void exibirMap(Table *table)
             atual = atual->next;
         }
     }
-
     printf("NULL\n");
 }
 

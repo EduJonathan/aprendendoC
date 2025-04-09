@@ -47,7 +47,6 @@ void inserirNoInicio(listaCircular **head, int valor)
         *head = novoNo;
         temp->next = *head;
     }
-
     printf("O elemento %d foi inserido no início da lista circular.\n", valor);
 }
 
@@ -79,7 +78,6 @@ void inserirNoFinal(listaCircular **head, int valor)
         temp->next = novoNo;
         novoNo->next = *head;
     }
-
     printf("O elemento %d foi inserido no final da lista circular.\n", valor);
 }
 
@@ -139,7 +137,6 @@ void liberarMemoria(listaCircular **head)
 
         *head = NULL;
     }
-
     printf("Memória da lista liberada.\n");
 }
 
@@ -213,8 +210,7 @@ void removerNoFinal(listaCircular **head)
             *head = (*head)->next;
             aux->next = *head;
             free(temp);
-        }
-        
+        }        
         printf("O elemento foi removido do final da lista circular.\n");
     }
 }

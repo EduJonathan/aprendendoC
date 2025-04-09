@@ -34,7 +34,6 @@ bool isAlnum(int caractere)
     {
         printf("O caractere '%c' não é alfanumérico: %d - %s\n", caractere, is_alphanumeric, is_alphanumeric ? "true" : "false");
     }
-
     return is_alphanumeric;
 }
 

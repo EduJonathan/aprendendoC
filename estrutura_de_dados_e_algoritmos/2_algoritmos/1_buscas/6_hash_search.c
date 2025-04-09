@@ -68,14 +68,12 @@ void insert(HashTable *ht, int key, int value)
 HashNode *search(HashTable *ht, int key)
 {
     int index = hashFunction(key);
-    
+
     if (ht->table[index] != NULL && ht->table[index]->key == key)
     {
         return ht->table[index];
     }
-    
-    // Não encontrado
-    return NULL; 
+    return NULL; // Não encontrado
 }
 
 int main(int argc, char **argv)

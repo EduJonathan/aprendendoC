@@ -36,7 +36,6 @@ int intCall(const void *a1, const void *b2)
     {
         return 0; /**< Os valores são iguais */
     }
-
     return -1; /**< Ordem decrescente: segundo valor é maior */
 }
 
@@ -54,7 +53,6 @@ int stringCall(const void *a1, const void *b2)
 {
     const struct nome *a = (const struct nome *)a1;
     const struct nome *b = (const struct nome *)b2;
-
     return strcmp(a->nome, b->nome); /**< Compara os nomes de forma alfabética */
 }
 

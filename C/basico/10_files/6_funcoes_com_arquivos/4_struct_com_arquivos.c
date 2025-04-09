@@ -118,7 +118,6 @@ void atualizar(FILE *fp, struct funcionario *funcionario)
     // Substitui o arquivo original pelo temporário
     remove("funcionarios.dat");
     rename("temp.dat", "funcionarios.dat");
-
     printf("Funcionario atualizado com sucesso.\n");
 }
 
@@ -155,7 +154,6 @@ void exibir(FILE *fp, struct funcionario *funcionario)
         // Libera a memória alocada para o nome
         free(funcionario->nome);
     }
-
     fclose(fp);
 }
 
@@ -178,6 +176,7 @@ int main(int argc, char **argv)
         switch (opcao)
         {
         case 1:
+
             fp = fopen("funcionarios.dat", "ab+"); // Abrir o arquivo para adicionar novos dados
             if (fp == NULL)
             {
@@ -189,6 +188,7 @@ int main(int argc, char **argv)
             break;
 
         case 2:
+
             fp = fopen("funcionarios.dat", "rb"); // Abrir o arquivo para leitura
             if (fp == NULL)
             {
@@ -200,6 +200,7 @@ int main(int argc, char **argv)
             break;
 
         case 3:
+
             fp = fopen("funcionarios.dat", "rb+"); // Abrir o arquivo para leitura e escrita
             if (fp == NULL)
             {

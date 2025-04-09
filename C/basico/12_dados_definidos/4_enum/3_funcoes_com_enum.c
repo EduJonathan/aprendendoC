@@ -76,7 +76,6 @@ char *escolhaDoComputador(void)
     {
         return "papel";
     }
-
     return "tesoura";
 }
 
@@ -102,9 +101,7 @@ int jogadorEscolhePedraPapelTesoura(const char *escolhaDoJogador, const char *es
         // Caso o jogador ganhe
         return 1;
     }
-
-    // Caso contrário, o computador ganha
-    return -1;
+    return -1; // Caso contrário, o computador ganha
 }
 
 int main(int argc, char **argv)

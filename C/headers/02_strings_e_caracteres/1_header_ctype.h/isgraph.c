@@ -32,7 +32,6 @@ bool isGraph(int caractere)
     {
         printf(" O caractere '%c' não é grafico: %d - %s\n", caractere, is_graph, is_graph ? "true" : "false");
     }
-
     return is_graph;
 }
 

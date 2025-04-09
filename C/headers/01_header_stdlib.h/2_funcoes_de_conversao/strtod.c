@@ -31,9 +31,7 @@ double convertendoComStrtod(const char *str, char **endptr)
     {
         printf("Erro na conversão. Caractere inválido encontrado: %c\n", **endptr);
     }
-
-    // Retorna o número convertido
-    return num;
+    return num; // Retorna o número convertido
 }
 
 /**
@@ -56,9 +54,7 @@ float convertendoComStrtof(const char *str, char **fim)
     {
         printf("Erro na conversão. Caractere inválido encontrado: %c\n", **fim);
     }
-
-    // Retorna o número convertido
-    return num;
+    return num; // Retorna o número convertido
 }
 
 /**
@@ -81,9 +77,7 @@ long double convertendoComStrtod(const char *str, char **fim)
     {
         printf("Erro na conversão. Caractere inválido encontrado: %c\n", **fim);
     }
-
-    // Retorna o número convertido
-    return num;
+    return num; // Retorna o número convertido
 }
 
 int main(int argc, char **argv)
@@ -93,7 +87,7 @@ int main(int argc, char **argv)
     char str[] = "123.456";
     char *endptr = NULL;
     double num = convertendoComStrtod(str, &endptr);
-    
+
     printf("String convertida para ponto flutuante: %f\n", num);
     printf("Verificando tamanho da conversão em bytes: %zu\n", sizeof(num));
 

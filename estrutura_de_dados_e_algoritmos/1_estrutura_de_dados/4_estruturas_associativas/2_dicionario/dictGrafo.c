@@ -55,9 +55,7 @@ void addAresta(TabelaArestas tabela[], char origem, char destino, int peso)
     novaAresta->destino = destino;                         // Define o destino da aresta
     novaAresta->peso = peso;                               // Define o peso da aresta
     novaAresta->prox = tabela[indice].adj;                 // A nova aresta aponta para o que já existia
-
-    // Atualiza a lista de arestas para o vértice de orige
-    tabela[indice].adj = novaAresta;
+    tabela[indice].adj = novaAresta;                       // Atualiza a lista de arestas para o vértice de origem
 }
 
 /**

@@ -26,7 +26,6 @@ bool isSpace(int caractere)
     bool is_space = isspace((unsigned char)caractere);
 
     printf("O caractere '%c' %s um espaço: %d - %s\n", caractere, is_space ? "é" : "não é", is_space, is_space ? "true" : "false");
-
     return is_space;
 }
 

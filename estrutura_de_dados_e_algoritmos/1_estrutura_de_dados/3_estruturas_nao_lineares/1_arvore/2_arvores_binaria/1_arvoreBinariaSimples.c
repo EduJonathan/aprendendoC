@@ -58,9 +58,7 @@ TREE *insert(TREE *root, int data)
         // Caso contrário, insere o nó na subárvore direita
         root->right = insert(root->right, data);
     }
-
-    // Retorna a raiz da árvore
-    return root;
+    return root; // Retorna a raiz da árvore
 }
 
 /**

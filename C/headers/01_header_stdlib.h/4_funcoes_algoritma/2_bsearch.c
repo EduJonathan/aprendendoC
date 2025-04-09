@@ -27,9 +27,7 @@ int stringCall(const void *a1, const void *b2)
 {
     const char *a = (const char *)a1;
     const struct names *b = (const struct names *)b2;
-
-    /*< Compara a string procurada com o nome da estrutura */
-    return strcmp(a, b->nome);
+    return strcmp(a, b->nome); /*< Compara a string procurada com o nome da estrutura */
 }
 
 int main(int argc, char **argv)

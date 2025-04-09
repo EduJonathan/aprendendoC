@@ -32,9 +32,7 @@ struct arr *alocarArray(size_t tamanho)
         // Retorna NULL
         return NULL;
     }
-
-    // Retorna o array
-    return array;
+    return array; // Retorna o array
 }
 
 /**
@@ -73,9 +71,7 @@ void imprimirArrayComIndexacaoTradicional(const struct arr *array, size_t tamanh
         // Imprime o valor armazenado no campo `valor`
         printf("%d ", array[i].valor);
     }
-
-    // Imprime uma nova linha
-    putchar('\n');
+    putchar('\n'); // Imprime uma nova linha
 }
 
 /**
@@ -95,9 +91,7 @@ void imprimirArrayComAritmeticaDePonteiros(const struct arr *array, size_t taman
         // Imprime o valor armazenado no campo `valor`
         printf("%d ", (array + i)->valor);
     }
-
-    // Imprime uma nova linha
-    putchar('\n');
+    putchar('\n'); // Imprime uma nova linha
 }
 
 /**

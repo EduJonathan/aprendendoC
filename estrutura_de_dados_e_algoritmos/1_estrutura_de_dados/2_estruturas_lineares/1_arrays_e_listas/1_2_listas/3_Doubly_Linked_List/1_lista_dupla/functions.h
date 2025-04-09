@@ -36,7 +36,6 @@ void inserirNoInicio(struct node **head, int valorParaInserir)
         (*head)->prev = novoNo; // O nó anterior do primeiro nó é o novo nó
         *head = novoNo;         // A cabeça agora é o novo nó
     }
-
     printf("O nó %d foi inserido com sucesso no início!\n", valorParaInserir);
 }
 
@@ -74,11 +73,9 @@ void inserirNoFinal(struct node **head, int valorParaInserir)
         {
             temp = temp->next; // Percorre a lista
         }
-
         temp->next = novoNo; // O nó seguinte é o novo nó
         novoNo->prev = temp; // O nó anterior será o último nó da lista
     }
-
     printf("O nó %d foi inserido com sucesso no final!\n", valorParaInserir);
 }
 
@@ -104,7 +101,6 @@ void removerNoInicio(struct node **head)
         // O novo primeiro nó não terá nó anterior
         (*head)->prev = NULL;
     }
-
     free(temp); // Libera o nó removido
     printf("O nó %d foi removido do início com sucesso!\n", temp->data);
 }
@@ -141,7 +137,6 @@ void removerNoFinal(struct node **head)
         // Se a lista tinha apenas um nó, a cabeça será NULL
         *head = NULL;
     }
-
     free(temp); // Libera o nó removido
     printf("O nó %d foi removido do final com sucesso!\n", temp->data);
 }
@@ -200,7 +195,6 @@ void delecaoEspecifica(struct node **head, int valorParaDeletar)
             temp->next->prev = temp->prev;
         }
     }
-
     free(temp); // Libera o nó removido
     printf("Nó com valor %d removido da lista!\n", valorParaDeletar);
 }

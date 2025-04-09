@@ -52,9 +52,7 @@ int kadane(int arr[], int n)
             max_so_far = max_ending_here;
         }
     }
-
-    // Retorna a soma máxima da subarray contígua
-    return max_so_far;
+    return max_so_far; // Retorna a soma máxima da subarray contígua
 }
 
 int main(int argc, char **argv)

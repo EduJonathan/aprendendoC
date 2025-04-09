@@ -22,6 +22,5 @@ int main(int argc, char **argv)
     {
         printf("Número válido: %d\n", numero);
     }
-
     return 0;
 }

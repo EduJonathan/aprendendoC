@@ -32,7 +32,6 @@ bool isAlpha(int caractere)
     {
         printf(" O caractere '%c' não é um caractere alfabético: %d - %s\n", caractere, is_alpha, is_alpha ? "true" : "false");
     }
-
     return is_alpha;
 }
 

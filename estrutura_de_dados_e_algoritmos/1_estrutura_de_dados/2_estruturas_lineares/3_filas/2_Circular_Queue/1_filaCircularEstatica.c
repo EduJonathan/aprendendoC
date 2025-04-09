@@ -83,7 +83,6 @@ int removerElementoNaFila(filaCircular *queue)
     int elementoRemovido = queue->elementos[queue->frente];
     queue->frente = (queue->frente + 1) % QUEUE_SIZE;
     queue->contador--;
-
     return elementoRemovido;
 }
 

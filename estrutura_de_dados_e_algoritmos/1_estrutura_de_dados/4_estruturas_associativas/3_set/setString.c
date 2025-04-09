@@ -33,7 +33,6 @@ bool contem(Set *s, const char *valor)
             return true; // Encontrou duplicata
         }
     }
-
     return false;
 }
 
@@ -87,6 +86,5 @@ int main(int argc, char **argv)
     }
 
     print(&setz);
-
     return 0;
 }

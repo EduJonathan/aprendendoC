@@ -18,9 +18,7 @@ float *minimo(float *n1, float *n2)
         // Retorna o ponteiro para o maior valor
         return n1;
     }
-
-    // Retorna o ponteiro para o maior valor
-    return n2;
+    return n2; // Retorna o ponteiro para o maior valor
 }
 
 /**
@@ -45,9 +43,7 @@ int *max(int *n1, int *n2)
     {
         return maior;
     }
-
-    // Se for menor retorne o menor
-    return menor;
+    return menor; // Se for menor retorne o menor
 }
 
 /**

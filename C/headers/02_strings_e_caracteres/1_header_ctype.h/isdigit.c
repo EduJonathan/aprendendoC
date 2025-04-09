@@ -32,7 +32,6 @@ bool isDigit(int caractere)
     {
         printf(" O caractere '%c' não é um digito: %d - %s\n", caractere, is_digit, is_digit ? "true" : "false");
     }
-
     return is_digit;
 }
 

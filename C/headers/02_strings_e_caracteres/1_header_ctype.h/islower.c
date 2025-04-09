@@ -31,7 +31,6 @@ bool isLower(int caractere)
     {
         printf(" O caractere '%c' não é minusculo: %d - %s\n", caractere, is_lwr, is_lwr ? "true" : "false");
     }
-
     return is_lwr;
 }
 

@@ -26,9 +26,7 @@ bool grafoNaoDirecionadoOuDirecionado(int grafo[][5], int numVertices)
             }
         }
     }
-
-    // Grafo não direcionado
-    return true;
+    return true; // Grafo não direcionado
 }
 
 int main(int argc, char **argv)

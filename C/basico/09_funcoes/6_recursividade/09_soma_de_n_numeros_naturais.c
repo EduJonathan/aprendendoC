@@ -19,9 +19,7 @@ int n_natural(int n)
         // Caso base: se n for 0, retorna 0
         return 0;
     }
-
-    // Chamada recursiva para somar n com n-1
-    return n_natural(n - 1) + n;
+    return n_natural(n - 1) + n; // Chamada recursiva para somar n com n-1
 }
 
 int main(int argc, char **argv)

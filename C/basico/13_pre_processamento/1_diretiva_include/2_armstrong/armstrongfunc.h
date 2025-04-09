@@ -48,7 +48,6 @@ bool is_armstrong_number(int candidate)
         sum = sum + pow(rem, num_digits); // Adiciona rem elevado a num_digits à soma
         candidate /= 10;                  // Remove o último dígito de candidate
     }
-
     return sum == temp; // Retorna true se candidate for um número de Armstrong, senão false
 }
 

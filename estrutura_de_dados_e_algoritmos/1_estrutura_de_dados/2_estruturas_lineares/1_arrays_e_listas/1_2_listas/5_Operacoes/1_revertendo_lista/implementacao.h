@@ -147,9 +147,7 @@ void liberaLista(struct Node **head)
         *head = (*head)->next; // Move o ponteiro para o próximo nó
         free(temp);            // Libera a memória do nó atual
     }
-
-    // Atualiza o ponteiro `head` para NULL
-    *head = NULL;
+    *head = NULL; // Atualiza o ponteiro `head` para NULL
 }
 
 #endif

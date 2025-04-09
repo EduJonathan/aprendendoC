@@ -131,9 +131,8 @@ void freeQueue(struct node **front, struct node **rear)
         *front = (*front)->next; ///< Avança para o próximo nó
         free(temp);              ///< Libera a memória do nó removido
     }
-
-    // Após liberar todos os nós, atualiza os ponteiros `rear` para NULL
-    *rear = NULL;
+   
+    *rear = NULL; // Após liberar todos os nós, atualiza os ponteiros `rear` para NULL
     printf("Memória da fila liberada\n");
 }
 

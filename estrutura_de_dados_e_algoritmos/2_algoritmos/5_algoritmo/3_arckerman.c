@@ -52,9 +52,7 @@ int ackermannIterativa(int m, int n)
             pilha[++topo] = n - 1; // Insere n - 1 na pilha
         }
     }
-
-    // Caso final se m == 0, retorna n + 1
-    return n + 1;
+    return n + 1; // Caso final se m == 0, retorna n + 1
 }
 
 /**

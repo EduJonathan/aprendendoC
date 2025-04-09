@@ -39,9 +39,7 @@ struct Stack *createStack(unsigned maxSize)
         free(stack);
         exit(1);
     }
-
-    // Retorna um ponteiro para a pilha
-    return stack;
+    return stack; // Retorna um ponteiro para a pilha
 }
 
 /**
@@ -75,9 +73,7 @@ int isEmpty(struct Stack *stack)
     {
         return true;
     }
-
-    // Verifica se o topo da pilha -1
-    return stack->top == -1;
+    return stack->top == -1; // Verifica se o topo da pilha -1
 }
 
 /**
@@ -100,9 +96,7 @@ void push(struct Stack *stack, int item)
     {
         return; // Verifica se a pilha está cheia
     }
-
-    // Insere o item na pilha
-    stack->array[++stack->top] = item;
+    stack->array[++stack->top] = item; // Insere o item na pilha
     printf("%d pushed to stack\n", item);
 }
 
@@ -123,9 +117,7 @@ int pop(struct Stack *stack)
         // Se estiver vazia, retorna INT_MIN(Valor: -2147483648)
         return INT_MIN;
     }
-
-    // Retorna o item removido da pilha
-    return stack->array[stack->top--];
+    return stack->array[stack->top--]; // Retorna o item removido da pilha
 }
 
 /**
@@ -147,9 +139,7 @@ int peek(struct Stack *stack)
     {
         return INT_MIN;
     }
-
-    // Retorna o item do topo da pilha
-    return stack->array[stack->top];
+    return stack->array[stack->top]; // Retorna o item do topo da pilha
 }
 
 /**
@@ -178,7 +168,6 @@ void printStack(struct Stack *stack)
     {
         printf("%d ", stack->array[i]);
     }
-
     printf("\n");
 }
 

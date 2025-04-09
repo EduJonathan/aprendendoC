@@ -33,7 +33,6 @@ bool isPrintavel(int caractere)
     {
         printf(" O caractere '%c' não é printavél: %d - %s\n", caractere, is_print, is_print ? "true" : "false");
     }
-
     return is_print;
 }
 

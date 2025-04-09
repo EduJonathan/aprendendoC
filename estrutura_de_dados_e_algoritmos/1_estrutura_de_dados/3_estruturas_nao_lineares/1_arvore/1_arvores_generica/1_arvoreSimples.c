@@ -81,9 +81,7 @@ void inserirFilho(Node *pai, Node *novoNo, int posicao)
         novoNo->irmao = current->irmao;
         current->irmao = novoNo;
     }
-
-    // Define o nó pai do novo nó
-    novoNo->pai = pai;
+    novoNo->pai = pai; // Define o nó pai do novo nó
 }
 
 /**

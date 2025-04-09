@@ -26,7 +26,6 @@ void imprimeGrauDosVertices(int matriz[N][N])
                 grau++;
             }
         }
-
         printf("O vértice %d tem grau %d.\n", i + 1, grau);
     }
 }

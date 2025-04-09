@@ -137,9 +137,7 @@ void liberar(Fila *f)
 		free(atual);					 // Libera a memória do nó atual 'atual'
 		atual = proximo_no;				 // Atualiza 'atual' para apontar para o próximo nó da fila
 	}
-
-	// Por fim, libera a memória da estrutura da fila 'f' em si
-	free(f);
+	free(f); // Por fim, libera a memória da estrutura da fila 'f' em si
 }
 
 /**

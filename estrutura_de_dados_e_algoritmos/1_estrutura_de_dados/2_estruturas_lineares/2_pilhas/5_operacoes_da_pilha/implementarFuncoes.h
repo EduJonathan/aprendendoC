@@ -211,9 +211,7 @@ bool buscar(Pilha *p, int item)
             return i;
         }
     }
-
-    // Retorna false se o elemento não for encontrado
-    return false;
+    return false; // Retorna false se o elemento não for encontrado
 }
 
 /**

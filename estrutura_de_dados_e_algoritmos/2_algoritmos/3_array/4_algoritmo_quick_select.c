@@ -46,7 +46,6 @@ int partition(int arr[], int low, int high)
     int temp = arr[i + 1];
     arr[i + 1] = arr[high];
     arr[high] = temp;
-
     return i + 1;
 }
 
@@ -82,9 +81,7 @@ int quickSelection(int arr[], int low, int high, int k)
             return quickSelection(arr, pi + 1, high, k);
         }
     }
-
-    // Caso de erro, caso o valor de k seja inválido.
-    return -1;
+    return -1; // Caso de erro, caso o valor de k seja inválido.
 }
 
 int main(int argc, char **argv)

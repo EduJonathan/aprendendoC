@@ -76,7 +76,6 @@ struct Node *rightRotate(struct Node *y)
 
     y->height = max(height(y->left), height(y->right)) + 1;
     x->height = max(height(x->left), height(x->right)) + 1;
-
     return x;
 }
 
@@ -99,7 +98,6 @@ struct Node *leftRotate(struct Node *x)
 
     x->height = max(height(x->left), height(x->right)) + 1;
     y->height = max(height(y->left), height(y->right)) + 1;
-
     return y;
 }
 
@@ -270,7 +268,6 @@ struct Node *deleteNode(struct Node *root, int key)
         root->right = rightRotate(root->right);
         return leftRotate(root);
     }
-
     return root;
 }
 

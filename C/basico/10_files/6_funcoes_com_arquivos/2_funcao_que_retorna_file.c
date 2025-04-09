@@ -22,9 +22,7 @@ FILE *openFile(const char *filename, const char *mode)
         perror("Erro ao abrir arquivo");
         return NULL; // Retorna NULL em caso de erro
     }
-
-    // Retorna o ponteiro para o arquivo aberto
-    return file;
+    return file; // Retorna o ponteiro para o arquivo aberto
 }
 
 int main(int argc, char **argv)

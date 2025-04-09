@@ -61,7 +61,6 @@ ArvoreBalanceada *balancearArvore(int *arr, int begin, int last)
     // Constrói as subárvores esquerda e direita recursivamente
     temp->left = balancearArvore(arr, begin, middle - 1);
     temp->right = balancearArvore(arr, middle + 1, last);
-
     return temp;
 }
 

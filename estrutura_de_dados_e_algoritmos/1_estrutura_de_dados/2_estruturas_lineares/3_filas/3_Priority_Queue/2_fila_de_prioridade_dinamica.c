@@ -115,7 +115,6 @@ int removerSolicitacao(Elevador *elevador)
     elevador->filaSolicitacoes = temp->next;
     free(temp);
     elevador->andaresChamados[andar] = false;
-
     return andar;
 }
 
@@ -148,11 +147,8 @@ void processarSolicitacoes(Elevador *elevador)
             }
             printf("Elevador no andar %d.\n", elevador->andarAtual);
         }
-
-        // Parando no andar solicitado
         printf("Parando no andar %d para atender solicitação.\n", elevador->andarAtual);
     }
-
     elevador->direcao = 0; // Elevador parado
 }
 

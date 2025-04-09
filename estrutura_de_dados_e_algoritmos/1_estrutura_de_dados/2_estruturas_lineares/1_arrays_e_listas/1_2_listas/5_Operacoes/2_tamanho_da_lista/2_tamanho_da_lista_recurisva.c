@@ -52,7 +52,6 @@ int tamanhoDaListaRecursivo(struct node *head)
     {
         return 0; // Lista vazia, tamanho é 0
     }
-
     return 1 + tamanhoDaListaRecursivo(head->next); // Contagem recursiva
 }
 

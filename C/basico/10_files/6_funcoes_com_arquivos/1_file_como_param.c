@@ -32,7 +32,6 @@ int toUpperFile(FILE *file)
             }
         }
     }
-
     return 0;
 }
 

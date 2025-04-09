@@ -76,7 +76,6 @@ void *calculate_times(void *args)
     *data->awt += data->w[i];
     *data->att += data->t[i];
     pthread_mutex_unlock(data->mutex);
-
     return NULL;
 }
 

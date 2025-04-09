@@ -117,10 +117,8 @@ struct Contato *buscarContato(struct Contato *lista, const char *nome)
             // Encontrou o contato
             return temp;
         }
-
         temp = temp->prox;
     }
-
     return NULL; // Contato não encontrado
 }
 
@@ -212,7 +210,6 @@ void liberarMemoria(struct Contato **lista)
         free(temp);
         temp = proximo;
     }
-
     // Garantir que o ponteiro principal seja NULL após a liberação
     *lista = NULL;
 }

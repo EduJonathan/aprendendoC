@@ -46,7 +46,6 @@ const char *equiparUmaArma(enum arma type)
     case RIFLE:
         return "fuzil";
     }
-    
     return "arma desconhecida";
 }
 

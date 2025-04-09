@@ -8,8 +8,8 @@
 typedef struct Fila
 {
     int priotyQueue[MAX_QUEUE]; /**< Vetor que armazena os elementos da fila */
-    int front;                 /**< Posição do primeiro elemento */
-    int rear;                  /**< Posição do último elemento */
+    int front;                  /**< Posição do primeiro elemento */
+    int rear;                   /**< Posição do último elemento */
 } FilaPrioridade;
 
 /**
@@ -44,9 +44,7 @@ void checarDadoDePrioridadeNaFila(FilaPrioridade *fila, int dado)
             return;
         }
     }
-
-    // Coloca no final se não encontrar prioridade maior
-    fila->priotyQueue[fila->rear + 1] = dado;
+    fila->priotyQueue[fila->rear + 1] = dado; // Coloca no final se não encontrar prioridade maior
 }
 
 /**
@@ -108,7 +106,6 @@ void deletarDadoNaFila(FilaPrioridade *fila, int dado)
             return;
         }
     }
-
     printf("%d Dado não encontrado na fila para deletar\n", dado);
 }
 

@@ -81,7 +81,6 @@ bool adicionar(Set *s, int elemento)
         s->tamanho++;
         return true;
     }
-
     return false;
 }
 
@@ -104,7 +103,6 @@ bool contem(Set *s, int elemento)
             return true;
         }
     }
-
     return false;
 }
 
@@ -129,7 +127,6 @@ void imprimir(Set *s)
             printf(", ");
         }
     }
-
     printf("}\n");
 }
 

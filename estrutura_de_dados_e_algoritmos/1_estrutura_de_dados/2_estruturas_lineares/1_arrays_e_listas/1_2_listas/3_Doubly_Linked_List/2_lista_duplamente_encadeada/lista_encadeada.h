@@ -36,7 +36,6 @@ void liberarMemoria(struct node *head)
         head = head->next; // Avança para o próximo nó
         free(temp);        // Libera o nó atual
     }
-
     printf("\nMemória liberada com sucesso!\n");
 }
 
@@ -73,7 +72,6 @@ void inserirNoInicio(struct node **head, int valor)
         (*head)->prev = newNode;
         *head = newNode;
     }
-
     printf("\nNó %d inserido no início!\n", newNode->data);
 }
 
@@ -115,7 +113,6 @@ void inserirNoFinal(struct node **head, int valor)
         lastNode->next = newNode;
         newNode->prev = lastNode;
     }
-
     printf("\nNó %d inserido no final!\n", newNode->data);
 }
 

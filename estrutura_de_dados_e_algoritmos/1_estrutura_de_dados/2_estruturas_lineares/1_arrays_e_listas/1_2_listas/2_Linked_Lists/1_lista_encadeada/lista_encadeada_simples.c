@@ -8,7 +8,7 @@
  * @struct Node
  *
  * @brief Estrutura para representar um nó da lista encadeada.
- * 
+ *
  * LISTA ENCADEADA: Uma lista encadeada é composta por nós (elementos individuais),
  * onde cada nó contém: O dado (por exemplo, um número, caractere, etc.). Um ponteiro
  * para o próximo nó. Os nós não são armazenados em um bloco contíguo de memória.

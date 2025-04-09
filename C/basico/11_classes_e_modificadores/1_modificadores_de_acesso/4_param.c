@@ -44,7 +44,6 @@ float somaDeArrays(float *ptr)
     {
         total += *(ptr + indice);
     }
-
     return total;
 }
 

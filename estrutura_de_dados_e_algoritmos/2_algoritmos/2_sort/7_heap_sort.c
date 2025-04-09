@@ -100,11 +100,9 @@ int main(int argc, char **argv)
     heapSort(arr, n); // Passa o tamanho correto
 
     printf("\nOrdenando com o heap sort\n");
-
     for (size_t i = 0; i < n; i++)
     {
         printf("%d ", arr[i]);
     }
-
     return 0;
 }

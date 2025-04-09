@@ -64,7 +64,6 @@ void insertFront(int *deque, int *front, int *rear, int key)
     {
         *front = *front - 1;
     }
-
     deque[*front] = key;
     printf("%d inserida na atrás no Deque.\n", key);
 }
@@ -102,7 +101,6 @@ void insertRear(int *deque, int *front, int *rear, int key)
     {
         *rear = *rear + 1;
     }
-
     deque[*rear] = key;
     printf("Inserted %d at the rear.\n", key);
 }
@@ -141,7 +139,6 @@ void deleteFront(int *deque, int *front, int *rear)
     {
         *front = *front + 1;
     }
-
     printf("%d excluída da frente no Deque.\n", removed);
 }
 
@@ -178,7 +175,6 @@ void deleteRear(int *deque, int *front, int *rear)
     {
         *rear = *rear - 1;
     }
-
     printf("%d excluída atrás no Deque.\n", removed);
 }
 

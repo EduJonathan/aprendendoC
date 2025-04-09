@@ -42,9 +42,7 @@ struct matriz **criaMatriz(size_t linhas, size_t colunas)
             matriz[i][j].valor = 0; //  Inicializando com zero Ou qualquer valor desejado
         }
     }
-
-    // Retornando o ponteiro para a matriz
-    return matriz;
+    return matriz; // Retornando o ponteiro para a matriz
 }
 
 /**
@@ -92,7 +90,7 @@ void imprimirMatrizAritmetica(struct matriz **matriz, size_t linhas, size_t colu
 
 /**
  * @brief Procedimento para liberar a memória alocada para a matriz
- * 
+ *
  * @param matriz Matriz a ser impressa a ser libera
  * @param linhas Números de linhas da matriz.
  */
@@ -104,9 +102,7 @@ void liberarMatriz(struct matriz **matriz, size_t linhas)
         // Liberando a memória alocada para cada coluna
         free(matriz[i]);
     }
-
-    // Liberando a memória alocada para as linhas
-    free(matriz);
+    free(matriz); // Liberando a memória alocada para as linhas
 }
 
 int main(int argc, char **argv)

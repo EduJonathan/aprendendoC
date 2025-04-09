@@ -51,9 +51,7 @@ void calcularFalhas(char *padrao, int falhas[])
                 indiceFalha = falhas[indiceFalha];
             }
         }
-
-        // Atualiza o vetor de falhas
-        falhas[i] = indiceFalha + 1;
+        falhas[i] = indiceFalha + 1; // Atualiza o vetor de falhas
     }
 }
 
@@ -102,7 +100,6 @@ bool buscarPadrao(char *texto, char *padrao)
             j = falhas[j]; // Ajusta j com base no vetor de falhas
         }
     }
-
     return false; // Não encontrou o padrão
 }
 
@@ -133,6 +130,5 @@ int main(int argc, char **argv)
     {
         printf("O padrão: \"%s\" não foi encontrado no texto \"%s\".\n", padrao2, texto2);
     }
-
     return 0;
 }

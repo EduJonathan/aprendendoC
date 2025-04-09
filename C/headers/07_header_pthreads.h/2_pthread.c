@@ -62,7 +62,6 @@ void *round_robin(void *arg)
             }
         }
     }
-
     printf("\n[Escalonamento concluído]\n");
     return NULL;
 }

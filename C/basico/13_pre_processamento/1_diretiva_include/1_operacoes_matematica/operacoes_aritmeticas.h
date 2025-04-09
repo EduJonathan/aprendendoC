@@ -55,9 +55,7 @@ float divide(float a, float b)
         printf("Não é possível realizar a divisão por zero!\n");
         return 0.0F;
     }
-
-    // Se não houver erro, realiza a divisão
-    return a / b;
+    return a / b; // Se não houver erro, realiza a divisão
 }
 
 #endif

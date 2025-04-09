@@ -50,12 +50,8 @@ void add(Lista *lista, int dado)
         // Define o ponteiro para o ultimo item da lista
         lista->ultimoItem->proximo = novoElemento;
     }
-
-    // Define o ponteiro para o ultimo item da lista
-    lista->ultimoItem = novoElemento;
-
-    // Incrementa a quantidade de itens da lista
-    lista->quantidade++;
+    lista->ultimoItem = novoElemento; // Define o ponteiro para o ultimo item da lista
+    lista->quantidade++;              // Incrementa a quantidade de itens da lista
 }
 
 /**
@@ -117,9 +113,7 @@ void liberarLista(Lista *lista)
         aux = aux->proximo;   // Move para o próximo nó
         free(temp);           // Libera a memória do nó
     }
-
-    // Libera a memória da estrutura
-    free(lista);
+    free(lista); // Libera a memória da estrutura
 }
 
 #endif

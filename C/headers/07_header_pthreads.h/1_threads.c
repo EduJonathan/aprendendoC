@@ -17,9 +17,7 @@ void *task1(void *arg)
     {
         printf("Thread 1 - Contagem: %d\n", i);
     }
-
-    // Encerra a execução da thread
-    return NULL;
+    return NULL; // Encerra a execução da thread
 }
 
 /**
@@ -37,9 +35,7 @@ void *task2(void *arg)
     {
         printf("Thread 2 - Contagem: %d\n", i);
     }
-
-    // Encerra a execução da thread
-    return NULL;
+    return NULL; // Encerra a execução da thread
 }
 
 // Cada função de thread utiliza pthread_exit(NULL) para encerrar sua execução.

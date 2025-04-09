@@ -47,7 +47,6 @@ Festividade get_festividade_enum(const char *festividade)
     {
         return CARNAVAL;
     }
-
     return FESTIVIDADE_INVALIDA;
 }
 

@@ -79,9 +79,9 @@ bool dijkstra(int graph[MAX][MAX], int n, int startNode)
                 }
             }
         }
-        
+
         // Incrementa o contador de vértices visitados
-        contador++; 
+        contador++;
     }
 
     // Exibe os resultados (distâncias e caminhos)
@@ -98,12 +98,9 @@ bool dijkstra(int graph[MAX][MAX], int n, int startNode)
             printf("<- %d ", j);
             j = pred[j];
         }
-
         printf("<- %d\n", startNode);
     }
-
-    // Retorna verdadeiro indicando que o algoritmo foi executado com sucesso
-    return true;
+    return true; // Retorna verdadeiro indicando que o algoritmo foi executado com sucesso
 }
 
 int main(int argc, char **argv)

@@ -81,9 +81,7 @@ void alocarArrayComMalloc(size_t tamanho)
             printf("\nO valor de ptr[%d] é: %d", i, ptr[i]);
             printf("\n Posição da memória ptr[%d] e: %p\tConversao do hexa em decimal: %d\n", i, &ptr[i], &ptr[i]);
         }
-
-        // Libera a memória alocada
-        free(ptr);
+        free(ptr); // Libera a memória alocada
     }
 }
 
@@ -122,7 +120,7 @@ int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
             {
                 free(matriz[j]);
             }
-            
+
             free(matriz);
             return NULL;
         }
@@ -149,9 +147,7 @@ int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
         }
         printf("\n");
     }
-
-    // Retorna a matriz alocada
-    return matriz;
+    return matriz; // Retorna a matriz alocada
 }
 
 /**

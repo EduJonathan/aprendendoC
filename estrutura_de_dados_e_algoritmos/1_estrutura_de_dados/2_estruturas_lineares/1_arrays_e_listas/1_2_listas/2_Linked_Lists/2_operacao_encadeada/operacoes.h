@@ -41,7 +41,6 @@ int tamanhoLista(struct no *lista)
     {
         tamanho++;
     }
-
     return tamanho;
 }
 
@@ -103,7 +102,6 @@ void imprimeLista(struct no *lista)
         i++;
         aux = aux->prox;
     }
-
     printf("}\n");
 }
 
@@ -148,9 +146,7 @@ struct no *deletarPrimeiroElemento(struct no *lista)
     {
         return NULL;
     }
-
     lista = lista->prox;
-
     return aux;
 }
 
@@ -191,7 +187,6 @@ struct no *deletar(struct no *lista, int key)
     {
         anterior->prox = aux->prox;
     }
-
     return lista;
 }
 
@@ -221,7 +216,6 @@ struct no *encontrarElemento(struct no *lista, int key)
         }
         aux = aux->prox;
     }
-
     return NULL;
 }
 

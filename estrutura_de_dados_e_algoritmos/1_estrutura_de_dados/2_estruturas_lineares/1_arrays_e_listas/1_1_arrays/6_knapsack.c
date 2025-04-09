@@ -58,11 +58,10 @@ int mochila(int capacidade, int pesos[], int valores[], size_t n)
             {
                 // Se o item não pode ser incluído (o peso é max que a capacidade)
                 // Não inclui o item, então mantém o valor da solução anterior
-                dp[i][j] = dp[i - 1][j]; 
+                dp[i][j] = dp[i - 1][j];
             }
         }
     }
-
     // Retorna o valor máximo que pode ser obtido com todos os itens e a capacidade da mochila
     return dp[n][capacidade];
 }
@@ -89,7 +88,7 @@ int main(int argc, char **argv)
 
     // Verifica se o valor total dos itens selecionados excedeu a capacity
     int pesoTotal = 0;
-    
+
     for (int i = 0; i < size; i++)
     {
         if (pesoTotal + weights[i] <= capacity)

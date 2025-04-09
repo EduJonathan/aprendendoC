@@ -56,9 +56,7 @@ void imprimirMatriz(const struct Matriz *mat)
             // Imprime o valor da posição [i][j]
             printf("%d ", mat->dados[i][j]);
         }
-
-        // Nova linha após imprimir todos os elementos de uma linha
-        printf("\n");
+        printf("\n"); // Nova linha após imprimir todos os elementos de uma linha
     }
 }
 

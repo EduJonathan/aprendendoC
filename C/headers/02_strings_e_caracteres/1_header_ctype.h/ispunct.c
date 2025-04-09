@@ -32,7 +32,6 @@ bool isPunct(int caractere)
     {
         printf(" O caractere '%c' não é pontuação: %d - %s\n", caractere, is_punct, is_punct ? "true" : "false");
     }
-
     return is_punct;
 }
 

@@ -69,7 +69,6 @@ void imprimirSequencia(enum colors *sequencia)
             break;
         }
     }
-
     printf("\n\n");
 }
 
@@ -95,7 +94,6 @@ int compararSequencias(enum colors *sequencia1, char tentativa[5][10])
             acertos++;
         }
     }
-
     return acertos;
 }
 

@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 
 // Restaura o estado anterior dos diagnósticos, permitindo que os avisos voltem ao
 // comportamento padrão após a chamada para funcaoAntiga().
-#pragma GCC diagnostic pop o
+#pragma GCC diagnostic pop
 
     /**
      * #pragma GCC diagnostic push e #pragma GCC diagnostic pop: São usados para garantir

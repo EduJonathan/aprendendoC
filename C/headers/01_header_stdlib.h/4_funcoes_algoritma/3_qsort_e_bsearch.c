@@ -49,8 +49,7 @@ int compara_strings(const void *a, const void *b)
 {
     const char *str1 = *(const char **)a; // Converte void* para char*
     const char *str2 = *(const char **)b; // Converte void* para char*
-
-    return strcmp(str1, str2); // Compara as strings usando strcmp
+    return strcmp(str1, str2);            // Compara as strings usando strcmp
 }
 
 int main(int argc, char **argv)

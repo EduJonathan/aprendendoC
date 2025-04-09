@@ -27,7 +27,7 @@ struct pessoa
     struct Datas datas; /**< Data de nascimento da pessoa. */
 };
 
-int main(int argc, char const *argv[])
+int main(int argc, char **argv)
 {
     // Matriz para armazenar informações de 4 pessoas (2x2)
     struct pessoa pessoas[2][2];

@@ -79,7 +79,6 @@ unsigned int functionHash(char *chave)
     {
         hash += *chave++;
     }
-
     return hash % SIZE_TABLE_HASH;
 }
 
@@ -130,7 +129,6 @@ int buscar(HashTable *tabela, char *key)
 
         atual = atual->prox;
     }
-
     return -1;
 }
 

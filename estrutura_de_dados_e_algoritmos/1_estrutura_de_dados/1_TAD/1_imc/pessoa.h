@@ -74,9 +74,7 @@ float calcularIMC(struct Person *pessoa)
         printf("Erro: altura e peso devem ser maiores que zero.\n");
         return -1; // Retorna -1 se houver erro nos valores de altura ou peso
     }
-
-    // Se não houver erro, calcular e retornar o IMC
-    return pessoa->peso / pow(pessoa->altura, 2);
+    return pessoa->peso / pow(pessoa->altura, 2); // Se não houver erro, calcular e retornar o IMC
 }
 
 /**
@@ -89,7 +87,7 @@ float calcularIMC(struct Person *pessoa)
 void imprimirIMC(struct Person *pessoa)
 {
     float imc = calcularIMC(pessoa);
-    
+
     if (imc != -1)
     {
         printf("IMC de %s: %.2f\n", pessoa->nome, imc);
@@ -118,9 +116,7 @@ bool verificarObesidade(struct Person *pessoa)
         // A pessoa está obesa
         return true;
     }
-
-    // A pessoa não está obesa
-    return false;
+    return false; // A pessoa não está obesa
 }
 
 /**

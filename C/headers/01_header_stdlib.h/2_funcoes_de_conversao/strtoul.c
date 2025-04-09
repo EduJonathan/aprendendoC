@@ -22,9 +22,7 @@ unsigned long converteStringParaUl(const char *str, char **endptr, int base)
     {
         printf("Erro na conversão. Caractere inválido encontrado: %c\n", **endptr);
     }
-
-    // Retorna o número convertido
-    return num;
+    return num; // Retorna o número convertido
 }
 
 /**
@@ -48,9 +46,7 @@ long long converteStringParaLLD(const char *str, char **endptr, int base)
     {
         printf("Erro na conversão. Caractere inválido encontrado: %c\n", **endptr);
     }
-
-    // Retorna o número convertido
-    return num;
+    return num; // Retorna o número convertido
 }
 
 /**
@@ -74,9 +70,7 @@ unsigned long long converteStrinParaULL(const char *str, char **endptr, int base
     {
         printf("Erro na conversão. Caractere inválido encontrado: %c\n", **endptr);
     }
-
-    // Retorna o número convertido
-    return num;
+    return num; // Retorna o número convertido
 }
 
 /**

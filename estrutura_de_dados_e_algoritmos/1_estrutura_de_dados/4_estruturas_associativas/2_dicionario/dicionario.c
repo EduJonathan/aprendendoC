@@ -84,7 +84,6 @@ void inserir(Dicionario *dict, const char *chave, const char *valor)
 
         strncpy(dict->keysValues[dict->tamanho]->valor, valor, MAX_CHAVE_VALOR - 1);
         dict->keysValues[dict->tamanho]->valor[MAX_CHAVE_VALOR - 1] = '\0'; // Garantir terminação nula
-
         dict->tamanho++;
     }
 }
@@ -106,8 +105,7 @@ char *buscar(Dicionario *dict, const char *chave)
         {
             return dict->keysValues[i]->valor;
         }
-    }
-    
+    }    
     return NULL;
 }
 

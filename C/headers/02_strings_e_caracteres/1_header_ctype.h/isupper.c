@@ -31,7 +31,6 @@ bool isUpper(int caractere)
     {
         printf("O caractere '%c' não é maiusculo: %d - %s\n", caractere, is_upper, is_upper ? "true" : "false");
     }
-
     return is_upper;
 }
 

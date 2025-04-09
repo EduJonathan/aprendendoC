@@ -6,10 +6,9 @@
  * para array de ponteiros) ou o conceito de chains of pointer. Quando se declara um array
  * multidimensional, o compilador aloca a memória de forma contígua na memória e pode-se
  * usar ponteiros para acessar os elementos de um array multidimensional usando a notação
- * tradicional de colchetes(mat[linha][coluna]) ou a
- * notação por ponteiros: *(*(mat + linha) + coluna)
- * Para entender melhor o que está acontecendo, vamos trocar *(mat + linha)
- * por um valor X. Desse modo, a expressão fica *(X + coluna)
+ * tradicional de colchetes(mat[linha][coluna]) ou a notação por ponteiros:
+ * *(*(mat + linha) + coluna) Para entender melhor o que está acontecendo,
+ * vamos trocar *(mat + linha) por um valor X. Desse modo, a expressão fica *(X + coluna)
  */
 
 int main(int argc, char **argv)

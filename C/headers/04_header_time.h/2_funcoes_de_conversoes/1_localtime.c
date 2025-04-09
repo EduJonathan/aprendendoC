@@ -46,9 +46,7 @@ char *get_local_time(void)
         // A função asctime já inclui o '\n' no final, além de converter essa estrutura
         // tm em uma string legível.
     }
-
-    // Retorna o ponteiro para a string formatada
-    return formatted_time;
+    return formatted_time; // Retorna o ponteiro para a string formatada
 }
 
 /**

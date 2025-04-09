@@ -72,9 +72,7 @@ no *busca(no *lista, int matricula)
             return i;
         }
     }
-
-    // Retorna NULL se o número de matrícula não for encontrado
-    return NULL;
+    return NULL; // Retorna NULL se o número de matrícula não for encontrado
 }
 
 /**
@@ -97,9 +95,7 @@ no *libera(no *lista)
         free(aux);              // Libera o nó atual
         aux = proximo_no;       // Move para o próximo nó
     }
-
-    // Retorna a lista vazia
-    return iniciar_lista();
+    return iniciar_lista(); // Retorna a lista vazia
 }
 
 /**

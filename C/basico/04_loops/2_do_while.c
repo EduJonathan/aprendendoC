@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * DO_WHILE: Ou faça enquanto é uma estrutura de controle de fluxo semelhante à instrução
+ * DO_WHILE: (faça enquanto): é uma estrutura de controle de fluxo semelhante à instrução
  * "while", mas com uma diferença importante: o código dentro do loop é executado pelo
  * menos uma vez, O laço é útil para situações onde você precisa garantir que o código
  * dentro do loop seja executado pelo menos uma vez, independentemente da condição.

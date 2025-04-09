@@ -29,9 +29,7 @@ bool VerticeConectados(int pontoX, int pontoY)
         // Há conexão
         return true;
     }
-
-    // Não há conexão
-    return false;
+    return false; // Não há conexão
 }
 
 int main(int argc, char **argv)

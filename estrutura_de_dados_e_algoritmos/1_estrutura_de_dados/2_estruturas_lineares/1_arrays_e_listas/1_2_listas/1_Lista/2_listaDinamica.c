@@ -42,7 +42,6 @@ void inicializar(ListaDinamica *lista, int capacidade)
         fprintf(stderr, "Falha na alocação de memória\n");
         exit(EXIT_FAILURE);
     }
-
     lista->tamanho = 0;
     lista->capacidade = capacidade;
 }
@@ -192,7 +191,6 @@ void removerItem(ListaDinamica *lista, int indice)
     {
         lista->itens[i] = lista->itens[i + 1];
     }
-
     lista->tamanho--;
 }
 

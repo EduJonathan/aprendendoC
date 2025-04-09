@@ -33,7 +33,7 @@ struct grafo *criarGrafo(int numVertices)
 
     // Aloca memória para a matriz de adjacência (matriz de numVertices x numVertices)
     grafo->matrizAdj = (int **)malloc(numVertices * sizeof(int *));
-    
+
     for (int i = 0; i < numVertices; i++)
     {
         grafo->matrizAdj[i] = (int *)malloc(numVertices * sizeof(int));
@@ -47,9 +47,7 @@ struct grafo *criarGrafo(int numVertices)
             grafo->matrizAdj[i][j] = 0;
         }
     }
-
-    // Se a alocação não falhar, retorna o grafo
-    return grafo;
+    return grafo; // Se a alocação não falhar, retorna o grafo
 }
 
 /**
@@ -88,7 +86,7 @@ void transversal(struct grafo *g)
     {
         printf("%d ", i);
     }
-    
+
     printf("\n");
 
     printf("---------------\n");

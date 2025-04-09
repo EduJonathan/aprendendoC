@@ -113,7 +113,6 @@ void reverterPilha(struct pilha **pilha)
         prev = current;       /**< Avançar o "prev" */
         current = next;       /**< Avançar o "current" */
     }
-
     *pilha = prev; /**< Atualiza o topo da pilha */
 }
 
@@ -136,7 +135,6 @@ void limparPilha(struct pilha **pilha)
         *pilha = (*pilha)->prox; // Avançar o topo da pilha
         free(aux);               // Libera a memória do nó
     }
-
     *pilha = NULL; /**< Garantir que o ponteiro da pilha seja NULL após limpar */
 }
 

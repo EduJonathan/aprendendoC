@@ -61,7 +61,6 @@ size_t tamanhoDaLista(struct node *head)
         tamanho++;               // Conta o nó
         current = current->next; // Move para o próximo nó
     }
-
     return tamanho;
 }
 

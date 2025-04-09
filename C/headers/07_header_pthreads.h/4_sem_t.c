@@ -56,7 +56,6 @@ void *thread_func(void *arg)
 
         sleep(1); // Simula o tempo pensando
     }
-
     return NULL;
 }
 
@@ -100,7 +99,6 @@ void *semaforo_func(void *arg)
         sleep(3);                  /**< Simula o tempo que a luz vermelha fica acesa */
         sem_post(&semaforo_verde); /**< Passa para a luz verde */
     }
-
     printf("Simulação do semáforo encerrada.\n");
     return NULL;
 }
@@ -214,6 +212,5 @@ int main(int argc, char **argv)
      *
      * Dentre outras inclusas em #include <semaphore.h>
      */
-
     return 0;
 }

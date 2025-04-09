@@ -39,7 +39,6 @@ int **alocarMatriz(size_t linhas, size_t colunas)
             exit(1);
         }
     }
-
     return mat;
 }
 

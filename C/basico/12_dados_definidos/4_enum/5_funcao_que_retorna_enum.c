@@ -55,7 +55,6 @@ enum results adivinheONumero(int numeroCerto)
         /**< Se a diferença é menor ou igual a 30, retorna DISTANTE */
         return DISTANTE;
     }
-
     return ERROU; /**< Se a diferença for maior que 30, retorna ERROU */
 }
 

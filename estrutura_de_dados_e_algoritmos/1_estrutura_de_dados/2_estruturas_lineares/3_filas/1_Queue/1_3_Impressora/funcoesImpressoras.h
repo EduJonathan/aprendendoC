@@ -86,7 +86,6 @@ void adicionarTrabalho(Fila *fila, char *tipo, int total_paginas, int inicio, in
         fila->tras->prox = novo;
         fila->tras = novo;
     }
-
     printf("Trabalho de impressão adicionado: %s (%d páginas)\n", tipo, total_paginas);
 }
 

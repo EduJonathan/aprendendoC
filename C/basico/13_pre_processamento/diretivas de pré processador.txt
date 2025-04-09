@@ -1,0 +1,77 @@
+Diretivas de pré-processador => As diretivas de pré-processador são instruções executadas antes da compilação em 
+linguagens como C e C++. Elas permitem definir constantes, incluir arquivos, criar macros e controlar condicionalmente
+a compilação de trechos de código. E como elas vem antes do processamento do código, faz com que a compilação seja
+essencial. Que além disso, é possível usar flags na linha de comando do terminal para modificar o comportamento da 
+compilação conforme a necessidade do desenvolvedor.
+
+============================================================================================
+
+Compilação => A compilação é o ato/processo de transformar um programa escrito em linguagem de alto nível (como C/C++) 
+em código de máquina, executável pelo processador. Funcionando do seguintes passos:
+
+1º Pré-processamento (Juntar linhas que foram separadas por sequências de escape; Remove comentários e os
+substitui por espaços em branco; Expande macros; Processa diretivas de pré-processamento (geralmente orientações
+ao compilador)).
+
+2º Análise lexicográfica: Nesta etapa, o compilador verifica os tokens do código, ou seja, as menores unidades 
+significativas (como palavras-chave, operadores, identificadores, etc.). O compilador converte o código em uma 
+sequência de tokens que serão mais facilmente analisados nas etapas seguintes.
+
+3º Análise Sintática: Verifica se os tokens e expressões formam estruturas válidas da linguagem (verificando erros 
+como parênteses ou chaves mal colocadas).
+
+4º Análise Semântica: Valida o significado do código (ex: uso de variáveis antes da declaração, número de argumentos 
+de uma função, etc.). Por exemplo, verifica se variáveis estão sendo usadas antes de serem declaradas ou se funções 
+estão sendo chamadas com o número correto de argumentos.
+
+5º Gerar código intermediário: O compilador gera um código intermediário, muitas vezes representado 
+por arquivos .o ou .obj (objetos), que pode ser otimizado e convertido em código de máquina.
+
+6º Otimização do código: Melhora o desempenho do código: reduz o uso de memória, melhora loops, organiza alocação
+de memória das variáveis, etc, C/C++ são conhecidas como linguagens muito veloz em sua habilidade de compilar.
+
+7º Geração de Código Objeto: Produz um código específico para a arquitetura de destino (ex: x86, ARM, SPARC).
+
+8º Geração de Código de Máquina e Linker: linker (ligador) é responsável por juntar todos os arquivos objeto e 
+bibliotecas, resolvendo referências entre eles, e gerando o executável final. O linker substitui as referências a
+funções e variáveis pelos endereços reais na memória. O resultado é o arquivo de execução (programa.exe ou programa.out).
+
+===================================================================================
+
+Como compilar um arquivo C/C++
+No terminal de seu Sistema Operacional, estando no caminho(diretório) do arquivo principal ".c"
+> "C:\\Users\\EDUARDO_OLIVEIRA\\Documents\\aprendendoC\\C\\basico\\13_pre_processamento"
+> gcc nomeDoArquivo.c -o nomeParaArquivoExecutavel
+> .\nomeParaArquivoExecutavel.exe
+
+Estes passos geram e executa o arquivo executável dentro do terminal
+• gcc ou g++: São os compiladores para C(gcc) e C++(g++), respectivamente.
+• arquivo.c ou arquivo.cpp: É o arquivo de código-fonte que você deseja compilar.
+• -o arquivo: Especifica o nome do arquivo de saída
+
+===================================================================================
+
+Para gerar o arquivo objeto(.o) da mesma maneira descrita para arquivo executável
+> "C:\\Users\\EDUARDO_OLIVEIRA\\Documents\\aprendendoC\\C\\basico\\13_pre_processamento"
+> gcc -c arquivo.c -o arquivo.o
+
+• -c: Flag que compila o código-fonte sem gerar o executável, apenas o (.o).
+
+===================================================================================
+
+CUIDADO: Arquivos em C/C++ tem uma sensibilidade na nomeação de seus arquivos os nomes dos arquivos não devem 
+conter espaços. Prefira formatos como arquivo_c.c ou arquivoC.c. Pois no momento de compilar (gcc arquivo_c.c -o nome)
+caso se estiver (gcc arquivo c.c -o nome) o compilador poderá entender que há 2 arquivos a ser compilados, no caso 
+arquivo(que apesar de não ter uma extensão é entendido como arquivo .txt) e c.c. gerando erros no processo 
+de compilação.
+
+OBS.: O processo de compilação é composto por diversas etapas, cada uma com papel fundamental na transformação 
+do código-fonte em um programa executável. Com o uso adequado de diretivas e flags(que ainda há muitas a ser explorada),
+podemos está otimizando, condicionando e modulando seu código conforme necessário.
+
+Referência: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
+
+UM ADENDO IMPORTANTE: Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para qualquer 
+desenvolvedor C/C++. E tendo o Linux como Sistema Operacional, esse aprendizado se intensifica ainda mais, tendo 
+diretamente acesso ao código de máquina, flags para visualizar a linguagem assembly, aproximando você do verdadeiro 
+poder da programação de baixo nível, apesar do Windows ter ferramentas para isso, Linux é mais convencional.

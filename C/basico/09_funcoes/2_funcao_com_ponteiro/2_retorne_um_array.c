@@ -14,7 +14,7 @@
  *
  * @param tam O número de elementos a serem alocados no vetor.
  * @return Um ponteiro para o início do vetor alocado e inicializado.
- * 
+ *
  * @note A função usa `malloc` para alocar memória e `exit` para encerrar o programa em
  * caso de falha. Lembre-se de liberar a memória alocada com `free` quando não for mais
  * necessária para evitar vazamentos de memória.
@@ -36,9 +36,7 @@ int *aloca(size_t tam)
     {
         *(arr + i) = i + 1; // Atribui valores ao vetor (por exemplo, 1, 2, 3, ...)
     }
-
-    // Retorna o ponteiro para o início do vetor
-    return arr;
+    return arr; // Retorna o ponteiro para o início do vetor
 }
 
 int main(int argc, char **argv)

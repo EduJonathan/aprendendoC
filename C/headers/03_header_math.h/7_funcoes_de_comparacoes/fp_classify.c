@@ -44,7 +44,6 @@ int classificacao(double valor)
         printf(" O valor é NaN\n");
         break;
     }
-
     return classification;
 }
 

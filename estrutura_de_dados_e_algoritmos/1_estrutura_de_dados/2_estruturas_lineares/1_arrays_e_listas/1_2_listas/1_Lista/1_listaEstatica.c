@@ -56,7 +56,6 @@ void removerElemento(lista *l, size_t indice)
     {
         l->dados[i] = l->dados[i + 1];
     }
-
     l->tamanho--;
 }
 
