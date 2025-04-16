@@ -15,7 +15,9 @@
  *
  * Cada nó contém:
  * - um valor inteiro (`valor`),
+ * 
  * - o índice da coluna (`coluna`),
+ * 
  * - ponteiros para os filhos esquerdo e direito (`left` e `right`).
  */
 typedef struct binary_tree_node

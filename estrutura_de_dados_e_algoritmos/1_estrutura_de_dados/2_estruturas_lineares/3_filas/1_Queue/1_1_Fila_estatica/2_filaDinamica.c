@@ -6,8 +6,24 @@
 
 /**
  * @brief Estrutura de um nó da fila.
- *
  * Cada nó contém um valor `data` e um ponteiro `next` que aponta para o próximo nó da fila.
+ *
+ * Fila é uma estrutura de dados linear que segue a ordem FIFO (First In First Out).
+ * Os elementos são inseridos no final da fila e removidos do início.
+ * Muitas vezes utilizada em algoritmos de processamento de tarefas, impressão, etc.
+ * A fila é uma estrutura dinâmica, onde os elementos podem ser adicionados ou removidos
+ * sem a necessidade de um tamanho fixo.
+ *
+ * Suas operações principais incluem:
+ * - `enQueue`: Adiciona um elemento ao final da fila.
+ *
+ * - `deQueue`: Remove o elemento do início da fila.
+ *
+ * - `display`: Exibe todos os elementos da fila.
+ *
+ * - `checkEmpty`: Verifica se a fila está vazia.
+ *
+ * - `checkFull`: Verifica se a fila está cheia (apenas para filas estáticas).
  */
 struct node
 {
@@ -131,7 +147,7 @@ void freeQueue(struct node **front, struct node **rear)
         *front = (*front)->next; ///< Avança para o próximo nó
         free(temp);              ///< Libera a memória do nó removido
     }
-   
+
     *rear = NULL; // Após liberar todos os nós, atualiza os ponteiros `rear` para NULL
     printf("Memória da fila liberada\n");
 }

@@ -10,6 +10,14 @@
  * @param grafo Matriz de adjacência representando o grafo.
  * @param numVertices Número de vértices do grafo.
  * @return Verdadeiro se o grafo for não direcionado, falso se for direcionado.
+ *
+ * Grafos direicionados são aqueles em que as arestas têm uma direção específica,
+ * ou seja, vão de um vértice a outro. Isso significa que, se houver uma aresta
+ * do vértice A para o vértice B, não necessariamente haverá uma aresta do
+ * vértice B para o vértice A. 
+ * Por outro lado, grafos não direcionados são aqueles em que as arestas não têm uma direção 
+ * específica, ou seja, se houver uma aresta entre os vértices A e B, isso significa que também
+ * há uma aresta entre
  */
 bool grafoNaoDirecionadoOuDirecionado(int grafo[][5], int numVertices)
 {

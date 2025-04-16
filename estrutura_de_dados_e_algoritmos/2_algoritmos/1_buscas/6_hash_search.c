@@ -60,6 +60,7 @@ void insert(HashTable *ht, int key, int value)
  * @param ht Tabela hash
  * @param key Chave a ser buscada
  * @return HashNode* Ponteiro para o nó encontrado
+ * 
  * @note A busca por hashing usa uma tabela de dispersão (hash table) para mapear chaves
  * de dados para posições em um array. Cada elemento tem um "hash" que aponta diretamente
  * para sua posição na tabela, Usada quando é necessário realizar buscas rápidas e frequentes

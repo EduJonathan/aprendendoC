@@ -79,7 +79,7 @@ int sequential(fila *queue, int chave)
  *
  * @note A Busca em Largura (BFS) é um algoritmo de busca em grafos que explora todos os
  * vértices de um grafo de maneira por níveis, começando de um vértice inicial. Ele visita
- * todos os vizinhos de um nó antes de passar para os nós mais distantes.Útil para encontrar
+ * todos os vizinhos de um nó antes de passar para os nós mais distantes. Útil para encontrar
  * o caminho mais curto em grafos não ponderados, onde todos os passos entre nós são
  * considerados iguais. O tempo de execução da BFS é O(V + E) 'V' é o número de vértices e o
  * 'E' é o número de arestas no grafo.

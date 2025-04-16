@@ -8,6 +8,10 @@
  * @brief Estrutura que representa um grafo.
  *
  * O grafo é composto por um número de vértices e uma matriz de adjacência.
+ * 
+ * A matriz de adjacência é uma representação de um grafo onde cada célula A[i][j] indica 
+ * se há uma aresta entre os vértices i e j. Se A[i][j] for 1, significa que há uma aresta
+ * entre os vértices i e j. Caso contrário, se A[i][j] for 0, não há aresta entre eles.
  */
 struct grafo
 {

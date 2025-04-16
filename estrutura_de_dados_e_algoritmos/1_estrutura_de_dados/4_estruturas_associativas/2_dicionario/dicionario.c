@@ -13,6 +13,20 @@
  * @brief Estrutura para armazenar um par chave-valor.
  *
  * Esta estrutura contém uma chave e um valor, ambos como strings.
+ *
+ * Dicionários são estruturas de dados que armazenam pares chave-valor, permitindo a recuperação
+ * rápida de valores associados a chaves específicas.* Eles são amplamente utilizados em várias
+ * aplicações, como armazenamento de dados, configuração de aplicativos e manipulação de dados.
+ * Os dicionários podem ser implementados de várias maneiras, incluindo tabelas de hash,
+ * árvores binárias de busca e listas encadeadas. A escolha da implementação depende dos
+ * requisitos de desempenho e memória do aplicativo.
+ *
+ * Os dicionários são frequentemente usados em linguagens de programação como Python, Java e C++,
+ * onde são conhecidos como dicionários, mapas ou tabelas de hash. Eles oferecem operações
+ * eficientes de inserção, exclusão e busca, permitindo que os desenvolvedores armazenem e
+ * recuperem dados de forma rápida e fácil. Os dicionários são úteis em várias áreas, como
+ * processamento de texto, análise de dados, aprendizado de máquina e muito mais.
+ * Eles são uma ferramenta poderosa para organizar e manipular dados de forma eficiente.
  */
 typedef struct pares
 {
@@ -105,7 +119,7 @@ char *buscar(Dicionario *dict, const char *chave)
         {
             return dict->keysValues[i]->valor;
         }
-    }    
+    }
     return NULL;
 }
 

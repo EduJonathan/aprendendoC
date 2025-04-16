@@ -7,7 +7,13 @@
 #ifndef ARESTA_H
 #define ARESTA_H
 
-/**< Estrutura que representa uma aresta */
+/**
+ * Estrutura que representa uma aresta
+ *
+ * Pesos são usados para representar a força ou a capacidade de uma aresta
+ * em um grafo. Eles podem ser usados para representar distâncias, custos, ou
+ * qualquer outra medida que faça sentido no contexto do grafo.
+ */
 typedef struct Aresta
 {
     char destino;        /**< Destino da aresta */

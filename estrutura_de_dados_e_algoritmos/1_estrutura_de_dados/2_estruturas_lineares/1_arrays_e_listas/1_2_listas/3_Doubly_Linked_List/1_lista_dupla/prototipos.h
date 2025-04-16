@@ -10,11 +10,11 @@
 /**
  * @brief Estrutura de um nó da lista duplamente encadeada
  *
- * Cada nó contém um valor (data), um ponteiro para o nó anterior (prev) e um ponteiro
- * para o nó seguinte (next). Essa estrutura é útil em cenários onde é necessário
- * acessar os elementos da lista em direções bidirecional, mais flexível, como em algumas
- * operações de manipulação de dados ou em algoritmos que necessitam de um percorrimento
- * reverso. Consome mais memória devido aos dois ponteiros por nó.
+ * Lista duplamente encadeada: Cada nó contém um valor (data), um ponteiro para o nó anterior
+ * (prev) e um ponteiro para o nó seguinte (next). Essa estrutura é útil em cenários onde é
+ * necessário acessar os elementos da lista em direções bidirecional, mais flexível, como em
+ * algumas operações de manipulação de dados ou em algoritmos que necessitam de um
+ * percorrimento reverso. Consome mais memória devido aos dois ponteiros por nó.
  */
 struct node
 {

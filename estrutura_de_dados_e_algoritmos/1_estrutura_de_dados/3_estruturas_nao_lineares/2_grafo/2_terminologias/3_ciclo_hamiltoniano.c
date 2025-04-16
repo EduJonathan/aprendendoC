@@ -12,6 +12,10 @@
  * @param path Caminho atual.
  * @param pos Posição atual no caminho.
  * @return Retorna true se o vértice v puder ser incluído na posição atual do caminho.
+ *
+ * ciclo Hamiltoniano é um caminho em um grafo que visita cada vértice exatamente uma vez e
+ * retorna ao vértice inicial. O ciclo Hamiltoniano é um conceito importante em teoria dos grafos
+ * e tem aplicações em várias áreas, como otimização, roteamento e problemas de planejamento.
  */
 bool isSafe(int v, bool graph[V][V], int path[], int pos)
 {

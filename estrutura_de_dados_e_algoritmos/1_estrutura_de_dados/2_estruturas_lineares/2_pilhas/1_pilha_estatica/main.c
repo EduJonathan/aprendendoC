@@ -1,5 +1,18 @@
-#include <stdio.h>
 #include "functions_pilha.h"
+
+/**
+ * Pilha: Estrutura de dados que armazena elementos de forma LIFO (Last In First Out).
+ * A pilha é uma estrutura linear onde o último elemento inserido é o primeiro a ser removido.
+ * Muito utilizada em algoritmos de backtracking, expressões matemáticas e controle de fluxo.
+ * 
+ * As operações principais são:
+ * - push: Adiciona um elemento ao topo da pilha.
+ * - pop: Remove o elemento do topo da pilha.
+ * - stackTop: Retorna o elemento do topo da pilha sem removê-lo.
+ * - exibirPilha: Exibe os elementos da pilha do topo para a base.
+ * - vazia: Verifica se a pilha está vazia.
+ * - cheia: Verifica se a pilha está cheia.
+ */
 
 int main(int argc, char **argv)
 {

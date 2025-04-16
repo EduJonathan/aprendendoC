@@ -8,6 +8,11 @@
  * @brief Estrutura que representa um nó na lista de adjacência de um grafo.
  *
  * Cada nó na lista de adjacência contém um vértice e um ponteiro para o próximo nó.
+ *
+ * A lista de adjacência é uma representação comum de grafos, onde cada nó
+ * representa um vértice e os nós adjacentes representam as arestas conectadas a ele.
+ * A lista de adjacência é uma estrutura de dados eficiente para armazenar grafos esparsos,
+ * onde o número de arestas é muito menor do que o número máximo possível de arestas.
  */
 struct noAdjacente
 {

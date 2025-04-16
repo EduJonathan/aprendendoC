@@ -11,6 +11,10 @@
  * @param pontoY ponto de destino
  * @return true se houver conexão
  * @return false se não houver conexão
+ *
+ * Grafos são estruturas de dados que representam relações entre objetos.
+ * Eles são compostos por vértices (ou nós) e arestas (ou ligações) que conectam os vértices.
+ * Os grafos podem ser direcionados ou não direcionados, e podem conter ciclos ou serem acíclicos.
  */
 bool VerticeConectados(int pontoX, int pontoY)
 {

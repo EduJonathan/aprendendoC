@@ -7,6 +7,11 @@
  * @brief Função para imprimir o grau de todos os vertices do grafo
  *
  * @param matriz Matriz representando o grafo
+ * 
+ * grau de um vértice é o número de arestas que incidem sobre ele.
+ * Em um grafo não direcionado, o grau de um vértice é igual ao número de arestas que o conectam.
+ * Em um grafo direcionado, o grau de entrada é o número de arestas que chegam ao vértice,
+ * e o grau de saída é o número de arestas que saem do vértice.
  */
 void imprimeGrauDosVertices(int matriz[N][N])
 {
