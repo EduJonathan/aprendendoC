@@ -30,8 +30,7 @@ int main(int argc, char **argv)
 	 * ['e']['d']['u']['a']['r']['d']['o'][' ']['j']['o']['n']['a']['t']['h']['a']['n']['\0']
 	 *   0	  1	   2    3    4    5    6    7    8    9    10   11   12   13   14   15   16
 	 *
-	 * poderíamos fazer: "eduardo_jonathan"? sim, mas não é prático, e ninguém escreve
-	 * o nome assim!
+	 * poderíamos fazer: "eduardo_jonathan"? sim, mas não é prático, e ninguém escreve o nome assim!
 	 */
 
 	printf("\n-----------------------------------------------------\n");
@@ -111,6 +110,5 @@ int main(int argc, char **argv)
 	{
 		printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, input_string_aprimorado[i], &input_string_aprimorado[i]);
 	}
-
 	return 0;
 }

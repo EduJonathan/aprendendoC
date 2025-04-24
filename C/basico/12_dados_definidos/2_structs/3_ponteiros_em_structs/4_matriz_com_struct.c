@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * @brief Definição de uma estrutura chamada `arr` com um campo inteiro.
+ * @brief Definição de uma estrutura chamada `matriz` com um campo inteiro.
  *
  * Esta estrutura é usada para armazenar um valor inteiro. Pode ser utilizada em diversas
  * situações onde é necessário encapsular um valor inteiro dentro de uma estrutura.

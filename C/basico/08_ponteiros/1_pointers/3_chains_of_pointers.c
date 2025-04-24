@@ -3,7 +3,7 @@
 /**
  * CHAINSOFPOINTER: Se um ponteiro armazena um endereço de memória de uma variável,
  * quais as chances de um ponteiro guardar o endereço de outro ponteiro, aliás um ponteiro
- * é nada mais nada menos que uma variável, com a diferença que ao invés de armazenar um valor
+ * é nada mais, nada menos que uma variável, com a diferença que ao invés de armazenar um valor
  * ele armazena um endereço de memória de uma varíavel que nesta varíavel se guarda um contéudo
  * (um valor) e o ponteiros recebe os mesmos atributos de uma varíavel. sendo eles:
  *  -> um endereço de memória alocado,

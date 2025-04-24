@@ -2,9 +2,8 @@
 #include <stdbool.h>
 
 /**
- * WHILE: while (enquanto) é uma estrutura de repetição que irá se repetir determinada
- * vezes enquanto a condição for verdadeira. o uso do while depende de quantas vezes
- * até que um evento aconteça.
+ * WHILE: É uma estrutura de repetição que irá se repetir determinada vezes enquanto a
+ * condição for verdadeira. o uso do while depende de quantas vezes até que um evento aconteça.
  *
  * SINTAXE:
  * while (// condição)

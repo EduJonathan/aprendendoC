@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 /**
- * DO_WHILE: (faça enquanto): é uma estrutura de controle de fluxo semelhante à instrução
- * "while", mas com uma diferença importante: o código dentro do loop é executado pelo
- * menos uma vez, O laço é útil para situações onde você precisa garantir que o código
- * dentro do loop seja executado pelo menos uma vez, independentemente da condição.
+ * DO_WHILE: é uma estrutura de controle de fluxo semelhante à instrução "while", 
+ * mas com uma diferença importante: o código dentro do loop é executado pelo menos uma vez,
+ * O laço é útil para situações onde você precisa garantir que o código dentro do loop seja 
+ * executado pelo menos uma vez, independentemente da condição.
 
  * SINTAXE:
  * do
@@ -88,14 +88,6 @@ int main(int argc, char **argv)
 
         // Incrementa 'linhas' para o próximo valor na tabela, preparando para a próxima linha.
         linhas++;
-
     } while (linhas <= 5); // Continua o loop externo enquanto 'linhas' for menor ou igual a 5.
-
-    /*
-     * Neste exemplo, o uso do do-while garante que o corpo do loop é executado pelo menos
-     * uma vez, mesmo que a condição seja falsa inicialmente. O loop externo (linhas)
-     * controla as linhas, enquanto o loop interno (colunas) controla as colunas.
-     * O programa imprime os produtos linhas colunas na forma de uma tabela 5x5.
-     */
     return 0;
 }

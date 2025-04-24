@@ -104,6 +104,5 @@ int main(int argc, char **argv)
             printf("A VARIÁVEL 'number' É MENOR QUE OS VALORES COMBINADOS\n");
         }
     }
-
     return 0;
 }

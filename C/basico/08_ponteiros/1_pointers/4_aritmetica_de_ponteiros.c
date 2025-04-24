@@ -91,11 +91,13 @@ int main(int argc, char **argv)
 
     /*
      * ++*pointer1: Incrementa novamente o valor apontado por pointer1 (o valor de v1).
-
+     *
      * *pointer2++: Aqui está uma armadilha comum. Isso é interpretado como *(pointer2++),
      * pois significa que primeiro avalia o valor apontado por pointer2 (desreferencia) e
      * depois incrementa o ponteiro. Isso resulta em um valor não incrementado de v2 sendo
      * impresso. O valor de pointer2 também será incrementado, mas não será usado nesta instrução.
+     * Devido também ao precedência do operador de incremento, o valor de pointer2 é incrementado
+     * após a desreferenciação, o que significa que o ponteiro pointer2 agora aponta para o próximo
      */
 
     printf(" CONTEÚDO DE v1: %d CONTEÚDO DE v2: %d CONTEÚDO DE pointer1: %d CONTEÚDO DE pointer2: %d\n", v1, v2, *pointer1, *pointer2);

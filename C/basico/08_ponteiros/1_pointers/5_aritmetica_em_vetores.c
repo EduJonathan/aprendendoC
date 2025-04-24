@@ -47,18 +47,18 @@ int main(int argc, char **argv)
      * | 0x5ffe84  | arr[1] = 4                   | <- Elemento 1 do array
      * | 0x5ffe88  | ptr[2] = 6                   | <- Elemento 2 do array
      * --------------------------------------------
-
+     *
      * Quando incrementamos ptr (ptr++), avançamos 4 bytes, pois sizeof(int) é utilizado.
      * O ponteiro passa a apontar para o próximo dado do tipo int. Assim, ptr[0] aponta para arr[1].
-
+     *
      * Por exemplo:
      * ptr = ptr + 1; // Avança 4 bytes (sizeof(int)) para o próximo elemento, apontando para arr[1]
      * ptr = ptr + 2; // Avança 8 bytes, apontando para arr[2]
-
+     *
      * Essa operação é fundamental para percorrer elementos de um array e acessar dados
      * consecutivos na memória. Vale ressaltar que o tamanho do tipo é crucial na aritmética
      * de ponteiros, garantindo que o ponteiro avance adequadamente para o próximo elemento do array.
-
+     *
      * IMPORTANTE: A última operação mencionada (ptr = ptr + 4) parece ser um equívoco,
      * e a operação correta deveria ser ptr = ptr + 1 ou ptr += 1, pois deseja-se avançar
      * para o próximo elemento, não retroceder.

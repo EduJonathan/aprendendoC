@@ -139,7 +139,7 @@ static char *return_static_pointer(void)
 {
     static char n = 90; // Variável estática para persistência após o retorno
     printf(" RETORNO: ASCII: '%c' DECIMAL: %d\n", n, n);
-    return &n; // Retorna um ponteiro estático para char
+    return &n; // Retornando a referência de uma variável estática
 }
 
 /**

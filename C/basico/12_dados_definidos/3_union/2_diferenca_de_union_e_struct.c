@@ -158,11 +158,11 @@ int main(int argc, char **argv)
      * de armazenamento, o que significa que, ao modificar um membro, os outros podem ser afetados.
      * Isso é evidenciado ao imprimir os valores de Uniao.a, Uniao.b e Uniao.c após atribuir valores
      * a eles, então temos que ser cuidadosos.
-
+     *
      * ARMAZENAMENTO:
      * - Em uma struct, cada membro tem seu próprio espaço de armazenamento (região de memória).
      * - Já em uma union, todos os membros compartilham o mesmo espaço de armazenamento.
-
+     *
      * REINICIALIZAÇÃO DA UNION:
      * - A reinicialização usando (union Uniao){0} é feita para garantir um estado conhecido
      * e evitar comportamentos indefinidos.

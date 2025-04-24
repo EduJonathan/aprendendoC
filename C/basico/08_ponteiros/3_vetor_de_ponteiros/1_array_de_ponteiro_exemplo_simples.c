@@ -1,14 +1,23 @@
 #include <stdio.h>
 
 /*
- * vetor de ponteiros: É um array em que cada elemento é um endereço. Isso significa que
- * cada elemento do vetor armazena o endereço de memória de alguma variável ou dado
- * específico de preferência outro vetor. Em C, um vetor de ponteiros pode ser utilizado
- * para apontar para outros arrays, strings, ou qualquer outra estrutura de dados que pode
- * ser referenciada por meio de ponteiros. Vetores de ponteiros podem ser úteis em situações
- * em que você precisa manusear um conjunto de dados que pode ser referenciado por ponteiros.
- * Eles são comumente usados em manipulação de strings, matrizes dinâmicas, e outras estruturas
- * de dados complexas em C.
+ * Vetor de ponteiros: Um vetor de ponteiros é um array onde cada elemento é um ponteiro,
+ * ou seja, cada posição do vetor armazena o endereço de memória de uma variável ou estrutura
+ * de dados. Em C, isso significa que o vetor pode apontar para diferentes locais de memória,
+ * como outros arrays, strings, ou qualquer outra variável ou estrutura que possa ser referenciada
+ * por ponteiros.
+ *
+ * Vetores de ponteiros são úteis em situações onde você precisa manipular ou acessar um conjunto
+ * de dados de forma dinâmica, ou quando há a necessidade de manipular diferentes tipos de dados
+ * de forma eficiente. Eles são frequentemente utilizados em:
+ *
+ *   - Manipulação de strings (onde cada elemento do vetor aponta para uma string),
+ *   - Alocação dinâmica de matrizes (em que cada ponteiro pode apontar para um array de tamanho variável),
+ *   - Estruturas de dados complexas, como listas encadeadas e árvores, onde os ponteiros referenciam
+ *     nós ou elementos em diferentes partes da memória.
+ *
+ * Usar um vetor de ponteiros oferece flexibilidade ao trabalhar com dados dinâmicos e estruturados,
+ * permitindo acessar e modificar dados de maneira eficiente.
  */
 
 int main(int argc, char **argv)
@@ -61,13 +70,5 @@ int main(int argc, char **argv)
         printf("Elemento [%d]: %p-%d\t", i, (void *)&ponteiros[i], *(ponteiros + i));
         printf("Elemento [%d]: %d\n", i, *(*ponteiros + i));
     }
-
-    /*
-     * ponteiros é um vetor de ponteiros para inteiros. Cada elemento de ponteiros é um
-     * ponteiro que armazena o endereço de um elemento correspondente no vetor valores.
-     * O loop preenche o vetor de ponteiros com os endereços dos elementos do vetor de
-     * inteiros, e outro loop imprime os valores dos elementos do vetor de inteiros
-     * acessando-os através dos ponteiros.
-     */
     return 0;
 }

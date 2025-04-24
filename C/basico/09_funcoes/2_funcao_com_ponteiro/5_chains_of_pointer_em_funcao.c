@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /**
  * Função que calcula a soma de dois números inteiros e retorna um ponteiro para ponteiro

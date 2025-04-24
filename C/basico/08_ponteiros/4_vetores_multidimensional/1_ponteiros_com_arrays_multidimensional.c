@@ -2,13 +2,29 @@
 #include <stdlib.h>
 
 /*
- * ARRAY MULTIDIMENSIONAIS: Em C, pode ser tratado como um ponteiro para ponteiro (ponteiro
- * para array de ponteiros) ou o conceito de chains of pointer. Quando se declara um array
- * multidimensional, o compilador aloca a memória de forma contígua na memória e pode-se
- * usar ponteiros para acessar os elementos de um array multidimensional usando a notação
- * tradicional de colchetes(mat[linha][coluna]) ou a notação por ponteiros:
- * *(*(mat + linha) + coluna) Para entender melhor o que está acontecendo,
- * vamos trocar *(mat + linha) por um valor X. Desse modo, a expressão fica *(X + coluna)
+ * ARRAYS MULTIDIMENSIONAIS: Em C, arrays multidimensionais podem ser tratados como um
+ * "ponteiro para ponteiro" (ponteiro para um array de ponteiros), ou como um conceito conhecido
+ * como "cadeias de ponteiros" (chains of pointers). Quando declaramos um array multidimensional,
+ * o compilador aloca a memória de forma contígua. Isso significa que, embora a estrutura do array
+ * seja conceitualmente bidimensional (ou de mais dimensões), os dados são armazenados de forma
+ * linear na memória. Podemos acessar os elementos de um array multidimensional de duas maneiras:
+ *
+ * 1. Usando a notação tradicional de colchetes, por exemplo: `mat[linha][coluna]`.
+ * 2. Usando ponteiros, que nos permitem acessar os elementos de forma semelhante,
+ * mas com a notação de ponteiros: `*(*(mat + linha) + coluna)`.
+ *
+ * Para entender melhor o funcionamento da notação com ponteiros, podemos analisar a expressão
+ * `*(*(mat + linha) + coluna)`:
+ *
+ * - `mat` é um ponteiro para o primeiro elemento do array, ou seja, um ponteiro para o primeiro "sub-array" (linha) do array.
+ * - `mat + linha` desloca o ponteiro até a linha desejada.
+ * - `*(mat + linha)` acessa a linha que foi deslocada e retorna um ponteiro para o primeiro elemento dessa linha.
+ * - `*(mat + linha) + coluna` desloca esse ponteiro até a posição da coluna desejada na linha.
+ * - Finalmente, `*(*(mat + linha) + coluna)` acessa o valor da célula na posição [linha][coluna] do array.
+ *
+ * Isso demonstra como é possível acessar os elementos de um array multidimensional
+ * utilizando ponteiros de forma eficiente, aproveitando o fato de que os arrays em C
+ * são armazenados de maneira contígua na memória.
  */
 
 int main(int argc, char **argv)
@@ -93,16 +109,5 @@ int main(int argc, char **argv)
         free(ptrMatriz[i]);
     }
     free(ptrMatriz);
-
-    /*
-     * ptrMatriz é declarado como um ponteiro para ponteiro (int **). Memória é
-     * alocada para os ponteiros de linha. Para cada linha, memória é alocada para
-     * armazenar os elementos daquela linha. A matriz está sendo inicializada com
-     * valores da matriz estática e os elementos são impressos usando ponteiros.
-     * A memória alocada dinamicamente é liberada no final do programa. Neste exemplo
-     * demonstra como usar ponteiros para arrays de ponteiros para manipular uma matriz
-     * bidimensional em C. Certifique-se de liberar a memória alocada dinamicamente para
-     * evitar vazamentos de memória.
-     */
     return 0;
 }

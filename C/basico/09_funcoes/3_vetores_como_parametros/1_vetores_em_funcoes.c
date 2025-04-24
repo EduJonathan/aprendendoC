@@ -8,8 +8,6 @@
  *
  * @param v Ponteiro para o vetor de inteiros.
  * @param tam Tamanho do vetor.
- *
- * @note O vetor deve ter pelo menos um elemento para evitar comportamento indefinido.
  */
 void modificaVetor(int *v, size_t tam)
 {

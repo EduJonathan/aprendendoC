@@ -177,7 +177,6 @@ int main(int argc, char **argv)
     // Como discutido, preferimos utilizar a variável `n_elementos_arr` em vez
     // de um número fixo como 10 for (int i = 0; i < 10; i++),
     // porque ela é mais flexível e garante que o código funcione independentemente do
-    // tamanho real do array.
-
+    // tamanho real do array, e trabalhando melhor com números não negativos.
     return 0;
 }

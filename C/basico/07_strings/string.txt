@@ -13,18 +13,20 @@ char string[] = {'O', 'l', 'á', ',' , ' ', 'm', 'u', 'n', 'd', 'o', '!', '\0'};
 char string[7] = {"String"};
 const char *string = "String!";
 
-• TABELA ASCII (American Standard Code for Information Interchange)
-É um padrão de código para troca de informações entre diferentes computadores e sistemas, 
-criado apartir da decáda de 60, é um sistema que representa sinais de algorismo, letras, 
-sinais de pontuação e sinais de controle, seu propósito é criar um padrão de escrita das 
-informações com um código único para cada caractere, indo do 0 até o 127 no começo, com a 
-possibilidade de armazenar caracteres ASCII 1 byte (tipo char), o que nos dá 255 posições, 
-o problema da tabela é que ela foi dedicada para o padrão americano e não pensado para 
-algo universal fazendo assim ter uma limitação na questão de acentuações e escritas, 
-caracteres especiais e seria difícil trazer ainda mais pelo que limite que o tipo char 
-proporciona que é de 0 à 255 posições, com isso outros padrões foi surgindo como a OEM, 
-e a mais famosa a UNICODE, DBCS (conjunto de caractere de byte duplo), dentre outros,
-tendo como adrões para suporte a tipos de como UTF-8, e dentre outras localidades.
+• TABELA ASCII:
+O ASCII (American Standard Code for Information Interchange) é um padrão de codificação criado na década de 1960 
+para a troca de informações entre diferentes computadores e sistemas. Esse sistema representa caracteres alfanuméricos, 
+sinais de pontuação e comandos de controle por meio de um código numérico único para cada símbolo, inicialmente 
+variando de 0 a 127. Cada caractere é armazenado utilizando 1 byte (ou seja, 8 bits), o que permite a codificação de 
+até 256 caracteres, abrangendo desde letras até sinais especiais.
+No entanto, uma limitação importante do padrão ASCII é que ele foi desenvolvido com foco no idioma inglês, 
+sem levar em conta as necessidades de outros idiomas ou caracteres especiais, como acentuação, cedilhas ou símbolos 
+de outras culturas. Além disso, o número de posições disponíveis (0 a 255) restringe ainda mais a inclusão de 
+caracteres adicionais.
+Para superar essas limitações, surgiram outros padrões de codificação, como a OEM (Original Equipment Manufacturer), 
+DBCS (Double Byte Character Set) e, mais notavelmente, o Unicode. O Unicode foi criado para ser uma codificação 
+universal e abrange um conjunto muito maior de caracteres. Juntamente com variações como UTF-8, ele permite a 
+representação de praticamente todos os caracteres usados em diferentes linguagens e sistemas, resolvendo problemas de compatibilidade global.
 
 cada caractere na tabela possue:
 • 1 sequência de binário

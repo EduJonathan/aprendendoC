@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
- * Em C, FILENAMEMAX: é uma constante definida na biblioteca padrão.Ela representa o tamanho
+ * FILENAMEMAX: é uma constante definida na biblioteca padrão.Ela representa o tamanho
  * máximo permitido para um nome de arquivo, incluindo seu caminho completo.Assim como, o valor
  * de pode variar dependendo do sistema operacional e da implementação do compilador.
  */

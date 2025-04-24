@@ -36,6 +36,8 @@ int *sortArguments(int argc, char **argv)
  * @param env (environment): Vetor de strings que representa as variáveis de ambiente do sistema.
  *
  * @return int seu retorno é 0 para indício do programa que foi concluído com êxito.
+ * @note Estes parâmetros são úteis para passar informações adicionais para o programa
+ * porém não são obrigatórios. O programa pode ser executado sem eles.
  */
 int main(int argc, char **argv, char **env)
 {
@@ -73,7 +75,12 @@ int main(int argc, char **argv, char **env)
         sum += atoi(argv[i]);
 
         /**
-         * Quando se passa os argumentos mesmo que sejam números
+         * Quando se passa os argumentos mesmo que sejam números no console antes de compilar
+         *
+         * > "C:\\Users\\EDUARDO_OLIVEIRA\\Documents\\aprendendoC\\C\\basico\\09_funcoes\\1_functions\\"
+         * > gcc 4_param_da_main.c -o main.exe
+         * > .\main.exe 10 45 20
+         *
          * EXE: .\main 10 45 20, este argumentos serão strings devido ao tipo de
          * dado char **argv, então inserirmos a função pois se não a visualização será 0.
          */

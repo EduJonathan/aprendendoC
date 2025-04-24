@@ -2,10 +2,10 @@
 
 /**
  * OBS: Se temos um vetor com um número fixo de elementos e tentamos acessar
- * um índice além do limite do vetor, o compilador não gera um erro (ao contrário de
- * outras linguagens como Java). No entanto, isso pode causar sérios problemas de
- * segurança, como sobrescrever áreas de memória não alocadas, o que é conhecido
- * como "lixo de memória". Em C, isso ocorre sem uma mensagem de erro explícita.
+ * um índice além do limite do vetor, o compilador geralmente não gera um erro, apenas
+ * um aviso indicando que o índice está fora do limite (ao contrário de outras linguagens
+ * como Java). No entanto, isso pode causar  sérios problemas de segurança, como sobrescrever
+ * áreas de memória não alocadas, o que é conhecido como "lixo de memória".
  */
 
 int main(int argc, char **argv)
