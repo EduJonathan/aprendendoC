@@ -56,6 +56,33 @@
  * necessidade de um ponto e vírgula extra ao utilizá-la.
  */
 
+#define let(type, name) \
+    type name
+
+#define match(value, ...)              \
+    ({                                 \
+        typeof(value) __val = (value); \
+        switch (__val)                 \
+        {                              \
+            __VA_ARGS__                \
+        }                              \
+    })
+
+#define case(val, action) \
+    case val:             \
+        action;           \
+        break;
+
+/**
+ * Esta macro `match` é uma implementação simples de um switch-case que permite
+ * executar ações específicas com base no valor de uma variável. A macro `case`
+ * é usada para definir os casos dentro do switch, onde `val` representa o valor
+ * a ser comparado e `action` representa a ação a ser executada se o valor
+ * corresponder ao caso.
+ * O typeof(value) é uma construção do GCC que obtém o tipo da variável `value`.
+ * Isso é útil para garantir que o tipo correto seja usado no switch.
+ */
+
 int main(int argc, char **argv)
 {
     // Exemplificando a macro de troca de valores com inteiros
@@ -101,5 +128,17 @@ int main(int argc, char **argv)
     printf("Valor mínimo: %d\n", min_val);
     printf("Valor máximo: %d\n", max_val);
 
+    printf("\n-------------------------\n");
+
+    // Exemplificando o uso da macro let para declarar variáveis
+    let(int, a) = 5;
+
+    // Usando a macro match para comparar o valor de 'a'
+    match(a,
+          case (1, printf("O valor é 1\n"));
+          case (2, printf("O valor é 2\n"));
+          case (3, printf("O valor é 3\n"));
+          default : printf("O valor desconhecido\n"); // Caso padrão
+    );
     return 0;
 }

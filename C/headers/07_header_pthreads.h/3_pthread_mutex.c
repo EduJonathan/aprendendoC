@@ -96,14 +96,14 @@ int main(int argc, char **argv)
     printf("Entre com número de processos: ");
     scanf("%d", &n);
 
-    printf("Enter the burst times\n");
+    printf("Entre com a quantidade de burst time\n");
     for (int i = 0; i < n; i++)
     {
         printf(">> Insira o %d burst time: ", i + 1);
         scanf("%d", &b[i]);
     }
 
-    printf("\nEnter the arrival times\n");
+    printf("\nEntre com a quantidade de time arrival\n");
     for (int i = 0; i < n; i++)
     {
         printf(">> Insira o %d time arrival: ", i + 1);

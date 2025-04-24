@@ -6,8 +6,8 @@ compilação conforme a necessidade do desenvolvedor.
 
 ============================================================================================
 
-Compilação => A compilação é o ato/processo de transformar um programa escrito em linguagem de alto nível (como C/C++) 
-em código de máquina, executável pelo processador. Funcionando do seguintes passos:
+⚙ Compilação => A compilação é o ato/processo de transformar um programa escrito em linguagem de alto nível 
+(como C/C++) em código de máquina, executável pelo processador. Funcionando do seguintes passos:
 
 1º Pré-processamento (Juntar linhas que foram separadas por sequências de escape; Remove comentários e os
 substitui por espaços em branco; Expande macros; Processa diretivas de pré-processamento (geralmente orientações
@@ -59,11 +59,11 @@ Para gerar o arquivo objeto(.o) da mesma maneira descrita para arquivo executáv
 
 ===================================================================================
 
-CUIDADO: Arquivos em C/C++ tem uma sensibilidade na nomeação de seus arquivos os nomes dos arquivos não devem 
-conter espaços. Prefira formatos como arquivo_c.c ou arquivoC.c. Pois no momento de compilar (gcc arquivo_c.c -o nome)
-caso se estiver (gcc arquivo c.c -o nome) o compilador poderá entender que há 2 arquivos a ser compilados, no caso 
-arquivo(que apesar de não ter uma extensão é entendido como arquivo .txt) e c.c. gerando erros no processo 
-de compilação.
+CUIDADOS: Diretórios(pastas) e Arquivos principalmente em C/C++ tem uma sensibilidade na nomeação de seus arquivos
+os nomes dos arquivos não devem conter espaços. Prefira formatos como arquivo_c.c ou arquivoC.c. Pois no momento de 
+compilar no terminal e caso se estiver (gcc arquivo c.c -o nome) o compilador poderá entender que há 2 arquivos a ser 
+compilados, no caso arquivo(que apesar de não ter uma extensão é entendido como arquivo .txt) e c.c. gerando erro
+no processo de compilação.
 
 OBS.: O processo de compilação é composto por diversas etapas, cada uma com papel fundamental na transformação 
 do código-fonte em um programa executável. Com o uso adequado de diretivas e flags(que ainda há muitas a ser explorada),

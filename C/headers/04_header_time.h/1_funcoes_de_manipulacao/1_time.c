@@ -36,15 +36,13 @@ void imprimirTempo(time_t tempo)
     }
 
     /**
-     * asctime(): Função da biblioteca de manipulação de tempo (time.h)
-     * que converte um tempo representado em segundos desde a "época"
-     * (que é 1º de janeiro de 1970 às 00:00:00 UTC)
+     * asctime(): Função da biblioteca de manipulação de tempo (time.h) que converte um tempo 
+     * representado em segundos desde a "época" (que é 1º de janeiro de 1970 às 00:00:00 UTC)
      * para uma representação de tempo local
      *
      * SINTAXE: char *asctime(const struct tm *timeptr);
      *
-     * @param timeptr: Ponteiro para uma estrutura struct tm que contém informações
-     * sobre a data e hora.
+     * @param timeptr: Ponteiro para uma estrutura struct tm que contém informações sobre a data e hora.
      * @return Retorna um ponteiro para uma string que representa a data e hora em formato ASCII.
      */
 
@@ -174,6 +172,5 @@ int main(int argc, char **argv)
             break;
         }
     }
-
     return 0;
 }

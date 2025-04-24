@@ -80,7 +80,8 @@ int executando = 1; /* Variável de controle para parar a execução. */
 void *semaforo_func(void *arg)
 {
     while (executando)
-    { // O loop continua enquanto 'executando' for 1
+    {
+        // O loop continua enquanto 'executando' for 1
         // Luz verde: veículo pode passar
         sem_wait(&semaforo_verde);
         printf("Luz verde: Veículos podem passar!\n");
@@ -99,6 +100,7 @@ void *semaforo_func(void *arg)
         sleep(3);                  /**< Simula o tempo que a luz vermelha fica acesa */
         sem_post(&semaforo_verde); /**< Passa para a luz verde */
     }
+    
     printf("Simulação do semáforo encerrada.\n");
     return NULL;
 }

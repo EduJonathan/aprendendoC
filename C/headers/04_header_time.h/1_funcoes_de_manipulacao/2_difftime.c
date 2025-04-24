@@ -59,8 +59,6 @@ void calcular_diferenca_data(struct tm *data_referencia)
 
     // Exibe a diferença
     printf("O dia 25 de setembro foi há %d meses e %d dias!\n", meses_diferenca, dias_restantes);
-
-    /// OBS: Desafio você a programar para que o usuário digite a data de referência?
 }
 
 /**
