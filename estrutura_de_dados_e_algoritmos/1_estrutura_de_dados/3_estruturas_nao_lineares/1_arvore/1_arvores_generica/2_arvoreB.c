@@ -11,11 +11,11 @@
  * @struct node
  * @brief Estrutura que representa um nó da árvore binária.
  *
- * Arvore Binária Cada nó contém um caractere (dados) e dois ponteiros para seus filhos esquerdo 
- * e direito. A estrutura node representa um nó de uma árvore binária com operações de travessia
- * (pre-order, in-order e post-order). Este programa cria uma árvore binária a partir de um array 
- * de caracteres e realiza as três travessias mais comuns em árvores binárias: pre-order, 
- * in-order e post-order.
+ * Arvore Binária Cada nó contém um caractere (dados) e dois ponteiros para seus filhos
+ * esquerdo  e direito. A estrutura node representa um nó de uma árvore binária com operações
+ * de travessia (pre-order, in-order e post-order). Este programa cria uma árvore binária a
+ * partir de um array de caracteres e realiza as três travessias mais comuns em árvores binárias:
+ * pre-order, in-order e post-order.
  */
 struct node
 {

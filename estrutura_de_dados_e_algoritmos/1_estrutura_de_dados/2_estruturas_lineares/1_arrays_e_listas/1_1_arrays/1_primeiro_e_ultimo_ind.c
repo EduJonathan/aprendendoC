@@ -11,9 +11,10 @@
  * @param primeiro Ponteiro para armazenar o primeiro elemento do array.
  * @param ultimo Ponteiro para armazenar o último elemento do array.
  */
-void primeiro_ultimo_indice(int array[], size_t tamanho, int *primeiroElemento, int *ultimoElemento)
+void elementos(int array[], size_t tamanho, int *primeiroElemento, int *ElementoMeio, int *ultimoElemento)
 {
     *primeiroElemento = array[0];         // Primeiro elemento
+    *ElementoMeio = array[tamanho / 2];   // Elemento do meio
     *ultimoElemento = array[tamanho - 1]; // Ultimo elemento
 }
 
@@ -23,11 +24,17 @@ int main(int argc, char **argv)
     size_t tamanho = sizeof(array) / sizeof(array[0]);
 
     int primeiro = 0;
+    int meio = 0;
     int ultimo = 0;
 
-    primeiro_ultimo_indice(array, tamanho, &primeiro, &ultimo);
+    elementos(array, tamanho, &primeiro, &meio, &ultimo);
 
     printf("Primeiro elemento: %d\n", primeiro);
+
+    // Resulta 6 por conta que lembrando que array começa em 0,
+    // correspondendo o sexto elemento do array a posição 5
+    printf("Elemento do meio: %d\n", meio);
+
     printf("Ultimo elemento: %d\n", ultimo);
     return 0;
 }

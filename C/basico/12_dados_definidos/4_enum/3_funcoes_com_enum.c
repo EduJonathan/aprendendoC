@@ -142,6 +142,5 @@ int main(int argc, char **argv)
     {
         printf("Empate!\n");
     }
-
     return 0;
 }

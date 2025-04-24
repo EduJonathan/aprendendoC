@@ -104,7 +104,8 @@ struct Node *leftRotate(struct Node *x)
 /**
  * @brief Calcula o fator de balanceamento de um nó.
  *
- * O fator de balanceamento é a diferença entre a altura da subárvore esquerda e a altura da subárvore direita.
+ * O fator de balanceamento é a diferença entre a altura da subárvore esquerda e a 
+ * altura da subárvore direita.
  *
  * @param N O nó cujo fator de balanceamento será calculado.
  * @return O fator de balanceamento.

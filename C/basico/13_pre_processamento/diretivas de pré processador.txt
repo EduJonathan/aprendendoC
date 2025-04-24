@@ -59,7 +59,7 @@ Para gerar o arquivo objeto(.o) da mesma maneira descrita para arquivo executáv
 
 ===================================================================================
 
-CUIDADOS: Diretórios(pastas) e Arquivos principalmente em C/C++ tem uma sensibilidade na nomeação de seus arquivos
+⚠ CUIDADOS: Diretórios(pastas) e Arquivos principalmente em C/C++ tem uma sensibilidade na nomeação de seus arquivos
 os nomes dos arquivos não devem conter espaços. Prefira formatos como arquivo_c.c ou arquivoC.c. Pois no momento de 
 compilar no terminal e caso se estiver (gcc arquivo c.c -o nome) o compilador poderá entender que há 2 arquivos a ser 
 compilados, no caso arquivo(que apesar de não ter uma extensão é entendido como arquivo .txt) e c.c. gerando erro
@@ -71,7 +71,7 @@ podemos está otimizando, condicionando e modulando seu código conforme necess�
 
 Referência: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
 
-UM ADENDO IMPORTANTE: Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para qualquer 
-desenvolvedor C/C++. E tendo o Linux como Sistema Operacional, esse aprendizado se intensifica ainda mais, tendo 
-diretamente acesso ao código de máquina, flags para visualizar a linguagem assembly, aproximando você do verdadeiro 
+IMPORTANTE: Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para qualquer 
+desenvolvedor C/C++. E tendo o Linux como Sistema Operacional, esse aprendizado se intensifica ainda mais, 
+tendo diretamente acesso ao código de máquina, flags para visualizar a linguagem assembly, aproximando você do verdadeiro 
 poder da programação de baixo nível, apesar do Windows ter ferramentas para isso, Linux é mais convencional.

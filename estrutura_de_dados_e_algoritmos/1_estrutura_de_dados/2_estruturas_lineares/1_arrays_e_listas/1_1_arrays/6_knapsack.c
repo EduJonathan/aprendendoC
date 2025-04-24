@@ -109,6 +109,5 @@ int main(int argc, char **argv)
     {
         printf("A mochila não foi excedida. Peso total dentro da capacidade.\n");
     }
-
     return 0;
 }
