@@ -1,17 +1,20 @@
 #include <stdio.h>
 
 /**
- * CHAINSOFPOINTER: Se um ponteiro armazena um endereço de memória de uma variável,
- * quais as chances de um ponteiro guardar o endereço de outro ponteiro, aliás um ponteiro
- * é nada mais, nada menos que uma variável, com a diferença que ao invés de armazenar um valor
- * ele armazena um endereço de memória de uma varíavel que nesta varíavel se guarda um contéudo
- * (um valor) e o ponteiros recebe os mesmos atributos de uma varíavel. sendo eles:
- *  -> um endereço de memória alocado,
- *  -> um nome (identificador/variável),
- *  -> um valor (endereço de memória).
- * Este é o conceito de "chains of pointers", correntes de ponteiros, ou ponteiros para ponteiros.
- * O perigo está quando você perde a referência do endereço, usado em situações complexas como
- * endereçamento e alocação de matrizes e listas encadeadas
+ * Chains of Pointers: Um ponteiro armazena o endereço de memória de uma variável. Mas,
+ * o que acontece quando um ponteiro guarda o endereço de outro ponteiro? Um ponteiro é uma
+ * variável especial, pois, ao invés de armazenar um valor direto, ele armazena o endereço de
+ * memória de uma variável, e essa variável, por sua vez, armazena o valor real. Ou seja, um
+ * ponteiro possui os mesmos atributos de uma variável comum:
+ *
+ * -> Endereço de memória alocado
+ * -> Nome (identificador/variável)
+ * -> Valor (endereço de memória)
+ *
+ * Esse conceito é chamado de "chains of pointers", ou corrente de ponteiros, onde um
+ * ponteiro pode apontar para outro ponteiro, criando uma cadeia. O risco aqui é perder a
+ * referência do endereço, o que pode ser perigoso em situações como alocação dinâmica de
+ * memória para matrizes ou listas encadeadas.
  */
 
 int main(int argc, char **argv)
@@ -107,11 +110,11 @@ int main(int argc, char **argv)
     printf(" POINTER4->POINTER3->POINTER2->POINTER1->END. DE MEMÓRIA DE var->CONTEÚDO DE var: %d\n", ****pointer4);
 
     /**
-     * @note para quem desejar a especialização de C/C++, ponteiros e uso dos chains of pointers
-     * é de entendimento bastante desejado, para o tratamento e segurança do endereçamento da
-     * memória e evitar brechas de invasão ou de overflow, uma ressalva sobre chains of pointers
-     * é que dificilmente você irá passar dos ponteiros duplos "**", podendo chegar no máximo
-     * ao ponteiro triplo "***".
+     * @note: Para quem busca uma especialização em C/C++, o uso de ponteiros e
+     * "chains of pointers" é essencial para garantir a segurança do endereçamento de memória
+     * e evitar vulnerabilidades como overflows e invasões. Vale ressaltar que, na prática,
+     * dificilmente se usa ponteiros com mais de dois níveis (ou seja, um ponteiro duplo **
+     * ou triplo *** no máximo).
      */
     return 0;
 }

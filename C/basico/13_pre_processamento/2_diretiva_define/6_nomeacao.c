@@ -2,11 +2,17 @@
 #include <stdlib.h>
 
 /**
- * CURIOSIDADES: A diretiva #define consegue renomear tipos, variáveis e funções.
- * Ela permite que vocês defina um nome alternativo para um tipo, variável ou função.
- * e até mesmo uso de funções para realizar uma operação. Como utilizar sizeof para
- * obter o tamanho de um array.
- * EXEMPLO: #define SIZE(array) (sizeof(array) / sizeof(array[0])).
+ * CURIOSIDADES: A diretiva #define em C pode ser usada para criar **macros** que
+ * permitem renomear tipos, variáveis e até funções. Ela substitui um nome por um valor
+ * ou expressão durante a pré-compilação do código. Isso pode ser útil para tornar o código
+ * mais legível e reutilizável, além de facilitar manutenções e alterações.
+ *
+ * #define não apenas pode definir simples valores ou expressões, mas também pode envolver
+ * operações, como calcular o tamanho de um vetor. Um exemplo comum é a definição de uma
+ * macro para calcular o número de elementos de um array.
+ *
+ * EXEMPLO:
+ * #define SIZE(array) (sizeof(array) / sizeof(array[0])
  */
 
 /* Renomeia o tipo long long para LLONG, possivel em uso em funções e declarações. */
@@ -56,6 +62,5 @@ int main(int argc, char **argv)
 
     // Liberando a memória alocada
     free(array);
-
     return 0;
 }

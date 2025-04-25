@@ -8,9 +8,6 @@ int main(int argc, char **argv)
 
     // Declarando um array do int com 3 valores
     int arr[3] = {5, 4, 6};
-
-    // Inicializa o ponteiro para o primeiro elemento do array ptr = &arr[0]
-    // A atribuição poderia ocorrer da mesma forma ptr = &arr[0]
     int *ptr = arr;
 
     // Incremento
@@ -39,6 +36,7 @@ int main(int argc, char **argv)
      * aritmética de ponteiros. Aritmética de ponteiros envolve operações de adição e
      * subtração realizadas nos ponteiros. Diferentemente de um array que percorre seus
      * elementos um por um, a aritmética de ponteiros percorre através dos bytes da memória.
+     * 
      * --------------------------------------------
      * | Endereços |  Conteúdo (4 bytes por int)  |
      * |-----------|------------------------------|
@@ -91,18 +89,6 @@ int main(int argc, char **argv)
     printf("\n=============================================================================\n");
     printf("\n\t>>DIFERENÇA ENTRE *PTR++ E *++PTR:\n");
 
-    /*
-     * A diferença entre *ptr++ e ++*ptr está relacionada à ordem das operações e ao
-     * valor retornado.
-     *
-     * *ptr++: a operação de pós-incremento *ptr retorna o valor apontado por ptr.
-     * ptr++ incrementa o ponteiro para apontar para o próximo local de memória.
-     * Portanto, *ptr++ primeiro obtém o valor apontado por ptr e, em seguida,
-     * incrementa o ponteiro.
-     *
-     * ++*ptr: A operação de pré-incremento ++*ptr primeiro incrementa o valor apontado por ptr.
-     */
-
     int array[4] = {1, 2, 3, 4};
     int *pointer = array;
 
@@ -130,9 +116,9 @@ int main(int argc, char **argv)
     char *pointerChar = caracteres;
 
     /*
-     * Este trecho de código foi introduzido demonstra que a utilização de
-     * ++(*pointerChar), é atualizado com o incremento o conteúdo apontado pelo
-     * ponteiro os valores, ou seja, os que se encontram contidos dentro do vetor.
+     * Este trecho de código demonstra que a utilização de ++(*pointerChar)
+     * atualiza o conteúdo apontado por pointerChar. Ou seja, o valor armazenado no
+     * endereço de memória apontado por pointerChar é incrementado, o que modifica o valor no vetor.
      */
 
     for (int i = 0; i < tamCaractere; i++)
@@ -143,12 +129,10 @@ int main(int argc, char **argv)
         printf("Valor modificado do conteúdo apontado por pointerChar[%d] -> %c\n", i, ++(*pointerChar));
 
         /*
-         * (*pointerChar)++: Porque não é permitido porque tenta incrementar um caractere
-         * diretamente, o que não é suportado em C. Em vez disso, você deve manipular
-         * diretamente o valor apontado por pointerChar usando atribuições simples ou
-         * usar aritmética de ponteiros para navegar através dos elementos do array,
-         * e além do mais, o tipo char é um tipo primitivo em C, e não é um tipo que suporta
-         * a operação de incremento diretamente.
+         * (*pointerChar)++: O operador pós-incremento é válido em C e incrementa o valor
+         * armazenado no endereço apontado por pointerChar, mas a desreferenciação
+         * (leitura do valor) ocorre antes do incremento. Ou seja, o valor de pointerChar
+         * é incrementado após a operação de leitura.
          */
 
         // Move pointerChar para o próximo elemento (opcional)

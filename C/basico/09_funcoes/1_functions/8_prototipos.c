@@ -4,8 +4,8 @@
 /**
  * PROTOTIPOS: São assinatura da função que indica ao compilador quando ele ler o código,
  * dizendo que há funções logo após a main, ou que possa está em outro arquivo.
- * Exemplo o printf() dentre outras funções é um protótipo de função que já está declarado 
- * no arquivo stdio.h.
+ * Exemplo o printf() dentre outras funções é um protótipo de função que já está declarado
+ * no arquivo stdio.h, assim como várias outras funções de outras bibliotecas.
  *
  * @note do jeito que o protótipo da função foi declarado no arquivo, tanto ele como seus
  * parâmetros precisa serem declarados da mesma forma, seja na main ou em outro arquivo.

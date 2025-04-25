@@ -16,11 +16,14 @@
  * Para entender melhor o funcionamento da notação com ponteiros, podemos analisar a expressão
  * `*(*(mat + linha) + coluna)`:
  *
- * - `mat` é um ponteiro para o primeiro elemento do array, ou seja, um ponteiro para o primeiro "sub-array" (linha) do array.
+ * - `mat` é um ponteiro para o primeiro elemento do array, ou seja, um ponteiro 
+ * para o primeiro "sub-array" (linha) do array.
  * - `mat + linha` desloca o ponteiro até a linha desejada.
- * - `*(mat + linha)` acessa a linha que foi deslocada e retorna um ponteiro para o primeiro elemento dessa linha.
+ * - `*(mat + linha)` acessa a linha que foi deslocada e retorna um ponteiro para o
+ * primeiro elemento dessa linha.
  * - `*(mat + linha) + coluna` desloca esse ponteiro até a posição da coluna desejada na linha.
- * - Finalmente, `*(*(mat + linha) + coluna)` acessa o valor da célula na posição [linha][coluna] do array.
+ * - Finalmente, `*(*(mat + linha) + coluna)` acessa o valor da célula na posição
+ * [linha][coluna] do array.
  *
  * Isso demonstra como é possível acessar os elementos de um array multidimensional
  * utilizando ponteiros de forma eficiente, aproveitando o fato de que os arrays em C

@@ -56,21 +56,32 @@
  * necessidade de um ponto e vírgula extra ao utilizá-la.
  */
 
-#define let(type, name) \
+// Definindo a macro "let" para criar uma variável de tipo e nome especificados
+#define let(type, name)                                  \
+    /* Cria uma variável do tipo "type" e nome "name" */ \
     type name
 
-#define match(value, ...)              \
-    ({                                 \
-        typeof(value) __val = (value); \
-        switch (__val)                 \
-        {                              \
-            __VA_ARGS__                \
-        }                              \
+// Definindo a macro "match", que simula uma estrutura switch-case com base no valor fornecido
+#define match(value, ...)                                                       \
+    ({                                                                          \
+        /* Armazena o valor em uma variável do mesmo tipo do valor fornecido */ \
+        typeof(value) __val = (value);                                          \
+                                                                                \
+        /* Inicia o switch com o valor armazenado */                            \
+        switch (__val)                                                          \
+        {                                                                       \
+            /* As instruções fornecidas como argumento para a macro "match" */  \
+            __VA_ARGS__                                                         \
+        }                                                                       \
     })
 
-#define case(val, action) \
-    case val:             \
-        action;           \
+// Definindo a macro "case", que especifica o comportamento para um valor no switch
+#define case(val, action)                                  \
+    case val:                                              \
+        /* Para o valor "val", executa a ação fornecida */ \
+        action;                                            \
+                                                           \
+        /* Interrompe o switch após a execução */          \
         break;
 
 /**

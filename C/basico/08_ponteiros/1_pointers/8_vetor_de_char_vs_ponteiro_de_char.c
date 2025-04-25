@@ -12,17 +12,20 @@
  * permitindo apenas leitura, pois tentativas de modificação podem causar erros de segmentação.
 
  * char *(Ponteiro para Caractere):
- * - Representa um ponteiro para um caractere ou o endereço do primeiro elemento de uma matriz de caracteres.
+ * - Representa um ponteiro para um caractere ou o endereço do primeiro elemento
+ * de uma matriz de caracteres.
  * - Pode apontar para um único caractere ou para o início de uma matriz de caracteres.
  * - O tamanho não é fixo e pode ser usado para apontar para memória alocada dinamicamente.
 
  * USO:
- * - Ambos char * e char[] são usados para manipular strings em C, mas têm diferenças sutis em termos 
+ * - Ambos char * e char[] são usados para manipular strings em C, mas têm diferenças sutis em termos
  * de uso e funcionalidade.
  * - char *: é usado quando precisa de um ponteiro para uma string que pode ser
  * modificada ou reatribuída, sendo o conceito mais próximo de uma string.
  *
- * - char[]: é usado quando precisa de um array de caracteres para armazenar uma string fixa,
+ * - char[]: é usado quando precisa de um array de caracteres para armazenar uma string fixa
+ * (fixo é quando você já tem ciência do tamanho do vetor, que não irá necessitar saber o quanto
+ * ele deverá expandir para armazenar um quantidade de dados que poderá mudar ao decorrer do código).
  * @note Ambos têm seus usos e dependem do contexto e dos requisitos do seu programa.
  */
 
@@ -59,7 +62,7 @@ int main(int argc, char **argv)
 
     printf(" Qual o tamanho da string str de acordo com sizeof: %zu\n", sizeof(str1)); // 8
     // Essa linha imprime o tamanho do ponteiro str1 usando sizeof(). Em muitos sistemas,
-    // o tamanho do ponteiro é 8 bytes (em sistema de 64 bits). Portanto, o resultado será 8.
+    // o tamanho de um ponteiro é 8 bytes (em sistema de 64 bits). Portanto, o resultado será 8.
     printf(" Qual o comprimento da string str de acordo com strlen: %d\n", strlen(str1)); // 5
     return 0;
 }

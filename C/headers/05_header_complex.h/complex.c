@@ -54,9 +54,11 @@ int main(int argc, char **argv)
     /**
      * Na biblioteca <complex.h>, Os números complexos tem funções de retornos semelhantes
      * ao math.h para se trabalhar com resultados dos tipos flutuantes(float, double e long double)
-     * e retornos de funções, exemplo no math.h, temos o (pow, sqrt, etc...), o complex.h possue
-     * essas funções porém com uma diferença na nomeação que basta inserir um 'c' antes da função,
-     * exemplo (cpow, csqrt, etc...), tendo suas variações para outros tipos de dados flutuantes.
+     * e retornos de funções, exemplo no math.h, temos o (pow, sqrt, etc...), o complex.h
+     * possue essas funções porém com uma diferença na nomeação que basta inserir um 'c' antes
+     * da função, exemplo (cpow, csqrt, etc...), tendo suas variações para outros tipos de dados
+     * flutuantes. Como por exemplo(cpow(double), cpowf(float), cpowl(long double)) assim
+     * como dentre outras funções
      *
      * FUNÇÕES DA BIBLIOTECA <complex.h> e dentre várias outras funções,
      * a cppreference é uma documentação bastante completa tanto para C e C++:

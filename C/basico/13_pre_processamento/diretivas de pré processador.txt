@@ -57,6 +57,7 @@ Para gerar o arquivo objeto(.o) da mesma maneira descrita para arquivo executáv
 
 • -c: Flag que compila o código-fonte sem gerar o executável, apenas o (.o).
 
+Referência: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
 ===================================================================================
 
 ⚠ CUIDADOS: Diretórios(pastas) e Arquivos principalmente em C/C++ tem uma sensibilidade na nomeação de seus arquivos
@@ -68,8 +69,6 @@ no processo de compilação.
 OBS.: O processo de compilação é composto por diversas etapas, cada uma com papel fundamental na transformação 
 do código-fonte em um programa executável. Com o uso adequado de diretivas e flags(que ainda há muitas a ser explorada),
 podemos está otimizando, condicionando e modulando seu código conforme necessário.
-
-Referência: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
 
 IMPORTANTE: Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para qualquer 
 desenvolvedor C/C++. E tendo o Linux como Sistema Operacional, esse aprendizado se intensifica ainda mais, 

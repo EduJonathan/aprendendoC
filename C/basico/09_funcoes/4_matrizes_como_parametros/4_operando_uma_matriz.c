@@ -86,6 +86,5 @@ int main(int argc, char **argv)
            colunas = 2;
 
     somandoDuasMatrizes(matriz1, matriz2, linhas, colunas);
-
     return 0;
 }

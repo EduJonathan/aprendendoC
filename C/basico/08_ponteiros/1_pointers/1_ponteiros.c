@@ -2,8 +2,8 @@
 
 /**
  * POINTERS: Ponteiros são variáveis especiais que armazenam endereços de memória de
- * outras variáveis, para uma manipulação mais eficiente não no conteúdo da varíavel
- * em si, e sim na memória que ele aponta.
+ * outras variáveis, para uma manipulação mais eficiente não no conteúdo da variável
+ * em si, e sim na memória que o ponteiro aponta.
  */
 
 int main(int argc, char **argv)
@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     /* Variável inicializada com caractere '5', na tabela ASCII o decimal de '5' é 53 */
     int num = '5';
 
-    printf(" Valor da varíavel num : CARACTERE : %c ASCII : %d\n", num, num);
+    printf(" Valor da variável num : CARACTERE : %c ASCII : %d\n", num, num);
     printf(" Endereço de memória de num : %p\n", &num);
 
     printf("\n=============================================================================\n");
@@ -104,7 +104,7 @@ int main(int argc, char **argv)
      * ponteiro double guarda somente tipo double
      * e assim por diante.
      *
-     * DETALHE: Se tentarmos aplicar ao contrario, guardar o valor de um caractere
+     * DETALHE: Se tentarmos aplicar ao contrário, guardar o valor de um caractere
      * para um ponteiro int
      * **************************
      * * char caractere = 'A';  *
@@ -112,12 +112,12 @@ int main(int argc, char **argv)
      * **************************
      * ERROR: initialization of 'int *' from incompatible pointer type 'char *'
      *
-     * por isso muitas das vezes dizemos que o valor de um ponteiro é "<para> um valor do tipo"
-     * (no caso um endereço) e não "<o> valor de um tipo"
+     * por conta deste erro dizemos que muitas das vezes dizemos que o valor de um ponteiro é
+     * "<PARA UM> valor do tipo" (no caso um endereço), e não que ele é "<O> valor de um tipo"
      */
 
     printf("\n=============================================================================\n");
-    printf("\n\t>>PASSANDO O VALOR DE UM PONTEIRO PARA UMA VARÍAVEL<<\n");
+    printf("\n\t>>PASSANDO O VALOR DE UM PONTEIRO PARA UMA VARIÁVEL<<\n");
 
     *ptr = 65; /* Atribuindo outro valor para o contéudo do ponteiro, pode também *ptr = 'A'; */
     /* Lembrando que char são apenas INTEIROS de 8 bits, e nosso ponteiro também é um INTEIRO. */
@@ -125,7 +125,7 @@ int main(int argc, char **argv)
     /**
      * ERRO: num = ptr;
      * warning : assignment to 'int' from 'int *' makes integer from pointer without a cast
-     * printf(" O valor da varíavel num atribuido pelo conteudo do ponteiro ptr : %d\n", num);
+     * printf(" O valor da variável num atribuido pelo conteudo do ponteiro ptr : %d\n", num);
      */
 
     num = *ptr;
@@ -135,7 +135,7 @@ int main(int argc, char **argv)
     /* Passando o conteúdo de num, apontado pelo ponteiro para var. */
     int var = *ptr;
 
-    printf(" O valor da varíavel 'num' atribuido pelo conteudo do ponteiro ptr : %d-%c\n", num, num);
-    printf(" O valor da varíavel 'var' atribuido pelo conteudo do ponteiro ptr : %d-%c\n", var, var);
+    printf(" O valor da variável 'num' atribuido pelo conteudo do ponteiro ptr : %d-%c\n", num, num);
+    printf(" O valor da variável 'var' atribuido pelo conteudo do ponteiro ptr : %d-%c\n", var, var);
     return 0;
 }

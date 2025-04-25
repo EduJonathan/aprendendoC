@@ -4,8 +4,8 @@
  * FUNCTIONS: Funções são blocos de código que realizam tarefas através de um bloco
  * separado a qual pode retornar ou não o valor de um tipo de dado, aqueles que não
  * retornam valor são conhecidos como void ou tipo genérico, ele realiza procedimentos
- * através de instruções não retornando nenhum valor. Nos ajudando a organizar, estruturar
- * o código e ter facilidade na leitura e compreensão do mesmo.
+ * através de instruções não retornando nenhum valor.
+ * Funções organizam, estruturam o código e facilitam a leitura e compreensão do mesmo.
  */
 
 /// @brief Procedimento que realiza apenas uma instrução de printf para exibir uma mensagem

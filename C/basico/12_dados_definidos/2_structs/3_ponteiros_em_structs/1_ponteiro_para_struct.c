@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-/* Um ponteiro que está apontando para uma estrutura é conhecido como ponteiro para estrutura. */
-
 /**
  * @brief Estrutura para representar os dados de um livro.
  *

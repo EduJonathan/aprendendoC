@@ -85,9 +85,7 @@ void liberarMatriz(int **mat, size_t linhas)
         // Libera a memória de cada linha
         free(mat[i]);
     }
-
-    // Libera a memória do array de ponteiros para linhas
-    free(mat);
+    free(mat); // Libera a memória do array de ponteiros para linhas
 }
 
 int main(int argc, char **argv)

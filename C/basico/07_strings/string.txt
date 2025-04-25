@@ -1,14 +1,11 @@
 • Strings em C:
-
-Na linhguagem C, strings (ou barbante, algo mais pé da letra)
-São conjutos do tipo de dado char, representadas por um array, então, vetores de 
-caracteres que sempre no final o que é determinado o fim é o '\0', ou por um ponteiro 
-como visto em variaveis_formatters, a sua declaração vem apartir do tipo de dado char, 
-o nome da variável e o vetor, delimitado ou não, e também pelo ponteiro algo mais
+Na linguagem C, strings (ou barbante, algo mais pé da letra) são conjutos do tipo de dado char,
+representadas por um array, então, vetores de caracteres que sempre no final o que é determinado 
+o fim é o '\0', ou por um ponteiro como visto em variaveis_formatters, a sua declaração vem apartir 
+do tipo de dado char, o nome da variável e o vetor, delimitado ou não, e também pelo ponteiro algo mais
 próximo a uma string do que realmente um vetor. 
 
 EXE.:
-
 char string[] = {'O', 'l', 'á', ',' , ' ', 'm', 'u', 'n', 'd', 'o', '!', '\0'};
 char string[7] = {"String"};
 const char *string = "String!";
@@ -34,8 +31,8 @@ cada caractere na tabela possue:
 • 1 número decimal
 • 1 número hexadecimal
 
-E tendo como alguns as quais não são mais utilizaveis ou não imprimíveis que vão o 0 a 31 e o 127, e existem
-as que são utilizadas que é para impressões, sendo eles:
+E tendo como alguns as quais não são mais utilizaveis ou não imprimíveis que vão o 0 a 31 e o 127, 
+e existem as que são utilizadas que é para impressões, sendo eles:
 
 • Sinais de controle (não-imprimíveis):
 ------------------------------------------------------------------------------------------------------
@@ -279,8 +276,10 @@ as que são utilizadas que é para impressões, sendo eles:
 |01111110|	176 | 126  | 7E	|    ~   |
 ======================================
 
-Entender a tabela ASCII é essencial em C pois é assim que na linguagem funciona os tipo char ou strings mesmo cada caractere é representados por tipos numéricos 8 bits (1 byte); assim como vemos na tabela ASCII, e lembrando todos esses sinais são caracteres 
-estão entre aspas.Existem dois includes a quais nos ajudam com o tratamento de strings e caracteres na linguagem C sendo:
+Entender a tabela ASCII é essencial em C pois é assim que na linguagem funciona os tipo char ou strings mesmo
+cada caractere é representados por tipos numéricos(sim, o tipo char pode ser representado por um tipo inteiro(int)) 
+8 bits (1 byte); assim como vemos na tabela ASCII, e lembrando todos esses sinais são caracteres estão entre aspas.
+Existem dois includes a quais nos ajudam com o tratamento de strings e caracteres na linguagem C sendo:
 
 #include <string.h> // biblioteca que suas funções tratam-se de strings
 #include <ctype.h> // conttém funções declaradas para teste de caracteres, retornando sempre um valor int como argumento
