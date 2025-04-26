@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * ARRAYS: Ou vetores são estruturas unidimensionais são para armazenar uma coleção de
+ * ARRAYS: Ou vetores, são estruturas unidimensionais que armazenam uma coleção de
  * valores de um único tipo de dado, simplificando, são estruturas indexadas para guardar
  * dados de um mesmo tipo. É estruturado na memória uma sequência de endereços para cada
  * indíce para armazenar um valor.
@@ -13,8 +13,8 @@
  * | &array[0] | &array[1] | &array[2] |   ...      |
  * --------------------------------------------------
  *
- * VETORES: São estruturas sequencias que guardam os dados de forma sequenciais indexadas.
- * INDEX: São individualizadas as posições de cada valor por meios de índices, começando por 0.
+ * VETORES: Estruturas sequencias que guardam os dados de forma sequenciais indexadas.
+ * INDEX: Individualizadas as posições de cada valor por meios de índices, começando por 0.
  * INDICES: limitação de quantos elementos deseja que o vetor possua
  *
  * SINTAXE: <tipo de dado><nome do array>[Nº elementos];

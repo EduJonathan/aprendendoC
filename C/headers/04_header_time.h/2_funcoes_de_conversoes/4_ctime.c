@@ -1,13 +1,13 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
+#include <time.h>
 
 /**
  * As funções ctime e ctime_s são ambas usadas em C para converter um valor de
  * tempo (geralmente representado como time_t) em uma string que representa esse tempo em
  * formato legível.
  *
- * DIFERENÇA ENTRE CTIME E CTIME_S:
+ * DIFERENÇAS ENTRE CTIME E CTIME_S:
  * ctime(): A função ctime é uma função padrão de C, definida na biblioteca <time.h>,
  * que converte um valor de tipo time_t (que geralmente representa o número de segundos
  * desde o "Epoch" - 1º de janeiro de 1970) para uma string formatada como uma data e hora
@@ -20,7 +20,7 @@
  *
  * ------------------------------------------------------------------------------------------
  *
- * ctime_s(): é uma versão segura de ctime, introduzida para evitar problemas de segurança,
+ * ctime_s(): versão mais segura de ctime, introduzida para evitar problemas de segurança,
  * como vazamento de memória ou sobrescrição acidental de buffers. Ela faz parte da
  * especificação do C11 e é amplamente usada em compiladores que priorizam segurança,
  * como o MSVC (Microsoft Visual C++).

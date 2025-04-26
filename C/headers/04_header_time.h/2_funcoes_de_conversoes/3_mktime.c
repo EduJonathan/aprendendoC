@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <time.h>
 #include <string.h>
+#include <time.h>
 
 #define BUFFER_SIZE 100
 

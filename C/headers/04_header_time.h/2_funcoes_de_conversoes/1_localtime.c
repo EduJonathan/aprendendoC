@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
+#include <time.h>
 
 /**
  * localtime(): Função da biblioteca de manipulação de tempo (time.h) que converte um

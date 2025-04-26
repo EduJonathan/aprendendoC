@@ -23,8 +23,8 @@
  *
  * O que delimita uma matriz nos seus valores é o quanto determinarmos para as linhas
  * e as colunas fazendo a multiplicação deles, no meu exemplo eu entreguei 6, pois,
- * 2(linhas) * 3(colunas) = 6.
- * E seu tamanho em bytes é: 2(linhas) * 3(coluna) * 4(nº de byte do tipo de dado) = 24 bytes
+ * 2(linhas) * 3(colunas) = 6. E seu tamanho em bytes é:
+ * 2(linhas) * 3(coluna) * 4(nº de byte do tipo de dado) = 24 bytes
  * pegando o exemplo anterior e inicializando os valores
  *
  *          -----------------------------

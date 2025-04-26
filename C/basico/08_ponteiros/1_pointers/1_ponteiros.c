@@ -58,6 +58,7 @@ int main(int argc, char **argv)
 
     // VERIFICANDO...
     printf(" O endereço que ptr armazena agora é o endereço de : %p\n", ptr);
+    printf(" ptr %p -> aponta para %p\n", &ptr, ptr);
 
     printf("\n=============================================================================\n");
     printf("\n\t\t>>DERREFÊRENCIA DO PONTEIRO<<\n");
@@ -100,8 +101,6 @@ int main(int argc, char **argv)
      * qual ele foi declaradado, ou seja
      * ponteiro int guarda somente tipo int
      * ponteiro char guarda somente tipo char
-     * ponteiro float guarda somente tipo float
-     * ponteiro double guarda somente tipo double
      * e assim por diante.
      *
      * DETALHE: Se tentarmos aplicar ao contrário, guardar o valor de um caractere

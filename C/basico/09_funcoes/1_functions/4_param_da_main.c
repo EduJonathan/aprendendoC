@@ -31,8 +31,8 @@ int *sortArguments(int argc, char **argv)
  * @brief Este programa demonstra o uso dos parâmetros da função main em C.
  *
  * @param argc (argument count): Informa a quantidade de parâmetros passados na linha de comando.
- * @param argv (argument vector): Vetor de strings que armazena os argumentos passados
- * na linha de comando. O elemento argv[0] geralmente contém o nome do programa.
+ * @param argv (argument vector): `**argv ou *argv[]` Vetor de strings que armazena os
+ * argumentos passados na linha de comando. O elemento argv[0] geralmente contém o nome do programa.
  * @param env (environment): Vetor de strings que representa as variáveis de ambiente do sistema.
  *
  * @return int seu retorno é 0 para indício do programa que foi concluído com êxito.

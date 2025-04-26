@@ -1,8 +1,8 @@
 Diretivas de pré-processador => As diretivas de pré-processador são instruções executadas antes da compilação em 
-linguagens como C e C++. Elas permitem definir constantes, incluir arquivos, criar macros e controlar condicionalmente
-a compilação de trechos de código. E como elas vem antes do processamento do código, faz com que a compilação seja
-essencial. Que além disso, é possível usar flags na linha de comando do terminal para modificar o comportamento da 
-compilação conforme a necessidade do desenvolvedor.
+linguagens como C/C++. Elas permitem definir constantes, incluir arquivos, criar macros e controlar condicionalmente
+a compilação de trechos de código, pois, como elas vem antes do processamento do código, faz com que a compilação seja
+essencial. E além disso, é possível usar flags(sinalizadores) na linha de comando do terminal para modificar o
+comportamento da compilação conforme a necessidade do desenvolvedor.
 
 ============================================================================================
 
@@ -36,6 +36,7 @@ de memória das variáveis, etc, C/C++ são conhecidas como linguagens muito vel
 bibliotecas, resolvendo referências entre eles, e gerando o executável final. O linker substitui as referências a
 funções e variáveis pelos endereços reais na memória. O resultado é o arquivo de execução (programa.exe ou programa.out).
 
+Referência: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
 ===================================================================================
 
 Como compilar um arquivo C/C++
@@ -57,7 +58,6 @@ Para gerar o arquivo objeto(.o) da mesma maneira descrita para arquivo executáv
 
 • -c: Flag que compila o código-fonte sem gerar o executável, apenas o (.o).
 
-Referência: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
 ===================================================================================
 
 ⚠ CUIDADOS: Diretórios(pastas) e Arquivos principalmente em C/C++ tem uma sensibilidade na nomeação de seus arquivos

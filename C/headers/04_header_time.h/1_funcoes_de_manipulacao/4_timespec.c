@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
+#include <time.h>
 
 /**
  * TIMESPEC: A estrutura timespec é usada em C para representar intervalos de tempo de alta

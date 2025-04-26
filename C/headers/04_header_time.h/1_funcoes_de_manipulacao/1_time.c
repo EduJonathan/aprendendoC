@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <time.h>
 #include <string.h>
+#include <time.h>
 
 #define BUFFER_SIZE 100
 
@@ -36,7 +36,7 @@ void imprimirTempo(time_t tempo)
     }
 
     /**
-     * asctime(): Função da biblioteca de manipulação de tempo (time.h) que converte um tempo 
+     * asctime(): Função da biblioteca de manipulação de tempo (time.h) que converte um tempo
      * representado em segundos desde a "época" (que é 1º de janeiro de 1970 às 00:00:00 UTC)
      * para uma representação de tempo local
      *

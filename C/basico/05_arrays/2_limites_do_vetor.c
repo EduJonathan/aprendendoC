@@ -41,8 +41,8 @@ int main(int argc, char **argv)
 	 * em "End. de Memoria Alocadas", já que ultrapassamos os limites do vetor.
 	 * O valor impresso pode ser lixo de memória ou qualquer valor residual da memória alocada.
 	 *
-	 * Nota: Caso o compilador não emita um erro, o comportamento é indefinido e tem
-	 * efeitos negativos, com acesso posições fora do vetor pode sobrescrever áreas
+	 * Nota: Caso o compilador não emita um erro, o comportamento é indefinido pois tem
+	 * efeitos negativos, com acesso posições fora do vetor podendo sobrescrever áreas
 	 * de memória não alocadas. Esse comportamento pode variar de uma execução para outra,
 	 * dependendo do ambiente de execução.
 	 */
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
 
 	// ==============================================================================
 
-	/// @note: **NUNCA ultrapasse os limites de um vetor.** Isso pode
+	/// @note: **NUNCA ultrapasse os limites de um vetor/matriz.** Isso pode
 	// causar corrupção de memória e comportamentos inesperados. Sempre verifique os
 	// limites dos arrays antes de acessar seus elementos.
 	return 0;

@@ -1,0 +1,67 @@
+ENTENDENDO COMO FUNCIONA
+-------------------------------
+
+## 📌 Introdução
+
+Tudo em um programa é captado e manipulado diretamente na **memória RAM**.
+Quando declaramos variáveis ou usamos ponteiros, estamos, na verdade, interagindo com
+endereços de memória, que estão muito bem abstraídos (para melhor compreensão e facilidade),
+pois imagine como seria manipular vários valores sem nomes, apenas por números de memória?
+Seria como tentar lembrar o que está em cada gaveta de um armário com milhares de compartimentos
+sem rótulos, apenas números! As linguagens de programação cuidam dessa complexidade para nós, 
+permitindo que trabalhemos com nomes de variáveis em vez de endereços numéricos brutos.
+-------------------------------
+
+## ❓ O que acontece na memória?
+
+Ao declarar uma variável, como `int x = 10;`, o compilador reserva um espaço na RAM para 
+armazenar o número 10, como sabemos 4 bytes, obtendo então um espaço que tem um 
+**endereço único**, e com isso podemos acessá-lo com o operador `&x`.
+
+- int x = 10;
+-----------------------
+| endereço | conteúdo |
+-----------------------
+| 0x1040   | 00001010 | <- valor 10
+-----------------------
+| 0x1044   |          |
+-----------------------
+| 0x1048   |          |
+-----------------------
+| 0x1052   |          |
+-----------------------
+
+## 💭 CURIOSIDADE: Perceba que vai pulando de 4 em 4, se deve ao fato de um int (4 bytes)
+a lógica se aplica a todos os tipos de dados, porém que varia de acordo com sua ocupação na memória
+-------------------------------
+
+## ❓ E o ponteiro?
+
+O ponteiro é uma variável especial recebendo os mesmos atributos de uma variável qualquer
+(endereço, nome, e um valor), mas com uma pequena diferença em vez de armazenar diretamente
+um valor, ela armazena o endereço de memória onde o valor está localizado. 
+Isso permite manipular dados de uma forma mais flexível e eficiente, principalmente ao trabalhar 
+com grandes estruturas de dados ou em funções onde precisamos alterar diretamente o valor de variáveis.
+
+- int x = 10;
+- int *p = &x; // Declarando e passando o endereço de 'x' para o ponteiro que agora
+    
+    int *p                                                  int x
+-----------------------                               -----------------------
+| endereço | conteúdo |                               | endereço | conteúdo |
+-----------------------                               -----------------------
+| 0x1050   | 0x1040   | p aponta para o endereço de x | 0x1040   | 00001010 | <- valor 10
+-----------------------                               -----------------------
+| 0x1054   |          |                               | 0x1044   |          |
+-----------------------                               -----------------------
+| 0x1058   |          |                               | 0x1048   |          |
+-----------------------                               -----------------------
+| 0x1062   |          |                               | 0x1052   |          |
+-----------------------                               -----------------------        
+
+Com este pequeno trecho espero deixar claro e objetivo o exemplo de demonstração da organização 
+e funcionamento de memória em variáveis e ponteiros, bem acontece que o ponteiro `p`
+obtém o endereço de `x` estando localizado no endereço 0x1050, ou seja, 0x1050 armazena 
+o endereço 0x1040.
+
+-------------------------------
