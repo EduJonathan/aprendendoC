@@ -11,9 +11,10 @@
 10. Modificadores de acesso (Variáveis Globais, Locais e Blocos, Parâmetros, Volatile).
 11. Classes de Armazenamento(Extern, Static, Volatile, Register, Auto)
 12. Tipos Definidos (Structs, Enums, Unions, Typedef, Bit Fields)
-13. Diretivas de Pré-Processadores (#Include, #Define, #If, #Elif, #Ifdef e #Ifndef, #Defined, #Erro, #Line, #Pragmas).
+13. Diretivas de Pré-Processadores e compilação (#Include, #Define, #If, #Elif, #Ifdef e #Ifndef, #Defined, #Erro, #Line, #Pragmas).
 14. Palavras-Chaves (Keywords)
-15. E trabalhando com includes da linguagem C (stdlib.h, string.h, math.h, time.h) dentre outras
+15. Básico Do Padrão IEEE 754
+16. E trabalhando com includes da linguagem C (stdlib.h, string.h, math.h, time.h) dentre outras
 
 **Além de temos utilizado a linguagem para exemplificar a implementação de estruturas de dados e algoritmos**
 1. TAD (Tipos Abstratos De Dados)
