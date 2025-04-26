@@ -24,8 +24,8 @@ int main(int argc, char **argv)
      * de produção, as verificações assert não terão efeito. Portanto, se você está usando
      * assert para garantir que uma condição seja  verdadeira, talvez seja mais apropriado
      * usar instruções condicionais e mensagens de erro explícitas para garantir que o
-     * programa não falhe em situações inesperadas. O uso de assert é mais adequado para
-     * testes temporários e depuração.
+     * programa não falhe em situações inesperadas. 
+     * O uso de assert é mais adequado para testes temporários e depuração.
      */
     return 0;
 }

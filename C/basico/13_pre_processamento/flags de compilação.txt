@@ -9,8 +9,7 @@ Por exemplo:
 ● Flags de verificação: Habilitam verificações adicionais, como análise de erros ou warnings.
 ● Flags de saída: Controlam o formato da saída do compilador (por exemplo, gerar um executável ou apenas o código objeto).
 
-Essas flags tornam o processo de compilação mais flexível e ajudam a personalizar como 
-o código é construído.
+Essas flags tornam o processo de compilação mais flexível e ajudam a personalizar como o código é construído.
 ---------------------------------
 
 Vamos verificar algumas
@@ -90,29 +89,29 @@ As flags de padrão (STDC) instruem o compilador a seguir uma versão específic
 linguagem C. Isso é útil para garantir compatibilidade, boas práticas e evitar usar recursos 
 que não existem em versões mais antigas ou futuras do C.
 
--std=c89 ou -std=c90
-Compila o código de acordo com o padrão ANSI C de 1989/1990. Útil para compatibilidade máxima com códigos antigos.
+-std=c89 ou -std=c90: Compila o código de acordo com o padrão ANSI C de 1989/1990. Útil para compatibilidade 
+máxima com códigos antigos.
 
--std=c99
-Usa o padrão C99, que introduziu novas funcionalidades como variáveis declaradas em qualquer lugar, tipos long long int, // para comentários de linha única, entre outros.
+-std=c99: Usa o padrão C99, que introduziu novas funcionalidades como variáveis declaradas em qualquer lugar, 
+tipos long long int, // para comentários de linha única, entre outros.
 
--std=c11
-Usa o padrão C11, que trouxe suporte para programação concorrente (threads), inicialização anônima de structs/unions, e funções inline mais claras.
+-std=c11: Usa o padrão C11, que trouxe suporte para programação concorrente (threads), inicialização anônima 
+de structs/unions, e funções inline mais claras.
 
--std=c17 ou -std=c18
-Versão mais recente, revisão menor do C11 com algumas correções de bugs do padrão.
+-std=c17 ou -std=c18: Versão mais recente, revisão menor do C11 com algumas correções de bugs do padrão.
 
 ---------------------------------
 
 ⚙️ FLAGS DE WARNING AVANÇADAS (GCC Diagnostic)
+
 O GCC permite habilitar avisos específicos para comportamentos suspeitos no código, 
 ajudando a identificar problemas sérios antes mesmo da execução.
 
--Wuninitialized
-Avisa quando uma variável pode ser usada sem ter sido inicializada. Muito útil para evitar bugs ocultos e comportamentos imprevisíveis.
+-Wuninitialized: Avisa quando uma variável pode ser usada sem ter sido inicializada. Muito útil para evitar bugs 
+ocultos e comportamentos imprevisíveis.
 
--Wmaybe-uninitialized
-Avisa quando o compilador não consegue garantir que uma variável foi inicializada (em fluxos de controle complicados, como if-else ou switch).
+-Wmaybe-uninitialized: Avisa quando o compilador não consegue garantir que uma variável foi inicializada 
+(em fluxos de controle complicados, como if-else ou switch).
 
 -Winit-self: Avisa quando uma variável é inicializada com ela mesma (o que geralmente é um erro).
 
@@ -122,30 +121,48 @@ As flags podem ser usadas isoladamente ou combinadas isso conforme a necessidade
 conjuntos que otimizam a compilação, melhoram a depuração e garantem a qualidade do código 
 de forma consistente.
 
-👨🏻‍💻 Pode-se construir flags para desenvolvimento
+● 👨🏻‍💻 Pode-se construir flags para desenvolvimento
 
-gcc arquivo.c -Wall -Wextra -g -o programa
+> gcc arquivo.c -Wall -Wextra -g -o programa
 querer ver todos os avisos e erros do código e facilitar a depuração
 
-gcc arquivo.c -O2 -o programa
+> gcc arquivo.c -O2 -o programa
 quando já não precisa tanto de avisos e quer gerar um executável otimizado
 
-gcc arquivo.c -std=c99 -Wall -o programa
+> gcc arquivo.c -std=c99 -Wall -o programa
 Para garantir a conformidade com um padrão mais antigo
 
-👨🏻‍💻 Criação de Conjuntos de Flags
+● 👨🏻‍💻 Criação de Conjuntos de Flags
 
-gcc arquivo.c -Wall -Wextra -Wshadow -Wconversion -Wpedantic -g -o programa
+> gcc arquivo.c -Wall -Wextra -Wshadow -Wconversion -Wpedantic -g -o programa
 Conjunto para desenvolvimento e depuração: Este conjunto ativa todos os avisos importantes 
 e adiciona informações de depuração, facilitando a identificação de problemas.
 
-gcc arquivo.c -O2 -Werror -std=c11 -o programa
+> gcc arquivo.c -O2 -Werror -std=c11 -o programa
 Conjunto para produção e otimização: Aqui, o foco está em otimizar o código para performance, 
 com a desativação de warnings para não sobrecarregar o processo e o tamanho do código.
 
-gcc arquivo.c -std=c11 -Wuninitialized -Wmaybe-uninitialized -Wpedantic -Wshadow -Wconversion -o programa
+> gcc arquivo.c -std=c11 -Wuninitialized -Wmaybe-uninitialized -Wpedantic -Wshadow -Wconversion -o programa
 Conjunto para garantir padrões e qualidade: Esse conjunto foca em garantir que o código
 seja escrito conforme os padrões e que não haja problemas de inicialização de variáveis, com flags 
 para fazer o código aderir estritamente ao padrão C11.
 
-E assim sucessivamente, esse é o poder da compilação em C/C++
+● 👨🏻‍💻 Criação de Conjuntos de Flags com makefile e Criação de Conjuntos de Flags com scripts
+
+Um script é basicamente um arquivo de texto que guarda comandos que você normalmente digitaria no terminal. 
+Ele guarda o comando gcc para compilar o programa.
+
+Um Makefile é um arquivo especial usado pelo comando make para automatizar a compilação de projetos 
+maiores. Ele entende dependências entre arquivos e só recompila o que mudou.
+
+--------------------------------------------------------------------------------------------------
+| Método   | Quando Usar                                    | Vantagens                          |
+--------------------------------------------------------------------------------------------------
+| Script   | Projetos pequenos ou rápidos                   | Simples e rápido de criar e usar   |
+--------------------------------------------------------------------------------------------------
+| Makefile | Projetos médios ou grandes com muitos arquivos | Organiza e compila só o necessário | 
+--------------------------------------------------------------------------------------------------
+
+E assim sucessivamente(existem várias flags que você poderá captar ao decorrer de seu ensino, 
+aqui eu citei apenas para os mais conhecidos e para se ter uma base). Esse é o poder da compilação em C/C++: 
+você praticamente conversa diretamente com a máquina, dizendo o que ela deve fazer e como deve fazer.

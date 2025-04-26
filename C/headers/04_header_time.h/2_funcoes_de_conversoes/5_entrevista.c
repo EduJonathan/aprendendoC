@@ -11,10 +11,18 @@ typedef struct entrevista
     time_t horario_entrevista;
 } Candidatos;
 
-// Função para enviar e-mail (simulação)
+/**
+ * @brief Simula o envio de um e-mail de confirmação de entrevista para um candidato.
+ *
+ * Esta função formata a data e o horário da entrevista e exibe no console o conteúdo
+ * de um e-mail, incluindo destinatário, assunto e corpo da mensagem.
+ *
+ * @param candidato Estrutura do tipo Candidatos contendo informações do candidato e da entrevista.
+ */
 void enviarEmail(Candidatos candidato)
 {
     char dataHora[50];
+
     // Converte o horário da entrevista para o formato de data e hora
     strftime(dataHora, 50, "%d/%m/%Y às %H:%M", localtime(&candidato.horario_entrevista));
 
@@ -45,6 +53,5 @@ int main(int argc, char **argv)
     {
         enviarEmail(candidatos[i]);
     }
-
     return 0;
 }
