@@ -1,0 +1,73 @@
+Padrão IEEE 754: Representação de Números de Ponto Flutuante
+O IEEE 754 é o padrão universalmente adotado para representação de números de 
+ponto flutuante (fracionários) em sistemas computacionais. Ele define como números como 
+3.14, -0.001, ou 6.022e23 são codificados em binário, garantindo portabilidade e consistência 
+entre diferentes hardwares e linguagens de programação.
+
+ESTRUTURA:
+
+Um número em IEEE 754 é dividido em três partes (para precisão simples float de 32 bits):
+
+--------------------------------------------------------------------------------------------------
+    Parte    |	Bits	| Descrição                                                              |
+--------------------------------------------------------------------------------------------------
+Sinal    (S) |	1 bit	| 0 para positivo, 1 para negativo.                                      |
+--------------------------------------------------------------------------------------------------
+Expoente (E) |	8 bits	| Representa a potência de 2 (com um bias de 127 para float).            |
+--------------------------------------------------------------------------------------------------
+Mantissa (M) |	23 bits	| Parte fracionária (significando), com um 1 implícito antes da vírgula. |
+--------------------------------------------------------------------------------------------------
+
+Fórmula Geral:
+valor = (-1)^S  x 1.M x 2^(ϵ-bias)
+
+🔢 Tipos de Precisão
+
+-------------------------------------------------------------------------------------------------------
+|       Tipo         | Bits | Expoente(Bits/Bias) | Mantissa (Bits) | Faixa Aproximada
+-------------------------------------------------------------------------------------------------------
+| (float)            | 32	|   8/127             |     23          | ±1.18x10^(-38) a±1.8x10^(-38)
+| (double)           | 64	|   11/1023	          |     52          | ±2.23x10^(-308) a±1.8x10^(-308)
+| Precisão Estendida | 80	|   15 / 16383	      |     64	        | Usada internamente pela FPU
+-------------------------------------------------------------------------------------------------------
+
+🎯 Exemplo: Codificação de -6.25 em 32 bits
+
+Converter para binário:
+Parte inteira: 6 = 110²
+Parte fracionária: 0.25 = 01² (pois 0.25 =2-²)
+Total: 110.01² = 1.1001² × 2² (normalizado).
+
+Determinar as partes:
+
+Sinal (S): 1 (negativo).
+Expoente (E): 2 + 127 = 129 = 10000001²
+Mantissa (M): 10010000000000000000000 (após remover o 1 implícito).
+
+Representação em 32 bits: 1 10000001 10010000000000000000000
+
+------------------------------------------------------------
+🔍 Problemas Comuns
+Precisão Limitada:
+Números como 0.1 não têm representação exata e precisa em binário, causando erros de arredondamento.
+float x = 0.1;  // Na verdade, armazena ≈ 0.10000000149011612
+
+O FAMOSO CASO QUE SE VOCÊ INSERIR: 0.1 + 0.2 é igual 0.3 é falso
+
+Overflow/Underflow:
+Overflow: Número muito grande → ∞.
+Underflow: Número muito pequeno → 0.0.
+
+Não Associatividade: Devido a arredondamentos (a + b) + c ≠ a + (b + c)
+
+------------------------------------------------------------
+📚 Para Aprofundar
+Ferramentas Online:
+https://www.h-schmidt.net/FloatConverter/IEEE754.html
+
+"Computer Organization and Design" (David Patterson & John Hennessy).
+
+"What Every Computer Scientist Should Know About Floating-Point Arithmetic" (David Goldberg).
+------------------------------------------------------------
+
+Entender o IEEE 754 é essencial para evitar bugs sutis em cálculos numéricos e otimizar desempenho em aplicações científicas. 🚀

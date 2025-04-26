@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     /**
      * #pragma push_macro: é uma ferramenta útil para manipular temporariamente o valor de
      * macros em C, permitindo alterações temporárias que são restauradas de forma segura
-     * usando #pragma pop_macro.
+     * usando #pragma pop_macro. Não possuem flags
      */
     return 0;
 }

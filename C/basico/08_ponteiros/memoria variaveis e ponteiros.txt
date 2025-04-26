@@ -1,4 +1,3 @@
-ENTENDENDO COMO FUNCIONA
 -------------------------------
 
 ## 📌 Introdução
@@ -62,6 +61,24 @@ com grandes estruturas de dados ou em funções onde precisamos alterar diretame
 Com este pequeno trecho espero deixar claro e objetivo o exemplo de demonstração da organização 
 e funcionamento de memória em variáveis e ponteiros, bem acontece que o ponteiro `p`
 obtém o endereço de `x` estando localizado no endereço 0x1050, ou seja, 0x1050 armazena 
-o endereço 0x1040.
+o endereço 0x1040. 
 
 -------------------------------
+## ❓ Por que os dados são armazenados em binário?
+
+Computadores operam com circuitos eletrônicos que têm dois estados básicos: ligado (1) 
+e desligado (0). Esses estados são facilmente representados fisicamente com transistores, 
+tornando o binário (0s e 1s) a forma mais eficiente de representar qualquer tipo de dado 
+(números, letras, imagens, até os endereços). Para facilitar a compreensão humana, 
+esses valores binários são frequentemente convertidos por conta dos formatadores(%d) 
+para formatos como decimal ou hexadecimal.
+-------------------------------
+
+## 💭Ponteiros não são "endereços que armazenam endereços".
+
+Um ponteiro é uma variável como qualquer outra, mas com uma característica especial: 
+em vez de armazenar um valor diretamente, ele armazena o endereço de um valor.
+O endereço 0x1050 do ponteiro `p`, o fato do ponteiro está armazenado em um endereço é 
+apenas uma consequência da forma de como a memória é organizada nos computadores, onde 
+todas as variáveis (sejam ponteiros, structs, ou outros tipos de dados) precisam ser 
+alocadas em endereços físicos.

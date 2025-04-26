@@ -16,6 +16,7 @@ int main(int argc, char **argv)
     printf("%f\n", soma);
     printf("%.17f\n", soma);
 
+    // Evite Comparações Diretas:
     if (soma == 0.3)
     {
         printf("TRUE\n");

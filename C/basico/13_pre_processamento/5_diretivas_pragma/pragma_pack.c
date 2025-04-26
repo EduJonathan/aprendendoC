@@ -1,9 +1,15 @@
 #include <stdio.h>
 
-/*
- * #pragma pack: Desativa o alinhamento de memória é comumente usada para controlar o alinhamento de
- * memória das estruturas em C, especialmente útil quando se trabalha com dados binários ou quando a
- * estrutura de dados precisa ter um tamanho específico e controlado.
+/**
+ * #pragma pack: Desativa o alinhamento de memória é comumente usada para controlar o alinhamento
+ * de memória das estruturas em C, especialmente útil quando se trabalha com dados binários ou
+ * quando a estrutura de dados precisa ter um tamanho específico e controlado.
+ * NÃO POSSUEM FLAGS, mas podem ter umas que possam forçar
+ *
+ * Em alguns compiladores, essa flag pode ser usada para forçar o empacotamento
+ * de todas as estruturas.
+ * gcc -fpack-struct -o programa programa.c
+ * gcc -fno-packed-struct: Desativa o empacotamento forçado.
  */
 
 #pragma pack(1)

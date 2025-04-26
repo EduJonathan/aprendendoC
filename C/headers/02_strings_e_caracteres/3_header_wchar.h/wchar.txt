@@ -4,7 +4,11 @@ armazenar e manipular **caracteres Unicode** e outros conjuntos de caracteres mu
 que não podem ser representados com o tipo char.
 
 Introdução:
-O tipo char em C é normalmente usado para armazenar caracteres de 1 byte, o que o limita a representar apenas 256 caracteres diferentes, dependendo da codificação (geralmente ASCII). No entanto, quando precisamos trabalhar com idiomas ou sistemas que exigem uma gama maior de caracteres, como chinês, árabe, russo ou emojis, precisamos de um tipo que possa armazenar mais informações.
+O tipo char em C é normalmente usado para armazenar caracteres de 1 byte, o que o limita 
+a representar apenas 256 caracteres diferentes, dependendo da codificação (geralmente ASCII). 
+No entanto, quando precisamos trabalhar com idiomas ou sistemas que exigem uma gama maior de
+caracteres, como chinês, árabe, russo ou emojis, precisamos de um tipo que possa armazenar 
+mais informações.
 
 ----------------------------------------------------
 O que é wchar_t?
@@ -28,7 +32,7 @@ necessário usar wchar_t para representar caracteres que exigem mais de um byte.
 
 Como utilizar na linguagem C:
 Os include <wchar.h> e <wctype.h>, não se diferencia muito dos includes <string.h> e <ctype.h>, 
-praticamente as mesmas funções com mesmos propósitos(strlen, strcpy	wcslen, wcscpy),
+praticamente as mesmas funções com mesmos propósitos(strlen, strcpy, wcslen, wcscpy),
 com a única diferença que o tratamento é para padrões de caracteres mais elevados.
 
 A <wctype.h> oferece funções para lidar com caracteres largos de maneira semelhante às 
@@ -40,7 +44,10 @@ dados wchar_t.
 ----------------------------------------------------
 
 Significado do símbolos Unicode: 
-Sim, o Unicode contém uma vasta gama de símbolos e caracteres para representar diferentes tipos de caracteres, incluindo caracteres largos (ou wide characters). Esses caracteres são especialmente importantes em contextos onde precisamos representar conjuntos de caracteres multibyte, como os usados em várias línguas e símbolos gráficos.
+Sim, o Unicode contém uma vasta gama de símbolos e caracteres para representar diferentes
+tipos de caracteres, incluindo caracteres largos (ou wide characters). Esses caracteres são
+especialmente importantes em contextos onde precisamos representar conjuntos de caracteres 
+multibyte, como os usados em várias línguas e símbolos gráficos.
 
 Exemplos:
 \u0041: A (letra A maiúscula)
@@ -51,4 +58,4 @@ Emojis
 
 \u1F600: 😀 (carinha sorrindo)
 \u1F609: 😉 (carinha piscando)
-\u2764: ❤️ (coração)
+\u2764:  ❤️ (coração)

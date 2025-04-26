@@ -61,7 +61,12 @@ int main(int argc, char **argv)
      * Aconselho a compilação para melhor resultado das diretivas em cada cenário
      * com a seguinte linha:
      * > gcc -Wall -O1 -std=c11 nome_do_seu_arquivo_de_codigo.c -o teste
-     * > .\teste.exe
+     * > gcc -O3 -std=c11 nome_do_seu_arquivo_de_codigo.c -o teste
+     * > gcc -O0 -std=c11 nome_do_seu_arquivo_de_codigo.c -o teste
+     * > gcc -g -O0 -std=c11 nome_do_seu_arquivo_de_codigo.c -o teste
+     * > gcc -Wall -Wextra -O1 -std=c11 nome_do_seu_arquivo_de_codigo.c -o teste
+     * > gcc -Wall -Werror -std=c11 nome_do_seu_arquivo_de_codigo.c -o teste
+     * Dentre outras
      */
     return 0;
 }

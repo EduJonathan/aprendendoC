@@ -1,33 +1,32 @@
 #include <stdio.h>
 
 /**
- * @brief Imprime a representação binária e hexadecimal de um número float.
+ * @brief Imprime a representação binária, hexadecimal e os componentes
+ * (sinal, expoente e mantissa) de um número float.
  *
- * Imprime a representação binária e hexadecimal de um número float.
- *
- * @param num O número float a ser impresso.
+ * @param num O número float a ser analisado.
  */
-void printBinaryAndHex(float num)
+void printFloatDetails(float num)
 {
-    // Cria um ponteiro para acessar os bits do número float
     unsigned int *ptr = (unsigned int *)&num;
-
-    // Obtém o valor inteiro (32 bits) correspondente ao número float
     unsigned int bits = *ptr;
 
-    // Imprime a representação binária
-    printf("Número: %.22f\n", num);
-    printf("Representação binária: ");
+    // Extrai os componentes
+    unsigned int sinal = (bits >> 31) & 0x1;
+    unsigned int expoente = (bits >> 23) & 0xFF;
+    unsigned int mantissa = bits & 0x7FFFFF;
 
-    // Percorre cada bit e imprime 0 ou 1
+    // Imprime o número original
+    printf("Número: %.8f\n", num);
+
+    // Imprime a representação binária completa (com separação de sinal, expoente e mantissa)
+    printf("Representação binária: ");
     for (int i = 31; i >= 0; i--)
     {
-        // Obtem o bit na posição i
-        int bit = (bits >> i) & 1;
-        printf("%d", bit);
+        printf("%d", (bits >> i) & 1);
 
-        // Adiciona espaços para melhor legibilidade
-        if (i % 8 == 0)
+        // Espaços para separar os campos
+        if (i == 31 || i == 23)
         {
             printf(" ");
         }
@@ -35,11 +34,47 @@ void printBinaryAndHex(float num)
 
     // Imprime a representação hexadecimal
     printf("\nRepresentação hexadecimal: %#08X\n", bits);
+
+    // Imprime os componentes
+    printf("Sinal: %u\n", sinal);
+    printf("Expoente (binário): ");
+    for (int i = 7; i >= 0; i--)
+    {
+        printf("%d", (expoente >> i) & 1);
+    }
+    printf(" (decimal: %u)\n", expoente);
+
+    printf("Mantissa (binário): ");
+    for (int i = 22; i >= 0; i--)
+    {
+        printf("%d", (mantissa >> i) & 1);
+    }
+    printf("\nMantissa (hexadecimal): 0x%06X\n", mantissa);
+
+    // Calculando expoente real e valor da mantissa normalizada
+    int expoenteReal = (int)expoente - 127;
+    printf("Expoente real (bias 127): %d\n", expoenteReal);
+
+    if (expoente != 0)
+    {
+        printf("Mantissa normalizada: 1.");
+    }
+    else
+    {
+        printf("Mantissa denormalizada: 0.");
+    }
+
+    // Exibe a parte fracionária da mantissa em binário
+    for (int i = 22; i >= 0; i--)
+    {
+        printf("%d", (mantissa >> i) & 1);
+    }
+    printf("\n");
 }
 
 int main(int argc, char **argv)
 {
     float numero = 301.1489F;
-    printBinaryAndHex(numero);
+    printFloatDetails(numero);
     return 0;
 }

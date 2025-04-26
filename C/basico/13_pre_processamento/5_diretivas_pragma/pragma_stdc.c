@@ -3,11 +3,15 @@
 #include <fenv.h>
 
 /**
- * #pragma STDC FENV_ACCESS ON => Indica que a função precisa de acesso ao estado da FPU.
+ * #pragma STDC FENV_ACCESS ON => Indica que a função precisa de acesso ao estado da FPU
+ * (FPU é um circuito especializado dentro da CPU (ou em coprocessadores dedicados)
+ * que executa operações com números de ponto flutuante).
  * Isso pode ser útil ao trabalhar com exceções de ponto flutuante e arredondamento.
  *
  * #pragma STDC FENV_ACCESS OFF => Permite ao compilador otimizar expressões de ponto
  * flutuante livremente, assumindo que o estado da FPU não será alterado.
+ *
+ * Não possuem flags
  *
  * Por que usar?
  * Em cálculos sensíveis, onde o estado da FPU afeta os resultados.
@@ -46,8 +50,10 @@ void testarPontoFlutuante()
 /**
  * Controla a fusão de operações de ponto flutuante (ex: a * b + c → pode ser
  * fundido em uma instrução FMA). Com FP_CONTRACT ON, o compilador pode usar instruções
- * como FMA (fused multiply-add). Com OFF, cada operação é mantida separada, o que pode
- * preservar precisão em certas situações.
+ * como FMA (fused multiply-add).
+ * FMA: Instrução que combina multiplicação e adição com maior eficiência. Com OFF,
+ * cada operação é mantida separada, o que pode preservar precisão em certas situações.
+ * gcc -O3 -mfma -o programa programa.c  # Habilita FMA
  */
 #pragma STDC FP_CONTRACT OFF
 
@@ -57,9 +63,9 @@ double calcular(double a, double b, double c)
 }
 
 /**
- * Permite ao compilador assumir limites de intervalo ao otimizar expressões com números complexos.
- * Com ON, o compilador pode fazer otimizações assumindo que não há overflow/underflow em certas
- * partes dos números complexos.
+ * Permite ao compilador assumir limites de intervalo ao otimizar expressões
+ * com números complexos. Com ON, o compilador pode fazer otimizações assumindo que
+ * não há overflow/underflow em certas partes dos números complexos.
  */
 #pragma STDC CX_LIMITED_RANGE ON
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 // Marca a função insegura 'gets' como "envenenada/perigosa ao programa"
+// Não possui flags diretamente associadas a ele
 #pragma poison gets
 
 int main(int argc, char **argv)
