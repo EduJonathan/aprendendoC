@@ -55,7 +55,9 @@
       "wchar.h": "c",
       "crtdbg.h": "c",
       "regex.h": "c",
-      "stdexcpt.h": "c"
+      "stdexcpt.h": "c",
+      "locale.h": "c",
+      "excpt.h": "c"
     }
   }
 }

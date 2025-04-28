@@ -52,7 +52,7 @@ int transform_string(char *dest, const char *src, size_t n)
 int main(int argc, char **argv)
 {
     // Define o locale para o idioma específico (por exemplo, "pt_BR.UTF-8" para português do Brasil)
-    setlocale(LC_COLLATE, "pt_BR.UTF-8");
+    setlocale(LC_ALL, "pt_BR.UTF-8");
 
     const char *original = "cadeira";
     char transformed[100]; // Buffer para armazenar a string transformada

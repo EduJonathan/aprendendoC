@@ -180,14 +180,14 @@ int main(int argc, char **argv)
         // Checa se o jogo terminou devido a bombas
         if (bombasEncontradas >= 3) // Ajustado para 3 bombas
         {
-            printf("Você encontrou %d bombas! Você perdeu!\n", NUM_BOMBAS);
+            printf("INFELIZMENTE! Você encontrou %d bombas! Você perdeu!\n", NUM_BOMBAS);
             break;
         }
 
         // Checa se o jogador encontrou todos os navios
-        if (naviosEncontrados == NUM_NAVIOS)
+        if (naviosEncontrados == NUM_NAVIOS || naviosEncontrados == 3)
         {
-            printf("Parabéns! Você encontrou todos os %d navios e venceu o jogo!\n", NUM_NAVIOS);
+            printf("PARABÊNS! Você encontrou os navios e venceu o jogo!");
             break;
         }
     }

@@ -1,6 +1,7 @@
-/** Em processo... */
 #include <stdio.h>
 #include <fenv.h>
+
+#pragma STDC FENV_ACCESS ON
 
 /**
  * fenv(): É uma biblioteca que fornece um mecanismo para criar funções que

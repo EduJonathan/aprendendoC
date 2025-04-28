@@ -6,8 +6,8 @@ e consistência entre diferentes hardwares e linguagens de programação.
 
 ESTRUTURA: Um número em IEEE 754 é dividido em três partes (para precisão simples float de 32 bits)
 
-------------------------------------------------------------------------------------------------------
-|    Parte    |	Bits	| Descrição                                                                 |
+-----------------------------------------------------------------------------------------------------
+|    Parte     |   Bits	    |               Descrição                                               |
 -----------------------------------------------------------------------------------------------------
 | Sinal    (S) |	1 bit	| 0 para positivo, 1 para negativo.                                     |
 -----------------------------------------------------------------------------------------------------
@@ -48,19 +48,20 @@ Representação em 32 bits: 1 10000001 10010000000000000000000
 1. Precisão Limitada:
 Números como 0.1 não têm representação exata e precisa em binário, causando erros de arredondamento.
 float x = 0.1;  // Na verdade, armazena ≈ 0.10000000149011612
-TENDO O FAMOSO CASO QUE SE VOCÊ INSERIR: 0.1 + 0.2 é igual 0.3 é falso
+TENDO O FAMOSO CASO QUE SE VOCÊ TENTAR SOMAR: 0.1 + 0.2 é igual 0.3 vai ser falso
 
+----------
 2. Overflow/Underflow:
 Overflow: Número muito grande → ∞.
 Underflow: Número muito pequeno → 0.0.
 
+----------
 3. Não Associatividade: Devido a arredondamentos (a + b) + c ≠ a + (b + c)
 
 ------------------------------------------------------------
 
 💻 Para Aprofundar
-Ferramentas Online:
-https://www.h-schmidt.net/FloatConverter/IEEE754.html
+Ferramentas Online: https://www.h-schmidt.net/FloatConverter/IEEE754.html
 
 📚 Livros
 "Computer Organization and Design" (David Patterson & John Hennessy).

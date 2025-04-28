@@ -13,7 +13,7 @@
  * SETJMP: Salva o contexto de execução (ou seja, o estado atual do programa, como a pilha,
  * os registradores, etc.). Quando chamada, setjmp() retorna 0.
  * 
- * LONGJMP: Faz o programa "voltar" para o ponto onde setjmp() foi chamada, mas com um valor diferente.
- * Se longjmp() for chamada, a execução "salta" para o ponto em que setjmp() foi chamado, mas retorna 
- * um valor diferente de 0.
+ * LONGJMP: Faz o programa "voltar" para o ponto onde setjmp() foi chamada, mas com um 
+ * valor diferente. Se longjmp() for chamada, a execução "salta" para o ponto em que setjmp() 
+ * foi chamado, mas retorna um valor diferente de 0.
  */

@@ -41,11 +41,11 @@ int comparar_strings_locale(const char *str1, const char *str2)
 
 int main(int argc, char **argv)
 {
+    // Define o locale para garantir uma comparação apropriada
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     const char *str1 = "maçã";
     const char *str2 = "banana";
-
-    // Define o locale para garantir uma comparação apropriada
-    setlocale(LC_COLLATE, "pt_BR.UTF-8");
 
     int result = comparar_strings_locale(str1, str2);
 
