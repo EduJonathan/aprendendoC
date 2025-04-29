@@ -18,9 +18,11 @@
 /* Renomeia o tipo long long para LLONG, possivel em uso em funções e declarações. */
 #define LLONG long long
 
-/* Renomeia a função printf para que ela seja chamada como __mingw_printf, permitindo
+/**
+ * Renomeia a função printf para que ela seja chamada como __mingw_printf, permitindo
  * então uma sobrecarga da função. Pois ela irá chamar o printf, com o mesmo poder de
- * processamento que o __mingw_printf possui. NÃO é muito recomendável. */
+ * processamento que o __mingw_printf possui. NÃO é muito recomendável.
+ */
 #define printf __mingw_printf
 
 void sizeDoArray(long double **array, LLONG *size)

@@ -58,4 +58,13 @@ Emojis
 
 \u1F600: 😀 (carinha sorrindo)
 \u1F609: 😉 (carinha piscando)
-\u2764:  ❤️ (coração)
+\u2764: ❤️ (coração)
+
+----------------------------------------------------
+
+OBS.: Linguagens mais mordernas como PYTHON, JAVA, JAVASCRIPT já tem suporte a sistema 
+de codificação UNICODE que não precisam de um tipo, no máximo uma configuração aqui outra 
+ali no ambiente de edição, mas este detalhe não faz a linguagem C obsoleta ou inutilizável, 
+ainda mais levando em consideração seu tempo de criação, sendo tempos de guerras e jamais 
+pensar o que computador seria atualmente e que uma população de diferentes regiões 
+estaria utilizando, e mostrando também o quanto C tentou se adaptar a mordenidade.

@@ -20,9 +20,9 @@
 
 int main(int argc, char **argv)
 {
-    setlocale(LC_ALL, "en_US.UTF-8");    // the C locale will be the UTF-8 enabled English
-    setlocale(LC_NUMERIC, "de_DE.utf8"); // decimal dot will be German
-    setlocale(LC_TIME, "ja_JP.utf8");    // date/time formatting will be Japanese
+    setlocale(LC_ALL, "en_US.UTF-8");    // Configura UTF-8 no padrão americano
+    setlocale(LC_NUMERIC, "de_DE.utf8"); // decimal sendo uma ',' em alemão
+    setlocale(LC_TIME, "ja_JP.utf8");    // date/time vai ser formatado em Japonês
 
     wchar_t str[100];
     time_t t = time(NULL);

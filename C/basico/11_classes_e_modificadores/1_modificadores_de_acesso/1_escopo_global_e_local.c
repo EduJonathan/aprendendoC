@@ -10,12 +10,12 @@
  * Por isso, sempre que possível, prefira variáveis locais.
  */
 
-/*
- * VARIÁVEIS LOCAIS: São declaradas dentro de funções ou blocos de código
- * (como loops ou condicionais) e só podem ser acessadas dentro desse escopo. Elas são
- * destruídas após o término da função ou bloco e consomem menos memória. O uso de variáveis
- * locais facilita o entendimento, modulariza o código e ajuda a evitar conflitos de nomes e
- * problemas de memória.
+/**
+ * VARIÁVEIS LOCAIS: 
+ * São declaradas dentro de funções ou blocos de código (como loops ou condicionais) 
+ * e só podem ser acessadas dentro desse escopo. Elas são destruídas após o término da
+ * função ou bloco e consomem menos memória. O uso de variáveis locais facilita o entendimento,
+ * modulariza o código e ajuda a evitar conflitos de nomes e problemas de memória.
  */
 
 int X = 104;             // Variável global

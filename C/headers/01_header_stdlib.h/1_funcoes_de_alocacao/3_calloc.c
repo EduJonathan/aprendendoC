@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * CALLOC: significa alocação contínua, função é utilizada para alocar múltiplos

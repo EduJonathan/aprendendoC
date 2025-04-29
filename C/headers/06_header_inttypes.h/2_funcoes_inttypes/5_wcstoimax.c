@@ -8,7 +8,7 @@
  *
  * Esta função converte uma string de caracteres largos (wchar_t) para o tipo intmax_t,
  * utilizando a base fornecida.
- * 
+ *
  * wcstoimax(): Função que converte uma string de caracteres largos (wchar_t) para um número inteiro
  *
  * @param str A string wide character a ser convertida.
@@ -18,7 +18,7 @@
 intmax_t converte_wcstoimax(const wchar_t *str, int base)
 {
     // Ponteiro para o caractere onde a conversão parou
-    wchar_t *endptr;
+    wchar_t *endptr = NULL;
 
     // Função que converte uma string de caracteres largos (wchar_t) para o tipo intmax_t
     return wcstoimax(str, &endptr, base);

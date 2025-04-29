@@ -18,7 +18,7 @@
 uintmax_t converte_wcstoumax(const wchar_t *str, int base)
 {
     // Ponteiro para o caractere onde a conversão parou
-    wchar_t *endptr;
+    wchar_t *endptr = NULL;
 
     // Função que converte uma string de caracteres largos (wchar_t) para o tipo uintmax_t
     return wcstoumax(str, &endptr, base);

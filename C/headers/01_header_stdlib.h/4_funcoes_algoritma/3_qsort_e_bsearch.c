@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * qsort(quick sort): Função que realiza a ordenação (organização) em ordem alfabetica.

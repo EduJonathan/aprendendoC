@@ -2,6 +2,15 @@
 #include <string.h>
 
 /**
+ * ASM: É a keyword que escrever instruções em Assembly, a linguagem de baixo nível e
+ * a mais próxima da linguagem de máquina, que não necessita de includes, e funções terceira
+ * pois com esta linguagem temos o absoluto sobre o hardware e controle de cada clico de clocks
+ * otimização totalmente manual de cada loop, e dentre outros, mas é sensível pois por sua
+ * produtividade baixa(suas escritas necessitam cuidado e os códigos são verbosos)
+ * manuntenção difícil pequenos erros pode levar falhas gravesm dentre outros
+ */
+
+/**
  * @brief Função que imprime uma string na saída padrão com uma nova linha ao final,
  * utilizando a chamada de sistema (syscall) diretamente para a escrita.
  *
@@ -50,5 +59,17 @@ int main(int argc, char **argv)
     // Testando a função println
     println("Olá mundo!");
     println("Linguagem C");
+
+    printf("---------------------------\n");
+
+    int n1 = 10, n2 = 20, resultado = 0;
+
+    asm volatile(
+        "addl %1, %0;"     // Soma de n1 e n2
+        : "=r"(resultado)  // Saída
+        : "r"(n1), "0"(n2) // Entradas
+    );
+
+    printf("10 + 20 = %d\n", resultado);
     return 0;
 }

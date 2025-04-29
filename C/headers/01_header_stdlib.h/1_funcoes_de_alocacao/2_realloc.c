@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * Realloc(): Utilizada para redimensionar adicionando mais tamanho para a memória

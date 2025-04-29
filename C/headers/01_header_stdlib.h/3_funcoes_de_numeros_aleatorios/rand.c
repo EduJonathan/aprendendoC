@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
+#include <stdlib.h>
 
 /**
  * rand(random): função da biblioteca de manipulação de números aleatórios (stdlib.h)

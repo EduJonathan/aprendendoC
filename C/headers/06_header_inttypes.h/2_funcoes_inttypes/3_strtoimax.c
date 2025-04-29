@@ -15,7 +15,7 @@
  */
 intmax_t converte_strtoimax(const char *str, int base)
 {
-    char *endptr;
+    char *endptr = NULL;
     return strtoimax(str, &endptr, base);
 }
 

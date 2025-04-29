@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/*
+/**
  * VARIÁVEIS DE BLOCO: São declaradas dentro de um conjunto de chaves, seja fora ou dentro
  * de uma função, seu tratamento ocorrer somente dentro de onde foram estão declaradas {},
  * não devem possuir as mesmas nomeações tanto de varíaveis globais, quanto de varíaveis

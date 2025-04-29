@@ -3,7 +3,7 @@
 
 /**
  * SSCANF: É uma função da biblioteca padrão de C que permite ler e interpretar dados
- * de uma string, funcionando como o , mas operando diretamente sobre uma cadeia de caracteres
+ * de uma string, funcionando como o scanf, mas operando diretamente sobre uma cadeia de caracteres
  * em vez da entrada padrão. Essa abordagem é útil para processar entrada formatada, como logs,
  * configurações e mensagens
  */

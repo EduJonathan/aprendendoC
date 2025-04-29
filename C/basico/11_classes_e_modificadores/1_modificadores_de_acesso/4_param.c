@@ -3,10 +3,10 @@
 /**
  * PARAMETROS: (ou argumentos) São variáveis utilizadas para passar valores para uma
  * função durante sua chamada. São declarados entre parênteses na definição da função e
- * podem ser usados dentro do corpo da função para realizar operações. Os parâmetros
- * tornam a função mais flexível e reutilizável. Seu escopo é local, ou seja, só existem
- * dentro da função e são destruídos após a execução. Não são acessíveis fora da função,
- * a menos que haja conflito de nomes com variáveis de escopo mais amplo.
+ * podem ser usados dentro do corpo da função para realizar operações.
+ * Os parâmetros tornam a função mais flexível e reutilizável. Seu escopo é local, ou seja,
+ * só existem dentro da função e são destruídos após a execução. Não são acessíveis fora da
+ * função, a menos que haja conflito de nomes com variáveis de escopo mais amplo.
  */
 
 /**

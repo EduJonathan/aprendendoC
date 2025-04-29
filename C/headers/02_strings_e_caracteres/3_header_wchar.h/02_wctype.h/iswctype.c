@@ -5,8 +5,9 @@
 
 /**
  * iswctype: classifica o caractere largo wc usando o código de idioma C atual
- * @param wint_t _C -> Parâmetro que recebe o caractere que será classificado
- * @param wctype_t _Type -> Recebe a categoria LC_CTYPE , obtido para a chamada wctype
+ * 
+ * @param wint_t _C Parâmetro que recebe o caractere que será classificado
+ * @param wctype_t _Type Recebe a categoria LC_CTYPE , obtido para a chamada wctype
  */
 const char *classificao(wchar_t wc, const char *cat)
 {

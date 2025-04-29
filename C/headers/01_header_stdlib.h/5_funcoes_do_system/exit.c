@@ -12,7 +12,7 @@
  * ou com falha. Utilizando duas opções, o EXIT_SUCCESS (0) e EXIT_FAILURE (1) podem ser usados.
  * O EXIT_SUCCESS indica que o programa terminou bem-sucedidamente, enquanto o EXIT_FAILURE
  * indica que o programa terminou com falha.
- * 
+ *
  * @note O status de saída pode ser obtido com o comando exit.
  */
 
@@ -51,5 +51,5 @@ int main(int argc, char **argv)
 
     // O código abaixo não será alcançado, pois o programa já terá terminado
     printf("Este código não será executado.\n");
-    return 0;
+    return EXIT_SUCCESS;
 }

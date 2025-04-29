@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <malloc.h>
+// #include <malloc.h>
+#include <stdlib.h>
 
 /**
  * Começando a partir agora a usar uma biblioteca mais utilizada a <stdlib.h>,

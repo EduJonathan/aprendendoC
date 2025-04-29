@@ -1,16 +1,15 @@
 -------------------------------
-
 ## 📌 Introdução
 
-Tudo em um programa é captado e manipulado diretamente na **memória RAM**.
+Tudo em um programa(em grande maioria) é captado e manipulado diretamente na **memória RAM**.
 Quando declaramos variáveis ou usamos ponteiros, estamos, na verdade, interagindo com
 endereços de memória, que estão muito bem abstraídos (para melhor compreensão e facilidade),
 pois imagine como seria manipular vários valores sem nomes, apenas por números de memória?
-Seria como tentar lembrar o que está em cada gaveta de um armário com milhares de compartimentos
+seria como tentar lembrar o que está em cada gaveta de um armário com milhares de compartimentos
 sem rótulos, apenas números! As linguagens de programação cuidam dessa complexidade para nós, 
 permitindo que trabalhemos com nomes de variáveis em vez de endereços numéricos brutos.
--------------------------------
 
+-------------------------------
 ## ❓ O que acontece na memória?
 
 Ao declarar uma variável, como `int x = 10;`, o compilador reserva um espaço na RAM para 
@@ -31,9 +30,9 @@ armazenar o número 10, como sabemos 4 bytes, obtendo então um espaço que tem 
 -----------------------
 
 ## 💭 CURIOSIDADE: Perceba que vai pulando de 4 em 4, se deve ao fato de um int (4 bytes)
-a lógica se aplica a todos os tipos de dados, porém que varia de acordo com sua ocupação na memória
--------------------------------
+a lógica se aplica a todos os tipos de dados, porém que varia de acordo com sua ocupação na memória.
 
+-------------------------------
 ## ❓ E o ponteiro?
 
 O ponteiro é uma variável especial recebendo os mesmos atributos de uma variável qualquer
@@ -49,19 +48,30 @@ com grandes estruturas de dados ou em funções onde precisamos alterar diretame
 -----------------------                               -----------------------
 | endereço | conteúdo |                               | endereço | conteúdo |
 -----------------------                               -----------------------
-| 0x1050   | 0x1040   | p aponta para o endereço de x | 0x1040   | 00001010 | <- valor 10
+| 0x1050   |          | p aponta para o endereço de x | 0x1040   | 00001010 | <- valor 10
 -----------------------                               -----------------------
 | 0x1054   |          |                               | 0x1044   |          |
 -----------------------                               -----------------------
-| 0x1058   |          |                               | 0x1048   |          |
+| 0x1058   | 0x1040   |                               | 0x1048   |          |
 -----------------------                               -----------------------
 | 0x1062   |          |                               | 0x1052   |          |
 -----------------------                               -----------------------        
 
 Com este pequeno trecho espero deixar claro e objetivo o exemplo de demonstração da organização 
 e funcionamento de memória em variáveis e ponteiros, bem acontece que o ponteiro `p`
-obtém o endereço de `x` estando localizado no endereço 0x1050, ou seja, 0x1050 armazena 
+obtém o endereço de `x` estando localizado no endereço 0x1058, ou seja, 0x1058 armazena 
 o endereço 0x1040. 
+
+-------------------------------
+## ❓ Por que ponteiros?
+
+Ponteiros é uma das característica mais poderosas de C/C++, com ele temos a manipulação
+direta de endereços memórias(passagem por referência por exemplo) modificar variáveis dentro 
+de funções. alocação dinâmica(criar estruturas de dados em tempo de execução), implementação
+de estruturas de dados complexas(listas encadeadas, árvores), acesso eficiente aos elementos
+economia de memória, acesso ao hardware e sistemas embarcados(ponteiros na linguagem C, é o 
+mais próximo a trabalhar com a linguagem de máquina) permitindo mapear memória, manipular 
+registradores, chamadas de funções e assim por diante.
 
 -------------------------------
 ## ❓ Por que os dados são armazenados em binário?
@@ -72,8 +82,8 @@ tornando o binário (0s e 1s) a forma mais eficiente de representar qualquer tip
 (números, letras, imagens, até os endereços). Para facilitar a compreensão humana, 
 esses valores binários são frequentemente convertidos por conta dos formatadores(%d) 
 para formatos como decimal ou hexadecimal.
--------------------------------
 
+-------------------------------
 ## 💭Ponteiros não são "endereços que armazenam endereços".
 
 Um ponteiro é uma variável como qualquer outra, mas com uma característica especial: 
