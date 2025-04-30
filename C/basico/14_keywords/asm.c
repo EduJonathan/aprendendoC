@@ -2,12 +2,13 @@
 #include <string.h>
 
 /**
- * ASM: É a keyword que escrever instruções em Assembly, a linguagem de baixo nível e
- * a mais próxima da linguagem de máquina, que não necessita de includes, e funções terceira
- * pois com esta linguagem temos o absoluto sobre o hardware e controle de cada clico de clocks
- * otimização totalmente manual de cada loop, e dentre outros, mas é sensível pois por sua
- * produtividade baixa(suas escritas necessitam cuidado e os códigos são verbosos)
- * manuntenção difícil pequenos erros pode levar falhas gravesm dentre outros
+ * ASM: (Assembly): Refere-se à linguagem de baixo nível mais próxima da linguagem de
+ * máquina, permitindo um controle absoluto sobre o hardware. Ao escrever em Assembly,
+ * não é necessário utilizar bibliotecas externas ou funções de alto nível, o que permite
+ * otimização manual de cada ciclo de clock e controle direto sobre a execução do código.
+ * Embora ofereça grande flexibilidade e desempenho, a escrita em Assembly exige grande cuidado,
+ * pois os códigos podem se tornar verbosos e difíceis de manter. Além disso, erros pequenos
+ * podem causar falhas graves, tornando a manutenção e depuração um desafio.
  */
 
 /**

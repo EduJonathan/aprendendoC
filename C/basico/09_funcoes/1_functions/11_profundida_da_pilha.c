@@ -1,10 +1,12 @@
 #include <stdio.h>
 
 /**
- * PROFUNDIDADE DA PILHA: Diferente da pilha de chamada, profundidade da pilha é quantas
- * funções estão empilhadas no momento exato. Não medindo o uso real memória e sim o número
- * de chamadas ativas no programa. Chamadas recursivas, este valor pode crescer muito se
- * não tiver controle.
+ * PROFUNDIDADE DA PILHA: Refere-se ao número de funções ativas (ou empilhadas) no
+ * momento atual da execução do programa. Ao contrário do uso de memória real, que
+ * mede o espaço ocupado na memória, a profundidade da pilha mede o número de chamadas
+ * de função que estão em execução. Esse valor pode aumentar significativamente em casos
+ * de chamadas recursivas, especialmente se não houver controle, o que pode levar a problemas
+ * como estouro de pilha.
  */
 
 int profundidade = 0; // Variável que vai contabilizar as profundidades das funções

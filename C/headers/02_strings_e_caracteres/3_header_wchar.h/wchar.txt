@@ -31,6 +31,7 @@ necessário usar wchar_t para representar caracteres que exigem mais de um byte.
 ----------------------------------------------------
 
 Como utilizar na linguagem C:
+
 Os include <wchar.h> e <wctype.h>, não se diferencia muito dos includes <string.h> e <ctype.h>, 
 praticamente as mesmas funções com mesmos propósitos(strlen, strcpy, wcslen, wcscpy),
 com a única diferença que o tratamento é para padrões de caracteres mais elevados.
@@ -43,7 +44,8 @@ maneira semelhante ao que você faria com strings padrão (do tipo char*), mas c
 dados wchar_t.
 ----------------------------------------------------
 
-Significado do símbolos Unicode: 
+Significado do símbolos Unicode:
+
 Sim, o Unicode contém uma vasta gama de símbolos e caracteres para representar diferentes
 tipos de caracteres, incluindo caracteres largos (ou wide characters). Esses caracteres são
 especialmente importantes em contextos onde precisamos representar conjuntos de caracteres 
@@ -62,9 +64,18 @@ Emojis
 
 ----------------------------------------------------
 
-OBS.: Linguagens mais mordernas como PYTHON, JAVA, JAVASCRIPT já tem suporte a sistema 
-de codificação UNICODE que não precisam de um tipo, no máximo uma configuração aqui outra 
-ali no ambiente de edição, mas este detalhe não faz a linguagem C obsoleta ou inutilizável, 
-ainda mais levando em consideração seu tempo de criação, sendo tempos de guerras e jamais 
-pensar o que computador seria atualmente e que uma população de diferentes regiões 
-estaria utilizando, e mostrando também o quanto C tentou se adaptar a mordenidade.
+## Considerações sobre a evolução do suporte a codificação e a relevância da linguagem C:
+
+Linguagens mais modernas como Python, Java e JavaScript já oferecem suporte nativo ao sistema 
+de codificação unicode, permitindo que a manipulação de caracteres de diferentes idiomas seja 
+feita de maneira automática, em a necessidade de tipos específicos, sendo geralmente uma questão
+de configuração no ambiente de edição. no entanto, isso não torna a linguagem C obsoleta 
+ou inutilizável. Pelo contrário, ao considerar o contexto de sua criação, durante uma época 
+de grandes transformações tecnológicas e guerras, a linguagem C foi um marco importante. 
+
+A evolução de C ao longo do tempo, incluindo tentativas de adaptação a novos paradigmas 
+(como o suporte Unicode e a configuração de localidade via `locale.h`), demonstra sua
+flexibilidade e resiliência. A linguagem C continua sendo amplamente utilizada em sistemas 
+de baixo nível, embarcados e em áreas onde performance e o controle direto sobre o hardware 
+são cruciais.
+ 

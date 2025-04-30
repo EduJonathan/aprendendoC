@@ -42,8 +42,8 @@ int main(int argc, char **argv)
 {
     int array[4] = {-9, 0, 36, 45};
     size_t n_Elementos = sizeof(array) / sizeof(array[0]);
-    int max;
-    int min;
+    int max = 0;
+    int min = 0;
 
     maior_e_menor(array, &max, &min, n_Elementos);
 

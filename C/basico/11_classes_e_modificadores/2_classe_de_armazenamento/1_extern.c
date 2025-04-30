@@ -1,8 +1,14 @@
 #include <stdio.h>
 
 /**
- * EXTERN: Estende a visibilidade de acesso ao uso onde é declarada sua existencia,
- * seu escopo de varíavel sempre global.
+ * EXTERN: * A palavra-chave `extern` é usada para estender a visibilidade de uma variável
+ * ou função além do seu escopo original, permitindo que seja acessada em diferentes arquivos 
+ * de código-fonte. A variável ou função declarada com `extern` não é definida neste arquivo, 
+ * mas sim em outro arquivo de código, sendo assim acessível globalmente. Isso é útil em 
+ * programas que envolvem múltiplos arquivos e ajudam a organizar a memória de forma eficiente.
+ *
+ * @note O uso de `extern` implica que a variável ou função é global, ou seja, pode ser acessada em
+ * qualquer parte do programa onde for declarada, desde que a declaração seja feita corretamente.
  */
 
 // Declaração da variável global com a palavra-chave 'extern'

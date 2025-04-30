@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-// Caracteres especiais (caracteres de escape): permitem realizar
-// uma determinada ação, e estão sempre acompanhado pela '\'.
+// Caracteres especiais (caracteres de escape): Permitem realizar
+// uma determinada ação na exibição, estando sempre acompanhado pela '\'.
 
 int main(int argc, char **argv)
 {
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     printf("\n form\ffeed\n");
     /**
      * OUTPUT:
-     * 
+     *
      * form
      *     feed
      */
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     printf("\n Quebra\n de\n linha\n");
     /**
      * OUTPUT:
-     * 
+     *
      * Quebra
      * de
      * linha
@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     printf("\n\vtabulacao\vvertical\n");
     /**
      * OUTPUT:
-     * 
+     *
      * tabulacao
      *          vertical
      */
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
     printf("\n hoje em dia nao preciso das \\'barras\\' mas se precisar apenas insira \\' as barras e aspas simples\\'\n");
     /**
      * OUTPUT:
-     * 
+     *
      * hoje em dia das nao preciso das \'barras\' mas se precisar apenas insira \'as barras e aspas simples\'
      */
 

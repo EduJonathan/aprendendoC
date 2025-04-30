@@ -66,10 +66,12 @@ compilar no terminal e caso se estiver (gcc arquivo c.c -o nome) o compilador po
 compilados, no caso arquivo(pode não ter uma extensão, mas é entendido como arquivo.txt) e c.c. gerando erro
 no processo de compilação, Atenção ao usar -o nome: Certifique-se o nome do arquivo de saída (nome) para que 
 não sobrescreva outro arquivo importante já existente no sistema ou código fonte.
+-----------------------------------
 
 OBS.: O processo de compilação é composto por diversas etapas, cada uma com papel fundamental na transformação 
 do código-fonte em um programa executável. Com o uso adequado de diretivas e flags(que ainda há muitas a ser explorada),
 podemos está otimizando, condicionando e modulando seu código conforme necessário.
+-----------------------------------
 
 IMPORTANTE: Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para qualquer 
 desenvolvedor C/C++. E tendo o Linux como Sistema Operacional, esse aprendizado se intensifica ainda mais, 

@@ -26,5 +26,23 @@ CAMPO:
         // se sim, vai para o LABEL CAMPO
         goto CAMPO;
     }
+
+    printf("\n------------------------\n");
+
+    int valor = 10;
+
+    printf("Mensagem impressa\n");
+
+    if (valor == 10)
+    {
+        goto FIELD;
+    }
+
+    printf("Este é o goto\n");
+
+FIELD:
+    printf("Texto ");
+    printf("Será ");
+    printf("Impresso\n");
     return 0;
 }

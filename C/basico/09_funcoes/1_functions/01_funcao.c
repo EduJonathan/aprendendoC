@@ -1,11 +1,14 @@
 #include <stdio.h>
 
 /**
- * FUNCTIONS: Funções são blocos de código que realizam tarefas através de um bloco
- * separado a qual pode retornar ou não o valor de um tipo de dado, aqueles que não
- * retornam valor são conhecidos como void ou tipo genérico, ele realiza procedimentos
- * através de instruções não retornando nenhum valor.
- * Funções organizam, estruturam o código e facilitam a leitura e compreensão do mesmo.
+ * FUNCTIONS: São blocos de código independentes que executam tarefas específicas.
+ * Elas podem retornar um valor ou não, dependendo de sua definição. Quando uma função
+ * não retorna valor, ela é do tipo void, que indica que o propósito da função é apenas
+ * realizar um conjunto de instruções, sem fornecer um resultado.
+ *
+ * Além de permitir a reutilização de código, as funções ajudam na organização e
+ * estruturação do programa, dividindo-o em partes menores e mais compreensíveis.
+ * Isso facilita tanto a leitura quanto a manutenção do código, tornando-o mais modular e legível.
  */
 
 /// @brief Procedimento que realiza apenas uma instrução de printf para exibir uma mensagem

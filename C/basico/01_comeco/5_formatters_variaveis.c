@@ -3,10 +3,10 @@
 
 int main(int argc, char **argv)
 {
-    /// FORMATTERS: Formatadores são responsáveis por realizar a exibição,
+    /// FORMATTERS: Ou formatadores são responsáveis por realizar a exibição,
     // entrada e saída de dados, sempre acompanhados pelo especificador '%'.
 
-    /// VARIAVEIS: Identificadores são nomeações que criam abstrações para armazenar
+    /// VARIAVEIS: Ou identificadores são nomeações que criam abstrações para armazenar
     // valores de tipos de dados, permitindo manipulação e alteração dos dados.
 
     /// OBS: O sinal de '=' significa atribuição ou inicialização de um valor a variáveis.

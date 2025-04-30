@@ -131,6 +131,7 @@ quando já não precisa tanto de avisos e quer gerar um executável otimizado
 
 > gcc arquivo.c -std=c99 -Wall -o programa
 Para garantir a conformidade com um padrão mais antigo
+------------------------------------------------------
 
 ● 👨🏻‍💻 Criação de Conjuntos de Flags
 
@@ -146,6 +147,8 @@ com a desativação de warnings para não sobrecarregar o processo e o tamanho d
 Conjunto para garantir padrões e qualidade: Esse conjunto foca em garantir que o código
 seja escrito conforme os padrões e que não haja problemas de inicialização de variáveis, com flags 
 para fazer o código aderir estritamente ao padrão C11.
+
+------------------------------------------------------
 
 ● 👨🏻‍💻 Criação de Conjuntos de Flags com makefile e Criação de Conjuntos de Flags com scripts
 

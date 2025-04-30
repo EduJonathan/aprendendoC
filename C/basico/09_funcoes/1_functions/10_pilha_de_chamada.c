@@ -14,17 +14,26 @@
  * ("tail call optimization").
  */
 
+/**
+ * @brief Função que irá ser repassada a outras funções
+ */
 void funcaoC()
 {
     printf("Função C Chamada\n");
 }
 
+/**
+ * @brief Função que irá ser invocar a funcaoC()
+ */
 void funcaoB()
 {
     // FuncaoB chama FuncaoC
     funcaoC();
 }
 
+/**
+ * @brief Função que irá ser invocar a funcaoB() para invocar a funcaoC()
+ */
 void funcaoA()
 {
     // FuncaoA chama FuncaoB

@@ -1,9 +1,17 @@
 #include <stdio.h>
 
 /**
- * SUFIXOS: São utilizados para indicar o tipo de dado de uma constante literal.
- * Eles são úteis em situações onde o tipo da constante não pode ser automaticamente
- * inferido pelo compilador.
+ * @brief Sufixos para identificação do tipo de dados de uma constante literal.
+ *
+ * Sufixos são utilizados para especificar explicitamente o tipo de dado de uma constante literal.
+ * Isso é útil em situações onde o tipo da constante não pode ser automaticamente inferido pelo
+ * compilador, especialmente quando lidamos com literais numéricos de diferentes tipos, como
+ * inteiros e floats.
+ * Por exemplo, o sufixo `U` pode ser usado para definir um valor como `unsigned`, 
+ * e o sufixo `L` pode indicar que o valor é `long`.
+ *
+ * @note O uso de sufixos é importante para garantir a precisão do tipo e evitar problemas 
+ * de tipo durante a compilação, como a promoção implícita de tipos.
  */
 
 int main(int argc, char **argv)

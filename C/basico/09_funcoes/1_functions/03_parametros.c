@@ -1,12 +1,14 @@
 #include <stdio.h>
 
 /**
- * PARAMETROS: Ou argumentos são valores que são passados para uma função ou método
- * quando ele é chamado. Podemos manipular esses parâmetros de várias maneiras, inclusive
- * realizando operações com valores correspondentes aos tipos dos parâmetros. É importante
- * observar que os valores dos parâmetros são definidos ao chamarmos a função,
- * geralmente na função principal (main). Não importa quantas operações realizamos com eles
- * dentro da função, seus valores originais não são alterados fora do escopo da função.
+ * PARAMETROS:  São os valores que uma função ou método recebe quando é chamado.
+ * Eles atuam como "entradas" que podem ser manipuladas dentro da função, permitindo
+ * realizar operações ou cálculos baseados nos valores fornecidos. Os parâmetros são
+ * definidos no momento da chamada da função, geralmente a partir da função principal (como main).
+ *
+ * É importante destacar que, embora possamos realizar diversas operações com os parâmetros
+ * dentro da função, seus valores originais permanecem inalterados fora do escopo da função,
+ * a menos que estejam sendo passados por referência.
  */
 
 /**

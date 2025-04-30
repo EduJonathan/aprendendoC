@@ -3,9 +3,18 @@
 #include <locale.h>
 
 /**
- * O arquivo locale.h, é o arquivo responsável da gerencia de configuração da localidade
- * de uma certa regionalidade, exemplo para o uso de caracteres Japoneses, Arábes
- * configura através da função setlocale.
+ * @brief Arquivo de cabeçalho responsável pela configuração de localidade.
+ *
+ * O arquivo `locale.h` fornece funções para configurar e gerenciar a localidade
+ * (ou regionalidade) do ambiente de execução, permitindo o suporte a diferentes
+ * convenções culturais, como formatação de números, datas e o uso de caracteres especiais
+ * (ex: japoneses, árabes). A função principal para isso é `setlocale`, que ajusta o ambiente
+ * de execução conforme a configuração regional desejada.
+ *
+ * @note Em linguagens mais modernas como Python, Java e C#, o gerenciamento de localidade
+ * é feito de forma automática, minimizando problemas relacionados à configuração do ambiente.
+ * Além disso, o comportamento do `locale` pode ser configurado diretamente no ambiente do 
+ * editor de código.
  */
 
 int main(int argc, char **argv)

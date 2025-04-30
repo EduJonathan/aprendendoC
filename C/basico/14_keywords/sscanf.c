@@ -8,6 +8,19 @@
  * configurações e mensagens
  */
 
+/**
+ * @brief Valida se a data fornecida é válida.
+ *
+ * Essa função verifica se o dia, mês e ano fornecidos formam uma data válida.
+ * Ela considera os meses do ano, o número de dias de cada mês e verifica
+ * se o ano é bissexto para o mês de fevereiro.
+ *
+ * @param dia O dia da data a ser validada.
+ * @param mes O mês da data a ser validada.
+ * @param ano O ano da data a ser validada.
+ *
+ * @return Retorna `true` se a data for válida, `false` caso contrário.
+ */
 bool validar_data(int dia, int mes, int ano)
 {
     // Verifica se o mês é válido (1-12)
@@ -77,6 +90,5 @@ int main(int argc, char **argv)
     {
         printf("Data inválida!\n");
     }
-
     return 0;
 }

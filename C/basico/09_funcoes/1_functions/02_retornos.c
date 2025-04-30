@@ -41,8 +41,8 @@ int return_int(void)
  */
 float return_float(void)
 {
-    float valorAprox = ceilf(0.78F);
     // ceilf(): Fornecido por math.h, retorna o menor valor aproximado
+    float valorAprox = ceilf(0.78F);
 
     printf(" VALOR APROXIMADO: %f\n", valorAprox);
     return valorAprox; // Retorna um valor em ponto flutuante
@@ -57,8 +57,8 @@ float return_float(void)
  */
 double return_double(void)
 {
-    double power = pow(5.0, 2.0);
     // pow(): Fornecido por math.h, retorna o valor de potenciação
+    double power = pow(5.0, 2.0);
 
     printf(" POTENCIAÇÃO: %lf\n", power);
     return power; // Retorna um valor em ponto flutuante double
@@ -139,7 +139,7 @@ static char *return_static_pointer(void)
 {
     static char n = 90; // Variável estática para persistência após o retorno
     printf(" RETORNO: ASCII: '%c' DECIMAL: %d\n", n, n);
-    return &n; // Retornando a referência de uma variável estática
+    return &n; // Retorna uma referência de uma variável estática
 }
 
 /**

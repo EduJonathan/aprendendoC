@@ -6,7 +6,7 @@ int main(int argc, char **argv)
     // printf(print formatted): Função de saída de texto e dados.
     printf("OLÁ! ");
 
-    printf("este é minha 1º linha de código, meu nome é eduardo e estou programando em C\n");
+    printf("este é meu 1º de código, meu nome é eduardo e estou programando em C\n");
     // Os dois primeiros printf irão ter uma saída que ocorrerá na mesma linha do
     // terminal, o '\n' é um caractere especial ou caractere de escape que realiza ação
     // de quebra de linha, significa que a próxima função de saída de texto não esteja

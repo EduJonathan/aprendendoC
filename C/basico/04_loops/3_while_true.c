@@ -35,48 +35,49 @@ int main(int argc, char **argv)
     }
 
     printf("\n====================================================\n");
-    printf("\n\t>>EXEMPLO 02: WHILE-TRUE ANINHADO<<\n");
+    printf("\n\t>>EXEMPLO 02: WHILE-TRUE ANINHADO - SOMA DOS NÚMEROS<<\n");
 
-    // Inicializa a variável 'loop_externo' com 1. Esta variável controlará o número da
-    // linha na tabela de multiplicação.
+    // Inicializa a variável 'loop_externo' com 1. Esta variável controlará o número da linha.
     int loop_externo = 1;
 
     // Loop externo infinito que será controlado pelos comandos 'break' internos.
     do
     {
         // Inicializa a variável 'loop_interno' com 1 dentro do loop externo.
-        // Esta variável controlará o número da coluna na tabela de multiplicação.
+        // Esta variável controlará a soma até o número 'loop_externo'.
         int loop_interno = 1;
+        int soma = 0; // Variável para armazenar a soma dos números
 
         // Loop interno infinito que será controlado pelo comando 'break' quando
-        // 'loop_interno' for maior que 5.
+        // 'loop_interno' for maior que 'loop_externo'.
         do
         {
-            // Imprime o produto de 'loop_externo' e loop_interno'
-            printf("%d\t", loop_externo * loop_interno);
+            // Adiciona 'loop_interno' à soma
+            soma += loop_interno;
 
-            // Incrementa 'loop_interno' para o próximo valor na linha atual.
+            // Incrementa 'loop_interno' para o próximo número na soma.
             loop_interno++;
 
-            // Verifica se 'loop_interno' é maior que 5.
-            if (loop_interno > 5)
+            // Verifica se 'loop_interno' é maior que 'loop_externo'.
+            if (loop_interno > loop_externo)
             {
-                // Sai do loop interno quando loop_interno > 5
+                // Sai do loop interno quando 'loop_interno' for maior que 'loop_externo'
                 break;
             }
         } while (1);
 
-        printf("\n");
+        // Imprime o resultado da soma para a linha atual
+        printf("Soma dos números de 1 até %d: %d\n", loop_externo, soma);
 
-        // Incrementa 'loop_externo' para o próximo valor na tabela, preparando para a próxima linha.
+        // Incrementa 'loop_externo' para o próximo valor.
         loop_externo++;
 
         // Verifica se 'loop_externo' é maior que 5.
         if (loop_externo > 5)
         {
-            // Sai do loop externo quando loop_externo > 5
+            // Sai do loop externo quando 'loop_externo' for maior que 5
             break;
         }
-    } while (true);
+    } while (1);
     return 0;
 }

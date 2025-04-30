@@ -1,10 +1,18 @@
 #include <stdio.h>
 
 /**
- * operador ternario (?:): Valida uma condição, retornando um valor true em uma expressão
- * mais simplificada.
+ * @brief Operador ternário (?:) para avaliação condicional simplificada.
  *
- * SINTAXE: (condicional) ? valor verdadeiro(variavel) : valor falso(variavel2);
+ * O operador ternário (?:) é uma forma compacta de expressar uma condição,
+ * retornando um valor baseado na avaliação dessa condição. Ele permite simplificar
+ * expressões condicionais, substituindo uma estrutura `if-else` tradicional, tornando o
+ * código mais conciso e legível.
+ *
+ * @note A sintaxe é: `(condicional) ? valor verdadeiro : valor falso;`
+ *
+ * @param condicional A condição a ser avaliada. Se for verdadeira, o valor após o `?` será retornado.
+ * @param valor verdadeiro O valor a ser retornado caso a condicional seja verdadeira.
+ * @param valor falso O valor a ser retornado caso a condicional seja falsa.
  */
 
 int main(int argc, char **argv)
