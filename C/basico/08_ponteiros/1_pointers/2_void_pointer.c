@@ -1,11 +1,14 @@
 #include <stdio.h>
 
 /*
- * void pointer(ponteiro vazio): É um tipo de ponteiro especial que pode conter o
- * endereço de qualquer tipo de dado. útil em situações onde se deseja criar uma função
- * ou uma estrutura de dados que possa manipular diferentes tipos de dados sem a necessidade
- * de  criar versões específicas para cada tipo. Porém o cuidado deve está na derreferenciação
- * de um ponteiro vazio só pode ser efetuada após a conversão para outro tipo de dados.
+ * void pointer (ponteiro para void): É um tipo especial de ponteiro que pode armazenar
+ * o endereço de qualquer tipo de dado. É útil em situações em que se deseja criar
+ * funções ou estruturas de dados genéricas, capazes de manipular diferentes tipos
+ * sem a necessidade de criar versões específicas para cada um.
+ *
+ * Atenção: a desreferenciação de um ponteiro void só pode ser feita após a conversão
+ * explícita para outro tipo de ponteiro, pois o compilador não sabe o tamanho ou o tipo
+ * de dado apontado.
  */
 
 int main(int argc, char **argv)

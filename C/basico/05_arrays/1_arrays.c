@@ -174,7 +174,7 @@ int main(int argc, char **argv)
     {
         printf(" Posicao [%d] Valor alterado para: %d\n", i, arr[i]);
     }
-    // Como discutido, preferimos utilizar a variável `n_elementos_arr` em vez
+    // Como discutido, preferimos utilizar a variável `nElementos` em vez
     // de um número fixo como 10 for (int i = 0; i < 10; i++),
     // porque ela é mais flexível e garante que o código funcione independentemente do
     // tamanho real do array, e trabalhando melhor com números não negativos.

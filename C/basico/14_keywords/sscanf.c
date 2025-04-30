@@ -2,10 +2,27 @@
 #include <stdbool.h>
 
 /**
- * SSCANF: É uma função da biblioteca padrão de C que permite ler e interpretar dados
- * de uma string, funcionando como o scanf, mas operando diretamente sobre uma cadeia de caracteres
- * em vez da entrada padrão. Essa abordagem é útil para processar entrada formatada, como logs,
- * configurações e mensagens
+ * SSCANF: A função `sscanf` é parte da biblioteca padrão de C e permite ler e interpretar
+ * dados de uma string, funcionando de maneira semelhante ao `scanf`, mas em vez de ler
+ * da entrada padrão (como o teclado), ela processa uma cadeia de caracteres que é passada
+ * como argumento. Essa abordagem é útil para processar strings formatadas, como logs,
+ * configurações, mensagens e outras fontes de dados em formato específico.
+ *
+ * Sintaxe: int sscanf(const char *str, const char *format, ...);
+ *
+ * Parâmetros:
+ * - `str`: A string que contém os dados a serem lidos.
+ * - `format`: A string de formato, que especifica como os dados devem ser interpretados.
+ * - Os parâmetros adicionais (`...`) são as variáveis onde os dados lidos serão armazenados.
+ *
+ * Retorno:
+ * A função retorna o número de itens lidos e atribuídos com sucesso de acordo com o formato.
+ * Se ocorrer um erro, ela retorna `EOF`.
+ *
+ * Utilização:
+ * `sscanf` é muito útil quando você precisa processar entradas em formato específico a partir
+ * de strings, como parsing de dados configuracionais, logs ou qualquer outro tipo de entrada
+ * formatada que já tenha sido lida em memória.
  */
 
 /**

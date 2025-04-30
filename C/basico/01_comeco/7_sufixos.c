@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * @brief Sufixos para identificação do tipo de dados de uma constante literal.
+ * Sufixos para identificação do tipo de dados de uma constante literal.
  *
  * Sufixos são utilizados para especificar explicitamente o tipo de dado de uma constante literal.
  * Isso é útil em situações onde o tipo da constante não pode ser automaticamente inferido pelo

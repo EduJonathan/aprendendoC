@@ -53,7 +53,7 @@ int main(int argc, char **argv)
     // Enquanto o ponteiro for nulo, não podemos derrefencia-lo, então precisamos fazer o
     // ponteiro apontar para um endereço válido
 
-    /* ptr está apontando agora para o endereço de memória de num.*/
+    /* ptr está apontando agora para o endereço de memória de num. */
     ptr = &num;
 
     // VERIFICANDO...
@@ -76,9 +76,9 @@ int main(int argc, char **argv)
      * mas e se não colocar o * antes do ptr?
      *
      * printf("O conteudo de ptr: %d\tconteudo em hexadecimal: %x\tconteudo em octal: %o\n", ptr, ptr, ptr);
-     * %d : será impresso em decimal o endereço de ptr que se representa em hexadecimal.
-     * %x : será impresso em hexadecimal o endereço de ptr que se representa em hexadecimal.
-     * %o : será impresso em octal o endereço de ptr que se representa em hexadecimal.
+     * %d: Imprime o valor de *ptr em formato decimal.
+     * %x: Imprime o valor de *ptr em formato hexadecimal.
+     * %o: Imprime o valor de *ptr em formato octal.
      */
 
     /*

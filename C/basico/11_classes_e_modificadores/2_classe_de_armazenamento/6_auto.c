@@ -1,11 +1,17 @@
 #include <stdio.h>
 
 /**
- * AUTO: indica que uma variável é armazenada na memória stack (pilha) e sempre
- * é do escopo de local (visível apenas dentro do bloco de código onde é declarada).
+ * AUTO: `auto` é o modificador padrão para variáveis locais em C/C++. Ele indica que a variável
+ * será armazenada na memória stack (pilha) e tem escopo local, ou seja, é visível apenas dentro
+ * do bloco de código onde é declarada. A palavra-chave `auto` é opcional, pois as variáveis
+ * locais já são automaticamente tratadas dessa forma.
+ *
+ * Exemplo:
+ * auto int i;  // Declaração de variável local 'i', com escopo local
+ *
+ * @note: O uso explícito de `auto` não é necessário em C e C++ modernos, pois o compilador
+ * já assume esse comportamento para variáveis locais.
  */
-
-// auto int i; file-scope declaration of 'i' specifies 'auto'
 
 int main(int argc, char **argv)
 {

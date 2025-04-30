@@ -1,11 +1,19 @@
 #include <stdio.h>
 
 /**
- * REGISTERS: Ou registradores são onde as variáveis estão alocadas em registradores,
- * uma região de memória presente no processador da máquina (CPU) que seu acesso é mais
- * rápido que uma memória alocada na memória RAM. Seu escopo sempre será local, utilizada
- * mais nos tipo int e char, não pode ser um ponteiro, pois registers não possuem endereços
- * de memória que possam ser extraído com '&'.
+ * REGISTERS: `register` é usado para indicar que uma variável deve ser alocada em
+ * um registrador de CPU, onde o acesso é mais rápido do que na memória RAM. É mais comumente
+ * usado para variáveis do tipo `int` e `char`. O uso de `register` sugere ao compilador otimizar
+ * o acesso à variável.
+ *
+ * Importante:
+ * - O escopo de uma variável registrada é sempre local.
+ * - Não pode ser usado com ponteiros, pois os registradores não possuem endereços de memória.
+ *
+ * Exemplo:
+ * register int count = 0;
+ *
+ * @note O compilador pode ignorar o modificador `register` e armazenar a variável na RAM.
  */
 
 /// ERRO: a global-scope declaration may not have this storage class

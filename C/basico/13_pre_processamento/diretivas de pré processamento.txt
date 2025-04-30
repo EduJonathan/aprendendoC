@@ -1,8 +1,9 @@
-Diretivas de pré-processador => As diretivas de pré-processador são instruções executadas antes da compilação em 
-linguagens como C/C++. Elas permitem definir constantes, incluir arquivos, criar macros e controlar condicionalmente
-a compilação de trechos de código, pois, como elas vem antes do processamento do código, faz com que a compilação seja
-essencial. E além disso, é possível usar flags(sinalizadores) na linha de comando do terminal para modificar o
-comportamento da compilação conforme a necessidade do desenvolvedor.
+Diretivas de pré-processamento:
+São instruções executadas antes da compilação em linguagens como C/C++. Elas permitem definir constantes, 
+incluir arquivos, criar macros e controlar condicionalmente a compilação de trechos de código, pois, como 
+elas vem antes do processamento do código, faz com que a compilação seja essencial. E além disso, é possível 
+usar flags(sinalizadores) na linha de comando do terminal para modificar o comportamento da compilação conforme 
+a necessidade do desenvolvedor.
 
 ============================================================================================
 
@@ -21,8 +22,7 @@ sequência de tokens que serão mais facilmente analisados nas etapas seguintes.
 como parênteses ou chaves mal colocadas).
 
 4º Análise Semântica: Valida o significado do código (ex: uso de variáveis antes da declaração, número de argumentos 
-de uma função, etc.). Por exemplo, verifica se variáveis estão sendo usadas antes de serem declaradas ou se funções 
-estão sendo chamadas com o número correto de argumentos.
+de uma função, etc.).
 
 5º Gerar código intermediário: O compilador gera um código intermediário, muitas vezes representado 
 por arquivos .o ou .obj (objetos), que pode ser otimizado e convertido em código de máquina.
@@ -43,6 +43,8 @@ Como compilar um arquivo C/C++
 No terminal de seu Sistema Operacional, estando no caminho(diretório) do arquivo principal ".c"
 > "C:\\Users\\EDUARDO_OLIVEIRA\\Documents\\aprendendoC\\C\\basico\\13_pre_processamento"
 > gcc nomeDoArquivo.c -o nomeParaArquivoExecutavel
+ou
+> gcc -o nomeParaArquivoExecutavel nomeDoArquivo.c
 > .\nomeParaArquivoExecutavel.exe
 
 Estes passos geram e executa o arquivo executável dentro do terminal
@@ -61,16 +63,18 @@ Para gerar o arquivo objeto(.o) da mesma maneira descrita para arquivo executáv
 ===================================================================================
 
 ⚠ CUIDADOS: Diretórios(pastas) e Arquivos principalmente em C/C++ tem uma sensibilidade na nomeação de seus arquivos
-os nomes dos arquivos não devem conter espaços. Prefira formatos como arquivo_c.c ou arquivoC.c. Pois no momento de 
-compilar no terminal e caso se estiver (gcc arquivo c.c -o nome) o compilador poderá entender que há 2 arquivos a ser 
-compilados, no caso arquivo(pode não ter uma extensão, mas é entendido como arquivo.txt) e c.c. gerando erro
-no processo de compilação, Atenção ao usar -o nome: Certifique-se o nome do arquivo de saída (nome) para que 
-não sobrescreva outro arquivo importante já existente no sistema ou código fonte.
+os nomes dos arquivos não devem conter espaços. Prefira formatos como (arquivo_c.c) ou (arquivoC.c). 
+Pois no momento de compilar no terminal e caso se estiver (gcc arquivo c.c -o nome) o compilador poderá 
+entender que há 2 arquivos a ser compilados, no caso "arquivo"(pode não ter uma extensão, mas é entendido como arquivo.txt) 
+e "c.c", gerando erro no processo de compilação.
+E atenção ao usar -o nome: Certifique-se o nome do arquivo de saída para que não sobrescreva outro arquivo importante 
+já existente no sistema ou código fonte.
 -----------------------------------
 
-OBS.: O processo de compilação é composto por diversas etapas, cada uma com papel fundamental na transformação 
-do código-fonte em um programa executável. Com o uso adequado de diretivas e flags(que ainda há muitas a ser explorada),
-podemos está otimizando, condicionando e modulando seu código conforme necessário.
+OBS.: O processo de compilação é composto por diversas etapas, cada uma com papel fundamental na 
+transformação do código-fonte em um programa executável. Com o uso adequado de diretivas e flags
+(que ainda há muitas a ser explorada), podemos está otimizando, condicionando e modulando seu código
+conforme necessário.
 -----------------------------------
 
 IMPORTANTE: Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para qualquer 

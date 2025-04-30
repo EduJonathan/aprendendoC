@@ -1,9 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Umas das características sobre o retorno de funções é, não conseguir retornar mais de
-// 2 valores, array ou matrizes, Mas com ponteiro para um tipo de dado é possivel sim
-// retornar. Neste exemplo estamos retornando um array
+/**
+ * Em C, uma função não pode retornar diretamente mais de um valor, como um array ou uma matriz.
+ * No entanto, é possível contornar essa limitação usando ponteiros, permitindo que a função
+ * retorne uma referência para um valor (como um array) que pode ser manipulada fora da função.
+ *
+ * Exemplo de função retornando um array utilizando ponteiro:
+ *
+ * int* retornar_array() {
+ *     static int arr[5] = {1, 2, 3, 4, 5};
+ *     return arr;  // Retorna o ponteiro para o primeiro elemento do array
+ * }
+ *
+ * @note No exemplo, o array é declarado como `static` para garantir que a memória
+ * alocada para o array não seja liberada ao final da execução da função.
+ * @note Outra abordagem seria alocar dinamicamente o array na memória heap (usando `malloc`),
+ * mas o cuidado deve ser tomado para garantir que a memória seja liberada adequadamente.
+ */
 
 /**
  * @brief Aloca um vetor de inteiros e inicializa com valores sequenciais.

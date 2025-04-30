@@ -1,20 +1,22 @@
 #include <stdio.h>
 
 /*
- * SHORT HANDS: São operações simplificadas que podem ser realizadas em variáveis,
- * onde um valor é operado diretamente e o resultado é atribuído de volta à variável original.
- * Eles são comuns tanto em operações matemáticas quanto em bitwise, e ajudam a reduzir
- * a quantidade de código.
+ * SHORT HANDS (Operadores de atribuição combinada):
+ * São formas simplificadas de realizar operações diretamente sobre variáveis,
+ * aplicando a operação e atribuindo o resultado à mesma variável em uma única instrução.
  *
- * ----------------------------------------------------
- * |   SHORT MATEMÁTICOS | |    SHORT BITWISE         |
- * ----------------------------------------------------
- * |           +=        | |           &=             |
- * |           -=        | |           |=             |
- * |           *=        | |           ^=             |
- * |           /=        | |           >>=            |
- * |           %=        | |           <<=            |
- * ----------------------------------------------------
+ * Eles são bastante comuns tanto em operações aritméticas quanto em operações
+ * bit a bit (bitwise), tornando o código mais enxuto e legível.
+ *
+ * ------------------------------------------------------------
+ * |    OPERADORES ARITMÉTICOS     |   OPERADORES BITWISE     |
+ * ------------------------------------------------------------
+ * |         +=   (soma)           |       &=   (E bit a bit) |
+ * |         -=   (subtração)      |       |=   (OU bit a bit)|
+ * |         *=   (multiplicação)  |       ^=   (XOR)         |
+ * |         /=   (divisão)        |       >>=  (desloca dir.)|
+ * |         %=   (resto)          |       <<=  (desloca esq.)|
+ * ------------------------------------------------------------
  */
 
 int main(int argc, char **argv)

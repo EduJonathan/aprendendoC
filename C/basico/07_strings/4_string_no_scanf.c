@@ -28,12 +28,15 @@ int main(int argc, char **argv)
 	 * aleatórios na memória.
 	 *
 	 * ['e']['d']['u']['a']['r']['d']['o'][' ']['j']['o']['n']['a']['t']['h']['a']['n']['\0']
-	 *   0	  1	   2    3    4    5    6    7    8    9    10   11   12   13   14   15   16
+	 *   0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15    16
 	 *
-	 * poderíamos fazer: "eduardo_jonathan"? sim, mas não é prático, e ninguém escreve o nome assim!
+	 * poderíamos fazer: "eduardo_jonathan"? sim, mas não é prático, e ninguém escreve o nome
+	 * assim! sobre o '\n' não é armazenado com scanf, ele é consumido e descartado, para
+	 * capturar '\n', use fgets.
 	 */
 
 	printf("\n-----------------------------------------------------\n");
+	
 	char string_segundo_nome[10];
 
 	printf("\n>>Digite seu segundo nome: ");
@@ -100,7 +103,7 @@ int main(int argc, char **argv)
 	 *
 	 * CUIDADO: Podemos ignorar o tamanho do vetor quantidade de caracteres que quisermos
 	 * scanf("%20[^\n]", input_string_aprimorado); que irá compilar sem problemas,
-	 * porém lembre-se, não é uma boa prática ultrapassar os limites do vetor.
+	 * porém lembre-se, NÃO é uma boa prática ultrapassar os limites do vetor.
 	 */
 
 	printf("\n-----------------------------------------------------\n");

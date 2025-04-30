@@ -1,6 +1,13 @@
 #include <stdio.h>
 
 /**
+ * Passagem por valor: A função trabalha com uma cópia do valor e não altera o valor
+ * da variável original.
+ * Passagem por referência (via ponteiro): A função altera diretamente a variável original, 
+ * pois trabalha com o endereço de memória da variável.
+ */
+
+/**
  * @brief Dobra o valor de um inteiro local.
  *
  * Esta função recebe um inteiro, dobra seu valor e imprime o resultado. A variável `num`
@@ -46,12 +53,13 @@ int main(int argc, char **argv)
     soma(valor);                                                   // 16
     printf(" NA MAIN: Valor da varíavel pela valor: %d\n", valor); // 8
 
-    /*
-     * A função soma recebe uma cópia do valor. Alterações em `num` não afetam a
-     * variável original. Após a execução, `num` é destruído e o valor original
+    /**
+     * A função soma recebe uma cópia do valor da variável. Ou seja, quando você passa
+     * uma variável para a função, a função recebe uma cópia desse valor e qualquer alteração
+     * feita na cópia não afeta a variável original.
+     * Após a execução da função, a cópia é destruída e o valor da variável original
      * permanece inalterado.
      */
-
     printf("\n\n\t>>USANDO A FUNÇÃO COM PONTEIROS<<\n");
 
     int referencia = 9;
@@ -59,9 +67,11 @@ int main(int argc, char **argv)
     soma_com_ponteiros(&referencia);                                         // 18
     printf(" NA MAIN: Valor da varíavel pela referencia: %d\n", referencia); // 18
 
-    /*
-     * A função `soma_com_ponteiros` recebe o endereço de `referencia` e modifica
-     * seu valor diretamente na memória. O valor de 'referencia' é alterado fora da função.
+    /**
+     * A função `soma_com_ponteiros` recebe o endereço de memória de `referencia`.
+     * Ou seja, ao passar um ponteiro, a função modifica diretamente o valor da variável 
+     * original, já que está trabalhando com a localização de memória da variável.
+     * O valor de 'referencia' é alterado fora da função.
      */
     return 0;
 }

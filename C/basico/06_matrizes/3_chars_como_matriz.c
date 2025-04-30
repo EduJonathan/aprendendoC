@@ -1,10 +1,17 @@
 #include <stdio.h>
 
-/*
- * Os tipos chars sendo utilizado tem um uso interessante, pois como sabemos chars
- * sendo um vetor deverão unir caracteres mais em um único espaço formando uma string mais
- * no caso de uma matriz que temos em exatos um vetor de vetores, devemos formar 2 vetores
- * de caracteres.
+/**
+ * O tipo `char` é utilizado para armazenar caracteres individuais, e quando agrupados
+ * em vetores, formam uma sequência de caracteres conhecida como *string*
+ * (cadeia de caracteres).
+ *
+ * Quando usamos uma matriz de `char`, estamos basicamente criando um "vetor de vetores",
+ * ou seja, um conjunto de strings. Isso é útil, por exemplo, para armazenar várias palavras
+ * ou frases em uma única estrutura.
+ *
+ * Exemplo:
+ *   char palavra[10];          // Vetor de caracteres (string)
+ *   char frases[5][20];        // Matriz de caracteres: 5 strings com até 19 caracteres + '\0'
  */
 
 int main(int argc, char **argv)

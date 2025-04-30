@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * @brief Operador ternário (?:) para avaliação condicional simplificada.
+ * Operador ternário (?:) para avaliação condicional simplificada.
  *
  * O operador ternário (?:) é uma forma compacta de expressar uma condição,
  * retornando um valor baseado na avaliação dessa condição. Ele permite simplificar

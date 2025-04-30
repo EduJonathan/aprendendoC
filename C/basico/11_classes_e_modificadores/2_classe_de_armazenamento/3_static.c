@@ -1,13 +1,24 @@
 #include <stdio.h>
 
 /**
- * STATIC: Indica que uma variável tem escopo de arquivo, ou seja, é visível em todo o
- * arquivo onde é declarada, mas mantém seu valor entre chamadas da função ou
- * do bloco onde foi declarada. Isso permite persistir um estado entre chamadas
- * consecutivas. No entanto, seu uso deve ser cuidadoso, pois pode tornar o código
- * menos previsível e gerar efeitos colaterais.
+ * STATIC:* A palavra-chave `static` em C e C++ indica que uma variável tem escopo de arquivo,
+ * ou seja, ela é visível em todo o arquivo onde foi declarada, mas mantém seu valor entre
+ * chamadas consecutivas da função ou do bloco onde foi declarada. Isso significa que, ao
+ * contrário de variáveis locais comuns, que são reinicializadas toda vez que a função é chamada,
+ * as variáveis `static` preservam seu valor entre essas chamadas, permitindo que um estado
+ * persistente seja mantido durante a execução do programa.
  *
- * @note: Variáveis `static` não podem ser usadas como membros de `structs`.
+ * USO:
+ * O modificador `static` é útil quando você precisa de uma variável que mantenha seu valor
+ * entre as chamadas de uma função, mas que não precise ser acessada fora dessa função ou do
+ * arquivo em que foi declarada. No entanto, o uso de `static` deve ser cuidadoso, pois pode
+ * tornar o código mais difícil de entender e de depurar, devido à persistência do valor,
+ * o que pode levar a efeitos colaterais inesperados se o estado da variável não for
+ * gerenciado corretamente.
+ *
+ * @note: Variáveis `static` não podem ser usadas como membros de `structs`, pois o armazenamento
+ * de membros de `struct` deve ser alocado de forma consistente, o que contraria o comportamento de
+ * persistência de uma variável `static`.
  */
 
 /**
@@ -46,6 +57,10 @@ void teste_static_global(void)
 
 /**
  * @brief Procedimento que irá incrementar uma variável estática a cada chamada da função
+ *
+ * @note A primeira vez que `estatico()` for chamada, `a` será 5. Na segunda vez, será 6,
+ * e assim por diante. Isso acontece porque a variável `a` é preservada entre as chamadas,
+ * mantendo seu valor.
  */
 void estatico(void)
 {

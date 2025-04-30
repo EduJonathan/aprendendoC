@@ -1,18 +1,15 @@
 #include <stdio.h>
 
 /**
- * MATRIZES: São estrutura de dados vetoriais, porém bidimensional podendo
- * dois ou mais vetores são capaz de armazenar os dados em dimensões de linhas e colunas.
- * exemplos da vida real para representação de matrizes: calendários, tabelas, planilha,
- * jogo de xadrex, de dama, batalha naval, jogo da velha, dentre outros.
- * Mas e na programação onde utilizar. Exemplo de matriz na programação:
- * banco de dados, excel, processamento de imagens e criação de jogos.
- * A matriz pode ser definida como um conjunto de vetores interligados (vetor de vetores)
+ * MATRIZES: São estruturas de dados bidimensionais (vetor de vetores), com dados organizados
+ * em linhas e colunas. Muito usadas para representar tabelas, calendários, jogos (xadrez,
+ * batalha naval, etc.), além de aplicações em programação como bancos de dados, planilhas,
+ * imagens e jogos.
  *
  * SINTAXE: <tipo de dado><nome da matriz>[Nº linhas][Nº colunas];
  *
- * int matriz[2][3];
- * Com a declaração temos uma matriz onde temos 2 linhas e 3 colunas que são nossas dimensões
+ * int matriz[2][3]; Com a declaração temos uma matriz onde temos 2 linhas e 3 colunas
+ * que são nossas dimensões
  *
  * EXE:
  *         -------------------------------
@@ -22,9 +19,9 @@
  * ---------------------------------------
  *
  * O que delimita uma matriz nos seus valores é o quanto determinarmos para as linhas
- * e as colunas fazendo a multiplicação deles, no meu exemplo eu entreguei 6, pois,
- * 2(linhas) * 3(colunas) = 6. E seu tamanho em bytes é:
- * 2(linhas) * 3(coluna) * 4(nº de byte do tipo de dado) = 24 bytes
+ * e as colunas fazendo a multiplicação deles, no meu exemplo eu entreguei 6,
+ * pois, 2(linhas) * 3(colunas) = 6.
+ * E seu tamanho em bytes é: 2(linhas) * 3(coluna) * 4(nº de byte do tipo de dado) = 24 bytes
  * pegando o exemplo anterior e inicializando os valores
  *
  *          -----------------------------

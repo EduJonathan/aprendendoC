@@ -1,23 +1,25 @@
 #include <stdio.h>
 
 /**
- * SCANF: Função na linguagem C para o uso da entrada de dados (input)
- * do usuário, que esse valor digitado será guardada na variável que indicada.
+ * scanf: Função da linguagem C utilizada para entrada de dados(input) fornecidos pelo usuário.
  *
- * SINTAXE: scanf("formatador do tipo da variável", &variavel);
+ * SINTAXE: scanf("formato", &variavel);
  *
- * OBS: (&) é um operador unário ele aponta indicando a posiçao do endereço de memória
- * reservada para a variável, dizendo que será no endereço de memória que a variável se
- * encontra para que valor o seja incluso. NÃO ESQUECE-LO NUNCA.
+ * O símbolo '&' (operador de endereço) é essencial para passar o endereço de memória da variável,
+ * permitindo que a função armazene o valor digitado diretamente nessa posição.
+ *
+ * IMPORTANTE: Sempre utilize '&' antes da variável (exceto em strings), ele indica onde o
+ * valor lido deve ser armazenado. Esquecer esse operador pode causar erros de execução ou
+ * comportamento indefinido.
  */
 
 int main(int argc, char **argv)
 {
     printf("\n\t==>SCANF<==\n");
 
-    int idade;
-    char letra;
-    float pi;
+    int idade = 0;
+    char letra = '\0';
+    float pi = 0.0f;
 
     printf(">> Quantos anos você tem : ");
     scanf("%d", &idade);
@@ -58,16 +60,16 @@ int main(int argc, char **argv)
      * pode não estar disponível em todas as plataformas.
      */
 
-    unsigned char caractere;
-    unsigned char letter;
+    unsigned char caractere = '\0';
+    unsigned char letter = '\0';
 
-    printf(">> Digite um caractere: ");
+    printf("\n>> Digite um caractere: ");
     scanf(" %c", &caractere);
-    printf("\n Você inseriu a letra : %c\n", caractere);
+    printf("Você inseriu a letra : %c\n", caractere);
 
-    printf(">> Digite uma letra : ");
+    printf("\n>> Digite uma letra : ");
     scanf(" %c", &letter);
-    printf(" Você inseriu a letra : %c\n", letter);
+    printf("Você inseriu a letra : %c\n", letter);
 
     /**
      * Perceba que não utilizamos o fflush, e sem ele a partir do momento de

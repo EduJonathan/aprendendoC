@@ -2,6 +2,24 @@
 #include <string.h>
 
 /**
+ * RECURSÃO:
+ * A recursão é uma técnica onde uma função chama a si mesma para resolver um problema.
+ * Isso  pode ser útil quando um problema pode ser dividido em subproblemas menores de
+ * forma semelhante ao original.
+ * Em termos simples, uma função recursiva divide o problema em partes menores e resolve
+ * essas partes de forma repetida até que um caso base seja atingido, ou seja, um cenário
+ * simples onde o problema pode ser resolvido diretamente.
+ *
+ * COMO FUNCIONA:
+ * Caso Base: A recursão sempre precisa de um ponto de parada, que é o chamado "caso base".
+ * Esse é o momento em que a função não chama mais a si mesma. Sem esse caso base, a função
+ * ficaria chamando a si mesma infinitamente, o que causaria um estouro de pilha (stack overflow).
+ *
+ * Chamada Recursiva: A função chama a si mesma, mas com parâmetros diferentes,
+ * geralmente reduzindo o problema até que atinja o caso base.
+ */
+
+/**
  * @brief Função recursiva para imprimir os `n` números consecutivos
  *        pares ou ímpares, dependendo se `n` é par ou ímpar.
  *

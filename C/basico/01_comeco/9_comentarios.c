@@ -1,27 +1,34 @@
-// Comentários nos ajudam a identificar o que determinada tarefa possa está sendo realizada
-// E neste programa eu exibo como deixar seu comentário mais detalhado com o caractere '@'
-// O '@' fornecem uma maneira eficaz de estruturar e organizar a documentação, através de tags
-// tornando-a mais informativa e fácil de seguir.
-// para destacar melhor com o '@' em comentários simples (2 barras //) basta inserir mais 1 barra
+// Comentários são essenciais para entender o que cada parte do programa realiza.
+// Neste exemplo, mostramos como deixar seus comentários mais organizados usando o
+// caractere '@', comum em ferramentas de documentação como o Doxygen.
 
-/// EXE: Aqui eu @author: Eduardo, exibo algumas tags para melhorar seu comentário
-/* E para comentários de multiplas linhas basta inserir mais 1 '*' */
+// O uso de '@' permite estruturar e categorizar informações no código,
+// tornando a documentação mais clara, informativa e fácil de navegar.
+
+// Para destacar ainda mais, você pode usar '///' em vez de '//' para comentários de linha única
+// com tags especiais, e '/** */' para comentários de múltiplas linhas.
+
+/// EXEMPLO: Aqui eu, @author Eduardo, demonstro algumas tags úteis.
+
+/// Para comentários de múltiplas linhas documentáveis, utilize mais um asterisco no início, como abaixo:
 
 /**
- * TAGS:
- * @author e @authors: Para escrever nome(s) do(s) responsávei(s) pelo programa
- * @brief: Indicar que a função realiza alguma tarefa específica.
- * @param: Nome do parâmetro e descrição do parâmetro.
- * @arg: Substuição para '@param'.
- * @return: Descreve o valor retornado.
- * @file: Descreve o propósito de um arquivo.
- * @defgroup e @ingroup: Agrupa funções ou tipos relacionados.
- * @example: Fornece um exemplo de uso de uma função ou variável.
- * @todo: Indica uma tarefa pendente.
- * @bug: Comumente usada em sistemas de documentação, para indicar a presença de um bug no código.
- * @note: Adicionar informações extras, observações ou considerações que podem ser úteis para quem está lendo a documentação.
- * @version: versões do código
- * @attention: Aviso de atenção para alertar um determinado trecho de código
- * @warning: Se o código apresentar um determinado aviso de perigo
- * ...Dentre outros
+ * TAGS MAIS COMUNS:
+ *
+ * @author / @authors  - Indica o(s) autor(es) do código.
+ * @brief              - Breve descrição da função ou propósito do bloco de código.
+ * @param              - Especifica o nome e a descrição de um parâmetro da função.
+ * @arg                - Alternativa ao @param.
+ * @return             - Descreve o valor de retorno de uma função.
+ * @file               - Indica o propósito do arquivo atual.
+ * @defgroup / @ingroup- Agrupa elementos relacionados (funções, tipos, etc.).
+ * @example            - Fornece um exemplo de uso.
+ * @todo               - Marca uma tarefa pendente a ser implementada.
+ * @bug                - Indica um erro conhecido no código.
+ * @note               - Observações importantes adicionais.
+ * @version            - Define a versão atual do código.
+ * @attention          - Chama atenção para um ponto específico do código.
+ * @warning            - Destaca um possível risco ou problema no uso do código.
+ *
+ * ...entre outras.
  */
