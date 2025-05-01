@@ -10,10 +10,11 @@ void par(void) { printf("O número é par!!!\n"); }
  */
 void impar(void) { printf("O número é impar!!!\n"); }
 
+// Agora 'fparOuImpar' é um sinônimo para um ponteiro para função que não tem retorno
 typedef void (*parOuImpar)(void);
 
 /**
- * Declaração de um ponteiro para função:
+ * Declaração de um ponteiro para função com typedef:
  * SINTAXE: typedef tipoDoRetorno(*nomeDoPonteiroParaFunção)(arg1, arg2, ...,)
  * Caso fizemos: `typedef void *parOuImpar(void);` se não colocasse os parênteses
  * o compilador entenderia que o retorno é um ponteiro para void, sendo que queremos o

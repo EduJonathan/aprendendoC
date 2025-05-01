@@ -75,6 +75,13 @@
         }                                                                       \
     })
 
+/**
+ * Esta macro `match` é uma implementação simples de um switch-case que permite
+ * executar ações específicas com base no valor de uma variável.
+ * O typeof(value) é uma construção do GCC que obtém o tipo da variável `value`.
+ * Isso é útil para garantir que o tipo correto seja usado no switch.
+ */
+
 // Definindo a macro "case", que especifica o comportamento para um valor no switch
 #define case(val, action)                                  \
     case val:                                              \
@@ -84,14 +91,10 @@
         /* Interrompe o switch após a execução */          \
         break;
 
-/**
- * Esta macro `match` é uma implementação simples de um switch-case que permite
- * executar ações específicas com base no valor de uma variável. A macro `case`
- * é usada para definir os casos dentro do switch, onde `val` representa o valor
- * a ser comparado e `action` representa a ação a ser executada se o valor
+/*
+ * A macro `case` é usada para definir os casos dentro do switch, onde `val` representa 
+ * o valor a ser comparado e `action` representa a ação a ser executada se o valor
  * corresponder ao caso.
- * O typeof(value) é uma construção do GCC que obtém o tipo da variável `value`.
- * Isso é útil para garantir que o tipo correto seja usado no switch.
  */
 
 int main(int argc, char **argv)

@@ -4,7 +4,7 @@
 /**
  * RECURSÃO:
  * A recursão é uma técnica onde uma função chama a si mesma para resolver um problema.
- * Isso  pode ser útil quando um problema pode ser dividido em subproblemas menores de
+ * Isso pode ser útil quando um problema pode ser dividido em subproblemas menores de
  * forma semelhante ao original.
  * Em termos simples, uma função recursiva divide o problema em partes menores e resolve
  * essas partes de forma repetida até que um caso base seja atingido, ou seja, um cenário

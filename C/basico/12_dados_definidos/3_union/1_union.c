@@ -1,12 +1,17 @@
 #include <stdio.h>
 
-/*
- * Tudo que foi demonstrado em structs a union pode realizar também, pois assim como
- * structs, unions podem agrupar vários tipos de dados, mas tendo suas diferenças em sua
- * alocação de memória para com os campos que unions em vez de separar cada membro em um
- * bloco de memória único, todos os membros ocupam um único espaço de memória apenas.
- * A alocação de memória para uma union é determinada pela quantidade de memória necessária
- * para o membro de maior tamanho dentro da union.
+/**
+ * UNION: ou união assim como as structs, unions podem fazer tudo que uma struct faz, tendo 
+ * possiblidades das unions também permitem agrupar diferentes tipos de dados em uma única 
+ * estrutura. A grande diferença está na forma como a memória é alocada. Em uma struct, 
+ * cada campo (ou membro) ocupa seu próprio espaço na memória, ou seja, a memória total usada
+ * é a soma do espaço necessário para todos os membros.
+ *
+ * Já em uma union, todos os membros compartilham o mesmo espaço de memória. Isso significa que
+ * apenas um membro pode armazenar um valor válido por vez, pois escrever em um campo sobrescreve
+ * o valor do outro.
+ * A quantidade de memória alocada para uma union é igual ao tamanho do seu maior membro,
+ * já que todos usam o mesmo espaço.
  */
 
 /**

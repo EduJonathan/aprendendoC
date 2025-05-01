@@ -57,7 +57,8 @@
       "regex.h": "c",
       "stdexcpt.h": "c",
       "locale.h": "c",
-      "excpt.h": "c"
+      "excpt.h": "c",
+      "stdint.h": "c"
     }
   }
 }

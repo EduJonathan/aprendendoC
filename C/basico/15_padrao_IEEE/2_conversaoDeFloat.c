@@ -36,7 +36,7 @@ void printFloatDetails(float num)
     printf("\nRepresentação hexadecimal: %#08X\n", bits);
 
     // Imprime os componentes
-    printf("Sinal: %u\n", sinal);
+    printf("\nSinal: %u\n", sinal);
     printf("Expoente (binário): ");
     for (int i = 7; i >= 0; i--)
     {
@@ -53,7 +53,7 @@ void printFloatDetails(float num)
 
     // Calculando expoente real e valor da mantissa normalizada
     int expoenteReal = (int)expoente - 127;
-    printf("Expoente real (bias 127): %d\n", expoenteReal);
+    printf("\nExpoente real (bias 127): %d\n", expoenteReal);
 
     if (expoente != 0)
     {

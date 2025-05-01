@@ -20,11 +20,11 @@ Fórmula Geral: valor = (-1)^S  x 1.M x 2^(ϵ-bias)
 
 🔢 Tipos de Precisão
 -------------------------------------------------------------------------------------------------------
-|       Tipo         | Bits | Expoente(Bits/Bias) | Mantissa (Bits) |       Faixa Aproximada          |
+|       Tipo         | Bits | Expoente(Bits/Bias) | Mantissa (Bits) |      Faixa Aproximada           |
 -------------------------------------------------------------------------------------------------------
-| (float)            | 32	|   8/127             |     23          | ±1.18x10^(-38) a ±1.8x10^(-38)  |
-| (double)           | 64	|   11/1023	          |     52          | ±2.23x10^(-308) a ±1.8x10^(-308)|
-| Precisão Estendida | 80	|   15/16383	      |     64	        | Usada internamente pela FPU     |
+| (float)            |  32  |      8/127          |     23          | ±1.18x10^(-38) a ±1.8x10^(-38)  |
+| (double)           |  64  |      11/1023        |     52          | ±2.23x10^(-308) a ±1.8x10^(-308)|
+| Precisão Estendida |  80  |      15/16383       |     64          | Usada internamente pela FPU     |
 -------------------------------------------------------------------------------------------------------
 
 🎯 Exemplo: Codificação de -6.25 em 32 bits

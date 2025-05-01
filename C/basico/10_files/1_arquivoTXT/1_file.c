@@ -1,10 +1,15 @@
 #include <stdio.h>
 
 /**
- * FILE: É uma estrutura usada para representar um arquivo. A declaração do tipo FILE
- * é usada para A manipulação de arquivos em C envolve a abertura, leitura, gravação e
- * fechamento de arquivos. manipulação de arquivos. é usado para representar a conexão
- * entre o programa e um arquivo específico durante essas operações.
+ * FILE: A estrutura 'FILE' é um tipo especial usado para representar um arquivo.
+ * Ela é definida na biblioteca padrão `stdio.h` e é usada para manipular arquivos,
+ * permitindo que o programa realize operações como abertura, leitura, gravação
+ * e fechamento de arquivos.
+ *
+ * @note A declaração do tipo 'FILE' não cria o arquivo, mas sim representa a conexão
+ * entre o programa e um arquivo específico durante as operações de manipulação.
+ * **IMPORTANTE**: Após a manipulação do arquivo, sempre use `fclose()` para garantir
+ * que os dados sejam corretamente salvos e os recursos sejam liberados.
  */
 
 /**

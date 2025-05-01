@@ -1,11 +1,19 @@
 #include <stdio.h>
 
 /**
- * TYPEDEF: É uma keyword (palavra reservada) que criam sinônimos e não um novo tipo
- * de dado, são declaradas para tipos de dados, arrays, structs, unions, ponteiros para
- * função e enums.
+ * TYPEDEF: A keyword (palavra reservada) typedef é usada para criar sinônimos para 
+ * tipos de dados, incluindo tipos primitivos, arrays, structs, unions, ponteiros para funções
+ * e enums.
  *
- * @note typedef NÃO cria um novo tipo de dado, ele cria um sinônimo para o tipo de dado
+ * @note typedef NÃO cria um novo tipo de dado. Em vez disso, ele cria um **alias** ou **sinônimo**
+ * para um tipo de dado existente, facilitando a legibilidade do código, especialmente quando
+ * tipos complexos estão envolvidos.
+ *
+ * Quando usar:
+ * - Para simplificar tipos complexos, como ponteiros para funções ou structs com muitos campos.
+ * - Para melhorar a legibilidade do código, fornecendo nomes mais descritivos.
+ * - Para tornar o código mais flexível, permitindo alterações no tipo subjacente 
+ * sem precisar modificar todas as ocorrências.
  */
 
 typedef char charactere_Global; // Redefinindo o tipo de dado char global para charactere_Global

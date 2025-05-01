@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * PARAMETROS:  São os valores que uma função ou método recebe quando é chamado.
+ * PARAMETROS: São os valores que uma função ou método recebe quando é chamado.
  * Eles atuam como "entradas" que podem ser manipuladas dentro da função, permitindo
  * realizar operações ou cálculos baseados nos valores fornecidos. Os parâmetros são
  * definidos no momento da chamada da função, geralmente a partir da função principal (como main).

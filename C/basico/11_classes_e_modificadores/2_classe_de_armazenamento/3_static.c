@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * STATIC:* A palavra-chave `static` em C e C++ indica que uma variável tem escopo de arquivo,
+ * STATIC: A palavra-chave `static` em C e C++ indica que uma variável tem escopo de arquivo,
  * ou seja, ela é visível em todo o arquivo onde foi declarada, mas mantém seu valor entre
  * chamadas consecutivas da função ou do bloco onde foi declarada. Isso significa que, ao
  * contrário de variáveis locais comuns, que são reinicializadas toda vez que a função é chamada,

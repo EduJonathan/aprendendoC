@@ -3,8 +3,7 @@
 /*
  * Bitwise (bit a bit): São operadores que manipulam os valores binários das variáveis.
  * Ao contrário dos operadores lógicos que operam com valores booleanos, os operadores bitwise
- * atuam diretamente nos bits das variáveis, como você verá abaixo.
- * Os operadores bitwise comuns são:
+ * atuam diretamente nos bits das variáveis. A seguir estão os operadores bitwise comuns:
  *
  * ----------------------------------
  * | OPERADORES |       NOMES       |
@@ -33,20 +32,20 @@ int main(int argc, char **argv)
 
     printf("\n>>OPERADOR (&) AND: ");
     /*
-     * (&): O operador AND opera com os bits de dois valores e retorna 1 somente quando
+     * O operador AND (&) compara cada bit de dois números. Ele retorna 1 apenas quando
      * ambos os bits forem 1. Caso contrário, o resultado será 0.
      * Sua tabela verdade:
-     * ----------------------------
+     * -----------------------------
      * | valor x | valor y | x & y |
-     * ----------------------------
+     * -----------------------------
      * |   0     |   0     |   0   |
-     * ----------------------------
+     * -----------------------------
      * |   0     |   1     |   0   |
-     * ----------------------------
+     * -----------------------------
      * |   1     |   0     |   0   |
-     * ----------------------------
+     * -----------------------------
      * |   1     |   1     |   1   |
-     * ----------------------------
+     * -----------------------------
      */
 
     int and_result = aux1 & aux2;
@@ -59,19 +58,20 @@ int main(int argc, char **argv)
     printf("\n--------------------------------------------------------------\n");
     printf("\n>>OPERADOR (|) OR: ");
     /*
-     * (|): O operador OR retorna 1 quando pelo menos um dos bits for 1.
+     * O operador OR (|) compara os bits de dois números. Ele retorna 1 quando
+     * pelo menos um dos bits é 1. Caso contrário, o resultado será 0.
      * Sua tabela verdade:
-     * ----------------------------
+     * -----------------------------
      * | valor x | valor y | x | y |
-     * ----------------------------
-     * |   0     |   0     |   0  |
-     * ----------------------------
-     * |   0     |   1     |   1  |
-     * ----------------------------
-     * |   1     |   0     |   1  |
-     * ----------------------------
-     * |   1     |   1     |   1  |
-     * ----------------------------
+     * -----------------------------
+     * |   0     |   0     |   0   |
+     * -----------------------------
+     * |   0     |   1     |   1   |
+     * -----------------------------
+     * |   1     |   0     |   1   |
+     * -----------------------------
+     * |   1     |   1     |   1   |
+     * -----------------------------
      */
 
     int or_result = aux1 | aux2;
@@ -84,19 +84,19 @@ int main(int argc, char **argv)
     printf("\n--------------------------------------------------------------\n");
     printf("\n>>OPERADOR (^) XOR: ");
     /*
-     * (^): O operador XOR retorna 1 quando os bits são diferentes, ou seja,
-     * quando um é 1 e o outro é 0. Sua tabela verdade:
-     * ----------------------------
+     * O operador XOR (^) retorna 1 quando os bits comparados são diferentes
+     * (um é 0 e o outro é 1). Se ambos os bits forem iguais, retorna 0:
+     * -----------------------------
      * | valor x | valor y | x ^ y |
-     * ----------------------------
+     * -----------------------------
      * |   0     |   0     |   0   |
-     * ----------------------------
+     * -----------------------------
      * |   0     |   1     |   1   |
-     * ----------------------------
+     * -----------------------------
      * |   1     |   0     |   1   |
-     * ----------------------------
+     * -----------------------------
      * |   1     |   1     |   0   |
-     * ----------------------------
+     * -----------------------------
      */
 
     int xor_result = aux1 ^ aux2;
@@ -109,11 +109,10 @@ int main(int argc, char **argv)
     printf("\n--------------------------------------------------------------\n");
 
     printf("\n>>OPERADOR (~) NOT: ");
-    /*
-     * (~): O operador NOT (ou complemento de 1) inverte todos os bits de um número.
-     * Isso significa que ele transforma 1 em 0 e 0 em 1, invertendo todos os bits,
-     * inclusive o sinal. Quando aplicado a um número, ele gera um número negativo de acordo
-     * com a representação em complemento de dois.
+    /**
+     * O operador NOT (~) inverte todos os bits de um número. Isso significa que
+     * ele transforma 1 em 0 e 0 em 1. Para números inteiros, esse operador utiliza
+     * a representação em complemento de dois.
      */
     int aux3 = 10;          /* 10 na representação binária é 001010 */
     int not_result = ~aux3; // Inverte os bits

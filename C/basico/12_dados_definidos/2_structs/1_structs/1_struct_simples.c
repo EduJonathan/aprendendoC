@@ -1,9 +1,15 @@
 #include <stdio.h>
 
 /**
- * STRUCT: Estrutura que nos permite agrupar vários tipos de dados conhecidos como
- * campos, que podem personalizar informações relacionadas de maneira organizada,
- * instanciando-a para o uso desses dados.
+ * STRUCT: ou estrutura é um recurso da linguagem C (e de outras linguagens também) que
+ * permite agrupar diferentes tipos de dados em um único conjunto. Imagine que você quer
+ * guardar informações sobre uma pessoa, como nome (texto), idade (número) e altura
+ * (número decimal). Com a struct, você pode criar uma "caixinha" que guarda tudo isso junto,
+ * como se fosse um modelo personalizado.
+ *
+ * Assim, ao invés de ter várias variáveis separadas para cada informação, você cria uma
+ * estrutura que representa uma pessoa, e pode criar quantas "pessoas" quiser a partir dela.
+ * Isso torna o código mais organizado, reutilizável e fácil de entender.
  */
 
 /**

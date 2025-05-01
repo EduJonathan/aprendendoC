@@ -13,7 +13,7 @@ struct Matriz
     int dados[MAX_LINHAS][MAX_COLUNAS]; /**< Matriz de dados. */
     int linhas;                         /**< Número de linhas da matriz. */
     int colunas;                        /**< Número de colunas da matriz. */
-} matriz;
+};
 
 /**
  * @brief Inicializa a matriz com zeros e define suas dimensões.
