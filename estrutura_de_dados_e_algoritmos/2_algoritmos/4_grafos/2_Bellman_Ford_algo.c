@@ -3,6 +3,30 @@
 #include <limits.h>
 
 /**
+ * Algoritmo de Bellman-Ford - Caminho Mínimo com Pesos Negativos
+ * O algoritmo de Bellman-Ford resolve o problema de caminho mais curto a partir
+ * de uma única fonte em grafos com **pesos negativos**, e também detecta ciclos negativos.
+ *
+ * Ao contrário do Dijkstra, ele não usa estrutura de prioridade e é
+ * baseado em **relaxamento iterativo**:
+ * - Para cada aresta, tenta relaxar a distância de um vértice para outro.
+ * - Repete esse processo V - 1 vezes (onde V é o número de vértices).
+ * - Após isso, uma iteração extra pode detectar ciclos negativos.
+ *
+ * Aplicações:
+ * - Financeiro (verificação de arbitragem de moedas)
+ * - Redes com penalidades
+ * - Sistemas que toleram valores negativos em custos
+ *
+ * COMPLEXIDADE:
+ * - TEMPO: O(V * E)
+ * - ESPAÇO: O(V)
+ *
+ * @note Mais lento que Dijkstra, mas mais poderoso por suportar pesos negativos
+ * e detectar ciclos negativos.
+ */
+
+/**
  * @struct Edge
  * @brief Estrutura que representa uma aresta do grafo.
  *

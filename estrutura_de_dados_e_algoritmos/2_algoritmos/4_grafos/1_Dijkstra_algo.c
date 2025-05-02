@@ -1,6 +1,35 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+/**
+ * Algoritmo de Dijkstra - Caminho Mínimo a Partir de um Único Fonte
+ *
+ * O algoritmo de Dijkstra encontra o caminho mais curto entre um vértice de origem e 
+ * todos os outros vértices em um grafo com arestas de **peso não-negativo**. Utiliza 
+ * uma abordagem gulosa com **fila de prioridade (min-heap)** para sempre expandir o nó 
+ * mais próximo ainda não processado.
+ *
+ * Aplicações:
+ * - GPS e rotas (Google Maps, Waze)
+ * - Roteamento de redes (como OSPF)
+ * - Planejamento de caminhos em IA e jogos
+ *
+ * Funcionamento:
+ * - Inicializa as distâncias da origem para ∞, exceto a origem (0).
+ * - Usa uma estrutura de dados eficiente (heap/priority queue) para sempre escolher o
+ * vértice com menor distância conhecida.
+ * - Relaxa as arestas adjacentes e atualiza a fila.
+ *
+ * Restrições:
+ * - Não funciona corretamente com arestas de peso negativo (pode subestimar distâncias).
+ *
+ * COMPLEXIDADE:
+ * - TEMPO: O((V + E) log V) usando heap binário
+ * - ESPAÇO: O(V + E)
+ *
+ * @note É mais eficiente que Bellman-Ford em grafos densos com pesos positivos.
+ */
+
 #define INF 9999
 #define MAX 10
 

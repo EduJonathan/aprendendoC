@@ -5,6 +5,17 @@
  * @brief Estrutura de um nó da árvore AVL.
  *
  * Cada nó contém uma chave (key), ponteiros para os filhos esquerdo e direito, e a altura do nó.
+ * A Árvore AVL (ou Árvore Binária de Pesquisa Balanceada), é um tipo de árvore binária
+ * de pesquisa que possui a característica de auto-balanceamento.
+ * Propriedades de uma Árvore AVL
+ *
+ * - Estrutura de Árvore Binária de Pesquisa (BST)
+ *
+ * - Fator de Balanceamento
+ *
+ * - Altura da Árvore
+ *
+ * - Rebalanceamento
  */
 struct Node
 {
@@ -104,7 +115,7 @@ struct Node *leftRotate(struct Node *x)
 /**
  * @brief Calcula o fator de balanceamento de um nó.
  *
- * O fator de balanceamento é a diferença entre a altura da subárvore esquerda e a 
+ * O fator de balanceamento é a diferença entre a altura da subárvore esquerda e a
  * altura da subárvore direita.
  *
  * @param N O nó cujo fator de balanceamento será calculado.

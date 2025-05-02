@@ -2,6 +2,38 @@
 #include <limits.h>
 
 /**
+ * Algoritmo de Floyd-Warshall - Caminho Mínimo entre Todos os Pares
+ * 
+ * O algoritmo de Floyd-Warshall resolve o problema de caminho mínimo entre 
+ * **todos os pares de vértices** em um grafo direcionado ou não direcionado, com pesos
+ * (positivos ou negativos, mas sem ciclos negativos).
+ *
+ * Baseado na técnica de **programação dinâmica**, ele atualiza iterativamente a 
+ * menor distância entre cada par de nós, considerando vértices intermediários.
+ *
+ * FUNCIONAMENTO:
+ * - Inicializa uma matriz de distâncias `dist[i][j]` com os pesos das arestas diretas 
+ * (ou ∞ se não houver).
+ * - Para cada vértice intermediário `k`, verifica se `dist[i][k] + dist[k][j] < dist[i][j]`
+ * e atualiza.
+ *
+ * Aplicações:
+ * - Roteamento de redes (encontrar menor caminho entre todos os nós)
+ * - Análise de acessibilidade entre locais
+ * - Verificação de conexões indiretas em grafos
+ *
+ * Suporta:
+ * - Grafos com pesos negativos (mas sem ciclos negativos)
+ * - Detecção de ciclos negativos (se `dist[i][i] < 0`)
+ *
+ * COMPLEXIDADE:
+ * - TEMPO: O(V³), onde V é o número de vértices (três laços aninhados).
+ * - ESPAÇO: O(V²), para armazenar a matriz de distâncias.
+ *
+ * @note Para grafos esparsos, algoritmos como Dijkstra (por vértice) são mais eficientes.
+ */
+
+/**
  * @brief Função que retorna o menor valor entre dois inteiros.
  *
  * Esta função é usada para determinar o valor mínimo entre dois números

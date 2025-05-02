@@ -1,6 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * Algoritmo de Kruskal - Árvore Geradora Mínima (MST)
+ *
+ * O algoritmo de Kruskal é um algoritmo clássico para encontrar a **Árvore Geradora Mínima (MST)**
+ * em um grafo ponderado e conexo. A MST é um subconjunto das arestas que conecta todos os vértices
+ * do grafo com o menor peso total possível e **sem formar ciclos**.
+ *
+ * O funcionamento do algoritmo é baseado na ideia de:
+ * - Ordenar todas as arestas em ordem crescente de peso.
+ * - Adicionar as menores arestas à MST, desde que não formem ciclos.
+ * - Usar uma estrutura **Union-Find (Disjoint Set Union)** para detectar ciclos eficientemente.
+ *
+ * Aplicações:
+ * - Redes de computadores e telecomunicações (minimizar o custo de conexões)
+ * - Roteamento de circuitos
+ * - Construção de estradas e infraestrutura mínima
+ *
+ * PRÉ-REQUISITOS:
+ * - Grafo não direcionado, ponderado.
+ * - Pode ser desconexo (neste caso, Kruskal encontrará uma floresta geradora mínima).
+ *
+ * COMPLEXIDADE:
+ * - TEMPO: O(E log E), onde E é o número de arestas (ordenar as arestas + operações de união/busca).
+ * - ESPAÇO: O(V), onde V é o número de vértices (para a estrutura Union-Find).
+ *
+ * @note Para grafos densos, Prim pode ser mais eficiente com a estrutura certa (como heap).
+ */
+
 #define INF 999
 
 typedef struct edge
