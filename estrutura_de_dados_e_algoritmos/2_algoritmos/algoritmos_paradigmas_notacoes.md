@@ -1,3 +1,5 @@
+# Explicando Algoritmos, Paradigmas e Notações
+
 ## 📌🧩 Algoritmos
 
 Algoritmos são conjuntos finitos de instruções ou regras bem definidas que descrevem,  
@@ -23,29 +25,36 @@ pensar e organizar a lógica do software.
 
 **Paradigma Imperativo**  
 O programador descreve passo a passo o que o computador deve fazer.  
-🔸 _Ex_: C, Python (modo imperativo), Java  
+🔸 Ex.: C, Python (modo imperativo), Java  
 🛠 Usa comandos, variáveis e estruturas de controle (if, for, while).
 
 **Paradigma Declarativo**  
 Foca em _o que deve ser feito_, e não como fazer.  
-🔸 _Ex_: SQL, HTML, Prolog  
+🔸 Ex.: SQL, HTML, Prolog  
 🛠 O programador descreve os resultados desejados, e o sistema decide como alcançá-los.
 
 **Paradigma Funcional**  
 Baseado em funções matemáticas puras, sem efeitos colaterais.  
-🔸 _Ex_: Haskell, Lisp, Elixir, partes de Python e JavaScript  
+🔸 Ex.: Haskell, Lisp, Elixir, partes de Python e JavaScript  
 🛠 Usa funções como unidades básicas, evitando o uso de variáveis mutáveis.
 
 **Paradigma Orientado a Objetos (POO)**  
 Organiza o código em "objetos", que combinam dados (atributos) e comportamentos (métodos).  
-🔸 _Ex_: Java, C++, Python, Ruby  
+🔸 Ex.: Java, C++, Python, Ruby  
 🛠 Promove reutilização de código, encapsulamento, herança e polimorfismo.
 
 **Paradigma Lógico**  
 Baseado em lógica formal e regras. O programa é uma coleção de fatos e regras, e a  
 execução consiste em realizar inferências.  
-🔸 _Ex_: Prolog  
+🔸 Ex.: Prolog  
 🛠 Muito usado em sistemas de IA simbólica.
+
+**Paradigma Orientado a Eventos**  
+No paradigma orientado a eventos, a execução do programa é direcionada por eventos,
+como cliques de mouse, pressionamento de teclas, mensagens do sistema ou sensores.
+É muito utilizado em interfaces gráficas (GUIs), aplicações web e sistemas interativos.
+🔸 Exemplos de linguagens/frameworks: JavaScript (navegador), C# com WinForms/WPF, Java com Swing/JavaFX, Python com Tkinter/PyQt, C++ com wxWidgets e outros.
+🛠 Muito usado em desenvolvimento de interfaces gráficas, jogos e sistemas reativos.
 
 ---
 
@@ -77,7 +86,8 @@ cenários e tamanhos de entrada.
 A complexidade de um algoritmo é uma medida que nos ajuda a entender o desempenho em  
 termos de tempo de execução (tempo de complexidade) e uso de memória (espaço de complexidade).  
 Esses conceitos são fundamentais para comparar algoritmos e escolher a melhor solução para  
-um problema.
+um problema, e entenda que seja o que estiver fazendo (algoritmo, backend, interface gráfica,
+entender e aplicar estes conceitos de bigO é essencial).
 
 ### Tempo de Complexidade (Time Complexity)
 
@@ -131,14 +141,11 @@ set() ou dict() em Python: O(1) inserção/busca (em média)
 
 ### 📊 Gráfico de Complexidade Big-O
 
-![Gráfico de Complexidade Big-O](./img/Grafico_das_Notacoes_BigO.png)
-Este gráfico ilustra o crescimento das funções mais comuns em análise de algoritmos  
-à medida que o número de elementos aumenta.
+![Gráfico de Complexidade Big-O](https://github.com/EduJonathan/aprendendoC/raw/main/img/Grafico_das_Notacoes_BigO.png?raw=true)
+**Comparação das notações Big-O mais comuns**
 
-![Gráfico ilustrativo da complexidade Big-O em diferentes Estruturas de Dados](./img/tempo_big_o.png)
-Este gráfico compara os tempos de execução (Big-O) de diferentes algoritmos de ordenação
-e operações em várias estruturas de dados. Ele é útil para entender como a escolha de algoritmo
-ou estrutura de dados pode impactar a performance, dependendo do tamanho dos dados.
+![Tempos de Execução](https://github.com/EduJonathan/aprendendoC/raw/main/img/tempo_big_o.png?raw=true)
+**Performance de algoritmos em diferentes estruturas de dados**
 
 ---
 
@@ -146,7 +153,7 @@ ou estrutura de dados pode impactar a performance, dependendo do tamanho dos dad
 
 Para praticar e visualizar diferentes algoritmos e estruturas de dados, você pode acessar o seguinte site interativo:
 
-## Visualização de Algoritmos: https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+[Visualização de Algoritmos](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 
 Este site oferece uma interface visual para explorar diversos algoritmos, como ordenação, busca, e estruturas de dados, permitindo ver como eles funcionam em tempo real à medida que os dados são processados.
 

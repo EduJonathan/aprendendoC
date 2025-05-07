@@ -1,4 +1,7 @@
-**Aprendizado e técnicas de lógica e programação, envolvendo toda trajetória básica e curiosidades utilizando a Linguagem C**
+# Aprendendo C
+
+## Destaco aprendizado e técnicas de lógica e programação, envolvendo toda trajetória básica e curiosidades utilizando a Linguagem C
+
 1. Entrada, Saída e Formatação de Dados
 2. Variáveis
 3. Operadores (Aritméticos, Térnario, Lógicos, Incremento e Decremento, Bitwises)
@@ -16,14 +19,16 @@
 15. Básico Do Padrão IEEE 754
 16. E trabalhando com includes da linguagem C (stdlib.h, string.h, math.h, time.h) dentre outras
 
-**Além de temos utilizado a linguagem para exemplificar a implementação de estruturas de dados e algoritmos**
+## Além de termos utilizado a linguagem para exemplificar a implementação de estruturas de dados e algoritmos
+
 1. TAD (Tipos Abstratos De Dados)
 2. Estrutura Lineares (Arrays, Listas, Listas-Encadeadas, Pilhas e Filas)
 3. Estruturas Não-Lineares (Árvores e Grafos)
 4. Estruturas Associativas (Map, Dict, Set, Hash)
 5. Algoritmos de ((Search) Buscas, (Sorts) Ordenação, Arrays, Grafos e Problemas Computacionais)
 
-**🛠️ Tecnologias Utilizadas**
+## 🛠️ Tecnologias Utilizadas
+
 - Editor de Código: Vs-Code
 - Linguagem: C
 - Sistemas Operacionais: Windows
