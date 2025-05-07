@@ -45,14 +45,19 @@ void bubble_sort(int *array, size_t size)
  * A função também conta o número de comparações feitas.
  *
  * Complexidade:
- * - Tempo:
- *   - Melhor caso: O(1) -> quando o alvo está no meio do array.
- *   - Pior caso:   O(log n) -> a cada passo, metade do array é descartada.
- *   - Caso médio:  O(log n)
+ * Tempo:
  *
- * - Espaço:
- *   - O(1) -> versão iterativa (sem uso de pilha recursiva).
- *   - O(log n) -> versão recursiva (devido à pilha de chamadas).
+ * - Melhor caso: O(1) -> quando o alvo está no meio do array.
+ *
+ * - Pior caso: O(log n) -> a cada passo, metade do array é descartada.
+ *
+ * - Caso médio: O(log n)
+ *
+ * Espaço:
+ *
+ * - O(1) -> versão iterativa (sem uso de pilha recursiva).
+ *
+ * - O(log n) -> versão recursiva (devido à pilha de chamadas).
  *
  * @param array Array a ser buscado (deve estar ordenado)
  * @param size Tamanho do array

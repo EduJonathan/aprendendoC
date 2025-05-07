@@ -57,7 +57,9 @@ void insert(pilha *stack, int valor)
  * a ordem de visitação dos vértices.
  *
  * Complexidade:
+ * 
  * - Tempo:  O(V + E), onde V é o número de vértices e E o número de arestas.
+ * 
  * - Espaço: O(V), para armazenar a pilha e o vetor de visitados.
  *
  * @param start O vértice de início da busca.

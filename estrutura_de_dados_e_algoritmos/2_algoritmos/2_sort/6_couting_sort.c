@@ -28,6 +28,7 @@
  *   do array são feitas em tempo linear.
  *
  * Espaço:
+ * 
  * - O(n + k) -> o espaço adicional necessário é proporcional ao tamanho do array de entrada
  *   e ao valor máximo \(k\).
  *

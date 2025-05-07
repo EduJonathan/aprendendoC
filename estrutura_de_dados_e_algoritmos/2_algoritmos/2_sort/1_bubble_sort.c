@@ -40,6 +40,7 @@
  *
  * Complexidade:
  * Tempo:
+ * 
  * - Melhor caso: O(n) -> quando o array já está ordenado, a ordenação faz apenas uma passada.
  * 
  * - Pior caso: O(n^2) -> quando o array está em ordem inversa, é necessário percorrer

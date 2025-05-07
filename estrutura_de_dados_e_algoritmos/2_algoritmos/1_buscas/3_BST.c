@@ -53,19 +53,23 @@ binaryTree *criarArvore(int valor)
  * ele é inserido na subárvore esquerda; se o valor é maior, ele é inserido na subárvore direita.
  *
  * Complexidade:
- * - Tempo:
- *   - Melhor caso: O(log n) -> árvore balanceada
- *   - Pior caso:   O(n) -> árvore degenerada (semelhante a uma lista ligada)
- *   - Caso médio:  O(log n)
+ * Tempo:
  *
- * - Espaço:
- *   - O(1) na versão iterativa
- *   - O(n) na versão recursiva (devido à pilha de chamadas)
+ * - Melhor caso: O(log n) -> árvore balanceada
+ *
+ * - Pior caso:   O(n) -> árvore degenerada (semelhante a uma lista ligada)
+ *
+ * - Caso médio:  O(log n)
+ *
+ * Espaço:
+ *
+ * - O(1) na versão iterativa
+ *
+ * - O(n) na versão recursiva (devido à pilha de chamadas)
  *
  * @param new O nó a ser inserido.
  * @param tree O nó atual (onde a inserção será feita).
  */
-
 void insert(binaryTree *new, binaryTree *tree)
 {
     if (new->valor < tree->valor) // Se o valor é menor, insira à esquerda

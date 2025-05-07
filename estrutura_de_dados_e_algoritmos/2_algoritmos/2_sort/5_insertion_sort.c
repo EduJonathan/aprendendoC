@@ -25,6 +25,7 @@
  * proporcional a \(n^2\), pois ele compara e desloca os elementos repetidamente.
  *
  * Espaço:
+ * 
  * - O(1) -> o algoritmo é in-place, ou seja, ele não requer espaço adicional significativo
  * além da memória usada para armazenar os dados de entrada.
  *

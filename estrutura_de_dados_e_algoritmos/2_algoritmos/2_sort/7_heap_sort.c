@@ -85,14 +85,13 @@ void construirHeap(int *arr, size_t size)
  *     realiza O(log n) operações para extrair os elementos e reestruturar o heap.
  *
  * Espaço:
+ * 
  * - O(1) -> o Heap Sort é um algoritmo in-place, ou seja, ele não necessita de espaço
  *     adicional além do necessário para armazenar os dados de entrada.
  *
  * @param arr O array a ser ordenado.
  * @param size O tamanho do array.
  */
-void heap_sort(int *arr, int size);
-
 void heapSort(int *arr, size_t size)
 {
     // Constrói o heap

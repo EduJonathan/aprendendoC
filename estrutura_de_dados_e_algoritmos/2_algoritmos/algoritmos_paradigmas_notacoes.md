@@ -141,10 +141,10 @@ set() ou dict() em Python: O(1) inserção/busca (em média)
 
 ### 📊 Gráfico de Complexidade Big-O
 
-![Gráfico de Complexidade Big-O](https://github.com/EduJonathan/aprendendoC/raw/main/img/Grafico_das_Notacoes_BigO.png?raw=true)
+![Gráfico de Complexidade Big-O](https://github.com/EduJonathan/aprendendoC/blob/main/img/Grafico_das_Notacoes_BigO.png)
 **Comparação das notações Big-O mais comuns**
 
-![Tempos de Execução](https://github.com/EduJonathan/aprendendoC/raw/main/img/tempo_big_o.png?raw=true)
+![Tempos de Execução](https://github.com/EduJonathan/aprendendoC/blob/main/img/tempo_big_o.png)
 **Performance de algoritmos em diferentes estruturas de dados**
 
 ---

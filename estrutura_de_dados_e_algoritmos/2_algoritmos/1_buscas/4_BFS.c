@@ -82,7 +82,9 @@ int sequential(fila *queue, int chave)
  * por camadas.
  *
  * Complexidade:
+ * 
  * - Tempo:  O(V + E), onde V é o número de vértices e E o número de arestas.
+ * 
  * - Espaço: O(V), para armazenar a fila e o vetor de visitados.
  *
  * @param key O vértice de início da busca.

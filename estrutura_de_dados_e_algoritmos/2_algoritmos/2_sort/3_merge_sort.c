@@ -75,6 +75,7 @@ void merge(int *arr, int esquerda, int middle, int direita)
  * e a mesclagem em O(n).
  *
  * Espaço:
+ * 
  * - O(n) -> o algoritmo necessita de espaço adicional para armazenar as sublistas enquanto
  * realiza a mesclagem.
  *

@@ -20,6 +20,7 @@
  * comparações em cada iteração.
  *
  * Espaço:
+ * 
  * - O(1) -> o **Selection Sort** é um algoritmo **in-place**, o que significa que ele
  * ordena os elementos diretamente no array sem a necessidade de memória adicional significativa.
  *
