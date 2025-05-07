@@ -6,17 +6,14 @@
 
 /**
  * @struct ThreadParams
- * @brief Estrutura para passar parâmetros para as threads
  *
- * @var id Identificador da thread
- * @var problem_size Tamanho do problema a ser resolvido
- * @var result Ponteiro para armazenar o resultado do cálculo
+ * @brief Estrutura para passar parâmetros para as threads
  */
 typedef struct
 {
     int id;           ///< ID da thread
-    int problem_size; ///< Tamanho do problema
-    double *result;   ///< Ponteiro para o resultado
+    int problem_size; ///< Tamanho do problema a ser resolvido
+    double *result;   ///< Ponteiro para armazenar o resultado do cálculo
 } ThreadParams;
 
 /**

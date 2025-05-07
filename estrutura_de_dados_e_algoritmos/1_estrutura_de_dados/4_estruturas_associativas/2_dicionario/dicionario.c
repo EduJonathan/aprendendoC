@@ -28,6 +28,7 @@
  * processamento de texto, análise de dados, aprendizado de máquina e muito mais.
  * Eles são uma ferramenta poderosa para organizar e manipular dados de forma eficiente.
  */
+
 typedef struct pares
 {
     char chave[MAX_CHAVE_VALOR]; /**< A chave associada ao valor, com tamanho fixo. */

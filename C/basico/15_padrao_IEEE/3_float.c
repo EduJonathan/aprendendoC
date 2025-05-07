@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     printf("------------------------------------------------\n");
 
     // Evite Comparações Diretas:
-    if (soma == 0.3f)
+    if (soma == 0.3)
     {
         printf("TRUE\n");
     }

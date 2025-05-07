@@ -4,6 +4,25 @@
 /**
  * @brief Função para ordenar um array usando o Selection Sort
  *
+ * O algoritmo de ordenação **Selection Sort** funciona selecionando repetidamente o menor
+ * (ou maior) elemento do array e trocando-o com o elemento da posição atual.
+ * Esse processo é repetido até que todos os elementos estejam ordenados.
+ *
+ * Complexidade:
+ * Tempo:
+ *
+ * - Melhor caso: O(n²) -> não importa a ordem dos elementos, o algoritmo sempre faz
+ * comparações em cada iteração.
+ *
+ * - Pior caso: O(n²) -> o desempenho não melhora mesmo que os elementos estejam parcialmente ordenados.
+ *
+ * - Caso médio: O(n²) -> em listas aleatoriamente desordenadas, o algoritmo continua com
+ * comparações em cada iteração.
+ *
+ * Espaço:
+ * - O(1) -> o **Selection Sort** é um algoritmo **in-place**, o que significa que ele
+ * ordena os elementos diretamente no array sem a necessidade de memória adicional significativa.
+ *
  * @param arr Array a ser ordenado
  * @param n Tamanho do array
  */

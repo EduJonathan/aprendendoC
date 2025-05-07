@@ -2,14 +2,37 @@
 #include <stdlib.h>
 
 /**
- * @brief O Counting Sort eh um algoritmo de ordenacao baseado em contagem.
+ * @brief O Counting Sort é um algoritmo de ordenação baseado em contagem.
  *
- * O Counting Sort é um algoritmo de ordenação baseado em contagem.
- * Ele conta o número de ocorrências de cada valor e usa essa contagem para
- * determinar a posição do valor no array ordenado.
+ * O **Counting Sort** é um algoritmo de ordenação que funciona contando o número de
+ * ocorrências de cada valor no array. Com base nas contagens, ele determina a posição
+ * de cada valor no array ordenado. Esse algoritmo é eficiente quando os valores do array
+ * estão em um intervalo restrito, pois evita comparações diretas entre os elementos.
+ *
+ * O Counting Sort não é um algoritmo de comparação. Em vez disso, ele usa uma estrutura
+ * auxiliar (geralmente um array de contagem) para registrar quantas vezes cada valor aparece
+ * no array de entrada e depois reconstrói o array ordenado com base nesses contadores.
+ *
+ * **Limitações**:
+ * - O algoritmo é eficiente quando os valores são inteiros não negativos e estão dentro
+ *   de um intervalo restrito.
+ *
+ * - Não é adequado para arrays com valores muito grandes ou para dados não inteiros,
+ *   pois o espaço de memória necessário para armazenar a contagem pode ser muito grande.
+ *
+ * Complexidade:
+ * Tempo:
+ *
+ * - Melhor, pior e caso médio: O(n + k) -> onde \(n\) é o número de elementos no array
+ *   e \(k\) é o valor máximo possível no array (a chave). A contagem e a reconstrução
+ *   do array são feitas em tempo linear.
+ *
+ * Espaço:
+ * - O(n + k) -> o espaço adicional necessário é proporcional ao tamanho do array de entrada
+ *   e ao valor máximo \(k\).
  *
  * @param arr Array de inteiros a ser ordenado.
- * @param key O maior valor possivel no array.
+ * @param key O maior valor possível no array.
  * @param size Tamanho do array.
  */
 void countingSort(int *arr, int key, size_t size)

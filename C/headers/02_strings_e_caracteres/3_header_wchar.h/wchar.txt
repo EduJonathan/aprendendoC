@@ -1,10 +1,4 @@
-----------------------------------------------------
-📌 wchar_t:
-O tipo wchar_t em C é utilizado para representar **caracteres largos**, permitindo 
-armazenar e manipular **caracteres Unicode** e outros conjuntos de caracteres multibyte 
-que não podem ser representados com o tipo char.
-
-Introdução:
+📌 Introdução:
 O tipo char em C é normalmente usado para armazenar caracteres de 1 byte, o que o limita 
 a representar apenas 256 caracteres diferentes, dependendo da codificação (geralmente ASCII). 
 No entanto, quando precisamos trabalhar com idiomas ou sistemas que exigem uma gama maior de
@@ -12,7 +6,17 @@ caracteres, como chinês, árabe, russo ou emojis, precisamos de um tipo que pos
 mais informações.
 
 ----------------------------------------------------
-📌 O que é wchar_t?
+
+🧩 wchar_t:
+
+O tipo wchar_t em C é utilizado para representar **caracteres largos**, permitindo 
+armazenar e manipular **caracteres Unicode** e outros conjuntos de caracteres multibyte 
+que não podem ser representados com o tipo char.
+
+----------------------------------------------------
+
+💭 O que é wchar_t?
+
 - wchar_t: é um tipo de dado especial em C, utilizado para armazenar caracteres largos, 
 ou seja, caracteres de múltiplos bytes.
 
@@ -23,7 +27,8 @@ ou seja, caracteres de múltiplos bytes.
 conjunto Unicode, como UTF-16 ou UTF-32.
 ----------------------------------------------------
 
-❓ Por que usar wchar_t:
+❓ Por que usar wchar_t?
+
 O uso de wchar_t é vantajoso quando trabalhamos com texto multilingue ou quando a 
 aplicação precisa de suporte a conjuntos de caracteres que não são representáveis com o 
 tipo char. Por exemplo, em uma aplicação que manipula texto em chinês ou japonês, é 
@@ -43,6 +48,7 @@ funções de <ctype.h>, mas com suporte para o tipo wchar_t.
 E a <wchar.h> fornece funções para manipulação de strings largas (usando wchar_t) de 
 maneira semelhante ao que você faria com strings padrão (do tipo char*), mas com o tipo de 
 dados wchar_t.
+
 ----------------------------------------------------
 
 📌 Significado do símbolos Unicode:
@@ -65,7 +71,7 @@ Emojis
 
 ----------------------------------------------------
 
-##📌 Considerações sobre a evolução do suporte a codificação e a relevância da linguagem C:
+📌 Considerações sobre a evolução do suporte a codificação e a relevância da linguagem C:
 
 Linguagens mais modernas como Python, Java e JavaScript já oferecem suporte nativo ao sistema 
 de codificação unicode, permitindo que a manipulação de caracteres de diferentes idiomas seja 

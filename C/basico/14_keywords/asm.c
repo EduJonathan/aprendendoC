@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
- * ASM: (Assembly): Refere-se à linguagem de baixo nível mais próxima da linguagem de
+ * ASM: (Assembly) Refere-se à linguagem de baixo nível mais próxima da linguagem de
  * máquina, permitindo um controle absoluto sobre o hardware. Ao escrever em Assembly,
  * não é necessário utilizar bibliotecas externas ou funções de alto nível, o que permite
  * otimização manual de cada ciclo de clock e controle direto sobre a execução do código.

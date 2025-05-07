@@ -12,15 +12,15 @@ typedef struct Aresta
 {
     int destino;
     struct Aresta *proxima;
-} Aresta;
+} ARESTAS;
 
 /**
  * @brief Estrutura que representa um vertice no grafo.
  */
-typedef struct Vertice
+typedef struct VERTICES
 {
-    Aresta *arestas;
-} Vertice;
+    ARESTAS *arestas;
+} VERTICES;
 
 /**
  * @brief Inicializa o grafo com um número de vértices aleatório.
@@ -28,9 +28,9 @@ typedef struct Vertice
  * @param numeroDeVertices Número de vértices do grafo.
  * @return Ponteiro para o grafo alocado.
  */
-Vertice *criarGrafo(int numeroDeVertices)
+VERTICES *criarGrafo(int numeroDeVertices)
 {
-    Vertice *grafo = (Vertice *)malloc(sizeof(Vertice) * numeroDeVertices);
+    VERTICES *grafo = (VERTICES *)malloc(sizeof(VERTICES) * numeroDeVertices);
 
     if (grafo == NULL)
     {
@@ -53,7 +53,7 @@ Vertice *criarGrafo(int numeroDeVertices)
  * @param numeroDeVertices Número de vértices no grafo.
  * @param numeroDeArestas Número de arestas que podem ser criadas.
  */
-void criarArestas(Vertice *grafo, int numeroDeVertices, int numeroDeArestas)
+void criarArestas(VERTICES *grafo, int numeroDeVertices, int numeroDeArestas)
 {
     for (int i = 0; i < numeroDeVertices; i++)
     {
@@ -65,7 +65,7 @@ void criarArestas(Vertice *grafo, int numeroDeVertices, int numeroDeArestas)
             {
                 // Adiciona uma aresta aleatória
                 int destino = rand() % numeroDeVertices;
-                Aresta *novaAresta = (Aresta *)malloc(sizeof(Aresta));
+                ARESTAS *novaAresta = (ARESTAS *)malloc(sizeof(ARESTAS));
 
                 if (novaAresta == NULL)
                 {
@@ -90,15 +90,15 @@ void criarArestas(Vertice *grafo, int numeroDeVertices, int numeroDeArestas)
  * @param grafo Grafo a ser desalocado.
  * @param numeroDeVertices Número de vértices no grafo.
  */
-void liberarGrafo(Vertice *grafo, int numeroDeVertices)
+void liberarGrafo(VERTICES *grafo, int numeroDeVertices)
 {
     for (int i = 0; i < numeroDeVertices; i++)
     {
-        Aresta *aresta = grafo[i].arestas;
+        ARESTAS *aresta = grafo[i].arestas;
 
         while (aresta != NULL)
         {
-            Aresta *temp = aresta;
+            ARESTAS *temp = aresta;
             aresta = aresta->proxima;
             free(temp);
         }
@@ -120,7 +120,7 @@ int main(int argc, char **argv)
     printf("Total de vertices: %d\t e total de arestas: %d\n", numeroDeVertices, numeroDeArestas);
 
     // Cria o grafo com uma lista de adjacências
-    Vertice *grafo = criarGrafo(numeroDeVertices);
+    VERTICES *grafo = criarGrafo(numeroDeVertices);
 
     // Cria as arestas aleatórias
     criarArestas(grafo, numeroDeVertices, numeroDeArestas);

@@ -61,13 +61,38 @@ void construirHeap(int *arr, size_t size)
 /**
  * @brief Ordena o array utilizando o algoritmo Heap Sort.
  *
+ * O **Heap Sort** é um algoritmo de ordenação que utiliza a estrutura de dados **heap**
+ * (uma árvore binária completa) para ordenar os elementos. O algoritmo constrói um heap
+ * a partir dos elementos do array e, em seguida, remove o maior (ou menor, dependendo
+ * do tipo de heap) elemento do heap, colocando-o na posição correta do array.
+ * Esse processo é repetido até que todo o array esteja ordenado.
+ *
+ * O Heap Sort pode ser implementado com um heap máximo (para ordenação crescente) ou
+ * um heap mínimo (para ordenação decrescente). A cada remoção do maior (ou menor)
+ * elemento, o heap é reestruturado para manter a propriedade da árvore binária.
+ *
+ * Complexidade:
+ * Tempo:
+ *
+ * - Melhor caso: O(n log n) -> o algoritmo tem uma complexidade de tempo de O(n log n)
+ *     em qualquer cenário, já que a construção do heap e a remoção do maior elemento
+ *     requerem tempo O(log n).
+ *
+ * - Pior caso: O(n log n) -> o desempenho é o mesmo para o pior caso, já que o
+ *     processo de construção e reorganização do heap é eficiente.
+ *
+ * - Caso médio: O(n log n) -> a complexidade é consistente, já que o algoritmo sempre
+ *     realiza O(log n) operações para extrair os elementos e reestruturar o heap.
+ *
+ * Espaço:
+ * - O(1) -> o Heap Sort é um algoritmo in-place, ou seja, ele não necessita de espaço
+ *     adicional além do necessário para armazenar os dados de entrada.
+ *
  * @param arr O array a ser ordenado.
  * @param size O tamanho do array.
- * @note O Heap Sort usa a estrutura de um heap para garantir que o maior (ou menor,
- * dependendo do tipo de heap) elemento seja removido e colocado na posição correta do array,
- * repetindo esse processo até que todo o array esteja ordenado. tem uma complexidade de tempo de
- * O(n log n) tanto no pior quanto no melhor caso.
  */
+void heap_sort(int *arr, int size);
+
 void heapSort(int *arr, size_t size)
 {
     // Constrói o heap

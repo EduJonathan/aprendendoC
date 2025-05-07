@@ -46,7 +46,7 @@ Representação em 32 bits: 1 10000001 10010000000000000000000
 🔍 Problemas Comuns
 1. Precisão Limitada:
 Números como 0.1 não têm representação exata e precisa em binário, causando erros de arredondamento.
-float x = 0.1;  // Na verdade, armazena ≈ 0.10000000149011612
+float x = 0.1;  // Na verdade, armazena pode armazenar até ≈ 0.10000000149011612
 TENDO O FAMOSO CASO QUE SE VOCÊ TENTAR SOMAR: 0.1 + 0.2 é igual 0.3 vai ser falso
 
 ----------

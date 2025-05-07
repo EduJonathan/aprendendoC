@@ -86,8 +86,8 @@ cenários e tamanhos de entrada.
 A complexidade de um algoritmo é uma medida que nos ajuda a entender o desempenho em  
 termos de tempo de execução (tempo de complexidade) e uso de memória (espaço de complexidade).  
 Esses conceitos são fundamentais para comparar algoritmos e escolher a melhor solução para  
-um problema, e entenda que seja o que estiver fazendo (algoritmo, backend, interface gráfica,
-entender e aplicar estes conceitos de bigO é essencial).
+um problema, e entenda que seja o que estiver fazendo (algoritmo, backend, banco de dados,
+interface gráfica, entender e aplicar estes conceitos de bigO é essencial).
 
 ### Tempo de Complexidade (Time Complexity)
 

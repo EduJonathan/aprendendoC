@@ -57,13 +57,30 @@ void merge(int *arr, int esquerda, int middle, int direita)
 /**
  * @brief Função de ordenação Merge Sort.
  *
- * Merge Sort é um algoritmo de ordenação baseado na técnica "dividir e conquistar".
- * A lista é dividida recursivamente até que cada sublista tenha um único elemento,
- * depois as sublistas são mescladas em ordem.
+ * **Merge Sort** é um algoritmo de ordenação baseado na técnica **"dividir e conquistar"**.
+ * A lista é dividida recursivamente em duas metades até que cada sublista tenha um único elemento.
+ * Em seguida, as sublistas são combinadas (mescladas) de forma ordenada, criando uma lista
+ * ordenada final.
+ *
+ * Complexidade:
+ * Tempo:
+ *
+ * - Melhor caso: O(n log n) -> mesmo quando o array já está parcialmente ordenado,
+ * a divisão e a mesclagem ocorrem em O(n log n).
+ *
+ * - Pior caso: O(n log n) -> o tempo de execução é sempre O(n log n), independentemente
+ * da distribuição dos dados.
+ *
+ * - Caso médio: O(n log n) -> o desempenho é consistente, pois a divisão ocorre em O(log n)
+ * e a mesclagem em O(n).
+ *
+ * Espaço:
+ * - O(n) -> o algoritmo necessita de espaço adicional para armazenar as sublistas enquanto
+ * realiza a mesclagem.
  *
  * @param arr Array a ser ordenado.
- * @param left Indice do primeiro elemento do subarray.
- * @param right Indice do último elemento do subarray.
+ * @param left Índice do primeiro elemento do subarray.
+ * @param right Índice do último elemento do subarray.
  */
 void mergeSort(int *arr, int left, int right)
 {

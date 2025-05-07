@@ -14,13 +14,39 @@ void swap(int *a, int *b)
 }
 
 /**
- * @brief Função de ordenação rápida (Quick Sort).
+ * @brief Função de ordenação Quick Sort.
  *
- * Algoritmo de ordenação Quick Sort utilizando o método de partição.
- * O algoritmo seleciona um pivô e organiza os elementos de modo que os valores
- * menores que o pivô fiquem à esquerda, e os valores maiores fiquem à direita.
- * A função é chamada recursivamente para as sublistas à esquerda e à direita
- * do pivô.
+ * **Quick Sort** é um algoritmo de ordenação baseado na técnica **"dividir e conquistar"**.
+ * Ele escolhe um elemento como pivô e particiona o array em dois subarrays, de modo que
+ * todos os elementos menores que o pivô fiquem à esquerda e os maiores à direita. O
+ * algoritmo é então recursivamente aplicado nas duas metades do array.
+ *
+ * A escolha do pivô pode ser feita de diversas formas (por exemplo, escolhendo o primeiro,
+ * o último, o elemento do meio, ou até mesmo um pivô aleatório). O desempenho do Quick Sort
+ * pode variar dependendo da escolha do pivô e da distribuição dos dados.
+ *
+ * Complexidade:
+ * Tempo:
+ *
+ * - Melhor caso: O(n log n) -> ocorre quando o array é particionado de forma equilibrada,
+ * ou seja, o pivô divide bem o array em duas partes aproximadamente iguais.
+ *
+ * - Pior caso: O(n^2) -> ocorre quando o pivô escolhido é sempre o maior ou o menor
+ * elemento do subarray, fazendo com que a particionamento seja muito desigual.
+ * Esse caso acontece quando o array está ordenado ou quase ordenado.
+ *
+ * - Caso médio: O(n log n) -> o desempenho geralmente é O(n log n), pois a probabilidade
+ * de a escolha do pivô gerar um particionamento desigual é pequena para arrays aleatórios.
+ *
+ * Espaço:
+ * - O(log n) -> o espaço adicional necessário para a recursão é proporcional à profundidade
+ * da pilha de chamadas recursivas. O melhor caso ocorre quando a recursão é equilibrada.
+ * No pior caso, a profundidade da recursão pode ser O(n), mas isso pode ser mitigado por
+ * técnicas como a escolha aleatória do pivô.
+ *
+ * @param array Array a ser ordenado.
+ * @param low Índice do primeiro elemento do subarray.
+ * @param high Índice do último elemento do subarray.
  */
 void quick_sort(int *array, int low, int high)
 {
