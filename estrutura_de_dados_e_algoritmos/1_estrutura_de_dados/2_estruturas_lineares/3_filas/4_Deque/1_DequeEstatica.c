@@ -51,7 +51,7 @@ void insertFront(int *deque, int *front, int *rear, int key)
     }
 
     if (*front == -1)
-    { 
+    {
         // Se o deque estiver vazio
         *front = 0;
         *rear = 0;
@@ -213,6 +213,10 @@ void displayDeque(int *deque, int front, int rear)
 
 int main(int argc, char **argv)
 {
+    // Inicializando os índices do deque
+    int front = -1;
+    int rear = -1;
+
     // Aloca o deque dinamicamente
     int *deque = (int *)malloc(MAX * sizeof(int));
     if (deque == NULL)
@@ -220,10 +224,6 @@ int main(int argc, char **argv)
         printf("Memory allocation failed!\n");
         return 1;
     }
-
-    // Inicializando os índices do deque
-    int front = -1;
-    int rear = -1;
 
     insertRear(deque, &front, &rear, 5);
     displayDeque(deque, front, rear);
@@ -242,6 +242,5 @@ int main(int argc, char **argv)
 
     // Libera a memória do deque
     free(deque);
-
     return 0;
 }

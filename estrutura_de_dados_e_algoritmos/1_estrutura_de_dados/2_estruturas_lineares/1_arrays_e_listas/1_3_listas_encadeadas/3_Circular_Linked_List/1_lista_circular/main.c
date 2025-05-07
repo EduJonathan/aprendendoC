@@ -63,6 +63,7 @@ int main(int argc, char **argv)
 
         default:
             printf("Opção inválida!\n");
+            break;
         }
     } while (opcao != 7);
 

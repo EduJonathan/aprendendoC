@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <math.h>
 #include <string.h>
 
 /**
@@ -227,6 +229,50 @@ void imprimirLista(ListaDinamica *lista)
 }
 
 /**
+ * @brief Busca um elemento na lista.
+ *
+ * @param lista Ponteiro para a lista.
+ * @param dado Ponteiro para o dado a ser buscado.
+ * @param tipo Tipo do dado ('i', 'c', 's' ou 'f').
+ * @return true se o elemento for encontrado, false caso contrário.
+ */
+bool buscarElemento(ListaDinamica *lista, void *dado, char tipo)
+{
+    for (int i = 0; i < lista->tamanho; i++)
+    {
+        // Verifica primeiro se o tipo é o mesmo
+        if (lista->itens[i].tipo == tipo)
+        {
+            // Compara de acordo com o tipo
+            switch (tipo)
+            {
+            case 'i':
+                if (*((int *)lista->itens[i].dado) == *((int *)dado))
+                    return true;
+                break;
+
+            case 'c':
+                if (*((char *)lista->itens[i].dado) == *((char *)dado))
+                    return true;
+                break;
+
+            case 's':
+                if (strcmp((char *)lista->itens[i].dado, (char *)dado) == 0)
+                    return true;
+                break;
+
+            case 'f':
+                // Comparação de floats com margem de erro pequena
+                if (fabs(*((float *)lista->itens[i].dado) - *((float *)dado)) < 0.0001)
+                    return true;
+                break;
+            }
+        }
+    }
+    return false;
+}
+
+/**
  * @brief Libera a memória alocada para a lista.
  *
  * @param lista Ponteiro para a lista.
@@ -253,6 +299,22 @@ int main(int argc, char **argv)
 
     printf("Lista após adições:\n");
     imprimirLista(&lista);
+
+    // Testando a busca
+    int num = 12;
+    printf("\nBusca por 12: %s\n", buscarElemento(&lista, &num, 'i') ? "Encontrado" : "Não encontrado");
+
+    char letra = 'x';
+    printf("Busca por 'x': %s\n", buscarElemento(&lista, &letra, 'c') ? "Encontrado" : "Não encontrado");
+
+    char *str = "Eduardo";
+    printf("Busca por \"Eduardo\": %s\n", buscarElemento(&lista, str, 's') ? "Encontrado" : "Não encontrado");
+
+    char *string = "eduardo"; // Testando o case-sensitive
+    printf("Busca por \"eduardo\": %s\n", buscarElemento(&lista, string, 's') ? "Encontrado" : "Não encontrado");
+
+    float pi = 3.14;
+    printf("Busca por 3.14: %s\n", buscarElemento(&lista, &pi, 'f') ? "Encontrado" : "Não encontrado");
 
     removerItem(&lista, 1); // Remove o item no índice 1 ('c')
     printf("\nLista após remoção do índice 1:\n");

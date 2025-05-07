@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdbool.h>
+
 #define MAXLISTA 10
 
 /**
@@ -60,6 +62,25 @@ void removerElemento(lista *l, size_t indice)
 }
 
 /**
+ * @brief Busca um elemento na lista por busca linear.
+ *
+ * @param l Ponteiro para a lista.
+ * @param elemento Valor a ser buscado.
+ * @return true se o elemento for encontrado, false caso contrário.
+ */
+bool buscarElemento(lista *l, int elemento)
+{
+    for (size_t i = 0; i < l->tamanho; i++)
+    {
+        if (l->dados[i] == elemento)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
  * @brief Exibe os elementos da lista.
  *
  * @param l Ponteiro para a lista.
@@ -99,14 +120,23 @@ int main(int argc, char **argv)
 
     // Remove um elemento da lista (índice 2)
     removerElemento(&l, 2);
+
     printf("\nLista após remover o elemento no índice 2:\n");
     exibirLista(&l);
+
+    // Testando a busca por elementos
+    printf("\n1º Busca por elementos:\n");
+    printf("Elemento 16 encontrado? %s\n", buscarElemento(&l, 16) ? "Sim" : "Não");
+    printf("Elemento 30 encontrado? %s\n", buscarElemento(&l, 30) ? "Sim" : "Não");
 
     // Tenta adicionar um elemento a mais (lista cheia)
     adicionarElemento(&l, 30);
 
+    printf("\n2º Busca por elementos:\n");
+    printf("Elemento 16 encontrado? %s\n", buscarElemento(&l, 16) ? "Sim" : "Não");
+    printf("Elemento 30 encontrado? %s\n", buscarElemento(&l, 30) ? "Sim" : "Não");
+
     // Tenta remover um elemento com índice inválido
     removerElemento(&l, 20);
-
     return 0;
 }

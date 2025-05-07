@@ -268,6 +268,5 @@ int main(int argc, char **argv)
     // Libera a memória do deque
     free(d->deque);
     free(d);
-
     return 0;
 }

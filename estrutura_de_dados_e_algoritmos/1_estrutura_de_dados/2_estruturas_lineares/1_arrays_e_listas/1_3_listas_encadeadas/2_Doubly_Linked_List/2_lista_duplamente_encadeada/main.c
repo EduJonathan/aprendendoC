@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 
     do
     {
-        printf("\nOpções:\n");
+        printf("\nEscolha uma Opções\n");
         printf("1 -> Inserir no início\n");
         printf("2 -> Inserir no final\n");
         printf("3 -> Inserir após uma posição\n");
@@ -18,8 +18,6 @@ int main(int argc, char **argv)
         printf("5 -> Deletar do final\n");
         printf("6 -> Deletar nó específico\n");
         printf("7 -> Exibir lista: ");
-
-        printf("\nEscolha uma opção: ");
         scanf("%d", &opcao);
 
         switch (opcao)

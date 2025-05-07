@@ -14,7 +14,7 @@
  * para o próximo nó. Os nós não são armazenados em um bloco contíguo de memória.
  * Cada nó pode estar em uma parte diferente da memória, e a relação entre os nós é
  * feita através dos ponteiros. Não há um índice direto, então o acesso aos elementos
- * geralmente exige uma perdição sequencial (percorrendo os nós um por um
+ * geralmente exige uma perdição sequencial (percorrendo os nós um por um)
  */
 struct Node
 {

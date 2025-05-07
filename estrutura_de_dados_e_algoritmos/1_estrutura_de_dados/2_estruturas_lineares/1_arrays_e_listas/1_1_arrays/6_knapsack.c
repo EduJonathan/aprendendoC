@@ -62,6 +62,7 @@ int mochila(int capacidade, int pesos[], int valores[], size_t n)
             }
         }
     }
+    
     // Retorna o valor máximo que pode ser obtido com todos os itens e a capacidade da mochila
     return dp[n][capacidade];
 }
