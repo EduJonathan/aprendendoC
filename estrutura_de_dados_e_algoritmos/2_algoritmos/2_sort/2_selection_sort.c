@@ -6,11 +6,12 @@
  *
  * @param arr Array a ser ordenado
  * @param n Tamanho do array
- * @param comparacoes Contador de comparações
- * @param swaps Contador de trocas
  */
-void selectionSort(int *arr, size_t n, int *comparacoes, int *swaps)
+void selectionSort(int *arr, size_t n)
 {
+    int comparacoes = 0; // Contador de comparações
+    int swaps = 0;       // Contador de trocas
+
     // Loop externo que percorre o array até o penúltimo elemento
     for (size_t i = 0; i < n - 1; i++)
     {
@@ -19,7 +20,7 @@ void selectionSort(int *arr, size_t n, int *comparacoes, int *swaps)
         // Loop interno para encontrar o menor elemento não ordenado à direita de i
         for (size_t j = i + 1; j < n; j++)
         {
-            (*comparacoes)++; // Conta a comparação feita
+            comparacoes++; // Conta a comparação feita
 
             // Se o elemento atual é menor que o menor encontrado até agora, atualiza minIndex
             if (arr[j] < arr[minIndex])
@@ -35,9 +36,13 @@ void selectionSort(int *arr, size_t n, int *comparacoes, int *swaps)
             int temp = arr[i];      // Atribui o valor de arr[i] a temp
             arr[i] = arr[minIndex]; // Atribui o valor de arr[minIndex] a arr[i]
             arr[minIndex] = temp;   // Atribui o valor de temp a arr[minIndex]
-            (*swaps)++;             // Conta as troca
+            swaps++;                // Conta as trocas
         }
     }
+
+    // Agora você pode usar 'comparacoes' e 'swaps' para exibir os resultados ou usá-los
+    printf("Comparações: %d\n", comparacoes);
+    printf("Trocas: %d\n", swaps);
 }
 
 /**
@@ -89,12 +94,8 @@ int main(int argc, char **argv)
     // Calcula o número de elementos no array
     size_t n = sizeof(arr) / sizeof(arr[0]);
 
-    // Variáveis para contar comparações e trocas
-    int comparacoes = 0;
-    int swaps = 0;
-
     // Chama a função de ordenação passando o array, o tamanho do array, e os contadores
-    selectionSort(arr, n, &comparacoes, &swaps);
+    selectionSort(arr, n);
 
     // Imprime o array ordenado
     printf("Sequencia de arr ordenada: ");
@@ -102,9 +103,6 @@ int main(int argc, char **argv)
     {
         printf("%d ", arr[i]);
     }
-
-    // Imprime o número total de comparações e trocas realizadas durante a ordenação
-    printf("\nNúmero comparados: %d\tNúmero de trocas: %d", comparacoes, swaps);
 
     printf("\n-----------------------------------------------\n");
 

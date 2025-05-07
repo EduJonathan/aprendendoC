@@ -55,16 +55,20 @@ void insert(HashTable *ht, int key, int value)
 }
 
 /**
- * @brief Função para buscar um valor pela chave
+ * @brief Função para buscar um valor pela chave.
  *
- * @param ht Tabela hash
- * @param key Chave a ser buscada
- * @return HashNode* Ponteiro para o nó encontrado
- * 
- * @note A busca por hashing usa uma tabela de dispersão (hash table) para mapear chaves
- * de dados para posições em um array. Cada elemento tem um "hash" que aponta diretamente
- * para sua posição na tabela, Usada quando é necessário realizar buscas rápidas e frequentes
- * em grandes conjuntos de dados.
+ * A busca por hashing utiliza uma tabela de dispersão (hash table) para mapear chaves
+ * de dados a posições em um array. Cada chave é transformada por uma função hash que
+ * determina sua posição na tabela. É uma estrutura eficiente para buscas rápidas, desde
+ * que a função hash seja bem distribuída e a colisão seja tratada adequadamente.
+ *
+ * Complexidade:
+ * - Tempo: O(1) no caso médio e melhor caso; O(n) no pior caso (quando há muitas colisões).
+ * - Espaço: O(n), onde n é o número de elementos armazenados na tabela hash.
+ *
+ * @param ht Tabela hash.
+ * @param key Chave a ser buscada.
+ * @return HashNode* Ponteiro para o nó encontrado, ou NULL se não encontrado.
  */
 HashNode *search(HashTable *ht, int key)
 {

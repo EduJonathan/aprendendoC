@@ -1,4 +1,5 @@
-Explicando o wchar_t em C:
+----------------------------------------------------
+📌 wchar_t:
 O tipo wchar_t em C é utilizado para representar **caracteres largos**, permitindo 
 armazenar e manipular **caracteres Unicode** e outros conjuntos de caracteres multibyte 
 que não podem ser representados com o tipo char.
@@ -11,7 +12,7 @@ caracteres, como chinês, árabe, russo ou emojis, precisamos de um tipo que pos
 mais informações.
 
 ----------------------------------------------------
-O que é wchar_t?
+📌 O que é wchar_t?
 - wchar_t: é um tipo de dado especial em C, utilizado para armazenar caracteres largos, 
 ou seja, caracteres de múltiplos bytes.
 
@@ -22,7 +23,7 @@ ou seja, caracteres de múltiplos bytes.
 conjunto Unicode, como UTF-16 ou UTF-32.
 ----------------------------------------------------
 
-Por que usar wchar_t:
+❓ Por que usar wchar_t:
 O uso de wchar_t é vantajoso quando trabalhamos com texto multilingue ou quando a 
 aplicação precisa de suporte a conjuntos de caracteres que não são representáveis com o 
 tipo char. Por exemplo, em uma aplicação que manipula texto em chinês ou japonês, é 
@@ -30,7 +31,7 @@ necessário usar wchar_t para representar caracteres que exigem mais de um byte.
 
 ----------------------------------------------------
 
-Como utilizar na linguagem C:
+📌 Como utilizar na linguagem C:
 
 Os include <wchar.h> e <wctype.h>, não se diferencia muito dos includes <string.h> e <ctype.h>, 
 praticamente as mesmas funções com mesmos propósitos(strlen, strcpy, wcslen, wcscpy),
@@ -44,7 +45,7 @@ maneira semelhante ao que você faria com strings padrão (do tipo char*), mas c
 dados wchar_t.
 ----------------------------------------------------
 
-Significado do símbolos Unicode:
+📌 Significado do símbolos Unicode:
 
 Sim, o Unicode contém uma vasta gama de símbolos e caracteres para representar diferentes
 tipos de caracteres, incluindo caracteres largos (ou wide characters). Esses caracteres são
@@ -60,22 +61,22 @@ Emojis
 
 \u1F600: 😀 (carinha sorrindo)
 \u1F609: 😉 (carinha piscando)
-\u2764: ❤️ (coração)
+\u2764 : ❤️ (coração)
 
 ----------------------------------------------------
 
-## Considerações sobre a evolução do suporte a codificação e a relevância da linguagem C:
+##📌 Considerações sobre a evolução do suporte a codificação e a relevância da linguagem C:
 
 Linguagens mais modernas como Python, Java e JavaScript já oferecem suporte nativo ao sistema 
 de codificação unicode, permitindo que a manipulação de caracteres de diferentes idiomas seja 
-feita de maneira automática, em a necessidade de tipos específicos, sendo geralmente uma questão
+feita de maneira automática, sem a necessidade de tipos específicos, sendo geralmente uma questão
 de configuração no ambiente de edição. no entanto, isso não torna a linguagem C obsoleta 
 ou inutilizável. Pelo contrário, ao considerar o contexto de sua criação, durante uma época 
-de grandes transformações tecnológicas e guerras, a linguagem C foi um marco importante. 
+de grandes transformações tecnológicas e guerras, e que não pensavam que computadores e tecnologia
+não fossem se tornar algo global, a linguagem C foi um marco importante em seu tempo.
 
 A evolução de C ao longo do tempo, incluindo tentativas de adaptação a novos paradigmas 
 (como o suporte Unicode e a configuração de localidade via `locale.h`), demonstra sua
-flexibilidade e resiliência. A linguagem C continua sendo amplamente utilizada em sistemas 
-de baixo nível, embarcados e em áreas onde performance e o controle direto sobre o hardware 
-são cruciais.
- 
+flexibilidade, resiliência e adaptabilidade. A linguagem C continua sendo amplamente 
+utilizada em sistemas de baixo nível, embarcados e em áreas onde performance e o controle 
+direto sobre o hardware são cruciais.

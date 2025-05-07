@@ -71,21 +71,23 @@ int sequential(fila *queue, int chave)
 }
 
 /**
- * Realiza a Busca em Largura (BFS) em um grafo.
+ * @brief Realiza a Busca em Largura (BFS) em um grafo.
+ *
+ * A Busca em Largura (BFS) é um algoritmo de busca em grafos que explora todos os
+ * vértices de um grafo por níveis, começando de um vértice inicial. Ela visita todos
+ * os vizinhos de um nó antes de passar para os nós mais distantes.
+ *
+ * É útil para encontrar o caminho mais curto em grafos não ponderados, onde todos os
+ * passos entre nós têm o mesmo peso. Utiliza uma fila (FIFO) para garantir a exploração
+ * por camadas.
+ *
+ * Complexidade:
+ * - Tempo:  O(V + E), onde V é o número de vértices e E o número de arestas.
+ * - Espaço: O(V), para armazenar a fila e o vetor de visitados.
  *
  * @param key O vértice de início da busca.
  * @param adj Matriz de adjacência do grafo.
  * @param v Número de vértices no grafo.
- *
- * @note A Busca em Largura (BFS) é um algoritmo de busca em grafos que explora todos os
- * vértices de um grafo de maneira por níveis, começando de um vértice inicial. Ele visita
- * todos os vizinhos de um nó antes de passar para os nós mais distantes. Útil para encontrar
- * o caminho mais curto em grafos não ponderados, onde todos os passos entre nós são
- * considerados iguais. O tempo de execução da BFS é O(V + E) 'V' é o número de vértices e o
- * 'E' é o número de arestas no grafo.
- * A fila é a estrutura de dados mais adequada, pois ela segue o princípio FIFO
- * (First In, First Out), ou seja, o primeiro nó a ser inserido é o primeiro a ser removido,
- * o que permite que os nós sejam explorados por "níveis" de profundidade.
  */
 void BFS(int key, int adj[MAX_VERTICES][MAX_VERTICES], int v)
 {

@@ -2,13 +2,38 @@
 #include <stdlib.h>
 
 /**
- * huffman algo: O algoritmo de codificação de Huffman (Huffman Coding Algorithm)
- * utiliza o princípio de codificação de Huffman para codificar um texto.
+ * Algoritmo de Huffman - Codificação de Texto
+ *
+ * O algoritmo de Huffman é um algoritmo de compressão sem perdas utilizado para
+ * gerar uma codificação eficiente de caracteres com base na sua frequência
+ * em um texto. Ele utiliza uma abordagem de árvore binária para construir uma
+ * tabela de códigos, atribuindo códigos menores aos caracteres mais frequentes
+ * e códigos maiores aos menos frequentes.
+ *
+ * Aplicações:
+ * - Compressão de arquivos (ZIP, GZIP)
+ * - Codificação de imagens e vídeos (JPEG, MP3)
+ * - Compressão de dados em redes
+ *
+ * Funcionamento:
+ * - Conta a frequência de cada caractere no texto.
+ * - Cria uma árvore binária onde cada folha é um caractere e os nós intermediários
+ *   têm uma soma das frequências dos seus filhos.
+ * - Atribui um código binário para cada caractere, sendo os caracteres mais
+ *   frequentes representados com códigos menores.
+ * - A codificação gerada é otimizada para o tamanho total mais compacto possível.
+ *
+ * Restrições:
+ * - A eficácia da codificação depende da distribuição de frequência dos caracteres.
+ *   Se todos os caracteres aparecem com a mesma frequência, a compressão será ineficaz.
  *
  * COMPLEXIDADE:
- * TEMPO: O(n), onde n é o tamanho do texto.
+ * - TEMPO: O(n log n), onde n é o número de caracteres distintos no texto (geralmente
+ *   relacionado ao número de elementos a serem processados na árvore de Huffman).
+ * - ESPAÇO: O(n), onde n é o tamanho do texto ou o número de caracteres únicos.
  *
- * ESPAÇO: O(n), onde n é o tamanho do texto.
+ * @note O algoritmo de Huffman é eficiente para textos com uma grande variação
+ * na frequência de caracteres, mas não oferece ganho em textos uniformemente distribuídos.
  */
 
 #define MAX_TREE_HT 100 ///< Altura máxima da árvore de Huffman.
@@ -197,6 +222,7 @@ struct MinHeap *createAndBuildMinHeap(char data[], int freq[], int size)
     {
         minHeap->array[i] = newNode(data[i], freq[i]);
     }
+    
     minHeap->size = size;
     buildMinHeap(minHeap);
     return minHeap;

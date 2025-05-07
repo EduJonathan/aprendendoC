@@ -37,12 +37,24 @@ void bubble_sort(int *array, size_t size)
 /**
  * @brief Função de busca binária com contagem de comparações
  *
- * O algoritmo de busca binária utiliza a teoria de divisão e
+ * O algoritmo de busca binária utiliza a estratégia de divisão e
  * conquista para encontrar um elemento em um array ordenado.
+ * A cada iteração, o intervalo de busca é reduzido pela metade,
+ * o que garante maior eficiência em comparação à busca linear.
  *
  * A função também conta o número de comparações feitas.
  *
- * @param array Array a ser buscado
+ * Complexidade:
+ * - Tempo:
+ *   - Melhor caso: O(1) -> quando o alvo está no meio do array.
+ *   - Pior caso:   O(log n) -> a cada passo, metade do array é descartada.
+ *   - Caso médio:  O(log n)
+ *
+ * - Espaço:
+ *   - O(1) -> versão iterativa (sem uso de pilha recursiva).
+ *   - O(log n) -> versão recursiva (devido à pilha de chamadas).
+ *
+ * @param array Array a ser buscado (deve estar ordenado)
  * @param size Tamanho do array
  * @param alvo Alvo a ser buscado
  * @return true Se o valor for encontrado

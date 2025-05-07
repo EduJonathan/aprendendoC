@@ -4,9 +4,18 @@
 /**
  * @brief Função de busca linear com contagem de comparações
  *
- * O algoritmo de busca linear percorre por todos os elementos do array,
- * e vai verificando cada elemento até o alvo ser encontrado no array,
- * contando o número de comparações feitas.
+ * O algoritmo de busca linear percorre todos os elementos do array,
+ * verificando cada um até encontrar o valor alvo ou terminar a busca,
+ * contabilizando o número de comparações realizadas.
+ *
+ * Complexidade:
+ * - Tempo:
+ *   - Melhor caso: O(1)  -> quando o alvo está na primeira posição.
+ *   - Pior caso:   O(n)  -> quando o alvo está na última posição ou não está presente.
+ *   - Caso médio:  O(n)  -> em média, o alvo está no meio do array.
+ * 
+ * - Espaço:
+ *   - O(1) -> usa apenas variáveis auxiliares; não depende do tamanho do array.
  *
  * @param array Informar um array
  * @param size Informar o tamanho do array

@@ -93,17 +93,17 @@ Também é expresso em notação Big-O. Ex: `O(1)` (memória fixa) ou `O(n²)` (
 
 Para estimar o tempo de execução assintótico de um algoritmo (ou seja, em termos de complexidade de tempo), focamos principalmente nos seguintes elementos:
 
-🔁 1. Loops (Simples ou Aninhados)
+🔁 1. Loops (Simples ou Aninhados):
 São geralmente os maiores influenciadores de tempo.
 Exemplo: Um loop simples: O(n), Dois loops aninhados: O(n²), Três loops aninhados: O(n³),
 
-🔁📞 2. Chamadas de Funções (Recursivas ou Não)
+🔁📞 2. Chamadas de Funções (Recursivas ou Não):
 Recursão merece atenção especial:
 Ex:
 Divisão por dois: T(n) = T(n/2) + O(1) → O(log n)
 Duplicação de chamadas: T(n) = 2T(n-1) + O(1) → O(2ⁿ)
 
-⚙️ 3. Operações Internas
+⚙️ 3. Operações Internas:
 Operações aparentemente simples como +, \*, acesso a vetor etc., são O(1).
 Porém, se estiverem dentro de loops ou recursões, contribuem para o tempo total.
 Ex: Uma soma dentro de um loop de n → O(n)
@@ -131,14 +131,24 @@ set() ou dict() em Python: O(1) inserção/busca (em média)
 
 ### 📊 Gráfico de Complexidade Big-O
 
-![Gráfico de Complexidade Big-O](./img/Grafico%20das%20Notações%20BigO.png)
-
-![Gráfico ilustrativo da complexidade bigO em diferentes Estruturas de Dados](./img/tempo%20big-o.png)
-
+![Gráfico de Complexidade Big-O](./img/Grafico_das_Notacoes_BigO.png)
 Este gráfico ilustra o crescimento das funções mais comuns em análise de algoritmos  
 à medida que o número de elementos aumenta.
 
+![Gráfico ilustrativo da complexidade Big-O em diferentes Estruturas de Dados](./img/tempo_big_o.png)
+Este gráfico compara os tempos de execução (Big-O) de diferentes algoritmos de ordenação
+e operações em várias estruturas de dados. Ele é útil para entender como a escolha de algoritmo
+ou estrutura de dados pode impactar a performance, dependendo do tamanho dos dados.
+
 ---
+
+## 📚 Sites online para Estruturas de Dados
+
+Para praticar e visualizar diferentes algoritmos e estruturas de dados, você pode acessar o seguinte site interativo:
+
+## Visualização de Algoritmos: https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+
+Este site oferece uma interface visual para explorar diversos algoritmos, como ordenação, busca, e estruturas de dados, permitindo ver como eles funcionam em tempo real à medida que os dados são processados.
 
 ## 📚 Livros para entender algoritmos
 

@@ -15,9 +15,9 @@
  *
  * Cada nó contém:
  * - um valor inteiro (`valor`),
- * 
+ *
  * - o índice da coluna (`coluna`),
- * 
+ *
  * - ponteiros para os filhos esquerdo e direito (`left` e `right`).
  */
 typedef struct binary_tree_node
@@ -52,9 +52,20 @@ binaryTree *criarArvore(int valor)
  * A inserção segue a lógica da BST: se o valor é menor que o valor do nó atual,
  * ele é inserido na subárvore esquerda; se o valor é maior, ele é inserido na subárvore direita.
  *
+ * Complexidade:
+ * - Tempo:
+ *   - Melhor caso: O(log n) -> árvore balanceada
+ *   - Pior caso:   O(n) -> árvore degenerada (semelhante a uma lista ligada)
+ *   - Caso médio:  O(log n)
+ *
+ * - Espaço:
+ *   - O(1) na versão iterativa
+ *   - O(n) na versão recursiva (devido à pilha de chamadas)
+ *
  * @param new O nó a ser inserido.
  * @param tree O nó atual (onde a inserção será feita).
  */
+
 void insert(binaryTree *new, binaryTree *tree)
 {
     if (new->valor < tree->valor) // Se o valor é menor, insira à esquerda

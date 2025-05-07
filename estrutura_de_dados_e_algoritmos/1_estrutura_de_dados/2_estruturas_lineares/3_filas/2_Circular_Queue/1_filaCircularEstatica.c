@@ -5,22 +5,22 @@
 
 /**
  * @brief Estrutura que representa uma fila circular.
- * 
+ *
  * A fila circular é uma estrutura de dados que mantém os elementos de forma
  * sequencial e se "dobra" quando o final é alcançado, tornando possível reutilizar
  * os espaços da fila que foram removidos, evitando a necessidade de mover elementos.
  */
 typedef struct fila
 {
-    int frente;                 /**< Índice do primeiro elemento na fila */
-    int atras;                  /**< Índice do último elemento na fila */
-    int elementos[QUEUE_SIZE];   /**< Vetor que armazena os elementos da fila */
-    int contador;               /**< Número de elementos na fila */
+    int frente;                /**< Índice do primeiro elemento na fila */
+    int atras;                 /**< Índice do último elemento na fila */
+    int elementos[QUEUE_SIZE]; /**< Vetor que armazena os elementos da fila */
+    int contador;              /**< Número de elementos na fila */
 } filaCircular;
 
 /**
  * @brief Verifica se a fila está vazia.
- * 
+ *
  * @param queue Ponteiro para a estrutura filaCircular
  * @return Retorna true se a fila estiver vazia, caso contrário, retorna false
  */
@@ -31,7 +31,7 @@ bool filaVazia(filaCircular *queue)
 
 /**
  * @brief Verifica se a fila está cheia.
- * 
+ *
  * @param queue Ponteiro para a estrutura filaCircular
  * @return Retorna true se a fila estiver cheia, caso contrário, retorna false
  */
@@ -42,10 +42,10 @@ bool filaCheia(filaCircular *queue)
 
 /**
  * @brief Insere um elemento na fila circular.
- * 
+ *
  * A inserção é feita no final da fila. Quando a fila chega ao fim, ela começa a
  * reutilizar os espaços vagos no início, tornando-se circular.
- * 
+ *
  * @param queue Ponteiro para a estrutura filaCircular
  * @param elemento O valor a ser inserido na fila
  */
@@ -65,10 +65,10 @@ void inserirElementoNaFila(filaCircular *queue, int elemento)
 
 /**
  * @brief Remove um elemento da fila circular.
- * 
+ *
  * O elemento removido será o primeiro da fila, e a fila é atualizada de forma
  * circular. Quando a remoção é feita, o índice "frente" é ajustado.
- * 
+ *
  * @param queue Ponteiro para a estrutura filaCircular
  * @return O elemento removido da fila, ou -1 se a fila estiver vazia
  */
@@ -88,10 +88,10 @@ int removerElementoNaFila(filaCircular *queue)
 
 /**
  * @brief Exibe os elementos presentes na fila circular.
- * 
+ *
  * A função exibe todos os elementos da fila, respeitando a estrutura circular.
  * Caso a fila esteja vazia, uma mensagem informando isso será exibida.
- * 
+ *
  * @param queue Ponteiro para a estrutura filaCircular
  */
 void exibirFila(filaCircular *queue)
