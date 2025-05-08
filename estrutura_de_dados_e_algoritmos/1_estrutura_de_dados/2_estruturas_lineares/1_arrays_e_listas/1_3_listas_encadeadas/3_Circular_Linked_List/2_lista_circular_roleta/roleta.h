@@ -26,7 +26,8 @@ typedef struct Node
  */
 typedef struct
 {
-    Node *atual; /**< Ponteiro para o nó atual (arma selecionada) */
+    Node *atual;    /**< Ponteiro para o nó atual (arma selecionada) */
+    Node *anterior; /**< Ponteiro para o nó anterior ao atual */
 } RoletaDeArmas;
 
 /**
@@ -68,12 +69,14 @@ void inicializar_roleta(RoletaDeArmas *roleta, const char *armas[], int num_arma
     if (num_armas == 0)
     {
         roleta->atual = NULL;
+        roleta->anterior = NULL;
         return;
     }
 
     // Cria o primeiro nó
     Node *primeiro_no = criar_no(armas[0]);
     roleta->atual = primeiro_no;
+    roleta->anterior = primeiro_no;
     Node *ultimo_no = primeiro_no;
 
     // Adiciona os demais nós e conecta em forma circular
@@ -103,16 +106,9 @@ void mover_para_esquerda(RoletaDeArmas *roleta)
         return;
     }
 
-    // Encontra o nó anterior ao atual
-    Node *anterior = roleta->atual;
-
-    while (anterior->proximo != roleta->atual)
-    {
-        anterior = anterior->proximo;
-    }
-
-    // Atualiza o ponteiro atual para o nó anterior
-    roleta->atual = anterior;
+    // Atualiza o ponteiro anterior e atual
+    roleta->anterior = roleta->atual;
+    roleta->atual = roleta->atual->proximo;
 }
 
 /**
@@ -131,6 +127,7 @@ void mover_para_direita(RoletaDeArmas *roleta)
 
     // Move para o próximo nó
     roleta->atual = roleta->atual->proximo;
+    roleta->anterior = roleta->atual;
 }
 
 /**
@@ -185,7 +182,13 @@ void exibir_menu(RoletaDeArmas *roleta)
         printf("3. Exibir roleta\n");
         printf("0. Sair\n");
         printf("Escolha uma opção: ");
-        scanf("%d", &escolha);
+
+        if (scanf("%d", &escolha) != 1)
+        {
+            printf("Entrada inválida! Tente novamente.\n");
+            while (getchar() != '\n'); // Limpar o buffer de entrada
+            continue;
+        }
 
         switch (escolha)
         {
@@ -211,6 +214,32 @@ void exibir_menu(RoletaDeArmas *roleta)
             printf("Opção inválida! Tente novamente.\n");
         }
     } while (escolha != 0);
+}
+
+/**
+ * @brief Libera a memória alocada para a roleta de armas.
+ *
+ * A função percorre todos os nós da lista circular e libera a memória de cada um.
+ *
+ * @param roleta Ponteiro para a estrutura RoletaDeArmas a ser liberada.
+ */
+void liberar_roleta(RoletaDeArmas *roleta)
+{
+    if (roleta->atual == NULL)
+        return;
+
+    Node *no_atual = roleta->atual;
+    Node *no_anterior;
+
+    // Percorre a roleta e libera a memória dos nós
+    do
+    {
+        no_anterior = no_atual;
+        no_atual = no_atual->proximo;
+        free(no_anterior);
+    } while (no_atual != roleta->atual); // Para quando voltar ao início
+
+    roleta->atual = NULL; // Garantir que o ponteiro da roleta seja nulo após a liberação
 }
 
 #endif

@@ -34,53 +34,53 @@ bool listaVazia(struct no *lista) { return (lista == NULL); }
  */
 int tamanhoLista(struct no *lista)
 {
-    struct no *aux = lista;
     int tamanho = 0;
-
-    for (; aux != NULL; aux = aux->prox)
+    while (lista != NULL)
     {
         tamanho++;
+        lista = lista->prox;
     }
     return tamanho;
 }
 
 /**
- * @brief Ordena a lista encadeada em ordem crescente pelo campo dado.
+ * @brief Insere um nó na lista de forma ordenada (em ordem crescente de "dado").
  *
- * Utiliza o algoritmo de ordenação bolha (bubble sort) para ordenar os nós da lista.
- *
- * @param lista Ponteiro para o primeiro nó da lista.
+ * @param lista Ponteiro para o ponteiro do primeiro nó da lista (para poder modificar a lista original).
+ * @param chave Chave do novo nó.
+ * @param valor Valor de dado do novo nó.
  */
-void ordernarLista(struct no *lista)
+void insereOrdenado(struct no **lista, int chave, int valor)
 {
-    struct no *aux = NULL;
-    struct no *next = NULL;
-
-    int size = tamanhoLista(lista);
-
-    for (int i = 0; i < size - 1; i++)
+    struct no *novo = (struct no *)malloc(sizeof(struct no));
+    if (novo == NULL)
     {
-        aux = lista;
-        next = lista->prox;
-
-        for (int j = 0; j < size - i - 1; j++)
-        {
-            if (aux->dado > next->dado)
-            {
-                // Troca os valores de dado e chave entre os nós
-                int temp = aux->dado;
-                aux->dado = next->dado;
-                next->dado = temp;
-
-                temp = aux->chave;
-                aux->chave = next->chave;
-                next->chave = temp;
-            }
-
-            aux = aux->prox;
-            next = next->prox;
-        }
+        printf("Erro na alocação de memória!\n");
+        return;
     }
+
+    novo->chave = chave;
+    novo->dado = valor;
+
+    // Se a lista estiver vazia ou o valor a ser inserido é menor que o primeiro elemento
+    if (*lista == NULL || (*lista)->dado > valor)
+    {
+        novo->prox = *lista;
+        *lista = novo;
+        return;
+    }
+
+    struct no *atual = *lista;
+
+    // Encontre a posição correta na lista
+    while (atual->prox != NULL && atual->prox->dado < valor)
+    {
+        atual = atual->prox;
+    }
+
+    // Insira o novo nó após 'atual'
+    novo->prox = atual->prox;
+    atual->prox = novo;
 }
 
 /**
@@ -93,13 +93,10 @@ void ordernarLista(struct no *lista)
 void imprimeLista(struct no *lista)
 {
     struct no *aux = lista;
-    int i = 0;
-
     printf("\n{");
     while (aux != NULL)
     {
-        printf("\n Elemento %d: (%d, %d) \n", i, aux->chave, aux->dado);
-        i++;
+        printf(" (%d, %d) ", aux->chave, aux->dado);
         aux = aux->prox;
     }
     printf("}\n");
@@ -117,8 +114,7 @@ void imprimeLista(struct no *lista)
 void insereNoPrimeiroElemento(struct no **lista, int key, int valor)
 {
     struct no *novo = (struct no *)malloc(sizeof(struct no));
-
-    if (novo == NULL)
+    if (!novo) // Verifica se a alocação foi bem-sucedida
     {
         printf("Erro na alocação de memória!\n");
         return;
@@ -140,13 +136,11 @@ void insereNoPrimeiroElemento(struct no **lista, int key, int valor)
  */
 struct no *deletarPrimeiroElemento(struct no *lista)
 {
-    struct no *aux = lista;
-
     if (listaVazia(lista))
-    {
         return NULL;
-    }
-    lista = lista->prox;
+
+    struct no *aux = lista;
+    lista = lista->prox; // Avança o ponteiro da lista
     return aux;
 }
 
@@ -161,13 +155,7 @@ struct no *deletarPrimeiroElemento(struct no *lista)
  */
 struct no *deletar(struct no *lista, int key)
 {
-    struct no *aux = lista;
-    struct no *anterior = NULL;
-
-    if (listaVazia(lista))
-    {
-        return NULL;
-    }
+    struct no *aux = lista, *anterior = NULL;
 
     while (aux != NULL && aux->chave != key)
     {
@@ -176,17 +164,18 @@ struct no *deletar(struct no *lista, int key)
     }
 
     if (aux == NULL)
+        return lista; // Não encontrou a chave
+
+    if (anterior == NULL) // Caso o nó a ser removido seja o primeiro
     {
-        return lista;
-    }
-    if (aux == lista)
-    {
-        lista = lista->prox;
+        lista = aux->prox;
     }
     else
     {
         anterior->prox = aux->prox;
     }
+
+    free(aux); // Libera o nó removido
     return lista;
 }
 
@@ -201,22 +190,33 @@ struct no *deletar(struct no *lista, int key)
  */
 struct no *encontrarElemento(struct no *lista, int key)
 {
-    struct no *aux = lista;
-
-    if (listaVazia(lista))
+    while (lista != NULL)
     {
-        return NULL;
-    }
-
-    while (aux != NULL)
-    {
-        if (aux->chave == key)
+        if (lista->chave == key)
         {
-            return aux;
+            return lista;
         }
-        aux = aux->prox;
+        lista = lista->prox;
     }
     return NULL;
+}
+
+/**
+ * @brief Libera toda a memória alocada para a lista.
+ *
+ * Itera sobre a lista e libera cada nó alocado dinamicamente.
+ *
+ * @param lista Ponteiro para o primeiro nó da lista.
+ */
+void liberarLista(struct no *lista)
+{
+    struct no *aux = NULL;
+    while (lista != NULL)
+    {
+        aux = lista;
+        lista = lista->prox;
+        free(aux); // Libera o nó
+    }
 }
 
 #endif

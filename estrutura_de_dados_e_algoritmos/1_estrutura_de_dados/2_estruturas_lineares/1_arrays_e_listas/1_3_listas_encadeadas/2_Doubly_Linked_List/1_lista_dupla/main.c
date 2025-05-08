@@ -33,5 +33,6 @@ int main(int argc, char **argv)
     printf("Lista após deleção especificada: ");
     imprimir(head);
 
+    liberarLista(&head);
     return 0;
 }

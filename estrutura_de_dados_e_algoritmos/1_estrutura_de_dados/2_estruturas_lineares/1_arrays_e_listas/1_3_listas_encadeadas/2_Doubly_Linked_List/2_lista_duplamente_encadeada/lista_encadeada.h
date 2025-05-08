@@ -29,12 +29,11 @@ void liberarMemoria(struct node *head)
 {
     struct node *temp = NULL;
 
-    // Percorre a lista e libera a memória de cada nó
     while (head != NULL)
     {
         temp = head;
-        head = head->next; // Avança para o próximo nó
-        free(temp);        // Libera o nó atual
+        head = head->next;
+        free(temp);
     }
     printf("\nMemória liberada com sucesso!\n");
 }
@@ -51,7 +50,6 @@ void liberarMemoria(struct node *head)
 void inserirNoInicio(struct node **head, int valor)
 {
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
-
     if (newNode == NULL)
     {
         printf("Erro de alocação de memória!\n");
@@ -60,18 +58,14 @@ void inserirNoInicio(struct node **head, int valor)
 
     newNode->data = valor;
     newNode->prev = NULL;
+    newNode->next = *head;
 
-    if (*head == NULL)
+    if (*head != NULL)
     {
-        newNode->next = NULL;
-        *head = newNode;
-    }
-    else
-    {
-        newNode->next = *head;
         (*head)->prev = newNode;
-        *head = newNode;
     }
+
+    *head = newNode;
     printf("\nNó %d inserido no início!\n", newNode->data);
 }
 
@@ -87,7 +81,6 @@ void inserirNoInicio(struct node **head, int valor)
 void inserirNoFinal(struct node **head, int valor)
 {
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
-
     if (newNode == NULL)
     {
         printf("Erro de alocação de memória!\n");
@@ -113,6 +106,7 @@ void inserirNoFinal(struct node **head, int valor)
         lastNode->next = newNode;
         newNode->prev = lastNode;
     }
+
     printf("\nNó %d inserido no final!\n", newNode->data);
 }
 
@@ -128,7 +122,6 @@ void inserirNoFinal(struct node **head, int valor)
  */
 void insertAfter(struct node **head, int valor, int pos)
 {
-    int flag = 1;
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
     struct node *temp = *head;
 
@@ -148,27 +141,22 @@ void insertAfter(struct node **head, int valor, int pos)
     }
     else
     {
-        // Percorre a lista até a posição desejada
-        for (int i = 0; i < pos - 1; i++)
+        // Percorre até a posição especificada
+        for (int i = 0; i < pos; i++)
         {
             if (temp == NULL)
             {
-                flag = 0;
-                break;
+                printf("\nPosição inválida!\n");
+                return;
             }
             temp = temp->next;
         }
-    }
 
-    if (flag && temp != NULL)
-    {
         newNode->next = temp->next;
-
         if (temp->next != NULL)
         {
             temp->next->prev = newNode;
         }
-
         temp->next = newNode;
         newNode->prev = temp;
         printf("\nNó %d inserido depois do nó %d!\n", newNode->data, temp->data);
@@ -184,26 +172,22 @@ void insertAfter(struct node **head, int valor, int pos)
  */
 void deletarNoInicio(struct node **head)
 {
-    struct node *temp = *head;
-
     if (*head == NULL)
     {
         printf("\nLista vazia!\n");
+        return;
     }
-    else
+
+    struct node *temp = *head;
+    *head = temp->next;
+
+    if (*head != NULL)
     {
-        if (temp->prev == temp->next)
-        {
-            *head = NULL;
-            free(temp);
-        }
-        else
-        {
-            *head = temp->next;
-            temp->prev = NULL;
-            free(temp);
-        }
+        (*head)->prev = NULL;
     }
+
+    free(temp);
+    printf("\nNó do início deletado!\n");
 }
 
 /**
@@ -218,27 +202,27 @@ void deletarNoFinal(struct node **head)
     if (*head == NULL)
     {
         printf("\nLista vazia!\n");
+        return;
+    }
+
+    struct node *temp = *head;
+
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    if (temp->prev != NULL)
+    {
+        temp->prev->next = NULL;
     }
     else
     {
-        struct node *temp = *head;
-
-        if (temp->prev == temp->next)
-        {
-            *head = NULL;
-            free(temp);
-        }
-        else
-        {
-            while (temp->next != NULL)
-            {
-                temp = temp->next;
-            }
-
-            temp->prev->next = NULL;
-            free(temp);
-        }
+        *head = NULL; // Lista só tinha um nó
     }
+
+    free(temp);
+    printf("\nNó do final deletado!\n");
 }
 
 /**
@@ -255,39 +239,38 @@ void delecaoEspecifica(struct node **head, int value)
     if (*head == NULL)
     {
         printf("\nLista vazia!\n");
+        return;
+    }
+
+    struct node *temp = *head;
+
+    while (temp != NULL && temp->data != value)
+    {
+        temp = temp->next;
+    }
+
+    if (temp == NULL)
+    {
+        printf("\nNó com valor %d não encontrado!\n", value);
+        return;
+    }
+
+    if (temp->prev != NULL)
+    {
+        temp->prev->next = temp->next;
     }
     else
     {
-        // Cria um ponteiro temp para percorrer a lista
-        struct node *temp = *head;
-
-        // Percorre a lista para encontrar o nó com o valor desejado
-        while (temp->data != value)
-        {
-            if (temp->next == NULL)
-            {
-                printf("\nNó %d não encontrado!\n", value);
-                break;
-            }
-
-            temp = temp->next;
-        }
-
-        if (temp == *head)
-        {
-            *head = NULL;
-            free(temp);
-        }
-        else
-        {
-            temp->prev->next = temp->next;
-            if (temp->next != NULL)
-            {
-                temp->next->prev = temp->prev;
-            }
-            free(temp);
-        }
+        *head = temp->next; // Está deletando o primeiro nó
     }
+
+    if (temp->next != NULL)
+    {
+        temp->next->prev = temp->prev;
+    }
+
+    free(temp);
+    printf("\nNó com valor %d deletado!\n", value);
 }
 
 /**
@@ -307,9 +290,7 @@ void exibirLista(struct node *head)
     else
     {
         struct node *temp = head;
-
         printf("\nLista: ");
-
         while (temp != NULL)
         {
             printf("%d <-> ", temp->data);

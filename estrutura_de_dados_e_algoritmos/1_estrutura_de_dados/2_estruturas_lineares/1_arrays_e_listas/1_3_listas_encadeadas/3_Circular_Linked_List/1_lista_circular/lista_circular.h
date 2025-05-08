@@ -14,9 +14,12 @@
  */
 typedef struct lista
 {
-    int value;          ///< Valor armazenado no nó.
-    struct lista *next; ///< Ponteiro para o próximo nó.
+    int value;
+    struct lista *next;
+    struct lista *tail; // Adiciona o ponteiro para o último nó
 } listaCircular;
+
+int listaVazia(listaCircular *head) { return head == NULL; }
 
 /**
  * @brief Função para inserir um elemento no início da lista circular.
@@ -27,25 +30,24 @@ typedef struct lista
 void inserirNoInicio(listaCircular **head, int valor)
 {
     listaCircular *novoNo = (listaCircular *)malloc(sizeof(listaCircular));
+    if (novoNo == NULL)
+    {
+        printf("Erro de alocação de memória!\n");
+        return;
+    }
     novoNo->value = valor;
 
     if (*head == NULL)
     {
         *head = novoNo;
         novoNo->next = *head;
+        (*head)->tail = novoNo;
     }
     else
     {
-        listaCircular *temp = *head;
-
-        while (temp->next != *head)
-        {
-            temp = temp->next;
-        }
-
-        novoNo->next = *head;
+        novoNo->next = (*head);
+        (*head)->next = novoNo;
         *head = novoNo;
-        temp->next = *head;
     }
     printf("O elemento %d foi inserido no início da lista circular.\n", valor);
 }
@@ -88,20 +90,20 @@ void inserirNoFinal(listaCircular **head, int valor)
  */
 void exibirLista(listaCircular *head)
 {
-    listaCircular *temp = head;
-
-    if (head == NULL)
+    if (listaVazia(head))
     {
         printf("A lista circular está vazia!\n");
         return;
     }
+
+    listaCircular *temp = head;
 
     do
     {
         printf("%d -> ", temp->value);
         temp = temp->next;
     } while (temp != head);
-    printf("(início)\n");
+    printf("\n");
 }
 
 /**
@@ -111,32 +113,21 @@ void exibirLista(listaCircular *head)
  */
 void liberarMemoria(listaCircular **head)
 {
-    listaCircular *temp = *head;
-    listaCircular *aux = NULL;
-
     if (*head == NULL)
     {
         printf("A lista já está vazia.\n");
         return;
     }
 
-    // Caso a lista tenha apenas um nó
-    if (temp->next == *head)
+    listaCircular *temp = *head;
+    do
     {
-        free(temp);
-        *head = NULL;
-    }
-    else
-    {
-        do
-        {
-            aux = temp;
-            temp = temp->next;
-            free(aux);
-        } while (temp != *head);
+        listaCircular *aux = temp;
+        temp = temp->next;
+        free(aux);
+    } while (temp != *head);
 
-        *head = NULL;
-    }
+    *head = NULL;
     printf("Memória da lista liberada.\n");
 }
 
@@ -343,6 +334,22 @@ void removerEmPosicao(listaCircular **head, int posicao)
             printf("Posição inválida! A lista tem menos que %d elementos.\n", posicao);
         }
     }
+}
+
+int buscarElemento(listaCircular *head, int valor)
+{
+    listaCircular *temp = head;
+    if (head == NULL)
+        return -1;
+
+    do
+    {
+        if (temp->value == valor)
+            return 1;
+        temp = temp->next;
+    } while (temp != head);
+
+    return 0;
 }
 
 #endif

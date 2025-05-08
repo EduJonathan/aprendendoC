@@ -17,7 +17,9 @@ int main(int argc, char **argv)
         printf("4 -> Exibir lista\n");
         printf("5 -> Remover no início\n");
         printf("6 -> Remover no final\n");
-        printf("7 -> Remover em posição específica: ");
+        printf("7 -> Remover em posição específica\n");
+        printf("8 -> Sair\n");
+        printf("Escolha uma opção: ");
         scanf("%d", &opcao);
 
         switch (opcao)
@@ -37,7 +39,6 @@ int main(int argc, char **argv)
         case 3:
             printf("Digite o valor a ser inserido: ");
             scanf("%d", &valorParaInserir);
-
             printf("Digite a posição onde deseja inserir: ");
             scanf("%d", &posicaoInserir);
             inserirEmPosicao(&head, valorParaInserir, posicaoInserir);
@@ -61,11 +62,15 @@ int main(int argc, char **argv)
             removerEmPosicao(&head, posicaoRemover);
             break;
 
+        case 8:
+            printf("Saindo...\n");
+            break;
+
         default:
-            printf("Opção inválida!\n");
+            printf("Opção inválida! Tente novamente.\n");
             break;
         }
-    } while (opcao != 7);
+    } while (opcao != 8); // Enquanto não escolher a opção 8 (Sair)
 
     liberarMemoria(&head);
     return 0;

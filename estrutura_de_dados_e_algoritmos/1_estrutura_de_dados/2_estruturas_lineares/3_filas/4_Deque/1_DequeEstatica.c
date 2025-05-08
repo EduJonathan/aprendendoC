@@ -46,26 +46,26 @@ void insertFront(int *deque, int *front, int *rear, int key)
 {
     if (isFull(*front, *rear))
     {
-        printf("Estouro: Não é possível inserir o elemento na parte traseira. Deque está cheio.\n");
+        printf("Estouro: Deque está cheio.\n");
         return;
     }
 
     if (*front == -1)
     {
-        // Se o deque estiver vazio
         *front = 0;
         *rear = 0;
     }
     else if (*front == 0)
     {
-        *front = MAX - 1; // Volta para o final, formando a circularidade
+        *front = MAX - 1;
     }
     else
     {
-        *front = *front - 1;
+        (*front)--;
     }
+
     deque[*front] = key;
-    printf("%d inserida na atrás no Deque.\n", key);
+    printf("%d inserido na frente do Deque.\n", key);
 }
 
 /**
@@ -83,26 +83,26 @@ void insertRear(int *deque, int *front, int *rear, int key)
 {
     if (isFull(*front, *rear))
     {
-        printf("Overflow: Unable to insert element at the rear. Deque is full.\n");
+        printf("Estouro: Deque está cheio.\n");
         return;
     }
 
     if (*rear == -1)
     {
-        // Se o deque estiver vazio
         *front = 0;
         *rear = 0;
     }
     else if (*rear == MAX - 1)
     {
-        *rear = 0; // Volta para o início, formando a circularidade
+        *rear = 0;
     }
     else
     {
-        *rear = *rear + 1;
+        (*rear)++;
     }
+
     deque[*rear] = key;
-    printf("Inserted %d at the rear.\n", key);
+    printf("%d inserido atrás no Deque.\n", key);
 }
 
 /**
@@ -119,7 +119,7 @@ void deleteFront(int *deque, int *front, int *rear)
 {
     if (isEmpty(*front))
     {
-        printf("Estouro: Não é possível excluir o elemento da frente. Deque está vazio.\n");
+        printf("Deque está vazio.\n");
         return;
     }
 
@@ -127,19 +127,19 @@ void deleteFront(int *deque, int *front, int *rear)
 
     if (*front == *rear)
     {
-        // Se o deque tem apenas um elemento
         *front = -1;
         *rear = -1;
     }
     else if (*front == MAX - 1)
     {
-        *front = 0; // Volta para o início, formando a circularidade
+        *front = 0;
     }
     else
     {
-        *front = *front + 1;
+        (*front)++;
     }
-    printf("%d excluída da frente no Deque.\n", removed);
+
+    printf("%d removido da frente do Deque.\n", removed);
 }
 
 /**
@@ -156,26 +156,27 @@ void deleteRear(int *deque, int *front, int *rear)
 {
     if (isEmpty(*front))
     {
-        printf("Estouro: Não é possível excluir o elemento atrás. Deque está vazio.\n");
+        printf("Deque está vazio.\n");
         return;
     }
 
     int removed = deque[*rear];
 
     if (*front == *rear)
-    { // Se o deque tem apenas um elemento
+    {
         *front = -1;
         *rear = -1;
     }
     else if (*rear == 0)
     {
-        *rear = MAX - 1; // Volta para o final, formando a circularidade
+        *rear = MAX - 1;
     }
     else
     {
-        *rear = *rear - 1;
+        (*rear)--;
     }
-    printf("%d excluída atrás no Deque.\n", removed);
+
+    printf("%d removido de trás do Deque.\n", removed);
 }
 
 /**
@@ -192,20 +193,17 @@ void displayDeque(int *deque, int front, int rear)
 {
     if (isEmpty(front))
     {
-        printf("Deque está vazia.\n");
+        printf("Deque está vazio.\n");
         return;
     }
 
-    printf("Os elementos da Deque são: ");
-
+    printf("Elementos no Deque: ");
     int i = front;
     while (1)
     {
         printf("%d ", deque[i]);
         if (i == rear)
-        {
             break;
-        }
         i = (i + 1) % MAX;
     }
     printf("\n");
@@ -213,34 +211,64 @@ void displayDeque(int *deque, int front, int rear)
 
 int main(int argc, char **argv)
 {
-    // Inicializando os índices do deque
-    int front = -1;
-    int rear = -1;
-
-    // Aloca o deque dinamicamente
+    int front = -1, rear = -1;
     int *deque = (int *)malloc(MAX * sizeof(int));
     if (deque == NULL)
     {
-        printf("Memory allocation failed!\n");
+        printf("Falha na alocação de memória.\n");
         return 1;
     }
 
-    insertRear(deque, &front, &rear, 5);
-    displayDeque(deque, front, rear);
+    int opcao, valor;
 
-    insertFront(deque, &front, &rear, 15);
-    displayDeque(deque, front, rear);
+    do
+    {
+        printf("\n--- Menu Deque Circular ---\n");
+        printf("1. Inserir na frente\n");
+        printf("2. Inserir atrás\n");
+        printf("3. Remover da frente\n");
+        printf("4. Remover atrás\n");
+        printf("5. Exibir Deque\n");
+        printf("0. Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
 
-    insertRear(deque, &front, &rear, 25);
-    displayDeque(deque, front, rear);
+        switch (opcao)
+        {
+        case 1:
+            printf("Digite o valor a inserir na frente: ");
+            scanf("%d", &valor);
+            insertFront(deque, &front, &rear, valor);
+            break;
 
-    deleteFront(deque, &front, &rear);
-    displayDeque(deque, front, rear);
+        case 2:
+            printf("Digite o valor a inserir atrás: ");
+            scanf("%d", &valor);
+            insertRear(deque, &front, &rear, valor);
+            break;
 
-    deleteRear(deque, &front, &rear);
-    displayDeque(deque, front, rear);
+        case 3:
+            deleteFront(deque, &front, &rear);
+            break;
 
-    // Libera a memória do deque
+        case 4:
+            deleteRear(deque, &front, &rear);
+            break;
+
+        case 5:
+            displayDeque(deque, front, rear);
+            break;
+
+        case 0:
+            printf("Encerrando...\n");
+
+            break;
+        default:
+            printf("Opção inválida.\n");
+        }
+
+    } while (opcao != 0);
+
     free(deque);
     return 0;
 }

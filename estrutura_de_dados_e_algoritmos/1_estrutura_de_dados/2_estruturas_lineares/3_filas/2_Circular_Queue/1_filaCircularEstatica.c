@@ -125,11 +125,11 @@ int main(int argc, char **argv)
     fila.contador = 0;
 
     // Insere elementos na fila
-    inserirElementoNaFila(&fila, 10);
-    inserirElementoNaFila(&fila, 15);
-    inserirElementoNaFila(&fila, 20);
-    inserirElementoNaFila(&fila, 25);
-    inserirElementoNaFila(&fila, 30);
+    inserirElementoNaFila(&fila, 10); // fila: [10]
+    inserirElementoNaFila(&fila, 15); // fila: [10, 15]
+    inserirElementoNaFila(&fila, 20); // fila: [10, 15, 20]
+    inserirElementoNaFila(&fila, 25); // fila: [10, 15, 20, 25]
+    inserirElementoNaFila(&fila, 30); // fila: [10, 15, 20, 25, 30]
 
     // Exibe a fila após inserções
     exibirFila(&fila);
@@ -145,7 +145,7 @@ int main(int argc, char **argv)
     exibirFila(&fila);
 
     // Insere mais um elemento (testando a circularidade)
-    inserirElementoNaFila(&fila, 35);
+    inserirElementoNaFila(&fila, 35); // entra no lugar de 10 (posição 0), fila circular
 
     // Exibe a fila após nova inserção
     exibirFila(&fila);

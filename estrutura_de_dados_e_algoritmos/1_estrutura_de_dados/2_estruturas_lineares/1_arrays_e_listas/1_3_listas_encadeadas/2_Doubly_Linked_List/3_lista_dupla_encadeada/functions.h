@@ -35,6 +35,12 @@ void add(Lista *lista, int dado)
     // Cria um novo elemento, alocando na memória
     Elemento *novoElemento = (Elemento *)malloc(sizeof(Elemento));
 
+    if (novoElemento == NULL)
+    {
+        printf("Erro ao alocar memória para o novo nó!\n");
+        return;
+    }
+
     novoElemento->dado = dado;                  // Insere o dado no novo elemento
     novoElemento->proximo = NULL;               // Define o ponteiro para o próximo elemento como NULL
     novoElemento->anterior = lista->ultimoItem; // Define o ponteiro para o elemento anterior

@@ -98,15 +98,15 @@ int main(int argc, char **argv)
      * calloc() vs. malloc(): Diferenças entre malloc() Vs calloc():
      *
      * +-----------------------------------------------------------------------------------------------------------+
-     * | Característica	| malloc()                                  | calloc()                                     |
+     * | Característica | malloc()                                  | calloc()                                     |
      * +-----------------------------------------------------------------------------------------------------------+
-     * | Inicialização	| Não inicializa a memória (valores "lixo") | Inicializa toda a memória com zeros          |
+     * | Inicialização  | Não inicializa a memória (valores "lixo") | Inicializa toda a memória com zeros          |
      * +-----------------------------------------------------------------------------------------------------------+
-     * | Parâmetros	    | Recebe apenas o tamanho total             | Recebe quantidade e tamanho de cada elemento |
+     * | Parâmetros     | Recebe apenas o tamanho total             | Recebe quantidade e tamanho de cada elemento |
      * +-----------------------------------------------------------------------------------------------------------+
      * | Performance    | Mais rápido (não inicializa)              | Mais lento (inicializa a memória)            |
      * +-----------------------------------------------------------------------------------------------------------+
-     * | Uso típico	    | Alocação única de objetos                 | Alocação de arrays/estruturas                |
+     * | Uso típico     | Alocação única de objetos                 | Alocação de arrays/estruturas                |
      * +-----------------------------------------------------------------------------------------------------------+
      *
      * ✅ Use malloc() quando:

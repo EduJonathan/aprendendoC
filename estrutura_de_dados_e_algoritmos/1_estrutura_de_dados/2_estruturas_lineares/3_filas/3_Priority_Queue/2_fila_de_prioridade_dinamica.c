@@ -7,6 +7,16 @@
  *
  * Cada nó representa uma solicitação de andar com o número do andar e um ponteiro
  * para o próximo nó na lista de prioridades.
+ *
+ * A fila de prioridade é um tipo de estrutura de dados em que cada elemento tem uma
+ * prioridade associada. Em uma fila de prioridade, os elementos são processados de acordo
+ * com a sua prioridade, ou seja, os elementos com maior prioridade são atendidos primeiro,
+ * independentemente da ordem em que foram inseridos. Se dois elementos possuem a mesma prioridade,
+ * eles são atendidos conforme a ordem de chegada (First-In-First-Out - FIFO).
+ *
+ * Este tipo de fila é comumente utilizado em algoritmos de agendamento, simulação de processos
+ * e outras aplicações onde a ordem de execução deve ser determinada pela importância de cada tarefa,
+ * ao invés de uma ordem estrita de inserção.
  */
 typedef struct Node
 {

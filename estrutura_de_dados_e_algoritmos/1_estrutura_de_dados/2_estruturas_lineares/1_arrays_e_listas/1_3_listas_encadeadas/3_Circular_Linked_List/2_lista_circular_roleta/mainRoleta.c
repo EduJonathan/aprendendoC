@@ -13,5 +13,6 @@ int main(int argc, char **argv)
     // Exibe o menu interativo
     exibir_menu(&roleta);
 
+    liberar_roleta(&roleta);
     return 0;
 }

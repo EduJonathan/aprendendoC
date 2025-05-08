@@ -2,7 +2,6 @@
 
 int main(int argc, char **argv)
 {
-    // Declare lista como um ponteiro para no
     struct no *lista = NULL;
 
     // Inserindo elementos na lista
@@ -14,8 +13,6 @@ int main(int argc, char **argv)
     printf("Lista após inserção inicial:\n");
     imprimeLista(lista);
 
-    printf("\n-----------------------\n");
-
     // Inserindo mais elementos
     insereNoPrimeiroElemento(&lista, 4, 40);
     insereNoPrimeiroElemento(&lista, 5, 50);
@@ -24,38 +21,28 @@ int main(int argc, char **argv)
     printf("Lista após novas inserções:\n");
     imprimeLista(lista);
 
-    printf("\n-----------------------\n");
-
     // Buscando um elemento
     int chaveProcurada = 3;
     struct no *elemento = encontrarElemento(lista, chaveProcurada);
-
     if (elemento != NULL)
     {
-        printf("\nElemento com chave %d encontrado: (%d, %d)\n", chaveProcurada, elemento->chave, elemento->dado);
+        printf("Elemento com chave %d encontrado: (%d, %d)\n", chaveProcurada, elemento->chave, elemento->dado);
     }
     else
     {
-        printf("\nElemento com chave %d não encontrado.\n", chaveProcurada);
+        printf("Elemento com chave %d não encontrado.\n", chaveProcurada);
     }
 
-    printf("\n-----------------------\n");
+    // Inserindo elementos de forma ordenada
+    insereOrdenado(&lista, 2, 20);
+    insereOrdenado(&lista, 1, 10);
+    insereOrdenado(&lista, 3, 30);
+    insereOrdenado(&lista, 0, 5);
 
-    // Ordenando a lista
-    ordernarLista(lista);
-
-    printf("\nLista após ordenação:\n");
+    printf("Lista após ordenação:\n");
     imprimeLista(lista);
 
     // Liberando a memória
-    struct no *aux = NULL;
-
-    while (lista != NULL)
-    {
-        aux = lista;         // Guarda o ponteiro do nó atual
-        lista = lista->prox; // Avança para o próximo nó
-        free(aux);           // Libera a memória do nó atual
-    }
-
+    liberarLista(lista);
     return 0;
 }

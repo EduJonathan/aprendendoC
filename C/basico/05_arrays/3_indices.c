@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 /**
- * Sobre o uso de vetores (arrays) em C:
+ * Sobre índices de vetores (arrays) em C:
  *
  * 1. DECLARAÇÃO BÁSICA
- *    - O tamanho do array deve ser conhecido em tempo de compilação (exceto quando alocado dinamicamente).
- *    - Os índices vão de 0 até (tamanho - 1).
+ * - O tamanho do array deve ser conhecido em tempo de compilação (exceto quando alocado dinamicamente).
+ * - Os índices vão de 0 até (tamanho - 1).
  *
  * 2. TIPOS DE DECLARAÇÃO
  *    a) Tamanho fixo explícito.

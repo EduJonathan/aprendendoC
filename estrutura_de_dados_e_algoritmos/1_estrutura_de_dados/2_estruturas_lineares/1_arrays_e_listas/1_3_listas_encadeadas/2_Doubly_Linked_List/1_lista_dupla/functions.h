@@ -222,4 +222,20 @@ void imprimir(struct node *head)
     printf("\n");
 }
 
+/**
+ * @brief Liberar memória
+ *
+ * @param head informar a lista
+ */
+void liberarLista(struct node **head)
+{
+    struct node *temp;
+    while (*head != NULL)
+    {
+        temp = *head;
+        *head = (*head)->next;
+        free(temp);
+    }
+}
+
 #endif

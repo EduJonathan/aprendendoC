@@ -12,7 +12,6 @@
  */
 no *iniciar_lista(void)
 {
-    // Retorna NULL indicando lista vazia
     return NULL;
 }
 
@@ -26,11 +25,11 @@ no *iniciar_lista(void)
  */
 no *insere_lista(no *lista, int matricula, float notas)
 {
-    no *novo_no = (no *)malloc(sizeof(no)); // Aloca memória para um novo nó
-    novo_no->mat = matricula;               // Define a matrícula do novo nó
-    novo_no->nota = notas;                  // Define a nota do novo nó
-    novo_no->prox = lista;                  // Liga o novo nó à lista existente
-    return novo_no;                         // Retorna o novo nó como o início da lista
+    no *novo_no = (no *)malloc(sizeof(no));
+    novo_no->mat = matricula;
+    novo_no->nota = notas;
+    novo_no->prox = lista;
+    return novo_no;
 }
 
 /**
@@ -59,22 +58,15 @@ void imprime_lista(no *lista)
  */
 no *busca(no *lista, int matricula)
 {
-    // Declara uma variável auxiliar para percorrer a lista
-    no *i = NULL;
-
-    // Percorre a lista e verifica se o número de matrícula foi encontrado
-    for (i = lista; i != NULL; i = i->prox)
+    for (no *i = lista; i != NULL; i = i->prox)
     {
-        // Verifica se o número de matrícula foi encontrado
         if (i->mat == matricula)
         {
-            // Retorna o nó se encontrado
             return i;
         }
     }
-    return NULL; // Retorna NULL se o número de matrícula não for encontrado
+    return NULL;
 }
-
 /**
  * @brief Libera toda a memória alocada para a lista encadeada.
  *
@@ -83,19 +75,15 @@ no *busca(no *lista, int matricula)
  */
 no *libera(no *lista)
 {
-    // Declara uma variável auxiliar para percorrer a lista
-    no *aux = NULL;
-    no *proximo_no = NULL;
-    lista = NULL;
-
-    // Percorre a lista e libera cada nó
+    no *aux = lista;
+    no *proximo_no;
     while (aux != NULL)
     {
-        proximo_no = aux->prox; // Armazena o nó seguinte
-        free(aux);              // Libera o nó atual
-        aux = proximo_no;       // Move para o próximo nó
+        proximo_no = aux->prox;
+        free(aux);
+        aux = proximo_no;
     }
-    return iniciar_lista(); // Retorna a lista vazia
+    return iniciar_lista();
 }
 
 /**
@@ -107,42 +95,31 @@ no *libera(no *lista)
  */
 no *remover(no *lista, int matricula)
 {
-    no *anterior = NULL; // Ponteiro para o nó anterior
-    no *atual = lista;   // Ponteiro para percorrer a lista
+    no *anterior = NULL;
+    no *atual = lista;
 
-    // Procura o nó na lista, guardando o nó anterior
-    for (atual = lista; atual != NULL; atual = atual->prox)
+    while (atual != NULL && atual->mat != matricula)
     {
-        if (atual->mat == matricula)
-        {
-            // Achou o nó com a matrícula especificada
-            break;
-        }
-        else
-        {
-            // Atualiza o nó anterior
-            anterior = atual;
-        }
+        anterior = atual;
+        atual = atual->prox;
     }
 
     if (atual == NULL)
     {
-        // Retorna a lista original se não encontrou o nó
         return lista;
     }
-    else if (anterior == NULL)
+
+    if (anterior == NULL)
     {
-        // Remove o primeiro nó da lista
         lista = atual->prox;
     }
     else
     {
-        // Remove um nó do meio da lista
         anterior->prox = atual->prox;
     }
 
-    free(atual);  // Libera a memória do nó removido
-    return lista; // Retorna a lista modificada
+    free(atual);
+    return lista;
 }
 
 #endif

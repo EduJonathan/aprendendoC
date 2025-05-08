@@ -58,7 +58,9 @@
       "stdexcpt.h": "c",
       "locale.h": "c",
       "excpt.h": "c",
-      "stdint.h": "c"
+      "stdint.h": "c",
+      "storduid.h": "c",
+      "operacoes.h": "c"
     }
   }
 }
