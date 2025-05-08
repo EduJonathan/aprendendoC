@@ -110,11 +110,11 @@ int main(int argc, char **argv)
     printf(" POINTER4->POINTER3->POINTER2->POINTER1->END. DE MEMÓRIA DE var->CONTEÚDO DE var: %d\n", ****pointer4);
 
     /**
-     * @note: Para quem busca uma especialização em C/C++, o uso de ponteiros e
-     * "chains of pointers" é essencial para garantir a segurança do endereçamento de memória
-     * e evitar vulnerabilidades como overflows e invasões. Vale ressaltar que, na prática,
-     * dificilmente se usa ponteiros com mais de dois níveis (ou seja, um ponteiro duplo **
-     * ou triplo *** no máximo).
+     * @note Para quem busca uma especialização em C/C++, o uso de ponteiros e "chains of pointers"
+     * é essencial o entendimento para garantir a segurança do endereçamento de memória e evitar
+     * vulnerabilidades como overflows e invasões. Vale ressaltar que, na prática, dificilmente
+     * se usa ponteiros com mais de dois níveis (ou seja, um ponteiro duplo "**" ou
+     * triplo "***" no máximo).
      */
     return 0;
 }

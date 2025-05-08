@@ -1,85 +1,174 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
 
 /**
- * @enum arma
+ * @enum WeaponType
+ * @brief Enumeração dos tipos de armas com suas capacidades padrão de munição.
  *
- * @brief Enum para diferentes tipos de armas com suas quantidades de munição. Esta enumera
- * diferentes tipos de armas com suas respectivas quantidades de munição.
+ * Cada tipo de arma possui uma quantidade característica de munição máxima.
  */
-enum arma
+typedef enum
 {
-    PISTOLA = 12, /**< Pistola com 12 balas de munição */
-    SHOTGUN = 7,  /**< Espingarda com 7 balas de munição */
-    RIFLE = 4     /**< Fuzil com 4 balas de munição */
-};
+    PISTOL = 12, ///< Pistola com capacidade padrão de 12 balas
+    SHOTGUN = 7, ///< Espingarda com capacidade padrão de 7 cartuchos
+    RIFLE = 30   ///< Fuzil com capacidade padrão de 30 balas (alterado para ser mais realista)
+} WeaponType;
 
 /**
- * @struct weapon
+ * @struct Weapon
+ * @brief Estrutura que representa uma arma com seu tipo e estado atual de munição.
  *
- * @brief Estrutura que representa uma arma com tipo e contagem de munição. Esta estrutura armazena
- * o tipo da arma e o número de balas disponíveis.
+ * Armazena o tipo da arma e a quantidade atual de munição, além de incluir agora
+ * a capacidade máxima para permitir recarregamento.
  */
-typedef struct weapon
+typedef struct
 {
-    enum arma type;    /**< Tipo da arma */
-    unsigned int ammo; /**< Número de balas disponíveis */
+    WeaponType type;       ///< Tipo da arma
+    unsigned int ammo;     ///< Munição atual
+    unsigned int max_ammo; ///< Capacidade máxima de munição (adicionado)
+    bool is_jammed;        ///< Estado de enguiçamento (adicionado)
 } Weapon;
 
 /**
- * @brief Obtém o nome da arma como uma string.
- *
- * Esta função retorna o nome da arma com base no seu tipo.
- *
+ * @brief Obtém o nome legível do tipo de arma.
  * @param type Tipo da arma.
- * @return Nome da arma.
+ * @return String com o nome da arma.
  */
-const char *equiparUmaArma(enum arma type)
+const char *get_weapon_name(WeaponType type)
 {
     switch (type)
     {
-    case PISTOLA:
-        return "pistola";
+    case PISTOL:
+        return "Pistola";
 
     case SHOTGUN:
-        return "espingarda";
+        return "Espingarda";
 
     case RIFLE:
-        return "fuzil";
+        return "Fuzil";
+
+    default:
+        return "Arma desconhecida";
     }
-    return "arma desconhecida";
 }
 
 /**
- * @brief Dispara a arma, reduzindo a contagem de munição.
+ * @brief Cria uma nova arma do tipo especificado.
+ * @param type Tipo da arma a ser criada.
+ * @return Weapon inicializada.
  *
- * Esta função simula o disparo da arma. Ela decrementa a contagem de munição
- * se houver munição restantes. Imprime uma mensagem indicando a munição restante ou se
- * a arma está sem munição.
- *
- * @param weapon Ponteiro para a estrutura Weapon a ser disparada.
+ * Nova função para criação padronizada de armas.
  */
-void dispararArma(Weapon *weapon)
+Weapon create_weapon(WeaponType type)
 {
+    Weapon w = {
+        .type = type,
+        .ammo = type, // Começa com munição máxima
+        .max_ammo = type,
+        .is_jammed = false};
+    return w;
+}
+
+/**
+ * @brief Simula o disparo da arma.
+ * @param weapon Ponteiro para a arma a ser disparada.
+ * @return true se o disparo foi bem sucedido, false caso contrário.
+ *
+ * Versão aprimorada com verificação de enguiçamento e feedback mais detalhado.
+ */
+bool fire_weapon(Weapon *weapon)
+{
+    if (weapon->is_jammed)
+    {
+        printf("%s enguiçada! Não pode disparar.\n", get_weapon_name(weapon->type));
+        return false;
+    }
+
     if (weapon->ammo > 0)
     {
-        weapon->ammo--; /**< Decrementa a contagem de munição */
-        printf("Disparando %s. Munição restante: %d\n", equiparUmaArma(weapon->type), weapon->ammo);
+        weapon->ammo--;
+        printf("BANG! %s disparada. %d/%d restantes.\n",
+               get_weapon_name(weapon->type), weapon->ammo, weapon->max_ammo);
+
+        // 10% de chance de enguiçar após disparo
+        if (rand() % 10 == 0)
+        {
+            weapon->is_jammed = true;
+            printf("Oh não! %s enguiçou!\n", get_weapon_name(weapon->type));
+        }
+        return true;
     }
     else
     {
-        printf("Sem munição para %s.\n", equiparUmaArma(weapon->type));
+        printf("*clic* %s sem munição!\n", get_weapon_name(weapon->type));
+        return false;
+    }
+}
+
+/**
+ * @brief Recarrega a arma.
+ * @param weapon Ponteiro para a arma a ser recarregada.
+ *
+ * Nova função para recarregamento.
+ */
+void reload_weapon(Weapon *weapon)
+{
+    weapon->ammo = weapon->max_ammo;
+    weapon->is_jammed = false;
+    printf("%s recarregada! %d/%d balas.\n",
+           get_weapon_name(weapon->type), weapon->ammo, weapon->max_ammo);
+}
+
+/**
+ * @brief Desenguiça a arma.
+ * @param weapon Ponteiro para a arma a ser reparada.
+ *
+ * Nova função para resolver enguiçamentos.
+ */
+void clear_jam(Weapon *weapon)
+{
+    if (weapon->is_jammed)
+    {
+        weapon->is_jammed = false;
+        printf("%s desenguiçada! Pronta para disparar.\n", get_weapon_name(weapon->type));
+    }
+    else
+    {
+        printf("%s não está enguiçada.\n", get_weapon_name(weapon->type));
     }
 }
 
 int main(int argc, char **argv)
 {
-    Weapon pistol = {PISTOLA, 10}; /* Inicializa a pistola com 10 balas */
-    Weapon shotgun = {SHOTGUN, 5}; /* Inicializa a espingarda com 5 balas */
-    Weapon rifle = {RIFLE, 3};     /* Inicializa o fuzil com 3 balas */
+    // Inicializa o gerador de números aleatórios
+    srand(time(NULL));
 
-    dispararArma(&pistol);  /* Dispara a pistola */
-    dispararArma(&pistol);  /* Dispara a pistola novamente */
-    dispararArma(&shotgun); /* Dispara a espingarda */
-    dispararArma(&rifle);   /* Dispara o fuzil */
+    // Cria armas usando a função de criação padronizada
+    Weapon pistol = create_weapon(PISTOL);
+    Weapon shotgun = create_weapon(SHOTGUN);
+    Weapon rifle = create_weapon(RIFLE);
+
+    // Simulação de uso
+    for (int i = 0; i < 3; i++)
+    {
+        fire_weapon(&pistol);
+    }
+
+    fire_weapon(&shotgun);
+    fire_weapon(&shotgun);
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (!fire_weapon(&rifle))
+        {
+            clear_jam(&rifle); // Tenta desenguiçar se falhar
+        }
+    }
+
+    reload_weapon(&pistol);
+    fire_weapon(&pistol);
+
     return 0;
 }

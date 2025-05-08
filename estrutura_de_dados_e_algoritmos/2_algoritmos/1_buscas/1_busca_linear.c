@@ -14,7 +14,7 @@
  *
  * 3. A complexidade do algoritmo: Relacionada ao tempo de execução da busca
  *
- * 4. Principais tarefas de busca: *
+ * 4. Principais tarefas de busca:
  * ● Comparações: A busca normalmente envolve comparar o valor alvo com os elementos
  * da estrutura de dados. Exemplo: Na Busca Linear, cada elemento é comparado até encontrar o alvo.
  *

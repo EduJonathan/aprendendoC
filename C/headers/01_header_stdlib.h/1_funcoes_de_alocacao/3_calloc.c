@@ -71,18 +71,54 @@ int main(int argc, char **argv)
     // Chama a função para calcular a soma da sequência
     CalcularSomaSequencia(tamanho);
 
+    printf("-----------------------------------------------\n");
+    printf(" >> DIFERENÇA ENTRE malloc E calloc<< \n");
+
+    // Alocação com malloc (não inicializado)
+    int *arr_malloc = (int *)malloc(5 * sizeof(int));
+    printf("valores do malloc (lixo): ");
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d ", arr_malloc[i]); // Valores imprevisíveis
+    }
+
+    // Alocação com calloc (inicializado com 0)
+    int *arr_calloc = (int *)calloc(5, sizeof(int));
+    printf("\nvalores calloc (zeros): ");
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d ", arr_calloc[i]); // Todos zeros
+    }
+
+    free(arr_malloc);
+    free(arr_calloc);
+
     /*
      * calloc() vs. malloc(): Diferenças entre malloc() Vs calloc():
      *
-     * A função calloc() é geralmente mais adequada e eficiente do que a função malloc().
-     * ambas as funções são utilizadas para atribuir espaço de memória, calloc() pode
-     * atribuir múltiplos blocos de uma só vez. Não é necessário solicitar um bloco de
-     * memória de cada vez.
+     * +-----------------------------------------------------------------------------------------------------------+
+     * | Característica	| malloc()                                  | calloc()                                     |
+     * +-----------------------------------------------------------------------------------------------------------+
+     * | Inicialização	| Não inicializa a memória (valores "lixo") | Inicializa toda a memória com zeros          |
+     * +-----------------------------------------------------------------------------------------------------------+
+     * | Parâmetros	    | Recebe apenas o tamanho total             | Recebe quantidade e tamanho de cada elemento |
+     * +-----------------------------------------------------------------------------------------------------------+
+     * | Performance    | Mais rápido (não inicializa)              | Mais lento (inicializa a memória)            |
+     * +-----------------------------------------------------------------------------------------------------------+
+     * | Uso típico	    | Alocação única de objetos                 | Alocação de arrays/estruturas                |
+     * +-----------------------------------------------------------------------------------------------------------+
      *
-     * A função calloc() é utilizada em estruturas de dados complexas que requerem
-     * um maior espaço de memória. O bloco de memória atribuído por um calloc() em C é
-     * sempre inicializado com zero enquanto que na função malloc() em C, contém sempre um
-     * valor de lixo.
+     * ✅ Use malloc() quando:
+     * Você precisa de máxima performance
+     * Vai inicializar os dados manualmente logo após a alocação
+     * Está alocando estruturas únicas (não arrays)
+     *
+     * ✅ Use calloc() quando:
+     * Você precisa de memória inicializada com zeros
+     * Está alocando arrays ou estruturas de dados
+     * Quer evitar bugs de valores não inicializados
+     * Prefere segurança sobre performance
      */
     return 0;
 }

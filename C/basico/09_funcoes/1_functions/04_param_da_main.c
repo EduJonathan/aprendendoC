@@ -81,8 +81,9 @@ int main(int argc, char **argv, char **env)
          * > gcc 4_param_da_main.c -o main.exe
          * > .\main.exe 10 45 20
          *
-         * EXE: .\main 10 45 20, este argumentos serão strings devido ao tipo de
-         * dado char **argv, então inserirmos a função pois se não a visualização será 0.
+         * EXE: .\main.exe 10 45 20, este argumentos serão strings devido ao tipo de
+         * dado char **argv, então convertemos com a função `atoi`, pois se não a visualização 
+         * será 0.
          */
 
         // Exibindo os valores utilizados
