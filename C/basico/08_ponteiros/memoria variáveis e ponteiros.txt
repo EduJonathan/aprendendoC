@@ -1,19 +1,19 @@
 -------------------------------
 ## 📌 Introdução
 
-Tudo em um programa(em grande maioria) é captado e manipulado diretamente na **memória RAM**.
+Tudo em um programa(em grande maioria) é captado e manipulado diretamente na **memória RAM**
 Quando declaramos variáveis ou usamos ponteiros, estamos, na verdade, interagindo com
 endereços de memória, que estão muito bem abstraídos (para melhor compreensão e facilidade),
 pois imagine como seria manipular vários valores sem nomes, apenas por números de memória?
 seria como tentar lembrar o que está em cada gaveta de um armário com milhares de compartimentos
-sem rótulos, apenas números! As linguagens de programação cuidam dessa complexidade para nós, 
+sem rótulos, apenas números! As linguagens de programação cuidam dessa complexidade para nós,
 permitindo que trabalhemos com nomes de variáveis em vez de endereços numéricos brutos.
 
 -------------------------------
 ## ❓ O que acontece na memória?
 
-Ao declarar uma variável, como `int x = 10;`, o compilador reserva um espaço na RAM para 
-armazenar o número 10, como sabemos 4 bytes, obtendo então um espaço que tem um 
+Ao declarar uma variável, como `int x = 10;`, o compilador reserva um espaço na RAM para
+armazenar o número 10, como sabemos 4 bytes, obtendo então um espaço que tem um
 **endereço único**, e com isso podemos acessá-lo com o operador `&x`.
 
 - int x = 10;
@@ -59,10 +59,10 @@ o valor de variáveis.
 | 0x1062   |          |                               | 0x1052   |          |
 -----------------------                               -----------------------        
 
-Com este pequeno trecho espero deixar claro e objetivo o exemplo de demonstração da organização 
+Com este pequeno trecho espero deixar claro e objetivo o exemplo de demonstração da organização
 e funcionamento de memória em variáveis e ponteiros, bem acontece que o ponteiro `p`
-obtém o endereço de `x` estando localizado no endereço 0x1058, ou seja, 0x1058 armazena 
-o endereço 0x1040. 
+obtém o endereço de `x` estando localizado no endereço 0x1058, ou seja, 0x1058 armazena
+o endereço 0x1040.
 
 -------------------------------
 ## ❓ Por que ponteiros?
@@ -77,10 +77,10 @@ tornando o código mais eficiente e flexível. Eles são usados para:
 • Acessar diretamente hardware e trabalhar com sistemas embarcados.
 
 Essa flexibilidade é o que torna C/C++ tão poderosa, mas também exige um cuidado extra,
-já que o gerenciamento manual da memória(mesmo com limitações, a manipulação de ponteiros 
+já que o gerenciamento manual da memória(mesmo com limitações, a manipulação de ponteiros
 aproxima o programador de uma interação com a memória de baixo nível, o que é o mais
-próximo que se pode chegar de trabalhar com linguagem de máquina em termos de controle e 
-acesso direto à memória) e esta manipulação direta de ponteiros podem levar a erros difíceis 
+próximo que se pode chegar de trabalhar com linguagem de máquina em termos de controle e
+acesso direto à memória) e esta manipulação direta de ponteiros podem levar a erros difíceis
 de rastrear, pois ainda trabalhamos com a abstração de nomes de tipos de dados(estando ponteiros
 neste meio), diferentes de outras linguagens como Assembly.
 
@@ -101,7 +101,7 @@ O motivo mais plausível de C ter ponteiros é devido ao seu alicerce de portabi
 flexibilidade e oferecer aspectos ao acesso de baixo nível, a linguagem C é de alto nível
 pois foi criada para ter uma compreensão humana mais visível(isso no seu tempo de criação),
 muitos confudem a linguagem de ser **medium nível** devido a esse acesso ao baixo nível,
-mas eu não acredito pois a computação sempre demonstrou ser ambígo, porque algo iria
+mas eu não acredito pois a computação sempre demonstrou ser ambíguo, porque algo iria
 quebrar esta regra, ponteiros em C existem principalmente para dar ao programador um
 controle direto sobre a memória.
 
@@ -110,16 +110,18 @@ controle direto sobre a memória.
 
 A razão pela qual C não tem um tipo especial chamado `pointer` é que os ponteiros em C são,
 na verdade, tipos de dados parametrizados, ou seja, um ponteiro em C é um tipo que aponta
-para um dado de um tipo específico, como int *, char *, float *, e além disso, o tipo
-`void *` oferece a flexibilidade de um ponteiro genérico, permitindo o uso de ponteiros
-sem uma definição de tipo exato.
+para um dado de um tipo específico, como `int *`, `char *`, `float *`.
+o tipo `void *` oferece a flexibilidade de um ponteiro genérico, permitindo o uso de ponteiros
+sem uma definição de tipo exato, então `void *` é o mais próximo de ser um ponteiro genérico
+chamado `pointer`.
 
 -------------------------------
 ## ❓ Por que os dados são armazenados em binário?
 
-Computadores operam com circuitos eletrônicos que têm dois estados básicos: ligado (1)
-e desligado (0). Esses estados são facilmente representados fisicamente com transistores,
-tornando o binário (0s e 1s) a forma mais eficiente de representar qualquer tipo de dado
-(números, letras, imagens, até os endereços). Para facilitar a compreensão humana,
-esses valores binários são frequentemente convertidos por conta dos formatadores(%d)
-para formatos como decimal ou hexadecimal.
+No exemplo da construção de memória de alocação do tipo `int x` ele armazena no endereço
+o valor (00001010 no endereço 0x1040), bem os computadores operam com circuitos eletrônicos
+que têm dois estados básicos: ligado (1) e desligado (0). Esses estados são facilmente
+representados fisicamente com transistores, tornando o binário (0s e 1s) a forma mais eficiente
+de representar qualquer tipo de dado (números, letras, imagens, até os endereços). Para facilitar
+a compreensão humana, esses valores binários são frequentemente convertidos por conta dos
+formatadores(%d) para formatos como decimal ou hexadecimal.

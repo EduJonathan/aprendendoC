@@ -85,7 +85,7 @@ void construirHeap(int *arr, size_t size)
  *     realiza O(log n) operações para extrair os elementos e reestruturar o heap.
  *
  * Espaço:
- * 
+ *
  * - O(1) -> o Heap Sort é um algoritmo in-place, ou seja, ele não necessita de espaço
  *     adicional além do necessário para armazenar os dados de entrada.
  *
@@ -112,7 +112,7 @@ int main(int argc, char **argv)
     int arr[10];
 
     printf("Insira o tamanho do array: ");
-    scanf("%zu", &n); // Corrigido para ler 'size_t'
+    scanf("%zu", &n);
 
     printf("Insira os valores do array\n");
     for (size_t i = 0; i < n; i++)

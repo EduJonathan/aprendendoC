@@ -2,9 +2,9 @@
 
 ## 📌🧩 Algoritmos
 
-Algoritmos são conjuntos finitos de instruções ou regras bem definidas que descrevem,  
-de forma clara seguindo a abordagem top-down(de cima para baixo), uma sequência de passos
-para resolver um problema ou realizar uma tarefa.  
+Algoritmos são conjuntos finitos de instruções ou regras bem definidas que descrevem, de forma
+clara seguindo a abordagem top-down(de cima para baixo), uma sequência de passos para resolver
+um problema ou realizar uma tarefa.
 Na programação representam toda a base da escrita de um código ou software permitindo  
 automatizar tarefas, resolver problemas computacionais como:
 
@@ -53,7 +53,8 @@ execução consiste em realizar inferências.
 No paradigma orientado a eventos, a execução do programa é direcionada por eventos,
 como cliques de mouse, pressionamento de teclas, mensagens do sistema ou sensores.
 É muito utilizado em interfaces gráficas (GUIs), aplicações web e sistemas interativos.
-🔸 Exemplos de linguagens/frameworks: JavaScript (navegador), C# com WinForms/WPF, Java com Swing/JavaFX, Python com Tkinter/PyQt, C++ com wxWidgets e outros.
+🔸 Ex.: de linguagens/frameworks: JavaScript (navegador), C# com WinForms/WPF,
+Java com Swing/JavaFX, Python com Tkinter/PyQt, C++ com wxWidgets e outros.
 🛠 Muito usado em desenvolvimento de interfaces gráficas, jogos e sistemas reativos.
 
 ---

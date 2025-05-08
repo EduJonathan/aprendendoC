@@ -1,16 +1,19 @@
 #include <stdio.h>
 
 /**
- * DO_WHILE: é uma estrutura de controle de fluxo semelhante à instrução "while", 
- * mas com uma diferença importante: o código dentro do loop é executado pelo menos uma vez,
- * O laço é útil para situações onde você precisa garantir que o código dentro do loop seja 
- * executado pelo menos uma vez, independentemente da condição.
-
+ * DO_WHILE: é uma estrutura de controle de fluxo semelhante ao laço "while",
+ * com uma diferença importante: no "do-while", o bloco de código é executado
+ * **antes** da verificação da condição. Isso garante que o conteúdo do laço
+ * seja executado pelo menos uma vez, independentemente da condição inicial.
+ *
+ * Essa estrutura é útil quando é necessário que o código dentro do laço
+ * seja executado ao menos uma vez antes da condição ser testada.
+ *
  * SINTAXE:
  * do
  * {
- *    // instrução
- * } while (// condição);
+ *    // instruções a serem executadas
+ * } while (condição);
  */
 
 int main(int argc, char **argv)
@@ -89,5 +92,21 @@ int main(int argc, char **argv)
         // Incrementa 'linhas' para o próximo valor na tabela, preparando para a próxima linha.
         linhas++;
     } while (linhas <= 5); // Continua o loop externo enquanto 'linhas' for menor ou igual a 5.
+
+    printf("\n====================================================\n");
+    printf("\n\t>>EXEMPLO 05: DIFERENÇA DO-WHILE<<\n");
+
+    int x = 10;
+
+    while (x < 10)
+    {
+        printf("Não será impresso (while)\n");
+        x++;
+    }
+
+    do
+    {
+        printf("Vai imprimir uma vez (do-while)\n");
+    } while (x < 10);
     return 0;
 }

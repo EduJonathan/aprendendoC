@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     while (1)
     {
         printf("\n\tDeseja fazer login na sua conta\n");
-        printf(" Digite: \n[1] -> Para sim\n[0]-> Para não: ");
+        printf(" Digite: \n[1] -> Para sim\n[0] -> Para não: ");
         scanf("%d", &escolha);
 
         if (escolha == 1)

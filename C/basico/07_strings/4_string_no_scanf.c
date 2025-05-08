@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	 */
 
 	printf("\n-----------------------------------------------------\n");
-	
+
 	char string_segundo_nome[10];
 
 	printf("\n>>Digite seu segundo nome: ");
