@@ -9,8 +9,6 @@ int main(int argc, char **argv)
     /// VARIAVEIS: Ou identificadores são nomeações que criam abstrações para armazenar
     // valores de tipos de dados, permitindo manipulação e alteração dos dados.
 
-    /// OBS: O sinal de '=' significa atribuição ou inicialização de um valor a variáveis.
-
     printf("\n==================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPOS DE DADOS PRIMITIVOS<==\n");
 
@@ -25,6 +23,8 @@ int main(int argc, char **argv)
     printf(" O VALOR DA VARIÁVEL 'real' É : %f\n", real);                       // %f -> para tipo float
     printf(" O VALOR DA VARIÁVEL 'PI' É : %lf\n", PI);                          // %lf -> para tipo double
     printf(" O VALOR DA VARIÁVEL 'letra' É : %c\n", letra);                     // %c -> para tipo char
+
+    /// OBS: O sinal de '=' significa atribuição ou inicialização de um valor a variáveis.
 
     printf("\n======================================================================\n");
     printf("\n\t==>SEÇÃO PARA VALORES BOOLEANOS<==\n");

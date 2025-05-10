@@ -78,10 +78,11 @@ Para que um algoritmo guloso funcione corretamente e encontre a solução ótima
 
 ## 🧪 Prova de Corretude
 
-1. Para demonstrar que um algoritmo guloso funciona, devemos:
-2. Mostrar que a escolha gulosa é segura (não compromete a solução ótima)
-3. Demonstrar a propriedade de subestrutura ótima
-4. Provar por indução que as escolhas locais levam a uma solução global ótima
+Para demonstrar que um algoritmo guloso funciona, devemos:
+
+1. Mostrar que a escolha gulosa é segura (não compromete a solução ótima)
+2. Demonstrar a propriedade de subestrutura ótima
+3. Provar por indução que as escolhas locais levam a uma solução global ótima
 
 ---
 

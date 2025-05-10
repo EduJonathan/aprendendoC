@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,7 +9,9 @@
  */
 typedef struct
 {
-    int origem, destino, peso;
+    int origem;
+    int destino;
+    int peso;
 } Aresta;
 
 /**
@@ -25,7 +26,15 @@ typedef struct
 
 // Lista de arestas do grafo
 Aresta arestas[] = {
-    {0, 1, 4}, {0, 2, 1}, {0, 3, 4}, {1, 2, 3}, {1, 4, 3}, {2, 4, 1}, {3, 4, 5}, {3, 5, 7}, {4, 5, 8}};
+    {0, 1, 4},
+    {0, 2, 1},
+    {0, 3, 4},
+    {1, 2, 3},
+    {1, 4, 3},
+    {2, 4, 1},
+    {3, 4, 5},
+    {3, 5, 7},
+    {4, 5, 8}};
 
 /// Número de arestas calculado automaticamente
 #define E (sizeof(arestas) / sizeof(arestas[0]))

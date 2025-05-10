@@ -31,14 +31,6 @@ Em vez disso, podem ter **múltiplas ligações entre si**, formando **relaçõe
 
 Uma **árvore** é uma estrutura hierárquica composta por nós, onde cada nó possui um valor e pode ter filhos.
 
-### Exemplo de Árvore Binária
-
-   10
-   / \
-  5 15
- / \ / \
- 2 7 12 20
-
 Usada para representar:
 
 - Sistemas de arquivos
@@ -107,10 +99,6 @@ Usada para representar:
 
 - **Orientado** ou **não orientado**
 - **Ponderado** (com pesos nas arestas) ou **não ponderado**
-
-A → B → C
-↑   ↓
-D ← E
 
 Usado para representar:
 

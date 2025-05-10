@@ -48,7 +48,6 @@ GRAFO *inicializarGrafo(int nVertices)
             return NULL;
         }
     }
-
     return grafo;
 }
 
@@ -89,8 +88,7 @@ int minDistance(const int *distancia, const bool *visitado, int n)
             minVal = distancia[v];
             minInd = v;
         }
-    }
-    
+    }    
     return minInd;
 }
 

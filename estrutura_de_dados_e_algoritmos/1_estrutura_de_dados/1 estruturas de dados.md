@@ -51,14 +51,14 @@ pilhas, filas. Elas são ótimas para quando você precisa de acesso sequencial 
 
 ## 📜 Listas vs Listas Encadeadas
 
-### LISTAS (Array ou Lista Dinâmica)
+### 📃 LISTAS (Array ou Lista Dinâmica)
 
 Em uma lista (ou array), os elementos são armazenados em blocos de memória contíguos.
 Isso significa que a memória é alocada de forma contínua, e os elementos estão próximos
 uns dos outros. Use Array quando: O tamanho é conhecido e fixo, Precisa de acesso rápido
 por índice, Faz muitas buscas e poucas modificações.
 
-### LISTAS ENCADEADA
+### 🔗 LISTAS ENCADEADA
 
 Em uma lista encadeada, os elementos (ou nós/nodes) são armazenados de forma descontínua
 na memória. Cada nó contém um valor e uma referência (ou ponteiro) para o próximo nó na sequência.
@@ -70,7 +70,7 @@ de acesso randômico frequente.
 
 | **Propriedade**      | **Lista (Array)**                                | **Lista Encadeada**                               |
 | -------------------- | ------------------------------------------------ | ------------------------------------------------- |
-| Armazenamento        | Memória contígua                                 | Memória não contígua                              |
+| Armazenamento        | Memória contígua                                 | Memória não contígua (espaço livre na memória)    |
 | Acesso aos Elementos | O(1) com índice                                  | O(n) (precisa percorrer a lista)                  |
 | Inserção/Remoção     | O(n) no meio ou início                           | O(1) no início (mas O(n) se necessário percorrer) |
 | Memória              | Mais eficiente em termos de uso                  | Requer mais memória por nó (ponteiro adicional)   |
@@ -82,8 +82,8 @@ de acesso randômico frequente.
 
 A pilha segue o princípio LIFO (Last In, First Out): O último elemento adicionado é o primeiro
 a ser removido. Pense em uma pilha de pratos ou uma pilha de livros — o último prato
-colocado na pilha será o primeiro a ser retirado. Precisa do comportamento LIFO, Implementando
-recursão ou undo/redo, Processando expressões aninhadas.
+colocado na pilha será o primeiro a ser retirado. Use pilha quando precisar do comportamento LIFO,
+Implementando recursão ou undo/redo, Processando expressões aninhadas.
 
 - Características: Acesso apenas ao topo da pilha.
 - Operações principais: push (empilhar) e pop (desempilhar).
@@ -107,6 +107,16 @@ recursos compartilhados, Processa elementos na ordem de chegada.
 
 ---
 
+## 📚 Sites online para Estruturas de Dados
+
+Para praticar e visualizar diferentes algoritmos e estruturas de dados, você pode acessar o seguinte site interativo:
+
+[Visualização de Algoritmos](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+
+## Este site oferece uma interface visual para explorar diversos algoritmos, como ordenação, busca, e estruturas de dados, permitindo ver como eles funcionam em tempo real à medida que os dados são processados
+
+---
+
 ## 🎯 Conclusão
 
 Dominar estruturas de dados lineares é fundamental para:
@@ -114,6 +124,5 @@ Dominar estruturas de dados lineares é fundamental para:
 - Escrever código eficiente.
 - Escolher a melhor solução para cada problema.
 - Entender algoritmos mais complexos.
-- Preparar-se para entrevistas técnicas.
-- Cada estrutura tem seu propósito ideal - a chave é entender suas características
+- Cada estrutura tem seu propósito ideal - entender suas características
   e saber quando aplicá-las para obter o melhor desempenho em seu código.

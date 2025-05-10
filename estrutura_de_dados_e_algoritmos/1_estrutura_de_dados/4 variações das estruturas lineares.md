@@ -7,7 +7,9 @@ suas características, vantagens e desvantagens.
 
 ---
 
-## 🔗 Listas Encadeadas
+## LISTAS
+
+### 🔗 Listas Encadeadas
 
 - **Estrutura**: Cada nó contém um valor e um ponteiro para o próximo nó na lista.
 
@@ -21,7 +23,7 @@ suas características, vantagens e desvantagens.
 
 ---
 
-## 🔄 Lista Duplamente Encadeada (Doubly Linked List)
+### 🔄 Lista Duplamente Encadeada (Doubly Linked List)
 
 - **Estrutura**: Cada nó possui dois ponteiros: um para o próximo nó e outro para o nó anterior.
 
@@ -37,7 +39,7 @@ suas características, vantagens e desvantagens.
 
 ---
 
-## 🔁 Lista Circular (Circular Linked List)
+### 🔁 Lista Circular (Circular Linked List)
 
 - **Estrutura**: O último nó da lista encadeada aponta para o primeiro nó, criando um ciclo contínuo.
 
@@ -51,7 +53,9 @@ suas características, vantagens e desvantagens.
 
 ---
 
-## 🔄 Fila Circular (Circular Queue)
+## 🚶🚶‍♀️🚶‍♂️ FILA (QUEUE)
+
+### 🔄 Fila Circular (Circular Queue)
 
 - **Estrutura**: Variante da fila, onde, ao alcançar o final, o ponteiro da fila volta ao início, reutilizando o espaço livre após a remoção de elementos.
 
@@ -67,7 +71,7 @@ suas características, vantagens e desvantagens.
 
 ---
 
-## ⚖️ Fila de Prioridade (Priority Queue)
+### ⚖️ Fila de Prioridade (Priority Queue)
 
 - **Estrutura**: Fila onde os elementos são removidos com base em sua prioridade, não na ordem de inserção.
 
@@ -85,7 +89,7 @@ suas características, vantagens e desvantagens.
 
 ---
 
-## ⬆️ Deque (Double-Ended Queue)
+### ⬆️ Deque (Double-Ended Queue)
 
 - **Estrutura**: Fila que permite inserção e remoção de elementos tanto no início quanto no fim (FIFO e LIFO).
 
@@ -102,7 +106,9 @@ suas características, vantagens e desvantagens.
 
 ---
 
-## ⚠️ Observação: Pilha de Tamanho Fixo
+## 📚 PILHAS (STACK)
+
+### ⚠️ Observação: Pilha de Tamanho Fixo
 
 - **Estrutura**: Pilha com capacidade limitada, onde se atingir o limite, uma exceção é gerada ou a pilha precisa ser expandida.
 

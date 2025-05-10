@@ -150,14 +150,6 @@ set() ou dict() em Python: O(1) inserção/busca (em média)
 
 ---
 
-## 📚 Sites online para Estruturas de Dados
-
-Para praticar e visualizar diferentes algoritmos e estruturas de dados, você pode acessar o seguinte site interativo:
-
-[Visualização de Algoritmos](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-
-Este site oferece uma interface visual para explorar diversos algoritmos, como ordenação, busca, e estruturas de dados, permitindo ver como eles funcionam em tempo real à medida que os dados são processados.
-
 ## 📚 Livros para entender algoritmos
 
 Aqui estão alguns livros fundamentais (e acessíveis) para entender algoritmos, desde a base

@@ -2,30 +2,34 @@
 Na linguagem C, strings (ou barbante, algo mais pé da letra) são conjutos do tipo de dado char,
 representadas por um array, então, vetores de caracteres que sempre no final o que é determinado 
 o fim é o '\0', ou por um ponteiro como visto em variaveis_formatters, a sua declaração vem apartir 
-do tipo de dado char, o nome da variável e o vetor, delimitado ou não, e também pelo ponteiro algo mais
-próximo a uma string do que realmente um vetor. 
+do tipo de dado char, o nome da variável e o vetor, delimitado ou não, e também pelo ponteiro algo 
+mais próximo a uma string do que realmente um vetor. 
 
 EXE.:
 char string[] = {'O', 'l', 'á', ',' , ' ', 'm', 'u', 'n', 'd', 'o', '!', '\0'};
 char string[7] = {"String"};
 const char *string = "String!";
 
-• TABELA ASCII:
-O ASCII (American Standard Code for Information Interchange) é um padrão de codificação criado na década de 1960 
-para a troca de informações entre diferentes computadores e sistemas. Esse sistema representa caracteres alfanuméricos, 
-sinais de pontuação e comandos de controle por meio de um código numérico único para cada símbolo, inicialmente 
-variando de 0 a 127. Cada caractere é armazenado utilizando 1 byte (ou seja, 8 bits), o que permite a codificação de 
-até 256 caracteres, abrangendo desde letras até sinais especiais.
-No entanto, uma limitação importante do padrão ASCII é que ele foi desenvolvido com foco no idioma inglês, 
-sem levar em conta as necessidades de outros idiomas ou caracteres especiais, como acentuação, cedilhas ou símbolos 
-de outras culturas. Além disso, o número de posições disponíveis (0 a 255) restringe ainda mais a inclusão de 
-caracteres adicionais.
-Para superar essas limitações, surgiram outros padrões de codificação, como a OEM (Original Equipment Manufacturer), 
-DBCS (Double Byte Character Set) e, mais notavelmente, o Unicode. O Unicode foi criado para ser uma codificação 
-universal e abrange um conjunto muito maior de caracteres. Juntamente com variações como UTF-8, ele permite a 
-representação de praticamente todos os caracteres usados em diferentes linguagens e sistemas, resolvendo problemas de compatibilidade global.
+• 📊 TABELA ASCII:
+O ASCII (American Standard Code for Information Interchange) é um padrão de codificação
+criado na década de 1960 para a troca de informações entre diferentes computadores e sistemas.
+Esse sistema representa caracteres alfanuméricos, sinais de pontuação e comandos de controle por
+meio de um código numérico único para cada símbolo, inicialmente variando de 0 a 127.
+Cada caractere é armazenado utilizando 1 byte (ou seja, 8 bits), o que permite a codificação
+de até 256 caracteres, abrangendo desde letras até sinais especiais. No entanto, uma limitação
+importante do padrão ASCII é que ele foi desenvolvido com foco no idioma inglês, sem levar em
+conta as necessidades de outros idiomas ou caracteres especiais, como acentuação, cedilhas ou
+símbolos de outras culturas. Além disso, o número de posições disponíveis (0 a 255) restringe 
+ainda mais a inclusão de caracteres adicionais.
 
-cada caractere na tabela possue:
+E para superar essas limitações, surgiram outros padrões de codificação, como a
+OEM(Original Equipment Manufacturer), DBCS (Double Byte Character Set) e, mais notavelmente,
+o Unicode. O Unicode foi criado para ser uma codificação universal e abrange um conjunto muito
+maior de caracteres. Juntamente com variações como UTF-8, ele permite a representação de
+praticamente todos os caracteres usados em diferentes linguagens e sistemas, resolvendo problemas
+de compatibilidade global.
+
+Cada caractere na tabela possue:
 • 1 sequência de binário
 • 1 número octal
 • 1 número decimal
@@ -277,10 +281,11 @@ Tabela ASCII - Caracteres de Controle (0–31 e 127)
 | 01111110  | 176 | 126 |  7E |   ~   |
 =======================================
 
-Entender a tabela ASCII é essencial em C pois é assim que na linguagem funciona os tipo char ou strings mesmo
-cada caractere é representados por tipos numéricos(sim, o tipo char pode ser representado por um tipo inteiro(int)) 
-8 bits (1 byte); assim como vemos na tabela ASCII, e lembrando todos esses sinais são caracteres estão entre aspas.
-Existem dois includes a quais nos ajudam com o tratamento de strings e caracteres na linguagem C sendo:
+Entender a tabela ASCII é essencial em C pois é assim que na linguagem funciona os tipo char
+ou strings mesmo cada caractere é representados por tipos numéricos(sim, o tipo char pode ser
+representado por um tipo inteiro(int)) 8 bits (1 byte); assim como vemos na tabela ASCII,
+e lembrando todos esses sinais são caracteres estão entre aspas. Existem dois includes a quais 
+nos ajudam com o tratamento de strings e caracteres na linguagem C sendo:
 
 #include <string.h> // biblioteca que suas funções tratam-se de strings
 #include <ctype.h> // conttém funções declaradas para teste de caracteres, retornando sempre um valor int como argumento

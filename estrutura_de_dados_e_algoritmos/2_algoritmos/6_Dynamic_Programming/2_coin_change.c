@@ -14,6 +14,7 @@ int min(int a, int b)
  *
  * Recorrência:
  * Para cada valor 𝑣, a solução pode ser expressa como:
+ * 
  * 𝑑𝑝[𝑣] = min⁡(𝑑𝑝[𝑣], 𝑑𝑝[𝑣 − 𝑐𝑜𝑖𝑛] + 1)
  *
  * Onde coin são as moedas disponíveis.
