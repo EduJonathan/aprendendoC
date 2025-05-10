@@ -7,7 +7,7 @@
  * Existem diferentes tipos de algoritmos, cada um com suas peculiaridades, complexidades
  * de tempo e espaço de execução.
  *
- * @note Para todos os algoritmos de busca, existem dois parâmetros principais:
+ * @note Para todos os algoritmos de busca, existem parâmetros principais:
  * 1. O valor a ser buscado (o alvo).
  *
  * 2. O tamanho da estrutura de dados (denotado por 'n').
@@ -19,8 +19,8 @@
  * da estrutura de dados. Exemplo: Na Busca Linear, cada elemento é comparado até encontrar o alvo.
  *
  * ● Divisão (Busca Binária): Em buscas em estruturas ordenadas, a lista é dividida
- * recursivamente para reduzir a área de pesquisa. Exemplo: Busca Binária, onde a lista é dividida
- * ao meio em cada iteração.
+ * recursivamente para reduzir a área de pesquisa. Exemplo: Busca Binária, onde a lista
+ * é dividida ao meio em cada iteração.
  *
  * ● Acesso direto (Busca Hash): Algoritmos de busca em tabelas hash utilizam uma função
  * de hash para acessar diretamente o valor alvo.

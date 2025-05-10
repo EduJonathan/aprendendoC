@@ -52,9 +52,9 @@ execução consiste em realizar inferências.
 **Paradigma Orientado a Eventos**  
 No paradigma orientado a eventos, a execução do programa é direcionada por eventos,
 como cliques de mouse, pressionamento de teclas, mensagens do sistema ou sensores.
-É muito utilizado em interfaces gráficas (GUIs), aplicações web e sistemas interativos.
+É muito utilizado em interfaces gráficas (GUIs), aplicações web e sistemas interativos.  
 🔸 Ex.: de linguagens/frameworks: JavaScript (navegador), C# com WinForms/WPF,
-Java com Swing/JavaFX, Python com Tkinter/PyQt, C++ com wxWidgets e outros.
+Java com Swing/JavaFX, Python com Tkinter/PyQt, C++ com wxWidgets e outros.  
 🛠 Muito usado em desenvolvimento de interfaces gráficas, jogos e sistemas reativos.
 
 ---

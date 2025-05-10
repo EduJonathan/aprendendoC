@@ -17,6 +17,10 @@
  * colocações das rainhas no tabuleiro. Caso uma posição não seja segura, a função volta para
  * a etapa anterior e tenta uma nova solução. Este processo continua até que todas as rainhas
  * sejam colocadas de forma segura ou até que todas as possibilidades sejam esgotadas.
+ *
+ * A ideia do Backtracking é explorar todas as possibilidades e descartar cedo as que
+ * não podem dar certo. Aplicações comuns: Problema das N-rainhas, Sudoku,
+ * Geração de permutações/combi­nações, Maze solver (labirinto).
  */
 
 #define N 8

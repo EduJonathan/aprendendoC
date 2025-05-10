@@ -9,13 +9,14 @@
  * de uso.
  *
  * @note Parâmetros principais para análise de algoritmos de ordenação:
- * 1. O número de elementos na estrutura (denotado por 'n'): Define o tamanho da entrada e afeta a complexidade.
+ * 1. O número de elementos na estrutura (denotado por 'n'): Define o tamanho da entrada
+ * e afeta a complexidade.
  *
  * 2. A complexidade do algoritmo: Relacionada ao tempo de execução do algoritmo.
  *
  * 3. Principais tarefas de ordenação:
- * ● Comparações: Determinam se dois elementos estão na ordem correta. A quantidade de comparações afeta
- * a eficiência (exemplo: Bubble Sort, Quick Sort).
+ * ● Comparações: Determinam se dois elementos estão na ordem correta. A quantidade de
+ * comparações afeta a eficiência (exemplo: Bubble Sort, Quick Sort).
  *
  * ● Trocas: Alguns algoritmos trocam elementos de posição (exemplo: Bubble Sort, Quick Sort).
  * O número de trocas impacta o desempenho.
@@ -26,8 +27,8 @@
  * ● Divisão e Conquista: Algoritmos como Merge Sort e Quick Sort dividem a lista e a
  * reorganizam de maneira eficiente.
  *
- * Em geral, os algoritmos de ordenação têm uma grande importância em áreas como busca binária,
- * análise de dados e otimização, devido à sua relação com a organização dos dados.
+ * Em geral, os algoritmos de ordenação têm uma grande importância em áreas como
+ * busca binária, análise de dados e otimização, devido à sua relação com a organização dos dados.
  */
 
 /**
@@ -40,16 +41,16 @@
  *
  * Complexidade:
  * Tempo:
- * 
+ *
  * - Melhor caso: O(n) -> quando o array já está ordenado, a ordenação faz apenas uma passada.
- * 
+ *
  * - Pior caso: O(n^2) -> quando o array está em ordem inversa, é necessário percorrer
  * todo o array em cada iteração.
- * 
+ *
  * - Caso médio: O(n^2) -> em média, o algoritmo faz várias comparações e trocas.
  *
  * Espaço:
- * 
+ *
  * - O(1) -> utiliza apenas algumas variáveis auxiliares para as trocas, não dependente do tamanho do array.
  *
  * @param arr Array a ser ordenado
