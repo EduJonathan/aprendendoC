@@ -13,21 +13,23 @@ para modificar o comportamento da compilação conforme a necessidade do desenvo
 A compilação é o ato/processo de transformar um programa escrito em linguagem de alto nível
 (como C/C++) em código de máquina, executável pelo processador. Funcionando do seguintes passos:
 
-1º Pré-processamento (Juntar linhas que foram separadas por sequências de escape; Remove
-comentários e os substitui por espaços em branco; Expande macros; Processa diretivas de
-pré-processamento (geralmente orientações ao compilador)).
+1º Pré-processamento 
+- (Juntar linhas que foram separadas por sequências de escape; Remove comentários e os substitui
+por espaços em branco; Expande macros; Processa diretivas de pré-processamento (geralmente
+orientações ao compilador)).
 
-2º Análise lexicográfica:
+2º Análise lexicográfica
 - Nessa etapa, o compilador converte o código em uma sequência de tokens, que são as menores
 unidades de significado do código (como palavras-chave, operadores, identificadores, etc.). 
 Esses tokens são analisados para verificar a correção do código de acordo com a sintaxe da linguagem.
 
-3º Análise Sintática: 
+3º Análise Sintática
 - Verifica se os tokens e expressões formam estruturas válidas da linguagem (verificando erros
 como parênteses ou chaves mal colocadas).
 
-4º Análise Semântica: Valida o significado do código (ex: uso de variáveis antes da declaração,
-número de argumentos de uma função, etc.).
+4º Análise Semântica
+- Valida o significado do código (ex: uso de variáveis antes da declaração, número de argumentos 
+de uma função, etc.).
 
 5º Gerar código intermediário
 - O código gerado até aqui é transformado em um código intermediário (geralmente
@@ -55,7 +57,7 @@ as referências simbólicas por endereços reais de memória. O arquivo gerado n
 Referência: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
 ===================================================================================
 
-🚴🏻‍♂️ Como compilar um arquivo C/C++
+👨🏻‍💻 Como compilar um arquivo C/C++
 
 No terminal de seu Sistema Operacional, estando no caminho(diretório) do arquivo principal ".c"
 
@@ -84,9 +86,10 @@ Para gerar o arquivo objeto(.o) da mesma maneira descrita para arquivo executáv
 
 ⚠ Cuidados com Nomes de Arquivos e Diretórios
 
-É fundamental usar nomes de arquivos simples e sem espaços, especialmente em C/C++ devido a sua sensibilidade. Quando o nome do arquivo contém espaços, o compilador pode interpretá-lo 
-incorretamente como múltiplos arquivos a serem compilados. Isso pode gerar erros difíceis 
-de identificar.
+É fundamental usar nomes de arquivos simples e sem espaços, especialmente em C/C++
+devido a sua sensibilidade. Quando o nome do arquivo contém espaços, o compilador pode
+interpretá-lo incorretamente como múltiplos arquivos a serem compilados. Isso pode gerar erros
+difíceis de identificar.
 
 Importante:
 

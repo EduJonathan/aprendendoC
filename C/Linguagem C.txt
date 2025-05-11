@@ -41,9 +41,10 @@ criada pro Martin Richards.
 1. A linguagem C é classificada como "médio nível" porque, embora possua características
 típicas de linguagens de alto nível (como funções e estruturas), também permite manipulação
 direta da memória, o que é característico de linguagens de baixo nível.".
-Em minha visão C é de alto nível pois sempre computadores foram tratados como ambíguos
-("não ficando encima do muro"), mas devido a este tratamento com o baixo nível, foi
-"concretado" este conceito de acesso ao baixo na concepção de muitos como médio nível.
+Em minha visão C é de alto nível se tratando em comparar com outras linguagens, pois sempre
+computadores foram tratados como ambíguos("não ficando encima do muro"), mas devido a este
+tratamento com o baixo nível, foi "concretado" este conceito de acesso ao baixo nível que na 
+concepção de muitos de justificar C como médio nível.
 
 2. "A tipagem estática significa que os tipos de dados são definidos e verificadas em tempo de
 compilação. Já a tipagem fraca permite conversões automáticas entre tipos de dados, o que pode 
