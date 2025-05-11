@@ -61,8 +61,6 @@ Java com Swing/JavaFX, Python com Tkinter/PyQt, C++ com wxWidgets e outros.
 
 ## 📏📊 Notações Assintóticas
 
-## Notações Assintóticas
-
 Apesar da diversidade de algoritmos e paradigmas, é essencial entender como medir o  
 desempenho de um algoritmo. Para isso, usamos as **notações assintóticas**, que descrevem  
 o comportamento do tempo de execução (ou uso de memória) à medida que a entrada — muitas vezes  

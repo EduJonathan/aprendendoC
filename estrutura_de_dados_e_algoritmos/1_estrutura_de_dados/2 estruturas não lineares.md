@@ -50,7 +50,7 @@ Usada para representar:
 
 ## 2. **Árvore Binária de Busca (BST)**
 
-- **Definição**: Para cada nó, os filhos à esquerda têm valores menores e os da direita, maiores.
+- **Definição**: Para cada nó, os filhos à esquerda têm valores menores e os da direita maiores.
 - **Aplicações**: Busca, inserção e remoção eficientes.
 - **Vantagens**: Complexidade O(log n) quando balanceada.
 - **Desvantagens**: Sem balanceamento, pode virar uma lista (O(n)).

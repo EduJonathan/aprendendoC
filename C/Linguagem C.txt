@@ -2,10 +2,11 @@
 
 🕰️ História e Origem
 
-C é uma linguagem de programação em 1972, criada por Dennis Ritchie, implementada por cima do
-sistema operacional UNIX, em uma série de microcomputadores chamados de DecPDP-11, sendo resultante 
-do processo de desenvolvimento inicada pela linguagem BCPL(Basic Combined Programming Language)
-ou (Linguagem Programação Básica Combinada), criada pro Martin Richards.
+C é uma linguagem de programação em 1972, criada por Dennis Ritchie, implementada por cima
+do sistema operacional UNIX, em uma série de microcomputadores chamados de DecPDP-11, sendo
+resultante do processo de desenvolvimento inicada pela linguagem BCPL
+(Basic Combined Programming Language) ou (Linguagem Programação Básica Combinada), 
+criada pro Martin Richards.
 
 ● Portabilidade de sistemas operacionais.
 ● Controle de hardware com abstração eficiente.
@@ -35,11 +36,14 @@ ou (Linguagem Programação Básica Combinada), criada pro Martin Richards.
 | Escopo de uso  | Desenvolvimento de sistemas operacionais, compiladores, drivers, etc.     |
 +--------------------------------------------------------------------------------------------+
 
+🔎 ALGUMAS OBSERVAÇÕES:
 
-🔎 ALGUMAS OBSERVAÇÕES.:
-1. A linguagem C é classificada como "médio nível" porque, embora possua características típicas
-de linguagens de alto nível (como funções e estruturas), também permite manipulação direta da
-memória, o que é característico de linguagens de baixo nível."
+1. A linguagem C é classificada como "médio nível" porque, embora possua características
+típicas de linguagens de alto nível (como funções e estruturas), também permite manipulação
+direta da memória, o que é característico de linguagens de baixo nível.".
+Em minha visão C é de alto nível pois sempre computadores foram tratados como ambíguos
+("não ficando encima do muro"), mas devido a este tratamento com o baixo nível, foi
+"concretado" este conceito de acesso ao baixo na concepção de muitos como médio nível.
 
 2. "A tipagem estática significa que os tipos de dados são definidos e verificadas em tempo de
 compilação. Já a tipagem fraca permite conversões automáticas entre tipos de dados, o que pode 
@@ -47,7 +51,7 @@ levar a comportamentos inesperados se não for cuidadosamente gerenciada pelo pr
 
 ---
 
-🔑 Elementos Chave
+🔑 Elementos Chaves
 
 1. Ponteiros: Acesso direto à memória.
 2. Structs: Estruturas de dados compostas.
@@ -61,8 +65,7 @@ levar a comportamentos inesperados se não for cuidadosamente gerenciada pelo pr
 1. Eficiência: Código altamente otimizado.
 2. Controle: Acesso direto a hardware e memória.
 3. Portabilidade: Código-fonte executável em múltiplas plataformas.
-4. Base para outras linguagens: Influenciou C++, Java, C#, etc.
-5. Performance: Comparável a assembly em muitos casos.
+4. Performance: Comparável a assembly em muitos casos.
 
 ⚠️ Desvantagens
 
@@ -99,7 +102,6 @@ levar a comportamentos inesperados se não for cuidadosamente gerenciada pelo pr
 | time.h          | Manipulação de datas e horas                 |
 +----------------------------------------------------------------+
 
-
 ---
 
 🚀 Futuro e Tendências
@@ -121,10 +123,9 @@ C mantém sua posição como linguagem fundamental para:
 
 Apesar de ter quase 50 anos, C continua:
 
-1. Relevante: TIOBE Index constantemente no top 3
-2. Atualizada: Padrão C17 (2018) com melhorias
-3. Essencial: Base para sistemas críticos e educação em computação
+1. Relevante: TIOBE Index constantemente no top 3.
+2. Atualizada: Padrão C17 (2018) com melhorias.
+3. Essencial: Base para sistemas críticos e educação em computação.
 
-C continua sendo a linguagem preferida para sistemas onde performance e controle 
-são críticos, garantindo seu lugar como uma das linguagens mais importantes na história 
-da computação.
+C continua sendo a linguagem preferida para sistemas onde performance e controle são críticos,
+garantindo seu lugar como uma das linguagens mais importantes na história da computação.

@@ -8,7 +8,8 @@ para modificar o comportamento da compilação conforme a necessidade do desenvo
 
 ============================================================================================
 
-⚙ Compilação 
+** ⚙ Compilação **
+
 A compilação é o ato/processo de transformar um programa escrito em linguagem de alto nível
 (como C/C++) em código de máquina, executável pelo processador. Funcionando do seguintes passos:
 
@@ -16,37 +17,48 @@ A compilação é o ato/processo de transformar um programa escrito em linguagem
 comentários e os substitui por espaços em branco; Expande macros; Processa diretivas de
 pré-processamento (geralmente orientações ao compilador)).
 
-2º Análise lexicográfica: Nesta etapa, o compilador verifica os tokens do código, ou seja,
-as menores unidades significativas (como palavras-chave, operadores, identificadores, etc.).
-O compilador converte o código em uma sequência de tokens que serão mais facilmente analisados
-nas etapas seguintes.
+2º Análise lexicográfica:
+- Nessa etapa, o compilador converte o código em uma sequência de tokens, que são as menores
+unidades de significado do código (como palavras-chave, operadores, identificadores, etc.). 
+Esses tokens são analisados para verificar a correção do código de acordo com a sintaxe da linguagem.
 
-3º Análise Sintática: Verifica se os tokens e expressões formam estruturas válidas da
-linguagem (verificando erros como parênteses ou chaves mal colocadas).
+3º Análise Sintática: 
+- Verifica se os tokens e expressões formam estruturas válidas da linguagem (verificando erros
+como parênteses ou chaves mal colocadas).
 
 4º Análise Semântica: Valida o significado do código (ex: uso de variáveis antes da declaração,
 número de argumentos de uma função, etc.).
 
-5º Gerar código intermediário: O compilador gera um código intermediário, muitas vezes
-representado por arquivos .o ou .obj (objetos), que pode ser otimizado e convertido em
-código de máquina.
+5º Gerar código intermediário
+- O código gerado até aqui é transformado em um código intermediário (geralmente
+arquivos .o ou .obj), que é independente de máquina. O código intermediário é uma representação
+otimizada do código-fonte, mas ainda não pode ser executado diretamente. Esse arquivo será
+utilizado na etapa de linkagem.
 
-6º Otimização do código: Melhora o desempenho do código: reduz o uso de memória, melhora loops,
-organiza alocação de memória das variáveis, etc, C/C++ são conhecidas como linguagens muito veloz
-em sua habilidade de compilar.
+6º Otimização do código
+- O código intermediário passa por uma otimização para melhorar seu desempenho. O compilador 
+pode reorganizar loops, remover código redundante e realizar outras modificações que resultam 
+em um código mais eficiente. As flags de otimização como -O2 ou -O3 podem ser usadas para ativar
+esse processo, que visa reduzir o uso de memória e aumentar a velocidade de execução do programa.
 
-7º Geração de Código Objeto: Produz um código específico para a arquitetura de destino (ex: x86, ARM, SPARC).
+7º Geração de Código Objeto
+- O código intermediário é então traduzido para um código objeto (geralmente arquivos .o ou .obj), 
+que é específico para a arquitetura do processador de destino (por exemplo, x86, ARM). Este código
+não é executável ainda, mas contém o código binário que a máquina pode entender.
 
-8º Geração de Código de Máquina e Linker: linker (ligador) é responsável por juntar todos
-os arquivos objeto e bibliotecas, resolvendo referências entre eles, e gerando o executável
-final. O linker substitui as referências a funções e variáveis pelos endereços reais na memória.
-O resultado é o arquivo de execução (programa.exe ou programa.out).
+8º Geração de Código de Máquina e Linker:
+- O linker é o responsável por juntar os arquivos objeto gerados (e também bibliotecas) e
+resolver as referências entre funções e variáveis.Durante a linkagem, o linker substitui 
+as referências simbólicas por endereços reais de memória. O arquivo gerado no final
+é o executável(programa.exe ou programa.out).
 
 Referência: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
 ===================================================================================
 
-Como compilar um arquivo C/C++
+🚴🏻‍♂️ Como compilar um arquivo C/C++
+
 No terminal de seu Sistema Operacional, estando no caminho(diretório) do arquivo principal ".c"
+
 > "C:\\Users\\EDUARDO_OLIVEIRA\\Documents\\aprendendoC\\C\\basico\\13_pre_processamento"
 > gcc nomeDoArquivo.c -o nomeParaArquivoExecutavel
 ou
@@ -54,6 +66,7 @@ ou
 > .\nomeParaArquivoExecutavel.exe
 
 Estes passos geram e executa o arquivo executável dentro do terminal.
+
 • gcc ou g++: São os compiladores para C(gcc) e C++(g++), respectivamente.
 • arquivo.c ou arquivo.cpp: É o arquivo de código-fonte que você deseja compilar.
 • -o arquivo: Especifica o nome do arquivo de saída.
@@ -61,6 +74,7 @@ Estes passos geram e executa o arquivo executável dentro do terminal.
 ===================================================================================
 
 Para gerar o arquivo objeto(.o) da mesma maneira descrita para arquivo executável.
+
 > "C:\\Users\\EDUARDO_OLIVEIRA\\Documents\\aprendendoC\\C\\basico\\13_pre_processamento"
 > gcc -c arquivo.c -o arquivo.o
 
@@ -68,21 +82,29 @@ Para gerar o arquivo objeto(.o) da mesma maneira descrita para arquivo executáv
 
 ===================================================================================
 
-⚠ CUIDADOS: Diretórios(pastas) e Arquivos principalmente em C/C++ tem uma sensibilidade
-na nomeação de seus arquivos os nomes dos arquivos não devem conter espaços. Prefira formatos
-como (arquivo_c.c) ou (arquivoC.c).
-Pois no momento de compilar no terminal e caso se estiver (gcc arquivo c.c -o nome) o compilador
-poderá entender que há 2 arquivos a ser compilados, no caso "arquivo"(pode não ter uma extensão,
-mas é entendido como arquivo.txt) e "c.c", gerando erro no processo de compilação.
+⚠ Cuidados com Nomes de Arquivos e Diretórios
 
-⚠ E atenção ao usar -o nome: Certifique-se o nome do arquivo de saída para que não sobrescreva
-outro arquivo importante já existente no sistema ou código fonte.
+É fundamental usar nomes de arquivos simples e sem espaços, especialmente em C/C++ devido a sua sensibilidade. Quando o nome do arquivo contém espaços, o compilador pode interpretá-lo 
+incorretamente como múltiplos arquivos a serem compilados. Isso pode gerar erros difíceis 
+de identificar.
+
+Importante:
+
+- Evite espaços nos nomes dos arquivos e diretórios. Use nomes como arquivo_c.c ou arquivoC.c.
+Pois no momento de compilar no terminal e caso se estiver (gcc arquivo c.c -o nome) o
+compilador poderá entender que há 2 arquivos a ser compilados, no caso "arquivo"(pode não ter
+uma extensão, mas é entendido como arquivo.txt) e "c.c"
+
+- E cuidado com a sobrescrição de arquivos: Tenha cuidado para não sobrescrever arquivos 
+importantes com a flag -o para com o arquivo de saída.
+
 -----------------------------------
 
 OBS.: O processo de compilação é composto por diversas etapas, cada uma com papel fundamental na
 transformação do código-fonte em um programa executável. Com o uso adequado de diretivas e flags
 (que ainda há muitas a ser explorada), podemos está otimizando, condicionando e modulando
 seu código conforme necessário.
+
 -----------------------------------
 
 IMPORTANTE: Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para
