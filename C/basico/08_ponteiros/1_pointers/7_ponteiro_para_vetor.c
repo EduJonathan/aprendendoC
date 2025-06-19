@@ -3,8 +3,8 @@
 /**
  * Este código tem como intuito provar que um vetor pode ser tratado como um ponteiro
  * para SOMENTE com acesso dele(vetor) ao seu primeiro elemento, permitindo a aritmética de
- * ponteiros NAVEGAR pelos elementos do vetor apartir deste acesso. Porém é totalmente diferente
- * quando um ponteiro assume armazenando o seu endereço.
+ * ponteiros NAVEGAR pelos elementos do vetor apartir deste acesso.
+ * Porém é totalmente diferente quando um ponteiro assume armazenando o seu endereço.
  */
 
 int main(int argc, char **argv)

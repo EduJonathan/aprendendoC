@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /**
- * @brief Preencha uma matriz 2x2 lendo valores do usuário, e troque os valores entre a primeira e a
- * segunda linha.
+ * @brief Preencha uma matriz 2x2 lendo valores do usuário, e troque os valores
+ * entre a primeira e a segunda linha.
  */
 
 int main(int argc, char **argv)

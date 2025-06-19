@@ -30,7 +30,8 @@ armazenar o número 10, como sabemos 4 bytes, obtendo então um espaço que tem 
 -----------------------
 
 ## 💭 CURIOSIDADE: Perceba que vai pulando de 4 em 4, se deve ao fato de um int (4 bytes)
-a lógica se aplica a todos os tipos de dados, porém que varia de acordo com sua ocupação na memória.
+a lógica se aplica a todos os tipos de dados, porém que varia de acordo com sua ocupação
+na memória.
 
 -------------------------------
 ## ❓ E o ponteiro?
@@ -85,20 +86,20 @@ de rastrear, pois ainda trabalhamos com a abstração de nomes de tipos de dados
 neste meio), diferentes de outras linguagens como Assembly.
 
 -------------------------------
-## 💭Ponteiros não são "endereços que armazenam endereços".
+## 💭Ponteiros NÃO são "endereços que armazenam endereços".
 
 Um ponteiro é uma variável como qualquer outra, mas com uma característica especial: 
 em vez de armazenar um valor diretamente, ele armazena o endereço de um valor.
-O endereço 0x1050 do ponteiro `p`, o fato do ponteiro está armazenado em um endereço é 
+O endereço 0x1058 do ponteiro `p`, o fato do ponteiro está armazenado em um endereço é 
 apenas uma consequência da forma de como a memória é organizada nos computadores, onde 
-todas as variáveis (sejam ponteiros, structs, ou outros tipos de dados) precisam ser 
+todas as variáveis (sejam ponteiros, structs, classes ou outros tipos de dados) precisam ser 
 alocadas em endereços físicos.
 
 -------------------------------
 ## ❓ Por que C tem ponteiros?
 
 O motivo mais plausível de C ter ponteiros é devido ao seu alicerce de portabilidade,
-flexibilidade e oferecer aspectos ao acesso de baixo nível, a linguagem C é de alto nível
+flexibilidade a oferecer aspectos ao acesso de baixo nível, a linguagem C é de alto nível
 pois foi criada para ter uma compreensão humana mais visível(isso no seu tempo de criação),
 muitos confudem a linguagem de ser **medium nível** devido a esse acesso ao baixo nível,
 mas eu não acredito pois a computação sempre demonstrou ser ambíguo, porque algo iria
@@ -108,11 +109,11 @@ controle direto sobre a memória.
 -------------------------------
 ## ❓ Por que não existe um tipo especial para definir ponteiros?
 
-A razão pela qual C não tem um tipo especial chamado `pointer` é que os ponteiros em C são,
-na verdade, tipos de dados parametrizados, ou seja, um ponteiro em C é um tipo que aponta
+A razão pela qual C não tem um tipo especial chamado `pointer` é que os ponteiros são,
+na verdade, tipos de dados parametrizados, ou seja, um ponteiro é um tipo que aponta
 para um dado de um tipo específico, como `int *`, `char *`, `float *`.
-o tipo `void *` oferece a flexibilidade de um ponteiro genérico, permitindo o uso de ponteiros
-sem uma definição de tipo exato, então `void *` é o mais próximo de ser um ponteiro genérico
+O ipo `void *` oferece a flexibilidade de um ponteiro genérico, permitindo o uso de ponteiros 
+sem uma definição de tipo exato, então `void *` é o mais próximo de ser um ponteiro genérico 
 chamado `pointer`.
 
 -------------------------------
@@ -122,6 +123,7 @@ No exemplo da construção de memória de alocação do tipo `int x` ele armazen
 o valor (00001010 no endereço 0x1040), bem os computadores operam com circuitos eletrônicos
 que têm dois estados básicos: ligado (1) e desligado (0). Esses estados são facilmente
 representados fisicamente com transistores, tornando o binário (0s e 1s) a forma mais eficiente
-de representar qualquer tipo de dado (números, letras, imagens, até os endereços). Para facilitar
-a compreensão humana, esses valores binários são frequentemente convertidos por conta dos
-formatadores(%d) para formatos como decimal ou hexadecimal.
+de representar qualquer tipo de dado (números, letras, imagens, até endereços) isso para
+a máquina em si.
+Pois para facilitar a compreensão humana, esses valores binários são frequentemente
+convertidos por conta dos formatadores(%d) para formatos como decimal ou hexadecimal.

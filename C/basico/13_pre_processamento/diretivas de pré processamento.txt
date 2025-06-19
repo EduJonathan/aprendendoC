@@ -110,8 +110,10 @@ seu código conforme necessário.
 
 -----------------------------------
 
-IMPORTANTE: Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para
+IMPORTANTE:
+Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para
 qualquer desenvolvedor C/C++. E tendo o Linux como Sistema Operacional, esse aprendizado se
-intensifica ainda mais, tendo diretamente acesso ao código de máquina, flags para visualizar
-a linguagem assembly, aproximando você do verdadeiro poder da programação de baixo nível,
-apesar do Windows ter ferramentas para isso, Linux é mais convencional.
+intensifica ainda mais, tendo diretamente acesso ao código de máquina(assembly), flags 
+para visualizar a linguagem assembly, binários, aproximando você do verdadeiro poder da 
+programação de baixo nível, apesar do Windows ter ferramentas para isso, Linux é mais 
+convencional.

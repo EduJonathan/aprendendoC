@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     printf("\n\t==>SEÇÃO PARA FORMATOS EM OCTAIS<==\n");
 
     // %o: Exibe valores de um número na forma octal
-    printf(" VALOR OCTAL DA VARÍAVEL 'OCTAL' : %o\n", OCTAL); // Formato int
+    printf(" VALOR OCTAL DA VARIÁVEL 'OCTAL' : %o\n", OCTAL);
 
     // %lo: Para tipo long
     printf(" VALOR OCTAL DA VARIÁVEL 'ULI' : %lo\n", ULI);
@@ -34,13 +34,13 @@ int main(int argc, char **argv)
     printf("\n\t==>SEÇÃO PARA FORMATOS EM HEXADECIMAIS<==\n");
 
     // %x: Exibe valores de um número na forma hexadecimal
-    printf(" VALOR EM HEXADECIMAL DA VARÍAVEL 'HEXADECIMAL' : %x\n", HEXADECIMAL); // Formato int
+    printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'HEXADECIMAL' : %x\n", HEXADECIMAL);
     printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'HEXADECIMAL' : %X\n", HEXADECIMAL);
 
     // %lx: Para tipo unsigned long
     printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'ULI' : %lx\n", ULI);
 
-    // %lX:Para tipo unsigned long
+    // %lX: Para tipo unsigned long
     printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'ULI' : %lX\n", ULI);
 
     // %llx: Para tipo unsigned long long
@@ -75,7 +75,11 @@ int main(int argc, char **argv)
     printf(" PREFIXO DO ENDEREÇO DE MEMÓRIA DA VARIÁVEL 'HEXADECIMAL' É : %p\n", (void *)&HEXADECIMAL);
     /*
      * '#': formata o printf incluindo 0, 0x ou 0X dando uma perspectiva do prefixo de
-     * números octal, hexadecimal e endereços, não recomendado seu uso.
+     * números octal, hexadecimal e endereços, não recomendado seu uso, pois pode gerar
+     * confusão em sua interpretação e conversão do valor.
+     *
+     * printf(" PREFIXO DO ENDEREÇO DE MEMÓRIA DA VARIÁVEL 'HEXADECIMAL' É : %#p\n", (void *)&HEXADECIMAL);
+     * ERROR: flag '#' results in undefined behavior with 'p' conversion specifier [-Wformat]
      */
 
     printf("\n=====================================================================\n");

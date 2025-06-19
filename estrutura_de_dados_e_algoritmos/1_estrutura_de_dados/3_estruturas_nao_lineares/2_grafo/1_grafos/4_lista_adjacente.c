@@ -13,6 +13,27 @@
  * representa um vértice e os nós adjacentes representam as arestas conectadas a ele.
  * A lista de adjacência é uma estrutura de dados eficiente para armazenar grafos esparsos,
  * onde o número de arestas é muito menor do que o número máximo possível de arestas.
+ *
+ * A diferença entre matriz e listas de adjacência em suas representações matemáticas
+ * e complexidade:
+ *
+ * - Matriz de Adjacência: Representa um grafo como uma matriz bidimensional,
+ * onde cada célula (i, j) indica se há uma aresta entre os vértices i e j.
+ * A matriz de adjacência é útil para grafos densos, onde o número de arestas
+ * é próximo do número máximo possível de arestas.
+ * - A complexidade de espaço é O(V^2), onde V é o número de vértices.
+ * - A complexidade de tempo para verificar se há uma aresta entre dois vértices é O(1).
+ *
+ * ---------------------
+ *
+ * - Lista de Adjacência: Representa um grafo como uma lista de listas, onde cada
+ * lista contém os vértices adjacentes a um vértice específico. A lista de adjacência
+ * é mais eficiente para grafos esparsos, onde o número de arestas é muito menor do que
+ * o número máximo possível de arestas.
+ *
+ * - A complexidade de espaço é O(V + E), onde V é o número de vértices e E é o número de arestas.
+ * - A complexidade de tempo para verificar se há uma aresta entre dois vértices é O(V)
+ * no pior caso, mas pode ser O(1) em casos favoráveis.
  */
 struct noAdjacente
 {

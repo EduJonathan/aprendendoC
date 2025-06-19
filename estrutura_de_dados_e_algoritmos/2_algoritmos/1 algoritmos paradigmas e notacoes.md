@@ -75,7 +75,6 @@ representada por `n` — cresce.
 - `O(n²)` – Tempo quadrático: cresce muito com entradas grandes (ex: algoritmos de ordenação ineficientes).
 - `O(2^n)` – Tempo exponencial: extremamente ineficiente para entradas grandes.
 - `O(n!)` – Fatorial: cresce de forma explosiva, comum em problemas de força bruta.
-
 - `Ω` (Ômega) – Limite inferior (melhor caso).
 - `Θ` (Teta) – Crescimento exato (caso médio).
 

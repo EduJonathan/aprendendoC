@@ -16,11 +16,13 @@ criado na década de 1960 para a troca de informações entre diferentes computa
 Esse sistema representa caracteres alfanuméricos, sinais de pontuação e comandos de controle por
 meio de um código numérico único para cada símbolo, inicialmente variando de 0 a 127.
 Cada caractere é armazenado utilizando 1 byte (ou seja, 8 bits), o que permite a codificação
-de até 256 caracteres, abrangendo desde letras até sinais especiais. No entanto, uma limitação
-importante do padrão ASCII é que ele foi desenvolvido com foco no idioma inglês, sem levar em
-conta as necessidades de outros idiomas ou caracteres especiais, como acentuação, cedilhas ou
-símbolos de outras culturas. Além disso, o número de posições disponíveis (0 a 255) restringe 
-ainda mais a inclusão de caracteres adicionais.
+de até 256 caracteres, abrangendo desde letras até sinais especiais.
+
+No entanto, uma limitação importante do padrão ASCII é que ele foi desenvolvido com
+foco no idioma inglês, sem levar em conta as necessidades de outros idiomas ou 
+caracteres especiais, como acentuação, cedilhas ou símbolos de outras culturas.
+Além disso, o número de posições disponíveis (0 a 255) restringe ainda mais a inclusão
+de caracteres adicionais.
 
 E para superar essas limitações, surgiram outros padrões de codificação, como a
 OEM(Original Equipment Manufacturer), DBCS (Double Byte Character Set) e, mais notavelmente,
@@ -35,8 +37,8 @@ Cada caractere na tabela possue:
 • 1 número decimal
 • 1 número hexadecimal
 
-E tendo como alguns as quais não são mais utilizaveis ou não imprimíveis que vão o 0 a 31 e o 127, 
-e existem as que são utilizadas que é para impressões, sendo eles:
+E tendo como alguns as quais não são mais utilizaveis ou não imprimíveis que vão 
+o 0 a 31 e o 127, e existem as que são utilizadas que é para impressões, sendo eles:
 
 • Sinais de controle (não-imprimíveis):
 Tabela ASCII - Caracteres de Controle (0–31 e 127)
@@ -284,8 +286,9 @@ Tabela ASCII - Caracteres de Controle (0–31 e 127)
 Entender a tabela ASCII é essencial em C pois é assim que na linguagem funciona os tipo char
 ou strings mesmo cada caractere é representados por tipos numéricos(sim, o tipo char pode ser
 representado por um tipo inteiro(int)) 8 bits (1 byte); assim como vemos na tabela ASCII,
-e lembrando todos esses sinais são caracteres estão entre aspas. Existem dois includes a quais 
-nos ajudam com o tratamento de strings e caracteres na linguagem C sendo:
+e lembrando todos esses sinais são caracteres estão entre aspas.
+Existem dois includes a quais nos ajudam com o tratamento de strings e caracteres na
+linguagem C sendo:
 
 #include <string.h> // biblioteca que suas funções tratam-se de strings
 #include <ctype.h> // conttém funções declaradas para teste de caracteres, retornando sempre um valor int como argumento

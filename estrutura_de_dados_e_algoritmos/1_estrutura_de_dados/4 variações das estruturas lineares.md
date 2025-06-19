@@ -7,7 +7,7 @@ suas características, vantagens e desvantagens.
 
 ---
 
-## LISTAS
+## 📜 LISTAS
 
 ### 🔗 Listas Encadeadas
 

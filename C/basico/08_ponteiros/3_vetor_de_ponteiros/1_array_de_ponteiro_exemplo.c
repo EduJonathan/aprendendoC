@@ -4,20 +4,19 @@
  * Vetor de ponteiros: Um vetor de ponteiros é um array onde cada elemento é um ponteiro,
  * ou seja, cada posição do vetor armazena o endereço de memória de uma variável ou estrutura
  * de dados. Em C, isso significa que o vetor pode apontar para diferentes locais de memória,
- * como outros arrays, strings, ou qualquer outra variável ou estrutura que possa ser referenciada
- * por ponteiros.
+ * como outros arrays, strings, ou qualquer outra variável ou estrutura que possa ser
+ * referenciada por ponteiros.
  *
  * Vetores de ponteiros são úteis em situações onde você precisa manipular ou acessar um conjunto
  * de dados de forma dinâmica, ou quando há a necessidade de manipular diferentes tipos de dados
  * de forma eficiente. Eles são frequentemente utilizados em:
  *
- *   - Manipulação de strings (onde cada elemento do vetor aponta para uma string),
- *   - Alocação dinâmica de matrizes (em que cada ponteiro pode apontar para um array de tamanho variável),
- *   - Estruturas de dados complexas, como listas encadeadas e árvores, onde os ponteiros referenciam
- *     nós ou elementos em diferentes partes da memória.
+ * - Manipulação de strings (onde cada elemento do vetor aponta para uma string),
+ * - Alocação dinâmica de matrizes (em que cada ponteiro pode apontar para um array de tamanho variável),
+ * - Estruturas de dados complexas, como listas encadeadas e árvores, onde os ponteiros referenciam nós ou elementos em diferentes partes da memória.
  *
- * Usar um vetor de ponteiros oferece flexibilidade ao trabalhar com dados dinâmicos e estruturados,
- * permitindo acessar e modificar dados de maneira eficiente.
+ * Usar um vetor de ponteiros oferece flexibilidade ao trabalhar com dados dinâmicos e 
+ * estruturados, permitindo acessar e modificar dados de maneira eficiente.
  */
 
 int main(int argc, char **argv)

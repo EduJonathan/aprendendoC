@@ -68,9 +68,9 @@ int main(int argc, char **argv)
     printf("\n-------------------------------------\n");
 
     // 4. Vetor dinâmico (outra forma)
-    int tamanho = 0;
+    size_t tamanho = 0;
     printf("Digite o tamanho do vetor dinâmico: ");
-    scanf("%d", &tamanho);
+    scanf("%zu", &tamanho);
 
     int *vetor_din = malloc(tamanho * sizeof(int));
     if (vetor_din == NULL)
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    for (int i = 0; i < tamanho; i++)
+    for (size_t i = 0; i < tamanho; i++)
     {
         vetor_din[i] = i * i;
     }
@@ -89,18 +89,18 @@ int main(int argc, char **argv)
 
     // 5. Exibindo vetor fixo
     printf("Elementos do vetor fixo (tamanho %d):\n", TAMANHO_FIXO);
-    for (int i = 0; i < TAMANHO_FIXO; i++)
+    for (size_t i = 0; i < TAMANHO_FIXO; i++)
     {
-        printf("vetor_fixo[%d] = %d\n", i, vetor_fixo[i]);
+        printf("vetor_fixo[%zu] = %d\n", i, vetor_fixo[i]);
     }
 
     printf("\n-------------------------------------\n");
 
     // 6. Exibindo os elementos do vetor dinâmico
-    printf("Elementos do vetor dinâmico (tamanho %d):\n", tamanho);
-    for (int i = 0; i < tamanho; i++)
+    printf("Elementos do vetor dinâmico (tamanho %zu):\n", tamanho);
+    for (size_t i = 0; i < tamanho; i++)
     {
-        printf("vetor_din[%d] = %d\n", i, vetor_din[i]);
+        printf("vetor_din[%zu] = %d\n", i, vetor_din[i]);
     }
 
     // 7. Cuidado com limites de acesso!

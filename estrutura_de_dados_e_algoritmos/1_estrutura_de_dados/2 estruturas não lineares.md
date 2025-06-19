@@ -1,7 +1,7 @@
 # 📌 Estruturas Não Lineares
 
-As estruturas não lineares diferem das lineares porque os elementos **não seguem uma sequência única**.
-Em vez disso, podem ter **múltiplas ligações entre si**, formando **relações hierárquicas ou interconectadas**, dependendo da estrutura.
+As estruturas não lineares diferem das lineares porque os elementos **não seguem uma sequência única**. Em vez disso, podem ter **múltiplas ligações entre si**, formando
+**relações hierárquicas ou interconectadas**, dependendo da estrutura.
 
 ---
 

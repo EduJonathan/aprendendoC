@@ -115,8 +115,9 @@ int main(int argc, char **argv)
      */
 
     /**
-     * @note O uso de chaves vem na visão do programador, mas é recomendado o uso de {}
-     * para evitar confusão no controle de fluxo. Mesmo que o uso de chaves não seja obrigatório,
+     * @note O uso de chaves vem na visão do programador, ou seja na tese não tem problema
+     * em não utilizar {}, mas é recomendado o uso para evitar confusão no controle de fluxo.
+     * Mesmo que o uso de chaves não seja obrigatório,
      * elas ajudam a garantir que todas as instruções sejam executadas corretamente dentro
      * de um bloco condicional.
      */

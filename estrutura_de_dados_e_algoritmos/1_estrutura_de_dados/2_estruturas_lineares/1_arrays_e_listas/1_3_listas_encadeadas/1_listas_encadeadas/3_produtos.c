@@ -106,7 +106,7 @@ void buscar(TProduto *cabeca, int codigo)
     printf("Produto com codigo %d nao encontrado!\n", codigo);
 }
 
-int main()
+int main(int argc, char **argv)
 {
     TProduto *cabeca = NULL;
     char opcao;

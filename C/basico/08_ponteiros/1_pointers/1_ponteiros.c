@@ -111,11 +111,14 @@ int main(int argc, char **argv)
      * **************************
      * ERROR: initialization of 'int *' from incompatible pointer type 'char *'
      *
-     * por conta deste erro dizemos que muitas das vezes dizemos que o valor de um ponteiro é
-     * "<PARA UM> valor do tipo" (no caso um endereço), e não que ele é "<O> valor de um tipo"
+     * por conta deste erro podemos afirmar que muitas das vezes dizemos que o valor
+     * de um ponteiro é o valor do tipo, mas na verdade o que estamos dizendo é que o valor
+     * de um ponteiro é o endereço de memória do tipo, ou seja, o valor do ponteiro é um
+     * de um ponteiro é "<PARA UM> valor do tipo" (no caso um endereço), e não que ele é
+     * "<O> valor de um tipo"
      */
 
-    printf("\n=============================================================================\n");
+    printf("\n=================================================================\n");
     printf("\n\t>>PASSANDO O VALOR DE UM PONTEIRO PARA UMA VARIÁVEL<<\n");
 
     *ptr = 65; /* Atribuindo outro valor para o contéudo do ponteiro, pode também *ptr = 'A'; */

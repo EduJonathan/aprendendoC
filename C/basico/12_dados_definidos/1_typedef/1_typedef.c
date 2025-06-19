@@ -2,12 +2,12 @@
 
 /**
  * TYPEDEF: A keyword (palavra reservada) typedef é usada para criar sinônimos para 
- * tipos de dados, incluindo tipos primitivos, arrays, structs, unions, ponteiros para funções
- * e enums.
+ * tipos de dados, incluindo tipos primitivos, arrays, structs, unions, ponteiros para
+ * funções e enums.
  *
- * @note typedef NÃO cria um novo tipo de dado. Em vez disso, ele cria um **alias** ou **sinônimo**
- * para um tipo de dado existente, facilitando a legibilidade do código, especialmente quando
- * tipos complexos estão envolvidos.
+ * @note typedef NÃO cria um novo tipo de dado. Em vez disso, ele cria um 
+ * **alias** ou **sinônimo** para um tipo de dado existente, facilitando a legibilidade 
+ * do código, especialmente quando tipos complexos estão envolvidos.
  *
  * Quando usar:
  * - Para simplificar tipos complexos, como ponteiros para funções ou structs com muitos campos.

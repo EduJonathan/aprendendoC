@@ -31,8 +31,8 @@
  *
  * NOTA:
  * - Cada uma das três partes pode ter mais de uma expressão, separada por vírgulas.
- * - As partes do `for` podem ser deixadas em branco (por exemplo, sem inicialização ou incremento),
- *   mas é importante garantir que o loop tenha uma condição de parada para evitar loops infinitos.
+ * - As partes do `for` podem ser deixadas em branco (por exemplo, sem inicialização ou incremento), o mas é importante garantir que o loop tenha uma condição de parada para
+ * evitar loops infinitos.
  * - O `for` é ideal para situações em que o número de iterações é conhecido ou é facilmente
  *   determinado (como percorrer arrays ou realizar cálculos repetitivos).
  */
