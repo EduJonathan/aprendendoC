@@ -3,15 +3,15 @@
 
 /**
  * Algoritmos de ordenação (sort): São algoritmos responsáveis por organizar os elementos
- * de uma estrutura de dados (como arrays, listas, etc.) em uma sequência definida (crescente,
- * decrescente, ou outro critério). Assim como os algoritmos de busca, os de ordenação também
- * têm peculiaridades quanto à eficiência, dependendo da estrutura de dados e do caso específico
- * de uso.
+ * de uma estrutura de dados (como arrays, listas, etc.) em uma sequência definida
+ * (crescente, decrescente, ou outro critério). Assim como os algoritmos de busca,
+ * os de ordenação também têm peculiaridades quanto à eficiência, dependendo da estrutura
+ * de dados e do caso específico de uso.
  *
  * @note Parâmetros principais para análise de algoritmos de ordenação:
+ * 
  * 1. O número de elementos na estrutura (denotado por 'n'): Define o tamanho da entrada
  * e afeta a complexidade.
- *
  * 2. A complexidade do algoritmo: Relacionada ao tempo de execução do algoritmo.
  *
  * 3. Principais tarefas de ordenação:

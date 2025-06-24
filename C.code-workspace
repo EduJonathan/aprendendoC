@@ -60,7 +60,8 @@
       "excpt.h": "c",
       "stdint.h": "c",
       "storduid.h": "c",
-      "operacoes.h": "c"
+      "operacoes.h": "c",
+      "stdatomic.h": "c"
     }
   }
 }

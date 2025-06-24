@@ -8,15 +8,15 @@
  * de tempo e espaço de execução.
  *
  * @note Para todos os algoritmos de busca, existem parâmetros principais:
- * 1. O valor a ser buscado (o alvo).
- *
+ * 
+ * 1. O valor a ser buscado (o alvo). *
  * 2. O tamanho da estrutura de dados (denotado por 'n').
- *
  * 3. A complexidade do algoritmo: Relacionada ao tempo de execução da busca
  *
  * 4. Principais tarefas de busca:
  * ● Comparações: A busca normalmente envolve comparar o valor alvo com os elementos
- * da estrutura de dados. Exemplo: Na Busca Linear, cada elemento é comparado até encontrar o alvo.
+ * da estrutura de dados. Exemplo: Na Busca Linear, cada elemento é comparado até
+ * encontrar o alvo.
  *
  * ● Divisão (Busca Binária): Em buscas em estruturas ordenadas, a lista é dividida
  * recursivamente para reduzir a área de pesquisa. Exemplo: Busca Binária, onde a lista

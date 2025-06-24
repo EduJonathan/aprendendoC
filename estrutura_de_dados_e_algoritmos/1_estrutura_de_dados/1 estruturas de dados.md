@@ -27,9 +27,10 @@ Cada estrutura possui vantagens e desvantagens dependendo do tipo de operação 
 
 ### Estruturas Lineares
 
-São aquelas onde os dados são armazenados de forma sequencial, isso significa que cada elemento
-(exceto o primeiro e o último) tem um predecessor e um sucessor. Ou seja, a estrutura é organizada
-como uma linha, onde os elementos podem ser acessados de forma sequencial.
+São aquelas onde os dados são armazenados de forma sequencial, isso significa que cada
+elemento(exceto o primeiro e o último) tem um predecessor e um sucessor. Ou seja, a
+estrutura é organizada como uma linha, onde os elementos podem ser acessados de forma
+sequencial.
 Exemplos incluem listas, pilhas, filas. Elas são ótimas para quando você precisa de acesso sequencial e ordem fixa.
 
 ✅ Vantagens das Estruturas Lineares
@@ -118,51 +119,35 @@ Para praticar e visualizar diferentes algoritmos e estruturas de dados, você po
 
 VisuAlgo é uma plataforma muito popular para visualizar algoritmos e estruturas de dados de forma interativa. Ele cobre uma grande variedade de tópicos, desde buscas e ordenações até algoritmos de grafos e árvores binárias.
 
-### 2. [AlgoViz](http://algoviz.org/)
-
-AlgoViz oferece uma visualização interativa de diversos algoritmos clássicos em tempo real.
-A interface permite que você insira seus próprios dados e veja o processo de execução dos
-algoritmos passo a passo.
-
-### 3. [Pythontutor](http://pythontutor.com/)
+### 2. [Pythontutor](http://pythontutor.com/)
 
 Embora o Pythontutor seja principalmente voltado para Python, ele permite que você visualize
 a execução de qualquer código de maneira interativa. É ótimo para entender como variáveis
 e estruturas de dados são manipuladas durante a execução.
 
-### 4. [Algorithm Visualizer](https://algorithm-visualizer.org/)
+### 3. [Algorithm Visualizer](https://algorithm-visualizer.org/)
 
 Um site de código aberto que visualiza uma ampla gama de algoritmos. Oferece uma interface
 fácil de usar para ver como os algoritmos funcionam e como as estruturas de dados mudam durante
 a execução.
 
-### 5. [Data Structure Visualizations](https://www.cs.usfca.edu/~galles/visualization/StacksQueue.html)
+### 4. [Data Structure Visualizations](https://www.cs.usfca.edu/~galles/visualization/StacksQueue.html)
 
 Esse site oferece uma boa visualização de diferentes estruturas de dados como
 pilhas (stacks), filas (queues), listas duplamente encadeadas, entre outros.
 
-### 6. [The Algorithm Design Manual](http://www.algorist.com/)
+### 5. [The Algorithm Design Manual](http://www.algorist.com/)
 
 Embora seja mais focado em teoria, esse site oferece algumas visualizações e
 recursos interativos que são úteis para quem quer estudar algoritmos com mais profundidade.
 
-### 7. [Sorting Algorithms](https://sorting.at/)
-
-Um site dedicado a visualizar diferentes algoritmos de ordenação.
-Ele permite que você compare o desempenho de vários algoritmos com dados de diferentes tamanhos.
-
-### 8. [Turing.com Algorithm Visualizations](https://www.turing.com/algorithm-visualizer)
-
-Turing.com oferece uma coleção de algoritmos interativos, onde você pode visualizar o comportamento deles com diferentes entradas e analisar como eles se comportam em
-tempo real.
-
-### 9. [GeeksforGeeks Visualizations](https://www.geeksforgeeks.org/data-structures/)
+### 7. [GeeksforGeeks Visualizations](https://www.geeksforgeeks.org/data-structures/)
 
 Embora o GeeksforGeeks seja mais conhecido por tutoriais e artigos, também oferece algumas
 visualizações e implementações de estruturas de dados e algoritmos, o que pode ser muito
 útil para quem está começando.
 
-### 10. [LeetCode Visualizer](https://leetcode.com/)
+### 8. [LeetCode Visualizer](https://leetcode.com/)
 
 Embora o LeetCode seja mais focado em desafios de programação, ele também oferece
 uma ferramenta para visualizar soluções de algoritmos, o que pode ser útil para ver
