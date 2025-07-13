@@ -92,8 +92,8 @@ void adicionarTrabalho(Fila *fila, char *tipo, int total_paginas, int inicio, in
 /**
  * @brief Função para imprimir um intervalo de páginas de um trabalho.
  *
- * Esta função imprime as páginas de um trabalho dentro do intervalo especificado (inicio até fim),
- * simulando o tempo de impressão com a função `sleep`.
+ * Esta função imprime as páginas de um trabalho dentro do intervalo especificado
+ * (inicio até fim), simulando o tempo de impressão com a função `sleep`.
  *
  * @param fila Ponteiro para a fila de impressão.
  */

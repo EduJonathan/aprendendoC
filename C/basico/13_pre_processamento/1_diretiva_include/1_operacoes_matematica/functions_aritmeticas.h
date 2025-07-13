@@ -25,6 +25,10 @@ float divide(float a, float b);
  * A diretiva #ifndef protege contra a inclusão repetida do conteúdo do arquivo de cabeçalho.
  * Se FUNCTIONS_ARITMETICAS_H já estiver definido (ou seja, já foi incluído), as próximas
  * inclusões serão ignoradas. Esse padrão é conhecido como "guarda de inclusão" (include guard).
- * @note Tecnicamente, o nome que você for nomear o conteúdo do arquivo NÃO precisa ser exatamente
- * O nome do arquivo.
+ * Isso evita erros de redefinição de funções e variáveis, garantindo que o conteúdo do arquivo
+ * seja incluído apenas uma vez durante a compilação.
+ * Não funciona somente com arquivos de cabeçalho (.h), mas também pode ser utilizados
+ * em structs, unions, enums, etc.
+ * @note Tecnicamente, o nome que você for nomear o conteúdo do arquivo NÃO precisa ser
+ * exatamente o nome do arquivo.
  */

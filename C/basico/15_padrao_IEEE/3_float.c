@@ -36,7 +36,7 @@ void print_and_verify_float_bits(float f)
 int main(int argc, char **argv)
 {
     // Definindo valores
-    float n1 = 0.1, n2 = 0.2;
+    float n1 = 0.1f, n2 = 0.2f;
 
     // Soma dos valores
     float soma = n1 + n2;

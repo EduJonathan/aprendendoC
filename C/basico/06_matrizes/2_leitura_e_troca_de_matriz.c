@@ -8,7 +8,7 @@
 int main(int argc, char **argv)
 {
     // Declarando uma matriz 2x2, e 2 variáveis auxiliares
-    int minhaMatriz[2][2], aux1, aux2;
+    int minhaMatriz[2][2] = {{0, 0}, {0, 0}}, aux1 = 0, aux2 = 0;
 
     // Lendo valores de matriz por matriz
     printf("Digite um valor para [0][0]: ");

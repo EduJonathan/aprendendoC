@@ -142,29 +142,31 @@ int main(int argc, char **argv)
     printf(" O VALOR DA VARIÁVEL 'SH' É : %hd\n", SH); // %hd -> Para tipo Short
 
     /**
-     * Regras para nomeação de variáveis:
-     * 1. Nomes devem começar com uma letra ou underscore (_) | Ex: nome, _valor.
-     * 2. Podem conter letras, números e underscores (_) | Ex: valor1, dados_recebidos.
+     * Regras para nomear variáveis:
+     * 1. Nomes devem começar com uma letra ou underscore (_) | Ex: nome, _valor, dados_recebidos.
+     * 2. Só podem conter números depois da primeira letra | Ex: num1, num2, valor1, dados_recebidos2.
      * 3. Não podem conter espaços ou caracteres especiais | Errado: nome completo, preço$
      * 4. Não podem começar com números | Errado: 1valor, certo: valor1.
 
-     * 5. Não podem ser palavras reservadas da linguagem Ex: int, return, printf não podem ser usados como estão.
+     * 5. Não podem ser palavras reservadas da linguagem Ex:( int, return, printf) não podem ser usados como estão.
      * (a menos que se altere a capitalização) Ex: Printf, Int podem ser usados, mas não é recomendado.
      *
      * 6. Devem ser descritivos e significativos | Ex: totalAlunos é melhor que x.
      * 7. Devem ser únicos dentro do mesmo escopo | Não se pode ter duas variáveis com o mesmo nome no mesmo bloco.
      * 8. Devem seguir as convenções da linguagem | Ex: C usa snake_case, Java usa camelCase.
      * 9. Devem ser declarados antes de serem usados | Em C, a variável deve existir antes de ser usada.
+     * 10. Sempre inicialize as variáveis antes de usá-las | Ex: int x = 0; float y = 0.0;
      *
-     * 10. Não podem ser declaradas com o mesmo nome e tipo diferente no mesmo escopo | Errado: int var; float var;
-     * — isso causa erro. Todas estas regras ajudam a garantir que o código seja legível,
-     * compreensível e mantém a integridade dos dados. E vale para todas as linguagens de programação.
+     * 11. Não podem ser declaradas com o mesmo nome e tipo diferente no mesmo escopo | Errado: int var; float var;
      *
-     * 11. Se você criou uma variável com determinado nome, não pode criar outra variável com o mesmo nome,
+     * 12. Se você criou uma variável com determinado nome, não pode criar outra variável com o mesmo nome,
      * mesmo que seja de outro tipo, no mesmo escopo.
      *
-     * 12. Se você declarou o nome da variável com um certo nome, só pode usar esse nome, a não ser que
+     * 13. Se você declarou o nome da variável com um certo nome, só pode usar esse nome, a não ser que
      * você altere o nome para outro nome válido.
+     *
+     * — Todas estas regras ajudam a garantir que o código seja legível, compreensível e 
+     * mantém a integridade dos dados. E vale para todas as linguagens de programação.
      */
     return 0;
 }

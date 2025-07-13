@@ -7,8 +7,8 @@
  * STDIN: Usado para receber entrada do usuário (exemplo: teclado). Normalmente utilizado
  * com funções como scanf(), fgets(), getchar().
  *
- * STDOUT: Usado para exibir dados na tela (ou redirecionar para um arquivo). Comumente utilizado com
- * printf(), puts(), e putchar().
+ * STDOUT: Usado para exibir dados na tela (ou redirecionar para um arquivo).
+ * Comumente utilizado com printf(), puts(), e putchar().
  */
 
 int main(int argc, char **argv)

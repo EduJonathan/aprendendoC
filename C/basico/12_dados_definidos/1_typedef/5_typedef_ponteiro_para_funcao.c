@@ -5,6 +5,7 @@
  * um ponteiro para uma função que recebe dois inteiros como parâmetros e retorna um inteiro.
  */
 typedef int (*funcaoSomar)(int, int);
+typedef void (*greet)(void);
 
 /**
  * @brief Soma dois inteiros.
@@ -18,6 +19,11 @@ typedef int (*funcaoSomar)(int, int);
 int somar(int a, int b)
 {
     return a + b;
+}
+
+void cumprimentar(void)
+{
+    printf("Olá ponteiros de funções\n");
 }
 
 int main(int argc, char **argv)
@@ -37,6 +43,14 @@ int main(int argc, char **argv)
      * na variável `resultado`.
      */
     int resultado = ptrSoma(3, 5);
+
     printf("Soma: %d\n", resultado);
+    printf("Ponteiro para função: %p\n", (void *)ptrSoma); // Exibe o endereço da função
+
+    greet ptrCumprimentar = cumprimentar;
+    ptrCumprimentar(); // Chama a função de cumprimento
+
+    printf("Ponteiro para função: %p\n", (void *)ptrCumprimentar); // Exibe o endereço da função
+
     return 0;
 }

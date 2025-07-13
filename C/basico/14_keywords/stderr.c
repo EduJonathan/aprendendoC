@@ -9,7 +9,7 @@
 
 int main(int argc, char **argv)
 {
-    int numero;
+    int numero = 0;
 
     printf("Digite um número positivo: ");
     scanf("%d", &numero);

@@ -15,8 +15,9 @@
  * - Robótica e mapeamento de ambientes
  * - Mapas de calor e propagação em grids
  *
- * O algoritmo parte de um ponto inicial e propaga em todas as direções válidas (geralmente 4 ou 8),
- * marcando a distância mínima em cada célula visitada até encontrar o destino.
+ * O algoritmo parte de um ponto inicial e propaga em todas as direções válidas
+ * (geralmente 4 ou 8), marcando a distância mínima em cada célula visitada até encontrar
+ * o destino.
  *
  * Características:
  * - Garante o menor número de passos (em número de células) até o destino.

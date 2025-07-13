@@ -14,7 +14,7 @@
  * que não são afetadas).
  * LC_TIME Apenas data e hora(strftime e wcsftime).
  * LC_NUMERIC Apenas formatação de números (ponto, vírgula).
- * LC_MONETARY Formatação de moeda retornadas pela função localeconv..
+ * LC_MONETARY Formatação de moeda retornadas pela função localeconv.
  * LC_MESSAGES Mensagens de erro ou sistema.
  */
 

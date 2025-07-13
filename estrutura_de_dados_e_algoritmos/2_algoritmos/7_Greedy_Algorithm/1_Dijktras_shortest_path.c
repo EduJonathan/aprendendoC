@@ -25,11 +25,13 @@ GRAFO *inicializarGrafo(int nVertices)
         return NULL;
 
     GRAFO *grafo = (GRAFO *)malloc(sizeof(GRAFO));
+
     if (!grafo)
         return NULL;
 
     grafo->nVertices = nVertices;
     grafo->arestas = (int **)malloc(nVertices * sizeof(int *));
+
     if (!grafo->arestas)
     {
         free(grafo);
@@ -43,6 +45,7 @@ GRAFO *inicializarGrafo(int nVertices)
         {
             for (int j = 0; j < i; j++)
                 free(grafo->arestas[j]);
+
             free(grafo->arestas);
             free(grafo);
             return NULL;
@@ -66,6 +69,7 @@ bool adicionarAresta(GRAFO *grafo, int origem, int destino, int peso)
     {
         return false;
     }
+    
     grafo->arestas[origem][destino] = peso;
     return true;
 }
@@ -88,7 +92,7 @@ int minDistance(const int *distancia, const bool *visitado, int n)
             minVal = distancia[v];
             minInd = v;
         }
-    }    
+    }
     return minInd;
 }
 
@@ -138,12 +142,12 @@ void imprimirCaminho(int *anterior, int destino)
 }
 
 /**
- * @brief Executa o algoritmo de Dijkstra para encontrar as distâncias mínimas de todos os vértices a
- * partir de um vértice de origem.
+ * @brief Executa o algoritmo de Dijkstra para encontrar as distâncias mínimas de
+ * todos os vértices a partir de um vértice de origem.
  *
- * O algoritmo segue a estratégia gananciosa(Greedy_Algorithm) ao escolher, a cada iteração, 
+ * O algoritmo segue a estratégia gananciosa(Greedy_Algorithm) ao escolher, a cada iteração,
  * o vértice com a menor distância (custo) conhecida que ainda não foi processado.
- * O algoritmo então atualiza as distâncias de seus vizinhos e repete esse processo até que 
+ * O algoritmo então atualiza as distâncias de seus vizinhos e repete esse processo até que
  * todas as distâncias mínimas sejam determinadas.
  *
  * @param grafo Ponteiro para a estrutura GRAFO.
@@ -178,6 +182,7 @@ void dijkstra(const GRAFO *grafo, int src)
     for (int count = 0; count < V - 1; count++)
     {
         int u = minDistance(distancia, visitado, V);
+
         if (u == -1)
             break; // Todos os vértices alcançáveis já foram visitados
 
@@ -219,6 +224,7 @@ void liberarGrafo(GRAFO *grafo)
 {
     if (!grafo)
         return;
+
     for (int i = 0; i < grafo->nVertices; i++)
     {
         free(grafo->arestas[i]);

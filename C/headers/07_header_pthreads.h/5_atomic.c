@@ -15,6 +15,13 @@ typedef struct
     _Atomic(NODE *) tail;
 } LockFreeQueue;
 
+/**
+ * @brief Inicializa a fila lock-free com um nó dummy.
+ * Esta função cria um nó dummy que serve como o primeiro nó da fila.
+ * O nó dummy é inicializado com o ponteiro next apontando para NULL.
+ *
+ * @param queue Ponteiro para a fila lock-free a ser inicializada.
+ */
 void initQueue(LockFreeQueue *queue)
 {
     NODE *dummy = malloc(sizeof(NODE));
@@ -23,17 +30,28 @@ void initQueue(LockFreeQueue *queue)
     atomic_store(&queue->tail, dummy);
 }
 
+/**
+ * @brief Função enfileiradora que insere elementos na fila.
+ * Esta função tenta adicionar um novo elemento à fila lock-free.
+ * Se conseguir, retorna 1. Se não conseguir, continua tentando até que a inserção
+ * seja bem-sucedida.
+ *
+ * @param queue Ponteiro para a fila lock-free.
+ * @param value Valor a ser enfileirado.
+ * @return 1 se a inserção foi bem-sucedida.
+ */
 int enqueue(LockFreeQueue *queue, int value)
 {
     NODE *newNode = malloc(sizeof(NODE));
     newNode->value = value;
     newNode->next = NULL;
+    NODE *oldTail = NULL;
 
-    NODE *oldTail;
     while (1)
     {
         oldTail = atomic_load(&queue->tail);
         NODE *next = atomic_load(&oldTail->next);
+
         if (next == NULL)
         {
             if (atomic_compare_exchange_weak(&oldTail->next, &next, newNode))
@@ -46,21 +64,35 @@ int enqueue(LockFreeQueue *queue, int value)
             atomic_compare_exchange_weak(&queue->tail, &oldTail, next);
         }
     }
+
     atomic_compare_exchange_weak(&queue->tail, &oldTail, newNode);
     return 1;
 }
 
+/**
+ * @brief Função desenfileiradora que retira elementos da fila.
+ * Esta função tenta remover um elemento da fila lock-free. Se conseguir,
+ * armazena o valor retirado no ponteiro fornecido e retorna 1.
+ * Se a fila estiver vazia, retorna 0.
+ *
+ * @param queue Ponteiro para a fila lock-free.
+ * @param value Ponteiro onde o valor retirado será armazenado.
+ * @return 1 se um elemento foi retirado com sucesso, 0 se a fila estava vazia.
+ */
 int dequeue(LockFreeQueue *queue, int *value)
 {
-    NODE *oldHead;
+    NODE *oldHead = NULL;
+
     while (1)
     {
         oldHead = atomic_load(&queue->head);
         NODE *next = atomic_load(&oldHead->next);
+
         if (next == NULL)
         {
             return 0;
         }
+
         if (atomic_compare_exchange_weak(&queue->head, &oldHead, next))
         {
             *value = next->value;
@@ -70,9 +102,18 @@ int dequeue(LockFreeQueue *queue, int *value)
     }
 }
 
+/**
+ * @brief Função produtora que insere elementos na fila.
+ * Esta função é executada por uma thread separada e tenta enfileirar
+ * três elementos na fila lock-free. Se conseguir, não imprime nada.
+ *
+ * @param q Ponteiro para a fila lock-free.
+ * @return NULL
+ */
 void *producer(void *q)
 {
     LockFreeQueue *queue = (LockFreeQueue *)q;
+
     for (int i = 0; i < 3; i++)
     {
         enqueue(queue, i);
@@ -80,10 +121,19 @@ void *producer(void *q)
     return NULL;
 }
 
+/**
+ * @brief Função consumidora que retira elementos da fila.
+ * Esta função é executada por uma thread separada e tenta desenfileirar
+ * três elementos da fila lock-free. Se conseguir, imprime o valor desenfileirado.
+ *
+ * @param q Ponteiro para a fila lock-free.
+ * @return NULL
+ */
 void *consumer(void *q)
 {
     LockFreeQueue *queue = (LockFreeQueue *)q;
-    int d;
+    int d = 0;
+
     for (int i = 0; i < 3;)
     {
         if (dequeue(queue, &d))
@@ -119,8 +169,9 @@ int main(int argc, char **argv)
      * atomic: O tipo _Atomic é usado para declarar variáveis que podem ser acessadas
      * de múltiplas threads sem a necessidade de bloqueios explícitos. Ele garante
      * que as operações de leitura e escrita nessas variáveis sejam atômicas,
-     * ou seja, não podem ser interrompidas por outras threads, evitando condições de corrida
-     * e garantindo a consistência dos dados.
+     * ou seja, não podem ser interrompidas por outras threads, evitando condições
+     * de corrida e garantindo a consistência dos dados.
+     *
      * _Atomic é frequentemente usado em estruturas de dados lock-free, onde múltiplas threads
      * podem acessar e modificar os dados simultaneamente sem a necessidade de bloqueios.
      * Suas funções são criadas apartir de macros e são utilizadas para garantir que as

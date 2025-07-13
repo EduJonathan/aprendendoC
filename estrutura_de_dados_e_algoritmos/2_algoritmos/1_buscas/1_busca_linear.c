@@ -9,7 +9,7 @@
  *
  * @note Para todos os algoritmos de busca, existem parâmetros principais:
  * 
- * 1. O valor a ser buscado (o alvo). *
+ * 1. O valor a ser buscado (o alvo).
  * 2. O tamanho da estrutura de dados (denotado por 'n').
  * 3. A complexidade do algoritmo: Relacionada ao tempo de execução da busca
  *

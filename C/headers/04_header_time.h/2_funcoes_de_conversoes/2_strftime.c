@@ -12,9 +12,11 @@
  * SINTAXE: size_t strftime(char *str, size_t max, const char *format, const struct tm *timeptr);
  *
  * @param str: Ponteiro para um array de caracteres onde a string formatada será armazenada.
+ *
  * @param max: Número máx. de caracteres que podem ser armazenados em str, incluindo o caractere nulo ('\0').
- * @param format: String de formato que especifica como a data e hora devem ser formatadas na string
- * resultante.
+ *
+ * @param format: String de formato que especifica como a data e hora devem ser formatadas na string resultante.
+ *
  * @param timeptr: ponteiro para uma estrutura struct tm que contém informações sobre a data e hora.
  */
 

@@ -55,7 +55,7 @@ void printResolucao(int board[N][N])
  */
 bool isSafe(int board[N][N], int linha, int coluna)
 {
-    int i, j;
+    int i = 0, j = 0;
 
     // Verifica a linha à esquerda
     for (i = 0; i < coluna; i++)

@@ -10,16 +10,17 @@ int max(int a, int b)
 
 /**
  * Subsequência Comum Máxima (LCS)
- * A Programação Dinâmica também é útil na solução do problema da Subsequência Comum Máxima (LCS),
- * que busca a maior subsequência que aparece em duas sequências dadas, sem precisar que
- * seus elementos estejam contíguos.
+ * A Programação Dinâmica também é útil na solução do problema da
+ * Subsequência Comum Máxima (LCS), que busca a maior subsequência que aparece em duas
+ * sequências dadas, sem precisar que seus elementos estejam contíguos.
+ *
  * Recorrência:
  * Se as letras de ambas as sequências são iguais, a solução para os subproblemas é:
- * 
+ *
  * 𝑑𝑝[𝑖][𝑗] = 𝑑𝑝[𝑖 − 1][𝑗 − 1] + 1
  *
  * Caso contrário, a solução será o máximo entre as duas possibilidades:
- * 
+ *
  * 𝑑𝑝[𝑖][𝑗] = max⁡(𝑑𝑝[𝑖 − 1][𝑗], 𝑑𝑝[𝑖][𝑗 − 1])
  *
  * @param str1 Primeira string.

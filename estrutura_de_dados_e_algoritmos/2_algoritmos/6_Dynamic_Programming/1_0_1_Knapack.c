@@ -32,11 +32,13 @@ void Knapsack(int capacity, size_t n, int weight[], int value[])
 {
     // Aloca matriz de resultados [n+1][capacity+1]
     int **result = (int **)malloc((n + 1) * sizeof(int *));
+
     if (!result)
     {
         fprintf(stderr, "Erro ao alocar memória.\n");
         exit(1);
     }
+
     for (size_t i = 0; i <= n; i++)
     {
         result[i] = (int *)malloc((capacity + 1) * sizeof(int));
@@ -94,7 +96,7 @@ void Knapsack(int capacity, size_t n, int weight[], int value[])
 
 int main(int argc, char **argv)
 {
-    size_t n;
+    size_t n = 0ull;
     printf("Número de itens: ");
     scanf("%zu", &n);
 
@@ -120,7 +122,7 @@ int main(int argc, char **argv)
         scanf("%d", &value[i]);
     }
 
-    int capacity;
+    int capacity = 0;
     printf("Capacidade da mochila: ");
     scanf("%d", &capacity);
 

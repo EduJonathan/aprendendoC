@@ -15,8 +15,8 @@
  * 2. A complexidade do algoritmo: Relacionada ao tempo de execução do algoritmo.
  *
  * 3. Principais tarefas de ordenação:
- * ● Comparações: Determinam se dois elementos estão na ordem correta. A quantidade de
- * comparações afeta a eficiência (exemplo: Bubble Sort, Quick Sort).
+ * ● Comparações: Determinam se dois elementos estão na ordem correta.
+ * A quantidade de comparações afeta a eficiência (exemplo: Bubble Sort, Quick Sort).
  *
  * ● Trocas: Alguns algoritmos trocam elementos de posição (exemplo: Bubble Sort, Quick Sort).
  * O número de trocas impacta o desempenho.

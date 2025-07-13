@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     printf("\t>>IMPRIMINDO INFORMAÇÕES SOBRE\n");
 
     int a = 10;
-    float b = 5.5;
+    float b = 5.5f;
     char ch = 'b';
 
     printf(" CONTEÚDO DA VARIÁVEL 'a'  = %d ENDEREÇO DA VARIÁVEL   'a'  = %p\n", a, &a);

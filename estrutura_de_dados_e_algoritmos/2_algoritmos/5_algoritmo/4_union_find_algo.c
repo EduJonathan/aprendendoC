@@ -117,6 +117,7 @@ int uf_connected(UnionFind *uf, int x, int y)
 {
     int rootX = uf_find(uf, x);
     int rootY = uf_find(uf, y);
+    
     if (rootX == -1 || rootY == -1)
         return 0;
     return rootX == rootY;

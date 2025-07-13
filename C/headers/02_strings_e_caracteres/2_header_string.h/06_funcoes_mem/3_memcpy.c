@@ -7,12 +7,12 @@
  *
  * SINTAXE: void *memcpy(void *dest, const void *src, size_t n);
  *
- * @param dest - ponteiro para o array de destino onde o conteúdo deve ser copiado, convertido em um
- * ponteiro do tipo void*.
+ * @param dest - ponteiro para o array de destino onde o conteúdo deve ser copiado,
+ * convertido em um ponteiro do tipo void*.
  * @param src - ponteiro para a fonte dos dados a serem copiados, convertido em um ponteiro do
  * tipo void*.
  * @param n - número de bytes a serem copiados. A função retorna um ponteiro para o destino,
- * que é dest
+ * que é dest.
  */
 
 /**

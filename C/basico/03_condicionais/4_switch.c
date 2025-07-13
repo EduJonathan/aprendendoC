@@ -114,7 +114,6 @@ int main(int argc, char **argv)
         printf("\nA soma de %.2f + %.2f é >> %.2f", primeira_parcela, segunda_parcela, soma);
         break;
     }
-
     case 2:
     {
         float minuendo = 0.0F, subtraendo = 0.0F;
@@ -129,7 +128,6 @@ int main(int argc, char **argv)
         printf("\nA subtração de %.2f - %.2f é >> %.2f", minuendo, subtraendo, diferenca);
         break;
     }
-
     case 3:
     {
         float primeiro_fator = 0.0F, segundo_fator = 0.0F;
@@ -144,7 +142,6 @@ int main(int argc, char **argv)
         printf("\nA multiplicação de %.2f x %.2f é: %.2f\n", primeiro_fator, segundo_fator, produto);
         break;
     }
-
     case 4:
     {
         float dividendo = 0.0F, divisor = 0.0F;
@@ -167,7 +164,6 @@ int main(int argc, char **argv)
         }
         break;
     }
-
     default:
         printf("\nOperação não encontrada por favor! insira uma operação valida\n");
         break;
@@ -189,6 +185,7 @@ int main(int argc, char **argv)
         case 0:
             printf("O valor de False é: %d\n", False);
             break;
+            
         case 1:
             printf("O valor de False é: %d\n", False);
             break;

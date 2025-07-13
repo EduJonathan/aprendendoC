@@ -41,6 +41,7 @@ Aresta arestas[] = {
 
 /**
  * @brief Função de comparação usada para ordenar arestas pelo peso (qsort).
+ * 
  * @param a Ponteiro para a primeira aresta.
  * @param b Ponteiro para a segunda aresta.
  * @return Diferença entre os pesos das arestas.
@@ -52,6 +53,7 @@ int compararArestas(const void *a, const void *b)
 
 /**
  * @brief Encontra o representante (pai) de um conjunto com compressão de caminho.
+ * 
  * @param subconj Vetor de subconjuntos.
  * @param i Índice do vértice.
  * @return Representante do conjunto.
@@ -60,11 +62,13 @@ int encontrar(Subconjunto subconj[], int i)
 {
     if (subconj[i].pai != i)
         subconj[i].pai = encontrar(subconj, subconj[i].pai);
+
     return subconj[i].pai;
 }
 
 /**
  * @brief Une dois subconjuntos diferentes (Union by Rank).
+ * 
  * @param subconj Vetor de subconjuntos.
  * @param x Índice do primeiro subconjunto.
  * @param y Índice do segundo subconjunto.
@@ -146,7 +150,6 @@ void kruskalMST()
         }
         printf("Custo total da MST: %d\n", custoTotal);
     }
-
     free(subconj);
 }
 
