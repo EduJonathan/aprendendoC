@@ -222,7 +222,7 @@ struct MinHeap *createAndBuildMinHeap(char data[], int freq[], int size)
     {
         minHeap->array[i] = newNode(data[i], freq[i]);
     }
-    
+
     minHeap->size = size;
     buildMinHeap(minHeap);
     return minHeap;
@@ -238,7 +238,7 @@ struct MinHeap *createAndBuildMinHeap(char data[], int freq[], int size)
  */
 struct MinHeapNode *buildHuffmanTree(char data[], int freq[], int size)
 {
-    struct MinHeapNode *left, *right, *top;
+    struct MinHeapNode *left = NULL, *right = NULL, *top = NULL;
     struct MinHeap *minHeap = createAndBuildMinHeap(data, freq, size);
 
     while (!isSizeOne(minHeap))

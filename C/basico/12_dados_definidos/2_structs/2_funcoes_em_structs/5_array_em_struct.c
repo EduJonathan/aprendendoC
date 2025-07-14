@@ -24,7 +24,7 @@ struct registroDeEstudantes
 void coletarDados(struct registroDeEstudantes students[], size_t numEstudantes)
 {
     // Pecorrendo para inserir os dados do aluno
-    for (size_t i = 0; i < numEstudantes; i++)
+    for (size_t i = 0ull; i < numEstudantes; i++)
     {
         printf("\n>> Digite o id do aluno: ");
         scanf("%u", &students[i].matriculaAluno);
@@ -45,7 +45,7 @@ void coletarDados(struct registroDeEstudantes students[], size_t numEstudantes)
         printf("\n>> Digite o percentual do aluno: ");
         scanf("%f", &students[i].percentual);
         setbuf(stdin, NULL);
-        
+
         printf("\n-----------------------------------------\n");
     }
 }
@@ -60,7 +60,7 @@ void coletarDados(struct registroDeEstudantes students[], size_t numEstudantes)
 void imprimirDadosTradicional(struct registroDeEstudantes students[], size_t numEstudantes)
 {
     printf("\nIMPRIMINDO AS INFORMAÇÕES DOS ESTUDANTE TRADICIONALMENTE\n");
-    for (size_t i = 0; i < numEstudantes; i++)
+    for (size_t i = 0ull; i < numEstudantes; i++)
     {
         printf("\nId do aluno: %u\t Nome do aluno: %s\t Percentual: %.2f\n",
                students[i].matriculaAluno,
@@ -81,7 +81,7 @@ void imprimirDadosTradicional(struct registroDeEstudantes students[], size_t num
 void imprimirDadosPonteiros(struct registroDeEstudantes *students, size_t numEstudantes)
 {
     printf("\nINFORMAÇÕES DO ESTUDANTE UTILIZANDO A ARITMÉTICA DE PONTEIROS:\n");
-    for (size_t i = 0; i < numEstudantes; i++)
+    for (size_t i = 0ull; i < numEstudantes; i++)
     {
         // Acesso ao elemento usando aritmética de ponteiros
         struct registroDeEstudantes *currentStudent = students + i;

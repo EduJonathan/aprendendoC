@@ -14,7 +14,7 @@ int min(int a, int b)
  *
  * Recorrência:
  * Para cada valor 𝑣, a solução pode ser expressa como:
- * 
+ *
  * 𝑑𝑝[𝑣] = min⁡(𝑑𝑝[𝑣], 𝑑𝑝[𝑣 − 𝑐𝑜𝑖𝑛] + 1)
  *
  * Onde coin são as moedas disponíveis.
@@ -36,7 +36,7 @@ int coinChange(int coins[], size_t n, int N, int used_coins[])
         last_coin[i] = -1;
     }
 
-    for (size_t c = 0; c < n; c++)
+    for (size_t c = 0ull; c < n; c++)
     {
         for (int v = coins[c]; v <= N; v++)
         {
@@ -56,6 +56,7 @@ int coinChange(int coins[], size_t n, int N, int used_coins[])
     // Preenche o vetor used_coins com as moedas usadas
     int remaining = N;
     int count = 0;
+
     while (remaining > 0)
     {
         int coin = coins[last_coin[remaining]];
@@ -82,6 +83,7 @@ int main(int argc, char **argv)
     {
         printf("Número mínimo de moedas para %d: %d\n", N, result);
         printf("Moedas usadas: ");
+
         for (int i = 0; i < result; i++)
         {
             printf("%d ", used_coins[i]);

@@ -74,7 +74,7 @@ void imprimirMatrizComPonteiros(const struct Matriz *mat)
     size_t totalElementos = mat->linhas * mat->colunas;
 
     // Percorre todos os elementos da matriz usando aritmética de ponteiros
-    for (size_t i = 0; i < totalElementos; i++)
+    for (size_t i = 0ull; i < totalElementos; i++)
     {
         printf("%d ", *(p + i)); // Imprime o valor apontado pelo ponteiro
 

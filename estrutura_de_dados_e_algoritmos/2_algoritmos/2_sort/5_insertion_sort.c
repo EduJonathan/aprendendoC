@@ -25,7 +25,7 @@
  * proporcional a \(n^2\), pois ele compara e desloca os elementos repetidamente.
  *
  * Espaço:
- * 
+ *
  * - O(1) -> o algoritmo é in-place, ou seja, ele não requer espaço adicional significativo
  * além da memória usada para armazenar os dados de entrada.
  *
@@ -46,7 +46,7 @@ void insertionSort(int *arr, size_t n)
     int j = 0;
 
     // Itera sobre o array a partir do segundo elemento
-    for (size_t i = 1; i < n; i++)
+    for (size_t i = 1ull; i < n; i++)
     {
         temp = arr[i];
         j = i - 1;
@@ -83,7 +83,7 @@ int main(int argc, char **argv)
     size_t n = sizeof(arr) / sizeof(arr[0]);
 
     printf("Array original: ");
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         printf("%d ", arr[i]);
     }
@@ -93,7 +93,7 @@ int main(int argc, char **argv)
     insertionSort(arr, n);
 
     printf("Array ordenado: ");
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         printf("%d ", arr[i]);
     }

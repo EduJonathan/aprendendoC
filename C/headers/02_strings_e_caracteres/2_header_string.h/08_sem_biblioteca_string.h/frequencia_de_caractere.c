@@ -40,7 +40,7 @@ void contarFrequenciaCaractere(const char *frase)
 
 int main(int argc, char **argv)
 {
-    char frase[20]; /**< String onde o usuário irá inserir a frase */
+    char frase[20] = {0}; /**< String onde o usuário irá inserir a frase */
 
     // Solicita ao usuário para inserir uma frase com no máximo 20 caracteres
     printf("Entre com uma string (MAX. 20 CARACTERES): ");

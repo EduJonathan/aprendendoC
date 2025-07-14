@@ -63,10 +63,10 @@ void AlocarERealocarArray(int tamanhoInicial, int novoTamanho)
  */
 void GerenciarArrayDinamico(void)
 {
-    int n_size = 0;
-    int soma = 0;
-    int x = 0;
-    int *p = NULL;
+    int n_size = 0; // Tamanho do array
+    int soma = 0;   // Variável para armazenar a soma dos elementos
+    int x = 0;      // Variável auxiliar para armazenar o tamanho anterior
+    int *p = NULL;  // Ponteiro para o array dinâmico
 
     // Solicita o tamanho inicial ao usuário
     printf("Digite o tamanho que deseja alocar: ");

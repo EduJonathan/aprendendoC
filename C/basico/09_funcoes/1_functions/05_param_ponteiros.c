@@ -40,7 +40,7 @@ const char *argStr(const char *str)
 int main(int argc, char **argv)
 {
     int meuInteiro = 42;
-    float meuFloat = 3.14;
+    float meuFloat = 3.14f;
     char letra = 'Q';
 
     // Chamando a função com um ponteiro para um inteiro
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     // Chamando a função com um ponteiro para um float
     argGeneric(&meuFloat);
 
-    // Chamando a função com um ponteiro para um int
+    // Chamando a função com um ponteiro para um char
     argGeneric(&letra);
 
     // Essa é uma das vantagens além de conter quaisquer endereços, basta converte-lo

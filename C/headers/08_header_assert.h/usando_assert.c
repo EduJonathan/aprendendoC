@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {
     // Variáveis para armazenar os números de entrada e o resultado intermediário.
-    double x, y, z;
+    double x = 0.0, y = 0.0, z = 0.0;
 
     // Solicita ao usuário que insira pares de números (0 0 para sair).
     puts("Digite um par de dois números (0 0 para encerrar): ");

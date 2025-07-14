@@ -49,16 +49,18 @@ int selecionarMenu(void)
  */
 void lerEntrada(const char *mensagem, char *destino, int limite)
 {
-    char buffer[255];
+    char buffer[255] = {0};
 
     do
     {
         printf("%s", mensagem);
         fgets(buffer, sizeof(buffer), stdin);
+
         if (strlen(buffer) > 1 && buffer[strlen(buffer) - 1] == '\n')
         {
             buffer[strlen(buffer) - 1] = '\0';
         }
+        
         if ((int)strlen(buffer) > limite)
             printf("Muito longo. Máximo de %d caracteres.\n", limite);
     } while ((int)strlen(buffer) > limite);
@@ -151,8 +153,8 @@ void inserirOrdenado(struct Contato *novo, struct Contato **inicio, struct Conta
  */
 void adicionarContato(struct Contato **inicio, struct Contato **fim)
 {
-    struct Contato *novoContato;
-    char continuar[5];
+    struct Contato *novoContato = NULL;
+    char continuar[5] = {0};
 
     do
     {
@@ -190,7 +192,7 @@ void adicionarContato(struct Contato **inicio, struct Contato **fim)
  */
 void removerContato(struct Contato **inicio, struct Contato **fim)
 {
-    char nome[30];
+    char nome[30] = {0};
     lerEntrada("Nome a remover: ", nome, 29);
 
     struct Contato *contato = buscarContato(nome, *inicio);
@@ -233,7 +235,7 @@ void listarContatos(struct Contato *inicio)
  */
 void procurarContato(struct Contato *inicio)
 {
-    char nome[30];
+    char nome[30] = {0};
     lerEntrada("Digite o nome a buscar: ", nome, 29);
     struct Contato *contato = buscarContato(nome, inicio);
 
@@ -250,7 +252,7 @@ void procurarContato(struct Contato *inicio)
  */
 void liberarContatos(struct Contato *inicio)
 {
-    struct Contato *temp;
+    struct Contato *temp = NULL;
     while (inicio)
     {
         temp = inicio;
@@ -290,7 +292,7 @@ int main(int argc, char **argv)
             return 0;
         }
     }
-    
+
     liberarContatos(inicio);
     return 0;
 }

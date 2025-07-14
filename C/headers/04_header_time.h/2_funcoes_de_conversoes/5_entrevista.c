@@ -21,7 +21,7 @@ typedef struct entrevista
  */
 void enviarEmail(Candidatos candidato)
 {
-    char dataHora[50];
+    char dataHora[50] = {0}; // Buffer para armazenar a data e hora formatada
 
     // Converte o horário da entrevista para o formato de data e hora
     strftime(dataHora, 50, "%d/%m/%Y às %H:%M", localtime(&candidato.horario_entrevista));

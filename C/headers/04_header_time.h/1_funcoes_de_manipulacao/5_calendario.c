@@ -42,7 +42,7 @@ int diasEmMeses(int ano, int mes)
 
 int main(int argc, char **argv)
 {
-    int ano, mes;
+    int ano = 0, mes = 0;
 
     printf("Digite o ano: ");
     scanf("%d", &ano);

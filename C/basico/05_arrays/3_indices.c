@@ -48,7 +48,7 @@ int main(int argc, char **argv)
     printf("\n-------------------------------------\n");
 
     // 3. Vetor com tamanho fornecido pelo usuário — deve ser dinâmico!
-    size_t n = 0;
+    size_t n = 0ull;
     printf("Insira o tamanho do array: ");
     scanf("%zu", &n);
 
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         array_para_definir[i] = i + 1;
         printf("array_para_definir[indice = %zu] -> %d\n", i, array_para_definir[i]);
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
     printf("\n-------------------------------------\n");
 
     // 4. Vetor dinâmico (outra forma)
-    size_t tamanho = 0;
+    size_t tamanho = 0ull;
     printf("Digite o tamanho do vetor dinâmico: ");
     scanf("%zu", &tamanho);
 
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    for (size_t i = 0; i < tamanho; i++)
+    for (size_t i = 0ull; i < tamanho; i++)
     {
         vetor_din[i] = i * i;
     }
@@ -89,7 +89,7 @@ int main(int argc, char **argv)
 
     // 5. Exibindo vetor fixo
     printf("Elementos do vetor fixo (tamanho %d):\n", TAMANHO_FIXO);
-    for (size_t i = 0; i < TAMANHO_FIXO; i++)
+    for (size_t i = 0ull; i < TAMANHO_FIXO; i++)
     {
         printf("vetor_fixo[%zu] = %d\n", i, vetor_fixo[i]);
     }
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 
     // 6. Exibindo os elementos do vetor dinâmico
     printf("Elementos do vetor dinâmico (tamanho %zu):\n", tamanho);
-    for (size_t i = 0; i < tamanho; i++)
+    for (size_t i = 0ull; i < tamanho; i++)
     {
         printf("vetor_din[%zu] = %d\n", i, vetor_din[i]);
     }

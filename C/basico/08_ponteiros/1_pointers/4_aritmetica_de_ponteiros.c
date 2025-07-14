@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     float n1 = 89, n2 = 56;
 
     // Variáveis para armazenar os conteúdos das operações
-    float soma, subtracao, multiplicacao, divisao, resto;
+    float soma = 0.0f, subtracao = 0.0f, multiplicacao = 0.0f, divisao = 0.0f, resto = 0.0f;
 
     // Declarando ponteiros p1 e p2 para tipos floats
     float *p1 = NULL, *p2 = NULL;

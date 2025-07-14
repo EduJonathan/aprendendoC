@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     setlocale(LC_NUMERIC, "de_DE.utf8"); // decimal sendo uma ',' em alemão
     setlocale(LC_TIME, "ja_JP.utf8");    // date/time vai ser formatado em Japonês
 
-    wchar_t str[100];
+    wchar_t str[100] = {0};
     time_t t = time(NULL);
 
     wcsftime(str, 100, L"%A %c", localtime(&t));

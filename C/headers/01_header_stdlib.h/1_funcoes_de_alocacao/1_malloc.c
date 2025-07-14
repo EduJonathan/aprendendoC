@@ -105,7 +105,7 @@ int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
     }
 
     // Aloca memória para cada linha da matriz
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
         // Aloca memória para um array de inteiros para colunas
         matriz[i] = (int *)malloc(colunas * sizeof(int));
@@ -116,7 +116,7 @@ int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
             printf("Memória não alocada para a linha %zu da matriz\n", i);
 
             // Libera a memória já alocada para linhas anteriores
-            for (size_t j = 0; j < i; j++)
+            for (size_t j = 0ull; j < i; j++)
             {
                 free(matriz[j]);
             }
@@ -128,9 +128,9 @@ int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
 
     // Preenche a matriz com valores fornecidos pelo usuário
     printf("Insira os valores para a matriz %zu x %zu:\n", linhas, colunas);
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
-        for (size_t j = 0; j < colunas; j++)
+        for (size_t j = 0ull; j < colunas; j++)
         {
             printf("matriz[%zu][%zu]: ", i, j);
             scanf("%d", &matriz[i][j]);
@@ -139,9 +139,9 @@ int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
 
     // Exibe a matriz
     printf("\nMatriz %zu x %zu:\n", linhas, colunas);
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
-        for (size_t j = 0; j < colunas; j++)
+        for (size_t j = 0ull; j < colunas; j++)
         {
             printf("%d ", matriz[i][j]);
         }
@@ -160,7 +160,7 @@ void liberarMatriz(int **matriz, size_t linhas)
 {
     if (matriz != NULL)
     {
-        for (size_t i = 0; i < linhas; i++)
+        for (size_t i = 0ull; i < linhas; i++)
         {
             free(matriz[i]);
         }
@@ -226,15 +226,15 @@ int main(int argc, char **argv)
     printf("\n\tALOCANDO A MEMÓRIA PARA UM ARRAY COM O MALLOC:\n");
 
     // Define o tamanho do array
-    size_t tamanho = 10U;
+    size_t tamanho = 10ull;
 
     // Chama a função para alocar, inserir e exibir o array
     alocarArrayComMalloc(tamanho);
 
     printf("\n-------------------------------------------\n");
 
-    size_t linhas = 3U;
-    size_t colunas = 3U;
+    size_t linhas = 3ull;
+    size_t colunas = 3ull;
     int **matriz = alocandoMatrizComMalloc(linhas, colunas);
 
     // Verifica se a alocação foi bem-sucedida

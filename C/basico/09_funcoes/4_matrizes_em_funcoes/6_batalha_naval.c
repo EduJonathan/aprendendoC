@@ -148,7 +148,7 @@ int main(int argc, char **argv)
     while (naviosEncontrados < NUM_NAVIOS && bombasEncontradas < 3) // Jogo termina ao encontrar 3 bombas
     {
         char linhaChar;
-        int coluna;
+        int coluna = 0;
 
         // Exibe o tabuleiro atual (com células ocultas)
         exibirTabuleiro(tabuleiroExibido);

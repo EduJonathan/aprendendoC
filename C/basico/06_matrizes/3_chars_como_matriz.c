@@ -50,9 +50,9 @@ int main(int argc, char **argv)
     putchar('\n');
 
     // Utilizando dois for aninhados para percorrer a matriz
-    for (size_t i = 0; i < num_Linhas; i++)
+    for (size_t i = 0ull; i < num_Linhas; i++)
     {
-        for (size_t j = 0; j < num_Colunas; j++)
+        for (size_t j = 0ull; j < num_Colunas; j++)
         {
             if (meses[i][j] == '\0')
             {

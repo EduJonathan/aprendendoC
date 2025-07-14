@@ -9,10 +9,10 @@
  */
 void inputAndOutputInt_t(void)
 {
-    int8_t formatterParaInt8;
-    int16_t formatterParaInt16;
-    int32_t formatterParaInt32;
-    int64_t formatterParaInt64;
+    int8_t formatterParaInt8 = 0;
+    int16_t formatterParaInt16 = 0;
+    int32_t formatterParaInt32 = 0;
+    int64_t formatterParaInt64 = 0;
 
     printf("INSIRA UM VALOR PARA formatterParaInt8: ");
     scanf("%" SCNd8, &formatterParaInt8);
@@ -36,10 +36,10 @@ void inputAndOutputInt_t(void)
  */
 void inputAndOutputUint_t(void)
 {
-    uint8_t formatterParaUInt8;
-    uint16_t formatterParaUInt16;
-    uint32_t formatterParaUInt32;
-    uint64_t formatterParaUInt64;
+    uint8_t formatterParaUInt8 = 0;
+    uint16_t formatterParaUInt16 = 0;
+    uint32_t formatterParaUInt32 = 0;
+    uint64_t formatterParaUInt64 = 0;
 
     printf("\nINSIRA UM VALOR PARA formatterParaUInt8: ");
     scanf("%" SCNu8, &formatterParaUInt8);
@@ -63,10 +63,10 @@ void inputAndOutputUint_t(void)
  */
 void inputAndOutputInt_least_t(void)
 {
-    int_least8_t formatterParaIL8;
-    int_least16_t formatterParaIL16;
-    int_least32_t formatterParaIL32;
-    int_least64_t formatterParaIL64;
+    int_least8_t formatterParaIL8 = 0;
+    int_least16_t formatterParaIL16 = 0;
+    int_least32_t formatterParaIL32 = 0;
+    int_least64_t formatterParaIL64 = 0;
 
     printf("\nINSIRA UM VALOR PARA formatterParaIL8: ");
     scanf("%" SCNdLEAST8, &formatterParaIL8);
@@ -90,10 +90,10 @@ void inputAndOutputInt_least_t(void)
  */
 void inputAndOutputUint_least_t(void)
 {
-    uint_least8_t formatterParaUIL8;
-    uint_least16_t formatterParaUIL16;
-    uint_least32_t formatterParaUIL32;
-    uint_least64_t formatterParaUIL64;
+    uint_least8_t formatterParaUIL8 = 0;
+    uint_least16_t formatterParaUIL16 = 0;
+    uint_least32_t formatterParaUIL32 = 0;
+    uint_least64_t formatterParaUIL64 = 0;
 
     printf("\nINSIRA UM VALOR PARA formatterParaUIL8: ");
     scanf("%" SCNuLEAST8, &formatterParaUIL8);
@@ -117,10 +117,10 @@ void inputAndOutputUint_least_t(void)
  */
 void inputAndOutputInt_fast_t(void)
 {
-    int_fast8_t formatterParaIF8;
-    int_fast16_t formatterParaIF16;
-    int_fast32_t formatterParaIF32;
-    int_fast64_t formatterParaIF64;
+    int_fast8_t formatterParaIF8 = 0;
+    int_fast16_t formatterParaIF16 = 0;
+    int_fast32_t formatterParaIF32 = 0;
+    int_fast64_t formatterParaIF64 = 0;
 
     printf("\nINSIRA UM VALOR PARA formatterParaIF8: ");
     scanf("%" SCNdFAST8, &formatterParaIF8);
@@ -144,10 +144,10 @@ void inputAndOutputInt_fast_t(void)
  */
 void inputAndOutputUInt_fast_t(void)
 {
-    uint_fast8_t formatterParaUIF8;
-    uint_fast16_t formatterParaUIF16;
-    uint_fast32_t formatterParaUIF32;
-    uint_fast64_t formatterParaUIF64;
+    uint_fast8_t formatterParaUIF8 = 0;
+    uint_fast16_t formatterParaUIF16 = 0;
+    uint_fast32_t formatterParaUIF32 = 0;
+    uint_fast64_t formatterParaUIF64 = 0;
 
     printf("\nINSIRA UM VALOR PARA formatterParaUIF8: ");
     scanf("%" SCNuFAST8, &formatterParaUIF8);

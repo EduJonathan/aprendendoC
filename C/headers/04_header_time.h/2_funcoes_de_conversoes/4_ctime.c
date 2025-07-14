@@ -93,7 +93,7 @@ void calcular_dia_da_semana(const char *data_input)
 
 int main(int argc, char **argv)
 {
-    char data_input[11]; // Formato de data: DD/MM/AAAA
+    char data_input[11] = {0}; // Formato de data: DD/MM/AAAA
 
     // Pedindo a data ao usuário
     printf("Digite a sua data (DD/MM/AAAA): ");

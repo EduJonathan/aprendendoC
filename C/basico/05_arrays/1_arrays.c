@@ -170,9 +170,9 @@ int main(int argc, char **argv)
     printf("\n=====================================================================\n");
 
     // Exibe o valor atualizado pelo scanf
-    for (int i = 0; i < nElementos; i++)
+    for (size_t i = 0ull; i < nElementos; i++)
     {
-        printf(" Posicao [%d] Valor alterado para: %d\n", i, arr[i]);
+        printf(" Posicao [%zu] Valor alterado para: %d\n", i, arr[i]);
     }
     // Como discutido, preferimos utilizar a variável `nElementos` em vez
     // de um número fixo como 10 for (int i = 0; i < 10; i++),

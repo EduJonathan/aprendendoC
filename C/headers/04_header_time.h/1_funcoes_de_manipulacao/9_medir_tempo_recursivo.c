@@ -6,7 +6,7 @@
 
 int contador_puro = 0;
 int contador_memo = 0;
-int cache[MAX][MAX];
+int cache[MAX][MAX] = {0};
 
 /**
  * @brief Inicializa a matriz de cache com -1.

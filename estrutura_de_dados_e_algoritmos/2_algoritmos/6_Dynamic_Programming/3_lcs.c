@@ -37,14 +37,14 @@ int lcs_length(const char *str1, const char *str2)
 
     // Alocando a tabela de resultados e de rastreamento
     int **dp = (int **)malloc((m + 1) * sizeof(int *));
-    for (size_t i = 0; i <= m; i++)
+    for (size_t i = 0ull; i <= m; i++)
     {
         dp[i] = (int *)malloc((n + 1) * sizeof(int));
         dp[i][0] = 0;
     }
 
     // Preenche a tabela com valores iniciais
-    for (size_t j = 0; j <= n; j++)
+    for (size_t j = 0ull; j <= n; j++)
     {
         dp[0][j] = 0;
     }
@@ -67,7 +67,7 @@ int lcs_length(const char *str1, const char *str2)
 
     int result = dp[m][n];
 
-    for (size_t i = 0; i <= m; i++)
+    for (size_t i = 0ull; i <= m; i++)
     {
         free(dp[i]);
     }
@@ -92,19 +92,19 @@ void lcs_sequence(const char *str1, const char *str2, char *output)
     size_t n = strlen(str2);
 
     int **dp = (int **)malloc((m + 1) * sizeof(int *));
-    for (size_t i = 0; i <= m; i++)
+    for (size_t i = 0ull; i <= m; i++)
     {
         dp[i] = (int *)malloc((n + 1) * sizeof(int));
         dp[i][0] = 0;
     }
-    for (size_t j = 0; j <= n; j++)
+    for (size_t j = 0ull; j <= n; j++)
     {
         dp[0][j] = 0;
     }
 
-    for (size_t i = 1; i <= m; i++)
+    for (size_t i = 1ull; i <= m; i++)
     {
-        for (size_t j = 1; j <= n; j++)
+        for (size_t j = 1ull; j <= n; j++)
         {
             if (str1[i - 1] == str2[j - 1])
             {
@@ -141,7 +141,7 @@ void lcs_sequence(const char *str1, const char *str2, char *output)
     }
 
     // Liberando a memória
-    for (size_t i = 0; i <= m; i++)
+    for (size_t i = 0ull; i <= m; i++)
     {
         free(dp[i]);
     }

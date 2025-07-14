@@ -71,6 +71,6 @@ int main(int argc, char **argv)
         printf("Nome não Encontrado\n");
     }
 
-    /** @note A busca binária para melhor desempenho em busca, deve-se está ordenada.  */
+    /** @note A busca binária para melhor desempenho em busca, deve-se está ordenada. */
     return 0;
 }

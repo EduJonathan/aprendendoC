@@ -20,7 +20,7 @@
  */
 void converterEImprimir(int val, int radix)
 {
-    char str[32]; // Buffer para armazenar a string resultante
+    char str[32] = {0}; // Buffer para armazenar a string resultante
 
     // Usando itoa para converter o inteiro para string
     char *valorConvertido = itoa(val, str, radix);

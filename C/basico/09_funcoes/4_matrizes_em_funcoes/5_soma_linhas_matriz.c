@@ -15,10 +15,11 @@
  */
 void somandoLinhasMatriz(int (*matriz)[COLUNAS], int *somaLinhas, size_t linhas, size_t colunas)
 {
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
         somaLinhas[i] = 0; // Inicializa a soma da linha como zero
-        for (size_t j = 0; j < colunas; j++)
+
+        for (size_t j = 0ull; j < colunas; j++)
         {
             // Ambas as formas funcionam:
             // somaLinhas[i] += matriz[i][j]; // Tradicional
@@ -27,7 +28,7 @@ void somandoLinhasMatriz(int (*matriz)[COLUNAS], int *somaLinhas, size_t linhas,
     }
 
     // Listar somas das linhas
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
         printf("A soma da linha %zu é: %d\n", i, somaLinhas[i]);
     }
@@ -42,9 +43,9 @@ void somandoLinhasMatriz(int (*matriz)[COLUNAS], int *somaLinhas, size_t linhas,
  */
 void imprimirMatriz(int (*matriz)[COLUNAS], size_t linhas, size_t colunas)
 {
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
-        for (size_t j = 0; j < colunas; j++)
+        for (size_t j = 0ull; j < colunas; j++)
         {
             // Ambas as formas funcionam:
             // printf("%2d ", matriz[i][j]); // Tradicional
@@ -64,10 +65,11 @@ void imprimirMatriz(int (*matriz)[COLUNAS], size_t linhas, size_t colunas)
  */
 void somarColunasMatriz(int (*matriz)[COLUNAS], int *somaColunas, size_t linhas, size_t colunas)
 {
-    for (size_t i = 0; i < colunas; i++) // i = índice da coluna
+    for (size_t i = 0ull; i < colunas; i++) // i = índice da coluna
     {
-        somaColunas[i] = 0;                 // Inicializa a soma da coluna i como zero
-        for (size_t j = 0; j < linhas; j++) // j = índice da linha
+        somaColunas[i] = 0; // Inicializa a soma da coluna i como zero
+
+        for (size_t j = 0ull; j < linhas; j++) // j = índice da linha
         {
             // Soma o elemento na linha j, coluna i
             // somaColunas[i] += matriz[j][i]; // Forma tradicional
@@ -76,7 +78,7 @@ void somarColunasMatriz(int (*matriz)[COLUNAS], int *somaColunas, size_t linhas,
     }
 
     // Imprime as somas das colunas
-    for (size_t i = 0; i < colunas; i++)
+    for (size_t i = 0ull; i < colunas; i++)
     {
         printf("A soma da coluna %zu é: %d\n", i, somaColunas[i]);
     }
@@ -84,15 +86,15 @@ void somarColunasMatriz(int (*matriz)[COLUNAS], int *somaColunas, size_t linhas,
 
 int main(int argc, char **argv)
 {
-    int matriz[LINHAS][COLUNAS];
-    int somaLinhas[LINHAS] = {0}; // Vetor para armazenar as somas
+    int matriz[LINHAS][COLUNAS] = {0}; // Matriz para armazenar os valores
+    int somaLinhas[LINHAS] = {0};      // Vetor para armazenar as somas
 
     srand(time(NULL)); // Inicializa a semente para números aleatórios
 
     // Preenche a matriz com números aleatórios de 0 a 9
-    for (size_t linha = 0; linha < LINHAS; linha++)
+    for (size_t linha = 0ull; linha < LINHAS; linha++)
     {
-        for (size_t coluna = 0; coluna < COLUNAS; coluna++)
+        for (size_t coluna = 0ull; coluna < COLUNAS; coluna++)
         {
             matriz[linha][coluna] = rand() % 10;
         }

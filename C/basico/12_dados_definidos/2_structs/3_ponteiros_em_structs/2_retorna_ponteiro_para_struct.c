@@ -17,10 +17,10 @@ struct funcao_pointer_struct
  * funcao_pointer_struct.
  *
  * @param valor_x atribui os valores fornecidos aos seus campos e retorna um ponteiro para a
- * estrutura alocada. 
+ * estrutura alocada.
  * @param valor_y atribui os valores fornecidos aos seus campos e retorna um ponteiro para a
  * estrutura alocada.
- * 
+ *
  * @return Retorna um ponteiro para struct com alocação dinâmica
  */
 struct funcao_pointer_struct *modificacao(int valor_x, int valor_y)
@@ -58,8 +58,8 @@ int main(int argc, char **argv)
     struct funcao_pointer_struct *ponteiro_modificador = NULL;
 
     // Variáveis para inserção de valores
-    int x;
-    int y;
+    int x = 0;
+    int y = 0;
 
     // Solicita ao usuário que digite um valor para a variável x
     printf("Digite o valor para x: ");

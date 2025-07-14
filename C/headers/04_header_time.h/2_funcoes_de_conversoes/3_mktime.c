@@ -131,7 +131,7 @@ void calcular_data_comemorativa(const char *festividade)
 
 int main(int argc, char **argv)
 {
-    char festividade[BUFFER_SIZE];
+    char festividade[BUFFER_SIZE] = {0};
 
     // Solicita o nome da festividade
     printf("Digite o nome da festividade (Halloween, Natal, Carnaval, etc.): ");

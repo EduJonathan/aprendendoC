@@ -54,9 +54,9 @@ void criarFuncionario(FILE *fp, struct funcionario *funcionario)
  */
 void atualizar(FILE *fp, struct funcionario *funcionario)
 {
-    int id, flag = 0;
+    int id = 0, flag = 0;
     char nome[100];
-    FILE *temp_fp;
+    FILE *temp_fp = NULL;
 
     if (fp == NULL)
     {
@@ -159,9 +159,9 @@ void exibir(FILE *fp, struct funcionario *funcionario)
 
 int main(int argc, char **argv)
 {
-    FILE *fp;
+    FILE *fp = NULL;
     struct funcionario funcionario;
-    int opcao;
+    int opcao = 0;
 
     do
     {

@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     time(&start); // Marca o início (tempo real)
 
     // Laço for para realizar uma tarefa repetitiva
-    long sum = 0;
+    long sum = 0l;
     for (long i = 0; i < 1000000000; i++)
     {
         sum += i; // Soma simples

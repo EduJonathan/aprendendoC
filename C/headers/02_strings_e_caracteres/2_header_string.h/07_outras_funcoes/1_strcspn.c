@@ -60,8 +60,8 @@ void imprimeDetalhesDaString(const char *str)
 
 int main(int argc, char **argv)
 {
-    char nome[10];
-    char sobreNome[10];
+    char nome[10] = {0};      /**< String para armazenar o nome */
+    char sobreNome[10] = {0}; /**< String para armazenar o sobrenome */
 
     // Lê e processa o primeiro nome
     leituraDaString(nome, sizeof(nome));

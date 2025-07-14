@@ -34,7 +34,7 @@ int isPolindrome(char str[])
 int main(int argc, char **argv)
 {
     // Declarando uma string e pedindo para o usuário digitar uma string
-    char str[100];
+    char str[100] = {0};
     printf("Digite uma string: ");
     scanf("%99[^\n]", str);
 

@@ -27,7 +27,7 @@ int calcularTamanhoString(const char *str)
 
 int main(int argc, char **argv)
 {
-    char str[50]; /**< A string inserida pelo usuário */
+    char str[50] = {0}; /**< A string inserida pelo usuário */
 
     // Solicitar ao usuário para digitar uma frase
     printf("Digite uma frase (MAX.: 50 CARACTERES): ");

@@ -9,7 +9,7 @@
  * @param _Format Para os formatadores
  * @param ... Variáveis para leitura
  * @return A funcao retorna o numero de elementos efetivamente lidos.
- * 
+ *
  * @note A funcao fscanf() pode ser usada para ler dados formatados de um arquivo.
  */
 
@@ -27,8 +27,8 @@ int main(int argc, char **argv)
     }
 
     // Variáveis para utilizar na função fscanf
-    int intValue;
-    float floatValue;
+    int intValue = 0;
+    float floatValue = 0.0f;
     char stringValue[50];
 
     // Ler dados formatados do arquivo

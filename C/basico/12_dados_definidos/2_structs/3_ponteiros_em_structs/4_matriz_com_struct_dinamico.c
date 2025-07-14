@@ -28,16 +28,16 @@ struct matriz **criaMatriz(size_t linhas, size_t colunas)
     struct matriz **matriz = (struct matriz **)malloc(linhas * sizeof(struct matriz *));
 
     // Alocando espaço para as colunas em cada linha
-    for (size_t i = 0; i < linhas; ++i)
+    for (size_t i = 0ull; i < linhas; ++i)
     {
         // Alocando espaço para as colunas
         matriz[i] = (struct matriz *)malloc(colunas * sizeof(struct matriz));
     }
 
     // Inicializando os elementos da matriz
-    for (size_t i = 0; i < linhas; ++i)
+    for (size_t i = 0ull; i < linhas; ++i)
     {
-        for (size_t j = 0; j < colunas; ++j)
+        for (size_t j = 0ull; j < colunas; ++j)
         {
             matriz[i][j].valor = 0; //  Inicializando com zero Ou qualquer valor desejado
         }
@@ -56,9 +56,9 @@ struct matriz **criaMatriz(size_t linhas, size_t colunas)
  */
 void imprimirMatrizTradicional(struct matriz **matriz, size_t linhas, size_t colunas)
 {
-    for (size_t i = 0; i < linhas; ++i)
+    for (size_t i = 0ull; i < linhas; ++i)
     {
-        for (size_t j = 0; j < colunas; ++j)
+        for (size_t j = 0ull; j < colunas; ++j)
         {
             printf("%d ", matriz[i][j].valor);
         }
@@ -78,9 +78,9 @@ void imprimirMatrizTradicional(struct matriz **matriz, size_t linhas, size_t col
  */
 void imprimirMatrizAritmetica(struct matriz **matriz, size_t linhas, size_t colunas)
 {
-    for (size_t i = 0; i < linhas; ++i)
+    for (size_t i = 0ull; i < linhas; ++i)
     {
-        for (size_t j = 0; j < colunas; ++j)
+        for (size_t j = 0ull; j < colunas; ++j)
         {
             printf("%d ", (*((*(matriz + i)) + j)).valor);
         }
@@ -97,7 +97,7 @@ void imprimirMatrizAritmetica(struct matriz **matriz, size_t linhas, size_t colu
 void liberarMatriz(struct matriz **matriz, size_t linhas)
 {
     // Liberando a memória alocada para cada linha
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
         // Liberando a memória alocada para cada coluna
         free(matriz[i]);

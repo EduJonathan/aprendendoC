@@ -146,9 +146,9 @@ int main(int argc, char **argv)
      * 1. Nomes devem começar com uma letra ou underscore (_) | Ex: nome, _valor, dados_recebidos.
      * 2. Só podem conter números depois da primeira letra | Ex: num1, num2, valor1, dados_recebidos2.
      * 3. Não podem conter espaços ou caracteres especiais | Errado: nome completo, preço$
-     * 4. Não podem começar com números | Errado: 1valor, certo: valor1.
-
-     * 5. Não podem ser palavras reservadas da linguagem Ex:( int, return, printf) não podem ser usados como estão.
+     * 4. Não podem começar com números | Errado: 1valor, Certo: valor1.
+     *
+     * 5. Não podem ser palavras reservadas da linguagem Ex: (int, return, printf) não podem ser usados como estão.
      * (a menos que se altere a capitalização) Ex: Printf, Int podem ser usados, mas não é recomendado.
      *
      * 6. Devem ser descritivos e significativos | Ex: totalAlunos é melhor que x.
@@ -160,12 +160,12 @@ int main(int argc, char **argv)
      * 11. Não podem ser declaradas com o mesmo nome e tipo diferente no mesmo escopo | Errado: int var; float var;
      *
      * 12. Se você criou uma variável com determinado nome, não pode criar outra variável com o mesmo nome,
-     * mesmo que seja de outro tipo, no mesmo escopo.
+     * mesmo que seja de outro tipo, no mesmo escopo | Exe.: int x = 0; int x = 0.
      *
      * 13. Se você declarou o nome da variável com um certo nome, só pode usar esse nome, a não ser que
      * você altere o nome para outro nome válido.
      *
-     * — Todas estas regras ajudam a garantir que o código seja legível, compreensível e 
+     * — Todas estas regras ajudam a garantir que o código seja legível, compreensível e
      * mantém a integridade dos dados. E vale para todas as linguagens de programação.
      */
     return 0;

@@ -11,10 +11,10 @@
  */
 void troca(int *n1, int *n2)
 {
-    int temp;   // Variável temporária
-    temp = *n1; // Armazena o conteúdo de n1 em uma variável temporária
-    *n1 = *n2;  // Atribui o conteúdo de n1 a n2
-    *n2 = temp; // Atribui o conteúdo temporário (n1 anterior) a n1 novamente
+    int temp = 0; // Variável temporária
+    temp = *n1;   // Armazena o conteúdo de n1 em uma variável temporária
+    *n1 = *n2;    // Atribui o conteúdo de n1 a n2
+    *n2 = temp;   // Atribui o conteúdo temporário (n1 anterior) a n1 novamente
 
     printf("\nNa função TROCA: O conteúdo n1: %d\t O conteúdo n2: %d\n", *n1, *n2);
     printf("Na função TROCA: Ender. de n1: %p\t Ender. de n2: %p\n", &n1, &n2);

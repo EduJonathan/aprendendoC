@@ -145,7 +145,7 @@ int main(int argc, char **argv)
 
     printf("\n===============================================\n");
 
-    char data_usuario[BUFFER_SIZE];
+    char data_usuario[BUFFER_SIZE] = {0};
 
     while (1)
     {
@@ -160,7 +160,7 @@ int main(int argc, char **argv)
         calcular_dias_para_data(data_usuario);
 
         // Pergunta ao usuário se deseja continuar ou encerrar
-        char continuar;
+        char continuar = '\0';
         printf("\nDeseja verificar outra data? (s/n): ");
         scanf(" %c", &continuar);
 

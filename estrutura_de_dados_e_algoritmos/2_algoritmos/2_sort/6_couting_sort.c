@@ -28,7 +28,7 @@
  *   do array são feitas em tempo linear.
  *
  * Espaço:
- * 
+ *
  * - O(n + k) -> o espaço adicional necessário é proporcional ao tamanho do array de entrada
  *   e ao valor máximo \(k\).
  *
@@ -52,7 +52,7 @@ void countingSort(int *arr, int key, size_t size)
     }
 
     // Passo 1: Conta a frequência de cada elemento em arr
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0ull; i < size; i++)
     {
         arr2[arr[i]]++; // Contagem da frequência
         comparacoes++;  // Cada operação de contagem é uma comparação
@@ -74,7 +74,7 @@ void countingSort(int *arr, int key, size_t size)
     }
 
     // Passo 4: Copia o array ordenado de volta para o original
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0ull; i < size; i++)
     {
         arr[i] = arr1[i]; // Copia o valor
         trocas++;         // Cada cópia é considerada uma troca
@@ -86,7 +86,7 @@ void countingSort(int *arr, int key, size_t size)
 
     // Exibe o array ordenado
     printf("O array ordenado é: \n");
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0ull; i < size; i++)
     {
         printf("%d ", arr[i]);
     }

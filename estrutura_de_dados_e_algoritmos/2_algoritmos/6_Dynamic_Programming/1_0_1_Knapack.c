@@ -39,7 +39,7 @@ void Knapsack(int capacity, size_t n, int weight[], int value[])
         exit(1);
     }
 
-    for (size_t i = 0; i <= n; i++)
+    for (size_t i = 0ull; i <= n; i++)
     {
         result[i] = (int *)malloc((capacity + 1) * sizeof(int));
         if (!result[i])
@@ -50,7 +50,7 @@ void Knapsack(int capacity, size_t n, int weight[], int value[])
     }
 
     // Preenche tabela de programação dinâmica
-    for (size_t i = 0; i <= n; i++)
+    for (size_t i = 0ull; i <= n; i++)
     {
         for (int w = 0; w <= capacity; w++)
         {
@@ -76,7 +76,9 @@ void Knapsack(int capacity, size_t n, int weight[], int value[])
 
     // Rastreia os itens selecionados
     printf("Itens selecionados:\n");
+    
     int w = capacity;
+    
     for (size_t i = n; i > 0; i--)
     {
         if (result[i][w] != result[i - 1][w])
@@ -87,7 +89,7 @@ void Knapsack(int capacity, size_t n, int weight[], int value[])
     }
 
     // Libera memória
-    for (size_t i = 0; i <= n; i++)
+    for (size_t i = 0ull; i <= n; i++)
     {
         free(result[i]);
     }
@@ -109,14 +111,14 @@ int main(int argc, char **argv)
     }
 
     printf("Peso dos itens:\n");
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         printf(" - Item %zu: ", i + 1);
         scanf("%d", &weight[i]);
     }
 
     printf("Valor dos itens:\n");
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         printf(" - Item %zu: ", i + 1);
         scanf("%d", &value[i]);

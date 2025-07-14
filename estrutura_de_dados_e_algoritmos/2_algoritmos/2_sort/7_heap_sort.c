@@ -4,7 +4,7 @@
 /* Realiza a troca de valores */
 void swap(int *valor1, int *valor2)
 {
-    int temp;
+    int temp = 0;
     temp = *valor1;
     *valor1 = *valor2;
     *valor2 = temp;
@@ -108,14 +108,14 @@ void heapSort(int *arr, size_t size)
 
 int main(int argc, char **argv)
 {
-    size_t n;
-    int arr[10];
+    size_t n = 0ull;   // Tamanho do array
+    int arr[10] = {0}; // Array a ser ordenado
 
     printf("Insira o tamanho do array: ");
     scanf("%zu", &n);
 
     printf("Insira os valores do array\n");
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         printf("%zu valor: ", i);
         scanf("%d", &arr[i]);
@@ -124,7 +124,7 @@ int main(int argc, char **argv)
     heapSort(arr, n); // Passa o tamanho correto
 
     printf("\nOrdenando com o heap sort\n");
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         printf("%d ", arr[i]);
     }

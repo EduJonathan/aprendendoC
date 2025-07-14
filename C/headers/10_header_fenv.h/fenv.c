@@ -101,13 +101,14 @@ void test_fenv_exception()
 
 void test_rounding_modes()
 {
-    int current_rounding_mode;
+    int current_rounding_mode = 0;
 
     // Obter o modo de arredondamento atual
     current_rounding_mode = fegetround();
 
     // Exibir o modo de arredondamento atual
     printf("Modo de arredondamento atual: ");
+
     switch (current_rounding_mode)
     {
     case FE_TONEAREST:

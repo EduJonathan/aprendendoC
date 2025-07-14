@@ -52,11 +52,13 @@ void mostrar_offsets()
 void salvar_binario(struct Usuario *u)
 {
     FILE *f = fopen("dados.bin", "ab");
+
     if (!f)
     {
         perror("Erro ao abrir arquivo");
         return;
     }
+
     fwrite(u, sizeof(struct Usuario), 1, f);
     fclose(f);
 }
@@ -67,12 +69,15 @@ void salvar_binario(struct Usuario *u)
 void ler_binario()
 {
     FILE *f = fopen("dados.bin", "rb");
+
     if (!f)
     {
         perror("Erro ao abrir arquivo");
         return;
     }
+
     struct Usuario u;
+    
     printf("\n=== Dados lidos do arquivo ===\n");
     while (fread(&u, sizeof(struct Usuario), 1, f))
     {

@@ -41,7 +41,7 @@ struct tm calculaTempoRestante(int hora_alvo, int minuto_alvo)
 
 int main(int argc, char **argv)
 {
-    int hora_alvo, minuto_alvo;
+    int hora_alvo = 0, minuto_alvo = 0;
 
     printf("Digite a hora desejada (0-23): ");
     scanf("%d", &hora_alvo);

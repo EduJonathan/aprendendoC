@@ -47,7 +47,7 @@ struct arr *alocarArray(size_t tamanho)
 void inicializarArray(struct arr *array, size_t tamanho)
 {
     // Inicializa o campo `valor` de cada elemento do array
-    for (size_t i = 0; i < tamanho; i++)
+    for (size_t i = 0ull; i < tamanho; i++)
     {
         // Calcula o valor a ser armazenado no campo `valor`
         array[i].valor = (int)(i * 2);
@@ -66,7 +66,7 @@ void imprimirArrayComIndexacaoTradicional(const struct arr *array, size_t tamanh
     printf("IMPRIMINDO VALORES UTILIZANDO TRADICIONALMENTE\n");
 
     // Imprime os valores do array
-    for (size_t i = 0; i < tamanho; i++)
+    for (size_t i = 0ull; i < tamanho; i++)
     {
         // Imprime o valor armazenado no campo `valor`
         printf("%d ", array[i].valor);
@@ -86,7 +86,7 @@ void imprimirArrayComAritmeticaDePonteiros(const struct arr *array, size_t taman
     printf("IMPRIMINDO VALORES UTILIZANDO ARITMÉTICA DE PONTEIROS\n");
 
     // Imprime os valores do array
-    for (size_t i = 0; i < tamanho; i++)
+    for (size_t i = 0ull; i < tamanho; i++)
     {
         // Imprime o valor armazenado no campo `valor`
         printf("%d ", (array + i)->valor);

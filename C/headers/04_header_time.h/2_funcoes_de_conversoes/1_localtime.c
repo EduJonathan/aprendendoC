@@ -113,7 +113,7 @@ int main(int argc, char **argv)
     }
 
     // Ponteiro para struct que armazena data e hora
-    struct tm *data_hora_atual;
+    struct tm *data_hora_atual = NULL;
 
     // Varíavel do tipo time_t para armazenar o tempo em segundo
     time_t seconds;

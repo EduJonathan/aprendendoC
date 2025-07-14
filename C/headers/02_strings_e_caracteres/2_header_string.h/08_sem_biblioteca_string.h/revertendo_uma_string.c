@@ -12,7 +12,7 @@ void inverterString(char *str)
 {
     int begin = 0;
     int end = 0;
-    char temp;
+    char temp = '\0'; /**< Variável temporária para armazenar caracteres durante a inversão */
 
     // Encontrar o tamanho da string
     while (str[end] != '\0')
@@ -35,7 +35,7 @@ void inverterString(char *str)
 
 int main(int argc, char **argv)
 {
-    char str[50]; /**< A string que será invertida */
+    char str[50] = {0}; /**< A string que será invertida */
 
     // Solicitar ao usuário para digitar uma frase
     printf("Digite algo: ");

@@ -9,7 +9,7 @@
  * de dados e do caso específico de uso.
  *
  * @note Parâmetros principais para análise de algoritmos de ordenação:
- * 
+ *
  * 1. O número de elementos na estrutura (denotado por 'n'): Define o tamanho da entrada
  * e afeta a complexidade.
  * 2. A complexidade do algoritmo: Relacionada ao tempo de execução do algoritmo.
@@ -63,13 +63,13 @@ void bubbleSort(int *arr, size_t n)
     size_t trocas = 0;
 
     // Loop externo que percorre o array até o penúltimo elemento
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         // Variável para indicar se houve troca nesta passagem
         bool troca = false;
 
         // Loop para percorrer o array até o último elemento não ordenado
-        for (size_t j = 0; j < n - i - 1; j++)
+        for (size_t j = 0ull; j < n - i - 1; j++)
         {
             comparacoes++; // Incrementa o contador de comparações
 
@@ -111,7 +111,7 @@ int main(int argc, char **argv)
 
     // Imprime o array ordenado
     printf("Sequência de arr ordenada: ");
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         printf("%d ", arr[i]);
     }

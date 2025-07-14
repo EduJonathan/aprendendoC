@@ -34,8 +34,8 @@ void concatenarStrings(char *str1, const char *str2)
 
 int main(int argc, char **argv)
 {
-    char str1[20]; /**< String 1 onde será armazenada a concatenação */
-    char str2[20]; /**< String 2 que será concatenada à string 1 */
+    char str1[20] = {0}; /**< String 1 onde será armazenada a concatenação */
+    char str2[20] = {0}; /**< String 2 que será concatenada à string 1 */
 
     // Solicitar ao usuário para inserir a primeira string
     printf("Entre com uma frase (MAX.: 20 CARACTERES): ");

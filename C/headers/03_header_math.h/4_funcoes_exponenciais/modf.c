@@ -32,8 +32,8 @@ double getModfResult(double x, double *integerPart) { return modf(x, integerPart
  * @param integerPart Ponteiro para armazenar a parte inteira.
  * @return Parte fracionária do valor x.
  *
- * @note A função `modff` é usada para separar a parte inteira e a parte fracionária de um número do
- * tipo float.
+ * @note A função `modff` é usada para separar a parte inteira e a parte fracionária
+ * de um número do tipo float.
  */
 float getModffResult(float x, float *integerPart) { return modff(x, integerPart); }
 
@@ -57,7 +57,7 @@ long double getModflResult(long double x, long double *integerPart) { return mod
  */
 void printModfResult(double x, const char *dataType)
 {
-    double integerPart;
+    double integerPart = 0.0;
     double fractionalPart = getModfResult(x, &integerPart);
     printf(" %s = %.2lf, Parte Inteira = %.0lf, Parte Fracionária = %.2lf\n", dataType, x, integerPart, fractionalPart);
 }
@@ -70,7 +70,7 @@ void printModfResult(double x, const char *dataType)
  */
 void printModffResult(float x, const char *dataType)
 {
-    float integerPart;
+    float integerPart = 0.0f;
     float fractionalPart = getModffResult(x, &integerPart);
     printf(" %s = %.2f, Parte Inteira = %.0f, Parte Fracionária = %.2f\n", dataType, x, integerPart, fractionalPart);
 }
@@ -83,7 +83,7 @@ void printModffResult(float x, const char *dataType)
  */
 void printModflResult(long double x, const char *dataType)
 {
-    long double integerPart;
+    long double integerPart = 0.0L;
     long double fractionalPart = getModflResult(x, &integerPart);
     printf(" %s = %.2Lf, Parte Inteira = %.0Lf, Parte Fracionária = %.2Lf\n", dataType, x, integerPart, fractionalPart);
 }

@@ -22,7 +22,7 @@
 
 /**
  * Compara os primeiros n bytes de dois blocos de memória e imprime o resultado da comparação.
- * 
+ *
  * @param str1 Ponteiro para o primeiro bloco de memória.
  * @param str2 Ponteiro para o segundo bloco de memória.
  * @param n Número de bytes a serem comparados.
@@ -47,8 +47,8 @@ void compararMemoria(const void *str1, const void *str2, size_t n)
 
 int main(int argc, char **argv)
 {
-    char str1[15];
-    char str2[15];
+    char str1[15] = {0}; /**< Buffer para armazenar a primeira string */
+    char str2[15] = {0}; /**< Buffer para armazenar a segunda string */
 
     // Copia as strings para os buffers
     memcpy(str1, "abcdef", 6); // Inclui o caractere nulo '\0'

@@ -140,7 +140,8 @@ bool isValid(int row, int col, int rows, int cols)
 int leeAlgorithm(int **grid, int rows, int cols, Cell start, Cell end)
 {
     // Verifica se start e end são válidos e não são obstáculos
-    if (!isValid(start.row, start.col, rows, cols) || !isValid(end.row, end.col, rows, cols) ||
+    if (!isValid(start.row, start.col, rows, cols) ||
+        !isValid(end.row, end.col, rows, cols) ||
         grid[start.row][start.col] == 0 || grid[end.row][end.col] == 0)
     {
         return -1;

@@ -100,7 +100,7 @@ void *semaforo_func(void *arg)
         sleep(3);                  /**< Simula o tempo que a luz vermelha fica acesa */
         sem_post(&semaforo_verde); /**< Passa para a luz verde */
     }
-    
+
     printf("Simulação do semáforo encerrada.\n");
     return NULL;
 }
@@ -134,7 +134,7 @@ int main(int argc, char **argv)
 
     printf("\n========================================\n");
 
-    int n;
+    int n = 0; // Número de filósofos
     printf("\nEntre com a quantidade de filosofos: ");
     scanf("%d", &n);
 

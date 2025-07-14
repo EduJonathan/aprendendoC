@@ -156,7 +156,7 @@ int main(int argc, char **argv)
 {
     struct node *front = NULL; ///< Ponteiro para o início da fila
     struct node *rear = NULL;  ///< Ponteiro para o final da fila
-    float value = 0;           ///< Variável para armazenar o valor inserido pelo usuário
+    float value = 0.0f;        ///< Variável para armazenar o valor inserido pelo usuário
     int opcao = 0;             ///< Variável para armazenar a opção escolhida pelo usuário
 
     do

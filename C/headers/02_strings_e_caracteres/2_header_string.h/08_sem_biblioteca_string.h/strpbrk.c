@@ -13,8 +13,9 @@
 char *strpbrk(char *string1, char *string2)
 {
     // Pecorrendo todo array de string1 até o '\0', e passando posição por posição
-    int i, j, pos = 0, flag = 0;
-    for (i = 0; string1[i] != '\0'; i++);
+    int i = 0, j = 0, pos = 0, flag = 0;
+    for (i = 0; string1[i] != '\0'; i++)
+        ;
 
     // Pecorrendo todo array de string2 até o '\0', e passando posição por posição
     for (i = 0; string2[i] != '\0' && !flag; i++)
@@ -44,8 +45,8 @@ char *strpbrk(char *string1, char *string2)
 
 int main(int argc, char **argv)
 {
-    char string1[50], string2[50];
-    char *pos;
+    char string1[50] = {0}, string2[50] = {0};
+    char *pos = NULL;
 
     printf("Entre com uma string: ");
     scanf("%49[^\n]", string1);

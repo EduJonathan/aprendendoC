@@ -27,7 +27,7 @@ void copiarMemoria(void *dest, const void *src, size_t n) { memcpy(dest, src, n)
 int main(int argc, char **argv)
 {
     char src[50] = "Hello, world!"; // String de origem
-    char dest[50];                  // Buffer de destino
+    char dest[50] = {0};            // Buffer de destino
 
     // Copia o conteúdo de src para dest, incluindo o caractere nulo
     copiarMemoria(dest, src, strlen(src) + 1);

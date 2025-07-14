@@ -27,7 +27,7 @@ void copiarString(const char *origem, char *destino)
 int main(int argc, char **argv)
 {
     char string1[17] = "Hello World"; /**< String original */
-    char string2[17];                 /**< String de destino para armazenar a cópia de string1 */
+    char string2[17] = {0};           /**< String de destino para armazenar a cópia de string1 */
 
     // Chama a função para copiar string1 para string2
     copiarString(string1, string2);

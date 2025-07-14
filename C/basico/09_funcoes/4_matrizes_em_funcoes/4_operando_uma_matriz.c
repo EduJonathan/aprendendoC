@@ -17,9 +17,9 @@ void somandoDuasMatrizes(int (*matrizA)[2], int (*matrizB)[2], size_t linhas, si
 {
     // Preenchendo a primeira matriz
     printf("Digite os elementos da primeira matriz:\n");
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
-        for (size_t j = 0; j < colunas; j++)
+        for (size_t j = 0ull; j < colunas; j++)
         {
             printf("Digite o valor de [%zu]x[%zu] para a primeira matriz: ", i, j);
             // Solicitando ao usuário o valor para cada posição específica
@@ -34,9 +34,9 @@ void somandoDuasMatrizes(int (*matrizA)[2], int (*matrizB)[2], size_t linhas, si
 
     // Preenchendo a segunda matriz
     printf("Digite os elementos da segunda matriz:\n");
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
-        for (size_t j = 0; j < colunas; j++)
+        for (size_t j = 0ull; j < colunas; j++)
         {
             printf("Digite o valor de [%zu]x[%zu] para a segunda matriz: ", i, j);
             // Solicitando ao usuário o valor para cada posição específica
@@ -50,11 +50,11 @@ void somandoDuasMatrizes(int (*matrizA)[2], int (*matrizB)[2], size_t linhas, si
     printf("----------------------------------------\n");
 
     // Realizando a soma das matrizes
-    int adicao[2][2]; // Matriz de soma
+    int adicao[2][2] = {0}; // Matriz de soma
 
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
-        for (size_t j = 0; j < colunas; j++)
+        for (size_t j = 0ull; j < colunas; j++)
         {
             // adicao[i][j] = matrizA[i][j] + matrizB[i][j];
             // Aritmética de ponteiros para realizar a soma
@@ -64,9 +64,9 @@ void somandoDuasMatrizes(int (*matrizA)[2], int (*matrizB)[2], size_t linhas, si
 
     // Imprimindo a matriz resultado
     printf("A soma resultante das matrizes A e B:\n");
-    for (size_t i = 0; i < linhas; i++)
+    for (size_t i = 0ull; i < linhas; i++)
     {
-        for (size_t j = 0; j < colunas; j++)
+        for (size_t j = 0ull; j < colunas; j++)
         {
             // printf("%d ", adicao[i][j]);
             // Aritmética de ponteiros para imprimir a matriz
@@ -79,11 +79,11 @@ void somandoDuasMatrizes(int (*matrizA)[2], int (*matrizB)[2], size_t linhas, si
 int main(int argc, char **argv)
 {
     // Definição das matrizes
-    int matriz1[2][2], matriz2[2][2];
+    int matriz1[2][2] = {0}, matriz2[2][2] = {0};
 
     // Definição das dimensões com size_t
-    size_t linhas = 2,
-           colunas = 2;
+    size_t linhas = 2ull,
+           colunas = 2ull;
 
     somandoDuasMatrizes(matriz1, matriz2, linhas, colunas);
     return 0;

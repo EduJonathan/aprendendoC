@@ -9,10 +9,10 @@
  * @param dest Ponteiro para a string de destino onde os caracteres serão copiados. A string
  * dest deve ter espaço suficiente para armazenar os caracteres copiados e, se necessário, o
  * caractere nulo ('\0').
- * 
+ *
  * @param src Ponteiro para a string de origem que será copiada para a string de destino.
  * Esta string é a fonte dos caracteres a serem copiados.
- * 
+ *
  * @param n Número máximo de caracteres a serem copiados da string de origem para a string de
  * destino. Se a string de origem for menor do que n, strncpy preencherá o restante da string
  * de destino com caracteres nulos ('\0'), mas se a string de origem for maior ou igual a n, a
@@ -43,7 +43,7 @@ void copiarNCaracteres(char *dest, const char *src, size_t n)
 int main(int argc, char **argv)
 {
     char source[] = "Hello, World!"; // String de origem
-    char destination[20];            // Buffer de destino
+    char destination[20] = {0};      // Buffer de destino
 
     // Número de caracteres a serem copiados
     size_t n = 5;

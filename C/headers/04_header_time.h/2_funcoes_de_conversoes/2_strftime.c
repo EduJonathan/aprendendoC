@@ -11,13 +11,13 @@
  *
  * SINTAXE: size_t strftime(char *str, size_t max, const char *format, const struct tm *timeptr);
  *
- * @param str: Ponteiro para um array de caracteres onde a string formatada será armazenada.
+ * @param str Ponteiro para um array de caracteres onde a string formatada será armazenada.
  *
- * @param max: Número máx. de caracteres que podem ser armazenados em str, incluindo o caractere nulo ('\0').
+ * @param max Número máx. de caracteres que podem ser armazenados em str, incluindo o caractere nulo ('\0').
  *
- * @param format: String de formato que especifica como a data e hora devem ser formatadas na string resultante.
+ * @param format String de formato que especifica como a data e hora devem ser formatadas na string resultante.
  *
- * @param timeptr: ponteiro para uma estrutura struct tm que contém informações sobre a data e hora.
+ * @param timeptr ponteiro para uma estrutura struct tm que contém informações sobre a data e hora.
  */
 
 /**
@@ -97,8 +97,8 @@ int main(int argc, char **argv)
 {
     // Declaração de variáveis
     time_t tempo;
-    struct tm *infotempo;
-    char texto[80];
+    struct tm *infotempo = NULL;
+    char texto[80] = {0}; // Buffer para armazenar a string formatada
 
     // Imprimindo endereços de memória
     printf("Endereço de 'tempo': %p\n", (void *)&tempo);
@@ -121,7 +121,7 @@ int main(int argc, char **argv)
     puts(texto);
 
     time_t rawtime;
-    char limit[80];
+    char limit[80] = {0}; // Buffer para armazenar a string formatada
 
     time(&rawtime);
     infotempo = localtime(&rawtime);

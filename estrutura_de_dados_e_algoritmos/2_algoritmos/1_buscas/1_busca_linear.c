@@ -8,7 +8,7 @@
  * de tempo e espaço de execução.
  *
  * @note Para todos os algoritmos de busca, existem parâmetros principais:
- * 
+ *
  * 1. O valor a ser buscado (o alvo).
  * 2. O tamanho da estrutura de dados (denotado por 'n').
  * 3. A complexidade do algoritmo: Relacionada ao tempo de execução da busca
@@ -61,7 +61,7 @@ bool linear_search(int *array, size_t size, int alvo)
     int comparacoes = 0;
 
     // Percorrendo o array
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0ull; i < size; i++)
     {
         // Incrementando a contagem de comparações
         comparacoes++;

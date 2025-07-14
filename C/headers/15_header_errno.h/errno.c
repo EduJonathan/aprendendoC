@@ -9,6 +9,7 @@
 int main(int argc, char **argv)
 {
     FILE *file = fopen("arquivo_inexistente.txt", "r");
+
     if (file == NULL)
     {
         perror("Erro ao abrir o arquivo");

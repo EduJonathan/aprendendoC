@@ -81,12 +81,12 @@ void *calculate_times(void *args)
 
 int main(int argc, char **argv)
 {
-    int n,
-        a[MAX_PROCESSES],
-        b[MAX_PROCESSES],
-        w[MAX_PROCESSES],
-        t[MAX_PROCESSES],
-        g[MAX_PROCESSES];
+    int n = 0,                // Número de processos
+        a[MAX_PROCESSES] = 0, // Número de processos
+        b[MAX_PROCESSES] = 0, // Número de processos
+        w[MAX_PROCESSES] = 0, // Número de processos
+        t[MAX_PROCESSES] = 0, // Número de processos
+        g[MAX_PROCESSES] = 0; // Número de processos
 
     pthread_t threads[MAX_PROCESSES];
     pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;

@@ -128,7 +128,7 @@ void displayResults(Ciclo ciclo)
 
 int main(int argc, char **argv)
 {
-    int size, x0;
+    int size = 0, x0 = 0;
     Funcao fdata; // struct para armazenar a função f(x)
 
     printf("Teste do Algoritmo de Floyd\n\n");

@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     // %lo: Para tipo long
     printf(" VALOR OCTAL DA VARIÁVEL 'ULI' : %lo\n", ULI);
 
-    // %llo:Para tipo unsigned long long
+    // %llo: Para tipo unsigned long long
     printf(" VALOR OCTAL DA VARIÁVEL 'ULLI' : %llo\n", ULLI);
 
     printf("\n-----------------------------------------------------\n");

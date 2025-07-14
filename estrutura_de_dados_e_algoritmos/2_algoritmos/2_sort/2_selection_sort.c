@@ -33,7 +33,7 @@ void selectionSort(int *arr, size_t n)
     int swaps = 0;       // Contador de trocas
 
     // Loop externo que percorre o array até o penúltimo elemento
-    for (size_t i = 0; i < n - 1; i++)
+    for (size_t i = 0ull; i < n - 1; i++)
     {
         int minIndex = i; // Assume que o menor elemento é inicialmente o elemento atual
 
@@ -119,7 +119,7 @@ int main(int argc, char **argv)
 
     // Imprime o array ordenado
     printf("Sequencia de arr ordenada: ");
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         printf("%d ", arr[i]);
     }

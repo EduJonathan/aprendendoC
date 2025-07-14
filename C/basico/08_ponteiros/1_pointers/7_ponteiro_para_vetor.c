@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     printf("Índice\tValor\tEndereço\n");
     printf("------\t-----\t--------\n");
 
-    for (size_t i = 0; i < tamanho; i++)
+    for (size_t i = 0ull; i < tamanho; i++)
     {
         printf("[%zu]\t%d\t%p\n", i, vet[i], (void *)&vet[i]);
     }
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
     printf("Expressão\tValor\tEndereço\n");
     printf("----------\t-----\t--------\n");
 
-    for (size_t i = 0; i < tamanho; i++)
+    for (size_t i = 0ull; i < tamanho; i++)
     {
         printf("*(vet + %zu)\t%d\t%p\n", i, *(vet + i), (void *)(vet + i)); // Aritmética de ponteiros
     }
