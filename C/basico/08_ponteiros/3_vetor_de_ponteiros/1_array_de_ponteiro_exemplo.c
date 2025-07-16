@@ -15,7 +15,7 @@
  * - Alocação dinâmica de matrizes (em que cada ponteiro pode apontar para um array de tamanho variável),
  * - Estruturas de dados complexas, como listas encadeadas e árvores, onde os ponteiros referenciam nós ou elementos em diferentes partes da memória.
  *
- * Usar um vetor de ponteiros oferece flexibilidade ao trabalhar com dados dinâmicos e 
+ * Usar um vetor de ponteiros oferece flexibilidade ao trabalhar com dados dinâmicos e
  * estruturados, permitindo acessar e modificar dados de maneira eficiente.
  */
 
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     printf("\n=============================================================================\n");
 
     // Declarando um vetor de ponteiros para inteiros
-    int *ponteiros[5];
+    int *ponteiros[5] = {NULL, NULL, NULL, NULL, NULL};
 
     // Obtém o tamanho do vetor de ponteiros
     size_t tamanhoDoVetorDePonteiros = sizeof(ponteiros) / sizeof(ponteiros[0]);

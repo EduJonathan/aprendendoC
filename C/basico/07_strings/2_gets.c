@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-    char string[10]; /* Vetor de 10 posicoes para armazenar o nome do usuario*/
+    char string[10] = {0}; /* Vetor de 10 posicoes para armazenar o nome do usuario*/
 
     // Solicitando o nome do usuário
     printf("Digite seu nome: ");

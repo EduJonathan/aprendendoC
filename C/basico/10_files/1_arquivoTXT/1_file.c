@@ -35,7 +35,11 @@ int main(int argc, char **argv)
      * Arquivo com o caminho especificado(Windows)
      * file = fopen("C:\Users\EDUARDO\Documents\aprendendoC\C\basico\10_files\1_arquivoTXT\1_file.c", "w");
      *
-     * No linux, seria: file = fopen("./home/Eduardo/Documents/files/arq.py", "w");
+     * No linux, seria: file = fopen("/home/usuario/Documents/aprendendoC/C/basico/10_files/1_arquivoTXT/1_file.c", "w");
+     *
+     * O caminho do arquivo pode ser absoluto ou relativo. Um caminho absoluto especifica
+     * a localização completa do arquivo no sistema de arquivos, enquanto um caminho relativo
+     * é baseado na localização atual do diretório de trabalho do programa.
      */
 
     // Verifica se o arquivo não foi aberto com sucesso

@@ -1,9 +1,11 @@
 # 📌 Diretivas de pré-processamento:
 
-São instruções executadas antes da compilação em linguagens como C/C++. Elas permitem definir
+- São instruções executadas antes da compilação em linguagens como C/C++. Elas permitem definir
 constantes, incluir arquivos, criar macros e controlar condicionalmente a compilação de trechos
 de código, pois, como elas vem antes do processamento do código, faz com que a compilação seja
-essencial. E além disso, é possível usar flags(sinalizadores) na linha de comando do terminal
+essencial.
+
+- E além disso, é possível usar flags(sinalizadores) na linha de comando do terminal
 para modificar o comportamento da compilação conforme a necessidade do desenvolvedor.
 
 ============================================================================================
@@ -21,7 +23,7 @@ orientações ao compilador)).
 2º Análise lexicográfica
 - Nessa etapa, o compilador converte o código em uma sequência de tokens, que são as menores
 unidades de significado do código (como palavras-chave, operadores, identificadores, etc.). 
-Esses tokens são analisados para verificar a correção do código de acordo com a sintaxe da linguagem.
+- Esses tokens são analisados para verificar a correção do código de acordo com a sintaxe da linguagem.
 
 3º Análise Sintática
 - Verifica se os tokens e expressões formam estruturas válidas da linguagem (verificando erros
@@ -44,9 +46,10 @@ em um código mais eficiente. As flags de otimização como -O2 ou -O3 podem ser
 esse processo, que visa reduzir o uso de memória e aumentar a velocidade de execução do programa.
 
 7º Geração de Código Objeto
-- O código intermediário é então traduzido para um código objeto (geralmente arquivos .o ou .obj), 
-que é específico para a arquitetura do processador de destino (por exemplo, x86, ARM). Este código
-não é executável ainda, mas contém o código binário que a máquina pode entender.
+- O código intermediário é então traduzido para um código objeto geralmente arquivos 
+(".o" ou ".obj"), que é específico para a arquitetura do processador de destino
+(por exemplo, x86, ARM). Este código não é executável ainda, mas contém o código binário
+que a máquina pode entender.
 
 8º Geração de Código de Máquina e Linker:
 - O linker é o responsável por juntar os arquivos objeto gerados (e também bibliotecas) e
@@ -54,7 +57,7 @@ resolver as referências entre funções e variáveis.Durante a linkagem, o link
 as referências simbólicas por endereços reais de memória. O arquivo gerado no final
 é o executável(programa.exe ou programa.out).
 
-Referência: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
+REFERÊNCIA: https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar
 ===================================================================================
 
 👨🏻‍💻 Como compilar um arquivo C/C++

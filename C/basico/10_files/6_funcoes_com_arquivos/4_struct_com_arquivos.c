@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h> // Para mkstemp()
+
+#define MAX_NOME 100
 
 struct funcionario
 {
@@ -18,196 +21,261 @@ struct funcionario
  */
 void criarFuncionario(FILE *fp, struct funcionario *funcionario)
 {
-    // Alocação do nome do funcionário
-    funcionario->nome = (char *)malloc(100 * sizeof(char));
+    funcionario->nome = (char *)malloc(MAX_NOME * sizeof(char));
+    if (!funcionario->nome)
+    {
+        perror("Erro ao alocar memória");
+        return;
+    }
 
-    // Leitura dos dados do funcionário
     printf("Digite o ID do funcionario: ");
-    scanf("%d", &funcionario->id);
+    if (scanf("%d", &funcionario->id) != 1)
+    {
+        printf("Erro ao ler ID.\n");
+        free(funcionario->nome);
+        return;
+    }
 
-    // Consumindo o caractere de nova linha deixado pelo scanf
     getchar(); // Limpa o '\n' do buffer
 
     printf("Digite o nome do funcionario: ");
-    fgets(funcionario->nome, 100, stdin);
+    if (!fgets(funcionario->nome, MAX_NOME, stdin))
+    {
+        printf("Erro ao ler nome.\n");
+        free(funcionario->nome);
+        return;
+    }
 
-    // Remover o caractere de nova linha '\n' que fgets pode deixar
+    // Remove o '\n' e calcula o tamanho real
     size_t len = strlen(funcionario->nome);
     if (len > 0 && funcionario->nome[len - 1] == '\n')
     {
         funcionario->nome[len - 1] = '\0';
+        len--;
     }
 
-    // Escreve o ID e o nome no arquivo
-    fwrite(&funcionario->id, sizeof(funcionario->id), 1, fp);
-    fwrite(funcionario->nome, strlen(funcionario->nome) + 1, 1, fp); // Inclui o '\0' no nome
+    // Grava ID e nome (com '\0')
+    if (fwrite(&funcionario->id, sizeof(funcionario->id), 1, fp) != 1 ||
+        fwrite(funcionario->nome, len + 1, 1, fp) != 1)
+    {
+        perror("Erro ao gravar no arquivo");
+    }
+
+    free(funcionario->nome); // Libera a memória após uso
 }
 
 /**
- * @brief Atualiza o nome de um funcionário no arquivo com base no seu ID.
- *
- * @param fp Ponteiro para o arquivo que contém os dados dos funcionários.
- * @param funcionario Ponteiro para o struct funcionario que será utilizado para leitura dos dados.
- *
- * @note Este método fecha o arquivo após a atualização. Se o ID não for encontrado,
- * uma mensagem informando que o funcionário não foi encontrado será exibida.
- */
-void atualizar(FILE *fp, struct funcionario *funcionario)
-{
-    int id = 0, flag = 0;
-    char nome[100];
-    FILE *temp_fp = NULL;
-
-    if (fp == NULL)
-    {
-        perror("Erro ao abrir o arquivo");
-        return;
-    }
-
-    // Cria um arquivo temporário para armazenar os dados atualizados
-    temp_fp = fopen("temp.dat", "wb");
-    if (temp_fp == NULL)
-    {
-        perror("Erro ao criar o arquivo temporário");
-        return;
-    }
-
-    printf("Digite o ID do funcionario a ser atualizado: ");
-    scanf("%d", &id);
-
-    fseek(fp, 0, SEEK_SET); // Vai para o início do arquivo
-
-    // Percorrer o arquivo original para encontrar o funcionário
-    while (fread(&funcionario->id, sizeof(funcionario->id), 1, fp))
-    {
-        funcionario->nome = (char *)malloc(100 * sizeof(char));
-        fread(funcionario->nome, 100, 1, fp); // Lê o nome do funcionário
-
-        if (id == funcionario->id)
-        {
-            printf("Funcionario encontrado. Digite o novo nome: ");
-            getchar(); // Limpa o '\n' deixado pelo scanf
-            fgets(nome, 100, stdin);
-            nome[strcspn(nome, "\n")] = '\0'; // Remove o '\n' se presente
-
-            // Escreve os dados atualizados no arquivo temporário
-            fwrite(&funcionario->id, sizeof(funcionario->id), 1, temp_fp);
-            fwrite(nome, strlen(nome) + 1, 1, temp_fp); // Inclui o '\0' no nome
-
-            flag = 1;
-        }
-        else
-        {
-            // Escreve o dado original no arquivo temporário, se não for o funcionário a ser atualizado
-            fwrite(&funcionario->id, sizeof(funcionario->id), 1, temp_fp);
-            fwrite(funcionario->nome, strlen(funcionario->nome) + 1, 1, temp_fp); // Inclui o '\0' no nome
-        }
-
-        free(funcionario->nome); // Libera a memória alocada para o nome
-    }
-
-    if (flag == 0)
-    {
-        printf("Funcionario com o ID %d nao encontrado.\n", id);
-    }
-
-    // Fecha os arquivos
-    fclose(fp);
-    fclose(temp_fp);
-
-    // Substitui o arquivo original pelo temporário
-    remove("funcionarios.dat");
-    rename("temp.dat", "funcionarios.dat");
-    printf("Funcionario atualizado com sucesso.\n");
-}
-
-/**
- * @brief Exibe todos os funcionarios armazenados no arquivo.
+ * @brief Atualiza o nome de um funcionário no arquivo.
  *
  * @param fp Ponteiro para o arquivo.
  * @param funcionario Ponteiro para o struct funcionario.
- *
- * @note Este metodo fecha o arquivo.
  */
-void exibir(FILE *fp, struct funcionario *funcionario)
+void atualizar(FILE *fp, struct funcionario *funcionario)
 {
-    if (fp == NULL)
+    int id, encontrado = 0;
+    char temp_filename[] = "/tmp/funcionarios_temp_XXXXXX";
+    FILE *temp_fp = NULL;
+    int fd = -1;
+
+    printf("Digite o ID do funcionario a ser atualizado: ");
+    if (scanf("%d", &id) != 1)
     {
-        perror("Erro ao abrir o arquivo");
+        printf("Erro ao ler ID.\n");
         return;
     }
 
-    fseek(fp, 0, SEEK_SET); // Vai para o início do arquivo
-
-    // Loop para ler todos os funcionários armazenados no arquivo
-    while (fread(&funcionario->id, sizeof(funcionario->id), 1, fp))
+    // Cria arquivo temporário seguro
+    if ((fd = mkstemp(temp_filename)) == -1 ||
+        (temp_fp = fdopen(fd, "wb")) == NULL)
     {
-        // Aloca memória para o nome de cada funcionário
-        funcionario->nome = (char *)malloc(100 * sizeof(char));
+        perror("Erro ao criar arquivo temporário");
+        if (fd != -1)
+            close(fd);
+        return;
+    }
 
-        // Lê o nome do funcionário. A quantidade lida deve ser o tamanho máximo de 100
-        fread(funcionario->nome, 100, 1, fp);
+    rewind(fp); // Volta ao início do arquivo
 
-        printf("ID: %d\n", funcionario->id);
-        printf("Nome: %s\n", funcionario->nome);
+    while (fread(&funcionario->id, sizeof(funcionario->id), 1, fp) == 1)
+    {
+        // Lê nome até encontrar '\0'
+        funcionario->nome = (char *)malloc(MAX_NOME);
+        if (!funcionario->nome)
+        {
+            perror("Erro ao alocar memória");
+            fclose(temp_fp);
+            remove(temp_filename);
+            return;
+        }
 
-        // Libera a memória alocada para o nome
+        int i = 0;
+        do
+        {
+            if (fread(&funcionario->nome[i], 1, 1, fp) != 1)
+            {
+                free(funcionario->nome);
+                fclose(temp_fp);
+                remove(temp_filename);
+                perror("Erro ao ler nome");
+                return;
+            }
+        } while (funcionario->nome[i++] != '\0' && i < MAX_NOME);
+
+        if (funcionario->id == id)
+        {
+            encontrado = 1;
+            printf("Funcionario encontrado. Nome atual: %s\n", funcionario->nome);
+            printf("Digite o novo nome: ");
+
+            getchar(); // Limpa buffer
+            if (!fgets(funcionario->nome, MAX_NOME, stdin))
+            {
+                printf("Erro ao ler novo nome.\n");
+                free(funcionario->nome);
+                continue;
+            }
+
+            // Remove '\n' e recalcula tamanho
+            size_t len = strlen(funcionario->nome);
+            if (len > 0 && funcionario->nome[len - 1] == '\n')
+            {
+                funcionario->nome[len - 1] = '\0';
+                len--;
+            }
+
+            printf("Novo nome: %s\n", funcionario->nome);
+        }
+
+        // Grava no arquivo temporário (ID + nome com '\0')
+        if (fwrite(&funcionario->id, sizeof(funcionario->id), 1, temp_fp) != 1 ||
+            fwrite(funcionario->nome, strlen(funcionario->nome) + 1, 1, temp_fp) != 1)
+        {
+            perror("Erro ao gravar no arquivo temporário");
+            free(funcionario->nome);
+            fclose(temp_fp);
+            remove(temp_filename);
+            return;
+        }
+
         free(funcionario->nome);
     }
+
+    fclose(fp);
+    fclose(temp_fp);
+
+    if (!encontrado)
+    {
+        printf("Funcionario com ID %d não encontrado.\n", id);
+        remove(temp_filename);
+    }
+    else
+    {
+        // Substitui arquivo original
+        remove("funcionarios.dat");
+        if (rename(temp_filename, "funcionarios.dat") != 0)
+        {
+            perror("Erro ao renomear arquivo");
+            remove(temp_filename);
+        }
+        else
+        {
+            printf("Atualização concluída com sucesso.\n");
+        }
+    }
+}
+
+/**
+ * @brief Exibe todos os funcionários do arquivo.
+ *
+ * @param fp Ponteiro para o arquivo.
+ * @param funcionario Ponteiro para o struct funcionario.
+ */
+void exibir(FILE *fp, struct funcionario *funcionario)
+{
+    rewind(fp);
+
+    printf("\n--- Funcionários Cadastrados ---\n");
+    while (fread(&funcionario->id, sizeof(funcionario->id), 1, fp) == 1)
+    {
+        funcionario->nome = (char *)malloc(MAX_NOME);
+        if (!funcionario->nome)
+        {
+            perror("Erro ao alocar memória");
+            continue;
+        }
+
+        // Lê até '\0'
+        int i = 0;
+        do
+        {
+            if (fread(&funcionario->nome[i], 1, 1, fp) != 1)
+            {
+                free(funcionario->nome);
+                perror("Erro ao ler nome");
+                break;
+            }
+        } while (funcionario->nome[i++] != '\0' && i < MAX_NOME);
+
+        printf("ID: %d, Nome: %s\n", funcionario->id, funcionario->nome);
+        free(funcionario->nome);
+    }
+    printf("-------------------------------\n");
     fclose(fp);
 }
 
 int main(int argc, char **argv)
 {
     FILE *fp = NULL;
-    struct funcionario funcionario;
+    struct funcionario func;
     int opcao = 0;
 
     do
     {
-        printf("\nEscolha uma opcao:\n");
+        printf("\nMenu:\n");
         printf("1. Criar funcionario\n");
         printf("2. Exibir funcionarios\n");
         printf("3. Atualizar funcionario\n");
         printf("4. Sair\n");
         printf("Opcao: ");
-        scanf("%d", &opcao);
+
+        if (scanf("%d", &opcao) != 1)
+        {
+            printf("Entrada inválida.\n");
+            while (getchar() != '\n'); // Limpa buffer
+            continue;
+        }
 
         switch (opcao)
         {
         case 1:
-
-            fp = fopen("funcionarios.dat", "ab+"); // Abrir o arquivo para adicionar novos dados
-            if (fp == NULL)
+            fp = fopen("funcionarios.dat", "ab");
+            if (!fp)
             {
-                printf("Erro ao abrir o arquivo.\n");
-                return 1;
+                perror("Erro ao abrir arquivo");
+                break;
             }
-            criarFuncionario(fp, &funcionario);
+            criarFuncionario(fp, &func);
             fclose(fp);
             break;
 
         case 2:
-
-            fp = fopen("funcionarios.dat", "rb"); // Abrir o arquivo para leitura
-            if (fp == NULL)
+            fp = fopen("funcionarios.dat", "rb");
+            if (!fp)
             {
-                printf("Erro ao abrir o arquivo.\n");
-                return 1;
+                perror("Erro ao abrir arquivo");
+                break;
             }
-            exibir(fp, &funcionario);
-            fclose(fp);
+            exibir(fp, &func);
             break;
 
         case 3:
-
-            fp = fopen("funcionarios.dat", "rb+"); // Abrir o arquivo para leitura e escrita
-            if (fp == NULL)
+            fp = fopen("funcionarios.dat", "rb+");
+            if (!fp)
             {
-                printf("Erro ao abrir o arquivo.\n");
-                return 1;
+                perror("Erro ao abrir arquivo");
+                break;
             }
-            atualizar(fp, &funcionario);
+            atualizar(fp, &func);
             break;
 
         case 4:
@@ -215,10 +283,8 @@ int main(int argc, char **argv)
             break;
 
         default:
-            printf("Opcao invalida! Tente novamente.\n");
-            break;
+            printf("Opção inválida.\n");
         }
-
     } while (opcao != 4);
 
     return 0;

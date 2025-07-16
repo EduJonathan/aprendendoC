@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 {
 	printf("\n\t>>SCANF-TRADICIONAL E LIMPEZA DE BUFFER EM STRINGS<<\n");
 
-	char string_input_name[10];
+	char string_input_name[10] = {0}; // Vetor de 10 posições para armazenar o nome do usuário
 
 	printf(">>Digite seu nome: ");
 	scanf("%s", string_input_name);
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 
 	printf("\n-----------------------------------------------------\n");
 
-	char string_segundo_nome[10];
+	char string_segundo_nome[10] = {0}; // Vetor de 10 posições para armazenar o sobrenome do usuário
 
 	printf("\n>>Digite seu segundo nome: ");
 	scanf("%s", string_segundo_nome);
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 
 	printf("\n-----------------------------------------------------\n");
 
-	char sexo;
+	char sexo = '\0'; // Variável para armazenar o sexo do usuário
 
 	printf("\nDigite somente uma letra para (M - DE MASCULINO) OU (F - DE FEMININO): ");
 	scanf("%c", &sexo);
@@ -83,7 +83,7 @@ int main(int argc, char **argv)
 	 * - [^\n]: significa que a string será escrita até chegamos ao enter['\n']
 	 */
 
-	char input_string_aprimorado[10];
+	char input_string_aprimorado[10] = {0};
 
 	printf("Digite seu primeiro e segundo nome: ");
 	scanf("%9[^\n]", input_string_aprimorado);

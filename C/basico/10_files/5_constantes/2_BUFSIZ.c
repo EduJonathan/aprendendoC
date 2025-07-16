@@ -29,8 +29,8 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    char buffer[BUFSIZ];
-    size_t bytesLidos;
+    char buffer[BUFSIZ] = {0}; // Buffer para leitura e escrita de dados
+    size_t bytesLidos = 0ull;
     while ((bytesLidos = fread(buffer, 1, BUFSIZ, origem)) > 0)
     {
         fwrite(buffer, 1, bytesLidos, destino);

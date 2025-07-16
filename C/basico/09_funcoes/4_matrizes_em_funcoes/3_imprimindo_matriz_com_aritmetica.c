@@ -91,8 +91,8 @@ void liberarMatriz(int **mat, size_t linhas)
 int main(int argc, char **argv)
 {
     int **mat = NULL;
-    size_t linhas = 2;
-    size_t colunas = 2;
+    size_t linhas = 2ull;
+    size_t colunas = 2ull;
 
     // Aloca memória para a matriz
     mat = alocarMatriz(linhas, colunas);

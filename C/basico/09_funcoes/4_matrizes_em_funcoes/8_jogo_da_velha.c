@@ -13,9 +13,11 @@ void imprimirTabuleiro(int tabuleiro[3][3])
 {
     printf("\n    0   1   2\n");
     printf("  -------------\n");
+
     for (int i = 0; i < 3; i++)
     {
         printf("%d |", i); // Exibe o índice da linha
+        
         for (int j = 0; j < 3; j++)
         {
             if (tabuleiro[i][j] == VAZIO)

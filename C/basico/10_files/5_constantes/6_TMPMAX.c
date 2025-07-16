@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
     printf("TMP_MAX: %d\n", TMP_MAX);
-    char nomeTemp[L_tmpnam];
+    char nomeTemp[L_tmpnam] = {0}; // Array para armazenar o nome do arquivo temporário
 
     for (int i = 0; i < TMP_MAX; i++)
     {

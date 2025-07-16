@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
- * fseek(): ajusta a posição de leitura/escrita em um arquivo aberto. Isso é feito movendo
+ * fseek(): Ajusta a posição de leitura/escrita em um arquivo aberto. Isso é feito movendo
  * o cursor para uma nova posição, especificada em bytes a partir de um local base.
  *
  * SINTAXE: int fseek(FILE *_File, long _Offset, int _Origin);
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
         return 1; // Encerra o programa com código de erro 1
     }
 
-    char caracteres;
+    char caracteres = '\0';
     printf("Digite algo (CTRL+c para encerrar): ");
 
     // Lê caracteres do teclado até EOF e escreve no arquivo

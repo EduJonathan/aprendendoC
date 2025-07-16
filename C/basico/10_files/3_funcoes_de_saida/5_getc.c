@@ -26,7 +26,7 @@ int main(int argc, char **argv)
         printf("SUCESSO AO ABRIR O ARQUIVO");
     }
 
-    char c;
+    char c = '\0'; // Variável para armazenar o caractere lido
 
     do
     {

@@ -33,7 +33,7 @@ int main(int argc, char **argv)
     fputchar('\n');
 
     // Escrevendo um conjunto de caracteres
-    char frase[100];
+    char frase[100] = {0};
     printf("Digite uma frase: ");
     scanf("%99[^\n]", frase);
 

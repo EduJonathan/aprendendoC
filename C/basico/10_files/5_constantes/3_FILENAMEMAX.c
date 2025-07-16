@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 {
     printf("FILENAME_MAX: %d\n", FILENAME_MAX);
 
-    char nomeArquivo[FILENAME_MAX];
+    char nomeArquivo[FILENAME_MAX] = {0}; // Array para armazenar o nome do arquivo
 
     printf("Digite o caminho do arquivo: ");
     fgets(nomeArquivo, FILENAME_MAX, stdin);

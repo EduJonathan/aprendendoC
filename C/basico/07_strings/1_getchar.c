@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {
     /* Declarando uma variável char. */
-    char caracter;
+    char caracter = '\0';
     printf("Digite um caractere: ");
 
     // getchar(): Com getchar guardada na variável char podemos ter uma entrada para um caractere.

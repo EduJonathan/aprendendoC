@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 {
     printf("\n\t>>SWITCH-CASE<<\n");
 
-    char pontuacao;
+    char pontuacao = '\0';
     printf("\n Digite um sinal de pontuação: ");
     scanf("%c", &pontuacao);
 
@@ -79,6 +79,7 @@ int main(int argc, char **argv)
     case 'u':
         printf("A letra digitada '%c' é uma vogal\n", letra);
         break;
+
     default:
         printf("A letra digitada '%c' é uma consoante\n", letra);
         break;
@@ -164,6 +165,7 @@ int main(int argc, char **argv)
         }
         break;
     }
+
     default:
         printf("\nOperação não encontrada por favor! insira uma operação valida\n");
         break;
@@ -185,7 +187,7 @@ int main(int argc, char **argv)
         case 0:
             printf("O valor de False é: %d\n", False);
             break;
-            
+
         case 1:
             printf("O valor de False é: %d\n", False);
             break;

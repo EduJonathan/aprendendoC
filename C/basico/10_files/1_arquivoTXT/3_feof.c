@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     }
 
     // Lê e exibe o conteúdo do arquivo caractere por caractere
-    char caractere;
+    char caractere = '\0';
 
     // Enquanto não chegar ao final do arquivo
     while ((caractere = fgetc(arquivo)) != EOF)

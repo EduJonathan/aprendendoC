@@ -35,8 +35,8 @@ int main(int argc, char **argv)
     fclose(file2);
     fclose(file3);
 
-    char nomeEscolhido[100];
-    char resposta;
+    char nomeEscolhido[100] = {0}; // Array para armazenar o nome do arquivo escolhido
+    char resposta = '\0';          // Variável para controlar o loop
 
     do
     {
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
 
         // Pergunta ao usuário se deseja continuar
         printf("\nDeseja remover outro arquivo? (s/n): ");
-        scanf(" %c", &resposta); 
+        scanf(" %c", &resposta);
         // O espaço antes de %c é para limpar qualquer caractere de nova linha pendente.
 
         // Limpa o buffer de entrada para a próxima iteração

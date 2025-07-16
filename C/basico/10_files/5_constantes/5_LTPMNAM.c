@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 {
     printf("L_tmpnam: %d\n", L_tmpnam);
 
-    char nomeTemp[L_tmpnam];
+    char nomeTemp[L_tmpnam] = {0}; // Array para armazenar o nome do arquivo temporário
 
     // Gerando um nome de arquivo temporário
     tmpnam(nomeTemp);

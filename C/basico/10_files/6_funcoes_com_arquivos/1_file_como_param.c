@@ -18,7 +18,7 @@ int toUpperFile(FILE *file)
     }
     else
     {
-        int caracteres; // Variável para armazenar os caracteres do arquivo
+        int caracteres = 0; // Variável para armazenar os caracteres do arquivo
 
         // Loop para ler e processar cada caractere do arquivo
         while ((caracteres = fgetc(file)) != EOF)

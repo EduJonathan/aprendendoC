@@ -49,6 +49,7 @@ int main(int argc, char **argv)
      *
      * É que o primeiro define um tipo de struct com um nome específico
      * (`typedef_para_struct é o nome da struct`).
+     *
      * Enquanto o segundo define uma struct anônima sem nome, mas ainda pode ser usada
      * com o tipo `dados_pessoa`. Ambos os casos permitem criar instâncias da struct
      * e acessar seus membros, mas o primeiro caso permite reutilizar o nome da struct

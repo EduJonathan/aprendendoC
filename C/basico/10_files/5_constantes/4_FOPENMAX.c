@@ -9,8 +9,8 @@ int main(int argc, char **argv)
 {
     printf("FOPEN_MAX: %d\n", FOPEN_MAX);
 
-    FILE *arquivos[FOPEN_MAX];
-    char nomeArquivo[20];
+    FILE *arquivos[FOPEN_MAX] = {NULL}; // Array para armazenar ponteiros de arquivos
+    char nomeArquivo[20] = {0};         // Array para armazenar o nome do arquivo
 
     // Tentando abrir o número máximo de arquivos permitidos
     for (int i = 0; i < FOPEN_MAX; i++)

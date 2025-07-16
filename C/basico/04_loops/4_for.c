@@ -26,13 +26,14 @@
  * 3. **Etapa de Incremento/Decremento**:
  *    - Executado após cada iteração, geralmente para atualizar a variável de controle.
  *    - Exemplo: `i++`, que aumenta `i` em 1 a cada iteração.
- *    - Você pode usar outras operações de incremento ou decremento, como `i += 2`, `i--`, ou até
- *      mesmo operações aritméticas e bitwise (por exemplo, `i *= 2` ou `i &= 1`).
+ *    - Você pode usar outras operações de incremento ou decremento, como `i += 2`, `i--`,
+ *    ou até mesmo operações aritméticas e bitwise (por exemplo, `i *= 2` ou `i &= 1`).
  *
  * NOTA:
  * - Cada uma das três partes pode ter mais de uma expressão, separada por vírgulas.
- * - As partes do `for` podem ser deixadas em branco (por exemplo, sem inicialização ou incremento), o mas é importante garantir que o loop tenha uma condição de parada para
- * evitar loops infinitos.
+ * - As partes do `for` podem ser deixadas em branco (por exemplo, sem inicialização
+ * ou incremento), o mas é importante garantir que o loop tenha uma condição de parada
+ * para evitar loops infinitos.
  * - O `for` é ideal para situações em que o número de iterações é conhecido ou é facilmente
  *   determinado (como percorrer arrays ou realizar cálculos repetitivos).
  */

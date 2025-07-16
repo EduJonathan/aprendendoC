@@ -158,18 +158,18 @@ com a desativação de warnings para não sobrecarregar o processo e o tamanho d
 > gcc arquivo.c -std=c11 -Wuninitialized -Wmaybe-uninitialized -Wpedantic -Wshadow -Wconversion -o programa
 
 - Conjunto para garantir padrões e qualidade: Esse conjunto foca em garantir que o código
-seja escrito conforme os padrões e que não haja problemas de inicialização de variáveis, com 
-flags para fazer o código aderir estritamente ao padrão C11.
+seja escrito conforme os padrões e que não haja problemas de inicialização de variáveis,
+com flags para fazer o código aderir estritamente ao padrão C11.
 
 ------------------------------------------------------
 
 ● 👨🏻‍💻 Criação de Conjuntos de Flags com makefile e Criação de Conjuntos de Flags com scripts
 
-Um script é basicamente um arquivo de texto que guarda comandos que você normalmente
+- Um script é basicamente um arquivo de texto que guarda comandos que você normalmente
 digitaria no terminal. Ele guarda o comando gcc para compilar o programa.
 
-Um Makefile é um arquivo especial usado pelo comando make para automatizar a compilação de projetos
-maiores. Ele entende dependências entre arquivos e só recompila o que mudou.
+- Um Makefile é um arquivo especial usado pelo comando make para automatizar a compilação
+de projetos maiores. Ele entende dependências entre arquivos e só recompila o que mudou.
 
 --------------------------------------------------------------------------------------------------
 | Método   | Quando Usar                                    | Vantagens                          |
@@ -180,6 +180,6 @@ maiores. Ele entende dependências entre arquivos e só recompila o que mudou.
 --------------------------------------------------------------------------------------------------
 
 E assim sucessivamente(existem várias flags que você poderá captar ao decorrer de seu ensino,
-aqui eu citei apenas para os mais conhecidos e para se ter uma base). Esse é o poder da compilação
-em C/C++: você praticamente conversa diretamente com a máquina, dizendo o que ela deve fazer e
-como deve fazer.
+aqui eu citei apenas para os mais conhecidos e para se ter uma base).
+Esse é o poder da compilação em C/C++: você praticamente conversa diretamente com a máquina, 
+dizendo o que ela deve fazer e como deve fazer.

@@ -3,7 +3,7 @@
 /**
  * fread(): É utilizada para ler dados de um arquivo aberto.
  *
- * SINTAXE: 
+ * SINTAXE:
  * size_t fread(void *__restrict__ _DstBuf, size_t _ElementSize, size_t _Count, FILE *__restrict__ _File);
  *
  * @param _DstBuf: Um ponteiro para o buffer onde os dados lidos serão armazenados.
@@ -12,7 +12,7 @@
  * @param _File: Um ponteiro para o arquivo de onde os dados serão lidos
  * @return Retorno: A função retorna o número de elementos efetivamente lidos. Esse valor
  * pode ser menor do que _Count se ocorrer um erro ou se o fim do arquivo for alcançado.
- * 
+ *
  * @note A funcao fread() pode ser usada para ler os dados de um arquivo binario.
  */
 
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     }
 
     // Lendo os 10 números inteiros do arquivo
-    int numero[10];
+    int numero[10] = {0};
     size_t nElementos = sizeof(numero) / sizeof(numero[0]);
     size_t numerosLidos = fread(numero, sizeof(int), nElementos, arquivo);
 

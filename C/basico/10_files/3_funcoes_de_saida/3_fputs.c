@@ -33,7 +33,7 @@ int main(int argc, char **argv)
     FILE *file = NULL;
 
     // Variavel que irá ser utilizada para Lê e armazenar no arquivo
-    char frase[100];
+    char frase[100] = {0};
 
     // Verificando a abertura do arquivo dentro do if
     if ((file = fopen("fputs.txt", "w")) == NULL)

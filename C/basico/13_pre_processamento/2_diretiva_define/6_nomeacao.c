@@ -42,7 +42,7 @@ void sizeDoArray(long double **array, LLONG *size)
 
 int main(int argc, char **argv)
 {
-    LLONG size = 0;
+    LLONG size = 0ll;          // Variável para armazenar o tamanho do array
     long double *array = NULL; // Ponteiro para o array
 
     // Usando a função sizeDoArray para pegar o tamanho e alocar o array

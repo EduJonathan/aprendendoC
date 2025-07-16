@@ -10,7 +10,7 @@
  * @param ...: Argumentos ou parâmetros de uma variável
  * @return A funcao retorna o numero de elementos efetivamente escritos.
  * 
- * @note A função fprintf() pode ser usada para escrever dados formatados em um arquivo. *
+ * @note A função fprintf() pode ser usada para escrever dados formatados em um arquivo.
  */
 
 int main(int argc, char **argv)

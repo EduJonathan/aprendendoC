@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
     FILE *file = NULL;
-    char ch;
+    char ch = '\0';
 
     file = fopen("file.txt", "w");
     if (file == NULL)

@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     putchar('\n');
 
     // Inicializando o array com a constante de define e depois o imprimindo
-    int arr[SIZEARR];
+    int arr[SIZEARR] = {0}; // Inicializando o array com zeros
 
     for (int i = 0; i < 10; i++)
     {

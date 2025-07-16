@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     }
 
     // Trecho de captura de uma string para o arquivo
-    char string[50];
+    char string[50] = {0}; // Array para armazenar a string lida
     char *str = string;
 
     // Lê uma linha do teclado e armazena em str

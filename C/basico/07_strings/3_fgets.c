@@ -14,7 +14,7 @@
 int main(int argc, char **argv)
 {
   // Criando variável e solicitando uma frase ou nome
-  char nome[10];
+  char nome[10] = {0}; // Vetor de 10 posições para armazenar o nome do usuário
   printf("Digite seu primeiro nome: ");
   fgets(nome, 10, stdin);
 
@@ -47,8 +47,10 @@ int main(int argc, char **argv)
    * pode ser truncada. Além disso, se outro fgets() for chamado em seguida, caracteres
    * remanescentes do buffer de entrada podem ser lidos automaticamente, causando efeitos
    * colaterais na próxima leitura.
+   *
    * No caso "eduardojonathan\n" é preenchido os 8 índices do primeiro fgets() com "eduardo"
    * enquanto o "nathan\n" preenche os outros índices do próximo fgets().
+   *
    * Mas porque 8 caracteres no primeiro fgets() sendo que eu tenho entrada até 10 caracteres?
    * Como explicado a função garante o '\0' contabilizando -1, ainda mais se ultrapassar o limite.
    */
@@ -56,7 +58,7 @@ int main(int argc, char **argv)
   printf("\n-----------------------------------------------------\n");
 
   // Criando variável e solicitando uma frase ou nome
-  char sobreNome[10];
+  char sobreNome[10] = {0}; // Vetor de 10 posições para armazenar o sobrenome do usuário
   printf("Digite seu segundo nome: ");
   fgets(sobreNome, sizeof(sobreNome), stdin);
 

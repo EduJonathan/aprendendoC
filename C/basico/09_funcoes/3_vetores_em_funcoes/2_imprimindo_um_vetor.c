@@ -54,8 +54,8 @@ void imprime_vetor(int *vetor, size_t tamanho)
         printf(" %d - %p\n", *(vetor + i), (void *)&vetor[i]);
     }
 
-    // Este trecho está correto e imprime os valores do vetor usando aritmética de ponteiros. Aqui,
-    // *(vetor + i) está acessando os elementos do vetor corretamente.
+    // Este trecho está correto e imprime os valores do vetor usando aritmética de ponteiros.
+    // Aqui, *(vetor + i) está acessando os elementos do vetor corretamente.
 
     printf("\n=============================================================\n");
 

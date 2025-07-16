@@ -79,7 +79,7 @@ void somandoDuasMatrizes(int (*matrizA)[2], int (*matrizB)[2], size_t linhas, si
 int main(int argc, char **argv)
 {
     // Definição das matrizes
-    int matriz1[2][2] = {0}, matriz2[2][2] = {0};
+    int matriz1[2][2] = {0, 0}, matriz2[2][2] = {0, 0};
 
     // Definição das dimensões com size_t
     size_t linhas = 2ull,

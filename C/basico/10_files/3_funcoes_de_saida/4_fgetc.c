@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     }
 
     // Será utilizada para armazenar cada caractere lido do arquivo.
-    char c;
+    char c = '\0';
 
     // loop que permite ler e imprimir até 5 caracteres
     for (int i = 0; i < 5; i++)

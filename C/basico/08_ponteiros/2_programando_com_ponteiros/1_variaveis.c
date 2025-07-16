@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     printf("\nDesafio lógico\n");
 
     // Declarando 2 variáveis e 1 ponteiro
-    int x, y, *ptr;
+    int x = 0, y = 0, *ptr = NULL;
 
     // y recebe 0
     y = 0;
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
 
     printf("\n===============================================\n");
 
-    int *pointer, *pointer1;
+    int *pointer = NULL, *pointer1 = NULL;
     int numero = 20, total = 10;
 
     pointer = &numero;
@@ -92,7 +92,7 @@ int main(int argc, char **argv)
      * **&f: O valor apontado pelo valor apontado por f.
      * (3 * *f): 3 vezes o valor apontado por f.
      * (**&f + 4): Valor apontado pelo valor apontado por f, mais 4.
-     * 
+     *
      * A explicação de "**&f" é um pouco confusa, e por mais que você não vá utilizar,
      * entenda que **&f derreferencia os ponteiros suficiente para acessar o valor apontado.
      */

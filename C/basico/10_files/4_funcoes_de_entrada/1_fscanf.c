@@ -27,9 +27,9 @@ int main(int argc, char **argv)
     }
 
     // Variáveis para utilizar na função fscanf
-    int intValue = 0;
-    float floatValue = 0.0f;
-    char stringValue[50];
+    int intValue = 0;           // Variável para armazenar um número inteiro
+    float floatValue = 0.0f;    // Variável para armazenar um número de ponto flutuante
+    char stringValue[50] = {0}; // Array para armazenar uma string
 
     // Ler dados formatados do arquivo
     int result = fscanf(arq, "%d %f %s", &intValue, &floatValue, stringValue);

@@ -97,25 +97,30 @@ int main(int argc, char **argv)
      */
 
     /**
-     * A inicialização de ponteiro sempre terá que corresponder para o tipo de dado a
-     * qual ele foi declaradado, ou seja
-     * ponteiro int guarda somente tipo int
-     * ponteiro char guarda somente tipo char
-     * e assim por diante.
+     * A inicialização de ponteiros deve sempre corresponder ao tipo de dado
+     * para o qual o ponteiro foi declarado. Ou seja:
      *
-     * DETALHE: Se tentarmos aplicar ao contrário, guardar o valor de um caractere
-     * para um ponteiro int
-     * **************************
-     * * char caractere = 'A';  *
-     * * int *ptr = &caractere; *
-     * **************************
-     * ERROR: initialization of 'int *' from incompatible pointer type 'char *'
+     * - Um ponteiro para int (*int) deve apontar para uma variável do tipo int
+     * - Um ponteiro para char (*char) deve apontar para uma variável do tipo char
+     * - E assim por diante.
      *
-     * por conta deste erro podemos afirmar que muitas das vezes dizemos que o valor
-     * de um ponteiro é o valor do tipo, mas na verdade o que estamos dizendo é que o valor
-     * de um ponteiro é o endereço de memória do tipo, ou seja, o valor do ponteiro é um
-     * de um ponteiro é "<PARA UM> valor do tipo" (no caso um endereço), e não que ele é
-     * "<O> valor de um tipo"
+     * Exemplo de uso incorreto:
+     * *******************************
+     * * char caractere = 'A';       *
+     * * int *ptr = &caractere;      *
+     * *******************************
+     * Error: initialization of 'int *' from incompatible pointer type 'char *'
+     * Error: inicialização de ‘int *’ a partir de um tipo de ponteiro incompatível ‘char *’
+     *
+     * Isso acontece porque o tipo do ponteiro deve corresponder ao tipo da variável
+     * cujo endereço está sendo armazenado.
+     *
+     * Muitos dizem que o valor de um ponteiro é o valor do tipo ao qual ele aponta, mas isso
+     * não é verdade. O que o ponteiro realmente armazena é o **endereço de memória**
+     * de uma variável do tipo correspondente.
+     *
+     * Ou seja, o valor de um ponteiro é um "endereço <PARA> um valor do tipo",
+     * e não "<O> valor do tipo" em si.
      */
 
     printf("\n=================================================================\n");

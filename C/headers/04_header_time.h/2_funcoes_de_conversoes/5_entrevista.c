@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     size_t numero_de_candidatos = sizeof(candidatos) / sizeof(candidatos[0]);
 
     // Envia o e-mail para cada candidato
-    for (size_t i = 0; i < numero_de_candidatos; i++)
+    for (size_t i = 0ull; i < numero_de_candidatos; i++)
     {
         enviarEmail(candidatos[i]);
     }

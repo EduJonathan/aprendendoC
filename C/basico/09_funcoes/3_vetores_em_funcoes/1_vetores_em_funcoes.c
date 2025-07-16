@@ -54,7 +54,7 @@ void imprimirVetor(int *arr)
 int main(int argc, char **argv)
 {
     // Criando um vetor
-    int vetor[10];
+    int vetor[10] = {0}; // Inicializa o vetor com zeros
 
     // Obtendo o tamanho do vetor
     size_t tamanho = sizeof(vetor) / sizeof(vetor[0]);

@@ -19,8 +19,8 @@
 
 int main(int argc, char **argv)
 {
-    char nome_arquivo[100];
-    char novo_nome_arquivo[100];
+    char nome_arquivo[100] = "";
+    char novo_nome_arquivo[100] = "";
     FILE *arquivo = NULL;
 
     // Solicita o nome do arquivo para criar ou abrir
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     printf("Digite o conteúdo que deseja salvar no arquivo (pressione ENTER para finalizar): ");
     getchar(); // Consumir o caractere '\n' deixado pelo scanf
 
-    char ch;
+    char ch = '\0';
 
     while ((ch = getchar()) != '\n' && ch != EOF)
     {
