@@ -76,7 +76,7 @@ int caminhos_memo(int i, int j)
  */
 int caminhos_iterativo(int m, int n)
 {
-    int dp[MAX][MAX];
+    int dp[MAX][MAX] = {0};
 
     for (int i = 0; i < m; i++)
         dp[i][0] = 1;

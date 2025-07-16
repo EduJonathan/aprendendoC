@@ -45,7 +45,7 @@
 void calcular_dia_da_semana(const char *data_input)
 {
     struct tm data_tm = {0};
-    time_t tempo;
+    time_t tempo = 0;        // Variável do tipo time_t para armazenar o tempo em segundos
     char data_formatada[26]; // Para armazenar a string formatada da data
 
     // Usando sscanf para ler a data no formato DD/MM/YYYY

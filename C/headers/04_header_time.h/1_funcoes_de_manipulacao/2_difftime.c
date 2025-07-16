@@ -27,7 +27,7 @@
 void calcular_diferenca_data(struct tm *data_referencia)
 {
     // Obtém a data e hora atual
-    time_t agora;
+    time_t agora = 0;
     time(&agora);
 
     // Converte a data e hora atual para uma estrutura tm
@@ -86,7 +86,7 @@ int calcularDiasFaltando(struct tm dataAtual, struct tm dataDestino)
 int main(int argc, char **argv)
 {
     // Obtém o tempo atual
-    time_t now;
+    time_t now = 0;
     time(&now);
 
     // Cria uma estrutura tm representando o início do mês corrente

@@ -24,10 +24,10 @@ void calcular_idade(const char *data_nascimento)
 {
     struct tm nascimento_tm = {0};
     struct tm hoje_tm = {0};
-    time_t nascimento_time, hoje_time;
+    time_t nascimento_time = 0, hoje_time = 0;
 
     // timespec struct que armazena a diferença em intervalos de segundos e nanosegundos
-    struct timespec tempo_diferenca;
+    struct timespec tempo_diferenca = {0};
 
     // Convertendo data de nascimento (25/09/2000) para struct tm
     sscanf(data_nascimento, "%d/%d/%d", &nascimento_tm.tm_mday, &nascimento_tm.tm_mon, &nascimento_tm.tm_year);
@@ -68,7 +68,7 @@ void calcular_idade(const char *data_nascimento)
 int main(int argc, char **argv)
 {
     // Formato de data: DD/MM/AAAA
-    char data_nascimento[11];
+    char data_nascimento[11] = {0};
 
     // Pedindo a data de nascimento ao usuário
     printf("Digite a sua data de nascimento (DD/MM/AAAA): ");

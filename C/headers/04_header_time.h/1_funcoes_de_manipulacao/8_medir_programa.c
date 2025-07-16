@@ -3,7 +3,7 @@
 
 int main(int argc, char **argv)
 {
-    time_t inicio, fim;
+    time_t inicio = 0, fim = 0;
     time(&inicio); // Marca o início(tempo real)
 
     // Medindo tempo de um simples "olá mundo"
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
     printf("---------------------------------------------");
 
-    time_t start, end;
+    time_t start = 0, end = 0;
     time(&start); // Marca o início (tempo real)
 
     // Laço for para realizar uma tarefa repetitiva

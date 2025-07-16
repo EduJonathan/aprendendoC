@@ -48,9 +48,11 @@ int main(int argc, char **argv)
 
     printf("\n------------------------\n");
 
-    struct Person *pessoa3;
+    struct Person *pessoa3 = (struct Person *)malloc(sizeof(struct Person));
     setPessoa(pessoa3, "Carlos", 35U, 1.80f, 0.0f); // Peso zero
     imprimirIMC(pessoa3);                           // Não deve calcular
 
+    free(pessoa);
+    free(pessoa3);
     return 0;
 }

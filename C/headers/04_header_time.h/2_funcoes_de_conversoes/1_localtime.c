@@ -25,7 +25,7 @@
  */
 char *get_local_time(void)
 {
-    time_t rawtime;
+    time_t rawtime = 0; // Variável do tipo time_t para armazenar o tempo em segundos
     struct tm *info = NULL;
 
     // Obtém o tempo atual

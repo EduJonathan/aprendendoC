@@ -24,7 +24,7 @@
  */
 void delay_ms(unsigned delay_ms)
 {
-    clock_t start_time, current_time;
+    clock_t start_time = 0, current_time = 0;
 
     // Marca o tempo de início
     start_time = clock();

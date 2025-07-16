@@ -72,7 +72,7 @@ void imprimirTempo(time_t tempo)
 void calcular_dias_para_data(const char *data_usuario)
 {
     // Obtém a data e hora atual
-    time_t agora;
+    time_t agora = 0;
     time(&agora);
 
     // Converte a data e hora atual para uma estrutura tm
@@ -133,7 +133,7 @@ void calcular_dias_para_data(const char *data_usuario)
 int main(int argc, char **argv)
 {
     // Criando uma variável para armazenar o tempo atual
-    time_t now;
+    time_t now = 0;
 
     // Obtendo o tempo atual
     time(&now);

@@ -10,7 +10,7 @@
  */
 struct tm calculaTempoRestante(int hora_alvo, int minuto_alvo)
 {
-    time_t agora;
+    time_t agora = 0;
     time(&agora); // Obtém o tempo atual em segundos desde 1970
 
     struct tm *local = localtime(&agora); // Converte para struct tm (hora local)

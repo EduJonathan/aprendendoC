@@ -34,7 +34,7 @@
 void calcular_dias_para_aniversario(const char *aniversario)
 {
     // Obtém a data e hora atual
-    time_t agora;
+    time_t agora = 0;
     time(&agora);
 
     // Converte a data e hora atual para uma estrutura tm em UTC
@@ -96,7 +96,7 @@ void calcular_dias_para_aniversario(const char *aniversario)
 int main(int argc, char **argv)
 {
     // Declaração de variáveis
-    time_t tempo;
+    time_t tempo = 0; // Variável do tipo time_t para armazenar o tempo em segundos
     struct tm *infotempo = NULL;
     char texto[80] = {0}; // Buffer para armazenar a string formatada
 
@@ -120,7 +120,7 @@ int main(int argc, char **argv)
     strftime(texto, 80, "Data: %A, %d/%b/%Y", infotempo);
     puts(texto);
 
-    time_t rawtime;
+    time_t rawtime = 0;   // Variável do tipo time_t para armazenar o tempo em segundos
     char limit[80] = {0}; // Buffer para armazenar a string formatada
 
     time(&rawtime);
@@ -131,7 +131,7 @@ int main(int argc, char **argv)
 
     printf("\n===============================================\n");
 
-    char aniversario[BUFFER_SIZE];
+    char aniversario[BUFFER_SIZE] = {0}; // Buffer para armazenar a data de aniversário
 
     // Solicita o nome da festividade
     printf("Digite a sua data de aniversário (dd/mm/aaaa): ");

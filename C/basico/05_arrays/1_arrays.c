@@ -33,7 +33,7 @@
 
 int main(int argc, char **argv)
 {
-    char array[5];
+    char array[5] = {0};
 
     array[0] = 'A';
     array[1] = 'M';

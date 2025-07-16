@@ -62,7 +62,7 @@ Festividade get_festividade_enum(const char *festividade)
 void calcular_data_comemorativa(const char *festividade)
 {
     // Obtém a data e hora atual
-    time_t agora;
+    time_t agora = 0;
     time(&agora);
 
     // Converte a data e hora atual para uma estrutura tm

@@ -5,11 +5,11 @@
 int main(int argc, char **argv)
 {
     clock_t cpu_inicio = clock();
-    time_t real_inicio;
+    time_t real_inicio = 0;
     time(&real_inicio);
 
     // trecho que iremos calcular o tempo de trabalho + wait
-    for (int i = 0; i < 1000000; i++);     // CPU-bound
+    for (int i = 0; i < 1000000; i++); // CPU-bound
     sleep(1); // Espera 1 segundo (I/O)
 
     // Contabiliza o tempo de CPU
