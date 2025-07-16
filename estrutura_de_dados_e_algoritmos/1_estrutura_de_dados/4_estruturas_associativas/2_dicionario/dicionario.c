@@ -158,7 +158,7 @@ void liberar(Dicionario *dict)
 
 int main(int argc, char **argv)
 {
-    Dicionario dict;
+    Dicionario dict = {0}; // Declara e inicializa o dicionário
 
     // Inicializa o dicionário
     inicializar(&dict);

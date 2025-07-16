@@ -99,10 +99,11 @@ int compararSequencias(enum colors *sequencia1, char tentativa[5][10])
 
 int main(int argc, char **argv)
 {
-    srand(time(NULL));        /**< Inicializa o gerador de números aleatórios com o tempo atual */
-    enum colors sequencia[5]; /**< Array que armazenará a sequência de cores gerada */
-    char tentativa[5][10];    /**< Array que armazenará a tentativa do jogador */
-    int acertos = 0;          /**< Variável que armazenará o número de acertos do jogador */
+    srand(time(NULL)); /**< Inicializa o gerador de números aleatórios com o tempo atual */
+
+    enum colors sequencia[5];    /**< Array que armazenará a sequência de cores gerada */
+    char tentativa[5][10] = {0}; /**< Array que armazenará a tentativa do jogador */
+    int acertos = 0;             /**< Variável que armazenará o número de acertos do jogador */
 
     printf("BEM-VINDO AO Jogo da Memória\n\n");
     printf("DECORE TODA A SEQUENCIA DE CORES E ACERTE AO MENOS 3\n\n");
@@ -136,7 +137,7 @@ int main(int argc, char **argv)
             printf("VOCE NÃO ACERTOU A SEQUENCIA\n");
         }
 
-        char jogarNovamente;
+        char jogarNovamente = '\0';
 
         printf("Deseja jogar novamente? (s/n): ");
         scanf(" %c", &jogarNovamente); /**< Pergunta ao jogador se ele deseja jogar novamente */

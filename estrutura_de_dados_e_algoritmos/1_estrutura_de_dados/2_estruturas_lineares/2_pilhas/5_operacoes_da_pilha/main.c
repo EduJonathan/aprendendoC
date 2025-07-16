@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-    Pilha p;
+    Pilha p = {0};   // Declaração e inicialização da pilha
     inicializar(&p); // Inicializa a pilha
 
     // Empilhando elementos

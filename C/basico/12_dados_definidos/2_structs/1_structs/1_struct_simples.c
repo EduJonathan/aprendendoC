@@ -22,7 +22,7 @@ struct IMC
 };
 
 /* 'GLOBAL_IMC' Aqui criarmos uma instância do tipo global */
-struct IMC GLOBAL_IMC;
+struct IMC GLOBAL_IMC = {0}; // Inicializando com zero
 
 int main(int argc, char **argv)
 {
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     printf("\n\t==>IMC_LOCAL<==\n");
 
     /* 'LOCAL_IMC' Aqui criarmos uma instância do tipo local. */
-    struct IMC LOCAL_IMC;
+    struct IMC LOCAL_IMC = {0}; // Inicializando com zero
 
     /* O mesmo para a instância global, atribuindo valor para altura e peso. */
     LOCAL_IMC.altura = 1.54F;

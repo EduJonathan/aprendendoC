@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     printf("\n=======================================\n");
 
     // Pedindo ao usuário um caractere
-    char alfa;
+    char alfa = '\0';
     printf("Insira uma letra para encontramos? ");
     scanf("%c", &alfa);
     setbuf(stdin, NULL);

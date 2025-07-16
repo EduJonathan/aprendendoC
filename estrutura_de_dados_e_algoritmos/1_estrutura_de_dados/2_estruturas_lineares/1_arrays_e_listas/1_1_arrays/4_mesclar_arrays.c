@@ -129,7 +129,7 @@ int main(int argc, char **argv)
 
     // Exibe o array mesclado
     printf("Array mesclado: ");
-    for (size_t i = 0; i < tamanhoTotal; i++)
+    for (size_t i = 0ull; i < tamanhoTotal; i++)
     {
         printf("%d ", arrayMesclado[i]);
     }
@@ -140,7 +140,7 @@ int main(int argc, char **argv)
 
     // Exibe o array mesclado e ordenado
     printf("Array mesclado e ordenado: ");
-    for (size_t i = 0; i < tamanhoTotal; i++)
+    for (size_t i = 0ull; i < tamanhoTotal; i++)
     {
         printf("%d ", arrayMesclado[i]);
     }

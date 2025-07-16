@@ -196,7 +196,7 @@ void kruskal(Edge graph[], int numVertices, int numEdges)
 
 int main(int argc, char **argv)
 {
-    Edge graph[20]; // Supondo no máximo 20 arestas
+    Edge graph[20] = {0}; // Supondo no máximo 20 arestas
     int numVertices = 0, numEdges = 0;
 
     createGraph(graph, &numVertices, &numEdges);

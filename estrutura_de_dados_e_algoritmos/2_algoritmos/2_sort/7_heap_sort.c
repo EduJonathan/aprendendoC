@@ -17,11 +17,11 @@ void swap(int *valor1, int *valor2)
  * @param index O índice do nó a partir do qual deve ser feita a reestruturação.
  * @param size O tamanho do array.
  */
-void heapify(int *arr, int index, size_t size)
+void heapify(int *arr, size_t index, size_t size)
 {
-    int left = (2 * index) + 1; // Índice do filho esquerdo
-    int right = left + 1;       // Índice do filho direito
-    int max = index;            // Assume-se que o nó atual seja o maior
+    size_t left = (2 * index) + 1; // Índice do filho esquerdo
+    size_t right = left + 1;       // Índice do filho direito
+    size_t max = index;            // Assume-se que o nó atual seja o maior
 
     // Verifica se o filho esquerdo existe e é maior que o nó atual
     if (left < size && arr[left] > arr[max])

@@ -71,7 +71,7 @@ int main(int argc, char **argv)
     }
 
     // Para que possamos escrever no arquivo
-    char buffer[100];
+    char buffer[100] = {0}; // Buffer para armazenar o conteúdo lido
 
     // Ler do arquivo
     fgets(buffer, sizeof(buffer), file);

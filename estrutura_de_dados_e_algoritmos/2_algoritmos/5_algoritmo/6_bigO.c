@@ -66,7 +66,7 @@ void *constant_time(void *arg)
 void *logarithmic_time(void *arg)
 {
     ThreadParams *params = (ThreadParams *)arg;
-    struct timespec start, end;
+    struct timespec start = {0}, end = {0};
     clock_gettime(CLOCK_MONOTONIC, &start);
 
     double sum = 0.0;
@@ -97,7 +97,7 @@ void *logarithmic_time(void *arg)
 void *linear_time(void *arg)
 {
     ThreadParams *params = (ThreadParams *)arg;
-    struct timespec start, end;
+    struct timespec start = {0}, end = {0};
     clock_gettime(CLOCK_MONOTONIC, &start);
 
     double sum = 0.0;
@@ -128,7 +128,7 @@ void *linear_time(void *arg)
 void *loglinear_time(void *arg)
 {
     ThreadParams *params = (ThreadParams *)arg;
-    struct timespec start, end;
+    struct timespec start = {0}, end = {0};
     clock_gettime(CLOCK_MONOTONIC, &start);
 
     double sum = 0.0;
@@ -162,7 +162,7 @@ void *loglinear_time(void *arg)
 void *quadratic_time(void *arg)
 {
     ThreadParams *params = (ThreadParams *)arg;
-    struct timespec start, end;
+    struct timespec start = {0}, end = {0};
     clock_gettime(CLOCK_MONOTONIC, &start);
 
     double sum = 0.0;
@@ -223,7 +223,7 @@ int main(int argc, char **argv)
     printf("\nTodas as threads terminaram.\n");
 
     /**
-     * Utilize gcc -o <nome_do_executavel> bigO.c -lpthread -lm para compilar
+     * Utilize gcc -o <nome_do_executavel> .\6_bigO.c -lpthread -lm para compilar
      * .\nome_do_executavel.exe
      */
     return 0;

@@ -26,7 +26,7 @@ typedef struct set
  */
 bool contem(Set *s, const char *valor)
 {
-    for (size_t i = 0; i < s->tamanho; i++)
+    for (size_t i = 0ull; i < s->tamanho; i++)
     {
         if (strcmp(s->dados[i], valor) == 0)
         {
@@ -62,7 +62,7 @@ void adicionar(Set *s, const char *valor)
  */
 void print(Set *s)
 {
-    for (size_t i = 0; i < s->tamanho; i++)
+    for (size_t i = 0ull; i < s->tamanho; i++)
     {
         printf("%s\n", s->dados[i]);
     }
@@ -75,12 +75,12 @@ int main(int argc, char **argv)
     Set sety = {{"Azul", "Amarelo"}, 2}; // Inicializando os conjuntos com 2 elementos
     Set setz = {{"", ""}, 0};            // Conjunto vazio para armazenar a união
 
-    for (size_t i = 0; i < setx.tamanho; i++)
+    for (size_t i = 0ull; i < setx.tamanho; i++)
     {
         adicionar(&setz, setx.dados[i]);
     }
 
-    for (size_t i = 0; i < sety.tamanho; i++)
+    for (size_t i = 0ull; i < sety.tamanho; i++)
     {
         adicionar(&setz, sety.dados[i]);
     }

@@ -119,7 +119,7 @@ void exibirFila(filaCircular *queue)
 int main(int argc, char **argv)
 {
     // Inicializando a fila
-    filaCircular fila;
+    filaCircular fila = {0}; // Inicializa a fila com frente = 0, atras = -1, contador = 0
     fila.frente = 0;
     fila.atras = -1;
     fila.contador = 0;

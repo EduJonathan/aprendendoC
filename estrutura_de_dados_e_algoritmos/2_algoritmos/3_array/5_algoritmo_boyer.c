@@ -105,7 +105,7 @@ char majoridadeString(const char *texto)
     contador = 0;
     size_t n = strlen(texto);
 
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0ull; i < n; i++)
     {
         if (texto[i] == candidato)
         {

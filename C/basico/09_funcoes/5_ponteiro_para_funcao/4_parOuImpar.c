@@ -24,7 +24,7 @@ typedef void (*parOuImpar)(void);
 int main(int argc, char **argv)
 {
     int eImparOuPar = 45;
-    parOuImpar aponta;
+    parOuImpar aponta = NULL; // Declaração do ponteiro para função
 
     // Se eImparOuPar é par ou ímpar, atribui à variável aponta o endereço da função par ou impar.
     if ((eImparOuPar % 2) == 0)

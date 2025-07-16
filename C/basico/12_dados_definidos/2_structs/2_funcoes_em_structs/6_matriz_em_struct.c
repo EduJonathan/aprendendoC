@@ -115,7 +115,7 @@ void definirValor(struct Matriz *mat, int linha, int coluna, int valor)
 int main(int argc, char **argv)
 {
     // Criando uma instância para a struct `Matriz`
-    struct Matriz matriz;
+    struct Matriz matriz = {0}; // Inicializando com zero
 
     // Inicializa a matriz com o tamanho 3x3
     inicializarMatriz(&matriz, MAX_LINHAS, MAX_COLUNAS);

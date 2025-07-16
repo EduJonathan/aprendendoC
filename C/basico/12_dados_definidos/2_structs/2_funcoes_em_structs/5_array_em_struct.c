@@ -96,7 +96,7 @@ void imprimirDadosPonteiros(struct registroDeEstudantes *students, size_t numEst
 int main(int argc, char **argv)
 {
     // Matriz para armazenar registros de estudantes
-    struct registroDeEstudantes studentRecord[3];
+    struct registroDeEstudantes studentRecord[3] = {0}; // Inicializando com zero
 
     // Calculando o número total de elementos no array
     size_t totalElementos = sizeof(studentRecord) / sizeof(studentRecord[0]);

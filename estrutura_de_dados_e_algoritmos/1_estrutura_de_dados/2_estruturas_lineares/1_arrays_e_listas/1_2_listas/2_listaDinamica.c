@@ -288,7 +288,7 @@ void liberar(ListaDinamica *lista)
 
 int main(int argc, char **argv)
 {
-    ListaDinamica lista;
+    ListaDinamica lista = {0};
     inicializar(&lista, 2); // Começa com capacidade 2
 
     adicionarInt(&lista, 12);

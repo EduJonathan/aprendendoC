@@ -155,8 +155,8 @@ FilaPrioridade *removerElemento(FilaPrioridadeStruct *fila)
  *
  * Esta função percorre a fila de prioridade, comparando o valor do elemento de cada nó com
  * o valor fornecido. Se encontrar um nó com o mesmo valor, retorna `true`, indicando que o
- * elemento está presente na fila e exibe a posição onde o elemento foi encontrado. Caso contrário,
- * retorna `false`, indicando que o elemento não foi encontrado na fila.
+ * elemento está presente na fila e exibe a posição onde o elemento foi encontrado.
+ * Caso contrário, retorna `false`, indicando que o elemento não foi encontrado na fila.
  *
  * @param fila Ponteiro para a estrutura `FilaPrioridadeStruct` que representa a fila de prioridade.
  * @param elemento O valor do elemento a ser procurado na fila.
@@ -229,7 +229,7 @@ void liberarFilaPrioridade(FilaPrioridadeStruct *fila)
 
 int main(int argc, char **argv)
 {
-    FilaPrioridadeStruct priority_queue;
+    FilaPrioridadeStruct priority_queue = {0}; // Inicializa a fila de prioridade
 
     inicializarFilaPrioridade(&priority_queue);
 

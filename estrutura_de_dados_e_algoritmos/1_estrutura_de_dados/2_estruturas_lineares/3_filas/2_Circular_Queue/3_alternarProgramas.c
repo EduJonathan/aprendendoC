@@ -196,7 +196,7 @@ void mostrarEstadoFila(filaCircular *fila)
 
 int main(int argc, char **argv)
 {
-    filaCircular alt_tab;
+    filaCircular alt_tab = {0}; // Inicializa a fila circular para simular o ALT+TAB
     inicializarFila(&alt_tab);
 
     // Demonstração das funcionalidades

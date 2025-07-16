@@ -147,7 +147,8 @@ void liberar(Fila *f)
  */
 void imprimir(Fila *f)
 {
-	No *atual = f->inicio; // Inicializa um ponteiro 'atual' para percorrer a fila a partir do início
+	// Inicializa um ponteiro 'atual' para percorrer a fila a partir do início
+	No *atual = f->inicio;
 
 	// Percorre a fila imprimindo os elementos
 	while (atual != NULL)

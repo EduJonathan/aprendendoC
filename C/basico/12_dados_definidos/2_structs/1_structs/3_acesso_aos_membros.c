@@ -13,7 +13,7 @@ struct Pessoa
 int main(int argc, char **argv)
 {
     printf("\n\t>>ACESSO COM O '.'\n");
-    struct Pessoa Eduardo;
+    struct Pessoa Eduardo = {0}; // Inicializando com zero
 
     /*
      * O operador ponto (.): É utilizado quando você está acessando membros de uma
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
      * O operador seta (->): É utilizado quando você está acessando membros de uma struct
      * através de um ponteiro para essa struct.
      */
-    struct Pessoa ponteiro_pessoa;
+    struct Pessoa ponteiro_pessoa = {0}; // Inicializando com zero
     struct Pessoa *ponteiroParaPessoa = &ponteiro_pessoa;
     // strcpy((*ponteiroParaPessoa).nome, "Eduardo")
     // (*ponteiroParaPessoa).idade = 75;

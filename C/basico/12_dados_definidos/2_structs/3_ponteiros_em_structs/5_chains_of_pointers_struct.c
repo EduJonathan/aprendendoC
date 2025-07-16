@@ -21,7 +21,7 @@ struct Contato
  */
 int selecionarMenu(void)
 {
-    char entrada[10];
+    char entrada[10] = {0};
     int opcao = 0;
 
     printf("\n1. Adicionar contato\n");
@@ -60,7 +60,7 @@ void lerEntrada(const char *mensagem, char *destino, int limite)
         {
             buffer[strlen(buffer) - 1] = '\0';
         }
-        
+
         if ((int)strlen(buffer) > limite)
             printf("Muito longo. Máximo de %d caracteres.\n", limite);
     } while ((int)strlen(buffer) > limite);
@@ -138,6 +138,7 @@ void inserirOrdenado(struct Contato *novo, struct Contato **inicio, struct Conta
         novo->proximo = atual;
         novo->anterior = anterior;
         anterior->proximo = novo;
+        
         if (atual)
             atual->anterior = novo;
         else

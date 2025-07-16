@@ -33,6 +33,7 @@ typedef struct
 
 /**
  * @brief Obtém o nome legível do tipo de arma.
+ * 
  * @param type Tipo da arma.
  * @return String com o nome da arma.
  */

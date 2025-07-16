@@ -95,11 +95,11 @@ void display(int queue[], int front, int rear)
 
 int main(int argc, char **argv)
 {
-    int queue[QUEUE_SIZE]; // Fila de tamanho fixo
-    int front = -1;        // Inicializando as variáveis `front` e `rear`
-    int rear = -1;         // Inicializando as variáveis `front` e `rear`
-    int value = 0;         // Variável para armazenar o valor inserido pelo usuário
-    int opcao = 0;         // Variável para armazenar a opção escolhida pelo usuário
+    int queue[QUEUE_SIZE] = {0}; // Fila de tamanho fixo
+    int front = -1;              // Inicializando as variáveis `front` e `rear`
+    int rear = -1;               // Inicializando as variáveis `front` e `rear`
+    int value = 0;               // Variável para armazenar o valor inserido pelo usuário
+    int opcao = 0;               // Variável para armazenar a opção escolhida pelo usuário
 
     do
     {

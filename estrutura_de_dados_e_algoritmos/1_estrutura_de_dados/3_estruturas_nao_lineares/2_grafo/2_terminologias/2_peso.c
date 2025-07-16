@@ -121,16 +121,16 @@ void freeGrafo(grafo *g)
 
 int main(int argc, char **argv)
 {
-    grafo g;
+    grafo g = {0}; // Declara e inicializa o grafo
 
     // Inicializa o grafo
     initGrafo(&g);
 
     // Adiciona as arestas
-    addAresta(&g, 'A', 'B', 5);
-    addAresta(&g, 'A', 'C', 3);
-    addAresta(&g, 'B', 'C', 2);
-    addAresta(&g, 'C', 'A', 7);
+    addAresta(&g, 'A', 'B', 5); // Adiciona aresta de A para B com peso 5
+    addAresta(&g, 'A', 'C', 3); // Adiciona aresta de A para C com peso 3
+    addAresta(&g, 'B', 'C', 2); // Adiciona aresta de B para C com peso 2
+    addAresta(&g, 'C', 'A', 7); // Adiciona aresta de C para A com peso 7
 
     // Imprime o grafo
     printGrafo(&g);

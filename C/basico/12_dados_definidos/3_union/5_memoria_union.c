@@ -21,7 +21,7 @@ union Exemplo
 
 int main(int argc, char **argv)
 {
-    union Exemplo x;
+    union Exemplo x = {0};
 
     x.i = 1065353216; // Binário correspondente a 1.0f em float
     printf("Como int: %d\n", x.i);

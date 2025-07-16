@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
- * UNION: ou união assim como as structs, unions podem fazer tudo que uma struct faz, tendo 
- * possiblidades das unions também permitem agrupar diferentes tipos de dados em uma única 
- * estrutura. A grande diferença está na forma como a memória é alocada. Em uma struct, 
+ * UNION: ou união assim como as structs, unions podem fazer tudo que uma struct faz, tendo
+ * possiblidades das unions também permitem agrupar diferentes tipos de dados em uma única
+ * estrutura. A grande diferença está na forma como a memória é alocada. Em uma struct,
  * cada campo (ou membro) ocupa seu próprio espaço na memória, ou seja, a memória total usada
  * é a soma do espaço necessário para todos os membros.
  *
@@ -30,7 +30,7 @@ union Dado
 int main(int argc, char **argv)
 {
     // Declaração de uma variável 'dados' do tipo 'Dado'
-    union Dado dados;
+    union Dado dados = {0};
 
     // Impressão do tamanho da Union 'Dado'
     printf("Tamanho da Union Dado: %zu bytes\n", sizeof(dados));

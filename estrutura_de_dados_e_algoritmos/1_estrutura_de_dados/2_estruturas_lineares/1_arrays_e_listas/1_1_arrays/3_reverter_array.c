@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 
     // Imprimindo o array original
     printf("Array Original fica: ");
-    for (size_t i = 0; i < tamanho; i++)
+    for (size_t i = 0ull; i < tamanho; i++)
     {
         printf("%d ", array[i]);
     }
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 
     // Imprimindo o array invertido
     printf("Array Reverso fica: ");
-    for (size_t i = 0; i < tamanho; i++)
+    for (size_t i = 0ull; i < tamanho; i++)
     {
         printf("%d ", array[i]);
     }

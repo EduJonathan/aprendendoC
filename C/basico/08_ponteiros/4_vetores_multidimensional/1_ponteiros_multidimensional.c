@@ -13,15 +13,19 @@
  * 2. Usando ponteiros, que nos permitem acessar os elementos de forma semelhante,
  * mas com a notação de ponteiros: `*(*(mat + linha) + coluna)`.
  *
- * Para entender melhor o funcionamento da notação com ponteiros, podemos 
+ * Para entender melhor o funcionamento da notação com ponteiros, podemos
  * analisar a expressão: `*(*(mat + linha) + coluna)`:
  *
- * - `mat` é um ponteiro para o primeiro elemento do array, ou seja, um ponteiro 
+ * - `mat` é um ponteiro para o primeiro elemento do array, ou seja, um ponteiro
  * para o primeiro "sub-array" (linha) do array.
+ *
  * - `mat + linha` desloca o ponteiro até a linha desejada.
+ *
  * - `*(mat + linha)` acessa a linha que foi deslocada e retorna um ponteiro para o
  * primeiro elemento dessa linha.
+ *
  * - `*(mat + linha) + coluna` desloca esse ponteiro até a posição da coluna desejada na linha.
+ *
  * - Finalmente, `*(*(mat + linha) + coluna)` acessa o valor da célula na posição
  * [linha][coluna] do array.
  *

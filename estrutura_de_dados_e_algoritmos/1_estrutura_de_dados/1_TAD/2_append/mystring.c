@@ -15,7 +15,7 @@
 int main(int argc, char **argv)
 {
     // Declarando a string
-    string minhaString;
+    string minhaString = {0};
 
     // iniciando a string
     string_init(minhaString);

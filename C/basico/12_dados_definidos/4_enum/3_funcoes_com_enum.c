@@ -120,7 +120,7 @@ int main(int argc, char **argv)
     // Determina quem começa com o lançamento da moeda
     quemComeca(jogador1, jogador2);
 
-    char escolhaDoJogador[20];
+    char escolhaDoJogador[20] = {0}; // Array para armazenar a escolha do jogador
 
     printf("Jogador 1 escolha (pedra, papel ou tesoura): ");
     scanf("%s", escolhaDoJogador);

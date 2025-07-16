@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     printf("\n\t\t TipoUnionGlobal dadosGlobais:\n");
 
     // Chamando e definindo o tipo de TipoUnionGlobal para dadosGlobais
-    TipoUnionGlobal dadosGlobais;
+    TipoUnionGlobal dadosGlobais = {0}; // Inicializando com zero
 
     // Definido dados para os campos da instância renomeada `dadosGlobais` e imprimindo
     dadosGlobais.inteiro = 10;
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     typedef union minhaUnion TipoUnionLocal;
 
     // Chamando e definindo o tipo de TipoUnionLocal para dadosLocais
-    TipoUnionLocal dadosLocais;
+    TipoUnionLocal dadosLocais = {0}; // Inicializando com zero
 
     // Definido dados para os campos da instância renomeada `TipoUnion` e imprimindo
     dadosLocais.inteiro = 15;

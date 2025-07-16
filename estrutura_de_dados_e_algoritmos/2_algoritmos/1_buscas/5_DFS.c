@@ -57,9 +57,9 @@ void insert(pilha *stack, int valor)
  * a ordem de visitação dos vértices.
  *
  * Complexidade:
- * 
+ *
  * - Tempo:  O(V + E), onde V é o número de vértices e E o número de arestas.
- * 
+ *
  * - Espaço: O(V), para armazenar a pilha e o vetor de visitados.
  *
  * @param start O vértice de início da busca.
@@ -69,8 +69,8 @@ void insert(pilha *stack, int valor)
  */
 void DFS(int start, int adj[MAX_VERTICES][MAX_VERTICES], int v, int visitados[MAX_VERTICES])
 {
-    pilha stack;    // Pilha para armazenar os vértices a serem visitados
-    stack.top = -1; // Inicializa a pilha vazia
+    pilha stack = {0}; // Pilha para armazenar os vértices a serem visitados
+    stack.top = -1;    // Inicializa a pilha vazia
 
     // Insere o vértice inicial na pilha
     insert(&stack, start);

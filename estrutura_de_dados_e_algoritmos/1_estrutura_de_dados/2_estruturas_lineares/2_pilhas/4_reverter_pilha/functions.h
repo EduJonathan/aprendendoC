@@ -32,7 +32,7 @@ struct pilha
 void gerarPilha(struct pilha **pilha)
 {
     struct pilha *aux = NULL;
-    size_t tamanhoDaPilha = 0;
+    size_t tamanhoDaPilha = 0ull;
 
     printf("Digite o tamanho da pilha: ");
     scanf("%zu", &tamanhoDaPilha);
@@ -45,7 +45,7 @@ void gerarPilha(struct pilha **pilha)
     }
 
     // Criação da pilha
-    for (size_t i = 0; i < tamanhoDaPilha; i++)
+    for (size_t i = 0ull; i < tamanhoDaPilha; i++)
     {
         aux = (struct pilha *)malloc(sizeof(struct pilha));
 

@@ -34,7 +34,7 @@ struct Pessoa
 int main(int argc, char **argv)
 {
     // Criando uma instância da struct `Pessoa`
-    struct Pessoa pessoa;
+    struct Pessoa pessoa = {0}; // Inicializando com zero
 
     // Preenchendo os dados da pessoa
     pessoa.nome = "João";

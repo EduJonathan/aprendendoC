@@ -219,7 +219,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    int opcao, valor;
+    int opcao = 0, valor = 0;
 
     do
     {

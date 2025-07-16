@@ -129,10 +129,17 @@ int main(int argc, char **argv)
 {
     srand(time(NULL));
 
-    char tabuleiroReal[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO];    // Tabuleiro real com as posições dos navios e bombas
-    char tabuleiroExibido[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO]; // Tabuleiro que o jogador vê
-    int navios[NUM_NAVIOS][2];                                   // Armazena as posições dos navios
-    int bombas[NUM_BOMBAS][2];                                   // Armazena as posições das bombas
+    // Tabuleiro real com as posições dos navios e bombas
+    char tabuleiroReal[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO] = {0};
+
+    // Tabuleiro que o jogador vê
+    char tabuleiroExibido[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO] = {0};
+
+    // Armazena as posições dos navios
+    int navios[NUM_NAVIOS][2] = {0};
+
+    // Armazena as posições das bombas
+    int bombas[NUM_BOMBAS][2] = {0};
 
     int naviosEncontrados = 0;
     int bombasEncontradas = 0;
@@ -147,7 +154,7 @@ int main(int argc, char **argv)
     // Loop do jogo
     while (naviosEncontrados < NUM_NAVIOS && bombasEncontradas < 3) // Jogo termina ao encontrar 3 bombas
     {
-        char linhaChar;
+        char linhaChar = '\0';
         int coluna = 0;
 
         // Exibe o tabuleiro atual (com células ocultas)

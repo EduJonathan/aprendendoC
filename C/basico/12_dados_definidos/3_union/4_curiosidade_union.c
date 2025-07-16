@@ -18,7 +18,7 @@ union Union
 int main(int argc, char **argv)
 {
     // Declaração da união
-    union Union u;
+    union Union u = {0};
 
     // Marca 'a' como em uso e atribuição
     u.type = 'a'; // Define o tipo para 'a'

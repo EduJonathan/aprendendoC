@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	// printf("Valor de \"adicionarEndereco\": %d\t Endereço de \"adicionarEndereco\": %p\n", adicionarEndereco, &adicionarEndereco);
 
 	// array de 3 posições
-	int array[3];
+	int array[3] = {0};
 
 	array[0] = 7;
 	array[1] = 8;

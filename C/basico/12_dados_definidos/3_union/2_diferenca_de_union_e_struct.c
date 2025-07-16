@@ -50,9 +50,9 @@ void inicializarUnion(union Union *Union)
 void imprimeAtributosDeStruct(struct Struct *ptrStruct)
 {
     printf(" TAMANHO DA STRUCT: %zu\n", sizeof(struct Struct));
-    for (size_t i = 0; i < sizeof(struct Struct) / sizeof(int); i++)
+    for (size_t i = 0ull; i < sizeof(struct Struct) / sizeof(int); i++)
     {
-        printf(" Endereço de membro%d na struct: %p\n", i + 1, (void *)((int *)ptrStruct + i));
+        printf(" Endereço de membro%zu na struct: %p\n", i + 1, (void *)((int *)ptrStruct + i));
     }
 }
 
@@ -95,7 +95,7 @@ int main(int argc, char **argv)
     printf("\n\tTAMANHO DE CADA UNION E STRUCT:\n");
 
     // Criação de instâncias da Struct e Union
-    struct Struct estrutura;
+    struct Struct estrutura = {0}; // Inicializando com zero
 
     imprimeAtributosDeStruct(&estrutura);
 
@@ -115,7 +115,7 @@ int main(int argc, char **argv)
     printf("=====================================================================\n");
 
     // Criação de instâncias Union
-    union Union Uniao;
+    union Union Uniao = {0}; // Inicializando com zero
 
     // Imprime tamanho e endereço de memória de cada membro da união
     imprimeAtributosDeUnion(&Uniao);

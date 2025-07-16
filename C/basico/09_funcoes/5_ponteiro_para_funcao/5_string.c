@@ -19,7 +19,7 @@ void concatenar(char *a, char *b, char *resultado)
 /**
  * @brief Função para comparar duas strings.
  *
- * Esta função compara duas strings e retorna um valor indicando se são iguais, 
+ * Esta função compara duas strings e retorna um valor indicando se são iguais,
  * ou qual vem primeiro lexicograficamente.
  *
  * @param a Primeira string a ser comparada.
@@ -42,7 +42,7 @@ int comparar(char *a, char *b)
  */
 void inverter(char *a, char *resultado)
 {
-    int i, len = strlen(a);
+    int i = 0, len = strlen(a);
     for (i = 0; i < len; i++)
     {
         resultado[i] = a[len - i - 1]; /**< Inverte a string */
@@ -113,7 +113,7 @@ int main(int argc, char **argv)
     int escolha = 0;
     char a[100] = "Hello";
     char b[100] = " Mundo!";
-    char resultado[200]; /**< String para armazenar os resultados */
+    char resultado[200] = {0}; /**< String para armazenar os resultados */
 
     printf("Escolha uma operação:\n");
     printf("1. Concatenar\n2. Comparar\n3. Inverter\n4. Contar Caracteres: ");

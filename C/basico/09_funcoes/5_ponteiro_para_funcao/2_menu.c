@@ -2,7 +2,7 @@
 
 /**
  * @brief Função que simula a operação de cortar.
- * 
+ *
  * @param cortar Valor inteiro representando a escolha do usuário.
  */
 void cut(int cortar)
@@ -13,7 +13,7 @@ void cut(int cortar)
 
 /**
  * @brief Função que simula a operação de copiar.
- * 
+ *
  * @param copiar Valor inteiro representando a escolha do usuário.
  */
 void copy(int copiar)
@@ -24,7 +24,7 @@ void copy(int copiar)
 
 /**
  * @brief Função que simula a operação de colar.
- * 
+ *
  * @param colar Valor inteiro representando a escolha do usuário.
  */
 void paste(int colar)
@@ -35,7 +35,7 @@ void paste(int colar)
 
 /**
  * @brief Função que simula a operação de deletar.
- * 
+ *
  * @param deletar Valor inteiro representando a escolha do usuário.
  */
 void delete(int deletar)
@@ -47,7 +47,7 @@ void delete(int deletar)
 int main(int argc, char **argv)
 {
     void (*menu[4])(int) = {cut, copy, paste, delete};
-    int escolha;
+    int escolha = 0;
 
     printf("Escolha um valor (1-para cortar, 2-para copiar, 3-para colar, 4-deletar): ");
     scanf("%d", &escolha);

@@ -132,7 +132,7 @@ void imprimir(Set *s)
 
 int main(int argc, char **argv)
 {
-    Set set;
+    Set set = {0}; // Declara e inicializa o conjunto
 
     // Inicializa o conjunto
     inicializar(&set);

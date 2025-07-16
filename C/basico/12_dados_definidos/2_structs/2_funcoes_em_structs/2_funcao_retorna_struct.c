@@ -48,7 +48,7 @@ void print(struct funcao_struct values)
 int main(int argc, char **argv)
 {
     // Declaração `struct funcao_struct`: acessa_campo e valor_modificado que irá acessar `x` e `y`
-    struct funcao_struct acessa_campo;
+    struct funcao_struct acessa_campo = {0}; // Inicializando com zero
 
     // Solicita ao usuário que digite um valor para o campo x da estrutura acessa_campo
     printf("Digite o valor para x: ");

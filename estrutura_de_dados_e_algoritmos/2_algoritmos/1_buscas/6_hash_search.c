@@ -63,9 +63,9 @@ void insert(HashTable *ht, int key, int value)
  * que a função hash seja bem distribuída e a colisão seja tratada adequadamente.
  *
  * Complexidade:
- * 
+ *
  * - Tempo: O(1) no caso médio e melhor caso; O(n) no pior caso (quando há muitas colisões).
- * 
+ *
  * - Espaço: O(n), onde n é o número de elementos armazenados na tabela hash.
  *
  * @param ht Tabela hash.
@@ -85,7 +85,7 @@ HashNode *search(HashTable *ht, int key)
 
 int main(int argc, char **argv)
 {
-    HashTable ht;
+    HashTable ht = {0}; // Inicializar a tabela hash
     initHashTable(&ht); // Inicializar a tabela hash
 
     // Inserir valores

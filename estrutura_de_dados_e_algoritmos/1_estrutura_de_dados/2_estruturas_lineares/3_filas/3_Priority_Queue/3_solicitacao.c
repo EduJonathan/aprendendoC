@@ -238,7 +238,7 @@ void liberarFilaSolicitacoes(FilaSolicitacoes *fila)
 
 int main(int argc, char **argv)
 {
-    FilaSolicitacoes fila;
+    FilaSolicitacoes fila = {0}; // Inicializa a fila de solicitações do elevador
     inicializarFilaSolicitacoes(&fila);
 
     // Adicionando solicitações

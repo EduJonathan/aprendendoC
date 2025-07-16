@@ -85,11 +85,11 @@ int main(int argc, char **argv)
     // Tamanho de cada vetor individual
     size_t array_size = sizeof(v0) / sizeof(v0[0]);
 
-    for (size_t i = 0; i < num_arrays; i++)
+    for (size_t i = 0ull; i < num_arrays; i++)
     {
         printf("Elementos do vetor %zu usando aritmética de ponteiros: ", i);
         // Usando aritmética de ponteiros para acessar os elementos do vetor
-        for (size_t j = 0; j < array_size; j++)
+        for (size_t j = 0ull; j < array_size; j++)
         {
             printf("%d ", *(pt[i] + j)); // *(pt[i] + j) equivalente a pt[i][j]
         }

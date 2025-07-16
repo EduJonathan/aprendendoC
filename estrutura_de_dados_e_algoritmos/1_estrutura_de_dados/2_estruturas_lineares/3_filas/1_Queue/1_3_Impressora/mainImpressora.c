@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-    Fila fila;
+    Fila fila = {0}; // Inicializa a fila de impressão
     inicializarFila(&fila);
 
     adicionarTrabalho(&fila, "Livro", 24, 12, 14);

@@ -50,9 +50,9 @@ int lcs_length(const char *str1, const char *str2)
     }
 
     // Preenchimento da tabela de PD
-    for (size_t i = 1; i <= m; i++)
+    for (size_t i = 1ull; i <= m; i++)
     {
-        for (size_t j = 1; j <= n; j++)
+        for (size_t j = 1ull; j <= n; j++)
         {
             if (str1[i - 1] == str2[j - 1])
             {

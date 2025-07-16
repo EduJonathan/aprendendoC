@@ -84,9 +84,9 @@ void atualizar(FILE *fp, struct funcionario *funcionario)
         return;
     }
 
-    // Cria arquivo temporário seguro
-    if ((fd = mkstemp(temp_filename)) == -1 ||
-        (temp_fp = fdopen(fd, "wb")) == NULL)
+    // Cria arquivo temporário seguro, usando mkstemp para evitar colisões de nomes
+    // e o fdopen é para associar o descritor de arquivo a um ponteiro FILE.
+    if ((fd = mkstemp(temp_filename)) == -1 || (temp_fp = fdopen(fd, "wb")) == NULL)
     {
         perror("Erro ao criar arquivo temporário");
         if (fd != -1)
@@ -226,7 +226,7 @@ void exibir(FILE *fp, struct funcionario *funcionario)
 int main(int argc, char **argv)
 {
     FILE *fp = NULL;
-    struct funcionario func;
+    struct funcionario func = {0};
     int opcao = 0;
 
     do

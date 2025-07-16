@@ -62,7 +62,7 @@ void exibirLista(struct Node *inicio)
  */
 void liberarLista(struct Node *inicio)
 {
-    struct Node *temp;
+    struct Node *temp = NULL;
     while (inicio != NULL)
     {
         temp = inicio;

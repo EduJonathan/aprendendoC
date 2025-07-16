@@ -130,7 +130,7 @@ void exibirFila(FilaPrioridade *fila)
 
 int main(int argc, char **argv)
 {
-    FilaPrioridade fila;
+    FilaPrioridade fila = {0}; // Inicializa a fila de prioridade
     criarFila(&fila);
 
     inserirDadoNaFila(&fila, 5);

@@ -30,7 +30,7 @@ struct BitFieldsExample
 int main(int argc, char **argv)
 {
     // Criando uma instância da estrutura
-    struct BitFieldsExample example;
+    struct BitFieldsExample example = {0};
 
     // Atribuindo valores aos campos de bits
     example.flag1 = 1; // Define flag1 como 1

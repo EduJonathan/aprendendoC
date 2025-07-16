@@ -164,7 +164,7 @@ void processarSolicitacoes(Elevador *elevador)
 
 int main(int argc, char **argv)
 {
-    Elevador elevador;
+    Elevador elevador = {0}; // Inicializa a estrutura do elevador
     inicializarElevador(&elevador);
 
     // Adicionando solicitações

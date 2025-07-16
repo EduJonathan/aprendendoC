@@ -152,7 +152,7 @@ void liberarFila(filaCircular *queue)
 int main(int argc, char **argv)
 {
     // Inicializando a fila com capacidade 5
-    filaCircular fila;
+    filaCircular fila = {0};
     inicializarFila(&fila, 5);
 
     // Insere elementos na fila

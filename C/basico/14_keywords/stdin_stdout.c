@@ -13,7 +13,7 @@
 
 int main(int argc, char **argv)
 {
-    char nome[50];
+    char nome[50] = {0}; // Buffer para armazenar o nome do usuário
 
     printf("Digite seu nome: ");
     fgets(nome, sizeof(nome), stdin); // Lê entrada do usuário

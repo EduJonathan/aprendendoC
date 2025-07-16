@@ -30,7 +30,7 @@ struct pessoa
 int main(int argc, char **argv)
 {
     // Matriz para armazenar informações de 4 pessoas (2x2)
-    struct pessoa pessoas[2][2];
+    struct pessoa pessoas[2][2] = {0}; // Inicializando com zero
 
     // Calculando o número total de elementos na matriz de pessoas
     size_t totalElementos = sizeof(pessoas) / sizeof(pessoas[0][0]);

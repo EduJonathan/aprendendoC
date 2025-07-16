@@ -27,7 +27,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    unsigned char expressao[100];
+    unsigned char expressao[100] = {0}; // Array para armazenar a expressão
 
     printf("Entre com uma expressão (por exemplo, \"(([]{})))\")\n");
     scanf("%99[^\n]", expressao); // Lê até 99 caracteres ou até encontrar uma nova linha

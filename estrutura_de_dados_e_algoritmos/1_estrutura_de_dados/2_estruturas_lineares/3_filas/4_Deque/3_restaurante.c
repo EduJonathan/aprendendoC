@@ -188,7 +188,7 @@ void limpar_deque(Deque *dq)
 
 int main(int argc, char **argv)
 {
-    Deque pedidos;
+    Deque pedidos = {0}; // Inicializa o deque de pedidos
     inicializar(&pedidos);
 
     // Adicionando pedidos

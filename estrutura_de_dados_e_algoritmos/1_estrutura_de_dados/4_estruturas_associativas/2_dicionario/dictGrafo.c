@@ -87,7 +87,7 @@ void printTabela(TabelaArestas tabela[])
 int main(int argc, char **argv)
 {
     // Cria a tabela de arestas
-    TabelaArestas tabela[TABLE_SIZE];
+    TabelaArestas tabela[TABLE_SIZE] = {0}; // Inicializa a tabela com zeros
 
     // Inicializa a tabela
     initTabela(tabela);

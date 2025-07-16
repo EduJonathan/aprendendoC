@@ -70,7 +70,7 @@ void removerElemento(lista *l, size_t indice)
  */
 bool buscarElemento(lista *l, int elemento)
 {
-    for (size_t i = 0; i < l->tamanho; i++)
+    for (size_t i = 0ull; i < l->tamanho; i++)
     {
         if (l->dados[i] == elemento)
         {
@@ -88,7 +88,7 @@ bool buscarElemento(lista *l, int elemento)
 void exibirLista(lista *l)
 {
     printf("[");
-    for (size_t i = 0; i < l->tamanho; i++)
+    for (size_t i = 0ull; i < l->tamanho; i++)
     {
         printf("%d ", l->dados[i]);
     }
@@ -97,7 +97,7 @@ void exibirLista(lista *l)
 
 int main(int argc, char **argv)
 {
-    lista l;
+    lista l = {0}; // Inicializa a lista com tamanho 0
 
     // Inicializa a lista
     iniciarLista(&l);

@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     printf("Memória ocupada por status2 : %zu bytes\n", sizeof(status2));
 
     // Cria uma instância da estrutura com campo de bits para idade
-    age Idade;
+    age Idade = {0};
 
     // Atribui e exibe a idade dentro do intervalo permitido
     Idade.idade = 4;

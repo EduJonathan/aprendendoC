@@ -109,8 +109,8 @@ void buscar(TProduto *cabeca, int codigo)
 int main(int argc, char **argv)
 {
     TProduto *cabeca = NULL;
-    char opcao;
-    int codigo_busca;
+    char opcao = '\0';
+    int codigo_busca = 0;
 
     do
     {

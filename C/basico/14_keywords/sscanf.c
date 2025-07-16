@@ -71,9 +71,9 @@ bool validar_data(int dia, int mes, int ano)
 int main(int argc, char **argv)
 {
     char entrada[] = "42 3.14 exemplo";
-    int numero;
-    float decimal;
-    char palavra[20];
+    int numero = 0;
+    float decimal = 0.0f;
+    char palavra[20] = {0};
 
     // Interpretando valores da string
     sscanf(entrada, "%d %f %s", &numero, &decimal, palavra);
@@ -84,8 +84,8 @@ int main(int argc, char **argv)
 
     printf("\n-------------------------------------\n");
 
-    char input[50];
-    int dia, mes, ano;
+    char input[50] = {0}; // Buffer para a entrada do usuário
+    int dia = 0, mes = 0, ano = 0;
 
     printf("Digite uma data no formato dd/mm/aaaa: ");
     fgets(input, sizeof(input), stdin);

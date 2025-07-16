@@ -41,7 +41,7 @@
 int main(int argc, char **argv)
 {
     // Declarando uma matriz
-    float mat[2][2];
+    float mat[2][2] = {0}; // Inicializando com zeros
 
     // Inicializando os valores um a um
     mat[0][0] = 6.5F;

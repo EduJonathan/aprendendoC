@@ -4,9 +4,9 @@
 /**
  * Algoritmo de Dijkstra - Caminho Mínimo a Partir de um Único Fonte
  *
- * O algoritmo de Dijkstra encontra o caminho mais curto entre um vértice de origem e 
- * todos os outros vértices em um grafo com arestas de **peso não-negativo**. Utiliza 
- * uma abordagem gulosa com **fila de prioridade (min-heap)** para sempre expandir o nó 
+ * O algoritmo de Dijkstra encontra o caminho mais curto entre um vértice de origem e
+ * todos os outros vértices em um grafo com arestas de **peso não-negativo**. Utiliza
+ * uma abordagem gulosa com **fila de prioridade (min-heap)** para sempre expandir o nó
  * mais próximo ainda não processado.
  *
  * Aplicações:
@@ -44,13 +44,13 @@
  */
 bool dijkstra(int graph[MAX][MAX], int n, int startNode)
 {
-    int custo[MAX][MAX]; // Matriz de custos (distâncias mínimas)
-    int distance[MAX];   // Vetor de distâncias mínimas para cada vértice
-    int pred[MAX];       // Vetor de predecessores de cada vértice
-    bool visited[MAX];   // Vetor de vértices visitados
-    int contador = 0;    // Contador de vértices visitados
-    int DistanciaMinima; // Distância mínima
-    int nextNode;        // Próximo nó a ser visitado
+    int custo[MAX][MAX] = {0}; // Matriz de custos (distâncias mínimas)
+    int distance[MAX] = {0};   // Vetor de distâncias mínimas para cada vértice
+    int pred[MAX] = {0};       // Vetor de predecessores de cada vértice
+    bool visited[MAX] = {0};   // Vetor de vértices visitados
+    int contador = 0;          // Contador de vértices visitados
+    int DistanciaMinima;       // Distância mínima
+    int nextNode;              // Próximo nó a ser visitado
 
     // Inicializando a matriz de custos
     for (int i = 0; i < n; i++)
