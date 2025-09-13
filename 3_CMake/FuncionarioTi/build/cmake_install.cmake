@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Eduardo Jonathan/Documents/Cmake/FuncionarioTi
+# Install script for directory: C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "C:/Users/Eduardo Jonathan/Documents/Cmake/FuncionarioTi/build/c_moderno_example.exe")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/c_moderno_example.exe")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/c_moderno_example.exe" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/c_moderno_example.exe")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -48,13 +48,13 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("C:/Users/Eduardo Jonathan/Documents/Cmake/FuncionarioTi/build/CMakeFiles/c_moderno_example.dir/install-cxx-module-bmi-Debug.cmake" OPTIONAL)
+  include("C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/c_moderno_example.dir/install-cxx-module-bmi-Debug.cmake" OPTIONAL)
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Eduardo Jonathan/Documents/Cmake/FuncionarioTi/build/install_local_manifest.txt"
+  file(WRITE "C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -70,6 +70,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Eduardo Jonathan/Documents/Cmake/FuncionarioTi/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

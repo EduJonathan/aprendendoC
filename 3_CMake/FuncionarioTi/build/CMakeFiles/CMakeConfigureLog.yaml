@@ -532,7 +532,7 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
       
       The C compiler identification is Clang, found in:
-        C:/Users/Eduardo Jonathan/Documents/Cmake/FuncionarioTi/build/CMakeFiles/4.1.0/CompilerIdC/a.exe
+        C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/4.1.0/CompilerIdC/a.exe
       
   -
     kind: "message-v1"
@@ -2367,8 +2367,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Eduardo Jonathan/Documents/Cmake/FuncionarioTi/build/CMakeFiles/CMakeScratch/TryCompile-8471yr"
-      binary: "C:/Users/Eduardo Jonathan/Documents/Cmake/FuncionarioTi/build/CMakeFiles/CMakeScratch/TryCompile-8471yr"
+      source: "C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/CMakeScratch/TryCompile-9utu9u"
+      binary: "C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/CMakeScratch/TryCompile-9utu9u"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd"
@@ -2377,16 +2377,16 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Eduardo Jonathan/Documents/Cmake/FuncionarioTi/build/CMakeFiles/CMakeScratch/TryCompile-8471yr'
+        Change Dir: 'C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/CMakeScratch/TryCompile-9utu9u'
         
-        Run Build Command(s): C:/mingw64/bin/ninja.exe -v cmTC_efdd1
-        [1/2] C:\\clang+llvm-21.1.0-x86_64-pc-windows-msvc\\bin\\clang.exe   -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -MD -MT CMakeFiles/cmTC_efdd1.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_efdd1.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_efdd1.dir/CMakeCCompilerABI.c.obj -c C:/mingw64/share/cmake-4.1/Modules/CMakeCCompilerABI.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\clang+llvm-21.1.0-x86_64-pc-windows-msvc\\bin\\clang.exe -nostartfiles -nostdlib -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -v -Xlinker /subsystem:console -fuse-ld=lld-link CMakeFiles/cmTC_efdd1.dir/CMakeCCompilerABI.c.obj -o cmTC_efdd1.exe -Xlinker /MANIFEST:EMBED -Xlinker /implib:cmTC_efdd1.lib -Xlinker /pdb:cmTC_efdd1.pdb -Xlinker /version:0.0     && cd ."
+        Run Build Command(s): C:/mingw64/bin/ninja.exe -v cmTC_d3bea
+        [1/2] C:\\clang+llvm-21.1.0-x86_64-pc-windows-msvc\\bin\\clang.exe   -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -MD -MT CMakeFiles/cmTC_d3bea.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_d3bea.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_d3bea.dir/CMakeCCompilerABI.c.obj -c C:/mingw64/share/cmake-4.1/Modules/CMakeCCompilerABI.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\clang+llvm-21.1.0-x86_64-pc-windows-msvc\\bin\\clang.exe -nostartfiles -nostdlib -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -v -Xlinker /subsystem:console -fuse-ld=lld-link CMakeFiles/cmTC_d3bea.dir/CMakeCCompilerABI.c.obj -o cmTC_d3bea.exe -Xlinker /MANIFEST:EMBED -Xlinker /implib:cmTC_d3bea.lib -Xlinker /pdb:cmTC_d3bea.pdb -Xlinker /version:0.0     && cd ."
         clang version 21.1.0
         Target: x86_64-pc-windows-msvc
         Thread model: posix
         InstalledDir: C:\\clang+llvm-21.1.0-x86_64-pc-windows-msvc\\bin
-         "C:\\\\clang+llvm-21.1.0-x86_64-pc-windows-msvc\\\\bin\\\\lld-link" -out:cmTC_efdd1.exe "-libpath:C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\2022\\\\BuildTools\\\\VC\\\\Tools\\\\MSVC\\\\14.44.35207\\\\lib\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\2022\\\\BuildTools\\\\VC\\\\Tools\\\\MSVC\\\\14.44.35207\\\\atlmfc\\\\lib\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Windows Kits\\\\10\\\\Lib\\\\10.0.26100.0\\\\ucrt\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Windows Kits\\\\10\\\\Lib\\\\10.0.26100.0\\\\um\\\\x64" "-libpath:C:\\\\clang+llvm-21.1.0-x86_64-pc-windows-msvc\\\\lib\\\\clang\\\\21\\\\lib\\\\windows" -nologo -debug /subsystem:console CMakeFiles/cmTC_efdd1.dir/CMakeCCompilerABI.c.obj /MANIFEST:EMBED /implib:cmTC_efdd1.lib /pdb:cmTC_efdd1.pdb /version:0.0
+         "C:\\\\clang+llvm-21.1.0-x86_64-pc-windows-msvc\\\\bin\\\\lld-link" -out:cmTC_d3bea.exe "-libpath:C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\2022\\\\BuildTools\\\\VC\\\\Tools\\\\MSVC\\\\14.44.35207\\\\lib\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\2022\\\\BuildTools\\\\VC\\\\Tools\\\\MSVC\\\\14.44.35207\\\\atlmfc\\\\lib\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Windows Kits\\\\10\\\\Lib\\\\10.0.26100.0\\\\ucrt\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Windows Kits\\\\10\\\\Lib\\\\10.0.26100.0\\\\um\\\\x64" "-libpath:C:\\\\clang+llvm-21.1.0-x86_64-pc-windows-msvc\\\\lib\\\\clang\\\\21\\\\lib\\\\windows" -nologo -debug /subsystem:console CMakeFiles/cmTC_d3bea.dir/CMakeCCompilerABI.c.obj /MANIFEST:EMBED /implib:cmTC_d3bea.lib /pdb:cmTC_d3bea.pdb /version:0.0
         
       exitCode: 0
   -

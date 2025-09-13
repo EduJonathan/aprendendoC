@@ -93,15 +93,14 @@ O CMake se integra bem com IDEs populares:
 
 ### Suponha que tenhas este diretório
 
-C:\Users\NomeUsuario\Documents\MeuProjeto\
-│
+MeuProjeto/
 ├── CMakeLists.txt
-├── src\
+├── src/
 │ └── main.cpp
-└── include\
- └── meu_header.hpp
+└── include/
+└── meu_header.hpp
 
-Estará algo como: C:\Users\NomeUsuario\Documents\>
+> O caminho do diretório no terminal estará algo como: `C:\Users\NomeUsuario\Documents\MeuProjeto\`
 
 ---
 
@@ -129,13 +128,13 @@ add_executable(meu_programa src/main.cpp)
 
 ### 1. Navegue até a pasta do projeto
 
-C:\Users\NomeUsuario\Documents> cd MeuProjeto
-C:\Users\NomeUsuario\Documents\MeuProjeto> dir
-Volume in drive C has no label.
+C:\Users\NomeUsuario\Documents> cd MeuProjeto  
+C:\Users\NomeUsuario\Documents\MeuProjeto> dir  
+Volume in drive C has no label.  
 Directory of C:\Users\NomeUsuario\Documents\MeuProjeto
 
-CMakeLists.txt
-src
+CMakeLists.txt  
+src  
 include
 
 ### 2. Crie um diretório separado para a build
@@ -145,34 +144,36 @@ C:\Users\NomeUsuario\Documents\MeuProjeto> cd build (Vá para a pasta build)
 
 ### 3. Gere os arquivos de build com CMake
 
-C:\Users\NomeUsuario\Documents\MeuProjeto\build> cmake ..
--- The C compiler identification is MSVC 19.35.32215.0
--- The CXX compiler identification is MSVC 19.35.32215.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/NomeUsuario/Documents/MeuProjeto/build
+`C:\Users\NomeUsuario\Documents\MeuProjeto\build> cmake ..`
+
+`-- The C compiler identification is MSVC 19.35.32215.0`  
+`-- The CXX compiler identification is MSVC 19.35.32215.0`  
+`-- Detecting C compiler ABI info`  
+`-- Detecting C compiler ABI info - done`  
+`-- Configuring done`  
+`-- Generating done`  
+`-- Build files have been written to: C:/Users/NomeUsuario/Documents/MeuProjeto/build`
 
 ### 4. (Opcional) Para gerar projeto Visual Studio no Windows
 
-C:\Users\NomeUsuario\Documents\MeuProjeto\build> cmake -G "Visual Studio 17 2022" ..
+C:\Users\NomeUsuario\Documents\MeuProjeto\build> `cmake -G "Visual Studio 17 2022" ..`
 
 ## 5. Compile o projeto
 
 C:\Users\NomeUsuario\Documents\MeuProjeto\build> `cmake --build .` ou `ninja` se for o caso
-[ 50%] Building CXX object CMakeFiles\meu_programa.dir\src\main.cpp.obj
-[100%] Linking CXX executable meu_programa.exe
-[100%] Built target meu_programa
+
+`[ 50%] Building CXX object CMakeFiles\meu_programa.dir\src\main.cpp.obj`  
+`[100%] Linking CXX executable meu_programa.exe`  
+`[100%] Built target meu_programa`
 
 ### 6. Execute o programa
 
-C:\Users\NomeUsuario\Documents\MeuProjeto\build> meu_programa.exe
-Olá, mundo! Meu programa C++ compilou com CMake!
+C:\Users\NomeUsuario\Documents\MeuProjeto\build> `.\meu_programa.exe`  
+**Olá, mundo! Meu programa C++ compilou com CMake!**
 
 ### 7. Limpar a build (opcional)
 
-C:\Users\NomeUsuario\Documents\MeuProjeto\build> rmdir /s /q \*
+C:\Users\NomeUsuario\Documents\MeuProjeto\build> `rmdir /s /q \*`
 
 ---
 
