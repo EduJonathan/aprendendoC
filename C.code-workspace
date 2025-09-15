@@ -61,7 +61,9 @@
       "stdint.h": "c",
       "storduid.h": "c",
       "operacoes.h": "c",
-      "stdatomic.h": "c"
+      "stdatomic.h": "c",
+      "functions.C": "cpp",
+      "funcoes_da_pilha.h": "c"
     }
   }
 }
