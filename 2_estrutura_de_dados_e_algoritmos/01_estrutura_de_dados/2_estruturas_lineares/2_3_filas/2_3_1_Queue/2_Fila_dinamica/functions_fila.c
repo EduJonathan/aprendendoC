@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-_Static_assert(sizeof(float) >= 4, "float must be at least 32 bits");
+_Static_assert(sizeof(float) >= 4, "float deve ser 32 bits");
 
 Queue *createQueue(void)
 {

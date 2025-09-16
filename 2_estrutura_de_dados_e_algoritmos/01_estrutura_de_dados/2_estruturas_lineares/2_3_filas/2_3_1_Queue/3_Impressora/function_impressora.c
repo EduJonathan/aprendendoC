@@ -1,7 +1,7 @@
-#include "impressora.h"
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include "impressora.h"
 
 _Static_assert(sizeof(int) >= 4, "int deve ter pelo menos 32 bits");
 

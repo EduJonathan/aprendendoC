@@ -1,5 +1,6 @@
 #include <math.h>
 #include <string.h>
+#include <string.h>
 #include "pessoa.h"
 
 /**

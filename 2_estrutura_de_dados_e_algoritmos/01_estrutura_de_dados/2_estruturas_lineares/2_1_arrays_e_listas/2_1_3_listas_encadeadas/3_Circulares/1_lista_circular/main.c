@@ -1,10 +1,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include "lista_circular.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
     Node *head = NULL;
     int option = 0, value = 0, position = 0;

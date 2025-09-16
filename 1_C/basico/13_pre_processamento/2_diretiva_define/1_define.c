@@ -11,17 +11,10 @@
 // IMPRIMINDO UMA MENSAGEM
 #define MSG "OI! VAMOS APRENDER O #DEFINE"
 
-// Podemos entregar um define com prefixos para determinar tamanhos
-#define SIZEARR 10U
-
-// Como para matriz também, aqui criamos para representar 4 linhas
-#define LINHAS 4U
-
-// E aqui criamos para representar 4 colunas
-#define COLUNAS 4U
-
-// Definindo uma constante simbólica
-#define PI 3.14159
+#define SIZEARR 10U // Podemos entregar um define com prefixos para determinar tamanhos
+#define LINHAS 4U   // Como para matriz também, aqui criamos para representar 4 linhas
+#define COLUNAS 4U  // E aqui criamos para representar 4 colunas
+#define PI 3.14159  // Definindo uma constante simbólica
 
 // Definindo uma macro (macro se define quando estiver entre parênteses), aqui temos uma
 // macro que calcula o quadrado de um número

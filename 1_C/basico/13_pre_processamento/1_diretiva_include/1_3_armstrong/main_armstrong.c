@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "armstrongfunc.h"
+#include "is_armstrong.h"
 
 int main(int argc, char **argv)
 {
@@ -7,8 +7,8 @@ int main(int argc, char **argv)
     printf("O numero: %d é armstrong %d\n", num, is_armstrong_number(num));
 
     /**
-     * gcc -o armstrong .\main_armstrong.c .\is_armstrong.c
-     * .\armstrong.exe
+     * gcc .\armstrong_func.c .\main_armstrong.c
+     * .\a.exe
      */
     return 0;
 }

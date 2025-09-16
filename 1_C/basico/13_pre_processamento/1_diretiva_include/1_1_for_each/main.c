@@ -32,11 +32,11 @@ int main(int argc, char **argv)
 
     printf("Teste com macro foreach (inteiros):\n");
     printf("Array: ");
-    foreach (arr_int, size_int, printf("%d ", x));
+    foreach(arr_int, size_int, printf("%d ", x));
     printf("\n");
 
     printf("Quadrados: ");
-    foreach (arr_int, size_int, printf("%d ", x * x));
+    foreach(arr_int, size_int, printf("%d ", x * x));
     printf("\n");
 
     printf("\nTeste com função for_each (inteiros):\n");
@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 
     printf("\nTeste com macro foreach (doubles):\n");
     printf("Array: ");
-    foreach (arr_double, size_double, printf("%.2f ", x));
+    foreach(arr_double, size_double, printf("%.2f ", x));
     printf("\n");
 
     printf("\nTeste com função for_each (doubles):\n");

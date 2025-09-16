@@ -63,7 +63,10 @@
       "operacoes.h": "c",
       "stdatomic.h": "c",
       "functions.C": "cpp",
-      "funcoes_da_pilha.h": "c"
+      "funcoes_da_pilha.h": "c",
+      "is_armstrong.h": "c",
+      "functions_aritmeticas.h": "c",
+      "lista_circular.h": "c"
     }
   }
 }
