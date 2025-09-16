@@ -33,10 +33,16 @@ typedef struct no
 Node *criarNo(char valor)
 {
     Node *no = (Node *)malloc(sizeof(Node)); /**< Aloca memória para um nó */
-    no->dado = valor;                        /**< Atribui o valor ao nó */
-    no->pai = NULL;                          /**< Inicializa o ponteiro para o pai como NULL */
-    no->filho = NULL;                        /**< Inicializa o ponteiro para o filho como NULL */
-    no->irmao = NULL;                        /**< Inicializa o ponteiro para o irmão como NULL */
+    if (no == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória\n");
+        exit(1);
+    }
+    
+    no->dado = valor; /**< Atribui o valor ao nó */
+    no->pai = NULL;   /**< Inicializa o ponteiro para o pai como NULL */
+    no->filho = NULL; /**< Inicializa o ponteiro para o filho como NULL */
+    no->irmao = NULL; /**< Inicializa o ponteiro para o irmão como NULL */
     return no;
 }
 
@@ -55,33 +61,31 @@ void inserirFilho(Node *pai, Node *novoNo, int posicao)
 {
     if (pai == NULL || novoNo == NULL)
     {
-        return; /**< Verifica se os ponteiros são válidos */
+        return;
     }
 
-    // Se o nó pai não tem filhos, insere o novo nó como primeiro filho
     if (pai->filho == NULL)
     {
-        // Insere o novo nó como primeiro filho
+        pai->filho = novoNo;
+    }
+    else if (posicao == 0)
+    {
+        novoNo->irmao = pai->filho;
         pai->filho = novoNo;
     }
     else
     {
-        // Percorre a lista de filhos para encontrar a posição desejada
         Node *current = pai->filho;
         int index = 0;
-
-        // Percorre a lista de irmãos até a posição desejada
         while (current->irmao != NULL && index < posicao - 1)
         {
             current = current->irmao;
             index++;
         }
-
-        // Insere o novo nó na posição desejada
         novoNo->irmao = current->irmao;
         current->irmao = novoNo;
     }
-    novoNo->pai = pai; // Define o nó pai do novo nó
+    novoNo->pai = pai;
 }
 
 /**
@@ -115,6 +119,15 @@ void imprimirArvore(Node *no, int nivel)
     imprimirArvore(no->irmao, nivel);
 }
 
+void liberarArvore(Node *no)
+{
+    if (no == NULL)
+        return;
+    liberarArvore(no->filho);
+    liberarArvore(no->irmao);
+    free(no);
+}
+
 int main(int argc, char **argv)
 {
     // Criação dos nós
@@ -146,5 +159,6 @@ int main(int argc, char **argv)
     printf("\nArvore depois de inserir 'H' sob 'B':\n");
     imprimirArvore(A, 0);
 
+    liberarArvore(A);
     return 0;
 }

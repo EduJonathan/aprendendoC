@@ -6,12 +6,11 @@
 é um conceito fundamental em programação e representa uma sequência de dados que flui de 
 uma origem para um destino.
 
-- Podemos entender uma stream como uma via de mão única por onde os dados 
-entram ou saem do programa.
+- Podemos entender uma stream como uma via de mão única por onde os dados entram ou saem do programa.
 
 🔁 Resumindo:
 
-- Uma stream é uma forma abstrata de representar a transferência de dados entre o programa 
+- Uma stream é uma forma abstrata de representar a transferência de dados entre o programa
 e o mundo exterior (como o teclado, a tela ou arquivos).
 
 ---
@@ -27,9 +26,8 @@ Ele representa dados armazenados em disco, como: ".txt", ".jpg", ".mp3", ".c", "
 
 🌊 Stream:
 
-- É uma abstração de fluxo de dados, usada pelo programa para ler ou escrever 
-dados — seja de um arquivo, teclado, tela, rede, etc. Não é o dado em si, mas 
-o caminho por onde ele flui.
+- É uma abstração de fluxo de dados, usada pelo programa para ler ou escrever dados — seja
+de um arquivo, teclado, tela, rede, etc. Não é o dado em si, mas o caminho por onde ele flui.
 
 Pode representar:
 1. Entrada: stdin (teclado), arquivo, socket...
@@ -48,23 +46,20 @@ Pode representar:
 
 ## 📁 Arquivos Em C
 
-- Em C, há duas formas principais de trabalhar com arquivos, dependendo do formato
- dos dados que você deseja manipular:
+- Em C, há duas formas principais de trabalhar com arquivos, dependendo do formato dos dados que você deseja manipular:
 
 ---
 
 📝 1. Arquivos de Texto (.txt)
 
-- São arquivos onde os dados são armazenados em formato legível, como números,
- palavras e frases — exatamente como você veria ao abrir o arquivo com um editor de texto.
+- São arquivos onde os dados são armazenados em formato legível, como números, palavras e frases
+  exatamente como você veria ao abrir o arquivo com um editor de texto.
 
 ----
 
 💾 2. Arquivos Binários (.bin)
 
-- São arquivos onde os dados são armazenados em formato binário,
- ou seja, exatamente como estão representados na memória.
-
+- São arquivos onde os dados são armazenados em formato binário, ou seja, exatamente como estão representados na memória.
 - São mais compactos e rápidos, mas não legíveis diretamente por humanos.
 
 Usado para:
@@ -90,9 +85,9 @@ novos dados ao final do arquivo. Caso não exista, ele será criado.
 
 📝 Modo de abertura de Arquivos de Texto
 
-- "r" | Abre para leitura. o arquivo deve existir, não apaga o conteúdo.
-- "w" | Abre para escrita. Cria arquivo se não existir, apaga conteúdo.
-- "a" | Abre para acrescentar (append). Cria arquivo se não existir, não apaga o conteúdo.
+- "r"  | Abre para leitura. o arquivo deve existir, não apaga o conteúdo.
+- "w"  | Abre para escrita. Cria arquivo se não existir, apaga conteúdo.
+- "a"  | Abre para acrescentar (append). Cria arquivo se não existir, não apaga o conteúdo.
 - "r+" | Leitura e escrita. Arquivo deve existir, não apaga o conteúdo.
 - "w+" | Leitura e escrita. Cria arquivo se não existir, apaga o conteúdo.
 - "a+" | Leitura e escrita (escreve sempre no fim). Cria arquivo se não existir, não apaga o conteúdo.
@@ -101,9 +96,9 @@ novos dados ao final do arquivo. Caso não exista, ele será criado.
 
 💾 Modo de abertura de Arquivos binários
 
-- "rb" | Leitura em modo binário, não cria arquivo e não apaga conteúdo.
-- "wb" | Escrita em modo binário (apaga conteúdo ou cria novo).
-- "ab" | Acrescenta dados binários no final, cria conteúdo e não apaga.
+- "rb"  | Leitura em modo binário, não cria arquivo e não apaga conteúdo.
+- "wb"  | Escrita em modo binário (apaga conteúdo ou cria novo).
+- "ab"  | Acrescenta dados binários no final, cria conteúdo e não apaga.
 - "rb+" | Leitura e escrita binária (arquivo deve existir), não cria e não apaga.
 - "wb+" | Leitura e escrita binária (cria novo ou apaga conteúdo).
 - "ab+" | Leitura e escrita binária (acrescenta no final).
@@ -112,17 +107,16 @@ novos dados ao final do arquivo. Caso não exista, ele será criado.
 
 ## 💭 CURIOSIDADE
 
-Pode-se criar arquivos .docx (Word), .xlsx (Excel), .json(Json) e outros formatos complexos em C.
+Pode-se criar arquivos .docx (Word), .xlsx (Excel), .json(JSON) e outros formatos complexos em C.
 
 MAS:
 
 - C não oferece suporte nativo para lidar diretamente com esses formatos, diferentemente 
 de outras linguagens como Python que possuem inúmeros frameworks para melhor tratamento
-como pandas, pyexcel, NumPy, etc..., pois estes arquivos são estruturados (ZIP + XML)
+como pandas, pyexcel, NumPy, python-docx, etc..., pois estes arquivos são estruturados (ZIP + XML)
 e não são simples arquivos de texto ou binários planos.
 
-- Para manipular esses formatos corretamente, você precisa usar bibliotecas externas
-ou de terceiros, como:
+- Para manipular esses formatos corretamente, você precisa usar bibliotecas externas ou de terceiros, como:
 
 1. libxml2 – para lidar com arquivos XML
 2. libzip – para manipular conteúdo compactado (.zip)

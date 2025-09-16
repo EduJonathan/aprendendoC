@@ -2,30 +2,88 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define V 5 // Número de vértices no grafo
+/**
+ * @brief Estrutura que representa um grafo não direcionado.
+ *
+ * O grafo é representado por uma matriz de adjacência dinâmica.
+ * A matriz é eficiente para grafos densos, com complexidade de espaço O(V²)
+ * e complexidade de tempo O(1) para verificar arestas.
+ */
+typedef struct Grafo
+{
+    int numVertices;  /**< Número de vértices no grafo */
+    bool **matrizAdj; /**< Matriz de adjacência */
+} Grafo;
 
 /**
- * @brief Verifica se um vértice v pode ser incluído na posição atual do caminho.
+ * @brief Cria um grafo com o número de vértices especificado.
  *
- * @param v Vértice a ser incluído no caminho.
- * @param graph Grafo representado como uma matriz de adjacência.
+ * @param numVertices Número de vértices (deve ser maior que 0).
+ * @return Ponteiro para o grafo criado ou NULL em caso de falha.
+ */
+Grafo *criarGrafo(int numVertices)
+{
+    if (numVertices <= 0)
+    {
+        fprintf(stderr, "Erro: Número de vértices deve ser maior que 0\n");
+        return NULL;
+    }
+
+    Grafo *g = (Grafo *)malloc(sizeof(Grafo));
+    if (g == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para o grafo\n");
+        return NULL;
+    }
+
+    g->numVertices = numVertices;
+    g->matrizAdj = (bool **)malloc(numVertices * sizeof(bool *));
+    if (g->matrizAdj == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para a matriz\n");
+        free(g);
+        return NULL;
+    }
+
+    for (int i = 0; i < numVertices; i++)
+    {
+        g->matrizAdj[i] = (bool *)calloc(numVertices, sizeof(bool));
+        if (g->matrizAdj[i] == NULL)
+        {
+            fprintf(stderr, "Erro: Falha na alocação de memória para a linha %d\n", i);
+            for (int j = 0; j < i; j++)
+            {
+                free(g->matrizAdj[j]);
+            }
+            free(g->matrizAdj);
+            free(g);
+            return NULL;
+        }
+    }
+    return g;
+}
+
+/**
+ * @brief Verifica se um vértice pode ser incluído no caminho.
+ *
+ * @param v Vértice a ser incluído (índice 0 a numVertices-1).
+ * @param g Grafo representado como uma matriz de adjacência.
  * @param path Caminho atual.
  * @param pos Posição atual no caminho.
- * @return Retorna true se o vértice v puder ser incluído na posição atual do caminho.
- *
- * ciclo Hamiltoniano é um caminho em um grafo que visita cada vértice exatamente uma vez e
- * retorna ao vértice inicial. O ciclo Hamiltoniano é um conceito importante em teoria dos grafos
- * e tem aplicações em várias áreas, como otimização, roteamento e problemas de planejamento.
+ * @return true se o vértice pode ser incluído, false caso contrário.
  */
-bool isSafe(int v, bool graph[V][V], int path[], int pos)
+bool isSafe(int v, Grafo *g, int path[], int pos)
 {
-    // Verifica se o vértice v está adjacente ao último vértice no caminho
-    if (graph[path[pos - 1]][v] == 0)
+    if (g == NULL || v < 0 || v >= g->numVertices || pos < 1 || pos >= g->numVertices)
     {
         return false;
     }
 
-    // Verifica se o vértice v já foi incluído no caminho
+    if (!g->matrizAdj[path[pos - 1]][v])
+    {
+        return false;
+    }
+
     for (int i = 0; i < pos; i++)
     {
         if (path[i] == v)
@@ -37,36 +95,34 @@ bool isSafe(int v, bool graph[V][V], int path[], int pos)
 }
 
 /**
- * @brief Função recursiva para encontrar um ciclo Hamiltoniano em um grafo.
+ * @brief Função recursiva para encontrar um ciclo Hamiltoniano.
  *
- * @param graph Matriz de adjacência representando o grafo.
- * @param path Vetor que será usado para armazenar o caminho do ciclo.
- * @param pos Posição atual no vetor de caminho.
- * @return Retorna true se encontrar um ciclo Hamiltoniano, caso contrário false.
+ * @param g Grafo representado como uma matriz de adjacência.
+ * @param path Vetor que armazena o caminho do ciclo.
+ * @param pos Posição atual no caminho.
+ * @return true se um ciclo Hamiltoniano é encontrado, false caso contrário.
  */
-bool hamCycleUtil(bool graph[V][V], int path[], int pos)
+bool encontrarCicloHamiltonianoUtil(Grafo *g, int path[], int pos)
 {
-    // Se todos os vértices forem incluídos no caminho
-    if (pos == V)
+    if (g == NULL)
     {
-        // Verifica se existe uma aresta entre o último vértice e o primeiro vértice
-        return graph[path[pos - 1]][path[0]] == 1;
+        return false;
     }
 
-    // Tenta incluir cada vértice no caminho
-    for (int v = 1; v < V; v++)
+    if (pos == g->numVertices)
     {
-        if (isSafe(v, graph, path, pos))
+        return g->matrizAdj[path[pos - 1]][path[0]];
+    }
+
+    for (int v = 1; v < g->numVertices; v++)
+    {
+        if (isSafe(v, g, path, pos))
         {
             path[pos] = v;
-
-            // Recursivamente tenta continuar o caminho
-            if (hamCycleUtil(graph, path, pos + 1))
+            if (encontrarCicloHamiltonianoUtil(g, path, pos + 1))
             {
                 return true;
             }
-
-            // Desfaz a escolha
             path[pos] = -1;
         }
     }
@@ -74,67 +130,156 @@ bool hamCycleUtil(bool graph[V][V], int path[], int pos)
 }
 
 /**
- * @brief Imprime um ciclo Hamiltoniano.
+ * @brief Imprime um ciclo Hamiltoniano usando caracteres (A, B, etc.).
  *
- * @param path Array contendo a sequência de vértices do ciclo Hamiltoniano.
+ * @param g Grafo.
+ * @param path Array contendo a sequência de vértices do ciclo.
  */
-void printSolution(int path[])
+void imprimirSolucao(Grafo *g, int path[])
 {
-    printf("A seguir está um ciclo Hamiltoniano:\n");
-    for (int i = 0; i < V; i++)
+    if (g == NULL)
     {
-        printf("%d ", path[i]);
+        return;
     }
 
-    // Finaliza o ciclo retornando ao primeiro vértice
-    printf("%d\n", path[0]);
+    printf("Ciclo Hamiltoniano encontrado:\n");
+    for (int i = 0; i < g->numVertices; i++)
+    {
+        printf("%c ", 'A' + path[i]);
+    }
+    printf("%c\n", 'A' + path[0]);
 }
 
 /**
- * @brief Verifica se existe um ciclo Hamiltoniano em um grafo.
+ * @brief Imprime a matriz de adjacência do grafo.
  *
- * @param graph Matriz de adjacência representando o grafo.
- * @return Retorna true se existir um ciclo Hamiltoniano, caso contrário false.
+ * @param g Grafo.
  */
-bool hamCycle(bool graph[V][V])
+void imprimirMatrizAdj(Grafo *g)
 {
-    int *path = (int *)malloc(V * sizeof(int));
-
-    // Inicializa o caminho com -1 (nenhum vértice incluído inicialmente)
-    for (int i = 0; i < V; i++)
+    if (g == NULL)
     {
-        path[i] = -1;
+        printf("Grafo vazio\n");
+        return;
     }
 
-    // Começa o caminho com o vértice 0
-    path[0] = 0;
+    printf("Matriz de Adjacência do Grafo:\n");
 
-    // Tenta encontrar o ciclo Hamiltoniano
-    if (hamCycleUtil(graph, path, 1) == false)
+    printf("X |");
+    for (int i = 0; i < g->numVertices; i++)
     {
-        printf("Não existe ciclo Hamiltoniano no grafo.\n");
-        free(path); // Libera a memória alocada
+        printf(" %c", 'A' + i);
+    }
+    printf("\n--+");
+    
+    for (int i = 0; i < g->numVertices; i++)
+    {
+        printf("--");
+    }
+    printf("\n");
+
+    for (int i = 0; i < g->numVertices; i++)
+    {
+        printf("%c |", 'A' + i);
+        for (int j = 0; j < g->numVertices; j++)
+        {
+            printf(" %d", g->matrizAdj[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+/**
+ * @brief Verifica se existe um ciclo Hamiltoniano no grafo.
+ *
+ * @param g Grafo.
+ * @return true se existe um ciclo Hamiltoniano, false caso contrário.
+ */
+bool encontrarCicloHamiltoniano(Grafo *g)
+{
+    if (g == NULL)
+    {
+        fprintf(stderr, "Erro: Grafo nulo\n");
         return false;
     }
 
-    // Caso encontre, imprime a solução
-    printSolution(path);
-    free(path); // Libera a memória alocada
+    int *path = (int *)malloc(g->numVertices * sizeof(int));
+    if (path == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para o caminho\n");
+        return false;
+    }
+
+    for (int i = 0; i < g->numVertices; i++)
+    {
+        path[i] = -1;
+    }
+    path[0] = 0;
+
+    if (!encontrarCicloHamiltonianoUtil(g, path, 1))
+    {
+        printf("Não existe ciclo Hamiltoniano no grafo.\n");
+        free(path);
+        return false;
+    }
+
+    imprimirSolucao(g, path);
+    free(path);
     return true;
+}
+
+/**
+ * @brief Libera a memória alocada para o grafo.
+ *
+ * @param g Grafo.
+ */
+void liberarGrafo(Grafo *g)
+{
+    if (g == NULL)
+    {
+        return;
+    }
+
+    for (int i = 0; i < g->numVertices; i++)
+    {
+        free(g->matrizAdj[i]);
+    }
+    free(g->matrizAdj);
+    free(g);
 }
 
 int main(int argc, char **argv)
 {
-    // Grafo de exemplo (5 vértices)
-    bool graph[V][V] = {
+    // Cria grafo com 5 vértices
+    Grafo *g = criarGrafo(5);
+    if (g == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na criação do grafo\n");
+        return EXIT_FAILURE;
+    }
+
+    // Inicializa a matriz de adjacência (grafo de exemplo)
+    bool graph[5][5] = {
         {0, 1, 0, 1, 0},
         {1, 0, 1, 1, 1},
         {0, 1, 0, 0, 1},
         {1, 1, 0, 0, 1},
         {0, 1, 1, 1, 0}};
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            g->matrizAdj[i][j] = graph[i][j];
+        }
+    }
 
-    // Chama a função hamCycle para verificar se existe um ciclo Hamiltoniano
-    hamCycle(graph);
+    // Imprime a matriz de adjacência
+    imprimirMatrizAdj(g);
 
+    // Busca ciclo Hamiltoniano
+    encontrarCicloHamiltoniano(g);
+
+    // Libera memória
+    liberarGrafo(g);
     return 0;
 }

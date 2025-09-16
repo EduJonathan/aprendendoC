@@ -115,7 +115,7 @@ Processa elementos na ordem de chegada.
 
 Para praticar e visualizar diferentes algoritmos e estruturas de dados, você pode acessar os seguintes sites interativos:
 
-### Este site oferece uma interface visual para explorar diversos algoritmos, como ordenação, busca, e estruturas de dados, permitindo ver como eles funcionam em tempo real à medida que os dados são processados
+### Estes site oferece uma interface visual para explorar diversos algoritmos, como ordenação, busca, e estruturas de dados, permitindo ver como eles funcionam em tempo real à medida que os dados são processados
 
 ### 1. [VisuAlgo](https://visualgo.net/en)
 

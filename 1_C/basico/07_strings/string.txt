@@ -1,41 +1,41 @@
 • Strings em C:
 
-Na linguagem C, strings (ou barbante, algo mais pé da letra) são conjutos do tipo
-de dado char, representadas por um array, então, vetores de caracteres que sempre
-no final o que é determinado o fim é o '\0', ou por um ponteiro como visto em 
-variaveis_formatters, a sua declaração vem apartir do tipo de dado char,
-o nome da variável e o vetor, delimitado ou não, e também pelo ponteiro algo mais próximo 
-a uma string do que realmente um vetor. 
+Em C, uma string(barbante, algo mais literal) é um conjunto de caracteres (char) 
+armazenado em um array e terminado obrigatoriamente pelo caractere nulo '\0', que
+indica o fim da sequência. Podemos manipulá-las de duas formas principais:
 
-EXE.:
-char string[] = {'O', 'l', 'á', ',' , ' ', 'm', 'u', 'n', 'd', 'o', '!', '\0'};
-char string[7] = {"String"};
-const char *string = "String!";
+1. Array de char
+
+Declara-se um vetor que guarda cada caractere e o '\0' no final.
+
+char s1[] = {'O', 'l', 'á', '\0'};
+char s2[7] = "String"; // O compilador inclui o '\0' automaticamente
+
+------------------------------------
+
+2. Ponteiro para char (string literal)
+
+Um ponteiro aponta para a região de memória onde o texto literal está armazenado.
+const char *s3 = "String!";
+Por padrão, literais são somente leitura, então use const para evitar modificações.
+
+------------------------------------
 
 • 📊 TABELA ASCII:
 
-- O ASCII (American Standard Code for Information Interchange) é um padrão de codificação
-criado na década de 1960 para a troca de informações entre diferentes computadores e sistemas.
+- ASCII: Padrão de codificação criado nos anos 1960 para troca de informações entre computadores.
 
-- Esse sistema representa caracteres alfanuméricos, sinais de pontuação e comandos
-de controle por meio de um código numérico único para cada símbolo, inicialmente variando 
-de 0 a 127. Cada caractere é armazenado utilizando 1 byte (ou seja, 8 bits), o que permite 
-a codificação de até 256 caracteres, abrangendo desde letras até sinais especiais.
+1. Representa letras, números, sinais e comandos de controle.
+2. Usa 1 byte, com códigos de 0 a 127 (ou 0 a 255 em extensões).
+3. Limitação: projetado para o inglês, não contempla acentos nem muitos símbolos.
 
-- No entanto, uma limitação importante do padrão ASCII é que ele foi desenvolvido
-com foco no idioma inglês, sem levar em conta as necessidades de outros idiomas ou 
-caracteres especiais, como acentuação, cedilhas ou símbolos de outras culturas.
-Além disso, o número de posições disponíveis (0 a 255) restringe ainda mais a inclusão
-de caracteres adicionais.
+- Evolução: Para suportar mais idiomas e caracteres surgiram outros esquemas (OEM, DBCS),
+mas o mais importante é o Unicode.
 
-- E para superar essas limitações, surgiram outros padrões de codificação, como a
-OEM(Original Equipment Manufacturer), DBCS (Double Byte Character Set) e, mais notavelmente,
-o Unicode.
+- Unicode/UTF-8: Padrão universal que abrange praticamente todos os caracteres e símbolos do mundo,
+garantindo compatibilidade global e substituindo as restrições do ASCII.
 
-- O Unicode foi criado para ser uma codificação universal e abrange um conjunto muito
-maior de caracteres. Juntamente com variações como UTF-8, ele permite a representação
-de praticamente todos os caracteres usados em diferentes linguagens e sistemas, resolvendo
-problemas de compatibilidade global.
+------------------------------------
 
 Cada caractere na tabela possue:
 • 1 sequência de binário
@@ -43,12 +43,16 @@ Cada caractere na tabela possue:
 • 1 número decimal
 • 1 número hexadecimal
 
+------------------------------------
+
 E tendo como alguns as quais não são mais utilizaveis ou não imprimíveis que vão 
 o 0 a 31 e o 127, e existem as que são utilizadas que é para impressões, sendo eles:
 
-• Sinais de controle (não-imprimíveis):
+------------------------------------
 
 - Tabela ASCII - Caracteres de Controle (0–31 e 127)
+
+• Sinais de controle (não-imprimíveis):
 
 ---------------------------------------------------------------------------------
 | Binário   | Oct | Dec | Hex | Abrev | Notação ^ | Escape | Nome               |
@@ -291,12 +295,19 @@ o 0 a 31 e o 127, e existem as que são utilizadas que é para impressões, send
 | 01111110  | 176 | 126 |  7E |   ~   |
 =======================================
 
-Entender a tabela ASCII é essencial em C pois é assim que na linguagem funciona os tipo char
-ou strings mesmo cada caractere é representados por tipos numéricos(sim, o tipo char pode ser
-representado por um tipo inteiro(int)) 8 bits (1 byte); assim como vemos na tabela ASCII,
-e lembrando todos esses sinais são caracteres estão entre aspas.
-Existem dois includes a quais nos ajudam com o tratamento de strings e caracteres na
-linguagem C sendo:
+Entender a tabela ASCII é essencial em C pois é assim que na linguagem funciona os tipo char ou strings em C,
+cada caractere de uma string é representado internamente por um código numérico da tabela ASCII, pois o tipo
+char nada mais é que um inteiro de 8 bits (1 byte). Assim, 'A', '0', '!' etc. são armazenados como seus valores
+inteiros correspondentes. Exemplo: 'A' → 65 em decimal.
 
-#include <string.h> // biblioteca que suas funções tratam-se de strings
-#include <ctype.h> // conttém funções declaradas para teste de caracteres, retornando sempre um valor int como argumento
+------------------------------------
+
+❗ Curiosidade:
+
+A tabela ASCII em si não existe, é somente uma organização, um mapeamento para representação de cada caractere
+
+------------------------------------
+
+Para manipular strings e caracteres, a linguagem fornece duas bibliotecas padrão importantes:
+#include <string.h>  // Funções para operações com strings (strlen, strcpy, strcmp, etc.)
+#include <ctype.h>   // Funções para teste/conversão de caracteres (isalpha, isdigit, toupper, etc.)

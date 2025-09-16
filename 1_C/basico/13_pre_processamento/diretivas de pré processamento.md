@@ -25,7 +25,7 @@ cada uma com um papel fundamental. Abaixo, descrevemos as oito etapas principais
 O pré-processador prepara o código-fonte antes da compilação, executando as seguintes ações:
 
 - Remove comentários, substituindo-os por espaços em branco.
-- Junta linhas separadas por sequências de escape (ex.: \).
+- Junta linhas separadas por sequências de escape (ex.: \\).
 - Expande macros definidas com #define.
 - Processa diretivas, como #include (para incluir arquivos) ou #ifdef (para compilação condicional).
 
@@ -41,7 +41,7 @@ int main()
   return 0;
 }
 
-Use gcc -E arquivo.c para visualizar o resultado do pré-processamento.
+# Use `gcc -E arquivo.c` para visualizar o resultado do pré-processamento.
 ```
 
 ---
@@ -54,7 +54,8 @@ O compilador converte o código em tokens, que são as menores unidades de signi
 - Operadores (ex.: +, =).
 - Identificadores (ex.: main, variavel).
 
-Essa etapa verifica se o código segue as regras básicas da linguagem. Exemplo de tokens para int x = 5;:
+Essa etapa verifica se o código segue as regras básicas da linguagem.
+Exemplo de tokens para `int x = 5;`:
 
 - int (palavra-chave)
 - x (identificador)
@@ -64,14 +65,14 @@ Essa etapa verifica se o código segue as regras básicas da linguagem. Exemplo 
 
 ### 3. 📐 Análise Sintática
 
-O compilador verifica se os tokens formam estruturas válidas, como expressões ou blocos de código
-corretos. Erros como parênteses ou chaves mal colocados são detectados aqui.
+O compilador verifica se os tokens formam estruturas válidas, como expressões ou blocos de código corretos.
+Erros como parênteses ou chaves mal colocados são detectados aqui.
 
 ```bash
 # Exemplo de erro:
 int main()
 {
-    printf("Erro de sintaxe" // Erro: falta o fechamento de parênteses
+  printf("Erro de sintaxe" # // Erro: falta o fechamento de parênteses
 }
 ```
 
@@ -94,11 +95,9 @@ int main()
 
 ### 5. 🔄 Geração de Código Intermediário
 
-O código é convertido em uma representação intermediária (ex.: arquivos .o ou .obj),
-que é independente da arquitetura da máquina. Essa etapa otimiza o código para as próximas fases,
-mas o resultado ainda não é executável. Exemplo:
-
-`gcc -c arquivo.c -o arquivo.o` Gera um arquivo objeto (.o) a partir do código-fonte.
+O código é convertido em uma representação intermediária (ex.: arquivos .o ou .obj), que é independente da
+arquitetura da máquina. Essa etapa otimiza o código para as próximas fases, mas o resultado ainda não é executável.  
+Exemplo: `gcc -c arquivo.c -o arquivo.o` Gera um arquivo objeto (.o) a partir do código-fonte.
 
 ---
 
@@ -112,17 +111,16 @@ O compilador melhora o desempenho do código intermediário, aplicando técnicas
 
 Exemplo: Use flags (`-O2` ou `-O3`) de otimização para melhorar a eficiência: `gcc -O2 arquivo.c -o programa`
 
--O2: Otimização moderada.
--O3: Otimização agressiva.
+`-O2`: Otimização moderada.  
+`-O3`: Otimização agressiva.
 
 ---
 
-### 7. 🏗️ Geração de Código Objeto
+### 7. 🏗️ Geração de Código Objeto Para Determinada Arquitetura
 
 O código intermediário é traduzido em código objeto, específico para a arquitetura do processador
-(ex.: x86, ARM). O resultado (arquivos .o ou .obj) contém código binário, mas ainda não é executável. Exemplo:
-
-`gcc -c arquivo.c -o arquivo.o`
+(ex.: x86, ARM). O resultado (arquivos `.o` ou `.obj`) contém código binário, mas ainda não é executável.  
+Exemplo: `gcc -c arquivo.c -o arquivo.o`
 
 ---
 
@@ -150,7 +148,7 @@ gcc arquivo.o -o programa
 
 Não há um termo `próprio` em português que substitua completamente `linkage` sem adotar
 um anglicismo, as `linkagem` é o padrão técnico mais aceito e usado em português.
-Se você quiser uma alternativa, `ligação` ou `resolução de referências` podem ser usadas,
+`ligação` ou `resolução de referências` são alternativas que podem ser usadas,
 mas `linkagem` é mais clara e idiomática no contexto de programação.
 
 ---
@@ -169,8 +167,8 @@ gcc nomeDoArquivo.c -o nomeParaArquivoExecutavel
 # ou
 gcc -o nomeParaArquivoExecutavel nomeDoArquivo.c
 
-./nomeExecutavel      # Linux / macOS
-.\nomeExecutavel.exe  # Windows
+./nomeExecutavel     # Linux / macOS
+.\nomeExecutavel.exe # Windows
 ```
 
 Estes passos geram e executa o arquivo executável dentro do terminal.
@@ -180,6 +178,9 @@ Estes passos geram e executa o arquivo executável dentro do terminal.
 - `gcc` ou `g++` São os compiladores respectivos para C(gcc) e C++(g++).
 - `arquivo.c` ou `arquivo.cpp` É o arquivo de código-fonte que você deseja compilar.
 - `-o` arquivo: Especifica o nome do arquivo de saída.
+
+Já em `gcc -c arquivo.c -o arquivo.o`
+
 - `-c` Flag que compila o código-fonte sem gerar o executável, apenas o (`.o`).
 
 ---
@@ -204,25 +205,27 @@ gcc "arquivo c.c" -o programa # Aspas protegem o nome, mas evite usar
 
 ```bash
 # Este comando gera um executável chamado programa.c
-# MAS, se já houver um arquivo programa.c no diretório,
-# ele será sobrescrito pelo binário gerado!
+# MAS, se houver um arquivo-fonte chamado programa.c,
+# ele será sobrescrito pelo executável gerado, o que é catastrófico, pois
+# você perde o código-fonte original ele será sobrescrito pelo binário gerado!
 gcc arquivo_c.c -o programa.txt
 # ou
 gcc arquivo_c.c -o programa.c
-
-# Gera um objeto chamado programa.o
-# Se já existir um programa.o importante, ele será perdido.
-gcc -c arquivo.c -o programa.o
 ```
 
----
+```bash
+# Cuidado ao compilar com, a intenção provavelmente era compilar "arquivoB.c",
+# mas a opção -o está mandando gerar um executável chamado "arquivoA.c".
+# Então em "arquivoA.c" deve ser o nome do executável de imediato em vez do arquivo.
+gcc -o arquivoA.c arquivoB.c
+```
 
-## IMPORTANTE
-
-- O processo de compilação é composto por diversas etapas, cada uma com papel fundamental
-  na transformação do código-fonte em um programa executável. Com o uso adequado de diretivas
-  e flags (que ainda há muitas a ser explorada), podemos está otimizando, condicionando e
-  modulando seu código conforme necessário.
+```bash
+# Outro caso é: Este comando compila arquivo.c em código objeto (.o) ao invés de um executável.
+# Mas, se você já tinha um arquivo programa.o importante (ex: objeto de outro módulo),
+# ele será substituído.
+gcc -c arquivo.c -o programa.o
+```
 
 ---
 

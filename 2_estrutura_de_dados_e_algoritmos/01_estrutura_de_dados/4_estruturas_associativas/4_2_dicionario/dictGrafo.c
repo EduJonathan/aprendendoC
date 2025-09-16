@@ -2,104 +2,213 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TABLE_SIZE 26 // A-Z => 26 letras
-#define VERTICES 10   // Max vertices A-J
+#define VERTICES 10
 
-/**< Estrutura que representa uma aresta */
+/**
+ * @struct Aresta
+ * @brief Estrutura que representa uma aresta em um grafo direcionado.
+ *
+ * Contém o vértice de destino (caractere), o peso da aresta e um ponteiro para a próxima aresta.
+ */
 typedef struct Aresta
 {
-    char destino;        /**< Destino da aresta */
+    char destino;        /**< Vértice de destino (A a J) */
     int peso;            /**< Peso da aresta */
     struct Aresta *prox; /**< Ponteiro para a próxima aresta */
-} aresta;
+} Aresta;
 
-/**< Estrutura para representar um dicionário (hash table) de arestas */
-typedef struct TabelaArestas
+/**
+ * @struct Grafo
+ * @brief Estrutura que representa um grafo direcionado como uma tabela de hash.
+ *
+ * Usa listas de adjacência para armazenar arestas, com complexidade de espaço O(V + E)
+ * e complexidade de tempo O(V) para verificar arestas no pior caso.
+ */
+typedef struct Grafo
 {
-    aresta *adj; /**< Lista de arestas (para cada vértice) */
-} TabelaArestas;
+    int numVertices; /**< Número de vértices (máximo 26, A-Z) */
+    Aresta **adj;    /**< Array de listas de adjacência */
+} Grafo;
 
-/**< Função de hash para mapear o vértice (letra) para um índice */
+/**
+ * @brief Calcula o índice de um vértice usando uma função hash simples.
+ *
+ * @param vertice Vértice (caractere A a Z).
+ * @return Índice (0 a 25) ou -1 se inválido.
+ */
 int hash(char vertice)
 {
-    // Mapeia 'A' para 0, 'B' para 1, ..., 'J' para 9
+    if (vertice < 'A' || vertice > 'Z')
+    {
+        return -1;
+    }
     return vertice - 'A';
 }
 
 /**
- * @brief Inicializa o dicionário (hash table)
+ * @brief Cria um grafo com o número de vértices especificado.
  *
- * @param tabela Ponteiro para a tabela de arestas
+ * @param numVertices Número de vértices (máximo 26).
+ * @return Ponteiro para o grafo ou NULL em caso de falha.
  */
-void initTabela(TabelaArestas tabela[])
+Grafo *criarGrafo(int numVertices)
 {
-    for (int i = 0; i < TABLE_SIZE; i++)
+    if (numVertices <= 0 || numVertices > 26)
     {
-        tabela[i].adj = NULL;
+        fprintf(stderr, "Erro: Número de vértices deve ser entre 1 e 26\n");
+        return NULL;
     }
-}
 
-/**
- * @brief Adiciona uma aresta ao grafo
- *
- * @param tabela Ponteiro para a tabela de arestas
- * @param origem Vértice de origem da aresta
- * @param destino Vértice de destino da aresta
- * @param peso Peso da aresta
- */
-void addAresta(TabelaArestas tabela[], char origem, char destino, int peso)
-{
-    int indice = hash(origem); // Calcula o índice usando o hash
-
-    aresta *novaAresta = (aresta *)malloc(sizeof(aresta)); // Aloca memória para a nova aresta
-    novaAresta->destino = destino;                         // Define o destino da aresta
-    novaAresta->peso = peso;                               // Define o peso da aresta
-    novaAresta->prox = tabela[indice].adj;                 // A nova aresta aponta para o que já existia
-    tabela[indice].adj = novaAresta;                       // Atualiza a lista de arestas para o vértice de origem
-}
-
-/**
- * @brief Imprime o grafo (hash table de arestas)
- *
- * @param tabela Ponteiro para a tabela de arestas
- */
-void printTabela(TabelaArestas tabela[])
-{
-    for (int i = 0; i < TABLE_SIZE; i++)
+    Grafo *g = (Grafo *)malloc(sizeof(Grafo));
+    if (g == NULL)
     {
-        if (tabela[i].adj != NULL)
+        fprintf(stderr, "Erro: Falha na alocação de memória para o grafo\n");
+        return NULL;
+    }
+
+    g->numVertices = numVertices;
+    g->adj = (Aresta **)calloc(numVertices, sizeof(Aresta *));
+    if (g->adj == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para as listas de adjacência\n");
+        free(g);
+        return NULL;
+    }
+
+    return g;
+}
+
+/**
+ * @brief Adiciona uma aresta direcionada ao grafo.
+ *
+ * @param g Grafo.
+ * @param origem Vértice de origem (A a A+numVertices-1).
+ * @param destino Vértice de destino (A a A+numVertices-1).
+ * @param peso Peso da aresta.
+ * @return 1 se adicionada, 0 se inválida ou falha.
+ */
+int adicionarAresta(Grafo *g, char origem, char destino, int peso)
+{
+    if (g == NULL || origem < 'A' || origem >= 'A' + g->numVertices ||
+        destino < 'A' || destino >= 'A' + g->numVertices || origem == destino)
+    {
+        fprintf(stderr, "Erro: Grafo nulo, vértices inválidos ou laço detectado\n");
+        return 0;
+    }
+
+    int indice = hash(origem);
+    if (indice < 0)
+    {
+        fprintf(stderr, "Erro: Vértice de origem inválido\n");
+        return 0;
+    }
+
+    Aresta *atual = g->adj[indice];
+    while (atual)
+    {
+        if (atual->destino == destino)
         {
-            printf("Vértice %c: ", 'A' + i); // Vértice representado por um caractere
-
-            aresta *arestas = tabela[i].adj; // Ponteiro para a lista de arestas
-
-            // Percorre a lista de arestas
-            while (arestas != NULL)
-            {
-                printf("-> %c (Peso: %d) ", arestas->destino, arestas->peso);
-                arestas = arestas->prox;
-            }
-            printf("\n");
+            return 0; // Evita duplicatas
         }
+        atual = atual->prox;
     }
+
+    Aresta *novaAresta = (Aresta *)malloc(sizeof(Aresta));
+    if (novaAresta == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para a aresta\n");
+        return 0;
+    }
+
+    novaAresta->destino = destino;
+    novaAresta->peso = peso;
+    novaAresta->prox = g->adj[indice];
+    g->adj[indice] = novaAresta;
+    return 1;
+}
+
+/**
+ * @brief Imprime as listas de adjacência do grafo.
+ *
+ * @param g Grafo.
+ */
+void imprimirListasAdj(Grafo *g)
+{
+    if (g == NULL)
+    {
+        printf("Grafo vazio\n");
+        return;
+    }
+
+    for (int i = 0; i < g->numVertices; i++)
+    {
+        printf("Vértice %c: ", 'A' + i);
+        Aresta *atual = g->adj[i];
+        if (atual == NULL)
+        {
+            printf("[]");
+        }
+        else
+        {
+            printf("[");
+            while (atual)
+            {
+                printf("%c(%d)", atual->destino, atual->peso);
+                atual = atual->prox;
+                if (atual)
+                {
+                    printf(", ");
+                }
+            }
+            printf("]");
+        }
+        printf("\n");
+    }
+}
+
+/**
+ * @brief Libera a memória alocada para o grafo.
+ *
+ * @param g Grafo.
+ */
+void liberarGrafo(Grafo *g)
+{
+    if (g == NULL)
+    {
+        return;
+    }
+
+    for (int i = 0; i < g->numVertices; i++)
+    {
+        Aresta *atual = g->adj[i];
+        while (atual)
+        {
+            Aresta *temp = atual;
+            atual = atual->prox;
+            free(temp);
+        }
+        g->adj[i] = NULL;
+    }
+    free(g->adj);
+    free(g);
 }
 
 int main(int argc, char **argv)
 {
-    // Cria a tabela de arestas
-    TabelaArestas tabela[TABLE_SIZE] = {0}; // Inicializa a tabela com zeros
+    Grafo *g = criarGrafo(VERTICES);
+    if (g == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na criação do grafo\n");
+        return EXIT_FAILURE;
+    }
 
-    // Inicializa a tabela
-    initTabela(tabela);
+    adicionarAresta(g, 'A', 'B', 5);
+    adicionarAresta(g, 'A', 'C', 3);
+    adicionarAresta(g, 'B', 'C', 2);
+    adicionarAresta(g, 'C', 'A', 7);
 
-    // Adiciona algumas arestas ao grafo
-    addAresta(tabela, 'A', 'B', 5);
-    addAresta(tabela, 'A', 'C', 3);
-    addAresta(tabela, 'B', 'C', 2);
-    addAresta(tabela, 'C', 'A', 7);
+    imprimirListasAdj(g);
 
-    // Imprime o grafo
-    printTabela(tabela);
-
+    liberarGrafo(g);
     return 0;
 }

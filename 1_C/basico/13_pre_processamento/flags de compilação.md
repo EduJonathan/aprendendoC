@@ -103,8 +103,11 @@ gcc -O3 arquivo.c -o programa
 gcc -Os arquivo.c -o programa
 ```
 
-**Nota**: Algumas flags, como `-O0` e `-O3`, são mutuamente exclusivas, pois definem níveis de otimização diferentes.
-Sempre verifique a documentação do compilador para combinações específicas.
+### 📩 Nota
+
+Algumas flags, como `-O0` e `-O3`, são mutuamente exclusivas, pois definem
+níveis de otimização diferentes. Sempre verifique a documentação do compilador
+para combinações específicas, o que acompanha no começo é o caractere `O`.
 
 ---
 
@@ -144,6 +147,20 @@ gcc -Winit-self arquivo.c -o programa
 
 # Habilitar OpenMP
 gcc -fopenmp arquivo.c -o programa
+```
+
+```bash
+#include <omp.h>
+#include <stdio.h>
+
+int main()
+{
+  #pragma omp parallel
+  printf("Thread %d\n", omp_get_thread_num());
+  return 0;
+}
+
+gcc -fopenmp paralelo.c -o paralelo
 ```
 
 ---
@@ -213,20 +230,23 @@ gcc -Winit-self arquivo.c -o programa
 - `Wno-init-self`: Auto-inicialização código que precisa ser compatível.
 
 ```bash
-# Variáveis sombreadas
-gcc -Wshadow arquivo.c -o programa
+# Suprime aviso de parâmetros não usados (callbacks, implementações parciais)
+gcc -Wno-unused-parameter arquivo.c -o programa
 
-# Conversões implícitas perigosas
-gcc -Wconversion arquivo.c -o programa
+# Suprime aviso de variáveis não usadas (variáveis para debug futuro)
+gcc -Wno-unused-variable arquivo.c -o programa
 
-# Variáveis não inicializadas
-gcc -Wuninitialized arquivo.c -o programa
+# Suprime aviso de funções não usadas (funções de biblioteca não chamadas)
+gcc -Wno-unused-function arquivo.c -o programa
 
-# Possível uso não inicializado
-gcc -Wmaybe-uninitialized arquivo.c -o programa
+# Suprime aviso de variáveis não inicializadas (código legado com inicialização complexa)
+gcc -Wno-uninitialized arquivo.c -o programa
 
-# Auto-inicialização
-gcc -Winit-self arquivo.c -o programa
+# Suprime aviso de inicialização incerta (fluxos condicionais complexos)
+gcc -Wno-maybe-uninitialized arquivo.c -o programa
+
+# Suprime aviso de auto-inicialização (código que precisa ser compatível)
+gcc -Wno-init-self arquivo.c -o programa
 ```
 
 ---
@@ -276,6 +296,43 @@ gcc -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -o programa arquivo
 gcc -Wall -Wextra -g -O0 -o programa_dev arquivo.c    # Desenvolvimento
 gcc -Wall -Wextra -O2 -o programa_test arquivo.c      # Testes
 gcc -O2 -o programa_final arquivo.c                   # Produção
+
+# Durante desenvolvimento - todos os avisos ativos
+gcc -Wall -Wextra -Wshadow -Wconversion -Wuninitialized arquivo.c -o programa
+
+# Para produção - suprime avisos menos críticos
+gcc -Wall -Wno-unused-parameter -Wno-unused-variable arquivo.c -o programa
+
+# Código legado com muitos falsos positivos
+gcc -Wall -Wno-uninitialized -Wno-maybe-uninitialized arquivo.c -o programa
+```
+
+## ⚠️ Cuidados Importantes
+
+- Use -Wall -Wextra primeiro: Veja todos os avisos antes de suprimir qualquer um suprima
+  seletivamente: Não use -w (que suprime TODOS os avisos).
+- Documente o motivo: Comente por que cada aviso está sendo suprimido
+- Prefira corrigir no código:
+
+```bash
+# // Em vez de suprimir -Wunused-parameter:
+
+void callback(int param)
+{
+  (void)param;  # // Solução no código - melhor prática
+}
+```
+
+```bash
+# 1. Primeiro compile com todos os avisos
+gcc -Wall -Wextra -Wshadow -Wconversion arquivo.c -o programa
+
+# 2. Analise cada aviso e decida: corrigir ou suprimir?
+# 3. Se necessário, suprima avisos específicos
+gcc -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable arquivo.c -o programa
+
+# 4. Para produção, considere -Werror para tratar warnings como errors
+gcc -Wall -Wextra -Werror arquivo.c -o programa
 ```
 
 ---
@@ -301,8 +358,8 @@ gcc -O2 -o programa_final arquivo.c                   # Produção
 ## CONCLUSÃO
 
 assim sucessivamente(existem várias flags que você poderá captar ao decorrer de seu ensino,
-aqui eu citei apenas para os mais conhecidos e para se ter uma base). Além de flags que não foram citadas
-como:
+aqui eu citei apenas para os mais conhecidos e para se ter uma base). Além de flags que
+não foram citadas. Exemplo:
 
 - `-lm`: Vincula a biblioteca matemática (necessária para funções como `sin`, `cos`, etc.).
 - `-L caminho`: Especifica um diretório para buscar bibliotecas externas.

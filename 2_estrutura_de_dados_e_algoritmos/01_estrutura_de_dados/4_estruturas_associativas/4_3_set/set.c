@@ -1,102 +1,121 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
-
-/**
- * sets (ou conjunto): É uma estrutura de dados que armazena elementos únicos e permite
- * operações como união, interseção e diferença. Ele é frequentemente usado quando a unidade
- * de dados importa, mas a ordem e duplicação não são importantes.
- * É uma estrutura útil em várias aplicações, como quando é necessário garantir que não
- * haja elementos repetidos ou ao realizar operações envolvendo conjuntos de dados.
- * Os conjuntos podem ser representados por arrays ou listas encadeadas.
- * Conjuntos também podem ser implementados usando estruturas de dados como hash tables.
- *
- * OPERAÇÕES
- * (inserção: Adicionar um elemento ao conjunto,
- * exclusão: Remover um elemento do conjunto,
- * busca: Verificar se um determinado elemento existe no conjunto,
- * união: Combina os elementos de dois conjuntos,
- * interseção: Retorna os elementos que estão em ambos os conjuntos,
- * diferença: Retorna os elementos que estão em um conjunto mas não no outro.
- * e diferença simetrica: Retorna os elementos que estão em um dos conjuntos, mas não em ambos).
- */
 
 #define MAX_ELEMENTOS 10
 
-#ifndef SET_H
-#define SET_H
+/**
+ * @struct Conjunto
+ * @brief Estrutura que representa um conjunto de inteiros.
+ *
+ * Armazena elementos únicos em um array dinâmico, com complexidade O(n) para inserção e busca
+ * devido à verificação de duplicatas. O tamanho máximo é definido na criação.
+ */
+typedef struct Conjunto
+{
+    int *elementos;    /**< Array dinâmico de elementos */
+    size_t tamanho;    /**< Número de elementos atuais */
+    size_t capacidade; /**< Capacidade máxima do conjunto */
+} Conjunto;
 
 /**
- * @struct set
- * @brief Estrutura que representa um conjunto (set) de inteiros.
+ * @brief Cria um conjunto com a capacidade especificada.
  *
- * O conjunto é limitado a um tamanho máximo de elementos definidos pela constante MAX_ELEMENTOS.
- * Ele armazena os elementos de maneira não ordenada e não permite duplicatas.
+ * @param capacidade Tamanho máximo do conjunto (deve ser maior que 0).
+ * @return Ponteiro para o conjunto criado ou NULL em caso de falha.
  */
-typedef struct set
+Conjunto *criarConjunto(size_t capacidade)
 {
-    int elementos[MAX_ELEMENTOS]; /**< Array que armazena os elementos do conjunto. */
-    size_t tamanho;               /**< Número de elementos atualmente no conjunto. */
-} Set;
+    if (capacidade == 0)
+    {
+        fprintf(stderr, "Erro: Capacidade deve ser maior que 0\n");
+        return NULL;
+    }
 
-#endif
+    Conjunto *s = (Conjunto *)malloc(sizeof(Conjunto));
+    if (s == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para o conjunto\n");
+        return NULL;
+    }
+
+    s->elementos = (int *)calloc(capacidade, sizeof(int));
+    if (s->elementos == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para os elementos\n");
+        free(s);
+        return NULL;
+    }
+
+    s->tamanho = 0;
+    s->capacidade = capacidade;
+    return s;
+}
 
 /**
  * @brief Inicializa o conjunto, configurando o tamanho para 0.
  *
- * Esta função prepara o conjunto para ser usado, inicializando o tamanho do conjunto como 0.
- *
- * @param s Ponteiro para o conjunto a ser inicializado.
+ * @param s Ponteiro para o conjunto.
  */
-void inicializar(Set *s)
+void inicializarConjunto(Conjunto *s)
 {
+    if (s == NULL)
+    {
+        fprintf(stderr, "Erro: Conjunto nulo\n");
+        return;
+    }
     s->tamanho = 0;
 }
 
 /**
- * @brief Adiciona um novo elemento ao conjunto.
+ * @brief Adiciona um elemento ao conjunto.
  *
- * Se o elemento já existir no conjunto, a função retorna `false` (não adiciona).
- * Se o conjunto não estiver cheio e o elemento não existir, ele é adicionado ao
- * conjunto e a função retorna `true`.
- *
- * @param s Ponteiro para o conjunto onde o elemento será adicionado.
- * @param elemento O elemento a ser adicionado ao conjunto.
- * @return `true` se o elemento foi adicionado com sucesso, `false` caso contrário.
+ * @param s Conjunto.
+ * @param elemento Elemento a ser adicionado.
+ * @return true se adicionado, false se já existe ou o conjunto está cheio.
  */
-bool adicionar(Set *s, int elemento)
+bool adicionarElemento(Conjunto *s, int elemento)
 {
-    // Verifica se o elemento já está presente no conjunto
-    for (int i = 0; i < s->tamanho; i++)
+    if (s == NULL)
+    {
+        fprintf(stderr, "Erro: Conjunto nulo\n");
+        return false;
+    }
+
+    for (size_t i = 0; i < s->tamanho; i++)
     {
         if (s->elementos[i] == elemento)
         {
-            return false;
+            return false; // Elemento já existe
         }
     }
 
-    // Verifica se o conjunto não está cheio
-    if (s->tamanho < MAX_ELEMENTOS)
+    if (s->tamanho >= s->capacidade)
     {
-        s->elementos[s->tamanho] = elemento;
-        s->tamanho++;
-        return true;
+        fprintf(stderr, "Erro: Conjunto cheio\n");
+        return false;
     }
-    return false;
+
+    s->elementos[s->tamanho] = elemento;
+    s->tamanho++;
+    return true;
 }
 
 /**
- * @brief Verifica se um elemento está presente no conjunto.
+ * @brief Verifica se um elemento está no conjunto.
  *
- * A função percorre os elementos do conjunto e retorna `true` se o elemento for encontrado.
- * Caso contrário, retorna `false`.
- *
- * @param s Ponteiro para o conjunto onde a busca será realizada.
- * @param elemento O elemento a ser buscado no conjunto.
- * @return `true` se o elemento estiver presente no conjunto, `false` caso contrário.
+ * @param s Conjunto.
+ * @param elemento Elemento a ser buscado.
+ * @return true se o elemento está presente, false caso contrário.
  */
-bool contem(Set *s, int elemento)
+bool contemElemento(Conjunto *s, int elemento)
 {
-    for (int i = 0; i < s->tamanho; i++)
+    if (s == NULL)
+    {
+        return false;
+    }
+
+    for (size_t i = 0; i < s->tamanho; i++)
     {
         if (s->elementos[i] == elemento)
         {
@@ -109,19 +128,20 @@ bool contem(Set *s, int elemento)
 /**
  * @brief Imprime os elementos do conjunto.
  *
- * A função imprime todos os elementos do conjunto no formato de um conjunto matemático,
- * com os elementos separados por vírgula e espaços.
- *
- * @param s Ponteiro para o conjunto a ser impresso.
+ * @param s Conjunto.
  */
-void imprimir(Set *s)
+void imprimirConjunto(Conjunto *s)
 {
-    printf("{");
+    if (s == NULL || s->tamanho == 0)
+    {
+        printf("{}\n");
+        return;
+    }
 
-    for (int i = 0; i < s->tamanho; i++)
+    printf("{");
+    for (size_t i = 0; i < s->tamanho; i++)
     {
         printf("%d", s->elementos[i]);
-
         if (i < s->tamanho - 1)
         {
             printf(", ");
@@ -130,25 +150,43 @@ void imprimir(Set *s)
     printf("}\n");
 }
 
+/**
+ * @brief Libera a memória alocada para o conjunto.
+ *
+ * @param s Conjunto.
+ */
+void liberarConjunto(Conjunto *s)
+{
+    if (s == NULL)
+    {
+        return;
+    }
+
+    free(s->elementos);
+    free(s);
+}
+
 int main(int argc, char **argv)
 {
-    Set set = {0}; // Declara e inicializa o conjunto
+    Conjunto *s = criarConjunto(MAX_ELEMENTOS);
+    if (s == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na criação do conjunto\n");
+        return EXIT_FAILURE;
+    }
 
-    // Inicializa o conjunto
-    inicializar(&set);
+    inicializarConjunto(s);
 
-    // Adiciona elementos ao conjunto
-    adicionar(&set, 1);
-    adicionar(&set, 2);
-    adicionar(&set, 3);
+    adicionarElemento(s, 1);
+    adicionarElemento(s, 2);
+    adicionarElemento(s, 3);
 
-    // Imprime o conjunto
-    imprimir(&set);
+    imprimirConjunto(s);
 
-    // Verifica a presença de elementos no conjunto
-    printf("Contem 1? %s\n", contem(&set, 1) ? "Sim" : "Nao");
-    printf("Contem 10? %s\n", contem(&set, 10) ? "Sim" : "Nao");
-    printf("Contem 3? %s\n", contem(&set, 3) ? "Sim" : "Nao");
+    printf("Contém 1? %s\n", contemElemento(s, 1) ? "Sim" : "Não");
+    printf("Contém 10? %s\n", contemElemento(s, 10) ? "Sim" : "Não");
+    printf("Contém 3? %s\n", contemElemento(s, 3) ? "Sim" : "Não");
 
+    liberarConjunto(s);
     return 0;
 }

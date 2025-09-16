@@ -8,134 +8,199 @@
 #define ARESTA_H
 
 /**
- * Estrutura que representa uma aresta
+ * @brief Estrutura que representa uma aresta em um grafo direcionado.
  *
- * Pesos são usados para representar a força ou a capacidade de uma aresta
- * em um grafo. Eles podem ser usados para representar distâncias, custos, ou
- * qualquer outra medida que faça sentido no contexto do grafo.
+ * Contém o vértice de destino (caractere), o peso da aresta e um ponteiro para a próxima aresta.
  */
 typedef struct Aresta
 {
-    char destino;        /**< Destino da aresta */
-    int peso;            /**< Peso da aresta */
+    char destino;        /**< Vértice de destino da aresta (A a J) */
+    int peso;            /**< Peso da aresta (ex.: distância ou custo) */
     struct Aresta *prox; /**< Ponteiro para a próxima aresta */
-} aresta;
+} Aresta;
 
 #endif
 
 #ifndef GRAFO_H
 #define GRAFO_H
 
-/**< Estrutura que representa um grafo */
+/**
+ * @brief Estrutura que representa um grafo direcionado.
+ *
+ * O grafo é composto por um número de vértices e um array de listas de adjacência.
+ * A lista de adjacência é eficiente para grafos esparsos, com complexidade de espaço O(V + E)
+ * e complexidade de tempo O(V) para verificar arestas no pior caso.
+ */
 typedef struct Grafo
 {
-    aresta *adj[VERTICES]; /**< Matriz de adjacência */
-} grafo;
+    int numVertices; /**< Número de vértices no grafo */
+    Aresta **adj;    /**< Array de listas de adjacência */
+} Grafo;
 
 #endif
 
 /**
- * @brief Inicializa o grafo
+ * @brief Cria um novo grafo com o número de vértices especificado.
  *
- * Função para inicializar o grafo
+ * Aloca memória para o grafo e inicializa as listas de adjacência com NULL.
  *
- * @param g Ponteiro para o grafo
+ * @param numVertices Número de vértices (deve ser maior que 0).
+ * @return Ponteiro para o grafo criado ou NULL em caso de falha na alocação.
  */
-void initGrafo(grafo *g)
+Grafo *criarGrafo(int numVertices)
 {
-    for (int i = 0; i < VERTICES; i++)
+    if (numVertices <= 0)
+    {
+        fprintf(stderr, "Erro: Número de vértices deve ser maior que 0\n");
+        return NULL;
+    }
+
+    Grafo *g = (Grafo *)malloc(sizeof(Grafo));
+    if (g == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para o grafo\n");
+        return NULL;
+    }
+
+    g->numVertices = numVertices;
+    g->adj = (Aresta **)malloc(numVertices * sizeof(Aresta *));
+    if (g->adj == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para as listas de adjacência\n");
+        free(g);
+        return NULL;
+    }
+
+    for (int i = 0; i < numVertices; i++)
     {
         g->adj[i] = NULL;
     }
+    return g;
 }
 
 /**
- * @brief Adiciona uma aresta ao grafo
+ * @brief Adiciona uma aresta direcionada ao grafo.
  *
- * Função para adicionar uma aresta ao grafo
- *
- * @param g Ponteiro para o grafo
- * @param origem Origem da aresta
- * @param destino Destino da aresta
- * @param peso Peso da aresta
+ * @param g Ponteiro para o grafo.
+ * @param origem Vértice de origem (caractere A a A+numVertices-1).
+ * @param destino Vértice de destino (caractere A a A+numVertices-1).
+ * @param peso Peso da aresta.
+ * @return 1 se a aresta foi adicionada com sucesso, 0 se inválida ou falha na alocação.
  */
-void addAresta(grafo *g, char origem, char destino, int peso)
+int addAresta(Grafo *g, char origem, char destino, int peso)
 {
-    int i = origem - 'A';                                  // Converte o caractere da origem para um inteiro
-    aresta *novaAresta = (aresta *)malloc(sizeof(aresta)); // Aloca memória para a nova aresta
-    novaAresta->destino = destino;                         // Define o destino da aresta
-    novaAresta->peso = peso;                               // Define o peso da aresta
-    novaAresta->prox = g->adj[i];                          // Define o ponteiro para a primeira aresta da lista
-    g->adj[i] = novaAresta;                                // Define o ponteiro para a primeira aresta da lista
-}
-
-/**
- * @brief Imprime o grafo na tela
- *
- * @param g Ponteiro para o grafo
- */
-void printGrafo(grafo *g)
-{
-    for (int i = 0; i < VERTICES; i++)
+    if (g == NULL || origem < 'A' || origem >= 'A' + g->numVertices ||
+        destino < 'A' || destino >= 'A' + g->numVertices || origem == destino)
     {
-        if (g->adj[i])
+        fprintf(stderr, "Erro: Grafo nulo, vértices inválidos ou laço detectado\n");
+        return 0;
+    }
+
+    int i = origem - 'A';
+    Aresta *current = g->adj[i];
+    while (current)
+    {
+        if (current->destino == destino)
         {
-            printf("Vertice %c: ", 'A' + i);
+            return 0; // Aresta já existe
+        }
+        current = current->prox;
+    }
 
-            // ponteiro para o primeiro elemento da lista
-            aresta *arestas = g->adj[i];
+    Aresta *novaAresta = (Aresta *)malloc(sizeof(Aresta));
+    if (novaAresta == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para a aresta\n");
+        return 0;
+    }
+    novaAresta->destino = destino;
+    novaAresta->peso = peso;
+    novaAresta->prox = g->adj[i];
+    g->adj[i] = novaAresta;
+    return 1;
+}
 
-            while (arestas != NULL)
+/**
+ * @brief Imprime as listas de adjacência do grafo.
+ *
+ * Exibe as listas de adjacência de cada vértice, incluindo pesos.
+ *
+ * @param g Ponteiro para o grafo.
+ */
+void imprimirListasAdj(Grafo *g)
+{
+    if (g == NULL)
+    {
+        printf("Grafo vazio\n");
+        return;
+    }
+
+    for (int i = 0; i < g->numVertices; i++)
+    {
+        printf("Vértice %c: ", 'A' + i);
+        Aresta *current = g->adj[i];
+        if (current == NULL)
+        {
+            printf("NULL");
+        }
+        else
+        {
+            while (current)
             {
-                printf("-> %c (Peso: %d)  ", arestas->destino, arestas->peso);
-                arestas = arestas->prox;
+                printf("%c(%d)", current->destino, current->peso);
+                if (current->prox)
+                {
+                    printf(" ");
+                }
+                current = current->prox;
             }
-            printf("\n");
         }
+        printf("\n");
     }
 }
 
 /**
- * @brief Libera a memória alocada para o grafo
+ * @brief Libera a memória alocada para o grafo.
  *
- * Função para liberar a memória das arestas do grafo
- *
- * @param g Ponteiro para o grafo
+ * @param g Ponteiro para o grafo.
  */
-void freeGrafo(grafo *g)
+void liberarGrafo(Grafo *g)
 {
-    for (int i = 0; i < VERTICES; i++)
+    if (g == NULL)
     {
-        // Armazena o ponteiro para a primeira aresta
-        aresta *arestas = g->adj[i];
+        return;
+    }
 
-        // Libera a memória das arestas
-        while (arestas != NULL)
+    for (int i = 0; i < g->numVertices; i++)
+    {
+        Aresta *current = g->adj[i];
+        while (current)
         {
-            aresta *temp = arestas;  // Armazena o ponteiro para a aresta atual
-            arestas = arestas->prox; // Move o ponteiro para a próxima aresta
-            free(temp);              // Libera a memória da aresta
+            Aresta *temp = current;
+            current = current->prox;
+            free(temp);
         }
     }
+    free(g->adj);
+    free(g);
 }
 
 int main(int argc, char **argv)
 {
-    grafo g = {0}; // Declara e inicializa o grafo
+    Grafo *g = criarGrafo(VERTICES);
+    if (g == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na criação do grafo\n");
+        return EXIT_FAILURE;
+    }
 
-    // Inicializa o grafo
-    initGrafo(&g);
+    addAresta(g, 'A', 'B', 5);
+    addAresta(g, 'A', 'C', 3);
+    addAresta(g, 'B', 'C', 2);
+    addAresta(g, 'C', 'A', 7);
 
-    // Adiciona as arestas
-    addAresta(&g, 'A', 'B', 5); // Adiciona aresta de A para B com peso 5
-    addAresta(&g, 'A', 'C', 3); // Adiciona aresta de A para C com peso 3
-    addAresta(&g, 'B', 'C', 2); // Adiciona aresta de B para C com peso 2
-    addAresta(&g, 'C', 'A', 7); // Adiciona aresta de C para A com peso 7
+    imprimirListasAdj(g);
 
-    // Imprime o grafo
-    printGrafo(&g);
-
-    // Libera a memória alocada
-    freeGrafo(&g);
+    liberarGrafo(g);
     return 0;
 }

@@ -7,39 +7,13 @@
 /**
  * @brief Estrutura que representa um nó na lista de adjacência de um grafo.
  *
- * Cada nó na lista de adjacência contém um vértice e um ponteiro para o próximo nó.
- *
- * A lista de adjacência é uma representação comum de grafos, onde cada nó
- * representa um vértice e os nós adjacentes representam as arestas conectadas a ele.
- * A lista de adjacência é uma estrutura de dados eficiente para armazenar grafos esparsos,
- * onde o número de arestas é muito menor do que o número máximo possível de arestas.
- *
- * A diferença entre matriz e listas de adjacência em suas representações matemáticas
- * e complexidade:
- *
- * - Matriz de Adjacência: Representa um grafo como uma matriz bidimensional,
- * onde cada célula (i, j) indica se há uma aresta entre os vértices i e j.
- * A matriz de adjacência é útil para grafos densos, onde o número de arestas
- * é próximo do número máximo possível de arestas.
- * - A complexidade de espaço é O(V^2), onde V é o número de vértices.
- * - A complexidade de tempo para verificar se há uma aresta entre dois vértices é O(1).
- *
- * ---------------------
- *
- * - Lista de Adjacência: Representa um grafo como uma lista de listas, onde cada
- * lista contém os vértices adjacentes a um vértice específico. A lista de adjacência
- * é mais eficiente para grafos esparsos, onde o número de arestas é muito menor do que
- * o número máximo possível de arestas.
- *
- * - A complexidade de espaço é O(V + E), onde V é o número de vértices e E é o número de arestas.
- * - A complexidade de tempo para verificar se há uma aresta entre dois vértices é O(V)
- * no pior caso, mas pode ser O(1) em casos favoráveis.
+ * Cada nó contém um vértice e um ponteiro para o próximo nó.
  */
-struct noAdjacente
+typedef struct noAdjacente
 {
     int vertice;              /**< Vértice conectado */
     struct noAdjacente *prox; /**< Ponteiro para o próximo nó na lista */
-};
+} NoAdjacente;
 
 #endif
 
@@ -47,15 +21,14 @@ struct noAdjacente
 #define LISTAADJACENTE_H
 
 /**
- * @brief Estrutura que representa a lista de adjacência de um grafo.
+ * @brief Estrutura que representa a lista de adjacência de um vértice.
  *
- * A lista de adjacência é composta por uma lista de nós, onde cada nó representa
- * um vértice adjacente a um vértice específico.
+ * Contém um ponteiro para o primeiro nó da lista de adjacências.
  */
-struct listaAdjacente
+typedef struct listaAdjacente
 {
-    struct noAdjacente *head; /**< Ponteiro para o primeiro nó da lista de adjacências */
-};
+    NoAdjacente *head; /**< Ponteiro para o primeiro nó da lista de adjacências */
+} ListaAdjacente;
 
 #endif
 
@@ -63,30 +36,36 @@ struct listaAdjacente
 #define GRAFO_H
 
 /**
- * @brief Estrutura que representa um grafo.
+ * @brief Estrutura que representa um grafo não direcionado.
  *
- * O grafo é composto por um número de vértices e uma lista de adjacência para cada vértice.
+ * O grafo é composto por um número de vértices e um array de listas de adjacência.
+ * A lista de adjacência é eficiente para grafos esparsos, com complexidade de espaço O(V + E)
+ * e complexidade de tempo O(V) para verificar arestas no pior caso.
  */
-struct grafo
+typedef struct grafo
 {
-    int numVertices;                   /**< Número de vértices no grafo */
-    struct listaAdjacente *adjacentes; /**< Array de listas de adjacência */
-};
+    int numVertices;          /**< Número de vértices no grafo */
+    ListaAdjacente *adjacentes; /**< Array de listas de adjacência */
+} Grafo;
 
 #endif
 
 /**
  * @brief Cria um novo nó com o vértice especificado.
  *
- * Aloca memória para um novo nó e inicializa os valores do nó.
+ * Aloca memória para um novo nó e inicializa seus valores.
  *
  * @param vertice O vértice a ser armazenado no nó.
- * @return Ponteiro para o nó criado.
+ * @return Ponteiro para o nó criado ou NULL em caso de falha na alocação.
  */
-struct noAdjacente *newNode(int vertice)
+NoAdjacente *newNode(int vertice)
 {
-    // Aloca memória para o nó
-    struct noAdjacente *node = (struct noAdjacente *)malloc(sizeof(struct noAdjacente));
+    NoAdjacente *node = (NoAdjacente *)malloc(sizeof(NoAdjacente));
+    if (node == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para o nó\n");
+        return NULL;
+    }
     node->vertice = vertice;
     node->prox = NULL;
     return node;
@@ -95,111 +74,170 @@ struct noAdjacente *newNode(int vertice)
 /**
  * @brief Cria um grafo com o número de vértices especificado.
  *
- * Aloca memória para o grafo e inicializa as listas de adjacência de todos os vértices.
+ * Aloca memória para o grafo e inicializa as listas de adjacência com NULL.
  *
- * @param numVertices O número de vértices no grafo.
- * @return Ponteiro para o grafo criado.
+ * @param numVertices O número de vértices no grafo (deve ser maior que 0).
+ * @return Ponteiro para o grafo criado ou NULL em caso de falha na alocação.
  */
-struct grafo *criarGrafo(int numVertices)
+Grafo *criarGrafo(int numVertices)
 {
-    // Aloca memória para o grafo
-    struct grafo *grafo = (struct grafo *)malloc(sizeof(struct grafo));
-    grafo->numVertices = numVertices;
-    grafo->adjacentes = (struct listaAdjacente *)malloc(sizeof(struct listaAdjacente) * numVertices);
+    if (numVertices <= 0)
+    {
+        fprintf(stderr, "Erro: Número de vértices deve ser maior que 0\n");
+        return NULL;
+    }
 
-    // Inicializa as listas de adjacência
+    // Aloca memória para o grafo
+    Grafo *grafo = (Grafo *)malloc(sizeof(Grafo));
+    if (grafo == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para o grafo\n");
+        return NULL;
+    }
+    grafo->numVertices = numVertices;
+
+    // Aloca memória para o array de listas de adjacência
+    grafo->adjacentes = (ListaAdjacente *)malloc(numVertices * sizeof(ListaAdjacente));
+    if (grafo->adjacentes == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória para as listas de adjacência\n");
+        free(grafo);
+        return NULL;
+    }
+
+    // Inicializa as listas de adjacência com NULL
     for (int i = 0; i < numVertices; i++)
     {
-        // Inicializa a lista de adjacência com 0(NULL)
         grafo->adjacentes[i].head = NULL;
     }
 
-    // Se a alocação não falhar, retorna o grafo com as listas de adjacência inicializadas com 0(NULL)
     return grafo;
 }
 
 /**
- * @brief Adiciona uma aresta entre dois vértices no grafo.
+ * @brief Adiciona uma aresta entre dois vértices no grafo não direcionado.
  *
- * Esta função cria uma aresta entre os vértices `src` e `dest`,
- * adicionando cada vértice na lista de adjacência do outro.
- * O grafo é considerado não direcionado.
+ * Adiciona cada vértice na lista de adjacência do outro.
  *
  * @param g Ponteiro para o grafo.
- * @param src Vértice de origem.
- * @param dest Vértice de destino.
+ * @param src Vértice de origem (deve estar entre 0 e numVertices-1).
+ * @param dest Vértice de destino (deve estar entre 0 e numVertices-1).
+ * @return 1 se a aresta foi adicionada com sucesso, 0 se os índices são inválidos ou grafo é nulo.
  */
-void adicionarAresta(struct grafo *g, int src, int dest)
+int adicionarAresta(Grafo *g, int src, int dest)
 {
-    // Função auxiliar para adicionar uma aresta em uma lista de adjacência
-    struct noAdjacente *node = newNode(dest);
+    if (g == NULL || src < 0 || src >= g->numVertices || dest < 0 || dest >= g->numVertices)
+    {
+        fprintf(stderr, "Erro: Índices de vértices inválidos ou grafo nulo\n");
+        return 0;
+    }
+
+    // Adiciona dest na lista de src
+    NoAdjacente *node = newNode(dest);
+    if (node == NULL)
+    {
+        return 0;
+    }
     node->prox = g->adjacentes[src].head;
     g->adjacentes[src].head = node;
 
-    node = newNode(src); // Aresta bidirecional
+    // Adiciona src na lista de dest (grafo não direcionado)
+    node = newNode(src);
+    if (node == NULL)
+    {
+        // Desfaz a adição anterior para manter consistência
+        g->adjacentes[src].head = node->prox;
+        free(node);
+        return 0;
+    }
     node->prox = g->adjacentes[dest].head;
     g->adjacentes[dest].head = node;
+
+    return 1;
 }
 
 /**
- * @brief Realiza a travessia do grafo e imprime as listas de adjacência.
+ * @brief Imprime as listas de adjacência do grafo.
  *
- * Esta função percorre todos os vértices do grafo e imprime suas
- * respectivas listas de adjacência.
+ * Exibe as listas de adjacência de cada vértice, sem setas extras no final.
  *
- * @param g Ponteiro para o grafo a ser percorrido.
+ * @param g Ponteiro para o grafo.
  */
-void transversal(struct grafo *g)
+void imprimirListasAdj(Grafo *g)
 {
+    if (g == NULL)
+    {
+        printf("Grafo vazio\n");
+        return;
+    }
+
     for (int vertice = 0; vertice < g->numVertices; vertice++)
     {
-        struct noAdjacente *check = g->adjacentes[vertice].head;
-        printf("A lista de adjacência do vértice %d é: ", vertice);
-        while (check)
+        printf("Lista de adjacência do vértice %d: ", vertice);
+        
+        NoAdjacente *check = g->adjacentes[vertice].head;
+        if (check == NULL)
         {
-            printf("%d -> ", check->vertice);
-            check = check->prox;
+            printf("NULL");
         }
-        printf("NULL\n");
+        else
+        {
+            while (check)
+            {
+                printf("%d", check->vertice);
+                if (check->prox)
+                {
+                    printf(" ");
+                }
+                check = check->prox;
+            }
+        }
+        printf("\n");
     }
 }
 
 /**
  * @brief Libera toda a memória alocada para o grafo.
  *
- * Esta função percorre todas as listas de adjacência e libera a memória dos nós,
- * além de liberar a memória do grafo e suas listas de adjacência.
+ * Libera a memória de todas as listas de adjacência e da estrutura do grafo.
  *
  * @param g Ponteiro para o grafo que será liberado.
  */
-void liberarMemoria(struct grafo *g)
+void liberarGrafo(Grafo *g)
 {
-    // Libera a memória de cada lista de adjacência
+    if (g == NULL)
+    {
+        return;
+    }
+
+    // Libera cada lista de adjacência
     for (int i = 0; i < g->numVertices; i++)
     {
-        // Ponteiro para o primeiro nó da lista
-        struct noAdjacente *current = g->adjacentes[i].head;
-
-        // Percorre a lista de adjacência e libera os nós
+        NoAdjacente *current = g->adjacentes[i].head;
         while (current)
         {
-            struct noAdjacente *temp = current;
+            NoAdjacente *temp = current;
             current = current->prox;
-            free(temp); // Libera o nó
+            free(temp);
         }
     }
 
-    // Libera a memória das listas de adjacência
+    // Libera o array de listas de adjacência
     free(g->adjacentes);
 
-    // Libera a memória do grafo
+    // Libera a estrutura do grafo
     free(g);
 }
 
 int main(int argc, char **argv)
 {
-    // Cria um grafo com 5 vértices
-    struct grafo *g = criarGrafo(5);
+    // Cria um grafo com 5 vértices
+    Grafo *g = criarGrafo(5);
+    if (g == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na criação do grafo\n");
+        return EXIT_FAILURE;
+    }
 
     // Adiciona arestas ao grafo
     adicionarAresta(g, 0, 1);
@@ -211,10 +249,10 @@ int main(int argc, char **argv)
     adicionarAresta(g, 3, 4);
 
     // Imprime as listas de adjacência
-    transversal(g);
+    imprimirListasAdj(g);
 
     // Libera a memória alocada para o grafo
-    liberarMemoria(g);
+    liberarGrafo(g);
 
     return 0;
 }

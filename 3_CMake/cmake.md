@@ -3,10 +3,10 @@
 ## O que é o CMake?
 
 CMake é uma ferramenta de código aberto usada para gerenciar o processo de construção (build)
-de projetos de software, principalmente em linguagens como C/C++. Ele é um
-**sistema de construção multiplataforma** que automatiza a configuração, compilação e instalação
-de projetos, eliminando a necessidade de **configurar manualmente** arquivos de build para diferentes
-sistemas operacionais (Windows, Linux, macOS) ou compiladores (GCC, Clang, MSVC, etc.).
+de projetos de software, principalmente em linguagens como C/C++.
+Ele é um **sistema de construção multiplataforma** que automatiza a configuração, compilação
+e instalação de projetos, eliminando a necessidade de **configurar manualmente** arquivos
+de build para diferentes sistemas operacionais (Windows, Linux, macOS) ou compiladores (GCC, Clang, MSVC, etc.).
 
 Diferentemente de ferramentas como o `make`, que dependem de Makefiles específicos para
 cada plataforma, o CMake gera arquivos de build nativos (como Makefiles no Linux ou soluções
@@ -93,11 +93,11 @@ O CMake se integra bem com IDEs populares:
 
 ### Suponha que tenhas este diretório
 
-MeuProjeto/
+MeuProjeto/  
 ├── CMakeLists.txt
-├── src/
-│ └── main.cpp
-└── include/
+├── src/  
+│ └── main.cpp  
+└── include/  
 └── meu_header.hpp
 
 > O caminho do diretório no terminal estará algo como: `C:\Users\NomeUsuario\Documents\MeuProjeto\`

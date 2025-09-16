@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
 
 #define MAX 10 /**< Tamanho máximo do array de dados */
 
@@ -12,7 +11,7 @@
  * @brief Estrutura que representa um nó da árvore binária.
  *
  * Arvore Binária Cada nó contém um caractere (dados) e dois ponteiros para seus filhos
- * esquerdo  e direito. A estrutura node representa um nó de uma árvore binária com operações
+ * esquerdo e direito. A estrutura node representa um nó de uma árvore binária com operações
  * de travessia (pre-order, in-order e post-order). Este programa cria uma árvore binária a
  * partir de um array de caracteres e realiza as três travessias mais comuns em árvores binárias:
  * pre-order, in-order e post-order.
@@ -29,11 +28,23 @@ struct node
 /**
  * @brief Cria um novo nó para a árvore binária.
  *
- * Esta função aloca memória para um novo nó e retorna o ponteiro para o nó criado.
+ * Esta função aloca memória para um novo nó, inicializa os ponteiros left e right como NULL
+ * e retorna o ponteiro para o nó criado.
  *
- * @return Ponteiro para o nó recém-criado.
+ * @return Ponteiro para o nó recém-criado ou NULL em caso de falha na alocação.
  */
-struct node *newNode(void) { return (struct node *)malloc(sizeof(struct node)); }
+struct node *newNode(void)
+{
+    struct node *node = (struct node *)malloc(sizeof(struct node));
+    if (node == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na alocação de memória\n");
+        return NULL;
+    }
+    node->left = NULL;
+    node->right = NULL;
+    return node;
+}
 
 /**
  * @brief Inicializa um nó com os dados fornecidos e seus filhos.
@@ -44,11 +55,15 @@ struct node *newNode(void) { return (struct node *)malloc(sizeof(struct node)); 
  * @param data Dados a serem armazenados no nó.
  * @param left Ponteiro para o filho esquerdo.
  * @param right Ponteiro para o filho direito.
- * @return Ponteiro para o nó inicializado.
+ * @return Ponteiro para o nó inicializado ou NULL em caso de falha.
  */
 struct node *initNode(char data, struct node *left, struct node *right)
 {
     struct node *node = newNode();
+    if (node == NULL)
+    {
+        return NULL;
+    }
     node->data = data;
     node->left = left;
     node->right = right;
@@ -65,11 +80,11 @@ struct node *initNode(char data, struct node *left, struct node *right)
  * @param data Array de dados para a árvore.
  * @param i Índice atual no array para criar o nó.
  * @param size Tamanho total do array.
- * @return Ponteiro para a raiz da árvore binária.
+ * @return Ponteiro para a raiz da árvore binária ou NULL se data for inválido.
  */
 struct node *criarArvore(char data[], int i, size_t size)
 {
-    if (i >= size)
+    if (data == NULL || size == 0 || i >= size)
     {
         return NULL;
     }
@@ -86,17 +101,22 @@ struct node *criarArvore(char data[], int i, size_t size)
  * depois a subárvore esquerda, e finalmente a subárvore direita.
  *
  * @param root Ponteiro para a raiz da árvore binária.
+ * @param is_first Indica se é o primeiro nó a ser impresso (evita espaço inicial).
  */
-void preOrder(struct node *root)
+void preOrder(struct node *root, int is_first)
 {
     if (root == NULL)
     {
         return;
     }
 
-    printf("%c ", root->data);
-    preOrder(root->left);
-    preOrder(root->right);
+    printf("%c", root->data);
+    if (!is_first || root->left || root->right)
+    {
+        printf(" ");
+    }
+    preOrder(root->left, 0);
+    preOrder(root->right, 0);
 }
 
 /**
@@ -106,17 +126,22 @@ void preOrder(struct node *root)
  * depois o nó atual, e finalmente a subárvore direita.
  *
  * @param root Ponteiro para a raiz da árvore binária.
+ * @param is_first Indica se é o primeiro nó a ser impresso (evita espaço inicial).
  */
-void inOrder(struct node *root)
+void inOrder(struct node *root, int is_first)
 {
     if (root == NULL)
     {
         return;
     }
 
-    inOrder(root->left);
-    printf("%c ", root->data);
-    inOrder(root->right);
+    inOrder(root->left, is_first);
+    printf("%c", root->data);
+    if (!is_first || root->right)
+    {
+        printf(" ");
+    }
+    inOrder(root->right, 0);
 }
 
 /**
@@ -126,17 +151,22 @@ void inOrder(struct node *root)
  * depois a subárvore direita, e finalmente o nó atual.
  *
  * @param root Ponteiro para a raiz da árvore binária.
+ * @param is_first Indica se é o primeiro nó a ser impresso (evita espaço inicial).
  */
-void postOrder(struct node *root)
+void postOrder(struct node *root, int is_first)
 {
     if (root == NULL)
     {
         return;
     }
 
-    postOrder(root->left);
-    postOrder(root->right);
-    printf("%c ", root->data);
+    postOrder(root->left, is_first);
+    postOrder(root->right, 0);
+    printf("%c", root->data);
+    if (!is_first)
+    {
+        printf(" ");
+    }
 }
 
 /**
@@ -164,18 +194,23 @@ int main(int argc, char **argv)
     char data[MAX] = {'g', 'd', 'i', 'b', 'f', 'h', 'j', 'a', 'c', 'e'};
 
     struct node *root = criarArvore(data, 0, MAX);
-    assert(root != NULL);
+    if (root == NULL)
+    {
+        fprintf(stderr, "Erro: Falha na criação da árvore\n");
+        return EXIT_FAILURE;
+    }
 
     printf("Pre-Order: ");
-    preOrder(root);
+    preOrder(root, 1);
     printf("\n---------------------------------\n");
 
-    printf("\nIn-Order: ");
-    inOrder(root);
+    printf("In-Order: ");
+    inOrder(root, 1);
     printf("\n---------------------------------\n");
 
-    printf("\nPost-Order: ");
-    postOrder(root);
+    printf("Post-Order: ");
+    postOrder(root, 1);
+    printf("\n");
 
     freeTree(root);
     return 0;
