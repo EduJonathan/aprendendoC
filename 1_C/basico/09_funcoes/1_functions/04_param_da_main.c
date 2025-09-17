@@ -77,8 +77,8 @@ int main(int argc, char **argv, char **env)
         /**
          * Quando se passa os argumentos mesmo que sejam números no console antes de compilar
          *
-         * > "C:\\Users\\EDUARDO_OLIVEIRA\\Documents\\aprendendoC\\C\\basico\\09_funcoes\\1_functions\\"
-         * > gcc 4_param_da_main.c -o main.exe
+         * > C:\Users\nomeUser\Documents\aprendendoC\1_C\basico\09_funcoes\1_functions>
+         * > gcc 04_param_da_main.c -o main.exe
          * > .\main.exe 10 45 20
          *
          * EXE: .\main.exe 10 45 20, este argumentos serão strings devido ao tipo de

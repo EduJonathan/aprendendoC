@@ -140,7 +140,6 @@ int removerSolicitacao(Elevador *elevador)
     {
         return -1; // Fila vazia
     }
-
     No *temp = elevador->filaSolicitacoes;
     int andar = temp->andar;
     elevador->filaSolicitacoes = temp->proximo;
@@ -164,6 +163,7 @@ bool validarElevador(Elevador *elevador)
         printf("Erro: Andar atual %d inválido.\n", elevador->andarAtual);
         return false;
     }
+
     if (elevador->direcao != SUBINDO && elevador->direcao != DESCENDO && elevador->direcao != PARADO)
     {
         printf("Erro: Direção %d inválida.\n", elevador->direcao);

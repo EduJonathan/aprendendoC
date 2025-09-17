@@ -154,7 +154,7 @@ int main(int argc, char **argv)
      * @note Recomendo executar no terminal para melhor execução do comando system("cls")
      *
      * Para compilar o código, use o seguinte comando:
-     * > "C:\\Users\\EDUARDO_OLIVEIRA\\Documents\\aprendendoC\\C\\basico\\12_dados_definidos\\4_enum"
+     * > "C:\\Users\\nomeUsuario\\Documents\\aprendendoC\\1_C\\basico\\12_dados_definidos\\4_enum"
      * > gcc 2_enums.c -o jogo_memoria
      * > .\jogo_memoria.exe
      */

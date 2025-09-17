@@ -240,7 +240,6 @@ int main(int argc, char **argv)
         default:
             printf("Opção inválida.\n");
         }
-
     } while (opcao != 0);
 
     return 0;

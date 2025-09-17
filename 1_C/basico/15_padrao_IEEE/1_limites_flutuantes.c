@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     // Pelo menos 6, 10 e 10 dígitos, respectivamente, ou 9 para IEEE float e 17 para IEEE double.
     printf(" FLT_DECIMAL_DIG  = %d\n", FLT_DECIMAL_DIG);
     printf(" DBL_DECIMAL_DIG  = %d\n", DBL_DECIMAL_DIG);
-    printf(" LDBL_DECIMAL_DIG = %d\n", LDBL_DECIMAL_DIG);
+    printf(" LDBL_DECIMAL_DIG = %d\n", LDBL_DECIMAL_DIG); // flag -std=c11
 
     // Modo de arredondamento da aritmética de ponto flutuante.
     printf(" FLT_ROUNDS = %d\n", FLT_ROUNDS);

@@ -296,6 +296,7 @@ void limpar_deque(Deque *dq)
 {
     if (dq == NULL)
         return;
+
     while (!esta_vazio(dq))
     {
         Pedido *p = remover_inicio(dq);
@@ -306,6 +307,7 @@ void limpar_deque(Deque *dq)
 int main(int argc, char **argv)
 {
     Deque pedidos;
+    
     inicializar(&pedidos);
     inserir(&pedidos, 1, "João", false);
     inserir(&pedidos, 2, "Maria", false);

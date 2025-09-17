@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 
     /**
      * Arquivo com o caminho especificado(Windows)
-     * file = fopen("C:\Users\EDUARDO\Documents\aprendendoC\C\basico\10_files\1_arquivoTXT\1_file.c", "w");
+     * file = fopen("C:\Users\nomeUser\Documents\aprendendoC\1_C\basico\10_files\1_arquivoTXT>"", "w");
      *
      * No linux, seria: file = fopen("/home/usuario/Documents/aprendendoC/C/basico/10_files/1_arquivoTXT/1_file.c", "w");
      *

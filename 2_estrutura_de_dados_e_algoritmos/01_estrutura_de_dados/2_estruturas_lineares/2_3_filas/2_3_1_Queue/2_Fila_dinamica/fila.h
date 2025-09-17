@@ -5,13 +5,26 @@
 #include <stdlib.h>
 
 /**
+ * @brief Enum para representar os tipos de dados suportados.
+ */
+typedef enum
+{
+    TYPE_INT,    /**< Inteiro */
+    TYPE_CHAR,   /**< Caractere */
+    TYPE_STRING, /**< Cadeia de caracteres (string) */
+    TYPE_DOUBLE  /**< Número de ponto flutuante (double) */
+} DataType;
+
+/**
  * @brief Estrutura que representa um nó da fila encadeada.
  *
- * Contém um valor float e um ponteiro para o próximo nó.
+ * Contém um ponteiro genérico para o valor, um identificador do tipo
+ * e um ponteiro para o próximo nó.
  */
 typedef struct Node
 {
-    float value;       /**< Valor armazenado no nó. */
+    void *value;       /**< Ponteiro para o valor armazenado. */
+    DataType type;     /**< Tipo do valor armazenado. */
     struct Node *next; /**< Ponteiro para o próximo nó. */
 } Node;
 
@@ -47,24 +60,26 @@ bool isEmpty(Queue *queue);
  * @brief Insere um elemento no fim da fila.
  *
  * @param queue Ponteiro para a fila.
- * @param value Valor float a ser inserido.
+ * @param value Ponteiro para o valor a ser inserido.
+ * @param type Tipo do valor a ser inserido.
  */
-void enqueue(Queue *queue, float value);
+void enqueue(Queue *queue, void *value, DataType type);
 
 /**
  * @brief Remove e retorna o elemento do início da fila.
  *
- * Se a fila estiver vazia, retorna NAN e exibe uma mensagem.
+ * Se a fila estiver vazia, retorna NULL e exibe uma mensagem.
  *
  * @param queue Ponteiro para a fila.
- * @return Valor removido ou NAN se a fila estiver vazia.
+ * @param type Ponteiro para armazenar o tipo do valor removido.
+ * @return Ponteiro para o valor removido ou NULL se a fila estiver vazia.
  */
-float dequeue(Queue *queue);
+void *dequeue(Queue *queue, DataType *type);
 
 /**
  * @brief Libera toda a memória alocada para a fila.
  *
- * Desaloca todos os nós e a estrutura da fila.
+ * Desaloca todos os nós e a estrutura da fila, incluindo os valores armazenados.
  *
  * @param queue Ponteiro para a fila.
  */
@@ -78,5 +93,24 @@ void freeQueue(Queue *queue);
  * @param queue Ponteiro para a fila.
  */
 void printQueue(Queue *queue);
+
+/**
+ * @brief Imprime um valor de acordo com seu tipo.
+ *
+ * @param value Ponteiro para o valor.
+ * @param type Tipo de dado do valor.
+ */
+void printValue(void *value, DataType type);
+
+/**
+ * @brief Função auxiliar para ler um valor de acordo com o tipo de dado.
+ *
+ * Aloca memória para o valor e o lê do usuário.
+ *
+ * @param type Tipo de dado do valor.
+ * @param value Ponteiro para armazenar o valor alocado.
+ * @return 1 em caso de sucesso, 0 em caso de falha.
+ */
+int readValue(DataType type, void **value);
 
 #endif

@@ -88,6 +88,7 @@ void insertFront(Deque *deque, int key)
         printf("Erro: Deque não inicializado.\n");
         return;
     }
+    
     if (isFull(deque))
     {
         printf("Estouro: Deque está cheio.\n");

@@ -18,19 +18,23 @@ int main(int argc, char **argv)
     return 1;
   }
 
-  push(stack, 10);
-  push(stack, 20);
-  push(stack, 30);
-  printStack(stack);
+  push(stack, 3);
+  push(stack, 1);
+  push(stack, 4);
+  push(stack, 1);
+  push(stack, 5);
+  printStack(stack); // Outputs: 5 1 4 1 3
 
-  printf("Desempilhado: %d\n", pop(stack));
-  printStack(stack);
+  sortStack(stack);
+  printStack(stack); // Outputs: 5 4 3 1 1 (sorted, largest at top)
 
-  printf("Topo: %d\n", peek(stack));
+  printf("Search 4: %s\n", searchStack(stack, 4) ? "Encontrado" : "Nao Encontrado"); // Outputs: Encontrado
+  printf("Search 2: %s\n", searchStack(stack, 2) ? "Encontrado" : "Nao Encontrado"); // Outputs: Nao Encontrado
+
   freeStack(stack);
 
   /**
-   * gcc -std=c11 main_pilha_dinamica.c pilha.c -o pilha_dinamica
+   * gcc -std=c11 main_pilha_dinamica.c funcoes_da_pilha.c -o pilha_dinamica
    * .\pilha_dinamica.exe
    */
   return 0;

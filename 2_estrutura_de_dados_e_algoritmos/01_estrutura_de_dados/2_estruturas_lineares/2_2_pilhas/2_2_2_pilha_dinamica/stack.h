@@ -2,7 +2,6 @@
 #define STACK_H
 
 #include <stdbool.h>
-#include <stdlib.h>
 
 /**
  * @brief Estrutura que representa uma pilha dinâmica.
@@ -91,5 +90,25 @@ void printStack(Stack *stack);
  * @param stack Ponteiro para a pilha.
  */
 void freeStack(Stack *stack);
+
+/**
+ * @brief Ordena os elementos da pilha em ordem crescente.
+ *
+ * Reorganiza os elementos no array interno da pilha, mantendo o topo no maior valor.
+ *
+ * @param stack Ponteiro para a pilha.
+ */
+void sortStack(Stack *stack);
+
+/**
+ * @brief Busca um elemento na pilha.
+ *
+ * Verifica se o valor especificado existe na pilha.
+ *
+ * @param stack Ponteiro para a pilha.
+ * @param value Valor a ser buscado.
+ * @return true se o valor for encontrado, false caso contrário ou se a pilha for NULL/vazia.
+ */
+bool searchStack(Stack *stack, int value);
 
 #endif

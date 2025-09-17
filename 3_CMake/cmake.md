@@ -94,7 +94,7 @@ O CMake se integra bem com IDEs populares:
 ### Suponha que tenhas este diretório
 
 MeuProjeto/  
-├── CMakeLists.txt
+├── CMakeLists.txt  
 ├── src/  
 │ └── main.cpp  
 └── include/  

@@ -216,8 +216,11 @@ gcc arquivo_c.c -o programa.c
 ```bash
 # Cuidado ao compilar com, a intenção provavelmente era compilar "arquivoB.c",
 # mas a opção -o está mandando gerar um executável chamado "arquivoA.c".
-# Então em "arquivoA.c" deve ser o nome do executável de imediato em vez do arquivo.
+# Então em antes de "arquivoA.c" deve ser o nome do executável de imediato em vez do arquivo.
 gcc -o arquivoA.c arquivoB.c
+
+# Solução
+gcc -o nomeDoExecutavel arquivoA.c arquivoB.c
 ```
 
 ```bash
@@ -249,7 +252,6 @@ facilitado a assembly, binários e flags avançadas(embora o Windows também ofe
 ### 🌐 Sites Online
 
 - [StackOverflow](https://pt.stackoverflow.com/questions/63193/o-que-significa-compilar)
-- [FreeCodeCamp: C Programming Tutorial](https://www.freecodecamp.org/learn/c-programming/)
 - [Microsoft C++ Documentation](https://docs.microsoft.com/en-us/cpp/)
 
 ### Documentação Oficial

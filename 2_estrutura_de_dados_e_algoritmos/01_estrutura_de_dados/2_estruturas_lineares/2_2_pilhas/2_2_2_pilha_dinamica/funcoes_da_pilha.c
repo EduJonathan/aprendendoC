@@ -109,3 +109,45 @@ void freeStack(Stack *stack)
     free(stack->array);
     free(stack);
 }
+
+void sortStack(Stack *stack)
+{
+    if (isEmpty(stack) || stack == NULL)
+    {
+        printf("Pilha vazia ou inválida, não é possível ordenar\n");
+        return;
+    }
+
+    // Simple bubble sort on the array from index 0 to top
+    for (int i = 0; i <= stack->top; i++)
+    {
+        for (int j = 0; j < stack->top - i; j++)
+        {
+            if (stack->array[j] > stack->array[j + 1])
+            {
+                // Swap elements
+                int temp = stack->array[j];
+                stack->array[j] = stack->array[j + 1];
+                stack->array[j + 1] = temp;
+            }
+        }
+    }
+    printf("Pilha ordenada em ordem crescente\n");
+}
+
+bool searchStack(Stack *stack, int value)
+{
+    if (isEmpty(stack) || stack == NULL)
+    {
+        return false;
+    }
+
+    for (int i = stack->top; i >= 0; i--)
+    {
+        if (stack->array[i] == value)
+        {
+            return true;
+        }
+    }
+    return false;
+}
