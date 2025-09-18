@@ -157,6 +157,7 @@ int **createBoard(int n)
 {
     if (n <= 0)
         return NULL;
+        
     int **board = malloc(n * sizeof(int *));
 
     if (!board)

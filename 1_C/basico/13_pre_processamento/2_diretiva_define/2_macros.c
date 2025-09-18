@@ -83,16 +83,15 @@
  */
 
 // Definindo a macro "case", que especifica o comportamento para um valor no switch
-#define case(val, action)                                  \
-    case val:                                              \
-        /* Para o valor "val", executa a ação fornecida */ \
-        action;                                            \
-                                                           \
-        /* Interrompe o switch após a execução */          \
-        break;
+#define case(val, action)                                          \
+    case val:                                                      \
+                                                                   \
+        action; /* Para o valor "val", executa a ação fornecida */ \
+                                                                   \
+        break; /* Interrompe o switch após a execução */
 
 /*
- * A macro `case` é usada para definir os casos dentro do switch, onde `val` representa 
+ * A macro `case` é usada para definir os casos dentro do switch, onde `val` representa
  * o valor a ser comparado e `action` representa a ação a ser executada se o valor
  * corresponder ao caso.
  */

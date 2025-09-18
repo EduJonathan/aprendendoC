@@ -138,7 +138,6 @@ void liberarArvore(TREE *root)
     {
         return;
     }
-
     liberarArvore(root->left);
     liberarArvore(root->right);
     free(root);

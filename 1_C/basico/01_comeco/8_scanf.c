@@ -118,10 +118,11 @@ int main(int argc, char **argv)
      *    Aqui, o `getchar()` lê o `\n` que ficou no buffer antes da próxima leitura.
      *
      * #### Observações
-     * - `fflush(stdin)` **não é padrão ANSI C** e não deve ser usado para limpar o
-     *   buffer de entrada.
+     * - `fflush(stdin)` **não é padrão ANSI C** e não deve ser usado para limpar o buffer de entrada.
+     * 
      * - Para strings e caracteres, sempre atente ao `\n` residual: ele é a causa
      *   mais frequente de leituras "puladas".
+     * 
      * - Em leituras mais complexas (strings, linhas inteiras), considere funções
      *   como `fgets()` para maior controle.
      */

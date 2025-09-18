@@ -216,8 +216,10 @@ int main(int argc, char **argv)
 
     printf("Conjunto X: ");
     imprimirConjunto(setx);
+
     printf("Conjunto Y: ");
     imprimirConjunto(sety);
+    
     printf("União (Z): ");
     imprimirConjunto(setz);
 

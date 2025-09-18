@@ -156,9 +156,9 @@ int main(int argc, char **argv)
      * 4. Não podem começar com números
      *    Errado: 1valor | Correto: valor1
      *
-     * 5. Não podem ser palavras reservadas da linguagem
+     * 5. Não podem ser palavras reservadas(keywords) da linguagem
      *    Errado: int, return, if, printf
-     *    Obs: Mesmo variações da capitalização como `Int`, `Printf` são tecnicamente válidas, mas **não recomendadas**
+     *    Obs: Mesmo com variando a capitalização das keywords, como `Int`, `Printf` são tecnicamente válidas, mas **não recomendadas**
      *
      * 6. Devem ser descritivos e significativos
      *    Evite: x, y, a1

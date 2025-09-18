@@ -37,8 +37,7 @@ Node *criarNo(char valor)
     {
         fprintf(stderr, "Erro: Falha na alocação de memória\n");
         exit(1);
-    }
-    
+    }    
     no->dado = valor; /**< Atribui o valor ao nó */
     no->pai = NULL;   /**< Inicializa o ponteiro para o pai como NULL */
     no->filho = NULL; /**< Inicializa o ponteiro para o filho como NULL */
