@@ -178,7 +178,6 @@ void DFSAll(int **adj, int v)
             printf("\n");
         }
     }
-
     free(visitados);
 }
 
@@ -225,7 +224,7 @@ int main(int argc, char **argv)
     printf("Digite as arestas (formato: vértice_origem vértice_destino):\n");
     for (int i = 0; i < e; i++)
     {
-        int src, dest;
+        int src = 0, dest = 0;
         printf("Aresta %d: ", i + 1);
         if (scanf("%d %d", &src, &dest) != 2 || src < 0 || src >= v || dest < 0 || dest >= v)
         {

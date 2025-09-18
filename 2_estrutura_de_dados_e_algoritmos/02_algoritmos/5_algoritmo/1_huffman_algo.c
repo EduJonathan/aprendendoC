@@ -222,7 +222,6 @@ struct MinHeap *createAndBuildMinHeap(char data[], int freq[], int size)
     {
         minHeap->array[i] = newNode(data[i], freq[i]);
     }
-
     minHeap->size = size;
     buildMinHeap(minHeap);
     return minHeap;
@@ -267,11 +266,13 @@ void printCodes(struct MinHeapNode *root, int arr[], int top)
         arr[top] = 0;
         printCodes(root->left, arr, top + 1);
     }
+
     if (root->right)
     {
         arr[top] = 1;
         printCodes(root->right, arr, top + 1);
     }
+    
     if (isLeaf(root))
     {
         printf("%c: ", root->data);

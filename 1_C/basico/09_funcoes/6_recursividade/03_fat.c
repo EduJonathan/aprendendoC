@@ -1,39 +1,27 @@
 #include <stdio.h>
 
 /**
- * @brief Função recursiva para calcular o fatorial de um número.
+ * @brief Calcula o fatorial usando apenas um return com operador ternário.
  *
- * Calcula o fatorial de um número usando recursão.
- *
- * @param n O número para o qual o fatorial será calculado.
- * @return O fatorial de n.
- * 
- * @note A função assume que n é um número inteiro não negativo.
+ * @param n Número inteiro não negativo.
+ * @return Fatorial de n.
  */
-unsigned int fator(int n)
+unsigned int fator(unsigned int n)
 {
-    if (n == 0)
-    {
-        // Caso base: o fatorial de 0 é 1
-        return 1;
-    }
-
-    // Chamada recursiva: fatorial de n é n * fatorial de (n-1)
-    return fator(n - 1) * n;
+    return (n == 0 || n == 1) ? 1 : n * fator(n - 1);
 }
 
 int main(int argc, char **argv)
 {
-    unsigned int res = 0;
     unsigned int num = 0;
 
-    // Pede ao usuario o número para calcular o fatorial
-    printf("Digite um número para calcular o fatorial: ");
-    scanf("%d", &num);
+    printf("Digite um número inteiro não negativo: ");
+    if (scanf("%u", &num) != 1)
+    {
+        fprintf(stderr, "Entrada inválida.\n");
+        return 1;
+    }
 
-    // Armazena o valor do retorno na variável "res"
-    res = fator(num);
-
-    printf("O fatorial do número %d! = %d\n", num, res);
+    printf("O fatorial de %u! = %u\n", num, fator(num));
     return 0;
 }

@@ -3,20 +3,17 @@
 
 int main(int argc, char **argv)
 {
-    /// FORMATTERS: Ou formatadores são responsáveis por realizar a exibição,
-    // entrada e saída de dados, sempre acompanhados pelo especificador '%'.
-
-    /// VARIAVEIS: Ou identificadores são nomeações que criam abstrações para armazenar
-    // valores de tipos de dados, permitindo manipulação e alteração dos dados.
+    /// FORMATADORES: São usados para controlar a exibição e entrada de dados no C, sendo sempre precedidos por '%'.
+    /// VARIÁVEIS: Representam identificadores que armazenam valores de diferentes tipos de dados.
 
     printf("\n==================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPOS DE DADOS PRIMITIVOS<==\n");
 
-    int numero_positivo = 98;  // Números decimais positivos ou negativos
-    int numero_negativo = -98; // Números decimais positivos ou negativos
-    float real = 10.5;         // Valores com números reais (32 bits de precisão)
+    int numero_positivo = 98;  // Números inteiros positivos ou negativos
+    int numero_negativo = -98; // Números inteiros negativos
+    float real = 10.5;         // Valores com ponto flutuante (32 bits de precisão)
     double PI = 3.14;          // Números reais com maior precisão (64 bits)
-    char letra = 'A';          // Apenas uma única letra (caractere)
+    char letra = 'A';          // Caractere único
 
     printf(" O VALOR DA VARIÁVEL 'numero_positivo' É : %d\n", numero_positivo); // %d -> para tipo int
     printf(" O VALOR DA VARIÁVEL 'numero_negativo' É : %d\n", numero_negativo); // %d -> para tipo int
@@ -32,24 +29,24 @@ int main(int argc, char **argv)
     bool True = true;
     bool False = false;
 
-    // _Bool utilizada para declarar valores booleanos em compiladores antecessores
+    // _Bool foi utilizado para valores booleanos em compiladores mais antigos.
     _Bool FALSE = true;
     _Bool TRUE = false;
 
-    // Ressaltando que os valores o tipo de dado "bool", "true" e "false", só estão
-    // sendo utilizados por conta da biblioteca <stdbool.h>.
+    // "bool", "true" e "false" são definidos pela biblioteca <stdbool.h>.
+    // Em versões mais antigas de C, era necessário usar "_Bool", mas isso já não é mais necessário.
 
     printf(" O VALOR DA VARIÁVEL 'True'  É : %d\n", True);
     printf(" O VALOR DA VARIÁVEL 'False' É : %d\n", False);
     printf(" O VALOR DA VARIÁVEL 'FALSE' É : %d\n", FALSE);
     printf(" O VALOR DA VARIÁVEL 'TRUE'  É : %d\n", TRUE);
-    // %d -> para dados booleanos, pois são apenas 2 numerais (1 e 0), representando true e false
+    // %d -> usado para exibir valores booleanos, que são armazenados como 1 (true) ou 0 (false)
 
     printf("\n========================================================================\n");
     printf("\n\t==>DELIMITANDO VALORES DAS CASAS DECIMAIS<==\n");
 
-    printf(" O VALOR DA VARIAVEL 'PI' EM 2 CASAS DECIMAIS   : %.2lf\n", PI);
-    printf(" O VALOR DA VARIAVEL 'real' EM 3 CASAS DECIMAIS : %.3f\n", real);
+    printf(" O VALOR DA VARIÁVEL 'PI' EM 2 CASAS DECIMAIS   : %.2lf\n", PI);
+    printf(" O VALOR DA VARIÁVEL 'real' EM 3 CASAS DECIMAIS : %.3f\n", real);
 
     printf("\n========================================================================\n");
     printf("\n\t==>SEÇÃO PARA CARACTERES LITERAIS (STRINGS)<==\n");
@@ -60,16 +57,16 @@ int main(int argc, char **argv)
     char Caracteres[] = {'H', 'E', 'L', 'L', 'O', ' ', 'W', 'O', 'R', 'L', 'D', '\0'};
     const char *leitura = "Obrigado Senhor Deus!";
 
-    // O '\0' é um caractere especial que determina o fim de uma string.
-    // char []: Significa que o tipo de dado é um array (conjunto de dados), veremos adiante
-    // char *: O '*' antes da variável indica que o tipo de dado é um ponteiro iremos ver adiante.
+    // O '\0' é um caractere especial que indica o fim da string em C.
+    // Diferenciando: char[] (array de caracteres) e char* (ponteiro para char).
+    // O ponteiro char* aponta para uma sequência de caracteres, e o tipo char[] é um array de caracteres.
 
     printf(" O VALOR DA STRING 'ler'        É : %s\n", ler);
     printf(" O VALOR DA STRING 'caracteres' É : %s\n", caracteres);
-    printf(" O VALOR DA STRING 'caracteres' É : %s\n", Caracteres);
+    printf(" O VALOR DA STRING 'Caracteres' É : %s\n", Caracteres);
     printf(" O VALOR DA STRING 'literal'    É : %s\n", literal);
     printf(" O VALOR DA STRING 'leitura'    É : %s\n", leitura);
-    // Para tipo string (caracteres literais) seu formatter é o %s
+    // %s -> para exibir strings (sequência de caracteres terminadas por '\0').
 
     printf("\n========================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPO (UNSIGNED)<==\n");
@@ -78,13 +75,13 @@ int main(int argc, char **argv)
     unsigned U = 65535;
     unsigned short US = 0;
     unsigned long UL = 75;
-    unsigned long long ULL = 9e5; // Equivalente 9 * 10 ^ 5 = 9 * 100.000, resultando em 900000
+    unsigned long long ULL = 9e5; // Equivalente a 900000 (9 * 10^5)
 
-    printf(" O VALOR DA VARIÁVEL 'UC'  É : %c\n", UC);    // %c -> Para tipo Unsigned char
-    printf(" O VALOR DA VARIÁVEL 'U'   É : %u\n", U);     // %u -> Para tipo Unsigned
-    printf(" O VALOR DA VARIÁVEL 'US'  É : %hu\n", US);   // %hu -> Para tipo Unsigned Short
-    printf(" O VALOR DA VARIÁVEL 'UL'  É : %lu\n", UL);   // %lu -> Para tipo Unsigned Long
-    printf(" O VALOR DA VARIÁVEL 'ULL' É : %llu\n", ULL); // %llu -> Para tipo Unsigned Long Long
+    printf(" O VALOR DA VARIÁVEL 'UC'  É : %c\n", UC);    // %c -> para tipo Unsigned char
+    printf(" O VALOR DA VARIÁVEL 'U'   É : %u\n", U);     // %u -> para tipo Unsigned
+    printf(" O VALOR DA VARIÁVEL 'US'  É : %hu\n", US);   // %hu -> para tipo Unsigned Short
+    printf(" O VALOR DA VARIÁVEL 'UL'  É : %lu\n", UL);   // %lu -> para tipo Unsigned Long
+    printf(" O VALOR DA VARIÁVEL 'ULL' É : %llu\n", ULL); // %llu -> para tipo Unsigned Long Long
 
     printf("\n========================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPO (SIGNED)<==\n");
@@ -96,10 +93,10 @@ int main(int argc, char **argv)
     signed long long SLL = 263548868;
 
     printf(" O VALOR DA VARIÁVEL 'SC'  É : %c\n", SC);    // %c -> para tipo Signed Char
-    printf(" O VALOR DA VARIÁVEL 'S'   É : %i\n", S);     // %i -> Para tipo Signed
-    printf(" O VALOR DA VARIÁVEL 'SS'  É : %hi\n", SS);   // %hi -> Para tipo Signed Short
-    printf(" O VALOR DA VARIÁVEL 'SL'  É : %ld\n", SL);   // %ld -> Para tipo Signed Long
-    printf(" O VALOR DA VARIÁVEL 'SLL' É : %lld\n", SLL); // %lld -> Para tipo Signed Long Long
+    printf(" O VALOR DA VARIÁVEL 'S'   É : %i\n", S);     // %i -> para tipo Signed
+    printf(" O VALOR DA VARIÁVEL 'SS'  É : %hi\n", SS);   // %hi -> para tipo Signed Short
+    printf(" O VALOR DA VARIÁVEL 'SL'  É : %ld\n", SL);   // %ld -> para tipo Signed Long
+    printf(" O VALOR DA VARIÁVEL 'SLL' É : %lld\n", SLL); // %lld -> para tipo Signed Long Long
 
     printf("\n========================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPO (LONG)<==\n");
@@ -118,6 +115,7 @@ int main(int argc, char **argv)
     // Nesse caso, pode-se utilizar uma função específica do compilador ou bibliotecas
     // externas para manipulação de alta precisão.
 
+    // Função específica do compilador MinGW para imprimir long double com mais precisão.
     __mingw_printf(" O VALOR DA VARIÁVEL 'LD' É : %.18Lf\n", LD);
 
     /**
@@ -142,31 +140,59 @@ int main(int argc, char **argv)
     printf(" O VALOR DA VARIÁVEL 'SH' É : %hd\n", SH); // %hd -> Para tipo Short
 
     /**
-     * Regras para nomear variáveis:
-     * 1. Nomes devem começar com uma letra ou underscore (_) | Ex: nome, _valor, dados_recebidos.
-     * 2. Só podem conter números depois da primeira letra | Ex: num1, num2, valor1, dados_recebidos2.
-     * 3. Não podem conter espaços ou caracteres especiais | Errado: nome completo, preço$
-     * 4. Não podem começar com números | Errado: 1valor, Certo: valor1.
+     * Regras para nomear variáveis em C:
      *
-     * 5. Não podem ser palavras reservadas da linguagem Ex: (int, return, printf) não podem ser usados como estão.
-     * (a menos que se altere a capitalização) Ex: Printf, Int podem ser usados, mas não é recomendado.
+     * ✅ NOMEAÇÕES VÁLIDAS:
      *
-     * 6. Devem ser descritivos e significativos | Ex: totalAlunos é melhor que x.
-     * 7. Devem ser únicos dentro do mesmo escopo | Não se pode ter duas variáveis com o mesmo nome no mesmo bloco.
-     * 8. Devem seguir as convenções da linguagem | Ex: C usa snake_case, Java usa camelCase.
-     * 9. Devem ser declarados antes de serem usados | Em C, a variável deve existir antes de ser usada.
-     * 10. Sempre inicialize as variáveis antes de usá-las | Ex: int x = 0; float y = 0.0;
+     * 1. Devem começar com uma letra (a-z ou A-Z) ou underscore (_)
+     *    Ex: nome, _valor, dados_recebidos
      *
-     * 11. Não podem ser declaradas com o mesmo nome e tipo diferente no mesmo escopo | Errado: int var; float var;
+     * 2. Podem conter números após o primeiro caractere
+     *    Ex: num1, valor2, dado3_total
      *
-     * 12. Se você criou uma variável com determinado nome, não pode criar outra variável com o mesmo nome,
-     * mesmo que seja de outro tipo, no mesmo escopo | Exe.: int x = 0; int x = 0.
+     * 3. Não devem conter espaços ou caracteres especiais
+     *    Errado: nome completo, preço$, valor@total
      *
-     * 13. Se você declarou o nome da variável com um certo nome, só pode usar esse nome, a não ser que
-     * você altere o nome para outro nome válido.
+     * 4. Não podem começar com números
+     *    Errado: 1valor | Correto: valor1
      *
-     * — Todas estas regras ajudam a garantir que o código seja legível, compreensível e
-     * mantém a integridade dos dados. E vale para todas as linguagens de programação.
+     * 5. Não podem ser palavras reservadas da linguagem
+     *    Errado: int, return, if, printf
+     *    Obs: Mesmo variações da capitalização como `Int`, `Printf` são tecnicamente válidas, mas **não recomendadas**
+     *
+     * 6. Devem ser descritivos e significativos
+     *    Evite: x, y, a1
+     *    Prefira: total_alunos, idade_usuario
+     *
+     * 7. Devem ser únicas dentro do mesmo escopo
+     *    Não é possível ter duas variáveis com o mesmo nome no mesmo bloco de código.
+     *
+     * 8. Devem seguir a convenção da linguagem:
+     *    Em C, é comum o uso de `snake_case` (letras minúsculas e underscores).
+     *    Ex: nome_completo, taxa_media
+     *
+     * 9. Devem ser declaradas antes de serem utilizadas
+     *    Ex: int idade = 18; printf("%d", idade);
+     *
+     * 10. É recomendável inicializar variáveis ao declará-las
+     *     Ex: int x = 0; float pi = 3.14;
+     *
+     * 11. Não se pode declarar a mesma variável com tipos diferentes no mesmo escopo
+     *     Errado: int valor; float valor;
+     *
+     * 12. Se já existe uma variável com certo nome, não é possível declarar outra com o mesmo nome,
+     *     mesmo que de tipo diferente, no mesmo escopo.
+     *
+     * 13. Os nomes devem ser consistentes com o uso
+     *     Ex: `nome_completo` é mais apropriado que `n`, se a variável guarda um nome.
+     *
+     * 💡 DICA:
+     *    Use nomes que indiquem claramente o propósito da variável. Isso facilita a leitura,
+     *    manutenção e colaboração no código.
+     *
+     * ✅ TODAS essas regras visam garantir clareza, legibilidade e evitar erros no código.
+     *    Elas são boas práticas válidas para todas as linguagens de programação.
      */
+
     return 0;
 }

@@ -68,7 +68,7 @@ bool adicionarAresta(GRAFO *grafo, int origem, int destino, int peso)
     {
         return false;
     }
-    
+
     grafo->arestas[origem][destino] = peso;
     return true;
 }
@@ -252,4 +252,3 @@ int main(int argc, char **argv)
 
     return 0;
 }
-\

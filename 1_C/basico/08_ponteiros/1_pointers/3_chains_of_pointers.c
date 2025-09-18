@@ -40,11 +40,9 @@ int main(int argc, char **argv)
     printf(" ENDEREÇO DE MEMÓRIA DE POINTER4 : %p\n", &pointer4); // Endereço de pointer4
 
     printf("\n=============================================================================\n");
-    printf("\t>>POINTER1<<\n");
+    printf("\t>>Demonstração do Ponteiro Simples (POINTER1)<<\n");
 
-    /* Demonstração do Ponteiro Simples (POINTER1) */
-    pointer1 = &var;
-    // pointer1 aponta para endereço de var
+    pointer1 = &var; // pointer1 aponta para endereço de var
 
     // Acessa e exibe o endereço de var armazenado em pointer1
     printf(" POINTER1->END. DE MEMÓRIA DE var: %p\n", pointer1);
@@ -53,11 +51,9 @@ int main(int argc, char **argv)
     printf(" POINTER1->END. DE MEMÓRIA DE var->CONTEÚDO DE var: %d\n", *pointer1);
 
     printf("\n=============================================================================\n");
-    printf("\t>>POINTER2<<\n");
+    printf("\t>>Demonstração do Ponteiro Duplo (POINTER2)<<\n");
 
-    /* Demonstração do Ponteiro Duplo (POINTER2) */
-    pointer2 = &pointer1;
-    // pointer2 aponta endereço de pointer1
+    pointer2 = &pointer1; // pointer2 aponta endereço de pointer1
 
     // Acessa e exibe o endereço de pointer1 armazenado em pointer2
     printf(" POINTER2->POINTER1: %p\n", pointer2);
@@ -69,11 +65,9 @@ int main(int argc, char **argv)
     printf(" POINTER2->POINTER1->END. DE MEMÓRIA DE var->CONTEÚDO DE var: %d\n", **pointer2);
 
     printf("\n=============================================================================\n");
-    printf("\t>>POINTER3<<\n");
+    printf("\t>>Demonstração do Ponteiro Triplo (POINTER3)<<\n");
 
-    /* Demonstração do Ponteiro Triplo (POINTER3) */
-    pointer3 = &pointer2;
-    // pointer3 aponta para o endereço de pointer2
+    pointer3 = &pointer2; // pointer3 aponta para o endereço de pointer2
 
     // Acessa e exibe o endereço de pointer2 armazenado em pointer3
     printf(" POINTER3->POINTER2: %p\n", pointer3);
@@ -88,11 +82,9 @@ int main(int argc, char **argv)
     printf(" POINTER3->POINTER2->POINTER1->END. DE MEMÓRIA DE var->CONTEÚDO DE var: %d\n", ***pointer3);
 
     printf("\n=============================================================================\n");
-    printf("\t>>POINTER4<<\n");
+    printf("\t>>Demonstração do Ponteiro Quadruplo (POINTER4)<<\n");
 
-    /* Demonstração do Ponteiro Quadruplo (POINTER4) */
-    pointer4 = &pointer3;
-    // pointer4 aponta para endereço de pointer3
+    pointer4 = &pointer3; // pointer4 aponta para endereço de pointer3
 
     // Acessa e exibe o endereço de pointer3 armazenado em pointer4
     printf(" POINTER4->POINTER3: %p\n", pointer4);
@@ -111,8 +103,8 @@ int main(int argc, char **argv)
 
     /**
      * @note Para quem busca uma especialização em C/C++, o uso de ponteiros
-     * e "chains of pointers" é essencial o entendimento para garantir a segurança 
-     * do endereçamento de memória e evitar vulnerabilidades como overflows e invasões. 
+     * e "chains of pointers" é essencial o entendimento para garantir a segurança
+     * do endereçamento de memória e evitar vulnerabilidades como overflows e invasões.
      * Vale ressaltar que, na prática, dificilmente se usa ponteiros com mais de dois níveis
      * (ou seja, chegando no máximo a um ponteiro duplo "**" ou triplo "***").
      */

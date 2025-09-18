@@ -1,76 +1,72 @@
 #include <stdio.h>
 
 /**
- * fgets(): Função para a leitura de strings
+ * ### fgets()
+ * Lê uma linha de texto de um fluxo (arquivo ou entrada padrão).
  *
- * SINTAXE: char *fgets(char *str, int tamanho, File *fp)
+ * **Protótipo**:
+ *     char *fgets(char *str, int tamanho, FILE *fp);
  *
- * @param str é a string que devemos passar para ser lida
- * @param tamanho limite até onde os caracteres devem ser lidos
- * @param FILE variável associada ao arquivo onde a string será lida
- * @return A função retorna a string lida ou NULL em caso de erro ou fim de arquivo
+ * **Parâmetros**
+ * - `str`     : buffer onde a string será armazenada.
+ * - `tamanho` : tamanho máximo do buffer (inclui o byte de '\0').
+ * - `fp`      : fluxo de entrada (ex.: `stdin` para teclado ou ponteiro para arquivo).
+ *
+ * **Retorno**
+ * - Ponteiro para `str` em caso de sucesso.
+ * - `NULL` se ocorrer erro ou se o fim de arquivo for atingido sem caracteres lidos.
+ *
+ * ⚠️ **Importante**: `fgets` **lê o '\n'** se houver espaço. É comum remover
+ * esse caractere depois, caso não seja desejado.
  */
 
-int main(int argc, char **argv)
+int main(void)
 {
-  // Criando variável e solicitando uma frase ou nome
-  char nome[10] = {0}; // Vetor de 10 posições para armazenar o nome do usuário
+  // --- Primeiro nome --------------------------------------------------------
+  char nome[10] = {0}; // Vetor com espaço para até 9 caracteres + '\0'
   printf("Digite seu primeiro nome: ");
-  fgets(nome, 10, stdin);
+  fgets(nome, sizeof(nome), stdin);
 
-  // Imprimindo
+  // Exibe o conteúdo lido (pode incluir '\n')
   printf("Primeiro nome: %s\n", nome);
 
   /*
-   * caso o tamanho do fgets seja maior que o do vetor ou programa não irá encerrar,
-   * ou a exibição irá até onde tamanho que foi declarado:
+   * Detalhes sobre `fgets`:
+   * - Lê até `tamanho-1` caracteres ou até encontrar '\n', o que ocorrer primeiro.
+   * - Sempre grava o terminador '\0'.
+   * - Se o usuário digitar mais que 9 caracteres, o restante permanece no buffer
+   *   de entrada. Uma chamada subsequente de `fgets()` continuará lendo o que sobrou.
    *
-   * char nome[10];
-   * printf("Digite uma frase ou seu nome: ");
-   * fgets(nome, 20, stdin);
+   * Exemplo: vetor de 10 bytes, entrada "eduardojonathan\n"
+   *  1ª chamada: "eduardojo" (9 caracteres) + '\0'
+   *  2ª chamada: "nathan\n" (restante do buffer)
    *
-   * E a informação de fgets em File *fp, já que nossa string não está vindo de um arquivo
-   * e sim de um componente de entrada o stdin (stander input) o teclado
+   * Observação: o '\n' só é incluído se couber no espaço restante.
    */
 
   printf("\n-----------------------------------------------------\n");
 
-  /* Trecho de código verifica cada atributo do vetor(índice, conteúdo e endereço de memória). */
+  // Mostra índice, caractere e endereço de memória de cada posição preenchida
   for (int i = 0; nome[i] != '\0'; i++)
   {
-    printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, nome[i], &nome[i]);
+    printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, nome[i], (void *)&nome[i]);
   }
-
-  /*
-   * O fgets() lê a entrada até encontrar um '\n' ou atingir o tamanho máximo do buffer,
-   * garantindo espaço para o '\0'. Como o buffer tem um tamanho fixo, parte da entrada
-   * pode ser truncada. Além disso, se outro fgets() for chamado em seguida, caracteres
-   * remanescentes do buffer de entrada podem ser lidos automaticamente, causando efeitos
-   * colaterais na próxima leitura.
-   *
-   * No caso "eduardojonathan\n" é preenchido os 8 índices do primeiro fgets() com "eduardo"
-   * enquanto o "nathan\n" preenche os outros índices do próximo fgets().
-   *
-   * Mas porque 8 caracteres no primeiro fgets() sendo que eu tenho entrada até 10 caracteres?
-   * Como explicado a função garante o '\0' contabilizando -1, ainda mais se ultrapassar o limite.
-   */
 
   printf("\n-----------------------------------------------------\n");
 
-  // Criando variável e solicitando uma frase ou nome
-  char sobreNome[10] = {0}; // Vetor de 10 posições para armazenar o sobrenome do usuário
+  // --- Sobrenome ------------------------------------------------------------
+  char sobreNome[10] = {0};
   printf("Digite seu segundo nome: ");
   fgets(sobreNome, sizeof(sobreNome), stdin);
 
-  // Imprimindo
   printf("\nSobrenome: %s\n", sobreNome);
 
   printf("\n-----------------------------------------------------\n");
 
-  /* Trecho de código verifica cada atributo do vetor(índice, conteúdo e endereço de memória). */
   for (int i = 0; sobreNome[i] != '\0'; i++)
   {
-    printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, sobreNome[i], &sobreNome[i]);
+    printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, sobreNome[i], (void *)&sobreNome[i]);
   }
+
   return 0;
 }

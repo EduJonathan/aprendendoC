@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TABLE_SIZE 100
-
 /**
  * @brief Estrutura para um nó da tabela hash (contém chave, valor e ponteiro para próximo nó).
  */

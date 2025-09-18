@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     printf(" QUANTIDADE DE BYTES DO TIPO SIGNED SHORT : %zu bytes\n", sizeof(signed short));
     printf(" QUANTIDADE DE BYTES DO TIPO SIGNED LONG : %zu bytes\n", sizeof(signed long));
     printf(" QUANTIDADE DE BYTES DO TIPO SIGNED LONG LONG : %zu bytes\n", sizeof(signed long long));
-    printf(" QUANTIDADE DE BYTES DO TIPO SHORT            : %zu bytes\n", sizeof(short));
+    printf(" QUANTIDADE DE BYTES DO TIPO SHORT : %zu bytes\n", sizeof(short));
 
     printf(" QUANTIDADE DE BYTES DO TIPO UNSIGNED : %zu bytes\n", sizeof(unsigned));
     printf(" QUANTIDADE DE BYTES DO TIPO UNSIGNED SHORT : %zu bytes\n", sizeof(unsigned short));

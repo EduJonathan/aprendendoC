@@ -112,7 +112,6 @@ int main(int argc, char **argv)
 
     char caracteres[3] = {'A', 'B', 'C'};
     size_t tamCaractere = sizeof(caracteres) / sizeof(caracteres[0]);
-
     char *pointerChar = caracteres;
 
     /*

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 // Função auxiliar para retornar o máximo entre dois inteiros
-int max(int a, int b)
+int maximo(int a, int b)
 {
     return (a > b) ? a : b;
 }
@@ -60,7 +60,7 @@ int lcs_length(const char *str1, const char *str2)
             }
             else
             {
-                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+                dp[i][j] = maximo(dp[i - 1][j], dp[i][j - 1]);
             }
         }
     }
@@ -112,7 +112,7 @@ void lcs_sequence(const char *str1, const char *str2, char *output)
             }
             else
             {
-                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+                dp[i][j] = maximo(dp[i - 1][j], dp[i][j - 1]);
             }
         }
     }
@@ -157,10 +157,19 @@ int main(int argc, char **argv)
     int length = lcs_length(X, Y);
     printf("Tamanho da LCS: %d\n", length);
 
-    // Recupera a LCS
-    char lcs[length + 1];
-    lcs_sequence(X, Y, lcs);
-    printf("Subsequência comum máxima: %s\n", lcs);
+    // Recupera a LCS (usando malloc para tamanho dinâmico)
+    char *lcs = malloc((length + 1) * sizeof(char));
+    if (lcs != NULL)
+    {
+        lcs_sequence(X, Y, lcs);
+        printf("Subsequência comum máxima: %s\n", lcs);
+        free(lcs); // Libera a memória alocada
+    }
+    else
+    {
+        fprintf(stderr, "Erro de alocação de memória.\n");
+        return 1;
+    }
 
     return 0;
 }

@@ -20,24 +20,24 @@ int main(int argc, char **argv)
      * do ponteiro.
      */
 
-    // Valores para realizar as operações
-    float n1 = 89, n2 = 56;
+    float n1 = 89.0f, n2 = 56.0f;
 
-    // Variáveis para armazenar os conteúdos das operações
-    float soma = 0.0f, subtracao = 0.0f, multiplicacao = 0.0f, divisao = 0.0f, resto = 0.0f;
+    // Ponteiros para n1 e n2
+    float *p1 = &n1;
+    float *p2 = &n2;
 
-    // Declarando ponteiros p1 e p2 para tipos floats
-    float *p1 = NULL, *p2 = NULL;
+    // Operações aritméticas usando desreferenciação
+    float soma = *p1 + *p2;
+    float subtracao = *p1 - *p2;
+    float multiplicacao = *p1 * *p2;
+    float divisao = *p1 / *p2;
+    float resto = (float)((int)*p1 % (int)*p2); // resto exige inteiros
 
-    p1 = &n1; // ponteiro p1 recebe o endereço de n1
-    p2 = &n2; // ponteiro p2 recebe o endereço de n2
-
-    // Operações matemáticas utilizando os valores apontados pelos ponteiros
-    soma = *p1 + *p2;                     // soma = conteúdo de p1 + conteúdo de p2
-    subtracao = *p1 - *p2;                // subtração = conteúdo de p1 - conteúdo de p2
-    multiplicacao = *p1 * *p2;            // multiplicação = conteúdo de p1 * conteúdo de p2
-    divisao = *p1 / *p2;                  // divisão = conteúdo de p1 / conteúdo de p2
-    resto = (float)((int)*p1 % (int)*p2); // resto = (conteúdo de p1) % (conteúdo de p2), convertido para inteiro
+    printf("Soma:          %.2f + %.2f = %.2f\n", *p1, *p2, soma);
+    printf("Subtração:     %.2f - %.2f = %.2f\n", *p1, *p2, subtracao);
+    printf("Multiplicação: %.2f * %.2f = %.2f\n", *p1, *p2, multiplicacao);
+    printf("Divisão:       %.2f / %.2f = %.2f\n", *p1, *p2, divisao);
+    printf("Resto (int):   %.2f %% %.2f = %.2f\n", *p1, *p2, resto);
 
     // Imprime os resultados das operações
     printf(" A soma do conteúdo dos ponteiros: %.2f + %.2f é = %.2f\n", *p1, *p2, soma);
@@ -51,20 +51,16 @@ int main(int argc, char **argv)
 
     // Variáveis inteiras para incremento e decremento
     int v1 = 5, v2 = 12;
-    int *pointer1 = NULL, *pointer2 = NULL;
-
-    pointer1 = &v1; // ponteiro pointer1 aponta para v1
-    pointer2 = &v2; // ponteiro pointer2 aponta para v2
+    int *pointer1 = &v1;
+    int *pointer2 = &v2;
 
     printf("\n=============================================================================\n");
-    printf("\n\t EXTRAINDO INFORMAÇÕES SOBRE\n");
-
-    // Mostrando os valores e endereços das variáveis e ponteiros
-    printf(" CONTEÚDO DE v1: %d | ENDEREÇO DE v1: %p\n", v1, &v1);
-    printf(" CONTEÚDO DE v2: %d | ENDEREÇO DE v2: %p\n", v2, &v2);
-    printf(" ENDEREÇO DE pointer1 : %p | ENDEREÇO DE pointer2 : %p\n", &pointer1, &pointer2);
-    printf(" ENDEREÇO QUE pointer1 APONTA: %p | ENDEREÇO QUE pointer2 APONTA: %p\n", pointer1, pointer2);
-    printf(" CONTEÚDO QUE pointer1 APONTA: %d | CONTEÚDO QUE pointer2 APONTA: %d\n", *pointer1, *pointer2);
+    printf("\n-- Endereços e Conteúdos Iniciais --\n");
+    
+    printf("v1: %d (endereço %p)\n", v1, (void *)&v1);
+    printf("v2: %d (endereço %p)\n", v2, (void *)&v2);
+    printf("pointer1 aponta para %p, pointer2 aponta para %p\n",
+           (void *)pointer1, (void *)pointer2);
 
     printf("\n=============================================================================\n");
 
@@ -75,22 +71,23 @@ int main(int argc, char **argv)
     // Mostra o conteúdo após incremento
     printf(" CONTEÚDO DE v1: %d CONTEÚDO DE v2: %d CONTEÚDO DE pointer1: %d CONTEÚDO DE pointer2: %d\n", v1, v2, *pointer1, *pointer2);
 
-    ++*pointer1; // Incrementa o valor apontado por pointer1 (v1)
-    *pointer2++; // Incrementa pointer2 (não o valor apontado por pointer2, mas o ponteiro em si)
+    printf("\nApós ++(*pointer1) e (*pointer2)++:\n");
+    printf("v1 = %d, v2 = %d\n", v1, v2);
 
-    /**
-     * DIFERENÇA ENTRE ++*pointer1 E *pointer2++:
+    // Diferença entre ++*p e *p++
+    ++*pointer1; // incrementa o valor apontado por pointer1 (v1)
+    *pointer2++; // incrementa o ponteiro pointer2 (não o valor de v2!)
+
+    /*
+     * ++*pointer1 -> Incrementa o valor armazenado no endereço apontado.
      *
-     * ++*pointer1: Incrementa o valor armazenado no endereço apontado por pointer1 (ou seja, o valor de v1).
-     *
-     * *pointer2++: Uma armadilha comum. O operador de incremento (++) tem maior precedência
-     * que o operador de desreferenciação (*). Isso significa que primeiro pointer2 é
-     * incrementado, e depois o valor armazenado no endereço original de pointer2 é acessado.
-     * Portanto, o valor de v2 não é incrementado, mas o ponteiro pointer2 é movido para
-     * o próximo endereço de memória.
+     * *pointer2++ -> Incrementa o ponteiro primeiro, depois tenta acessar o valor
+     *                antigo (atenção: pode gerar comportamento indefinido se não
+     *                houver memória válida adiante).
      */
 
-    // Exibe o conteúdo após o segundo incremento
-    printf(" CONTEÚDO DE v1: %d CONTEÚDO DE v2: %d CONTEÚDO DE pointer1: %d CONTEÚDO DE pointer2: %d\n", v1, v2, *pointer1, *pointer2);
+    printf("\nApós ++*pointer1 e *pointer2++:\n");
+    printf("v1 = %d, v2 = %d\n", v1, v2);
+    printf("pointer2 agora aponta para %p\n", (void *)pointer2);
     return 0;
 }

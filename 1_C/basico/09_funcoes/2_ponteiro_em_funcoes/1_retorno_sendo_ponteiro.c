@@ -32,7 +32,7 @@ float *minimo(float *n1, float *n2)
  * @param n2 Ponteiro para o segundo valor inteiro.
  * @return Um ponteiro para o valor inteiro que é maior entre `n1` e `n2`.
  */
-int *max(int *n1, int *n2)
+int *valor_maximo(int *n1, int *n2)
 {
     // Comparando os valores em operações térnaria tanto se é menor quanto maior
     int *maior = (n1 > n2) ? n1 : n2;
@@ -70,7 +70,7 @@ int main(int argc, char **argv)
     int intN2 = 14;
     int *maximo = NULL;
 
-    maximo = max(&intN1, &intN2);
+    maximo = valor_maximo(&intN1, &intN2);
     printf("O maior numero e: %d\n", *maximo);
 
     printf("\n----------------------------------\n");

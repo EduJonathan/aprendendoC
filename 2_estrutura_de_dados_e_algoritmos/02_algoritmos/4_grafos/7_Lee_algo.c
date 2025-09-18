@@ -74,6 +74,7 @@ void enqueue(Queue *q, Cell item)
         printf("Fila cheia\n");
         return;
     }
+
     if (q->front == -1)
     {
         q->front = 0;
@@ -90,6 +91,7 @@ Cell dequeue(Queue *q)
         printf("Fila vazia\n");
         return (Cell){-1, -1};
     }
+    
     Cell item = q->items[q->front];
     if (q->front == q->rear)
     {

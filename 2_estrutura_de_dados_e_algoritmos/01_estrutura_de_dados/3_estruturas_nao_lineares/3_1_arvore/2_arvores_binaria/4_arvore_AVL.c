@@ -48,7 +48,7 @@ int height(struct Node *N)
  * @param b O segundo número.
  * @return O valor máximo entre a e b.
  */
-int max(int a, int b)
+int maximo(int a, int b)
 {
     return (a > b) ? a : b;
 }
@@ -92,8 +92,8 @@ struct Node *rightRotate(struct Node *y)
     x->right = y;
     y->left = T2;
 
-    y->height = max(height(y->left), height(y->right)) + 1;
-    x->height = max(height(x->left), height(x->right)) + 1;
+    y->height = maximo(height(y->left), height(y->right)) + 1;
+    x->height = maximo(height(x->left), height(x->right)) + 1;
     return x;
 }
 
@@ -113,8 +113,8 @@ struct Node *leftRotate(struct Node *x)
     y->left = x;
     x->right = T2;
 
-    x->height = max(height(x->left), height(x->right)) + 1;
-    y->height = max(height(y->left), height(y->right)) + 1;
+    x->height = maximo(height(x->left), height(x->right)) + 1;
+    y->height = maximo(height(y->left), height(y->right)) + 1;
     return y;
 }
 
@@ -166,7 +166,7 @@ struct Node *insertNode(struct Node *node, int key)
         return node; // Ignora duplicatas
     }
 
-    node->height = 1 + max(height(node->left), height(node->right));
+    node->height = 1 + maximo(height(node->left), height(node->right));
 
     int balance = getBalance(node);
 
@@ -269,7 +269,7 @@ struct Node *deleteNode(struct Node *root, int key)
         root->right = deleteNode(root->right, temp->key);
     }
 
-    root->height = 1 + max(height(root->left), height(root->right));
+    root->height = 1 + maximo(height(root->left), height(root->right));
 
     int balance = getBalance(root);
 

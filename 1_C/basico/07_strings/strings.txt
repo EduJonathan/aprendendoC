@@ -29,8 +29,7 @@ Por padrão, literais são somente leitura, então use const para evitar modific
 2. Usa 1 byte, com códigos de 0 a 127 (ou 0 a 255 em extensões).
 3. Limitação: projetado para o inglês, não contempla acentos nem muitos símbolos.
 
-- Evolução: Para suportar mais idiomas e caracteres surgiram outros esquemas (OEM, DBCS),
-mas o mais importante é o Unicode.
+- Evolução: Para suportar mais idiomas e caracteres surgiram outros esquemas (OEM, DBCS), mas o mais importante é o Unicode.
 
 - Unicode/UTF-8: Padrão universal que abrange praticamente todos os caracteres e símbolos do mundo,
 garantindo compatibilidade global e substituindo as restrições do ASCII.

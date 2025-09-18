@@ -122,10 +122,12 @@ bool buscarPadrao(const char *texto, const char *padrao)
         {
             j = falhas[j - 1]; // Retrocede usando o vetor de falhas
         }
+
         if (texto[i] == padrao[j])
         {
             j++; // Avança no padrão
         }
+        
         if (j == tamanhoPadrao)
         {
             printf("Padrão encontrado no índice %d\n", i - tamanhoPadrao + 1);

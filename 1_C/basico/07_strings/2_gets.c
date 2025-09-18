@@ -1,41 +1,58 @@
 #include <stdio.h>
 
-int main(int argc, char **argv)
+int main(void)
 {
-    char string[10] = {0}; /* Vetor de 10 posicoes para armazenar o nome do usuario*/
+    char string[10] = {0}; /* Vetor de 10 posições para armazenar o nome do usuário */
 
-    // Solicitando o nome do usuário
+    // Solicita o nome do usuário
     printf("Digite seu nome: ");
-    gets(string);
+    gets(string); // ⚠️ Função insegura: veja explicação abaixo.
 
-    // Imprimindo o nome do usuário
+    // Exibe o nome lido
     printf("%s\n", string);
 
     /**
-     * gets(get string): Pode ser sim uma boa escolha por considerar espaçamentos até
-     * você digitar o enter, o porém é que a função não é segura, o próprio compilador
-     * diz a respeito sobre ser unsafe (inseguro). Então ele nos recomenda usarmos o fgets.
-     * Mas porque gets é inseguro? ele ultrapassa os limites do vetor, se eu digito meu nome
-     * "eduardo jonathan", em um vetor de 10 elementos ele imprime o nome todo, sendo que
-     * deveria imprimir considerando o espaço até o caractere 'o'.
+     * ### Por que `gets()` é insegura
      *
+     * `gets()` lê caracteres da entrada padrão até encontrar um `\n` (Enter),
+     * mas **não tem limite de leitura**. Isso permite que o usuário digite mais
+     * caracteres do que o vetor comporta, sobrescrevendo áreas de memória e
+     * causando *buffer overflow* (comportamento indefinido).
+     *
+     * Exemplo: vetor de 10 bytes (`char string[10]`):
+     *
+     * Digitação: "eduardo jonathan"
+     *
+     * Posições reais escritas:
      * ['e']['d']['u']['a']['r']['d']['o'][' ']['j']['o']['\0']
-     *   0    1    2    3    4    5    6    7    8    9   10
+     *   0    1    2    3    4    5    6    7    8    9   10  ← já fora do limite
      *
-     * OBS: Strings SEMPRE termina no caractere '\0', por mais que não o vemos ele está lá.
-     * E enquanto aos outros caracteres?
+     * O compilador costuma emitir aviso: **"warning: the 'gets' function is dangerous
+     * and should not be used"**.
      *
-     * ['n']['a']['t']['h']['a']['n']
-     *  11   12   13   14   15   16
-     * eles vão ocupando posições que não pertencem ao vetor e vão para outros endereços aleátorios.
+     * ### Alternativa segura: `fgets()`
+     *
+     * `fgets()` permite limitar a quantidade de caracteres lidos e mantém o `\n`
+     * final (que pode ser removido se necessário):
+     *
+     * ```c
+     * if (fgets(string, sizeof(string), stdin)) {
+     *     string[strcspn(string, "\n")] = '\0'; // remove o '\n' se existir
+     * }
+     * ```
+     *
+     * Assim, evita-se escrever além do tamanho do vetor.
+     *
+     * **Importante**: Strings em C **sempre terminam com `'\0'`**.
      */
 
     printf("\n-----------------------------------------------------\n");
 
-    /* Trecho de código verifica cada atributo do vetor(índice, conteúdo e endereço de memória). */
+    /* Mostra índice, conteúdo e endereço de cada caractere da string lida */
     for (int i = 0; string[i] != '\0'; i++)
     {
-        printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, string[i], &string[i]);
+        printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, string[i], (void *)&string[i]);
     }
+
     return 0;
 }

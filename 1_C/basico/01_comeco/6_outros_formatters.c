@@ -1,103 +1,88 @@
 #include <stdio.h>
 
-/* Exemplo de outros tipos de formatadores e especificadores de saídas de dados */
+/**
+ * Exemplo com diversos especificadores de formato no printf().
+ * Aborda formatações para octal, hexadecimal, notação científica e ponteiros.
+ */
 
 int main(int argc, char **argv)
 {
-    printf("\n\t\t==>OUTROS FORMATADORES<==\n");
+    printf("\n\t==> OUTROS FORMATADORES <==\n");
 
     int OCTAL = 48;
     int HEXADECIMAL = 69;
     unsigned long int ULI = 45;
     unsigned long long int ULLI = 42;
 
+    //================== OCTAL ==================//
     printf("\n============================================================\n");
-    printf("\n\t==>SEÇÃO PARA FORMATOS EM OCTAIS<==\n");
+    printf("\n\t==> FORMATOS EM OCTAL <==\n");
 
-    // %o: Exibe valores de um número na forma octal
-    printf(" VALOR OCTAL DA VARIÁVEL 'OCTAL' : %o\n", OCTAL);
+    printf(" OCTAL de 'OCTAL' (%%o) : %o\n", OCTAL);   // valor em base 8
+    printf(" OCTAL de 'ULI' (%%lo) : %lo\n", ULI);     // long int
+    printf(" OCTAL de 'ULLI' (%%llo) : %llo\n", ULLI); // long long int
 
-    // %lo: Para tipo long
-    printf(" VALOR OCTAL DA VARIÁVEL 'ULI' : %lo\n", ULI);
+    // Com prefixo '0' usando o modificador '#'
+    printf("\n-- COM PREFIXO --\n");
+    printf(" %#o (prefixado) : %#o\n", OCTAL); // Ex: 060
+    printf(" %#lo (prefixado) : %#lo\n", ULI);
+    printf(" %#llo (prefixado) : %#llo\n", ULLI);
 
-    // %llo: Para tipo unsigned long long
-    printf(" VALOR OCTAL DA VARIÁVEL 'ULLI' : %llo\n", ULLI);
-
-    printf("\n-----------------------------------------------------\n");
-
-    // %#o, %#lo ou %#llo: Exibe valores de um número na forma octal com prefixo '0'
-    printf(" PREFIXO DO VALOR EM OCTAL DA VARÍAVEL 'OCTAL' : %#o\n", OCTAL); // Prefixo 0
-    printf(" PREFIXO OCTAL DA VARIÁVEL 'ULI' : %#lo\n", ULI);                // Prefixo 0
-    printf(" PREFIXO OCTAL DA VARIÁVEL 'ULLI' : %#llo\n", ULLI);             // Prefixo 0
-
+    //================== HEXADECIMAL ==================//
     printf("\n=================================================================\n");
-    printf("\n\t==>SEÇÃO PARA FORMATOS EM HEXADECIMAIS<==\n");
+    printf("\n\t==> FORMATOS EM HEXADECIMAL <==\n");
 
-    // %x: Exibe valores de um número na forma hexadecimal
-    printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'HEXADECIMAL' : %x\n", HEXADECIMAL);
-    printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'HEXADECIMAL' : %X\n", HEXADECIMAL);
+    // Letras minúsculas (a-f)
+    printf(" HEX de 'HEXADECIMAL' (%%x) : %x\n", HEXADECIMAL);
 
-    // %lx: Para tipo unsigned long
-    printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'ULI' : %lx\n", ULI);
+    // Letras maiúsculas (A-F)
+    printf(" HEX de 'HEXADECIMAL' (%%X) : %X\n", HEXADECIMAL);
 
-    // %lX: Para tipo unsigned long
-    printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'ULI' : %lX\n", ULI);
+    printf(" HEX de 'ULI' (%%lx / %%lX) : %lx / %lX\n", ULI, ULI);
+    printf(" HEX de 'ULLI' (%%llx / %%llX) : %llx / %llX\n", ULLI, ULLI);
 
-    // %llx: Para tipo unsigned long long
-    printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'ULLI' : %llx\n", ULLI);
+    // Com prefixo '0x' ou '0X' usando '#'
+    printf("\n-- COM PREFIXO --\n");
+    printf(" %#x (minúsculo) : %#x\n", HEXADECIMAL); // Ex: 0x45
+    printf(" %#X (maiúsculo) : %#X\n", HEXADECIMAL); // Ex: 0X45
+    printf(" %#lx / %#lX : %#lx / %#lX\n", ULI, ULI);
+    printf(" %#llx / %#llX : %#llx / %#llX\n", ULLI, ULLI);
 
-    // %llX: Para tipo unsigned long long
-    printf(" VALOR EM HEXADECIMAL DA VARIÁVEL 'ULLI' : %llX\n", ULLI);
-
-    printf("\n-----------------------------------------------------\n");
-
-    // %#x ou %#X: Exibe valores de um número na forma hexadecimal com prefixo 'x' e 'X'
-    printf(" PREFIXO DO VALOR EM HEXADECIMAL DA VARIÁVEL 'HEXADECIMAL' : %#x\n", HEXADECIMAL);
-    printf(" PREFIXO DO VALOR EM HEXADECIMAL DA VARIÁVEL 'HEXADECIMAL' : %#X\n", HEXADECIMAL);
-
-    // %#lx ou %#lX: Para tipo unsigned long
-    printf(" PREFIXO HEXADECIMAL DA VARIÁVEL 'ULI' : %#lx\n", ULI);
-    printf(" PREFIXO HEXADECIMAL DA VARIÁVEL 'ULI' : %#lX\n", ULI);
-
-    // %#llx ou %#llX: Para tipo unsigned long long
-    printf(" PREFIXO HEXADECIMAL DA VARIÁVEL 'ULLI' : %#llx\n", ULLI);
-    printf(" PREFIXO HEXADECIMAL DA VARIÁVEL 'ULLI' : %#llX\n", ULLI);
-
+    //================== ENDEREÇOS DE MEMÓRIA ==================//
     printf("\n==================================================================\n");
-    printf("\n\t==>SEÇÃO PARA EXIBIR O ENDEREÇO DE MEMÓRIA DE UMA VARÍAVEL<==\n");
+    printf("\n\t==> ENDEREÇOS DE MEMÓRIA (POINTERS) <==\n");
 
-    printf(" O ENDEREÇO DE MEMÓRIA DA VARIÁVEL 'OCTAL' É : %p\n", &OCTAL);
+    printf(" Endereço de 'OCTAL' (%%p) : %p\n", (void *)&OCTAL);
+    printf(" Endereço de 'HEXADECIMAL' : %p\n", (void *)&HEXADECIMAL);
     /*
-     * %p: vem de pointer(ponteiro) e %x que podem são formatadores que exibem a
-     * posição de memória (referência) através do operador &(endereço de) na variável.
-     */
-
-    printf(" PREFIXO DO ENDEREÇO DE MEMÓRIA DA VARIÁVEL 'HEXADECIMAL' É : %p\n", (void *)&HEXADECIMAL);
-    /*
-     * '#': formata o printf incluindo 0, 0x ou 0X dando uma perspectiva do prefixo de
-     * números octal, hexadecimal e endereços, não recomendado seu uso, pois pode gerar
-     * confusão em sua interpretação e conversão do valor.
+     * %p: exibe o endereço de memória (em hexadecimal), usado com ponteiros.
+     * É necessário fazer casting para (void *) em compiladores mais exigentes.
      *
-     * printf(" PREFIXO DO ENDEREÇO DE MEMÓRIA DA VARIÁVEL 'HEXADECIMAL' É : %#p\n", (void *)&HEXADECIMAL);
+     * ⚠️ ATENÇÃO:
+     * printf(" PREFIXO DO ENDEREÇO DE MEMÓRIA DA VARIÁVEL 'OCTAL' É : %#p\n", (void *)&OCTAL);
      * ERROR: flag '#' results in undefined behavior with 'p' conversion specifier [-Wformat]
+     * O modificador '#' NÃO DEVE ser usado com %p — gera comportamento indefinido.
      */
 
+    //================== NOTAÇÃO CIENTÍFICA ==================//
     printf("\n=====================================================================\n");
-    printf("\n\t==>SEÇÃO PARA EXIBIR VALORES EM NOTAÇÕES CIENTIFICAS<==\n");
+    printf("\n\t==> NOTAÇÃO CIENTÍFICA <==\n");
 
-    float NOTACAO_CIENTIFICA = 045.5236F;
+    float NOTACAO_CIENTIFICA = 45.5236F; // Atenção: 045 seria interpretado como octal
 
-    printf(" VALOR DE 'NOTAÇÃO_CIENTIFICA' FORMATADA : %e\n", NOTACAO_CIENTIFICA);
-    printf(" VALOR DE 'NOTAÇÃO_CIENTIFICA' FORMATADA : %E\n", NOTACAO_CIENTIFICA);
-    printf(" VALOR DE 'NOTAÇÃO_CIENTIFICA' FORMATADA : %g\n", NOTACAO_CIENTIFICA);
-    printf(" VALOR DE 'NOTAÇÃO_CIENTIFICA' FORMATADA : %G\n", NOTACAO_CIENTIFICA);
+    printf(" %e : %e\n", NOTACAO_CIENTIFICA); // Ex: 4.552360e+01
+    printf(" %E : %E\n", NOTACAO_CIENTIFICA); // Ex: 4.552360E+01
+    printf(" %g : %g\n", NOTACAO_CIENTIFICA); // Escolhe entre %f ou %e (menor)
+    printf(" %G : %G\n", NOTACAO_CIENTIFICA); // Mesmo que %g, com 'E' maiúsculo
 
-    printf("\n-----------------------------------------------------\n");
+    printf("\n-- Com long double --\n");
 
     long double NOTACAO = 263.78L;
-    printf(" VALOR DE 'NOTAÇÃO' FORMATADA : %Le\n", NOTACAO);
-    printf(" VALOR DE 'NOTAÇÃO' FORMATADA : %LE\n", NOTACAO);
-    printf(" VALOR DE 'NOTAÇÃO' FORMATADA : %Lg\n", NOTACAO);
-    printf(" VALOR DE 'NOTAÇÃO' FORMATADA : %LG\n", NOTACAO);
+
+    printf(" %Le : %Le\n", NOTACAO);
+    printf(" %LE : %LE\n", NOTACAO);
+    printf(" %Lg : %Lg\n", NOTACAO);
+    printf(" %LG : %LG\n", NOTACAO);
+
     return 0;
 }

@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-// Função auxiliar para retornar o máximo entre dois inteiros
-int min(int a, int b)
-{
-    return (a < b) ? a : b;
-}
+#include <limits.h>
 
 /**
  * O problema da troca de moedas visa encontrar o número mínimo de moedas para uma determinada

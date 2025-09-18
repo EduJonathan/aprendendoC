@@ -1,64 +1,69 @@
 #include <stdio.h>
 
 /**
- * Esse programa exibe como realizar a formatação de dados e números com a utilização
- * da função printf() para formatar e exibir dados e números. A formatação permite que
- * valores (argumentos ou parâmetros) sejam apresentados de forma legível e controlada na
- * saída. Para isso, utilizamos o printf() com especificadores de formato dentro das aspas,
- * seguidos de uma vírgula e os valores ou variáveis que queremos exibir.
+ * Este programa demonstra como realizar a formatação de dados e números utilizando
+ * a função printf() em C. A formatação de dados permite controlar a maneira como
+ * os valores são exibidos na tela, tornando a saída mais legível e organizada.
+ * Utilizamos especificadores de formato (como %d, %f, %s, etc.) para definir o tipo
+ * de dado a ser exibido e como ele deve ser apresentado.
  *
  * SINTAXE: printf("<especificador_de_formato>", arg1, arg2, ...);
  *
- * Especificadores de formato (%d, %f, %s, etc.) define como o valor será exibido,
- * e os argumentos são passados após a vírgula. A função printf() então substitui os
- * especificadores pelos respectivos valores ou conteúdos das variáveis passadas.
+ * Especificadores de formato determinam como o valor será exibido (por exemplo, %d
+ * para números inteiros, %f para números de ponto flutuante, %s para strings, etc.),
+ * e os valores a serem exibidos são passados como argumentos após a vírgula. O printf()
+ * substitui cada especificador de formato pelo respectivo valor.
  */
 
 int main(int argc, char **argv)
 {
 	printf("\n\t>> PEQUENA DEMONSTRAÇÃO DE FORMATAÇÃO <<\n");
 
-	// Exibindo um número inteiro com o especificador "%d"
-	printf("%d\n", 6); // "%d": Formata um número inteiro.
+	// Exibe um número inteiro utilizando o especificador "%d"
+	printf("%d\n", 6); // "%d": Formata e exibe um número inteiro.
 
-	// Exibindo um número inteiro com largura mínima de 6 espaços
+	// Exibe um número inteiro com largura mínima de 6 espaços
 	printf("%6d\n", 350);
 	/*
-	 * "%6d": Imprime um número inteiro ocupando pelo menos 6 espaços,
-	 * preenchendo com espaços à esquerda se necessário.
+	 * "%6d": Formata e exibe o número inteiro com um mínimo de 6 espaços.
+	 * Se o número for menor que 6 dígitos, espaços em branco são adicionados à esquerda.
 	 */
 
 	printf("\n-----------------------------------------------------\n");
 
-	// Demonstração de complementos com zero para números inteiros
+	// Demonstração de como preencher com zeros à esquerda
 	printf("\n\t>> COMPLEMENTOS COM ZERO <<\n");
 
-	printf("%04d\n", 67); // "%04d": Preenche com 0 à esquerda para garantir 4 dígitos
-	printf("%06d\n", 67); // "%06d": Preenche com 0 à esquerda para garantir 6 dígitos
+	printf("%04d\n", 67); // "%04d": Preenche com zeros à esquerda, totalizando 4 dígitos
+	printf("%06d\n", 67); // "%06d": Preenche com zeros à esquerda, totalizando 6 dígitos
 	/*
-	 * "%04d e %06d": Imprime um número inteiro ocupando pelo menos 4 ou 6 espaços,
-	 * preenchendo com zeros à esquerda se necessário.
+	 * "%04d" e "%06d": Formata o número inteiro com um total de 4 ou 6 dígitos, respectivamente.
+	 * Se o número for menor que a largura definida, zeros são adicionados à esquerda.
 	 */
 
-	printf("%6.4d\n", 67); // "%6.4d": Imprime com 6 espaços, com no máximo 4 dígitos à direita
-	printf("%6.0d\n", 67); // "%6.0d": Imprime com 6 espaços, mas sem dígitos à direita
+	printf("%6.4d\n", 67); // "%6.4d": Formata para ocupar 6 espaços, com no máximo 4 dígitos à direita
+	printf("%6.0d\n", 67); // "%6.0d": Formata para ocupar 6 espaços, sem mostrar dígitos à direita
 	/*
-	 * "%6.4d e %6.0d": Imprime um número inteiro ocupando pelo menos 6 espaços,
-	 * com no máximo 4 e 0 dígitos à direita do ponto decimal.
+	 * "%6.4d" e "%6.0d": Formata um número inteiro para ocupar pelo menos 6 espaços.
+	 * O número após o ponto define a quantidade de dígitos a exibir, e a parte anterior
+	 * da largura mínima totaliza os espaços ocupados.
 	 */
 
 	printf("\n-----------------------------------------------------\n");
 
 	printf("\n\t>> DEMONSTRAÇÃO DE FORMATAÇÃO COM CARACTERES <<\n");
 
+	// Exibe caracteres e strings utilizando "%c" e "%s"
 	printf("\n SEXO: '%c'\tNOME: \"%s\"\n", 'M', "Eduardo");
-	/// OUTPUT: SEXO: 'M'       NOME: "Eduardo"
+	// OUTPUT: SEXO: 'M'       NOME: "Eduardo"
 
-	printf(" SEXO: '%c'\tNOME: \"%s\"\n", 'F', "Ana");
-	/// OUTPUT: SEXO: 'F'       NOME: "Ana"
+	// printf(" SEXO: '%c'\tNOME: \"%s\"\n", 'FA', "Ana");
+	// OUTPUT: SEXO: 'A'       NOME: "Ana"
 
-	/// @note: O especificador "%c" exibe apenas um único caractere
-	/// @note: O especificador "%s" exibe uma string (sequência de caracteres)
+	/*
+	 * "%c" exibe um único caractere.
+	 * "%s" exibe uma sequência de caracteres (string).
+	 */
 
 	printf("\n-----------------------------------------------------\n");
 
@@ -71,29 +76,27 @@ int main(int argc, char **argv)
 	// Alinhamento à direita para inteiros e números de ponto flutuante
 	printf("\n\t>> ALINHAMENTO PARA A DIREITA <<\n");
 
-	// Alinhamento à direita com 4 espaços para inteiros e 7 espaços para números de
-	// ponto flutuante 4 espaços para inteiro, 7 para float com 2 casas decimais
+	// Exibe inteiros com 4 espaços e números de ponto flutuante com 7 espaços e 2 casas decimais
 	printf("\n%4d %7.2lf\n", n1, value1);
 	printf("%4d %7.2lf\n", n2, value2);
 	printf("%4d %7.2lf\n", n3, value3);
 	/*
-	 * O número após o '%' define a largura mínima do campo para o valor.
-	 * O número após o '.' (por exemplo, %.2lf) define o número de casas decimais a exibir.
-	 * "%7.2lf" alinha à direita e usa 7 espaços no total, sendo 2 casas decimais para o
-	 * valor de ponto flutuante.
+	 * "%4d": Alinha o número inteiro à direita, utilizando 4 espaços.
+	 * "%7.2lf": Alinha o número de ponto flutuante à direita, utilizando 7 espaços no total, com 2 casas decimais.
+	 * O número após o '.' indica a quantidade de casas decimais.
 	 */
 
 	// Alinhamento à esquerda para inteiros e números de ponto flutuante
-	// Alinhamento à esquerda com 4 dígitos para inteiros e 7 espaços para números
-	// float com 2 casas decimais
 	printf("\n%04d %-7.2lf\n", n1, value1);
 	printf("%04d %-7.2lf\n", n2, value2);
 	printf("%04d %-7.2lf\n", n3, value3);
 	/*
-	 * "%-7.2lf": Formata o número de ponto flutuante (double) com 7 espaços no total,
-	 * sendo 2 casas decimais, e alinha à esquerda.
+	 * "%-7.2lf": Formata o número de ponto flutuante para ocupar 7 espaços, alinhado à esquerda.
+	 * "%04d": Preenche com zeros à esquerda, se necessário, para garantir pelo menos 4 dígitos.
 	 */
 
-	/// @attention Antes de variáveis, precisamos entender os DATATYPES(tipos de dados), vamos lá!?
+	/// @attention Antes de começar a trabalhar com as variáveis, é importante entender os TIPOS DE DADOS.
+	/// Vamos explorar mais sobre como escolher o tipo correto para diferentes valores e qual o impacto disso na formatação.
+
 	return 0;
 }

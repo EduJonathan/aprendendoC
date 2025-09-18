@@ -27,10 +27,8 @@ void printlinhas(void)
 /// @return retorno de uma operação ternária entre 2 valores
 int maiorOuMenor(void)
 {
-    // Valor a ser comparado na operação do retorno
+    // Valores a ser comparado na operação do retorno
     int n1 = 10;
-
-    // Valor a ser comparado na operação do retorno
     int n2 = 20;
 
     // Retorno do maior número entre `n1` e `n2` utilizando o operador térnario

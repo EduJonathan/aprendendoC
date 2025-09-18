@@ -159,7 +159,6 @@ void liberarConjunto(Conjunto *s)
     {
         return;
     }
-
     free(s->elementos);
     free(s);
 }

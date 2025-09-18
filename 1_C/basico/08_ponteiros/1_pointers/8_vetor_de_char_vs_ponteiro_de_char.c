@@ -1,68 +1,86 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * VETOR DE CARACTERES VS PONTEIRO PARA CHAR
-
+ *
  * Quando usamos:
  * - char str[] = "hello": declaramos um ARRAY DE CARACTERES de tamanho 6,
- * com a liberdade de alterar cada índice.
+ *   com a liberdade de alterar cada índice. A string é copiada para o array.
+ * - const char *str = "hello": declaramos um ponteiro para uma string literal
+ *   constante, permitindo apenas leitura, pois modificações causam erro de segmentação.
  *
- * - char *str = "hello": declaramos um ponteiro para uma string constante literal,
- * permitindo apenas leitura, pois tentativas de modificação podem causar erros de segmentação.
-
- * char *(Ponteiro para Caractere):
- * - Representa um ponteiro para um caractere ou o endereço do primeiro elemento
- * de uma matriz de caracteres.
- * - Pode apontar para um único caractere ou para o início de uma matriz de caracteres.
- * - O tamanho não é fixo e pode ser usado para apontar para memória alocada dinamicamente.
-
+ * char * (Ponteiro para Caractere):
+ * - Representa o endereço do primeiro caractere de uma string ou um único caractere.
+ * - Pode apontar para memória alocada dinamicamente (ex: com malloc).
+ * - O tamanho não é fixo, e o ponteiro pode ser reatribuído.
+ *
  * USO:
- * - Ambos char * e char[] são usados para manipular strings em C, mas têm diferenças sutis em termos
- * de uso e funcionalidade.
- * - char *: é usado quando precisa de um ponteiro para uma string que pode ser
- * modificada ou reatribuída, sendo o conceito mais próximo de uma string.
- *
- * - char[]: é usado quando precisa de um array de caracteres para armazenar uma string fixa
- * (fixo é quando você já tem ciência do tamanho do vetor, que não irá necessitar saber o quanto
- * ele deverá expandir para armazenar um quantidade de dados que poderá mudar ao decorrer do código).
- * @note Ambos têm seus usos e dependem do contexto e dos requisitos do seu programa.
+ * - char[]: Ideal para strings fixas ou mutáveis com tamanho conhecido.
+ * - char *: Usado para strings constantes ou dinâmicas, com reatribuição de endereço.
+ * @note A escolha depende do contexto e dos requisitos do programa.
  */
 
 int main(int argc, char **argv)
 {
-    printf("\n\tCHAR STR[]:\n");
+    printf("\n=== DEMONSTRAÇÃO DE CHAR STR[] ===\n");
 
+    // Array de caracteres: mutável, tamanho fixo (6 bytes, incluindo '\0')
     char str[] = "Hello";
-    printf(" Valor de str antes: %s\n", str);
+    printf("Valor de str antes: %s\n", str);
 
+    // Modificação direta de um caractere
     str[0] = 'X';
-    printf(" Valor de str depois da alteração de str[0]: %s\n", str);
+    printf("Valor de str após alterar str[0]: %s\n", str);
 
-    // str = "yello"; // incorreto, caso deseja alterar o conteúdo, utilizar strcpy
-    strcpy(str, "yello");
+    // Modificação da string usando strncpy para segurança
+    strncpy(str, "yello", sizeof(str));
+    str[sizeof(str) - 1] = '\0'; // Garante terminador nulo
+    printf("Valor de str após strncpy: %s\n", str);
 
-    printf(" Valor de str depois da alteração de strcpy: %s\n", str);
-    printf(" Qual o tamanho de str de acordo com sizeof: %zu\n", sizeof(str));    // 6
-    printf(" Qual o comprimento de str de acordo com strlen: %d\n", strlen(str)); // 5
+    // sizeof(str) retorna o tamanho total do array (6 bytes)
+    printf("Tamanho total do array str (sizeof): %zu bytes\n", sizeof(str));
+    // strlen(str) retorna o comprimento da string (sem o '\0')
+    printf("Comprimento da string str (strlen): %zu\n", strlen(str));
 
-    printf("\n************************************\n");
+    printf("\n=== DEMONSTRAÇÃO DE CONST CHAR *STR ===\n");
 
-    printf("\n\tCHAR *STR:");
-
+    // Ponteiro para string literal: somente leitura, mas reatribuível
     const char *str1 = "Hello";
-    printf("\n Valor de str1 antes: %s\n", str1);
+    printf("Valor de str1 antes: %s\n", str1);
 
-    // *str1[0] = 'M'; // erro
-    // str1[0] = 'X'; // erro
+    // str1[0] = 'X'; // ERRO: string literal é somente leitura
+    // Reatribuir o ponteiro é válido
+    str1 = "yello";
+    printf("Valor de str1 após reatribuição: %s\n", str1);
 
-    str1 = "yello"; // válido
+    // sizeof(str1) retorna o tamanho do ponteiro (ex: 8 bytes em 64 bits)
+    printf("Tamanho do ponteiro str1 (sizeof): %zu bytes\n", sizeof(str1));
+    // strlen(str1) retorna o comprimento da string (sem o '\0')
+    printf("Comprimento da string str1 (strlen): %zu\n", strlen(str1));
 
-    printf(" Valor de str1 depois da alteração de str1: %s\n", str1);
+    printf("\n=== DEMONSTRAÇÃO DE CHAR * COM MALLOC ===\n");
 
-    printf(" Qual o tamanho da string str de acordo com sizeof: %zu\n", sizeof(str1)); // 8
-    // Essa linha imprime o tamanho do ponteiro str1 usando sizeof(). Em muitos sistemas,
-    // o tamanho de um ponteiro é 8 bytes (em sistema de 64 bits). Portanto, o resultado será 8.
-    printf(" Qual o comprimento da string str de acordo com strlen: %d\n", strlen(str1)); // 5
+    // Exemplo com memória dinâmica
+    char *str2 = malloc(6 * sizeof(char)); // Aloca espaço para "Hello" + '\0'
+    if (str2 == NULL)
+    {
+        fprintf(stderr, "Erro de alocação de memória\n");
+        return 1;
+    }
+    strcpy(str2, "Hello");
+    printf("Valor de str2 (memória dinâmica): %s\n", str2);
+
+    // Modificação da string alocada dinamicamente
+    str2[0] = 'M';
+    printf("Valor de str2 após alterar str2[0]: %s\n", str2);
+
+    // sizeof(str2) retorna o tamanho do ponteiro
+    printf("Tamanho do ponteiro str2 (sizeof): %zu bytes\n", sizeof(str2));
+    printf("Comprimento da string str2 (strlen): %zu\n", strlen(str2));
+
+    // Libera memória alocada
+    free(str2);
     return 0;
 }

@@ -62,7 +62,6 @@ int encontrar(Subconjunto subconj[], int i)
 {
     if (subconj[i].pai != i)
         subconj[i].pai = encontrar(subconj, subconj[i].pai);
-
     return subconj[i].pai;
 }
 

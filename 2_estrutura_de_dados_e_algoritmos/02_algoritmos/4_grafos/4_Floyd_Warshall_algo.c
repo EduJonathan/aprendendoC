@@ -45,7 +45,7 @@
  *
  * @return O valor mínimo entre os dois valores fornecidos.
  */
-int min(int a, int b)
+int minimo(int a, int b)
 {
     return (a < b) ? a : b;
 }
@@ -72,7 +72,7 @@ void floyd_warshall(int **graph, int n)
             {
                 if (graph[i][k] != INT_MAX && graph[k][j] != INT_MAX)
                 {
-                    graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j]);
+                    graph[i][j] = minimo(graph[i][j], graph[i][k] + graph[k][j]);
                 }
             }
         }

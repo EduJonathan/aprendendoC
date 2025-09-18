@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // Função auxiliar para retornar o máximo entre dois inteiros
-int max(int a, int b)
+int maxixmo(int a, int b)
 {
     return (a > b) ? a : b;
 }
@@ -60,7 +60,7 @@ void Knapsack(int capacity, size_t n, int weight[], int value[])
             }
             else if (weight[i - 1] <= w)
             {
-                result[i][w] = max(
+                result[i][w] = maxixmo(
                     value[i - 1] + result[i - 1][w - weight[i - 1]],
                     result[i - 1][w]);
             }
@@ -76,9 +76,9 @@ void Knapsack(int capacity, size_t n, int weight[], int value[])
 
     // Rastreia os itens selecionados
     printf("Itens selecionados:\n");
-    
+
     int w = capacity;
-    
+
     for (size_t i = n; i > 0; i--)
     {
         if (result[i][w] != result[i - 1][w])
