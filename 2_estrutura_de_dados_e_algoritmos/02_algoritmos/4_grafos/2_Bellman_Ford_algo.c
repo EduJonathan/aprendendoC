@@ -65,7 +65,7 @@ struct Graph *criarGrafo(int v, int e)
     struct Graph *g = (struct Graph *)malloc(sizeof(struct Graph));
     g->vertices = v;
     g->edges = e;
-    g->edge = (struct Edge *)malloc(e * sizeof(struct Edge)); /**< Aloca memória para as arestas */
+    g->edge = (struct Edge *)malloc(e * sizeof(struct Edge));
     return g;
 }
 
@@ -95,34 +95,37 @@ void printGraph(int dist[], int n)
  */
 void bellmanFordAlgoritmo(struct Graph *g, int src)
 {
-    int V = g->vertices; /**< Número de vértices no grafo */
-    int E = g->edges;    /**< Número de arestas no grafo */
-    int distancias[V];   /**< Vetor para armazenar as distâncias mínimas */
+    int V = g->vertices;
+    int E = g->edges;
+    int *distancias = (int *)malloc(V * sizeof(int));
 
-    // Inicializa todas as distâncias com infinito (INT_MAX) e a distância da fonte com 0
+    if (distancias == NULL)
+    {
+        printf("Falha na alocação de memória\n");
+        return;
+    }
+
     for (int i = 0; i < V; i++)
     {
         distancias[i] = INT_MAX;
     }
     distancias[src] = 0;
 
-    // Relaxação das arestas, repetida V - 1 vezes
-    for (int i = 0; i < V - 1; i++) /**< Laço externo para realizar relaxação V-1 vezes */
+    for (int i = 0; i < V - 1; i++)
     {
-        for (int j = 0; j < E; j++) /**< Laço interno para percorrer todas as arestas */
+        for (int j = 0; j < E; j++)
         {
-            int u = g->edge[j].src;       /**< Vértice de origem da aresta */
-            int v = g->edge[j].dest;      /**< Vértice de destino da aresta */
-            int peso = g->edge[j].weight; /**< Peso da aresta */
+            int u = g->edge[j].src;
+            int v = g->edge[j].dest;
+            int peso = g->edge[j].weight;
 
             if (distancias[u] != INT_MAX && distancias[u] + peso < distancias[v])
             {
-                distancias[v] = distancias[u] + peso; /**< Atualiza a distância mínima para o vértice v */
+                distancias[v] = distancias[u] + peso;
             }
         }
     }
 
-    // Verifica a existência de ciclos de peso negativo
     for (int i = 0; i < E; i++)
     {
         int u = g->edge[i].src;
@@ -132,10 +135,13 @@ void bellmanFordAlgoritmo(struct Graph *g, int src)
         if (distancias[u] != INT_MAX && distancias[u] + peso < distancias[v])
         {
             printf("O grafo possui ciclo de peso negativos\n");
-            return; /**< Se houver ciclo negativo, o algoritmo termina */
+            free(distancias);
+            return;
         }
     }
-    printGraph(distancias, V); /**< Imprime as distâncias finais */
+
+    printGraph(distancias, V);
+    free(distancias);
 }
 
 int main(int argc, char **argv)
@@ -178,5 +184,7 @@ int main(int argc, char **argv)
     grafo->edge[7].weight = 2;
 
     bellmanFordAlgoritmo(grafo, 0); /**< Chama o algoritmo de Bellman-Ford a partir do vértice 0 */
+    free(grafo->edge);
+    free(grafo);
     return 0;
 }

@@ -90,7 +90,7 @@ unsigned int funcaoHash(const char *key, int tamanho)
     }
 
     unsigned long hash = 5381;
-    int c;
+    int c = 0;
     while ((c = *key++))
     {
         hash = ((hash << 5) + hash) + c; // hash * 33 + c

@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <stdbool.h>
 
 /**
@@ -23,42 +25,56 @@
  * Geração de permutações/combi­nações, Maze solver (labirinto).
  */
 
-#define N 8
+/**
+ * @brief Função para embaralhar um array de inteiros (Fisher-Yates shuffle).
+ *
+ * @param array Array a ser embaralhado
+ * @param size Tamanho do array
+ */
+void shuffle(int *array, int size)
+{
+    for (int i = size - 1; i > 0; i--)
+    {
+        int j = rand() % (i + 1); // Escolhe índice aleatório
+        
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
 
 /**
  * @brief Função para imprimir a solução do tabuleiro.
  *
- * @param board Tabuleiro de xadrez com a posição das rainhas (1 para rainha, 0 para vazio).
+ * @param board Tabuleiro de xadrez (matriz dinâmica)
+ * @param n Tamanho do tabuleiro
  */
-void printResolucao(int board[N][N])
+void printResolucao(int **board, int n)
 {
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < N; j++)
+        for (int j = 0; j < n; j++)
         {
             printf("%d ", board[i][j]);
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 /**
  * @brief Verifica se é seguro colocar uma rainha na posição [linha][coluna].
  *
- * A função verifica se não há outra rainha na mesma linha, na mesma coluna ou nas diagonais.
- *
- * @param board Tabuleiro de xadrez com a posição das rainhas.
- * @param linha Linha onde a rainha será colocada.
- * @param coluna Coluna onde a rainha será colocada.
- * @return true Se é seguro colocar a rainha.
- * @return false Se não for seguro colocar a rainha.
+ * @param board Tabuleiro de xadrez
+ * @param n Tamanho do tabuleiro
+ * @param linha Linha onde a rainha será colocada
+ * @param coluna Coluna onde a rainha será colocada
+ * @return true Se é seguro colocar a rainha
+ * @return false Se não for seguro
  */
-bool isSafe(int board[N][N], int linha, int coluna)
+bool isSafe(int **board, int n, int linha, int coluna)
 {
-    int i = 0, j = 0;
-
-    // Verifica a linha à esquerda
-    for (i = 0; i < coluna; i++)
+    for (int i = 0; i < coluna; i++)
     {
         if (board[linha][i])
         {
@@ -66,8 +82,7 @@ bool isSafe(int board[N][N], int linha, int coluna)
         }
     }
 
-    // Verifica diagonal superior esquerda
-    for (i = linha, j = coluna; i >= 0 && j >= 0; i--, j--)
+    for (int i = linha, j = coluna; i >= 0 && j >= 0; i--, j--)
     {
         if (board[i][j])
         {
@@ -75,83 +90,153 @@ bool isSafe(int board[N][N], int linha, int coluna)
         }
     }
 
-    // Verifica diagonal inferior esquerda
-    for (i = linha, j = coluna; j >= 0 && i < N; i++, j--)
+    for (int i = linha, j = coluna; j >= 0 && i < n; i++, j--)
     {
         if (board[i][j])
         {
             return false;
         }
     }
-
     return true;
 }
 
 /**
- * @brief Função recursiva para resolver o problema das N rainhas.
+ * @brief Função recursiva para resolver o problema das N rainhas com escolha aleatória.
  *
- * A função tenta colocar uma rainha em todas as linhas de uma coluna e,
- * em caso de sucesso, tenta a próxima coluna. Se a posição não for válida, faz o backtracking
- * e tenta outras opções.
- *
- * @param board Tabuleiro de xadrez com as posições das rainhas.
- * @param coluna Coluna onde a rainha será colocada.
- * @return true Se foi possível resolver para todas as colunas.
- * @return false Se não for possível resolver a partir da coluna atual.
+ * @param board Tabuleiro de xadrez
+ * @param n Tamanho do tabuleiro
+ * @param coluna Coluna atual
+ * @return true Se uma solução foi encontrada
+ * @return false Se não for possível resolver
  */
-bool resolucaoNQueen(int board[N][N], int coluna)
+bool resolucaoNQueen(int **board, int n, int coluna)
 {
-    // Caso base: todas as rainhas foram posicionadas
-    if (coluna >= N)
+    if (coluna >= n)
     {
         return true;
     }
 
-    // Tenta colocar a rainha em todas as linhas desta coluna
-    for (int i = 0; i < N; i++)
+    int *rows = malloc(n * sizeof(int));
+    if (!rows)
     {
-        if (isSafe(board, i, coluna))
-        {
-            // Coloca a rainha
-            board[i][coluna] = 1;
-
-            // Recursão para as próximas colunas
-            if (resolucaoNQueen(board, coluna + 1))
-            {
-                return true;
-            }
-
-            // Backtracking: remove a rainha se não levar à solução
-            board[i][coluna] = 0;
-        }
+        fprintf(stderr, "Erro: Falha ao alocar memória para linhas.\n");
+        return false;
     }
 
-    // Se não encontrou posição válida nesta coluna
+    for (int i = 0; i < n; i++)
+    {
+        rows[i] = i;
+    }
+    shuffle(rows, n);
+
+    for (int i = 0; i < n; i++)
+    {
+        int linha = rows[i];
+        if (isSafe(board, n, linha, coluna))
+        {
+            board[linha][coluna] = 1;
+            if (resolucaoNQueen(board, n, coluna + 1))
+            {
+                free(rows);
+                return true;
+            }
+            board[linha][coluna] = 0;
+        }
+    }
+    free(rows);
     return false;
 }
 
 /**
- * @brief Função principal que inicializa o tabuleiro e chama a função de resolução.
+ * @brief Cria e inicializa o tabuleiro dinamicamente.
  *
- * @return true Se uma solução foi encontrada.
- * @return false Se não houver solução possível.
+ * @param n Tamanho do tabuleiro
+ * @return Ponteiro para o tabuleiro alocado, ou NULL em caso de falha
  */
-bool resolucaoBacktracking()
+int **createBoard(int n)
 {
-    int board[N][N] = {{0}}; // Inicializa o tabuleiro com 0s
+    if (n <= 0)
+        return NULL;
+    int **board = malloc(n * sizeof(int *));
 
-    if (!resolucaoNQueen(board, 0))
+    if (!board)
+        return NULL;
+
+    for (int i = 0; i < n; i++)
     {
-        printf("Não há solução\n");
+        board[i] = malloc(n * sizeof(int));
+
+        if (!board[i])
+        {
+            for (int j = 0; j < i; j++)
+                free(board[j]);
+            free(board);
+            return NULL;
+        }
+        for (int j = 0; j < n; j++)
+        {
+            board[i][j] = 0;
+        }
+    }
+    return board;
+}
+
+/**
+ * @brief Libera a memória do tabuleiro.
+ *
+ * @param board Tabuleiro de xadrez
+ * @param n Tamanho do tabuleiro
+ */
+void freeBoard(int **board, int n)
+{
+    if (!board)
+        return;
+        
+    for (int i = 0; i < n; i++)
+    {
+        free(board[i]);
+    }
+    free(board);
+}
+
+/**
+ * @brief Função principal para resolver o problema das N rainhas.
+ *
+ * @param n Tamanho do tabuleiro
+ * @return true Se uma solução foi encontrada
+ * @return false Se não houver solução
+ */
+bool resolucaoBacktracking(int n)
+{
+    if (n <= 0)
+    {
+        fprintf(stderr, "Erro: Tamanho do tabuleiro inválido.\n");
         return false;
     }
 
-    printResolucao(board);
+    int **board = createBoard(n);
+    if (!board)
+    {
+        fprintf(stderr, "Erro: Falha ao alocar memória para o tabuleiro.\n");
+        return false;
+    }
+
+    if (!resolucaoNQueen(board, n, 0))
+    {
+        printf("Não há solução para N = %d\n", n);
+        freeBoard(board, n);
+        return false;
+    }
+    printf("Solução encontrada:\n");
+    printResolucao(board, n);
+    freeBoard(board, n);
     return true;
 }
 
 int main(int argc, char **argv)
 {
-    resolucaoBacktracking();
+    srand(time(NULL)); // Inicializa o gerador de números aleatórios
+    int n = 8;         // Tamanho do tabuleiro
+    resolucaoBacktracking(n);
     return 0;
 }

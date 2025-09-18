@@ -74,7 +74,6 @@ Graph *createGraph(int vertices)
     {
         graph->adjLists[i] = NULL;
     }
-
     return graph;
 }
 

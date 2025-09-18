@@ -129,7 +129,6 @@ bool adicionarElemento(Conjunto *s, const char *valor)
         fprintf(stderr, "Erro: Falha na alocação de memória para a string\n");
         return false;
     }
-
     strncpy(s->dados[s->tamanho], valor, TAMANHO_STRING - 1);
     s->dados[s->tamanho][TAMANHO_STRING - 1] = '\0';
     s->tamanho++;
@@ -209,6 +208,7 @@ int main(int argc, char **argv)
     {
         adicionarElemento(setz, setx->dados[i]);
     }
+    
     for (size_t i = 0; i < sety->tamanho; i++)
     {
         adicionarElemento(setz, sety->dados[i]);

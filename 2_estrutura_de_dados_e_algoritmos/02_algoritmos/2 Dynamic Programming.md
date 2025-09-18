@@ -4,11 +4,16 @@
 
 A Programação Dinâmica é um paradigma de solução de problemas que envolve a quebra de um
 problema em subproblemas menores e a resolução de cada um desses subproblemas apenas uma vez,
-armazenando suas soluções em uma tabela (memoization ou bottom-up). Esse armazenamento evita
-a recomputação das mesmas soluções e, por isso, é uma técnica extremamente eficiente.
-Especialmente útil para problemas de otimização em que é necessário encontrar a melhor solução
-entre várias possibilidades. Muitas vezes, a PD é aplicada a problemas de recursão onde a solução
-pode ser expressa por meio de uma equação de recorrência.
+armazenando suas soluções em uma tabela (memoization ou bottom-up).
+
+Esse armazenamento evita a recomputação das mesmas soluções e, por isso,
+é uma técnica extremamente eficiente.
+
+Especialmente útil para problemas de otimização em que é necessário encontrar a
+melhor solução entre várias possibilidades. Muitas vezes, a `PD` é aplicada a problemas
+de recursão onde a solução pode ser expressa por meio de uma equação de recorrência.
+
+---
 
 🔹 Exemplos clássicos de uso da PD:
 
@@ -29,13 +34,15 @@ pode ser expressa por meio de uma equação de recorrência.
 
 1. Divisão do problema: O problema é dividido em subproblemas menores.
 2. Armazenamento das soluções: As soluções dos subproblemas são armazenadas em uma tabela para evitar o cálculo repetido.
-3. Resolução de subproblemas: Os subproblemas são resolvidos de maneira eficiente, e as soluções são combinadas para resolver o problema original.
+3. Resolução de subproblemas: Os subproblemas são resolvidos de maneira eficiente, e as soluções são combinadas
+   para resolver o problema original.
 
 ---
 
 ## 🧠 Características dos Problemas que Usam PD
 
-1. Sobreposição de subproblemas: O problema pode ser dividido em subproblemas menores, que são resolvidos de forma independente e reutilizados para resolver problemas maiores.
+1. Sobreposição de subproblemas: O problema pode ser dividido em subproblemas menores, que são resolvidos
+   de forma independente e reutilizados para resolver problemas maiores.
 2. Ótima subestrutura: A solução para o problema pode ser construída a partir das soluções ótimas dos subproblemas.
 3. Eficiência por cache: Na maioria dos casos, consultar um resultado previamente calculado é mais eficiente do que recalculá-lo, economizando ciclos de CPU.
 

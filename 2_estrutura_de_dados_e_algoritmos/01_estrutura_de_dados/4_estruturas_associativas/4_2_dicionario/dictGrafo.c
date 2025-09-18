@@ -74,7 +74,6 @@ Grafo *criarGrafo(int numVertices)
         free(g);
         return NULL;
     }
-
     return g;
 }
 
@@ -119,7 +118,6 @@ int adicionarAresta(Grafo *g, char origem, char destino, int peso)
         fprintf(stderr, "Erro: Falha na alocação de memória para a aresta\n");
         return 0;
     }
-
     novaAresta->destino = destino;
     novaAresta->peso = peso;
     novaAresta->prox = g->adj[indice];

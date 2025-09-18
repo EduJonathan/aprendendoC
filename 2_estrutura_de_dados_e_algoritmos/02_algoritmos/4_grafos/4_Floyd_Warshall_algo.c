@@ -1,18 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <limits.h>
 
 /**
  * Algoritmo de Floyd-Warshall - Caminho Mínimo entre Todos os Pares
- * 
- * O algoritmo de Floyd-Warshall resolve o problema de caminho mínimo entre 
+ *
+ * O algoritmo de Floyd-Warshall resolve o problema de caminho mínimo entre
  * **todos os pares de vértices** em um grafo direcionado ou não direcionado, com pesos
  * (positivos ou negativos, mas sem ciclos negativos).
  *
- * Baseado na técnica de **programação dinâmica**, ele atualiza iterativamente a 
+ * Baseado na técnica de **programação dinâmica**, ele atualiza iterativamente a
  * menor distância entre cada par de nós, considerando vértices intermediários.
  *
  * FUNCIONAMENTO:
- * - Inicializa uma matriz de distâncias `dist[i][j]` com os pesos das arestas diretas 
+ * - Inicializa uma matriz de distâncias `dist[i][j]` com os pesos das arestas diretas
  * (ou ∞ se não houver).
  * - Para cada vértice intermediário `k`, verifica se `dist[i][k] + dist[k][j] < dist[i][j]`
  * e atualiza.
@@ -61,57 +62,103 @@ int min(int a, int b)
  * @note O algoritmo de Floyd-Warshall é um algoritmo de programação dinâmica que encontra
  * o caminho mais curto entre todos os pares de vértices em um grafo ponderado.
  */
-void floyd_warshall(int graph[10][10], int n)
+void floyd_warshall(int **graph, int n)
 {
-    // Iteração para cada vértice k como vértice intermediário
-    // Itera pelos vértices intermediários
     for (int k = 0; k < n; k++)
     {
-        // Itera pelos vértices de origem
         for (int i = 0; i < n; i++)
         {
-            // Itera pelos vértices de destino
             for (int j = 0; j < n; j++)
             {
-                // Se existir um caminho mais curto, atualize a distância
                 if (graph[i][k] != INT_MAX && graph[k][j] != INT_MAX)
+                {
                     graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j]);
+                }
             }
         }
     }
 }
 
+/**
+ * @brief Aloca uma matriz de adjacência dinamicamente.
+ *
+ * @param n Tamnaho do grafo
+ * @return grafo alocado
+ */
+int **allocate_graph(int n)
+{
+    int **graph = (int **)malloc(n * sizeof(int *));
+    if (graph == NULL)
+    {
+        printf("Erro: Falha na alocação de memória.\n");
+        return NULL;
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        graph[i] = (int *)malloc(n * sizeof(int));
+        if (graph[i] == NULL)
+        {
+            printf("Erro: Falha na alocação de memória.\n");
+            for (int j = 0; j < i; j++)
+            {
+                free(graph[j]);
+            }
+            free(graph);
+            return NULL;
+        }
+    }
+    return graph;
+}
+
+/**
+ * @brief Libera a memória alocada para a matriz de adjacência.
+ *
+ * @param graph Informa o grafo.
+ * @brief Tamanho do grafo.
+ */
+void free_graph(int **graph, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        free(graph[i]);
+    }
+    free(graph);
+}
+
 int main(int argc, char **argv)
 {
-    int vertices = 0;
-    int edges = 0;
+    int vertices = 0, edges = 0;
 
     // Solicita o número de vértices
     printf("Numero de vertices: ");
-    scanf("%d", &vertices);
+    if (scanf("%d", &vertices) != 1 || vertices <= 0)
+    {
+        printf("Erro: Número de vértices deve ser positivo.\n");
+        return 1;
+    }
 
     // Solicita o número de arestas
     printf("Numero de arestas: ");
-    scanf("%d", &edges);
+    if (scanf("%d", &edges) != 1 || edges < 0)
+    {
+        printf("Erro: Número de arestas deve ser não-negativo.\n");
+        return 1;
+    }
 
-    // Inicializa a matriz de adjacência
-    int graph[vertices][vertices]; // Matriz de adjacência do grafo
+    // Aloca a matriz de adjacência dinamicamente
+    int **graph = allocate_graph(vertices);
+    if (graph == NULL)
+    {
+        return 1;
+    }
 
-    // Inicializa o grafo com "infinito" (INT_MAX), exceto na diagonal que é 0
+    // Inicializa o grafo
     for (int i = 0; i < vertices; i++)
     {
         for (int j = 0; j < vertices; j++)
         {
-            if (i == j)
-            {
-                // A distância de um vértice para ele mesmo é 0
-                graph[i][j] = 0;
-            }
-            else
-            {
-                // A distância entre vértices não conectados é infinita
-                graph[i][j] = INT_MAX;
-            }
+            graph[i][j] = (i == j) ? 0 : INT_MAX;
         }
     }
 
@@ -119,36 +166,47 @@ int main(int argc, char **argv)
     for (int i = 0; i < edges; i++)
     {
         int origem = 0, destino = 0, peso = 0;
+        printf("\nDigite o vértice de origem da aresta %d (0 a %d): ", i + 1, vertices - 1);
+        if (scanf("%d", &origem) != 1 || origem < 0 || origem >= vertices)
+        {
+            printf("Erro: Vértice de origem inválido.\n");
+            free_graph(graph, vertices);
+            return 1;
+        }
 
-        // Solicita o vértice de origem da aresta
-        printf("\nDigite o vértice de origem da aresta %d: ", i + 1);
-        scanf("%d", &origem);
+        printf("Digite o vértice de destino da aresta %d (0 a %d): ", i + 1, vertices - 1);
+        if (scanf("%d", &destino) != 1 || destino < 0 || destino >= vertices)
+        {
+            printf("Erro: Vértice de destino inválido.\n");
+            free_graph(graph, vertices);
+            return 1;
+        }
 
-        // Solicita o vértice de destino da aresta
-        printf("\nDigite o vértice de destino da aresta %d: ", i + 1);
-        scanf("%d", &destino);
+        printf("Digite o peso da aresta %d: ", i + 1);
+        if (scanf("%d", &peso) != 1 || peso < 0)
+        {
+            printf("Erro: Peso inválido (deve ser não-negativo).\n");
+            free_graph(graph, vertices);
+            return 1;
+        }
 
-        // Solicita o peso da aresta
-        printf("\nDigite o peso da aresta %d: ", i + 1);
-        scanf("%d", &peso);
-
-        // Atualiza o peso da aresta na matriz de adjacência
-        graph[origem][destino] = peso;
+        graph[origem][destino] = peso; // Directed graph
+        // For undirected graph, uncomment: graph[destino][origem] = peso;
     }
 
     // Exibe a matriz do grafo inicial
-    printf("Matriz do input dos dados:\n");
+    printf("\nMatriz do grafo inicial:\n");
     for (int i = 0; i < vertices; i++)
     {
         for (int j = 0; j < vertices; j++)
         {
             if (graph[i][j] == INT_MAX)
             {
-                printf("INF "); // Imprime "INF" para distâncias infinitas
+                printf("INF ");
             }
             else
             {
-                printf("%d ", graph[i][j]);
+                printf("%3d ", graph[i][j]);
             }
         }
         printf("\n");
@@ -157,48 +215,46 @@ int main(int argc, char **argv)
     // Aplica o algoritmo de Floyd-Warshall
     floyd_warshall(graph, vertices);
 
-    // Exibe a matriz resultante após a execução do algoritmo
-    printf("Matriz do Floyd-Warshall:\n");
+    // Exibe a matriz resultante
+    printf("\nMatriz do Floyd-Warshall (caminhos mais curtos):\n");
     for (int i = 0; i < vertices; i++)
     {
         for (int j = 0; j < vertices; j++)
         {
             if (graph[i][j] == INT_MAX)
             {
-                printf("INF "); // Imprime "INF" para distâncias infinitas
+                printf("INF ");
             }
             else
             {
-                printf("%d ", graph[i][j]);
+                printf("%3d ", graph[i][j]);
             }
-
-            printf("\n");
         }
+        printf("\n");
+    }
 
-        // Exibe os caminhos mínimos entre os vértices
-        printf("O caminho mínimo entre os vertices são:\n");
-        for (int i = 0; i < vertices; i++)
+    // Exibe os caminhos mínimos
+    printf("\nCaminhos mínimos entre os vértices:\n");
+    for (int i = 0; i < vertices; i++)
+    {
+        for (int j = 0; j < vertices; j++)
         {
-            for (int j = 0; j < vertices; j++)
+            if (i != j)
             {
-                if (i != j)
+                printf("<%d, %d> = ", i, j);
+                if (graph[i][j] == INT_MAX)
                 {
-                    printf("\n <%d %d> = ", i, j);
-
-                    if (graph[i][j] == INT_MAX)
-                    {
-                        // Se não houver caminho, imprime "INF"
-                        printf("INF");
-                    }
-                    else
-                    {
-                        printf("%d", graph[i][j]);
-                    }
+                    printf("INF\n");
+                }
+                else
+                {
+                    printf("%d\n", graph[i][j]);
                 }
             }
-            printf("\n");
         }
     }
 
+    // Libera a memória alocada
+    free_graph(graph, vertices);
     return 0;
 }

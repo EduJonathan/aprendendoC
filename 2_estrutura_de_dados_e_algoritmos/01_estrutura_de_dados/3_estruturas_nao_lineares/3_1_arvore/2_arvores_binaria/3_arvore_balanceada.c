@@ -106,7 +106,6 @@ void liberarArvore(ArvoreBalanceada *tree)
     {
         return;
     }
-
     liberarArvore(tree->left);
     liberarArvore(tree->right);
     free(tree);

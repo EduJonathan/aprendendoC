@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+static int comparacoes = 0; // Contador de comparações (variável estática)
+static int trocas = 0;      // Contador de trocas (variável estática)
+
 /**
  * @brief Função para trocar dois elementos do array.
  *
@@ -39,7 +42,7 @@ void swap(int *a, int *b)
  * de a escolha do pivô gerar um particionamento desigual é pequena para arrays aleatórios.
  *
  * Espaço:
- * 
+ *
  * - O(log n) -> o espaço adicional necessário para a recursão é proporcional à profundidade
  * da pilha de chamadas recursivas. O melhor caso ocorre quando a recursão é equilibrada.
  * No pior caso, a profundidade da recursão pode ser O(n), mas isso pode ser mitigado por
@@ -51,9 +54,6 @@ void swap(int *a, int *b)
  */
 void quick_sort(int *array, int low, int high)
 {
-    static int comparacoes = 0; // Contador de comparações (variável estática)
-    static int trocas = 0;      // Contador de trocas (variável estática)
-
     int pivot = 0;
     int i = 0;
     int j = 0;

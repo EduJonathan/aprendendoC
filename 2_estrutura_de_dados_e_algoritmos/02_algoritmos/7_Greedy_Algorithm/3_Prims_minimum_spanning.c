@@ -1,117 +1,221 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
 
-#define V 4           ///< Número de vértices no grafo
-#define INFINITY 9999 ///< Valor usado para representar infinito
-
-/**
- * @brief Matriz de adjacência representando o grafo.
- *
- * Cada posição graph[i][j] representa o peso da aresta entre os vértices i e j.
- */
-int graph[V][V] = {
-    {0, 5, 1, 2},
-    {5, 0, 3, 3},
-    {1, 3, 0, 4},
-    {2, 3, 4, 0},
-};
+#define INFINITY INT_MAX
 
 /**
- * @brief Estrutura que armazena informações para o algoritmo de Prim.
- *
- * Utilizando a implementação do algoritmo de Prim para encontrar uma Árvore Geradora Mínima (MST)
- * em um grafo não direcionado com pesos.
- *
+ * @brief Estrutura para armazenar informações do algoritmo de Prim.
  */
 typedef struct
 {
-    bool visitado; ///< Marca se o vértice foi visitado
-    int key;       ///< Peso mínimo para adicionar o vértice à MST
-    int pai;       ///< Pai do vértice na MST
+    bool visitado; // Marca se o vértice foi visitado
+    int key;       // Peso mínimo para adicionar o vértice à MST
+    int pai;       // Pai do vértice na MST
 } Prim;
 
 /**
- * @brief Inicializa os valores da estrutura Prim.
+ * @brief Cria e inicializa a matriz de adjacência dinamicamente.
  *
- * Define todos os vértices como não visitados, define as chaves como infinito
- * e o pai como -1. O vértice inicial (0) tem chave igual a 0.
- *
- * @param primArray Array de estruturas Prim a ser inicializado
+ * @param vertices Número de vértices do grafo
+ * @return Ponteiro para a matriz alocada, ou NULL em caso de falha
  */
-void inicializar(Prim primArray[V])
+int **createGraph(int vertices)
 {
-    for (int i = 0; i < V; i++)
+    if (vertices <= 0)
+        return NULL;
+
+    int **graph = malloc(vertices * sizeof(int *));
+    if (!graph)
+        return NULL;
+
+    for (int i = 0; i < vertices; i++)
+    {
+        graph[i] = malloc(vertices * sizeof(int));
+        if (!graph[i])
+        {
+            // Libera memória alocada até agora
+            for (int j = 0; j < i; j++)
+                free(graph[j]);
+            free(graph);
+            return NULL;
+        }
+        // Inicializa a matriz com zeros
+        for (int j = 0; j < vertices; j++)
+        {
+            graph[i][j] = 0;
+        }
+    }
+    return graph;
+}
+
+/**
+ * @brief Libera a memória da matriz de adjacência.
+ *
+ * @param graph Matriz de adjacência
+ * @param vertices Número de vértices
+ */
+void freeGraph(int **graph, int vertices)
+{
+    if (!graph)
+        return;
+
+    for (int i = 0; i < vertices; i++)
+    {
+        free(graph[i]);
+    }
+    free(graph);
+}
+
+/**
+ * @brief Inicializa a estrutura Prim para o algoritmo.
+ *
+ * @param primArray Array de estruturas Prim
+ * @param vertices Número de vértices
+ */
+void inicializar(Prim *primArray, int vertices)
+{
+    for (int i = 0; i < vertices; i++)
     {
         primArray[i].visitado = false;
         primArray[i].key = INFINITY;
         primArray[i].pai = -1;
     }
-    primArray[0].key = 0;
+    primArray[0].key = 0; // Vértice inicial
 }
 
 /**
- * @brief Executa o algoritmo de Prim para gerar a árvore geradora mínima (MST).
+ * @brief Executa o algoritmo de Prim para encontrar a MST.
  *
- * A cada iteração, escolhe o vértice com menor chave não visitado
- * e atualiza as chaves dos vértices adjacentes.
- *
- * @param primArray Array de estruturas Prim que será preenchido com a MST
+ * @param primArray Array de estruturas Prim
+ * @param graph Matriz de adjacência
+ * @param vertices Número de vértices
+ * @return true se a MST foi gerada com sucesso, false se o grafo é desconexo
  */
-void primMST(Prim primArray[V])
+bool primMST(Prim *primArray, int **graph, int vertices)
 {
-    for (int count = 0; count < V; count++)
+    for (int count = 0; count < vertices; count++)
     {
         int minKey = INFINITY;
-        int u = -1;
+        int minVertex = -1;
 
         // Encontra o vértice não visitado com menor chave
-        for (int i = 0; i < V; i++)
+        for (int i = 0; i < vertices; i++)
         {
             if (!primArray[i].visitado && primArray[i].key < minKey)
             {
                 minKey = primArray[i].key;
-                u = i;
+                minVertex = i;
             }
         }
 
-        if (u == -1)
-            break; // Grafo desconexo
+        if (minVertex == -1)
+        {
+            fprintf(stderr, "Erro: Grafo desconexo detectado.\n");
+            return false;
+        }
 
-        primArray[u].visitado = true;
+        primArray[minVertex].visitado = true;
 
         // Atualiza os vértices adjacentes
-        for (int v = 0; v < V; v++)
+        for (int adjVertex = 0; adjVertex < vertices; adjVertex++)
         {
-            if (graph[u][v] && !primArray[v].visitado && graph[u][v] < primArray[v].key)
+            int weight = graph[minVertex][adjVertex];
+            if (weight && !primArray[adjVertex].visitado && weight < primArray[adjVertex].key)
             {
-                primArray[v].key = graph[u][v];
-                primArray[v].pai = u;
+                primArray[adjVertex].key = weight;
+                primArray[adjVertex].pai = minVertex;
             }
         }
     }
+    return true;
 }
 
 /**
- * @brief Imprime as arestas da árvore geradora mínima (MST).
+ * @brief Calcula o peso total da MST.
  *
- * Para cada vértice (exceto a raiz), exibe a aresta que conecta o vértice ao seu pai.
- *
- * @param primArray Array de estruturas Prim contendo a MST
+ * @param primArray Array de estruturas Prim
+ * @param graph Matriz de adjacência
+ * @param vertices Número de vértices
+ * @return Peso total da MST
  */
-void printMST(Prim primArray[V])
+int calculateMSTWeight(Prim *primArray, int **graph, int vertices)
+{
+    int totalWeight = 0;
+    for (int i = 1; i < vertices; i++)
+    {
+        totalWeight += graph[i][primArray[i].pai];
+    }
+    return totalWeight;
+}
+
+/**
+ * @brief Imprime as arestas da MST e seu peso total.
+ *
+ * @param primArray Array de estruturas Prim
+ * @param graph Matriz de adjacência
+ * @param vertices Número de vértices
+ */
+void printMST(Prim *primArray, int **graph, int vertices)
 {
     printf("Aresta \tPeso\n");
-    for (int i = 1; i < V; i++)
+    for (int i = 1; i < vertices; i++)
     {
         printf("%d - %d \t%d\n", primArray[i].pai, i, graph[i][primArray[i].pai]);
     }
+    printf("Peso total da MST: %d\n", calculateMSTWeight(primArray, graph, vertices));
 }
 
 int main(int argc, char **argv)
 {
-    Prim primArray[V];
-    inicializar(primArray);
-    primMST(primArray);
-    printMST(primArray);
+    int vertices = 4; // Número de vértices (pode ser lido do usuário)
+
+    // Criação do grafo
+    int **graph = createGraph(vertices);
+    if (!graph)
+    {
+        fprintf(stderr, "Erro: Falha ao alocar memória para o grafo.\n");
+        return 1;
+    }
+
+    // Exemplo de inicialização da matriz (pode ser lido de entrada)
+    graph[0][0] = 0;
+    graph[0][1] = 5;
+    graph[0][2] = 1;
+    graph[0][3] = 2;
+    graph[1][0] = 5;
+    graph[1][1] = 0;
+    graph[1][2] = 3;
+    graph[1][3] = 3;
+    graph[2][0] = 1;
+    graph[2][1] = 3;
+    graph[2][2] = 0;
+    graph[2][3] = 4;
+    graph[3][0] = 2;
+    graph[3][1] = 3;
+    graph[3][2] = 4;
+    graph[3][3] = 0;
+
+    // Alocação do array Prim
+    Prim *primArray = malloc(vertices * sizeof(Prim));
+    if (!primArray)
+    {
+        fprintf(stderr, "Erro: Falha ao alocar memória para primArray.\n");
+        freeGraph(graph, vertices);
+        return 1;
+    }
+
+    // Execução do algoritmo
+    inicializar(primArray, vertices);
+    if (primMST(primArray, graph, vertices))
+    {
+        printMST(primArray, graph, vertices);
+    }
+
+    // Liberação de memória
+    freeGraph(graph, vertices);
+    free(primArray);
+
     return 0;
 }

@@ -45,7 +45,6 @@ GRAFO *inicializarGrafo(int nVertices)
         {
             for (int j = 0; j < i; j++)
                 free(grafo->arestas[j]);
-
             free(grafo->arestas);
             free(grafo);
             return NULL;
@@ -209,7 +208,6 @@ void dijkstra(const GRAFO *grafo, int src)
             printf("\n");
         }
     }
-
     free(distancia);
     free(visitado);
     free(anterior);
@@ -254,3 +252,4 @@ int main(int argc, char **argv)
 
     return 0;
 }
+\

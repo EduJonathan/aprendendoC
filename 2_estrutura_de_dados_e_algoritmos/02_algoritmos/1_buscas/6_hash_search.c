@@ -3,15 +3,23 @@
 
 #define TABLE_SIZE 100
 
+/**
+ * @brief Estrutura para um nó da tabela hash (contém chave, valor e ponteiro para próximo nó).
+ */
 typedef struct node
 {
     int key;
     int value;
+    struct node *next; // Para lidar com colisões (encadeamento)
 } HashNode;
 
+/**
+ * @brief Estrutura para a tabela hash.
+ */
 typedef struct table
 {
-    HashNode *table[TABLE_SIZE];
+    HashNode **table; // Array de ponteiros para HashNode
+    int size;         // Tamanho da tabela
 } HashTable;
 
 /**
@@ -19,9 +27,10 @@ typedef struct table
  *
  * @param key Chave a ser usada na função
  */
-int hashFunction(int key)
+int hashFunction(int key, int table_size)
 {
-    return key % TABLE_SIZE;
+    // Garante que o índice seja não-negativo
+    return (key % table_size + table_size) % table_size;
 }
 
 /**
@@ -29,12 +38,54 @@ int hashFunction(int key)
  *
  * @param ht Tabela hash
  */
-void initHashTable(HashTable *ht)
+HashTable *initHashTable(int size)
 {
-    for (int i = 0; i < TABLE_SIZE; i++)
+    if (size <= 0)
     {
-        ht->table[i] = NULL;
+        printf("Erro: Tamanho da tabela deve ser positivo.\n");
+        return NULL;
     }
+
+    HashTable *ht = (HashTable *)malloc(sizeof(HashTable));
+    if (ht == NULL)
+    {
+        printf("Erro: Falha na alocação de memória para a tabela.\n");
+        return NULL;
+    }
+
+    ht->table = (HashNode **)calloc(size, sizeof(HashNode *));
+    if (ht->table == NULL)
+    {
+        printf("Erro: Falha na alocação de memória para a tabela.\n");
+        free(ht);
+        return NULL;
+    }
+    ht->size = size;
+    return ht;
+}
+
+/**
+ * @brief Libera a memória alocada para a tabela hash.
+ */
+void freeHashTable(HashTable *ht)
+{
+    if (ht == NULL)
+    {
+        return;
+    }
+    
+    for (int i = 0; i < ht->size; i++)
+    {
+        HashNode *current = ht->table[i];
+        while (current != NULL)
+        {
+            HashNode *temp = current;
+            current = current->next;
+            free(temp);
+        }
+    }
+    free(ht->table);
+    free(ht);
 }
 
 /**
@@ -46,12 +97,37 @@ void initHashTable(HashTable *ht)
  */
 void insert(HashTable *ht, int key, int value)
 {
-    int index = hashFunction(key);
+    if (ht == NULL)
+    {
+        printf("Erro: Tabela hash não inicializada.\n");
+        return;
+    }
+    int index = hashFunction(key, ht->size);
 
-    // Alocar memória para o nó
-    ht->table[index] = (HashNode *)malloc(sizeof(HashNode));
-    ht->table[index]->key = key;
-    ht->table[index]->value = value;
+    // Verifica se a chave já existe
+    HashNode *current = ht->table[index];
+    while (current != NULL)
+    {
+        if (current->key == key)
+        {
+            printf("Aviso: Chave %d já existe, atualizando valor para %d.\n", key, value);
+            current->value = value; // Atualiza o valor
+            return;
+        }
+        current = current->next;
+    }
+
+    // Aloca novo nó
+    HashNode *new_node = (HashNode *)malloc(sizeof(HashNode));
+    if (new_node == NULL)
+    {
+        printf("Erro: Falha na alocação de memória para o nó.\n");
+        return;
+    }
+    new_node->key = key;
+    new_node->value = value;
+    new_node->next = ht->table[index]; // Insere no início da lista
+    ht->table[index] = new_node;
 }
 
 /**
@@ -74,31 +150,136 @@ void insert(HashTable *ht, int key, int value)
  */
 HashNode *search(HashTable *ht, int key)
 {
-    int index = hashFunction(key);
-
-    if (ht->table[index] != NULL && ht->table[index]->key == key)
+    if (ht == NULL)
     {
-        return ht->table[index];
+        printf("Erro: Tabela hash não inicializada.\n");
+        return NULL;
+    }
+
+    int index = hashFunction(key, ht->size);
+    HashNode *current = ht->table[index];
+
+    while (current != NULL)
+    {
+        if (current->key == key)
+        {
+            return current;
+        }
+        current = current->next;
     }
     return NULL; // Não encontrado
+}
+/**
+ * @brief Remove um par chave-valor da tabela hash.
+ */
+void removeKey(HashTable *ht, int key)
+{
+    if (ht == NULL)
+    {
+        printf("Erro: Tabela hash não inicializada.\n");
+        return;
+    }
+
+    int index = hashFunction(key, ht->size);
+    HashNode *current = ht->table[index];
+    HashNode *prev = NULL;
+
+    while (current != NULL)
+    {
+        if (current->key == key)
+        {
+            if (prev == NULL)
+            {
+                ht->table[index] = current->next;
+            }
+            else
+            {
+                prev->next = current->next;
+            }
+            free(current);
+            printf("Chave %d removida.\n", key);
+            return;
+        }
+        prev = current;
+        current = current->next;
+    }
+    printf("Chave %d não encontrada.\n", key);
 }
 
 int main(int argc, char **argv)
 {
-    HashTable ht = {0}; // Inicializar a tabela hash
-    initHashTable(&ht); // Inicializar a tabela hash
+    int table_size = 0;
 
-    // Inserir valores
-    insert(&ht, 10, 100);
-    insert(&ht, 20, 200);
-    insert(&ht, 30, 300);
+    // Solicita o tamanho da tabela
+    printf("Digite o tamanho da tabela hash: ");
+    if (scanf("%d", &table_size) != 1 || table_size <= 0)
+    {
+        printf("Erro: Tamanho da tabela deve ser positivo.\n");
+        return 1;
+    }
 
-    // Buscar e imprimir valor associado à chave 20
-    HashNode *node = search(&ht, 20);
+    // Inicializa a tabela hash
+    HashTable *ht = initHashTable(table_size);
+    if (ht == NULL)
+    {
+        return 1;
+    }
 
+    // Solicita o número de pares chave-valor
+    int n = 0;
+    printf("Digite o número de pares chave-valor a inserir: ");
+    if (scanf("%d", &n) != 1 || n < 0)
+    {
+        printf("Erro: Número de pares deve ser não-negativo.\n");
+        freeHashTable(ht);
+        return 1;
+    }
+
+    // Insere pares chave-valor
+    for (int i = 0; i < n; i++)
+    {
+        int key = 0, value = 0;
+        printf("Digite a chave e o valor do par %d: ", i + 1);
+        if (scanf("%d %d", &key, &value) != 2)
+        {
+            printf("Erro: Entrada inválida para o par %d.\n", i + 1);
+            freeHashTable(ht);
+            return 1;
+        }
+        insert(ht, key, value);
+    }
+
+    // Busca uma chave
+    int search_key = 0;
+    printf("Digite a chave para buscar: ");
+    if (scanf("%d", &search_key) != 1)
+    {
+        printf("Erro: Chave inválida.\n");
+        freeHashTable(ht);
+        return 1;
+    }
+
+    HashNode *node = search(ht, search_key);
     if (node != NULL)
     {
         printf("Chave: %d, Valor: %d\n", node->key, node->value);
     }
+    else
+    {
+        printf("Chave %d não encontrada.\n", search_key);
+    }
+
+    // Remove uma chave (exemplo)
+    printf("Digite a chave para remover: ");
+    if (scanf("%d", &search_key) != 1)
+    {
+        printf("Erro: Chave inválida.\n");
+        freeHashTable(ht);
+        return 1;
+    }
+    removeKey(ht, search_key);
+
+    // Libera a memória
+    freeHashTable(ht);
     return 0;
 }

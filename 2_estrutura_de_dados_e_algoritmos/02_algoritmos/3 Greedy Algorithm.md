@@ -2,10 +2,10 @@
 
 ## ⚡ Algoritmo Guloso (Greedy)
 
-Um algoritmo guloso (ou greedy) é um paradigma de solução de problemas que toma
-decisões locais ótimas na esperança de que levem a uma solução global ótima. Em cada etapa,
-o algoritmo escolhe a melhor opção disponível no momento, sem se preocupar com as consequências
-futuras.
+Um algoritmo guloso (ou greedy) é um paradigma de solução de problemas que toma decisões locais ótimas
+na esperança de que levem a uma solução global ótima.
+Em cada etapa, o algoritmo escolhe a melhor opção disponível no momento, sem se preocupar com
+as consequências futuras.
 
 ---
 
@@ -13,8 +13,8 @@ futuras.
 
 Escolha gulosa: em cada passo, escolha a melhor alternativa disponível naquele momento.
 
-1. Validação de viabilidade: certifique-se de que essa escolha leva a uma solução válida.
-2. Combinação das escolhas: o resultado final é a combinação das decisões locais feitas ao longo do caminho.
+- Validação de viabilidade: certifique-se de que essa escolha leva a uma solução válida.
+- Combinação das escolhas: o resultado final é a combinação das decisões locais feitas ao longo do caminho.
 
 ---
 

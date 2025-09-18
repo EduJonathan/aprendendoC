@@ -167,8 +167,8 @@ gcc -fopenmp paralelo.c -o paralelo
 
 ## 📜 Flags de Padrão (STDC)
 
-Essas flags forçam o compilador a seguir versões específicas da linguagem. garantindo que o
-código seja compatível com uma versão específica da linguagem C.
+Essas flags forçam o compilador a seguir versões específicas da linguagem.
+Garantindo que o código seja compatível com uma versão específica da linguagem C.
 
 - `-std=c89` ou `-std=c90`: Segue o padrão ANSI C de 1989/1990. É útil quando se precisa garantir a
   compatibilidade com versões muito antigas do compilador.
@@ -253,7 +253,7 @@ gcc -Wno-init-self arquivo.c -o programa
 
 ## 👨🏻‍💻 Exemplos Práticos de Combinações de Flags
 
-As flags podem ser usadas isoladamente ou combinadas conforme a necessidade para criar conjuntos.
+As flags podem ser usadas **isoladamente** ou **combinadas** conforme a necessidade para criar conjuntos.
 que otimizam a compilação, melhoram a depuração e garantem a qualidade do código de forma consistente.
 
 ### 👨🏻‍💻 Pode-se construir flags para desenvolvimento
@@ -309,10 +309,9 @@ gcc -Wall -Wno-uninitialized -Wno-maybe-uninitialized arquivo.c -o programa
 
 ## ⚠️ Cuidados Importantes
 
-- Use -Wall -Wextra primeiro: Veja todos os avisos antes de suprimir qualquer um suprima
-  seletivamente: Não use -w (que suprime TODOS os avisos).
-- Documente o motivo: Comente por que cada aviso está sendo suprimido
-- Prefira corrigir no código:
+- Use `-Wall` `-Wextra` primeiro: Veja todos os avisos antes de suprimir qualquer um suprima seletivamente:
+  Não use -w (que suprime TODOS os avisos). Documente o motivo: Comente por que cada aviso está sendo suprimido
+  Tenha preferência na correção do código
 
 ```bash
 # // Em vez de suprimir -Wunused-parameter:
@@ -357,9 +356,8 @@ gcc -Wall -Wextra -Werror arquivo.c -o programa
 
 ## CONCLUSÃO
 
-assim sucessivamente(existem várias flags que você poderá captar ao decorrer de seu ensino,
-aqui eu citei apenas para os mais conhecidos e para se ter uma base). Além de flags que
-não foram citadas. Exemplo:
+Há várias flags que você poderá captar ao decorrer de seu ensino, aqui eu citei apenas para
+os mais conhecidos e para se ter uma base. Além de flags que não foram citadas. Exemplo:
 
 - `-lm`: Vincula a biblioteca matemática (necessária para funções como `sin`, `cos`, etc.).
 - `-L caminho`: Especifica um diretório para buscar bibliotecas externas.

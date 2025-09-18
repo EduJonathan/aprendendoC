@@ -12,13 +12,6 @@
 /**
  * @struct binary_tree_node
  * @brief Estrutura que representa um nó da árvore binária de busca (BST).
- *
- * Cada nó contém:
- * - um valor inteiro (`valor`),
- *
- * - o índice da coluna (`coluna`),
- *
- * - ponteiros para os filhos esquerdo e direito (`left` e `right`).
  */
 typedef struct binary_tree_node
 {
@@ -39,11 +32,27 @@ typedef struct binary_tree_node
 binaryTree *criarArvore(int valor)
 {
     binaryTree *new = (binaryTree *)malloc(sizeof(binaryTree));
+    if (new == NULL)
+    {
+        printf("Erro: Falha na alocação de memória para o nó.\n");
+        return NULL;
+    }
     new->valor = valor;
-    new->coluna = 0; ///< A raiz começa na coluna 0.
+    new->coluna = 0; // Inicializado, mas será ajustado na inserção
     new->left = NULL;
     new->right = NULL;
     return new;
+}
+
+void freeTree(binaryTree *tree)
+{
+    if (tree == NULL)
+    {
+        return;
+    }
+    freeTree(tree->left);
+    freeTree(tree->right);
+    free(tree);
 }
 
 /**
@@ -72,29 +81,40 @@ binaryTree *criarArvore(int valor)
  */
 void insert(binaryTree *new, binaryTree *tree)
 {
-    if (new->valor < tree->valor) // Se o valor é menor, insira à esquerda
+    if (new == NULL || tree == NULL)
+    {
+        printf("Erro: Nó inválido para inserção.\n");
+        return;
+    }
+
+    if (new->valor < tree->valor)
     {
         if (tree->left == NULL)
         {
             tree->left = new;
-            new->coluna = tree->coluna - 1; ///< Coluna diminui à esquerda
+            new->coluna = tree->coluna - 1;
         }
         else
         {
             insert(new, tree->left);
         }
     }
-    else if (new->valor > tree->valor) // Se o valor é maior, insira à direita
+    else if (new->valor > tree->valor)
     {
         if (tree->right == NULL)
         {
             tree->right = new;
-            new->coluna = tree->coluna + 1; ///< Coluna aumenta à direita
+            new->coluna = tree->coluna + 1;
         }
         else
         {
             insert(new, tree->right);
         }
+    }
+    else
+    {
+        printf("Aviso: Valor %d já existe na árvore, ignorando inserção.\n", new->valor);
+        free(new); // Libera o nó duplicado
     }
 }
 
@@ -112,7 +132,6 @@ void displayTree(binaryTree *tree)
     {
         return;
     }
-
     displayTree(tree->left);      // Exibe a subárvore esquerda
     printf("->%d ", tree->valor); // Exibe o valor do nó atual
     displayTree(tree->right);     // Exibe a subárvore direita
@@ -135,18 +154,15 @@ void colunas(binaryTree *tree, int *min, int *max)
         return;
     }
 
-    // Atualiza o valor mínimo
     if (tree->coluna < *min)
     {
         *min = tree->coluna;
     }
-    // Atualiza o valor máximo
+
     if (tree->coluna > *max)
     {
         *max = tree->coluna;
     }
-
-    // Percorre as subárvores
     colunas(tree->left, min, max);
     colunas(tree->right, min, max);
 }
@@ -154,8 +170,7 @@ void colunas(binaryTree *tree, int *min, int *max)
 /**
  * @brief Exibe o intervalo de colunas da árvore.
  *
- * Esta função imprime o intervalo de colunas, que é calculado pelas funções
- * `min` e `max`.
+ * Esta função imprime o intervalo de colunas, que é calculado pelas funções `min` e `max`.
  */
 void printColumnRange(int min, int max)
 {
@@ -164,33 +179,76 @@ void printColumnRange(int min, int max)
 
 int main(int argc, char **argv)
 {
-    // Inicializa as variáveis min e max
-    int min = INT_MAX, max = INT_MIN;
+    int n = 0;
 
-    // Criação dos nós
-    binaryTree *root = criarArvore(10); // Nó raiz
-    binaryTree *node1 = criarArvore(5);
-    binaryTree *node2 = criarArvore(15);
-    binaryTree *node3 = criarArvore(3);
-    binaryTree *node4 = criarArvore(7);
-    binaryTree *node5 = criarArvore(12);
-    binaryTree *node6 = criarArvore(17);
+    // Solicita o número de nós
+    printf("Digite o número de nós a inserir: ");
+    if (scanf("%d", &n) != 1 || n < 0)
+    {
+        printf("Erro: Número de nós deve ser não-negativo.\n");
+        return 1;
+    }
 
-    // Inserção dos nós na árvore
-    insert(node1, root);
-    insert(node2, root);
-    insert(node3, root);
-    insert(node4, root);
-    insert(node5, root);
-    insert(node6, root);
+    if (n == 0)
+    {
+        printf("Árvore vazia. Intervalo de colunas: nenhum\n");
+        return 0;
+    }
+
+    // Cria a raiz
+    int root_val = 0;
+    printf("Digite o valor da raiz: ");
+    if (scanf("%d", &root_val) != 1)
+    {
+        printf("Erro: Valor inválido para a raiz.\n");
+        return 1;
+    }
+
+    binaryTree *root = criarArvore(root_val);
+    if (root == NULL)
+    {
+        return 1;
+    }
+
+    // Insere os demais nós
+    for (int i = 1; i < n; i++)
+    {
+        int val = 0;
+        printf("Digite o valor do nó %d: ", i + 1);
+        if (scanf("%d", &val) != 1)
+        {
+            printf("Erro: Valor inválido para o nó %d.\n", i + 1);
+            freeTree(root);
+            return 1;
+        }
+
+        binaryTree *new = criarArvore(val);
+        if (new == NULL)
+        {
+            freeTree(root);
+            return 1;
+        }
+        insert(new, root);
+    }
 
     // Exibe a árvore
+    printf("Árvore em ordem: ");
     displayTree(root);
     printf("\n");
 
     // Calcula e exibe o intervalo de colunas
+    int min = INT_MAX, max = INT_MIN;
     colunas(root, &min, &max);
-    printColumnRange(min, max);
+    if (min == INT_MAX && max == INT_MIN)
+    {
+        printf("Árvore vazia. Intervalo de colunas: nenhum\n");
+    }
+    else
+    {
+        printColumnRange(min, max);
+    }
 
+    // Libera a memória da árvore
+    freeTree(root);
     return 0;
 }

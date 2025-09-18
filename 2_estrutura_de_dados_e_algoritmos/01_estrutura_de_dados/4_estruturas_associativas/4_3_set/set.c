@@ -46,7 +46,6 @@ Conjunto *criarConjunto(size_t capacidade)
         free(s);
         return NULL;
     }
-
     s->tamanho = 0;
     s->capacidade = capacidade;
     return s;
@@ -95,7 +94,6 @@ bool adicionarElemento(Conjunto *s, int elemento)
         fprintf(stderr, "Erro: Conjunto cheio\n");
         return false;
     }
-
     s->elementos[s->tamanho] = elemento;
     s->tamanho++;
     return true;

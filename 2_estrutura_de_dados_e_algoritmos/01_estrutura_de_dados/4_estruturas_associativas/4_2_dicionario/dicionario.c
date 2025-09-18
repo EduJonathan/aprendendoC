@@ -60,7 +60,6 @@ Dicionario *criarDicionario(size_t capacidade)
         free(dict);
         return NULL;
     }
-
     dict->tamanho = 0;
     dict->capacidade = capacidade;
     return dict;
@@ -107,7 +106,6 @@ int inserirPar(Dicionario *dict, const char *chave, const char *valor)
         fprintf(stderr, "Erro: Falha na alocação de memória para o par\n");
         return 0;
     }
-
     strncpy(novo->chave, chave, MAX_CHAVE_VALOR - 1);
     novo->chave[MAX_CHAVE_VALOR - 1] = '\0';
     strncpy(novo->valor, valor, MAX_CHAVE_VALOR - 1);

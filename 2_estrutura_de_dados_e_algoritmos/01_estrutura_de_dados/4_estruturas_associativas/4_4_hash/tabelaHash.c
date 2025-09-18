@@ -82,7 +82,7 @@ unsigned int calcularHash(const char *chave, size_t capacidade)
     }
 
     unsigned long hash = 5381;
-    int c;
+    int c = 0;
     while ((c = *chave++))
     {
         hash = ((hash << 5) + hash) + c; // hash * 33 + c
@@ -135,7 +135,6 @@ int inserirPar(TabelaHash *tabela, const char *key, int valor)
         free(novo);
         return 0;
     }
-
     novo->value = valor;
     novo->prox = tabela->tabela[index];
     tabela->tabela[index] = novo;

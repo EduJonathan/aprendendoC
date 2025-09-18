@@ -54,26 +54,75 @@ int compare(const void *a, const void *b) { return ((Edge *)a)->weight - ((Edge 
  * Solicita ao usuário a quantidade de vértices e arestas e os detalhes das arestas,
  * e armazena essas informações no vetor de arestas.
  */
-void createGraph(Edge graph[], int *numVertices, int *numEdges)
+void createGraph(Edge **graph, int *numVertices, int *numEdges)
 {
     printf("\n\t>>CRIANDO GRAFO<<\n");
 
+    // Input number of vertices
     printf("Digite a quantidade de vertices: ");
-    scanf("%d", numVertices);
+    if (scanf("%d", numVertices) != 1 || *numVertices <= 0)
+    {
+        printf("Erro: Número de vértices deve ser positivo.\n");
+        *numVertices = 0;
+        *numEdges = 0;
+        return;
+    }
 
+    // Input number of edges
     printf("Digite a quantidade de arestas: ");
-    scanf("%d", numEdges);
+    if (scanf("%d", numEdges) != 1 || *numEdges < 0)
+    {
+        printf("Erro: Número de arestas deve ser não-negativo.\n");
+        *numVertices = 0;
+        *numEdges = 0;
+        return;
+    }
 
+    // Allocate memory for edges
+    *graph = (Edge *)malloc(*numEdges * sizeof(Edge));
+    if (*graph == NULL)
+    {
+        printf("Erro: Falha na alocação de memória para as arestas.\n");
+        *numVertices = 0;
+        *numEdges = 0;
+        return;
+    }
+
+    // Input edge details
     for (int i = 0; i < *numEdges; i++)
     {
-        printf("Digite o vértice de origem da aresta %d: ", i + 1);
-        scanf("%d", &graph[i].startVertex);
+        printf("Digite o vértice de origem da aresta %d (0 a %d): ", i + 1, *numVertices - 1);
+        if (scanf("%d", &(*graph)[i].startVertex) != 1 || (*graph)[i].startVertex < 0 || (*graph)[i].startVertex >= *numVertices)
+        {
+            printf("Erro: Vértice de origem inválido.\n");
+            free(*graph);
+            *graph = NULL;
+            *numVertices = 0;
+            *numEdges = 0;
+            return;
+        }
 
-        printf("Digite o vértice de destino da aresta %d: ", i + 1);
-        scanf("%d", &graph[i].endVertex);
+        printf("Digite o vértice de destino da aresta %d (0 a %d): ", i + 1, *numVertices - 1);
+        if (scanf("%d", &(*graph)[i].endVertex) != 1 || (*graph)[i].endVertex < 0 || (*graph)[i].endVertex >= *numVertices)
+        {
+            printf("Erro: Vértice de destino inválido.\n");
+            free(*graph);
+            *graph = NULL;
+            *numVertices = 0;
+            *numEdges = 0;
+            return;
+        }
 
         printf("Digite o custo da aresta %d: ", i + 1);
-        scanf("%d", &graph[i].weight);
+        if (scanf("%d", &(*graph)[i].weight) != 1)
+        {
+            printf("Erro: Custo inválido.\n");
+            free(*graph);
+            *graph = NULL;
+            *numVertices = 0;
+            *numEdges = 0;
+            return;
+        }
     }
 }
 
@@ -105,15 +154,13 @@ int find(int parent[], int vertex)
  * @param vertex1 O vértice de origem.
  * @param vertex2 O vértice de destino.
  */
-void Union(int parent[], int rank[], int vertex1, int vertex2)
+void Union(int *parent, int *rank, int vertex1, int vertex2)
 {
     int root1 = find(parent, vertex1);
     int root2 = find(parent, vertex2);
 
-    // Se eles são de diferentes conjuntos, faça a união
     if (root1 != root2)
     {
-        // União por rank (para manter a árvore equilibrada)
         if (rank[root1] < rank[root2])
         {
             parent[root1] = root2;
@@ -146,38 +193,49 @@ void Union(int parent[], int rank[], int vertex1, int vertex2)
  * subconjunto das arestas, de forma que a soma dos pesos dessas arestas seja sempre menor
  * possível.
  */
-void kruskal(Edge graph[], int numVertices, int numEdges)
+void kruskal(Edge *graph, int numVertices, int numEdges)
 {
-    // Ordena as arestas por custo em ordem crescente
-    qsort(graph, numEdges, sizeof(Edge), compare);
+    if (graph == NULL || numVertices <= 0 || numEdges < 0)
+    {
+        printf("Erro: Grafo inválido ou não inicializado.\n");
+        return;
+    }
 
-    // Vetor para armazenar o representante de cada conjunto
-    int parent[numVertices];
-    int rank[numVertices];
+    // Allocate memory for parent and rank arrays
+    int *parent = (int *)malloc(numVertices * sizeof(int));
+    int *rank = (int *)malloc(numVertices * sizeof(int));
+    if (parent == NULL || rank == NULL)
+    {
+        printf("Erro: Falha na alocação de memória.\n");
+        free(parent);
+        free(rank);
+        return;
+    }
 
-    // Inicializa cada vértice como seu próprio representante
+    // Initialize parent and rank arrays
     for (int i = 0; i < numVertices; i++)
     {
         parent[i] = i;
         rank[i] = 0;
     }
 
+    // Sort edges by weight
+    qsort(graph, numEdges, sizeof(Edge), compare);
+
     int mst_cost = 0;
-    int mst_edges = 0; // Número de arestas na MST
+    int mst_edges = 0;
 
     printf("\n\t>>ÁRVORE GERADORA MÍNIMA (MST) - ALGORITMO DE KRUSKAL<<\n");
 
-    // Processa as arestas, tentando adicionar à árvore geradora mínima
+    // Process edges to form MST
     for (int i = 0; i < numEdges && mst_edges < numVertices - 1; i++)
     {
         int vertex1 = graph[i].startVertex;
         int vertex2 = graph[i].endVertex;
         int cost = graph[i].weight;
 
-        // Verifica se adicionar a aresta forma um ciclo
         if (find(parent, vertex1) != find(parent, vertex2))
         {
-            // Se não formar ciclo, adiciona à MST
             printf("Aresta: %d - %d, Custo: %d\n", vertex1, vertex2, cost);
             mst_cost += cost;
             Union(parent, rank, vertex1, vertex2);
@@ -185,24 +243,34 @@ void kruskal(Edge graph[], int numVertices, int numEdges)
         }
     }
 
-    // Se a MST não tiver o número necessário de arestas
+    // Check if MST was formed
     if (mst_edges != numVertices - 1)
     {
         printf("A árvore geradora mínima não pode ser formada. O grafo pode não ser conexo.\n");
     }
+    else
+    {
+        printf("Custo total da árvore geradora mínima: %d\n", mst_cost);
+    }
 
-    printf("Custo total da árvore geradora mínima: %d\n", mst_cost);
+    // Free allocated memory
+    free(parent);
+    free(rank);
 }
 
 int main(int argc, char **argv)
 {
-    Edge graph[20] = {0}; // Supondo no máximo 20 arestas
+    Edge *graph = NULL;
     int numVertices = 0, numEdges = 0;
 
-    createGraph(graph, &numVertices, &numEdges);
+    createGraph(&graph, &numVertices, &numEdges);
+    if (graph == NULL)
+    {
+        printf("Erro ao criar o grafo.\n");
+        return 1;
+    }
 
-    // Chamando a função para encontrar a MST
     kruskal(graph, numVertices, numEdges);
-
+    free(graph);
     return 0;
 }

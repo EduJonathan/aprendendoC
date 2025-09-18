@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 /**
  * Algoritmo KMP (Knuth-Morris-Pratt): Para busca de padrões em textos.
@@ -12,6 +13,32 @@
  *
  * ESPAÇO: O(m), onde m é o tamanho do padrão, devido ao vetor de falhas que precisa ser armazenado.
  */
+
+/**
+ * @brief Calcula o vetor de falhas (prefix function) para o algoritmo KMP.
+ *
+ * @param padrao O padrão para o qual o vetor de falhas será calculado.
+ * @param falhas Vetor para armazenar os valores das falhas.
+ * @param tamanhoPadrao Tamanho do padrão.
+ */
+void calcularFalhas(const char *padrao, int *falhas, int tamanhoPadrao)
+{
+    falhas[0] = 0; // O primeiro valor do vetor de falhas é 0
+    int j = 0;     // Índice para o prefixo
+
+    for (int i = 1; i < tamanhoPadrao; i++)
+    {
+        while (j > 0 && padrao[i] != padrao[j])
+        {
+            j = falhas[j - 1]; // Retrocede para o último prefixo válido
+        }
+        if (padrao[i] == padrao[j])
+        {
+            j++; // Incrementa o comprimento do prefixo
+        }
+        falhas[i] = j; // Armazena o comprimento do maior prefixo/sufixo
+    }
+}
 
 /**
  * @brief Algoritmo KMP (Knuth-Morris-Pratt) para busca de padrões em textos.
@@ -56,79 +83,92 @@ void calcularFalhas(char *padrao, int falhas[])
 }
 
 /**
- * @brief Algoritmo KMP para encontrar ocorrências de um padrão no texto.
- *
- * O algoritmo verifica a presença do padrão no texto e retorna se encontrou ou não.
+ * @brief Algoritmo KMP para encontrar todas as ocorrências de um padrão no texto.
  *
  * @param texto O texto onde o padrão será buscado.
  * @param padrao O padrão a ser buscado.
- * @return true Se o padrão for encontrado no texto, caso contrário, false.
+ * @return true se o padrão for encontrado pelo menos uma vez, false caso contrário.
  */
-bool buscarPadrao(char *texto, char *padrao)
+bool buscarPadrao(const char *texto, const char *padrao)
 {
-    int tamanhoPadrao = strlen(padrao);
+    // Validação de entrada
+    if (texto == NULL || padrao == NULL || texto[0] == '\0' || padrao[0] == '\0')
+    {
+        printf("Erro: Texto ou padrão inválido.\n");
+        return false;
+    }
+
     int tamanhoTexto = strlen(texto);
-    int falhas[tamanhoPadrao]; // Vetor para armazenar as falhas
+    int tamanhoPadrao = strlen(padrao);
 
-    calcularFalhas(padrao, falhas); // Preenche o vetor de falhas
+    // Aloca memória para o vetor de falhas
+    int *falhas = (int *)malloc(tamanhoPadrao * sizeof(int));
+    if (falhas == NULL)
+    {
+        printf("Erro: Falha na alocação de memória.\n");
+        return false;
+    }
 
-    int i = 0; // Índice para o texto
+    // Calcula o vetor de falhas
+    calcularFalhas(padrao, falhas, tamanhoPadrao);
+
+    bool encontrado = false;
     int j = 0; // Índice para o padrão
 
     // Percorre o texto
-    while (i < tamanhoTexto)
+    for (int i = 0; i < tamanhoTexto; i++)
     {
-        if (j == -1)
+        while (j > 0 && texto[i] != padrao[j])
         {
-            i++;
-            j = 0;
+            j = falhas[j - 1]; // Retrocede usando o vetor de falhas
         }
-        else if (texto[i] == padrao[j])
+        if (texto[i] == padrao[j])
         {
-            i++;
-            j++;
-
-            // Quando j atingir o tamanho do padrão, encontrou uma correspondência
-            if (j == tamanhoPadrao)
-            {
-                printf("Padrão encontrado no índice %d\n", i - tamanhoPadrao);
-                return true; // Encontrou uma correspondência
-            }
+            j++; // Avança no padrão
         }
-        else
+        if (j == tamanhoPadrao)
         {
-            j = falhas[j]; // Ajusta j com base no vetor de falhas
+            printf("Padrão encontrado no índice %d\n", i - tamanhoPadrao + 1);
+            encontrado = true;
+            j = falhas[j - 1]; // Continua buscando outras ocorrências
         }
     }
-    return false; // Não encontrou o padrão
+
+    free(falhas); // Libera a memória alocada
+    return encontrado;
 }
 
 int main(int argc, char **argv)
 {
-    char texto1[] = "AABAACAADAABAAABAA";
-    char padrao1[] = "AABA";
+    char texto[1000], padrao[100];
 
-    if (buscarPadrao(texto1, padrao1))
+    // Solicita entrada do usuário
+    printf("Digite o texto: ");
+    if (fgets(texto, sizeof(texto), stdin) == NULL)
     {
-        printf("O padrão: \"%s\" foi encontrado no texto \"%s\".\n", padrao1, texto1);
+        printf("Erro ao ler o texto.\n");
+        return 1;
+    }
+    // Remove o caractere de nova linha, se presente
+    texto[strcspn(texto, "\n")] = '\0';
+
+    printf("Digite o padrão: ");
+    if (fgets(padrao, sizeof(padrao), stdin) == NULL)
+    {
+        printf("Erro ao ler o padrão.\n");
+        return 1;
+    }
+    padrao[strcspn(padrao, "\n")] = '\0';
+
+    // Executa a busca
+    if (buscarPadrao(texto, padrao))
+    {
+        printf("O padrão \"%s\" foi encontrado no texto \"%s\".\n", padrao, texto);
     }
     else
     {
-        printf("O padrão: \"%s\" não foi encontrado no texto \"%s\".\n", padrao1, texto1);
+        printf("O padrão \"%s\" não foi encontrado no texto \"%s\".\n", padrao, texto);
     }
 
-    printf("\n--------------------\n");
-
-    char texto2[] = "AABAACAADAABAAABAA";
-    char padrao2[] = "ABOO";
-
-    if (buscarPadrao(texto2, padrao2))
-    {
-        printf("O padrão: \"%s\" foi encontrado no texto \"%s\".\n", padrao2, texto2);
-    }
-    else
-    {
-        printf("O padrão: \"%s\" não foi encontrado no texto \"%s\".\n", padrao2, texto2);
-    }
     return 0;
 }

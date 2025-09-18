@@ -187,8 +187,9 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 
 ## ⚠️ CUIDADOS IMPORTANTES
 
-- Evite espaços em nomes de `arquivos` e `diretórios`. Use nomes como `arquivo_c.c` ou `arquivoC.c`.
-  Pois no momento de compilar e caso estiver (`arquivo` `c`.c) o compilador poderá entender que há
+- Em programas C/C++ evite espaços, acentuações(`´`, `^`) e caracteres especiais(exe.: `ç`, `%`, `&`)
+  em nomes de **arquivos** e **diretórios(pastas)**. Use nomes como **arquivo_c.c** ou **arquivoC.c**.
+  Pois no momento de compilar e caso estiver (`arquivo` `c.c`) o compilador poderá entender que há
   2 ou múltiplos arquivos a ser compilados, no caso `arquivo` (por mais que não tenha uma extensão,
   sendo entendido como `arquivo.txt`) e `c.c`.
 
