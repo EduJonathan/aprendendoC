@@ -1,29 +1,50 @@
 #include <stdio.h>
 
 /**
- * O #pragma optimize é uma diretiva usada no compilador MSVC (Microsoft Visual C++)
- * para habilitar ou desabilitar otimizações específicas durante a compilação do código.
- * Ele pode ser útil para ajustar o desempenho de certas partes do programa, garantindo
- * que algumas otimizações sejam aplicadas ou evitadas.
- * Parâmetros comuns do #pragma optimize:
+ * #pragma optimize: Diretiva específica do compilador MSVC (Microsoft Visual C++) para
+ * controlar otimizações em seções específicas do código. Permite ativar/desativar otimizações
+ * para ajustar desempenho, tamanho do código ou facilitar depuração.
  *
- * "g" -> Otimizações gerais
- * "s" -> Minimiza tamanho do código
- * "t" -> Favorece desempenho
- * "y" -> Habilita análise de código inalterado
+ * Sintaxe: #pragma optimize("opções", estado)
+ * - Opções:
+ *   - "g": Otimizações globais (ex.: inlining, eliminação de código morto).
+ *   - "s": Otimiza para tamanho do código (menor binário).
+ *   - "t": Otimiza para velocidade (desempenho).
+ *   - "y": Habilita omissão do ponteiro de quadro (frame pointer omission).
+ * - Estado: "on" (ativa) ou "off" (desativa).
  *
- * Para compiladores não MSVC, você precisaria usar outras formas de controle de
- * otimização específicas para esses compiladores (por exemplo, flags de compilação
- * como -O0, -O1, -O2, etc. em GCC e Clang).
+ * Exemplo:
+ * - #pragma optimize("g", off): Desativa otimizações globais para uma função.
+ * - #pragma optimize("g", on): Ativa otimizações globais.
+ *
+ * Limitações:
+ * - Exclusiva do MSVC. GCC/Clang ignoram essa diretiva e usam #pragma GCC optimize
+ *   (ex.: #pragma GCC optimize("O0") para desativar otimizações).
+ * - Não é padrão C (C11/C17/C23), então afeta portabilidade.
+ *
+ * Alternativas para GCC/Clang:
+ * - Use flags de linha de comando: -O0 (sem otimizações), -O1, -O2, -O3 (otimizações agressivas).
+ * - Ou atributos: __attribute__((optimize("O0"))) por função.
+ *
+ * Boas práticas:
+ * - Use apenas quando necessário (ex.: depuração ou código sensível a otimizações).
+ * - Evite desativar otimizações globalmente, pois pode impactar desempenho.
+ * - Para portabilidade, combine com #ifdef para alternar entre compiladores.
+ *
+ * Exemplo de compilação:
+ * - MSVC: cl /O2 pragma_optimize.c
+ * - GCC: gcc -std=c17 -O2 ou -O3 -o pragma_optimize pragma_optimize.c (ignora #pragma optimize)
  */
 
-#pragma optimize("g", off) // Desativa otimizações
+// Desativa otimizações ou #pragma GCC optimize("O0") para efeito nos compiladores(GCC/CLANG)
+#pragma optimize("g", off)
 void funcaoSemOtmizacao()
 {
     printf("Esta função está sem otimizações.\n");
 }
 
-#pragma optimize("g", on) // Ativa otimizações
+// Ativa otimizações ou #pragma GCC optimize("O3") para efeito nos compiladores(GCC/CLANG)
+#pragma optimize("g", on)
 void funcaoComOtmizacao()
 {
     printf("Esta função está com otimizações.\n");

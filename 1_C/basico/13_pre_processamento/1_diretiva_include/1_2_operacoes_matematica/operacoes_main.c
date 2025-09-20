@@ -2,32 +2,37 @@
 #include "functions_aritmeticas.h"
 
 /**
- * @brief Compilação em projetos com múltiplos arquivos.
+ * @brief Compilação em projetos com múltiplos arquivos
  *
- * Quando se trata de projetos organizados em múltiplos arquivos (módulos separados),
- * a etapa de compilação individual de cada módulo torna-se indispensável, principalmente devido
- * à necessidade de resolução de símbolos durante o linking.
+ * Em projetos organizados em vários arquivos (módulos separados),
+ * é indispensável compilar cada módulo individualmente, pois,
+ * durante a fase de *linking*, o linker precisa resolver todos os
+ * símbolos utilizados em diferentes partes do programa.
  *
- * O compilador traduz cada arquivo `.c` em um objeto (`.o`), mas somente durante a etapa
- * de linkagem o linker reúne todos esses objetos, resolvendo referências entre funções
- * e variáveis globais declaradas em diferentes módulos.
+ * Existem dois tipos principais de arquivos:
+ * - **.h**: contém declarações de funções, diretivas de pré-processador, macros e definições de tipos.
+ * - **.c**: contém as implementações (definições) das funções e variáveis.
+ *
+ * O compilador traduz cada arquivo `.c` em um objeto intermediário (`.o`).
+ * Somente na etapa de linkagem o linker reúne todos esses objetos,
+ * resolvendo referências entre funções e variáveis globais declaradas em módulos distintos.
  *
  * Se algum módulo não for compilado ou incluído no processo de linkagem,
- * erros como "undefined reference" podem ocorrer.
+ * ocorrerão erros como *undefined reference*.
  *
- * Cada arquivo-fonte (.c) é compilado separadamente em um objeto intermediário (.o),
- * que posteriormente será vinculado (linkado) com os demais objetos para formar
- * o executável final.
- *
- * Essa abordagem permite:
- * - Melhor organização e modularização do código.
+ * Vantagens dessa abordagem:
+ * - Organização e modularização do código.
  * - Reutilização de componentes.
- * - Compilação incremental (compila-se apenas o que mudou).
+ * - Compilação incremental (compila apenas o que mudou).
  * - Maior manutenibilidade e escalabilidade do projeto.
  *
- * Por isso, mesmo que o programa pareça pequeno, quando modularizado,
- * exige um processo de compilação adequado — seja manual via `gcc`, com `Makefile`,
- * ou por meio de ferramentas de build automatizadas como `CMake`.
+ * Mesmo em programas pequenos, quando há modularização,
+ * é essencial um processo de compilação adequado — seja manual via `gcc`,
+ * com um `Makefile`, ou usando ferramentas de build como **CMake**.
+ *
+ * @note **Apenas os arquivos `.c` devem ser passados ao compilador**.
+ *       Arquivos de cabeçalho (`.h`) não são compilados diretamente,
+ *       pois são incluídos (com `#include`) pelos arquivos-fonte `.c`.
  */
 
 int main(int argc, char **argv)
@@ -40,15 +45,12 @@ int main(int argc, char **argv)
     float res_soma = add(n1, n2);
     printf("Resultado de %.2f + %.2f = %.2f\n", n1, n2, res_soma);
 
-    // Criando variáveis para guardar o valor do retorno de cada operação.
     float res_sub = subtract(n1, n2);
     printf("Resultado de %.2f - %.2f = %.2f\n", n1, n2, res_sub);
 
-    // Criando variáveis para guardar o valor do retorno de cada operação.
     float res_mult = multiply(n1, n2);
     printf("Resultado de %.2f * %.2f = %.2f\n", n1, n2, res_mult);
 
-    // Criando variáveis para guardar o valor do retorno de cada operação.
     float res_div = divide(n1, n2);
     printf("Resultado de %.2f / %.2f = %.2f\n", n1, n2, res_div);
 

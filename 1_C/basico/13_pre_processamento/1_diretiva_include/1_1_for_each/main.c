@@ -1,4 +1,5 @@
 #include "for_each.h"
+// #include <stdio.h> Não vamos precisar, pois ele já foi chamado em "for_each.h"
 
 // "": quando uma biblioteca .h está em "", significa que é diretório de projeto de sua máquina.
 // <>: quando se encontra em abre '<' e fecha '>', significa que é uma biblioteca do compilador.

@@ -19,16 +19,9 @@
  */
 bool eInfinito(double _X)
 {
-    if (isinfinite(_X))
-    {
-        printf(" %lf é infinito\n", _X);
-        return true;
-    }
-    else
-    {
-        printf(" %lf não é infinito\n", _X);
-        return false;
-    }
+    bool resultado = isfinite(_X);
+    printf(" O valor %lf é infinito? %s\n", _X, resultado ? "SIM" : "NÃO");
+    return resultado;
 }
 
 int main(int argc, char **argv)

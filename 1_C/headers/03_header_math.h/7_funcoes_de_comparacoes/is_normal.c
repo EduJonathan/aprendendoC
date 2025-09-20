@@ -19,16 +19,9 @@
  */
 bool isAnormal(double _X)
 {
-    if (isnormal(_X))
-    {
-        printf(" %lf é um número normal\n", _X);
-        return true;
-    }
-    else
-    {
-        printf(" %lf não é um número normal\n", _X);
-        return false;
-    }
+    bool resultado = isnormal(_X);
+    printf(" O valor %lf é normal? %s\n", _X, resultado ? "SIM" : "NÃO");
+    return resultado;
 }
 
 int main(int argc, char **argv)

@@ -20,16 +20,9 @@
  */
 bool qualMaiorValor(double _X, double _Y)
 {
-    if (isgreater(_X, _Y))
-    {
-        printf(" x é maior que y\n");
-        return true;
-    }
-    else
-    {
-        printf(" x não é maior que y\n");
-        return false;
-    }
+    bool resultado = isgreater(_X, _Y);
+    printf(" %lf %s maior que %lf\n", _X, resultado ? "é" : "não é", _Y);
+    return resultado;
 }
 
 int main(int argc, char **argv)

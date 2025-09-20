@@ -1,17 +1,27 @@
 #include <stdio.h>
 
 /**
- * #pragma GCC diagnostic ignored "-Wdeprecated-declarations": Diretiva do compilador GCC
- * usada para suprimir avisos relacionados ao uso de funções ou declarações obsoletas.
- * Quando o compilador encontra código que chama funções ou usa elementos marcados como
- * obsoletos, ele normalmente gera um aviso para alertar o desenvolvedor de que esses
- * elementos podem ser removidos em versões futuras.
+ * Uso de #pragma GCC diagnostic:
  *
- * Ao incluir essa diretiva no código, você instrui o compilador a ignorar esses
- * avisos e prosseguir com a compilação sem exibi-los.
+ * A diretiva `#pragma GCC diagnostic` é usada no GCC/Clang para controlar mensagens de diagnóstico
+ * (avisos ou erros) geradas durante a compilação. Ela permite ativar, desativar ou tratar avisos
+ * como erros de forma seletiva, sendo especialmente útil para gerenciar avisos em seções
+ * específicas do código sem afetar todo o projeto.
+ *
+ * - `#pragma GCC diagnostic ignored "-Wflag"`: Suprime o aviso especificado pela flag (ex.: "-Wdeprecated-declarations").
+ * - `#pragma GCC diagnostic push`: Salva o estado atual dos diagnósticos, permitindo modificações temporárias.
+ * - `#pragma GCC diagnostic pop`: Restaura o estado anterior dos diagnósticos.
+ *
+ * Exemplo prático: No código abaixo, suprimimos o aviso de uso de uma função obsoleta
+ * (marcada com `__attribute__((deprecated))`) apenas para uma chamada específica, evitando
+ * impactar outras partes do código.
+ *
+ * Nota: Esta diretiva é específica do GCC/Clang. Para outros compiladores (ex.: MSVC), use
+ * alternativas como `#pragma warning`. Sempre consulte a documentação do compilador para
+ * garantir portabilidade.
  */
 
-// Função obsoleta
+// Função obsoleta marcada com __attribute__((deprecated))
 __attribute__((deprecated("Use novaFuncao() em vez disso."))) void funcaoAntiga()
 {
     printf("Esta é uma função obsoleta.\n");
@@ -19,29 +29,36 @@ __attribute__((deprecated("Use novaFuncao() em vez disso."))) void funcaoAntiga(
 
 int main(int argc, char **argv)
 {
-// Suprimindo aviso de função obsoleta
+// Suprime temporariamente avisos de funções obsoletas
 #pragma GCC diagnostic push
-
-// Desativa os avisos sobre funções obsoletas no GCC.
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-    funcaoAntiga(); // Chamando a função obsoleta sem aviso
+    funcaoAntiga(); // Chamada sem gerar aviso
 
-// Restaura o estado anterior dos diagnósticos, permitindo que os avisos voltem ao
-// comportamento padrão após a chamada para funcaoAntiga().
-#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop // Restaura configurações de diagnóstico
 
     /**
-     * #pragma GCC diagnostic push e #pragma GCC diagnostic pop: São usados para garantir
-     * que os avisos sejam temporariamente desativados apenas onde necessário.
+     * Contexto de uso:
+     * - O `#pragma GCC diagnostic` é útil em projetos legados ou ao integrar bibliotecas externas
+     *   que geram avisos indesejados (ex.: funções obsoletas).
+     * - Evite suprimir avisos globalmente (ex.: com -Wno-deprecated-declarations) para manter
+     *   a visibilidade de problemas em outras partes do código.
      *
-     * Possíveis flags:
-     * > gcc -std=c17 -Wall -Wextra -Wpedantic -Werror -g -Og -o meu_programa meu_codigo.c
-     * > gcc -std=c17 -O3 -march=native -flto -fomit-frame-pointer -DNDEBUG -o meu_programa meu_codigo.c
-     * > gcc -std=c17 -Wall -Wextra -Wno-deprecated-declarations -o meu_programa meu_codigo.c
-     * > gcc -std=c17 -Wall -Wextra -Wconversion -Wshadow -Wstrict-overflow=5 -fstack-protector-strong -o meu_programa meu_codigo.c
-     * > gcc -std=c17 -O3 -fopenmp -march=native -o meu_programa meu_codigo.c
-     * > gcc -std=c17 -Wall -Wextra -g -o exemplo exemplo.c
+     * Flags de compilação relacionadas:
+     * - `-Wall` e `-Wextra`: Ativam avisos, incluindo `-Wdeprecated-declarations`.
+     * - `-Werror`: Transforma avisos em erros, exigindo o uso de `#pragma` para compilar.
+     * - `-Wno-deprecated-declarations`: Desativa globalmente avisos de depreciação (menos granular).
+     *
+     * Exemplos de compilação:
+     * - Básico com depuração: `gcc -std=c17 -Wall -Wextra -g -o exemplo pragma_gcc.c`
+     * - Rigoroso com erros: `gcc -std=c17 -Wall -Wextra -Wpedantic -Werror -g -Og -o exemplo pragma_gcc.c`
+     * - Otimizado: `gcc -std=c17 -O3 -march=native -flto -o exemplo pragma_gcc.c`
+     * - Paralelismo: `gcc -std=c17 -O3 -fopenmp -march=native -o exemplo pragma_gcc.c`
+     *
+     * Cuidado:
+     * - Suprimir avisos pode ocultar problemas reais. Use `#pragma GCC diagnostic` apenas quando
+     *   necessário e justificado (ex.: código legado ou bibliotecas de terceiros).
+     * - Verifique a compatibilidade com o compilador e versão usada.
      */
 
     return 0;

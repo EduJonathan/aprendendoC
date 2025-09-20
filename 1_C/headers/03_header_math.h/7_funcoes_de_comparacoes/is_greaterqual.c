@@ -20,16 +20,9 @@
  */
 bool maiorIgual(double _X, double _Y)
 {
-    if (isgreaterequal(_X, _Y))
-    {
-        printf(" %lf é maior ou igual a %lf\n", _X, _Y);
-        return true;
-    }
-    else
-    {
-        printf(" %lf não é maior ou igual a %lf\n", _X, _Y);
-        return false;
-    }
+    bool resultado = isgreaterequal(_X, _Y);
+    printf(" %lf %s maior ou igual a %lf\n", _X, resultado ? "é" : "não é", _Y);
+    return resultado;
 }
 
 int main(int argc, char **argv)

@@ -23,14 +23,11 @@
 // param 'x' será substituido por esse valor, para evitar conflitos e erros nos parâmetros
 // separem por "()"
 
-// Macro com argumentos
-#define MIN(a, b) (((a) < (b)) ? a : b)
+#define MIN(a, b) (((a) < (b)) ? a : b)                    // Macro com argumentos
+#define PRINT_MENSAGEM(msg) printf("Mensagem: %s\n", msg); // Exibindo mensagem
 
 // Verificando com a macro utilizando uma operação ternária o valor ABS de um número
 #define ABS(a) ((a) < 0 ? -(a) : (a))
-
-// Exibindo mensagem
-#define PRINT_MENSAGEM(msg) printf("Mensagem: %s\n", msg);
 
 int main(int argc, char **argv)
 {

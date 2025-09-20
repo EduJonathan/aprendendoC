@@ -3,70 +3,83 @@
 #include <fenv.h>
 
 /**
- * #pragma STDC FENV_ACCESS ON => Indica que a função precisa de acesso ao estado da FPU
- * (FPU é um circuito especializado dentro da CPU (ou em coprocessadores dedicados)
- * que executa operações com números de ponto flutuante).
- * Isso pode ser útil ao trabalhar com exceções de ponto flutuante e arredondamento.
+ * Diretivas de ponto flutuante do padrão C:
  *
- * #pragma STDC FENV_ACCESS OFF => Permite ao compilador otimizar expressões de ponto
- * flutuante livremente, assumindo que o estado da FPU não será alterado.
+ * 1. #pragma STDC FENV_ACCESS:
+ * - ON: Indica que o código acessa/modifica o ambiente de ponto flutuante (FPU), como flags
+ *   de exceções (FE_DIVBYZERO, FE_OVERFLOW) ou modos de arredondamento. Desativa otimizações
+ *   que poderiam ignorar o estado da FPU.
+ * - OFF: Permite otimizações livres, assumindo que o estado da FPU não é alterado.
+ * - Uso: Cálculos sensíveis (ex.: sistemas embarcados, simulações numéricas) onde o estado
+ *   da FPU afeta resultados.
+ * - Suporte: Padrão C (C99/C11/C17/C23), suportado por MSVC, GCC, Clang.
+ * - Flags recomendadas: -frounding-math, -fexceptions (GCC); /fp:strict (MSVC).
  *
- * Não possuem flags
+ * 2. #pragma STDC FP_CONTRACT:
+ * - ON: Permite fusão de operações de ponto flutuante (ex.: a * b + c) em uma instrução FMA
+ *   (*fused multiply-add*), aumentando eficiência, mas podendo reduzir precisão.
+ * - OFF: Mantém operações separadas, preservando precisão.
+ * - Uso: Controle de precisão vs. desempenho em cálculos numéricos.
+ * - Suporte: Padrão C, suportado por MSVC, GCC, Clang.
+ * - Flags: -mfma (GCC) habilita FMA; -ffp-contract=fast|on|off controla fusão.
  *
- * Por que usar?
- * Em cálculos sensíveis, onde o estado da FPU afeta os resultados.
- * Para capturar e tratar erros de ponto flutuante corretamente.
- * Em sistemas embarcados que fazem cálculos numéricos críticos.
+ * 3. #pragma STDC CX_LIMITED_RANGE:
+ * - ON: Permite otimizações em números complexos assumindo intervalos limitados, evitando
+ *   verificações de overflow/underflow.
+ * - OFF: Cálculos conservadores, sem suposições de intervalo.
+ * - Uso: Otimizar operações com números complexos em aplicações numéricas.
+ * - Suporte: Padrão C, suportado por MSVC, GCC, Clang.
+ *
+ * Boas práticas:
+ * - Use FENV_ACCESS ON apenas em blocos onde o estado da FPU é necessário.
+ * - Use FP_CONTRACT OFF para máxima precisão em cálculos críticos.
+ * - Use CX_LIMITED_RANGE ON apenas quando os valores complexos estão em intervalos seguros.
+ * - Teste com flags como -frounding-math (GCC) ou /fp:strict (MSVC) para conformidade.
+ *
+ * Compilação:
+ * - GCC: gcc -std=c17 -Wall -mfma -frounding-math -fexceptions -o programa pragma-stdc.c
+ * - MSVC: cl /fp:strict pragma_stdc.c
+ * - Depuração: gcc -E pragma_stdc.c (verifica pré-processamento)
  */
+
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wfloat-equal"
+#endif
 #pragma STDC FENV_ACCESS ON
 
-void testarPontoFlutuante()
+void testarPontoFlutuante(void)
 {
-    feclearexcept(FE_ALL_EXCEPT); // Limpa flags anteriores
+    feclearexcept(FE_ALL_EXCEPT); // Limpa flags de exceções
 
-    /*
-     * Usamos volatile para evitar que o compilador otimize a operação e remova a divisão,
-     * o que impediria o teste funcionar.
-     */
     volatile double x = 0.0;
-    volatile double y = 1.0 / x; // Aqui há divisão por zero (em tempo de execução)
+    volatile double y = 1.0 / x; // Divisão por zero
 
     if (fetestexcept(FE_DIVBYZERO))
     {
         printf("Divisão por zero detectada!\n");
     }
-
     if (fetestexcept(FE_OVERFLOW))
     {
         printf("Overflow detectado!\n");
     }
-
     if (fetestexcept(FE_INVALID))
     {
         printf("Operação inválida detectada!\n");
     }
 }
 
-/**
- * Controla a fusão de operações de ponto flutuante (ex: a * b + c → pode ser
- * fundido em uma instrução FMA). Com FP_CONTRACT ON, o compilador pode usar instruções
- * como FMA (fused multiply-add).
- * FMA: Instrução que combina multiplicação e adição com maior eficiência. Com OFF,
- * cada operação é mantida separada, o que pode preservar precisão em certas situações.
- * gcc -O3 -mfma -o programa programa.c  # Habilita FMA
- */
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 #pragma STDC FP_CONTRACT OFF
 
 double calcular(double a, double b, double c)
 {
-    return a * b + c; // Se FP_CONTRACT estiver ON, pode virar uma única instrução FMA
+    return a * b + c; // Operações separadas, sem FMA
 }
 
-/**
- * Permite ao compilador assumir limites de intervalo ao otimizar expressões
- * com números complexos. Com ON, o compilador pode fazer otimizações assumindo que
- * não há overflow/underflow em certas partes dos números complexos.
- */
 #pragma STDC CX_LIMITED_RANGE ON
 
 int main(int argc, char **argv)
@@ -74,10 +87,11 @@ int main(int argc, char **argv)
     testarPontoFlutuante();
 
     double r = calcular(1.5, 2.0, 3.0);
-    printf("Resultado: %f\n", r);
+    printf("Resultado: %.1f\n", r);
 
     double complex z = 1.0 + 2.0 * I;
-    double complex w = z * conj(z);
-    printf("Resultado: %.2f + %.2fi\n", creal(w), cimag(w));
+    double complex w = z * conj(z); // |z|^2 = 1^2 + 2^2 = 5
+    printf("Resultado complexo: %.2f + %.2fi\n", creal(w), cimag(w));
+
     return 0;
 }

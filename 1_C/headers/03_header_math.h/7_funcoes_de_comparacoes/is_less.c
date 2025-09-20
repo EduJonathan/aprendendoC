@@ -20,16 +20,9 @@
  */
 bool eMenor(double _X, double _Y)
 {
-    if (isless(_X, _Y))
-    {
-        printf(" %lf é menor que %lf\n", _X, _Y);
-        return true;
-    }
-    else
-    {
-        printf(" %lf não é menor que %lf\n", _X, _Y);
-        return false;
-    }
+    bool resultado = isless(_X, _Y);
+    printf(" %lf %s menor que %lf\n", _X, resultado ? "é" : "não é", _Y);
+    return resultado;
 }
 
 int main(int argc, char **argv)

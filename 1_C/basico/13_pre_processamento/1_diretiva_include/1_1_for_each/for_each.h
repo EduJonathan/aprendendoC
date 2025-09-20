@@ -17,14 +17,17 @@
  * typeof((arr)[0]) - obtém o tipo desse elemento
  * Cria uma variável x do mesmo tipo que os elementos do array
  */
-#define foreach(arr, size, action)          \
-    do                                      \
-    {                                       \
-        for (size_t i = 0; i < (size); i++) \
-        {                                   \
-            typeof((arr)[0]) x = (arr)[i];  \
-            action;                         \
-        }                                   \
+#define foreach(arr, size, action)              \
+    do                                          \
+    {                                           \
+        if ((arr) != NULL && (size) > 0)        \
+        {                                       \
+            for (size_t i = 0; i < (size); i++) \
+            {                                   \
+                typeof((arr)[0]) x = (arr)[i];  \
+                action;                         \
+            }                                   \
+        }                                       \
     } while (0)
 
 /**
@@ -32,7 +35,7 @@
  *
  * @param arr Ponteiro para o array.
  * @param size Número de elementos no array.
- * @param action Ponteiro para a função a ser aplicada (deve aceitar um void*).
+ * @param action Ponteiro para a função a ser aplicada.
  * @param size_elem Tamanho de cada elemento em bytes.
  */
 void for_each(void *arr, size_t size, void (*action)(void *), size_t size_elem);

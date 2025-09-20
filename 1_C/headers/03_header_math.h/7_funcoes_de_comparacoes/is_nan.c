@@ -20,16 +20,9 @@
  */
 bool eUmNumero(double _X)
 {
-    if (isnan(_X))
-    {
-        printf(" %lf é NaN\n", _X);
-        return true;
-    }
-    else
-    {
-        printf(" %lf não é NaN\n", _X);
-        return false;
-    }
+    bool resultado = isnan(_X);
+    printf(" O valor %lf é um NAN? %s\n", _X, resultado ? "SIM" : "NÃO");
+    return resultado;
 }
 
 int main(int argc, char **argv)

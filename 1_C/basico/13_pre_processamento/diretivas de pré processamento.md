@@ -198,8 +198,8 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 ❌ ERRADO
 
 13 diretiva include/ `# <- Diretório raiz`  
-├── 1 1 for_each/ `# <- Subdiretório`  
-│ └── for_each.c
+├── 1 1 for each/ `# <- Subdiretório`  
+│ └── for each.c
 
 ---
 
@@ -211,7 +211,7 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 
 ```bash
 # Esteja no caminho do direório para poder compilar
-"C:\Users\Eduardo Jonathan\Documents\aprendendoC\1_C\basico\13_pre_processamento\1_diretiva_include\1_1_for_each>"
+"C:\Users\UserName\Documents\aprendendoC\1_C\basico\13_pre_processamento\1_diretiva_include\1_1_for_each>"
 
 gcc for_each.c -o programa
 gcc for each.c -o programa   # ERRO: o compilador entende como dois arquivos

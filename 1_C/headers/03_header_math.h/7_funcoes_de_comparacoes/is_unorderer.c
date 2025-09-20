@@ -20,16 +20,9 @@
  */
 bool isUnor(double _X, double _Y)
 {
-    if (isunordered(_X, _Y))
-    {
-        printf(" Um dos números é NaN\n");
-        return true;
-    }
-    else
-    {
-        printf(" Nenhum dos números é NaN\n");
-        return false;
-    }
+    bool resultado = isunordered(_X, _Y);
+    printf(" %lf %s é NAN? %lf\n", _X, resultado ? "é" : "não é", _Y);
+    return resultado;
 }
 
 int main(int argc, char **argv)
