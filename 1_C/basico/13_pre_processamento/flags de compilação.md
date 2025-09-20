@@ -160,7 +160,7 @@ int main()
   return 0;
 }
 
-gcc -fopenmp paralelo.c -o paralelo
+# gcc -fopenmp paralelo.c -o paralelo
 ```
 
 ---
@@ -177,6 +177,14 @@ Garantindo que o código seja compatível com uma versão específica da linguag
 - `-std=c11`: Utiliza o padrão C11, que trouxe melhorias como suporte nativo a threads (programação concorrente),
   além de novos recursos de otimização.
 - `-std=c17` ou `-std=c18`: Versões mais recentes do C11, com algumas correções de bugs e pequenas melhorias.
+
+### 💡 Observação importante
+
+> Para que as opções `-std=c` funcionem, o compilador precisa reconhecer o padrão solicitado.
+> Se estiver usando um compilador instalado via navegador ou um ambiente online, verifique se ele é recente
+> (por exemplo, `GCC ≥ 4.7` para `-std=c11`). Compiladores muito antigos simplesmente não entendem essas flags
+> ou podem ignorá-las.
+> Entenda que flag não `atualiza` o compilador; ela só `ativa` recursos que o compilador já implementa.
 
 ```bash
 # Padrão ANSI C 1989/1990

@@ -63,6 +63,8 @@ Exemplo de tokens para `int x = 5;`:
 - 5 (constante)
 - ; (terminador)
 
+---
+
 ### 3. 📐 Análise Sintática
 
 O compilador verifica se os tokens formam estruturas válidas, como expressões ou blocos de código corretos.
@@ -193,10 +195,27 @@ Já em `gcc -c arquivo.c -o arquivo.o`
   2 ou múltiplos arquivos a ser compilados, no caso `arquivo` (por mais que não tenha uma extensão,
   sendo entendido como `arquivo.txt`) e `c.c`.
 
+❌ ERRADO
+
+13 diretiva include/ `# <- Diretório raiz`  
+├── 1 1 for_each/ `# <- Subdiretório`  
+│ └── for_each.c
+
+---
+
+✅ CORRETO
+
+13_diretiva_include/ `# <- Diretório raiz`  
+├── 1_1_for_each/ `# <- Subdiretório`  
+│ └── for_each.c
+
 ```bash
-gcc arquivo_c.c -o programa
-gcc arquivo c.c -o programa   # ERRO: o compilador entende como dois arquivos
-gcc "arquivo c.c" -o programa # Aspas protegem o nome, mas evite usar
+# Esteja no caminho do direório para poder compilar
+"C:\Users\Eduardo Jonathan\Documents\aprendendoC\1_C\basico\13_pre_processamento\1_diretiva_include\1_1_for_each>"
+
+gcc for_each.c -o programa
+gcc for each.c -o programa   # ERRO: o compilador entende como dois arquivos
+gcc "for_each.c" -o programa # Aspas protegem o nome, mas evite usar
 ```
 
 ## ✍ Sobrescrita de Arquivos
@@ -242,9 +261,13 @@ podemos otimizar, condicionar e modular o código conforme necessário.
 ## IMPORTANTE SOBRE C/C++
 
 Dominar ponteiros, diretivas de pré-processamento e compilação é essencial para qualquer
-desenvolvedor C/C++. O Linux oferece um ambiente maisd direto e convencional deixando
-o aprendizado mais intenso, com acesso direto a ferramentas de baixo nível tendo acesso
-facilitado a assembly, binários e flags avançadas(embora o Windows também ofereça ferramentas).
+desenvolvedor C/C++. O Linux oferece um ambiente mais direto e convencional, deixando
+o aprendizado mais intenso, com acesso facilitado a ferramentas de baixo nível, assembly,
+binários e flags avançadas (embora o Windows também ofereça recursos).
+
+No Windows, é possível usar `HxD`, `010 Editor`, `WinHex` ou analisadores de executáveis
+como `PE Explorer`, `CFF Explorer`, `IDA Free` e `Ghidra` para inspecionar ou editar
+arquivos binários, visualizar código assembly e explorar o formato PE.
 
 ---
 

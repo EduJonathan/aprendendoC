@@ -96,9 +96,9 @@ O CMake se integra bem com IDEs populares:
 MeuProjeto/  
 ├── CMakeLists.txt  
 ├── src/  
-│ └── main.cpp  
+│ └── main.c  
 └── include/  
-└── meu_header.hpp
+└── meu_header.h
 
 > O caminho do diretório no terminal estará algo como: `C:\Users\NomeUsuario\Documents\MeuProjeto\`
 
