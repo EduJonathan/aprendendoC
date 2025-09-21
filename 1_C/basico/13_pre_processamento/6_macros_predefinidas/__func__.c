@@ -41,10 +41,10 @@ void myFunction(void)
  * @brief Macro para rastrear a saída de funções.
  * Decrementa a profundidade da pilha e imprime a saída.
  */
-#define SAINDO_DA_FUNCAO()                                                                         \
-    {                                                                                              \
+#define SAINDO_DA_FUNCAO()                                                                       \
+    {                                                                                            \
         printf("<- Chamada %2d | Pilha: %2d | Saindo de %s\n", callCount, stackDepth, __func__); \
-        stackDepth--;                                                                              \
+        stackDepth--;                                                                            \
     }
 
 // ---- Funções Para Exemplificar ---- //

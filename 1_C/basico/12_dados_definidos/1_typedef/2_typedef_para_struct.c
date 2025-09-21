@@ -74,7 +74,7 @@ int main(int argc, char **argv)
      * O segundo define uma struct anônima, acessível apenas pelo nome do typedef (`dados_pessoa`).
      * Ambos permitem criar instâncias e acessar membros, mas o primeiro é reutilizável em outros contextos.
      *
-     * @note O conceito é mesmo para (UNIONS e ENUMS)
+     * @note O conceito é o mesmo para (UNIONS e ENUMS)
      */
     return 0;
 }

@@ -5,7 +5,7 @@
  * número da linha e o nome do arquivo para um determinado número de linha e nome do arquivo.
  * É uma ferramenta poderosa para manipular informações de depuração durante a compilação,
  * proporcionando flexibilidade em certos cenários de desenvolvimento de software.
- * 
+ *
  * Melhores flags para compilar
  * gcc -g -Wall -Wextra -O0 -fsanitize=address line.c -o programa
  * gcc -O2 -Wall -s line.c -o programa
@@ -15,7 +15,7 @@
 #define PrintLineNum() \
     printf("O número da linha é %d, no arquivo %s\n", __LINE__, __FILE__)
 
-int main(void)
+int main(int argc, char **argv)
 {
     // Imprime a linha atual (__LINE__) e o nome do arquivo (__FILE__) sem alterações
     printf("Essa linha de código está em %d, no arquivo %s\n", __LINE__, __FILE__);
