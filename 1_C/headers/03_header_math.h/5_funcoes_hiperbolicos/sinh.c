@@ -9,10 +9,11 @@
  * @param _X Valor a ser informado para calcular o seno hiperbólico
  * @return O seno hiperbólico de x, no tipo double
  *
- * Parâmetro (x) |	Valor do retorno
- * x = [0, +inf] |  [0, +inf]
- * x >= 1	     |  número maior ou igual a 1(em radianos)
- * x < 1	     |  NaN (not a number)
+ * Parâmetro (x) | Valor do retorno
+ * -------------------------------------
+ * x = [0, +inf] | [0, +inf]
+ * x >= 1        | número maior ou igual a 1(em radianos)
+ * x < 1         | NaN (not a number)
  */
 
 /**

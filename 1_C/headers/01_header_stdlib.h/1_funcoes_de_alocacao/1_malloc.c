@@ -4,19 +4,39 @@
 #include <stdlib.h>
 
 /**
- * Começando a partir agora a usar uma biblioteca mais utilizada a <stdlib.h>,
- * é uma biblioteca que permite usarmos funções para o sistema e nela se encontra também as
- * funções de alocações de memória sendo elas: Se encontra tanto na stdlib.h ou malloc.h
- * malloc (memory allocation)
- * realloc (realocation memory)
- * calloc
- * free (liberar)
+ * A biblioteca <stdlib.h> é uma das bibliotecas padrão mais importantes em C,
+ * fornecendo funções essenciais para:
  *
- * Alocações dinâmicas se consistem na alocação dinâmica podemos alocar espaços durante
- * a execução de um programa, ou seja, a alocação dinâmica é feita em tempo de execução.
- * permitindo que o espaço em memória seja alocado apenas quando necessário.
- * Além disso, a alocação dinâmica permite aumentar, diminuir a quantidade de memória
- * alocada. A mais utilizada nesse concenso é o malloc:
+ * - Alocação dinâmica de memória
+ * - Conversão de tipos
+ * - Geração de números aleatórios
+ * - Controle de processos
+ * - Operações com variáveis de ambiente
+ *
+ * -------------------------
+ *
+ * Funções de Alocação de Memória
+ * As principais funções de alocação de memória disponíveis em <stdlib.h> são:
+ *
+ * +-----------+-------------------------------------+--------------------------------------------+
+ * | Função    | Propósito                           | Sintaxe                                    |
+ * +-----------+-------------------------------------+--------------------------------------------+
+ * | malloc()  | Aloca memória não inicializada      | void *malloc(size_t size);                 |
+ * +-----------+-------------------------------------+--------------------------------------------+
+ * | calloc()  | Aloca e inicializa memória com zero | void *calloc(size_t num, size_t size);     |
+ * +-----------+-------------------------------------+--------------------------------------------+
+ * | realloc() | Realoca memória para novo tamanho   | void *realloc(void *ptr, size_t new_size); |
+ * +-----------+-------------------------------------+--------------------------------------------+
+ * | free()    | Libera memória previamente alocada  | void free(void *ptr);                      |
+ * +-----------+-------------------------------------+--------------------------------------------+
+ *
+ * A alocação dinâmica permite:
+ * - Alocar espaço de memória durante a execução do programa (tempo de execução).
+ * - Alocar memória apenas quando necessária.
+ * * Redimensionar blocos de memória conforme necessário.
+ * - Gerenciar eficientemente recursos de memória.
+ *
+ * A mais utilizada nesse concenso é o malloc:
  *
  * SINTAXE: void *malloc(size_t _Size);
  *
@@ -36,12 +56,13 @@
 char *AlocandoComMalloc(void)
 {
     // Aloca memória para um único caractere
-    char *caractere = (char *)malloc(sizeof(char));
-
+    char *caractere = malloc(sizeof(char));
     if (caractere == NULL)
     {
-        printf("O ponteiro está vazio (alocação falhou)\n");
+        fprintf(stderr, "Falha na alocação de memória para caractere\n");
+        return NULL;
     }
+    printf("Memória alocada para caractere com sucesso\n");
     return caractere;
 }
 
@@ -55,34 +76,36 @@ char *AlocandoComMalloc(void)
  */
 void alocarArrayComMalloc(size_t tamanho)
 {
+    if (tamanho == 0)
+    {
+        fprintf(stderr, "Tamanho do array deve ser maior que zero\n");
+        return;
+    }
+
     // Aloca memória para um array de inteiros
-    int *ptr = (int *)malloc(tamanho * sizeof(int));
+    int *ptr = malloc(tamanho * sizeof(int));
     // chamada da função malloc para reservar espaço de acordo com o valor que
     // será o parâmetro tamanho
 
     if (ptr == NULL)
     {
-        printf("Memória não alocada\n");
+        fprintf(stderr, "Falha na alocação de memória\n");
+        return;
     }
-    else
+
+    printf("Memória alocada para %zu inteiros\n", tamanho);
+    for (size_t i = 0; i < tamanho; i++)
     {
-        printf("Memória alocada\n");
-
-        // Insere valores no array
-        for (int i = 0; i < tamanho; i++)
-        {
-            printf("\nInsira o valor de ptr[%d]: ", i);
-            scanf("%d", &ptr[i]);
-        }
-
-        // Exibe valores e informações de alocação
-        for (int i = 0; i < tamanho; i++)
-        {
-            printf("\nO valor de ptr[%d] é: %d", i, ptr[i]);
-            printf("\n Posição da memória ptr[%d] e: %p\tConversao do hexa em decimal: %d\n", i, &ptr[i], &ptr[i]);
-        }
-        free(ptr); // Libera a memória alocada
+        printf("Insira o valor de ptr[%zu]: ", i);
+        scanf("%d", &ptr[i]);
     }
+
+    printf("\nValores e endereços do array:\n");
+    for (size_t i = 0; i < tamanho; i++)
+    {
+        printf("ptr[%zu] = %d, endereço: %p\n", i, ptr[i], (void *)&ptr[i]);
+    }
+    free(ptr);
 }
 
 /**
@@ -96,31 +119,36 @@ void alocarArrayComMalloc(size_t tamanho)
  */
 int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
 {
+    if (linhas == 0 || colunas == 0)
+    {
+        fprintf(stderr, "Linhas e colunas devem ser maiores que zero\n");
+        return NULL;
+    }
+
     // Aloca memória para um array de ponteiros para linhas
-    int **matriz = (int **)malloc(linhas * sizeof(int *));
+    int **matriz = malloc(linhas * sizeof(int *));
     if (matriz == NULL)
     {
-        printf("Memória não alocada para as linhas da matriz\n");
+        fprintf(stderr, "Falha na alocação de memória para linhas\n");
         return NULL;
     }
 
     // Aloca memória para cada linha da matriz
-    for (size_t i = 0ull; i < linhas; i++)
+    for (size_t i = 0; i < linhas; i++)
     {
         // Aloca memória para um array de inteiros para colunas
-        matriz[i] = (int *)malloc(colunas * sizeof(int));
+        matriz[i] = malloc(colunas * sizeof(int));
 
         // Verifica se a alocação falhou
         if (matriz[i] == NULL)
         {
-            printf("Memória não alocada para a linha %zu da matriz\n", i);
+            fprintf(stderr, "Falha na alocação de memória para linha %zu\n", i);
 
             // Libera a memória já alocada para linhas anteriores
-            for (size_t j = 0ull; j < i; j++)
+            for (size_t j = 0; j < i; j++)
             {
                 free(matriz[j]);
             }
-
             free(matriz);
             return NULL;
         }
@@ -128,9 +156,9 @@ int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
 
     // Preenche a matriz com valores fornecidos pelo usuário
     printf("Insira os valores para a matriz %zu x %zu:\n", linhas, colunas);
-    for (size_t i = 0ull; i < linhas; i++)
+    for (size_t i = 0; i < linhas; i++)
     {
-        for (size_t j = 0ull; j < colunas; j++)
+        for (size_t j = 0; j < colunas; j++)
         {
             printf("matriz[%zu][%zu]: ", i, j);
             scanf("%d", &matriz[i][j]);
@@ -139,11 +167,11 @@ int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
 
     // Exibe a matriz
     printf("\nMatriz %zu x %zu:\n", linhas, colunas);
-    for (size_t i = 0ull; i < linhas; i++)
+    for (size_t i = 0; i < linhas; i++)
     {
-        for (size_t j = 0ull; j < colunas; j++)
+        for (size_t j = 0; j < colunas; j++)
         {
-            printf("%d ", matriz[i][j]);
+            printf("%4d ", matriz[i][j]); // Alinhamento para melhor legibilidade
         }
         printf("\n");
     }
@@ -158,14 +186,13 @@ int **alocandoMatrizComMalloc(size_t linhas, size_t colunas)
  */
 void liberarMatriz(int **matriz, size_t linhas)
 {
-    if (matriz != NULL)
+    if (matriz == NULL)
+        return;
+    for (size_t i = 0; i < linhas; i++)
     {
-        for (size_t i = 0ull; i < linhas; i++)
-        {
-            free(matriz[i]);
-        }
-        free(matriz);
+        free(matriz[i]);
     }
+    free(matriz);
 }
 
 /**
@@ -182,16 +209,20 @@ void liberarMatriz(int **matriz, size_t linhas)
  */
 char *alocandoStringComMalloc(const char *string)
 {
+    if (string == NULL)
+    {
+        fprintf(stderr, "String de entrada é NULL\n");
+        return NULL;
+    }
+
     // Determina o comprimento da string de entrada
-    int length = strlen(string);
+    size_t length = strlen(string);
 
     // Aloca memória para a nova string, incluindo o caractere nulo terminador
-    char *alocaString = (char *)malloc((length + 1) * sizeof(char));
-
-    // Verifica se a alocação falhou
+    char *alocaString = malloc((length + 1) * sizeof(char));
     if (alocaString == NULL)
     {
-        fprintf(stderr, "Erro na alocação de memória.\n");
+        fprintf(stderr, "Falha na alocação de memória para string\n");
         return NULL;
     }
 
@@ -204,56 +235,40 @@ char *alocandoStringComMalloc(const char *string)
 
 int main(int argc, char **argv)
 {
-    printf("\n\tALOCANDO MEMÓRIA PARA UM PONTEIRO:\n");
+    printf("\n=== Alocação Dinâmica de Memória ===\n");
 
-    char *pointer = NULL;
+    // Alocação de um caractere
+    printf("\n1. Alocando um caractere:\n");
 
-    // Aloca memória e obtém o ponteiro
-    pointer = AlocandoComMalloc();
-
-    // Verifica se a alocação foi bem-sucedida antes de usar o ponteiro
+    char *pointer = AlocandoComMalloc();
     if (pointer != NULL)
     {
         *pointer = 'A';
-        printf("Valor armazenado após atribuição: %d-%c\n", *pointer, *pointer);
-
-        // Libera a memória alocada e define o ponteiro como NULL
+        printf("Valor armazenado: %c (ASCII: %d)\n", *pointer, *pointer);
         free(pointer);
-        pointer = NULL;
     }
 
-    printf("\n-------------------------------------------\n");
-    printf("\n\tALOCANDO A MEMÓRIA PARA UM ARRAY COM O MALLOC:\n");
+    // Alocação de um array
+    printf("\n2. Alocando um array de inteiros:\n");
+    alocarArrayComMalloc(10);
 
-    // Define o tamanho do array
-    size_t tamanho = 10ull;
+    // Alocação de uma matriz
+    printf("\n3. Alocando uma matriz 3x3:\n");
 
-    // Chama a função para alocar, inserir e exibir o array
-    alocarArrayComMalloc(tamanho);
-
-    printf("\n-------------------------------------------\n");
-
-    size_t linhas = 3ull;
-    size_t colunas = 3ull;
-    int **matriz = alocandoMatrizComMalloc(linhas, colunas);
-
-    // Verifica se a alocação foi bem-sucedida
+    int **matriz = alocandoMatrizComMalloc(3, 3);
     if (matriz != NULL)
     {
-        // Libera a memória da matriz
-        liberarMatriz(matriz, linhas);
+        liberarMatriz(matriz, 3);
     }
 
-    printf("\n-------------------------------------------\n");
+    // Alocação de uma string
+    printf("\n4. Alocando uma string:\n");
 
     const char *originalString = "Hello, World!";
     char *novaString = alocandoStringComMalloc(originalString);
-
     if (novaString != NULL)
     {
-        printf("Nova string: %s\n", novaString);
-
-        // Não se esqueça de liberar a memória quando não for mais necessária
+        printf("String copiada: %s\n", novaString);
         free(novaString);
     }
     return 0;

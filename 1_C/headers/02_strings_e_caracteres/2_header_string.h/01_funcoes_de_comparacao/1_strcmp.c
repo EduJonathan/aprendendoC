@@ -1,19 +1,17 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include <string.h>
 
 /**
- * strcmp(string compare): Função que compara duas strings recebendo-os como parâmetros e logo
- * em seguida as comparando-as, onde se foram iguais o valor o retorna um valor inteiro, onde
- * indica a relação entre elas, sendo:
+ * strcmp: Compara duas strings lexicograficamente com base nos valores ASCII dos caracteres.
+ * Retorna um inteiro que indica a relação entre as strings:
+ *   - < 0: se a primeira string é menor que a segunda.
+ *   - == 0: se as strings são iguais.
+ *   - > 0: se a primeira string é maior que a segunda.
  *
- * - Menor que(<) 0 se a primeira string é menor que a segunda
- * - Igual(==) a 0 se as strings são iguais
- * - Maior(>) que 0 se a primeira string é maior que a segunda.
- *
- * SINTAXE: int strcmp(const char *_Str1, const char *_Str2);
- * @param _Str1 O primeiro ponteiro para char
- * @param _Str2 O segundo ponteiro para char
- * @return retorna um inteiro com as comparações sendo realizadas com os valores de seu parâmetros
+ * @param _Str1 Ponteiro para a primeira string.
+ * @param _Str2 Ponteiro para a segunda string.
+ * @return Inteiro representando a relação lexicográfica entre as strings.
  */
 
 /**
@@ -35,21 +33,17 @@ void comparandoStringsComStrcmp(const char *string1, const char *string2)
 
 /**
  * @brief Compara duas strings considerando a sensibilidade a maiúsculas e minúsculas.
- * A função compara as strings e imprime se são iguais ou não.
+ * Imprime se as strings são iguais ou diferentes e retorna o resultado como booleano.
  *
- * @param string1 O primeiro ponteiro para char
- * @param string2 O segundo ponteiro para char
+ * @param string1 Ponteiro para a primeira string.
+ * @param string2 Ponteiro para a segunda string.
+ * @return bool Verdadeiro se as strings forem iguais, falso caso contrário.
  */
-void comparaCaseSenstivedasStrings(const char *string1, const char *string2)
+bool comparaCaseSensitive(const char *string1, const char *string2)
 {
-    if (strcmp(string1, string2) == 0)
-    {
-        printf("\nAs strings são iguais\n");
-    }
-    else
-    {
-        printf("\nAs strings não são iguais\n");
-    }
+    bool saoIguais = strcmp(string1, string2) == 0 ? true : false;
+    printf("\nComparando '%s' e '%s': %s\n", string1, string2, saoIguais ? "Iguais" : "Diferentes");
+    return saoIguais;
 }
 
 int main(int argc, char **argv)
@@ -70,10 +64,11 @@ int main(int argc, char **argv)
      * Declarando dois ponteiros para char que tem como única diferença a letra `c`.
      * Mas é o bastante para que elas não sejam iguais.
      */
-    const char *texto1 = "LINGUAGEM c";
-    const char *texto2 = "LINGUAGEM C";
+    // Declaração de duas strings com diferença em maiúsculas/minúsculas
+    const char *string3 = "LINGUAGEM c";
+    const char *string4 = "LINGUAGEM C";
 
-    // Chamando a função para comparar estas strings
-    comparaCaseSenstivedasStrings(texto1, texto2);
+    // Compara as strings considerando sensibilidade a maiúsculas/minúsculas
+    bool stringsIguais = comparaCaseSensitive(string3, string4);
     return 0;
 }

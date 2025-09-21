@@ -9,10 +9,11 @@
  * @param _X Valor a ser informado para calcular o seno
  * @return O seno de x, no tipo float
  *
- * Parâmetro (x)    |	Valor do retorno
+ * Parâmetro (x)    | valor do retorno
+ * -------------------------------------
  * x = [-inf, +inf] | [-1, +1]
- * x = 0	        | 0
- * x = inf	        | NaN (not a number)
+ * x = 0            | 0
+ * x = inf          | NaN (not a number)
  */
 
 /**

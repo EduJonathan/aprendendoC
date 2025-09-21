@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -25,14 +26,13 @@ bool isBlank(int caractere)
 {
     bool is_Blank = isblank((unsigned char)caractere);
 
-    if (is_Blank)
-    {
-        printf(" O caractere '%c' é um caractere alfabético: %d - %s\n", caractere, is_Blank, is_Blank ? "true" : "false");
-    }
-    else
-    {
-        printf(" O caractere '%c' não é um caractere alfabético: %d - %s\n", caractere, is_Blank, is_Blank ? "true" : "false");
-    }
+    // Imprime o resultado
+    printf(" O caractere '%c' %s pontuação: %d - %s\n",
+           caractere,
+           is_Blank ? "é" : "não é",
+           is_Blank,
+           is_Blank ? "true" : "false");
+           
     return is_Blank;
 }
 
@@ -62,6 +62,8 @@ bool stringBlanks(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     char var1 = ' ';  // Espaço em branco
     char var2 = '\t'; // Tabulação horizontal
     char var3 = 'A';  // Letra maiúscula

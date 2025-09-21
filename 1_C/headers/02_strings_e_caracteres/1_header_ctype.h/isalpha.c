@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -24,14 +25,13 @@ bool isAlpha(int caractere)
 {
     bool is_alpha = isalpha((unsigned char)caractere);
 
-    if (is_alpha)
-    {
-        printf(" O caractere '%c' é um caractere alfabético: %d - %s\n", caractere, is_alpha, is_alpha ? "true" : "false");
-    }
-    else
-    {
-        printf(" O caractere '%c' não é um caractere alfabético: %d - %s\n", caractere, is_alpha, is_alpha ? "true" : "false");
-    }
+    // Imprime o resultado
+    printf(" O caractere '%c' %s pontuação: %d - %s\n",
+           caractere,
+           is_alpha ? "é" : "não é",
+           is_alpha,
+           is_alpha ? "true" : "false");
+
     return is_alpha;
 }
 
@@ -61,6 +61,8 @@ bool StringDeAlphas(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int var1 = 'd';
     int var2 = '2';
     int var3 = '\t';

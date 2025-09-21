@@ -3,13 +3,11 @@
 #include <stdlib.h>
 
 /**
- * CALLOC: significa alocação contínua, função é utilizada para alocar múltiplos
- * blocos de memória. A alocação dinâmica de memória é utilizada para alocar a memória a
- * estruturas de dados complexas, tais como matrizes e estruturas.
- *
- * calloc() utilizada para alocar um único bloco de espaço de memória enquanto que
- * a função calloc() em C é utilizada para alocar múltiplos blocos de espaço de memória.
- * Cada bloco atribuído pela função calloc() tem o mesmo tamanho.
+ * CALLOC: A função calloc (de contiguous allocation, ou alocação contígua) é usada em C
+ * para alocar memória dinamicamente para múltiplos elementos de mesmo tamanho, inicializando
+ * todos os bytes do bloco alocado com zero.
+ * Ela é parte da biblioteca <stdlib.h> e é especialmente útil para estruturas de dados como
+ * arrays e estruturas, garantindo que a memória alocada esteja limpa e pronta para uso.
  *
  * SINTAXE: void *calloc(size_t _NumOfElements, size_t _SizeOfElements);
  *
@@ -17,11 +15,10 @@
  * @param _SizeOfElements Tamanho dos elementos a serem alocados.
  * @return Ponteiro para o primeiro byte do espaço de memória alocado.
  *
- * A afirmação acima é utilizada para alocar n blocos de memória do mesmo tamanho.
- * Após a atribuição do espaço de memória, todos os bytes são inicializados a zero.
- * O ponteiro que se encontra actualmente no primeiro byte do espaço de memória atribuído
- * é devolvido. Quando existe um erro na alocação do espaço de memória, tal como a falta de
- * memória, então um ponteiro nulo é retornado.
+ * A função calloc aloca um bloco contínuo de memória suficiente para armazenar
+ * num_elementos elementos, cada um com tamanho_elemento bytes. Após a alocação,
+ * todos os bytes são definidos como zero, garantindo que o conteúdo inicial seja previsível.
+ * Isso é útil para evitar bugs causados por valores indefinidos, comuns em alocações com malloc.
  */
 
 /**

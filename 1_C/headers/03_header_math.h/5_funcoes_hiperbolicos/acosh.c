@@ -10,9 +10,10 @@
  * @param _X Valor a ser informado para calcular o arco cosseno hiperbólico
  * @return O arco cosseno hiperbólico de x, no tipo double
  *
- * Parâmetro (x)	| valor do retorno
- * x = [1, +inf]	| [0, +π / 2] em radianos
- * x < 1			| NaN (not a number)
+ * Parâmetro (x) | valor do retorno
+ * -------------------------------------
+ * x = [1, +inf] | [0, +π / 2] em radianos
+ * x < 1         | NaN (not a number)
  */
 
 /**
@@ -21,7 +22,7 @@
  * @param x Valor para o qual o arcocosseno hiperbólico será calculado. Deve ser maior ou igual a 1.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return O arcocosseno hiperbólico de x, no tipo float.
- * 
+ *
  * @note A função `acoshf` é usada para calcular o arcocosseno hiperbólico de um número do tipo float.
  */
 float return_acoshF(float x, const char *dataType)
@@ -37,7 +38,7 @@ float return_acoshF(float x, const char *dataType)
  * @param x Valor para o qual o arcocosseno hiperbólico será calculado. Deve ser maior ou igual a 1.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return O arcocosseno hiperbólico de x, no tipo double.
- * 
+ *
  * @note A função `acosh` é usada para calcular o arcocosseno hiperbólico de um número do tipo double.
  */
 double return_acoshD(double x, const char *dataType)
@@ -53,8 +54,8 @@ double return_acoshD(double x, const char *dataType)
  * @param x Valor para o qual o arcocosseno hiperbólico será calculado. Deve ser maior ou igual a 1.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return O arcocosseno hiperbólico de x, no tipo long double.
- * 
- * @note A função `acoshl` é usada para calcular o arcocosseno hiperbólico de um número 
+ *
+ * @note A função `acoshl` é usada para calcular o arcocosseno hiperbólico de um número
  * do tipo long double.
  */
 long double return_acoshLD(long double x, const char *dataType)

@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <ctype.h>
 #include <stdbool.h>
+#include <locale.h>
+#include <ctype.h>
 
 /**
  * ispunct(é pontuação): não imprime caractere: letras, digitos e espaços, apenas sinal de pontuação.
@@ -24,14 +25,12 @@ bool isPunct(int caractere)
 {
     bool is_punct = ispunct((unsigned char)caractere);
 
-    if (is_punct)
-    {
-        printf(" O caractere '%c' é pontuação: %d - %s\n", caractere, is_punct, is_punct ? "true" : "false");
-    }
-    else
-    {
-        printf(" O caractere '%c' não é pontuação: %d - %s\n", caractere, is_punct, is_punct ? "true" : "false");
-    }
+    printf(" O caractere '%c' %s pontuação: %d - %s\n",
+           caractere,
+           is_punct ? "é" : "não é",
+           is_punct,
+           is_punct ? "true" : "false");
+
     return is_punct;
 }
 
@@ -61,6 +60,8 @@ bool stringDePontuacoes(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int var1 = 't';  // Letra minúscula (não é pontuação)
     int var2 = '1';  // Dígito (não é pontuação)
     int var3 = '\\'; // Caractere de escape (não é pontuação)

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -24,14 +25,13 @@ bool isDigit(int caractere)
 {
     bool is_digit = isdigit(caractere);
 
-    if (is_digit)
-    {
-        printf(" O caractere '%c' é um digito: %d - %s\n", caractere, is_digit, is_digit ? "true" : "false");
-    }
-    else
-    {
-        printf(" O caractere '%c' não é um digito: %d - %s\n", caractere, is_digit, is_digit ? "true" : "false");
-    }
+    // Imprime o resultado
+    printf(" O caractere '%c' %s pontuação: %d - %s\n",
+           caractere,
+           is_digit ? "é" : "não é",
+           is_digit,
+           is_digit ? "true" : "false");
+           
     return is_digit;
 }
 
@@ -61,6 +61,8 @@ bool stringDeDigitos(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int var1 = 'd';
     int var2 = '2';
 

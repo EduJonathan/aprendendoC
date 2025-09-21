@@ -9,9 +9,10 @@
  * @param _X Valor a ser informado para calcular o arco seno hiperbólico
  * @return O arco seno hiperbólico de x, no tipo double
  *
- * Parâmetro (x)	| valor do retorno
- * x = [-inf, +inf]	| [-π / 2, +π / 2] em radianos
- * -1 > x or x > 1	| NaN (not a number)
+ * Parâmetro (x)    | valor do retorno
+ * -------------------------------------
+ * x = [-inf, +inf] | [-π / 2, +π / 2] em radianos
+ * -1 > x or x > 1  | NaN (not a number)
  */
 
 /**

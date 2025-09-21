@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -25,7 +26,13 @@ bool isSpace(int caractere)
 {
     bool is_space = isspace((unsigned char)caractere);
 
-    printf("O caractere '%c' %s um espaço: %d - %s\n", caractere, is_space ? "é" : "não é", is_space, is_space ? "true" : "false");
+    // Imprime o resultado
+    printf(" O caractere '%c' %s pontuação: %d - %s\n",
+           caractere,
+           is_space ? "é" : "não é",
+           is_space,
+           is_space ? "true" : "false");
+
     return is_space;
 }
 
@@ -55,6 +62,8 @@ bool strDeEspaco(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int var1 = 'd';   // Letra minúscula (não é espaço)
     int var2 = '2';   // Dígito (não é espaço)
     int var3 = ' ';   // Espaço em branco

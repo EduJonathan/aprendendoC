@@ -9,10 +9,11 @@
  * @param _X Valor a ser informado para calcular o cosseno
  * @return O cosseno de x.
  *
- * Parâmetro (x)	| valor do retorno
- * x = [-inf, +inf]	| [-1, +1]
- * x = 0		    | 1
- * x = inf		    | NaN (not a number)
+ * Parâmetro (x)    | valor do retorno
+ * -------------------------------------
+ * x = [-inf, +inf] | [-1, +1]
+ * x = 0            | 1
+ * x = inf          | NaN (not a number)
  */
 
 /**

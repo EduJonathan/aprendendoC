@@ -10,9 +10,10 @@
  * @return A tangente hiperbólica de x, no tipo double
  *
  * Parâmetro (x)    | Valor do retorno
- * x = [-inf, +inf] |  [-1, +1]
- * x = 0		    |  0
- * x = inf		    |  NaN (not a number)
+ * -------------------------------------
+ * x = [-inf, +inf] | [-1, +1]
+ * x = 0            | 0
+ * x = inf          | NaN (not a number)
  */
 
 /**
@@ -21,7 +22,7 @@
  * @param x Valor para o qual a tangente hiperbólica será calculada.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return A tangente hiperbólica de x, no tipo float.
- * 
+ *
  * @note A função `tanhf` é usada para calcular a tangente hiperbólica de um número do tipo float.
  */
 float return_tanhF(float x, const char *dataType)
@@ -37,7 +38,7 @@ float return_tanhF(float x, const char *dataType)
  * @param x Valor para o qual a tangente hiperbólica será calculada.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return A tangente hiperbólica de x, no tipo double.
- * 
+ *
  * @note A função `tanh` é usada para calcular a tangente hiperbólica de um número do tipo double.
  */
 double return_tanhD(double x, const char *dataType)
@@ -53,7 +54,7 @@ double return_tanhD(double x, const char *dataType)
  * @param x Valor para o qual a tangente hiperbólica será calculada.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return A tangente hiperbólica de x, no tipo long double.
- * 
+ *
  * @note A função `tanhl` é usada para calcular a tangente hiperbólica de um número do tipo
  * long double.
  */

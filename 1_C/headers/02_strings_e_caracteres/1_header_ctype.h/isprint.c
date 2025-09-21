@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -25,14 +26,13 @@ bool isPrintavel(int caractere)
 {
     bool is_print = isprint((unsigned char)caractere);
 
-    if (is_print)
-    {
-        printf(" O caractere '%c' é printavél: %d - %s\n", caractere, is_print, is_print ? "true" : "false");
-    }
-    else
-    {
-        printf(" O caractere '%c' não é printavél: %d - %s\n", caractere, is_print, is_print ? "true" : "false");
-    }
+    // Imprime o resultado
+    printf(" O caractere '%c' %s pontuação: %d - %s\n",
+           caractere,
+           is_print ? "é" : "não é",
+           is_print,
+           is_print ? "true" : "false");
+
     return is_print;
 }
 
@@ -62,6 +62,8 @@ bool stringDeCaracteresPrintaveis(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int var1 = 'k';  // Letra minúscula (imprimível)
     int var2 = '2';  // Dígito (imprimível)
     int var3 = '\t'; // Tabulação horizontal (não imprimível)

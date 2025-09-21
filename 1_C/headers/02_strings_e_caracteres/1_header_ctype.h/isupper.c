@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -61,6 +62,8 @@ bool StringUpper(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int var1 = 'M'; // Letra maiúscula
     int var2 = 'm'; // Letra minúscula (não é maiúscula)
     int var3 = '3'; // Dígito (não é maiúscula)

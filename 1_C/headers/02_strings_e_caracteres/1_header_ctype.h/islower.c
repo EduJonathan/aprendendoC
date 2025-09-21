@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -23,14 +24,13 @@ bool isLower(int caractere)
 {
     bool is_lwr = islower((unsigned char)caractere);
 
-    if (is_lwr)
-    {
-        printf(" O caractere '%c' é minusculo: %d - %s\n", caractere, is_lwr, is_lwr ? "true" : "false");
-    }
-    else
-    {
-        printf(" O caractere '%c' não é minusculo: %d - %s\n", caractere, is_lwr, is_lwr ? "true" : "false");
-    }
+    // Imprime o resultado
+    printf(" O caractere '%c' %s pontuação: %d - %s\n",
+           caractere,
+           is_lwr ? "é" : "não é",
+           is_lwr,
+           is_lwr ? "true" : "false");
+
     return is_lwr;
 }
 
@@ -60,6 +60,8 @@ bool stringMinusculas(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int var1 = 'D'; // Letra maiúscula
     int var2 = 'd'; // Letra minúscula
     int var3 = '2'; // Dígito

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -61,6 +62,8 @@ bool strDigits(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+    
     char var1[] = "Hexadecimal";
     char var2[] = "0xE";
     int hexa1 = 0x80000;

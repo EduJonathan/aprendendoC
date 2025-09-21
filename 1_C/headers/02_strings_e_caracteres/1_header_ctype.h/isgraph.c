@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -24,14 +25,13 @@ bool isGraph(int caractere)
 {
     bool is_graph = isgraph((unsigned char)caractere);
 
-    if (is_graph)
-    {
-        printf(" O caractere '%c' é grafico: %d - %s\n", caractere, is_graph, is_graph ? "true" : "false");
-    }
-    else
-    {
-        printf(" O caractere '%c' não é grafico: %d - %s\n", caractere, is_graph, is_graph ? "true" : "false");
-    }
+    // Imprime o resultado
+    printf(" O caractere '%c' %s pontuação: %d - %s\n",
+           caractere,
+           is_graph ? "é" : "não é",
+           is_graph,
+           is_graph ? "true" : "false");
+
     return is_graph;
 }
 
@@ -61,6 +61,8 @@ bool stringGraficas(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int var1 = 'd'; // Caractere gráfico
     int var2 = '%'; // Caractere gráfico
     int var3 = ' '; // Espaço em branco (não gráfico)

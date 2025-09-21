@@ -10,10 +10,11 @@
  * @param _X Valor a ser informado para calcular o arco tangente
  * @return O arco tangente de x, no tipo double
  *
- * Parâmetro (x)	| valor do retorno
- * x = [-inf, +inf]	| [-π / 2, +π / 2] em radianos
- * x = 0		    | 0 em radianos
- * x = inf		    | NaN (not a number)
+ * Parâmetro (x)    | valor do retorno
+ * -------------------------------------
+ * x = [-inf, +inf] | [-π / 2, +π / 2] em radianos
+ * x = 0            | 0 em radianos
+ * x = inf          | NaN (not a number)
  */
 
 /**
@@ -22,7 +23,7 @@
  * @param x Valor para o qual calcular o arco tangente.
  * @param dataType Informar o tipo de dado utilizado para retornar o resultado.
  * @return O arco tangente de x em radianos, arredondado para o tipo float.
- * 
+ *
  * @note A função `atanf` é usada para calcular o arco tangente de um número do tipo float.
  */
 float return_atanF(float x, const char *dataType)
@@ -38,7 +39,7 @@ float return_atanF(float x, const char *dataType)
  * @param x Valor para o qual calcular o arco tangente.
  * @param dataType Informar o tipo de dado utilizado para retornar o resultado.
  * @return O arco tangente de x em radianos, arredondado para o tipo double.
- * 
+ *
  * @note A função `atan` é usada para calcular o arco tangente de um número do tipo double.
  */
 double return_atanD(double x, const char *dataType)
@@ -54,7 +55,7 @@ double return_atanD(double x, const char *dataType)
  * @param x Valor para o qual calcular o arco tangente.
  * @param dataType Informar o tipo de dado utilizado para retornar o resultado.
  * @return O arco tangente de x em radianos, arredondado para o tipo long double.
- * 
+ *
  * @note A função `atanl` é usada para calcular o arco tangente de um número do tipo long double.
  */
 long double return_atanLD(long double x, const char *dataType)

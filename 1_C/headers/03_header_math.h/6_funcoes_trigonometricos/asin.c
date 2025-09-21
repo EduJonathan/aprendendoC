@@ -9,11 +9,12 @@
  * @param _X Valor a ser informado para calcular o arco cosseno
  * @return O arco cosseno de x.
  *
- * Parâmetro (x)	| valor do retorno
- * x = [-1, +1]	    | [-π / 2, +π / 2] in radianos
- * -1 > x or x > 1	| NaN (not a number)
- * x = 1		    | 0 em radianos
- * x = 0		    | 0 em radianos
+ * Parâmetro (x)   | valor do retorno
+ * -------------------------------------
+ * x = [-1, +1]    | [-π / 2, +π / 2] in radianos
+ * -1 > x or x > 1 | NaN (not a number)
+ * x = 1           | 0 em radianos
+ * x = 0           | 0 em radianos
  */
 
 /**

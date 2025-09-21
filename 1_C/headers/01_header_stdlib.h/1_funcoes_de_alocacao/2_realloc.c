@@ -25,32 +25,45 @@
  * @param tamanhoInicial O tamanho inicial do array.
  * @param novoTamanho O novo tamanho do array após a realocação.
  */
-void AlocarERealocarArray(int tamanhoInicial, int novoTamanho)
+void AlocarERealocarArray(size_t tamanhoInicial, size_t novoTamanho)
 {
-    // Aloca memória para o array
-    int *ptr = (int *)malloc(tamanhoInicial * sizeof(int));
-
-    // Verifica se a alocação foi bem-sucedida
-    if (ptr == NULL)
+    if (tamanhoInicial == 0 || novoTamanho == 0)
     {
-        printf("MEMÓRIA NÃO ALOCADA\n");
+        fprintf(stderr, "Tamanhos devem ser maiores que zero\n");
         return;
     }
 
-    printf("MEMÓRIA ALOCADA\n");
-
-    // Realoca memória para o array com um novo tamanho
-    ptr = (int *)realloc(ptr, novoTamanho * sizeof(int));
-
+    int *ptr = malloc(tamanhoInicial * sizeof(int));
     if (ptr == NULL)
     {
-        printf("MEMÓRIA REALOCADA NÃO SUCESSO\n");
+        fprintf(stderr, "Falha na alocação inicial\n");
         return;
     }
+    printf("Memória alocada com sucesso (%zu elementos)\n", tamanhoInicial);
 
-    printf("MEMÓRIA REALOCADA COM SUCESSO\n");
+    // Preenche com valores iniciais para demonstrar preservação
+    for (size_t i = 0; i < tamanhoInicial; i++)
+    {
+        ptr[i] = (int)i;
+    }
 
-    // Libera a memória alocada
+    int *novo_ptr = realloc(ptr, novoTamanho * sizeof(int));
+    if (novo_ptr == NULL)
+    {
+        fprintf(stderr, "Falha na realocação\n");
+        free(ptr); // Libera o original
+        return;
+    }
+    ptr = novo_ptr; // Atualiza o ponteiro
+
+    printf("Memória realocada com sucesso (%zu elementos)\n", novoTamanho);
+    printf("Conteúdo preservado (primeiros %zu): ", (tamanhoInicial < novoTamanho ? tamanhoInicial : novoTamanho));
+    for (size_t i = 0; i < (tamanhoInicial < novoTamanho ? tamanhoInicial : novoTamanho); i++)
+    {
+        printf("%d ", ptr[i]);
+    }
+    printf("\n");
+
     free(ptr);
 }
 
@@ -63,82 +76,88 @@ void AlocarERealocarArray(int tamanhoInicial, int novoTamanho)
  */
 void GerenciarArrayDinamico(void)
 {
-    int n_size = 0; // Tamanho do array
-    int soma = 0;   // Variável para armazenar a soma dos elementos
-    int x = 0;      // Variável auxiliar para armazenar o tamanho anterior
-    int *p = NULL;  // Ponteiro para o array dinâmico
+    size_t n_size = 0;
+    int soma = 0;
+    size_t tamanho_antigo = 0;
+    int *p = NULL;
 
-    // Solicita o tamanho inicial ao usuário
-    printf("Digite o tamanho que deseja alocar: ");
-    scanf("%d", &n_size);
-
-    // Aloca memória para o array
-    p = (int *)malloc(n_size * sizeof(int));
-
-    // Verifica se a alocação foi bem-sucedida
-    if (!p)
+    printf("Digite o tamanho inicial do array: ");
+    if (scanf("%zu", &n_size) != 1 || n_size == 0)
     {
-        printf("Memória não alocada\n");
+        fprintf(stderr, "Tamanho inválido\n");
         return;
     }
 
-    // Preenche o array com valores fornecidos pelo usuário
-    for (int i = 0; i < n_size; i++)
+    p = malloc(n_size * sizeof(int));
+    if (p == NULL)
     {
-        printf("Entre com o %d valor: ", i);
-        scanf("%d", (p + i));
+        fprintf(stderr, "Falha na alocação\n");
+        return;
     }
 
-    // Exibe os valores e calcula a soma
-    printf("Seus valores são: ");
-
-    // Preenche o array com valores fornecidos pelo usuário
-    for (int i = 0; i < n_size; i++)
+    printf("Preencha o array:\n");
+    for (size_t i = 0; i < n_size; i++)
     {
-        // Exibe os valores
-        printf(" %d", *(p + i));
-
-        // Calcula a soma
-        soma += *(p + i);
+        printf("Elemento %zu: ", i);
+        if (scanf("%d", &p[i]) != 1)
+        {
+            fprintf(stderr, "Entrada inválida\n");
+            free(p);
+            return;
+        }
     }
 
-    printf("\nSoma dos elementos é = %d", soma);
-
-    // Solicita o novo tamanho e realoca memória
-    x = n_size;
-    printf("\n\nAloque um novo valor para o array: ");
-    scanf("%d", &n_size);
-
-    // Utilizando o realloc para obter um novo bloco de memória alocado
-    p = (int *)realloc(p, n_size * sizeof(int));
-
-    // Verifica se a realocação foi bem-sucedida
-    if (!p)
-    {
-        printf("Memória não realocada\n");
-        exit(1); // Encerra o programa
-    }
-
-    // Preenche os novos elementos no array
-    for (int i = x; i < n_size; i++)
-    {
-        printf("Adicione novos valores para %d: ", i);
-        scanf("%d", (p + i));
-    }
-
-    // Exibe os valores e calcula a nova soma
-    printf("Os valores são: ");
-
+    printf("Valores: ");
     soma = 0;
-    for (int i = 0; i < n_size; i++)
+    for (size_t i = 0; i < n_size; i++)
     {
-        printf(" %d", *(p + i));
-        soma += *(p + i);
+        printf("%d ", p[i]);
+        soma += p[i];
+    }
+    printf("\nSoma: %d\n", soma);
+
+    tamanho_antigo = n_size;
+    printf("Novo tamanho do array: ");
+    if (scanf("%zu", &n_size) != 1 || n_size == 0)
+    {
+        fprintf(stderr, "Novo tamanho inválido\n");
+        free(p);
+        return;
     }
 
-    printf("\nSoma dos elementos é = %d\n", soma);
+    int *novo_p = realloc(p, n_size * sizeof(int));
+    if (novo_p == NULL)
+    {
+        fprintf(stderr, "Falha na realocação\n");
+        free(p);
+        return;
+    }
+    p = novo_p;
 
-    // Libera a memória alocada
+    if (n_size > tamanho_antigo)
+    {
+        printf("Preencha os novos elementos:\n");
+        for (size_t i = tamanho_antigo; i < n_size; i++)
+        {
+            printf("Elemento %zu: ", i);
+            if (scanf("%d", &p[i]) != 1)
+            {
+                fprintf(stderr, "Entrada inválida\n");
+                free(p);
+                return;
+            }
+        }
+    }
+
+    printf("Novos valores: ");
+    soma = 0;
+    for (size_t i = 0; i < n_size; i++)
+    {
+        printf("%d ", p[i]);
+        soma += p[i];
+    }
+    printf("\nNova soma: %d\n", soma);
+
     free(p);
 }
 
@@ -151,59 +170,45 @@ void GerenciarArrayDinamico(void)
  */
 void GerenciarStringDinamica(void)
 {
-    char *pointer = NULL;
+    const char *texto_inicial = "Programming";
+    const char *texto_adicional = " In 'C'";
+    size_t tamanho_inicial = strlen(texto_inicial) + 1; // +1 para '\0'
+    size_t tamanho_novo = tamanho_inicial + strlen(texto_adicional);
 
-    // Aloca memória para a string inicial
-    pointer = (char *)malloc(30 * sizeof(char));
-
+    char *pointer = malloc(tamanho_inicial * sizeof(char));
     if (pointer == NULL)
     {
-        printf("Memória não alocada\n");
+        fprintf(stderr, "Falha na alocação inicial\n");
         return;
     }
 
-    // Copia a string para o espaço alocado
-    strcpy(pointer, "Programming");
+    strcpy(pointer, texto_inicial);
+    printf("String inicial: '%s', Endereço: %p\n", pointer, (void *)pointer);
 
-    // Exibe a string e o endereço
-    printf(" %s, Address = %p\n", pointer, (void *)pointer);
-
-    // Realoca a memória para aumentar o tamanho
-    pointer = (char *)realloc(pointer, 50 * sizeof(char));
-    if (pointer == NULL)
+    char *novo_pointer = realloc(pointer, tamanho_novo * sizeof(char));
+    if (novo_pointer == NULL)
     {
-        printf("Memória não realocada\n");
+        fprintf(stderr, "Falha na realocação\n");
+        free(pointer);
         return;
     }
-
-    // Adiciona mais conteúdo à string
-    strcat(pointer, " In 'C'");
-
-    // Exibe a string e o novo endereço
-    printf(" %s, Address = %p\n", pointer, (void *)pointer);
-
-    // Libera a memória alocada
+    pointer = novo_pointer;
+    strcat(pointer, texto_adicional);
+    printf("String expandida: '%s', Endereço: %p\n", pointer, (void *)pointer);
     free(pointer);
 }
 
 int main(int argc, char **argv)
 {
-    printf("PRIMEIRO CASO:\n");
+    printf("\n=== Demonstração de Realloc em C ===\n");
 
-    int tamanhoInicial = 10;
-    int novoTamanho = 20;
+    printf("\n1. Realocação Simples de Array:\n");
+    AlocarERealocarArray(10, 20);
 
-    // Chama a função para alocar e realocar o array
-    AlocarERealocarArray(tamanhoInicial, novoTamanho);
-
-    printf("\n--------------------------------\n");
-    printf("\n\nSEGUNDO CASO:\n");
-
+    printf("\n2. Gerenciamento de Array Dinâmico:\n");
     GerenciarArrayDinamico();
 
-    printf("\n--------------------------------\n");
-    printf("\n\nTERCEIRO CASO\n");
-
+    printf("\n3. Gerenciamento de String Dinâmica:\n");
     GerenciarStringDinamica();
     return 0;
 }

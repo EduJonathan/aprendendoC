@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -60,6 +61,8 @@ bool IsASCIIString(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     /* Declarando strings para verificar se os caracteres são ASCII.*/
     const char var1 = 'A';    // Caractere 'A'
     const char var2 = '\x7F'; // Caractere DEL

@@ -10,9 +10,10 @@
  * @param _X Valor a ser informado para calcular o arco tangente hiperbólico
  * @return O arco tangente hiperbólico de x, no tipo double
  *
- * Parâmetro (x)	| valor do retorno
- * x = [-1, 1]	| [0, +π] em radianos
- * x < -1 or x > 1	| NaN (not a number)
+ * Parâmetro (x)    | valor do retorno
+ * -------------------------------------
+ * x = [-1, 1]      | [0, +π] em radianos
+ * x < -1 or x > 1  | NaN (not a number)
  */
 
 /**

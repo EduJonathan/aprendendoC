@@ -9,12 +9,13 @@
  * @param _X Valor a ser informado para calcular o arco cosseno
  * @return O arco cosseno de x.
  *
- * Parâmetros (x)	| valor do retorno
- * x = [-1, +1]	    | [-π / 2, +π / 2] em radianos
- * -1 > x or x > 1	| NaN (not a number)
- * x = 1		    | 0 em radianos
- * x = 0		    | 0 em radianos
- * x = -1		    | π em radianos
+ * Parâmetros (x)   | valor do retorno
+ * -------------------------------------
+ * x = [-1, +1]     | [-π / 2, +π / 2] em radianos
+ * -1 > x or x > 1  | NaN (not a number)
+ * x = 1            | 0 em radianos
+ * x = 0            | 0 em radianos
+ * x = -1           | π em radianos
  */
 
 /**
@@ -23,7 +24,7 @@
  * @param x Valor para o qual calcular o arco cosseno. Deve estar no intervalo [-1, 1].
  * @param dataType Informar o tipo de dado utilizado para retornar o resultado.
  * @return O arco cosseno de x em radianos, arredondado para o tipo float.
- * 
+ *
  * @note A função `acosf` é usada para calcular o arco cosseno de um número do tipo float.
  */
 float return_acosf(float x, const char *dataType)
@@ -39,7 +40,7 @@ float return_acosf(float x, const char *dataType)
  * @param x Valor para o qual calcular o arco cosseno. Deve estar no intervalo [-1, 1].
  * @param dataType Informar o tipo de dado utilizado para retornar o resultado.
  * @return O arco cosseno de x em radianos, arredondado para o tipo double.
- * 
+ *
  * @note A função `acos` é usada para calcular o arco cosseno de um número do tipo double.
  */
 double return_acosD(double x, const char *dataType)
@@ -55,7 +56,7 @@ double return_acosD(double x, const char *dataType)
  * @param x Valor para o qual calcular o arco cosseno. Deve estar no intervalo [-1, 1].
  * @param dataType Informar o tipo de dado utilizado para retornar o resultado.
  * @return O arco cosseno de x em radianos, arredondado para o tipo long double.
- * 
+ *
  * @note A função `acosl` é usada para calcular o arco cosseno de um número do tipo long double.
  */
 long double return_acosLD(long double x, const char *dataType)

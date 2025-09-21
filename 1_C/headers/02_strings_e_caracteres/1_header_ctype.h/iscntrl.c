@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -48,6 +49,8 @@ bool stringDeControles(const char *str)
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+    
     char caractere1 = '\n'; // Nova linha
     char caractere2 = 'A';  // Caractere alfabético
 

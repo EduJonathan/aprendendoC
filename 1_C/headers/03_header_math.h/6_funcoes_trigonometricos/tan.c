@@ -9,10 +9,11 @@
  * @param _X Valor a ser informado para calcular a tangente
  * @return A tangente de x, no tipo double
  *
- * Parâmetro (x)	| valor do retorno
- * x = [-inf, +inf]	| [-1, +1]
- * x = 0		    | 0
- * x = inf		    | NaN (not a number)
+ * Parâmetro (x)    | valor do retorno
+ * -------------------------------------
+ * x = [-inf, +inf] | [-1, +1]
+ * x = 0            | 0
+ * x = inf          | NaN (not a number)
  */
 
 /**
@@ -21,7 +22,7 @@
  * @param x O ângulo em radianos.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return A tangente do ângulo x, no tipo float.
- * 
+ *
  * @note A função `tanf` é usada para calcular a tangente de um número do tipo float.
  */
 float return_tanF(float x, const char *dataType)
@@ -37,7 +38,7 @@ float return_tanF(float x, const char *dataType)
  * @param x O ângulo em radianos.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return A tangente do ângulo x, no tipo double.
- * 
+ *
  * @note A função `tan` é usada para calcular a tangente de um número do tipo double.
  */
 double return_tanD(double x, const char *dataType)
@@ -53,7 +54,7 @@ double return_tanD(double x, const char *dataType)
  * @param x O ângulo em radianos.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return A tangente do ângulo x, no tipo long double.
- * 
+ *
  * @note A função `tanl` é usada para calcular a tangente de um número do tipo long double.
  */
 long double return_tanLD(long double x, const char *dataType)

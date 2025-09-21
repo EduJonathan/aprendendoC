@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <locale.h>
 #include <ctype.h>
 
 /**
@@ -26,14 +27,12 @@ bool isAlnum(int caractere)
     bool is_alphanumeric = isalnum((unsigned char)caractere);
 
     // Imprime o resultado
-    if (is_alphanumeric)
-    {
-        printf("O caractere '%c' é alfanumérico: %d - %s\n", caractere, is_alphanumeric, is_alphanumeric ? "true" : "false");
-    }
-    else
-    {
-        printf("O caractere '%c' não é alfanumérico: %d - %s\n", caractere, is_alphanumeric, is_alphanumeric ? "true" : "false");
-    }
+    printf(" O caractere '%c' %s pontuação: %d - %s\n",
+           caractere,
+           is_alphanumeric ? "é" : "não é",
+           is_alphanumeric,
+           is_alphanumeric ? "true" : "false");
+
     return is_alphanumeric;
 }
 
@@ -63,6 +62,8 @@ bool stringAlnum(const char *str)
 
 int main(int argc, char **agv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int var1 = 'd';  // Letra minúscula
     int var2 = '2';  // Dígito
     int var3 = '\t'; // Tabulação horizontal (não alfanumérico)

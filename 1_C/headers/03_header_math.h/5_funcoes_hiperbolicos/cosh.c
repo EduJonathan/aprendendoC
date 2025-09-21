@@ -8,10 +8,11 @@
  * @param _X Valor a ser informado para calcular o cosseno hiperbólico
  * @return O cosseno hiperbólico de x, no tipo double
  *
- * Parâmetro (x) |	Valor do retorno
- * x = [0, +inf] |  [1, +inf]
- * x >= 1	     |  número maior ou igual a 1(em radianos)
- * x < 1	     |  NaN (not a number)
+ * Parâmetro (x) | Valor do retorno
+ * -------------------------------------
+ * x = [0, +inf] | [1, +inf]
+ * x >= 1        | número maior ou igual a 1(em radianos)
+ * x < 1         | NaN (not a number)
  */
 
 /**
@@ -20,7 +21,7 @@
  * @param x Valor para o qual o cosseno hiperbólico será calculado.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return O cosseno hiperbólico de x, no tipo float.
- * 
+ *
  * @note A função `coshf` é usada para calcular o cosseno hiperbólico de um número do tipo float.
  */
 float return_coshF(float x, const char *dataType)
@@ -36,7 +37,7 @@ float return_coshF(float x, const char *dataType)
  * @param x Valor para o qual o cosseno hiperbólico será calculado.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return O cosseno hiperbólico de x, no tipo double.
- * 
+ *
  * @note A função `cosh` é usada para calcular o cosseno hiperbólico de um número do tipo double.
  */
 double return_coshD(double x, const char *dataType)
@@ -52,7 +53,7 @@ double return_coshD(double x, const char *dataType)
  * @param x Valor para o qual o cosseno hiperbólico será calculado.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return O cosseno hiperbólico de x, no tipo long double.
- * 
+ *
  * @note A função `coshl` é usada para calcular o cosseno hiperbólico de um número do tipo
  * long double.
  */
