@@ -2,15 +2,17 @@
 #include <math.h>
 
 /**
- * hypot(): calcula a hipotenusa de um triângulo retângulo com os dois catetos fornecidos.
+ * hypot(): Calcula a hipotenusa de um triângulo retângulo dados os comprimentos dos dois catetos.
  *
  * SINTAXE: double hypot(double x, double y);
  *
- * @param x O comprimento de um cateto.
- * @param y O comprimento do outro cateto.
- * @return A hipotenusa dos catetos x e y.
- * @note Erros podem ocorrer se x <= 0 e y <= 0.
- * @note A função `hypot` é usada para calcular a hipotenusa de dois números do tipo double.
+ * @param x O comprimento do primeiro cateto. Deve ser maior ou igual a 0.
+ * @param y O comprimento do segundo cateto. Deve ser maior ou igual a 0.
+ * @return A hipotenusa do triângulo retângulo formado pelos catetos x e y.
+ *         Se qualquer um dos catetos for zero, o retorno será 0.
+ * 
+ * @note A função `hypot` é comumente usada para calcular a hipotenusa a partir de dois números do tipo `double`.
+ * @note Se ambos os catetos forem zero, a hipotenusa será 0.
  */
 
 /**
@@ -20,7 +22,7 @@
  * @param y O comprimento do outro cateto.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return A hipotenusa dos catetos x e y, no tipo float.
- * 
+ *
  * @note A função `hypotf` é usada para calcular a hipotenusa de dois números do tipo float.
  */
 float return_hypotF(float x, float y, const char *dataType)
@@ -37,7 +39,7 @@ float return_hypotF(float x, float y, const char *dataType)
  * @param y O comprimento do outro cateto.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return A hipotenusa dos catetos x e y, no tipo double.
- * 
+ *
  * @note A função `hypot` é usada para calcular a hipotenusa de dois números do tipo double.
  */
 double return_hypotD(double x, double y, const char *dataType)
@@ -54,7 +56,7 @@ double return_hypotD(double x, double y, const char *dataType)
  * @param y O comprimento do outro cateto.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return A hipotenusa dos catetos x e y, no tipo long double.
- * 
+ *
  * @note A função `hypotl` é usada para calcular a hipotenusa de dois números do tipo long double.
  */
 long double return_hypotLD(long double x, long double y, const char *dataType)

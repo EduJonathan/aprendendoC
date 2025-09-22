@@ -2,19 +2,30 @@
 #include <math.h>
 
 /**
- * atan (double _X): calcula o arco tangente de um ângulo em radianos
- * tan-1(x) in range [-pi / 2, +pi / 2].
+ * atan(): Calcula o arco tangente de _X, ou seja, o ângulo em radianos cujo tangente é _X.
+ * O arco tangente é a função inversa da tangente, e o valor retornado está no intervalo [-π/2, π/2].
+ * A função é útil para calcular o ângulo a partir de um valor de tangente dado.
  *
  * SINTAXE: double atan(double _X);
  *
- * @param _X Valor a ser informado para calcular o arco tangente
- * @return O arco tangente de x, no tipo double
+ * @param _X O valor para o qual calcular o arco tangente. Pode ser qualquer número real.
+ * @return O arco tangente de _X, retornado como um número do tipo `double` no intervalo [-π/2, π/2].
+ *         Para valores de _X positivos e negativos, o resultado será um valor dentro desse intervalo.
  *
- * Parâmetro (x)    | valor do retorno
+ * Parâmetro (_X)    | Valor do retorno
  * -------------------------------------
- * x = [-inf, +inf] | [-π / 2, +π / 2] em radianos
- * x = 0            | 0 em radianos
- * x = inf          | NaN (not a number)
+ * _X = [-∞, +∞]     | Valor retornado no intervalo [-π/2, π/2] em radianos
+ * _X = 0            | 0 radianos
+ * _X = ±∞           | ±π/2 radianos
+ *
+ * @note O arco tangente é uma função ímpar, ou seja, \( \text{atan}(-x) = -\text{atan}(x) \).
+ * 
+ * @note A função `atan` é definida para todos os valores reais de _X, incluindo infinitos.
+ * Quando _X tende para \( +\infty \), o retorno é \( \frac{\pi}{2} \), e quando _X tende para \( -\infty \),
+ * o retorno é \( -\frac{\pi}{2} \).
+ * 
+ * @note A função `atan` retorna o valor em radianos. Para converter para graus, multiplique o resultado por 180/π.
+ * @note A função `atan` é frequentemente usada em trigonometria, geometria e problemas que envolvem ângulos.
  */
 
 /**

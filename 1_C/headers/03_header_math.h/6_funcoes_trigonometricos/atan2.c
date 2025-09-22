@@ -2,16 +2,41 @@
 #include <math.h>
 
 /**
- * atan2(double, double): calcula o arco tangente com dois parâmetros.
- * tan-1(y / x) in range [-pi, pi].
- * Função atan2 aceita dois argumentos e retorna a arc tangente do quociente y / x.
+ * atan2(): Calcula o arco tangente do quociente y/x, levando em consideração o sinal de ambos
+ * os parâmetros, o que permite determinar corretamente o quadrante do ângulo. A função retorna
+ * um valor no intervalo [-π, π], ao contrário da função `atan`, que retorna um valor no intervalo
+ * [-π/2, π/2].
  *
  * SINTAXE: double atan2(double y, double x);
  *
- * @param y Numerador da divisão.
- * @param x Denominador da divisão.
- * @return O arco tangente do quociente y/x em radianos.
- * @note Se x == 0, o resultado é definido pela implementação.
+ * @param y O numerador da divisão, representando a coordenada y no plano cartesiano.
+ * @param x O denominador da divisão, representando a coordenada x no plano cartesiano.
+ * @return O arco tangente do quociente y/x, retornado como um número do tipo `double` no intervalo [-π, π].
+ *         O valor retornado representa o ângulo entre a linha que conecta a origem ao ponto (x, y)
+ *         e o eixo x, no plano cartesiano.
+ *
+ * Parâmetro (y, x)     | Valor do retorno (em radianos)
+ * ------------------------------------------------------
+ * x > 0, y = 0        | 0 radianos (no eixo positivo x)
+ * x > 0, y > 0        | Ângulo entre 0 e π/2 (primeiro quadrante)
+ * x > 0, y < 0        | Ângulo entre 0 e -π/2 (quarto quadrante)
+ * x < 0, y = 0        | π radianos (no eixo negativo x)
+ * x < 0, y > 0        | Ângulo entre π/2 e π (segundo quadrante)
+ * x < 0, y < 0        | Ângulo entre -π/2 e -π (terceiro quadrante)
+ * x = 0, y > 0        | π/2 radianos (no eixo positivo y)
+ * x = 0, y < 0        | -π/2 radianos (no eixo negativo y)
+ * x = 0, y = 0        | NaN (não é um número válido)
+ *
+ * @note A função `atan2` é mais robusta que a função `atan`, pois leva em consideração os sinais
+ * de ambos os parâmetros (x e y), o que permite calcular corretamente o ângulo para todos os quadrantes.
+ *
+ * @note Se x = 0 e y = 0, o comportamento não é definido e o retorno será NaN.
+ *
+ * @note O intervalo de retorno da função `atan2` é de -π a π, diferente da função `atan` que tem o intervalo de [-π/2, π/2].
+ *
+ * @note A função `atan2` é frequentemente usada em cálculos de ângulos em coordenadas cartesianas
+ * e na conversão de coordenadas polares para cartesianas, pois pode determinar o ângulo com precisão,
+ * considerando todos os quadrantes.
  */
 
 /**

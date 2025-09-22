@@ -3,12 +3,17 @@
 #include <math.h>
 
 /**
- * islessequal: Verifica se o primeiro número é menor ou igual ao segundo.
+ * islessequal(): Verifica se o primeiro número de ponto flutuante é menor ou igual ao segundo.
  *
  * SINTAXE: #define islessequal(x, y);
  *
  * @param x Primeiro valor de ponto flutuante para comparação.
  * @param y Segundo valor de ponto flutuante para comparação.
+ *
+ * @return Retorna um valor não zero (verdadeiro) se x for menor ou igual a y,
+ * caso contrário retorna 0 (falso).
+ *
+ * @note Se qualquer valor for NaN, a comparação retorna falso, pois NaN não é comparável.
  */
 
 /**

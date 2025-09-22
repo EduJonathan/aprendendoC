@@ -41,6 +41,7 @@ int **createGraph(int vertices)
             free(graph);
             return NULL;
         }
+        
         // Inicializa a matriz com zeros
         for (int j = 0; j < vertices; j++)
         {

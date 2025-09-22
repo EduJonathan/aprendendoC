@@ -2,18 +2,28 @@
 #include <math.h>
 
 /**
- * acosh(double): calcula o arco cosseno hiperbólico de um ângulo em radianos
- * O parâmetro deve ser um valor double maior ou igual a 1.
+ * acosh(): Calcula o arco cosseno hiperbólico (inverso do cosseno hiperbólico) de _X.
+ * O parâmetro deve ser um número real maior ou igual a 1, pois o arco cosseno hiperbólico
+ * está definido apenas para valores de _X ≥ 1.
  *
  * SINTAXE: double acosh(double _X);
  *
- * @param _X Valor a ser informado para calcular o arco cosseno hiperbólico
- * @return O arco cosseno hiperbólico de x, no tipo double
+ * @param _X O valor para o qual calcular o arco cosseno hiperbólico.
+ * O valor deve ser maior ou igual a 1.
+ * @return O arco cosseno hiperbólico de _X, retornado como um número do tipo `double`.
+ * Se _X < 1, a função retorna NaN (not a number).
  *
- * Parâmetro (x) | valor do retorno
- * -------------------------------------
- * x = [1, +inf] | [0, +π / 2] em radianos
- * x < 1         | NaN (not a number)
+ * Parâmetro (_X) | Valor de retorno
+ * -----------------------------------------
+ * _X = [1, +∞]   | Resultado em radianos no intervalo [0, +∞)
+ * _X < 1         | NaN (não é um número real válido para o arco cosseno hiperbólico)
+ *
+ * @note O arco cosseno hiperbólico é a função inversa do cosseno hiperbólico (cosh).
+ * Ele retorna um valor `y` tal que `cosh(y) = _X`. Para valores de _X ≥ 1, o resultado
+ * de `acosh(_X)` estará no intervalo [0, +∞).
+ *
+ * @note Para valores menores que 1, a função retorna `NaN`, já que o arco cosseno hiperbólico
+ * não está definido para esses valores.
  */
 
 /**

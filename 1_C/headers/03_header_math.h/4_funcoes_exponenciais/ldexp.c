@@ -2,13 +2,22 @@
 #include <math.h>
 
 /**
- * ldexp(): calcula o valor de x * (2^exp), onde x é a mantissa e exp é o expoente.
- * retorna o resultado da multiplicação da mantissa x por 2 elevado à potência exp.
+ * ldexp(): Calcula o valor de x * (2^exp), onde x é a mantissa e exp é o expoente.
+ * A função retorna o resultado da multiplicação da mantissa `x` por 2 elevado à potência `exp`.
  *
  * SINTAXE: double ldexp(double x, int exp);
  *
- * @param x Valor base.
- * @param exp Expoente.
+ * @param x O valor base (mantissa), que será multiplicado por 2 elevado ao expoente `exp`.
+ * @param exp O expoente, que define a potência de 2 a ser multiplicada por `x`.
+ * @return O resultado de x * (2^exp), ou seja, o valor de x deslocado pelo expoente `exp`.
+ *
+ * @note A função `ldexp` é útil para manipular números de ponto flutuante ao lidar com
+ * a representação binária, permitindo ajustar a magnitude de um número multiplicando sua
+ * mantissa por uma potência de 2.
+ *
+ * @note Para valores muito grandes de `exp`, o valor retornado pode exceder o limite de
+ * precisão representável em `double`, podendo resultar em overflow ou valores indefinidos
+ * dependendo da implementação da biblioteca.
  */
 
 /**

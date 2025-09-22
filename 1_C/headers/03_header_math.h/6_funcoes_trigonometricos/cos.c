@@ -2,18 +2,28 @@
 #include <math.h>
 
 /**
- * cos(double _X): calcula o cosseno de um ângulo em radianos.
+ * cos(): Calcula o cosseno de um ângulo em radianos. O cosseno de um ângulo é uma função trigonométrica
+ * que representa a razão entre o cateto adjacente e a hipotenusa em um triângulo retângulo.
+ * Esta função é definida para todos os valores reais de _X, com valores retornados no intervalo [-1, 1].
  *
  * SINTAXE: double cos(double _X);
  *
- * @param _X Valor a ser informado para calcular o cosseno
- * @return O cosseno de x.
+ * @param _X O valor do ângulo em radianos para o qual calcular o cosseno.
+ * @return O cosseno do ângulo _X, retornado como um número do tipo `double` no intervalo [-1, 1].
  *
- * Parâmetro (x)    | valor do retorno
- * -------------------------------------
- * x = [-inf, +inf] | [-1, +1]
- * x = 0            | 1
- * x = inf          | NaN (not a number)
+ * Parâmetro (_X)    | Valor do retorno (cos(_X))
+ * --------------------------------------------
+ * _X = [-∞, +∞]     | Valor no intervalo [-1, 1], dependente de _X
+ * _X = 0            | 1 (cosseno de 0 radianos)
+ * _X = ±∞           | NaN (não é um número válido)
+ *
+ * @note O cosseno de um ângulo é uma função periódica, com período de 2π. Ou seja, cos(x + 2π) = cos(x)
+ * para qualquer valor de x. Além disso, a função `cos()` é uma função par, ou seja, cos(-x) = cos(x).
+ *
+ * @note O valor retornado pela função está sempre no intervalo [-1, 1], refletindo as propriedades da função cosseno.
+ *
+ * @note Para valores infinitos, o retorno é NaN, pois o cosseno não é definido para infinitos.
+ * @note Se o valor de _X não estiver em um múltiplo exato de π/2, o valor retornado será um número entre -1 e 1.
  */
 
 /**

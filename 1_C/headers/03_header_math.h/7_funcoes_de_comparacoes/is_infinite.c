@@ -3,12 +3,17 @@
 #include <math.h>
 
 /**
- * isinfinite: é usada para verificar se um número de ponto flutuante é infinito
- * (positivo ou negativo).
+ * isinfinite(): Verifica se um número de ponto flutuante é infinito (positivo ou negativo).
  *
  * SINTAXE: #define isinfinite(x);
  *
  * @param _X Valor de ponto flutuante a ser verificado.
+ *
+ * @return Retorna um valor não zero (verdadeiro) se _X for infinito (positivo ou negativo),
+ * caso contrário retorna 0 (falso).
+ *
+ * @note A macro retorna verdadeiro se o valor for infinito, seja positivo ou negativo, e falso
+ * para qualquer outro valor, incluindo NaN.
  */
 
 /**

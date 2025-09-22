@@ -2,13 +2,23 @@
 #include <math.h>
 
 /**
- * exp2(): calcula o exponencial com base 2.
+ * exp2(): Calcula o valor do exponencial de _X com base 2, ou seja, 2^_X.
  *
  * SINTAXE: double exp2(double _X);
  *
- * @param _X Número para o qual calcular o exponencial com base 2.
- * @return O exponencial com base 2 de _X.
+ * @param _X O número para o qual será calculado o exponencial com base 2.
+ * @return O valor de 2 elevado à potência de _X, ou seja, 2^_X, retornado como um número do tipo `double`.
+ *
+ * @note A função `exp2` calcula 2^X, o que é útil em contextos de computação
+ * e representação binária, já que a base 2 é a base dos sistemas binários.
+ * 
+ * @note O valor de 2^X cresce rapidamente para valores positivos de _X e se aproxima de 0 para
+ * valores negativos de _X.
+ * 
+ * @note Se o valor de _X for muito grande ou muito pequeno, a função pode retornar valores
+ * próximos ao limite superior ou inferior de precisão numérica representável em `double`.
  */
+
 
 /**
  * @brief Calcula o exponencial base 2 de x para tipo float.

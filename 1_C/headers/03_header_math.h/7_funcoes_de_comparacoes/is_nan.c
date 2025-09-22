@@ -3,14 +3,18 @@
 #include <math.h>
 
 /**
- * ISNAN: é usada para verificar se um número de ponto flutuante é um NaN (Not a Number).
- * NaN é um valor especial que surge em operações indefinidas, como a tentativa de calcular a raiz
- * quadrada de um número negativo ou outras operações matemáticas inválidas.
+ * isnan(): Verifica se um número de ponto flutuante é NaN (Not a Number).
  *
  * SINTAXE: #define isnan(x);
  *
  * @param _X Valor de ponto flutuante a ser verificado.
+ * 
+ * @return Retorna um valor não zero (verdadeiro) se _X for NaN, 
+ * caso contrário retorna 0 (falso).
+ *
+ * @note NaN ocorre em operações indefinidas, como a tentativa de calcular a raiz quadrada de um número negativo.
  */
+
 
 /**
  * @brief Verifica se um valor de ponto flutuante é um NaN (Not a Number).

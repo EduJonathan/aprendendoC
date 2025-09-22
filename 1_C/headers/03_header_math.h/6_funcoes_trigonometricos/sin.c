@@ -2,18 +2,28 @@
 #include <math.h>
 
 /**
- * sin(): calcula o seno de um ângulo em radianos.
+ * sin(): Calcula o seno de um ângulo em radianos. O seno de um ângulo é uma função trigonométrica
+ * que representa a razão entre o cateto oposto e a hipotenusa em um triângulo retângulo.
+ * Esta função é definida para todos os valores reais de _X, com valores retornados no intervalo [-1, 1].
  *
  * SINTAXE: float sin(float _X);
  *
- * @param _X Valor a ser informado para calcular o seno
- * @return O seno de x, no tipo float
+ * @param _X O valor do ângulo em radianos para o qual calcular o seno.
+ * @return O seno do ângulo _X, retornado como um número do tipo `float` no intervalo [-1, 1].
  *
- * Parâmetro (x)    | valor do retorno
- * -------------------------------------
- * x = [-inf, +inf] | [-1, +1]
- * x = 0            | 0
- * x = inf          | NaN (not a number)
+ * Parâmetro (_X)    | Valor do retorno (sin(_X))
+ * --------------------------------------------
+ * _X = [-∞, +∞]     | Valor no intervalo [-1, 1], dependente de _X
+ * _X = 0            | 0 (seno de 0 radianos)
+ * _X = ±∞           | NaN (não é um número válido)
+ *
+ * @note O seno de um ângulo é uma função periódica, com período de 2π. Ou seja, sin(x + 2π) = sin(x)
+ * para qualquer valor de x. Além disso, a função `sin()` é uma função ímpar, ou seja, sin(-x) = -sin(x).
+ *
+ * @note O valor retornado pela função está sempre no intervalo [-1, 1], refletindo as propriedades da função seno.
+ *
+ * @note Para valores infinitos, o retorno é NaN, pois o seno não é definido para infinitos.
+ * @note Se o valor de _X não estiver em um múltiplo exato de π/2, o valor retornado será um número entre -1 e 1.
  */
 
 /**

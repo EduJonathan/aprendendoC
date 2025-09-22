@@ -3,12 +3,17 @@
 #include <math.h>
 
 /**
- * isnormal: verifica se um número de ponto flutuante é normal, o que significa que ele
- * não é zero, subnormal (denormal), infinito ou NaN (Not a Number).
+ * isnormal(): Verifica se um número de ponto flutuante é normal (não zero, subnormal, infinito ou NaN).
  *
  * SINTAXE: #define isnormal(x);
  *
  * @param _X Valor de ponto flutuante a ser verificado.
+ *
+ * @return Retorna um valor não zero (verdadeiro) se _X for um número normal,
+ * caso contrário retorna 0 (falso).
+ *
+ * @note Um número é considerado normal se estiver dentro do intervalo de valores representáveis
+ * e não for zero, subnormal, infinito ou NaN.
  */
 
 /**

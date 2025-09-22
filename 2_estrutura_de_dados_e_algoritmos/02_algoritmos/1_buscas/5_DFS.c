@@ -80,6 +80,7 @@ void insert(pilha *stack, int valor)
     }
     stack->itens[++(stack->top)] = valor;
 }
+
 /**
  * @brief Realiza a Busca em Profundidade (DFS) em um grafo usando uma pilha explícita.
  *

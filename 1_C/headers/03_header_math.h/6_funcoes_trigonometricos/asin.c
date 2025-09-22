@@ -2,19 +2,31 @@
 #include <math.h>
 
 /**
- * asin(double _X): calcula o arco seno de um ângulo em radianos
+ * asin(): Calcula o arco seno de _X, ou seja, o ângulo em radianos cujo seno é _X.
+ * O arco seno é a função inversa do seno, e é definido no intervalo [-π/2, π/2].
+ * A função retorna um valor em radianos, e o valor de _X deve estar no intervalo [-1, 1].
  *
  * SINTAXE: double asin(double _X);
  *
- * @param _X Valor a ser informado para calcular o arco cosseno
- * @return O arco cosseno de x.
+ * @param _X O valor para o qual calcular o arco seno. O valor de _X deve estar no intervalo [-1, 1].
+ * @return O arco seno de _X, retornado como um número do tipo `double` no intervalo [-π/2, π/2].
+ * Se _X estiver fora do intervalo válido, a função retornará `NaN`.
  *
- * Parâmetro (x)   | valor do retorno
+ * Parâmetro (_X)    | Valor do retorno
  * -------------------------------------
- * x = [-1, +1]    | [-π / 2, +π / 2] in radianos
- * -1 > x or x > 1 | NaN (not a number)
- * x = 1           | 0 em radianos
- * x = 0           | 0 em radianos
+ * _X = [-1, 1]      | Valor retornado no intervalo [-π/2, π/2] em radianos
+ * _X = 1            | π/2 radianos
+ * _X = 0            | 0 radianos
+ * _X = -1           | -π/2 radianos
+ * _X < -1 ou _X > 1 | NaN (não é um número válido)
+ *
+ * @note O arco seno é definido apenas para valores de _X no intervalo [-1, 1]. Para valores fora
+ * desse intervalo, a função retorna `NaN`, pois não existe um valor de ângulo cujo seno seja menor
+ * que -1 ou maior que 1.
+ *
+ * @note A função `asin` retorna o valor em radianos. Para converter para graus, multiplique o resultado por 180/π.
+ *
+ * @note A função `asin` é útil em cálculos trigonométricos, geometria e em problemas que envolvem ângulos entre vetores.
  */
 
 /**

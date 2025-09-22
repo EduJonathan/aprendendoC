@@ -3,11 +3,17 @@
 #include <math.h>
 
 /**
- * isinf: verifica se um valor é infinito.
+ * isinf(): Verifica se um valor de ponto flutuante é infinito.
  *
  * SINTAXE: #define isinf(x);
  *
  * @param _X Valor de ponto flutuante a ser verificado.
+ *
+ * @return Retorna um valor não zero (verdadeiro) se _X for infinito (positivo ou negativo),
+ * caso contrário retorna 0 (falso).
+ *
+ * @note A função retorna verdadeiro se o valor for infinito, seja positivo ou negativo.
+ * Qualquer valor diferente de infinito, incluindo NaN, retornará falso.
  */
 
 /**

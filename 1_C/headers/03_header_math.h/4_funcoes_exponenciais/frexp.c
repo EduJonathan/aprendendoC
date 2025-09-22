@@ -2,16 +2,24 @@
 #include <math.h>
 
 /**
- * frexp(): utilizada para decompor um número de ponto flutuante em duas partes:
- * a mantissa (ou significando) é o expoente. retorna a mantissa e define o valor do
- * expoente apontado pelo ponteiro exp. A mantissa retornada está no intervalo [0.5, 1.0]
- * e o valor retornado pela função é m * 2^e, onde m é a mantissa e e é o expoente.
+ * frexp(): Decompõe um número de ponto flutuante em duas partes: a mantissa e o expoente.
+ * A mantissa retornada está no intervalo [0.5, 1.0], e o número original pode ser reconstruído
+ * como m * 2^e, onde m é a mantissa e e é o expoente. O expoente é armazenado no ponteiro `exp`.
  *
  * SINTAXE: double frexp(double x, int *exp);
  *
- * @param x Número a ser decomposto.
- * @param exponent Ponteiro para armazenar o expoente resultante.
- * @return A fração de x, arredondada para o tipo double.
+ * @param x O número de ponto flutuante a ser decomposto.
+ * @param exp Ponteiro para armazenar o expoente resultante da decomposição.
+ * @return A mantissa de x, um valor do tipo `double` no intervalo [0.5, 1.0], tal que o número original
+ *         pode ser reconstruído como m * 2^e, onde m é a mantissa e e é o expoente.
+ *
+ * @note A função `frexp` divide o número `x` em duas partes: a mantissa e o expoente,
+ * de forma que o número original é dado por m * 2^e. A mantissa está no intervalo [0.5, 1.0]
+ * e o expoente é um número inteiro. Essa decomposição é útil para trabalhar com a representação
+ * interna denúmeros de ponto flutuante e para operações que exigem análise do valor e precisão
+ * de um número.
+ *
+ * @note Se o valor de `x` for zero, a mantissa será 0.0 e o expoente será 0.
  */
 
 /**
@@ -42,7 +50,7 @@ double getFrexpResult(double x, int *exponent) { return frexp(x, exponent); }
  * @param x Número a ser decomposto.
  * @param exponent Ponteiro para armazenar o expoente resultante.
  * @return A fração de x, arredondada para o tipo long double.
- * 
+ *
  * @note A função `frexpl` é usada para calcular a fração e o expoente para números do tipo
  * long double.
  */

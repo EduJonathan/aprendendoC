@@ -2,18 +2,29 @@
 #include <math.h>
 
 /**
- * double atanh(double): calcula o arco tangente hiperbólico de um ângulo em radianos
- * Parâmetro valor maior igual a 1
+ * atanh(): Calcula o arco tangente hiperbólico (inverso da tangente hiperbólica) de _X.
+ * O parâmetro _X deve estar no intervalo [-1, 1], já que o arco tangente hiperbólico
+ * é definido somente para valores de _X dentro deste intervalo.
  *
  * SINTAXE: double atanh(double _X);
  *
- * @param _X Valor a ser informado para calcular o arco tangente hiperbólico
- * @return O arco tangente hiperbólico de x, no tipo double
+ * @param _X O valor para o qual calcular o arco tangente hiperbólico.
+ * O valor deve estar no intervalo [-1, 1] para que o cálculo seja válido.
  *
- * Parâmetro (x)    | valor do retorno
- * -------------------------------------
- * x = [-1, 1]      | [0, +π] em radianos
- * x < -1 or x > 1  | NaN (not a number)
+ * @return O arco tangente hiperbólico de _X, retornado como um número do tipo `double`.
+ * Para valores de _X fora do intervalo [-1, 1], a função retorna NaN (not a number).
+ *
+ * Parâmetro (_X)     | Valor de retorno
+ * -----------------------------------------
+ * _X = [-1, 1]       | Resultado em radianos no intervalo [-π/4, π/4]
+ * _X < -1 ou _X > 1   | NaN (não é um número real válido para o arco tangente hiperbólico)
+ *
+ * @note O arco tangente hiperbólico é a função inversa da tangente hiperbólica (tanh).
+ * Ele retorna um valor `y` tal que `tanh(y) = _X`. O resultado de `atanh(_X)`
+ * estará no intervalo de [-π/4, π/4] para valores de _X no intervalo [-1, 1].
+ *
+ * @note Para valores de _X fora do intervalo [-1, 1], a função retorna `NaN`,
+ * já que o arco tangente hiperbólico não está definido para esses valores.
  */
 
 /**

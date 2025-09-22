@@ -2,18 +2,28 @@
 #include <math.h>
 
 /**
- * sinh(double): calcula o seno hiperbólico de um ângulo em radianos.
+ * sinh(): Calcula o seno hiperbólico de _X, onde _X é um valor em radianos.
+ * O seno hiperbólico é uma função que pode ser entendida como uma versão "hiperbólica" do seno,
+ * calculada usando a fórmula: sinh(x) = (e^x - e^(-x)) / 2.
  *
  * SINTAXE: double sinh(double _X);
  *
- * @param _X Valor a ser informado para calcular o seno hiperbólico
- * @return O seno hiperbólico de x, no tipo double
+ * @param _X O valor para o qual calcular o seno hiperbólico. Pode ser qualquer número real.
+ * @return O seno hiperbólico de _X, retornado como um número do tipo `double`.
+ * Para valores de _X < 0, o seno hiperbólico será negativo, e para valores de _X > 0 será positivo.
  *
- * Parâmetro (x) | Valor do retorno
- * -------------------------------------
- * x = [0, +inf] | [0, +inf]
- * x >= 1        | número maior ou igual a 1(em radianos)
- * x < 1         | NaN (not a number)
+ * Parâmetro (_X)  | Valor do retorno
+ * -----------------------------------------
+ * _X = [0, +∞]    | Resultado no intervalo [0, +∞)
+ * _X < 0           | Resultado negativo, mas definido em todos os reais
+ *
+ * @note O seno hiperbólico é uma função definida para todos os números reais.
+ * O valor de `sinh(x)` pode ser positivo ou negativo, dependendo do valor de _X,
+ * e o crescimento da função é exponencial tanto para valores positivos quanto negativos de _X.
+ * Em outras palavras, \( \sinh(-x) = -\sinh(x) \), o que torna a função ímpar.
+ *
+ * @note A função `sinh` é útil em várias áreas da matemática, física e engenharia,
+ * especialmente no estudo de ondas, vibrações e problemas envolvendo crescimento exponencial.
  */
 
 /**

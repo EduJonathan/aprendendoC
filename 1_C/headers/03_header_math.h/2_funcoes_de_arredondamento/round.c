@@ -2,12 +2,19 @@
 #include <math.h>
 
 /**
- * round(): Retorna o inteiro mais próximo do número passado.
+ * round(): Retorna o inteiro mais próximo ao número fornecido, arredondando de acordo com a regra de arredondamento padrão.
  *
  * SINTAXE: double round(double _X);
  *
- * @param _X Valor informado para arredondar
- * @return O inteiro mais próximo ao valor fornecido
+ * @param _X O valor de entrada, que pode ser um número real (do tipo `double`).
+ * @return O inteiro mais próximo de _X, arredondado para o inteiro mais próximo.
+ *         O valor retornado é do tipo `double`.
+ *
+ * @note A função `round` arredonda o número para o inteiro mais próximo. Se o valor de _X
+ * estiver exatamente no meio entre dois inteiros, ele será arredondado para o inteiro ímpar
+ * mais próximo (arredondamento "round half away from zero").
+ *
+ * @note A função retorna um valor do tipo `double`, mesmo quando o número arredondado é um inteiro exato.
  */
 
 /**

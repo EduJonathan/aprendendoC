@@ -2,12 +2,19 @@
 #include <math.h>
 
 /**
- * trunc(): Remove a parte decimal de um número, arredondando para zero.
+ * trunc(): Remove a parte decimal de um número, arredondando em direção a zero.
  *
  * SINTAXE: double trunc(double _X);
  *
- * @param _X Valor a ser informado.
- * @return O número sem a parte decimal, arredondado para zero.
+ * @param _X O valor de entrada, que pode ser um número real (do tipo `double`).
+ * @return O número sem a parte decimal, arredondado para o inteiro mais próximo em direção a zero.
+ *         O valor retornado é do tipo `double`, com a parte inteira de _X.
+ *
+ * @note A função `trunc` simplesmente descarta a parte decimal do número, independentemente
+ * de o número ser positivo ou negativo. Por exemplo, `trunc(3.75)` retorna `3.0` e `trunc(-3.75)`
+ * retorna `-3.0`.
+ *
+ * @note A função retorna um valor do tipo `double`, com a parte inteira do número, mas sem a parte decimal.
  */
 
 /**

@@ -2,17 +2,29 @@
 #include <math.h>
 
 /**
- * cosh(double): calcula o cosseno hiperbólico de um ângulo em radianos.
+ * cosh(): Calcula o cosseno hiperbólico de _X, onde _X é um valor em radianos.
+ * O cosseno hiperbólico é uma função que pode ser entendida como uma versão "hiperbólica" do cosseno,
+ * calculada usando a fórmula: cosh(x) = (e^x + e^(-x)) / 2.
  *
  * SINTAXE: double cosh(double _X);
- * @param _X Valor a ser informado para calcular o cosseno hiperbólico
- * @return O cosseno hiperbólico de x, no tipo double
  *
- * Parâmetro (x) | Valor do retorno
+ * @param _X O valor para o qual calcular o cosseno hiperbólico. Pode ser qualquer número real.
+ * @return O cosseno hiperbólico de _X, retornado como um número do tipo `double`.
+ * Para valores de _X < 0, o cosseno hiperbólico será sempre maior ou igual a 1.
+ *
+ * Parâmetro (_X) | Valor do retorno
  * -------------------------------------
- * x = [0, +inf] | [1, +inf]
- * x >= 1        | número maior ou igual a 1(em radianos)
- * x < 1         | NaN (not a number)
+ * _X = [0, +∞]   | Resultado no intervalo [1, +∞)
+ * _X < 0          | Resultado sempre maior ou igual a 1
+ *
+ * @note O cosseno hiperbólico é uma função de valor sempre não negativa e crescente para valores de x
+ * positivos. Para valores de _X negativos, a função retorna o mesmo valor que para o valor absoluto
+ * de _X. A função é definida para todos os valores reais, ou seja, a função `cosh` é válida para
+ * todo número real e não apresenta valores indefinidos ou `NaN`.
+ *
+ * @note A função `cosh` pode ser útil em cálculos envolvendo física, engenharia e matemática,
+ * onde as funções hiperbólicas frequentemente aparecem, como no cálculo de ondas, ressonâncias,
+ * e crescimento exponencial.
  */
 
 /**

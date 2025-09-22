@@ -3,12 +3,18 @@
 #include <math.h>
 
 /**
- * isgreaterequal: Verifica se o primeiro número é maior ou igual ao segundo.
+ * isgreaterequal(): Verifica se o primeiro número de ponto flutuante é maior ou igual ao segundo.
  *
  * SINTAXE: #define isgreaterequal(x, y);
  *
  * @param x Primeiro valor de ponto flutuante para comparação.
  * @param y Segundo valor de ponto flutuante para comparação.
+ *
+ * @return Retorna um valor não zero (verdadeiro) se x for maior ou igual a y, caso contrário retorna
+ * 0 (falso). Se qualquer um dos valores for NaN, retorna falso, pois NaN não é comparável com
+ * outros números.
+ *
+ * @note A função lida corretamente com NaN e infinito. Retorna verdadeiro quando x >= y.
  */
 
 /**

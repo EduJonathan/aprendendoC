@@ -2,14 +2,21 @@
 #include <math.h>
 
 /**
- * remquof(): Retorna o menor número inteiro maior ou igual ao valor fornecido.
+ * remquof(): Calcula o resto da divisão de ponto flutuante de _X por _Y e retorna o menor número inteiro
+ * maior ou igual ao valor fornecido. Também armazena o quociente da divisão no ponteiro `quo`.
  *
  * SINTAXE: double remquof(double _X, double _Y, int *quo);
  *
- * @param _X Numerador.
- * @param _Y Denominador.
- * @param quoc Um ponteiro para um inteiro para armazenar um valor que tem o sinal
- * e magnitude aproximada do quociente.
+ * @param _X O numerador da divisão.
+ * @param _Y O denominador da divisão.
+ * @param quo Um ponteiro para um inteiro onde o quociente (arredondado para o inteiro mais próximo) será armazenado.
+ * @return O resto da divisão de _X por _Y, ou seja, o valor de _X - (n * _Y), onde n é o quociente arredondado. O valor retornado é do tipo `double`.
+ *
+ * @note A função `remquof` calcula o resto da divisão de ponto flutuante de _X por _Y,
+ * semelhante a `fmod`, mas também armazena o quociente da divisão em `quo`, onde o quociente
+ * será arredondado para o inteiro mais próximo.
+ *
+ * @note Se _Y for igual a zero, o comportamento é indefinido, podendo resultar em uma divisão por zero.
  */
 
 /**

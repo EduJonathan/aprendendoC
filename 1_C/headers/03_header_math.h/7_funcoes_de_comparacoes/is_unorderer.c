@@ -3,12 +3,15 @@
 #include <math.h>
 
 /**
- * isunordered: Verifica se pelo menos um dos números é NaN.
+ * isunordered(): Verifica se pelo menos um dos números de ponto flutuante é NaN.
  *
  * SINTAXE: #define isunordered(x, y);
  *
  * @param _X Primeiro valor de ponto flutuante a ser verificado.
  * @param _Y Segundo valor de ponto flutuante a ser verificado.
+ *
+ * @return Retorna um valor não zero (verdadeiro) se pelo menos um dos valores for NaN,
+ * caso contrário retorna 0 (falso).
  */
 
 /**

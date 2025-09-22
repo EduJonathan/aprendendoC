@@ -2,15 +2,21 @@
 #include <math.h>
 
 /**
- * pow(): Calcula a potenciação.
+ * pow(): Calcula a potência de um número.
  *
  * SINTAXE: double pow(double _X, double _Y);
  *
- * @param _X É a base
- * @param _Y Expoente que multiplica a base quantas vezes ele foi declarado
- * @return O resultado da potenciação
- * @note A função `pow` é usada para calcular a potenciação de dois números do tipo double.
- * @note Erros podem ocorrer se x <= 0 e y <= 0.
+ * @param _X A base da potência. Pode ser qualquer número real.
+ * @param _Y O expoente que indica quantas vezes a base _X é multiplicada por si mesma.
+ * @return O resultado de _X elevado à potência de _Y (ou seja, _X^_Y).
+ *
+ * @note A função `pow` calcula a potência de dois números do tipo `double`.
+ *
+ * @note Para expoentes negativos, o comportamento é definido, mas o resultado será o
+ * inverso da base elevada ao valor absoluto do expoente.
+ *
+ * @note Erros podem ocorrer em casos extremos, como se _X ou _Y forem valores que
+ * causam estouros numéricos ou resultados indefinidos (ex.: 0^0).
  */
 
 /**

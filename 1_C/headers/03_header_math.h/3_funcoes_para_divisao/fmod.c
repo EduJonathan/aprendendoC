@@ -2,15 +2,22 @@
 #include <math.h>
 
 /**
- * fmod(double, double): calcula o resto da divisão. calcula o resto de ponto
- * flutuante de x / y, com o mesmo sinal de x.
+ * fmod(): Calcula o resto da divisão de ponto flutuante de x por y, mantendo o sinal de x.
  *
  * SINTAXE: double fmod(double _X, double _Y);
  *
- * @param _X Valor do qual calcular o resto.
- * @param _Y Divisor para calcular o resto.
- * @return O resto da divisão de ponto flutuante de x por y, com o mesmo sinal de x.
- * @note Se y == 0, o resultado é definido pela implementação.
+ * @param _X O valor do qual será calculado o resto.
+ * @param _Y O divisor usado para calcular o resto.
+ * @return O resto da divisão de ponto flutuante de _X por _Y, com o mesmo sinal de _X.
+ *         O valor retornado é do tipo `double`.
+ *
+ * @note A função `fmod` retorna o resto da divisão de ponto flutuante, ou seja, o valor de
+ * _X - (n * _Y), onde n é o maior inteiro que torna a expressão válida.
+ * O sinal do resultado é o mesmo que o de _X.
+ *
+ * @note Se _Y for igual a zero, o comportamento é indefinido e pode gerar um erro ou
+ * resultado específico dependendo da implementação da biblioteca matemática utilizada.
+ * Em geral, isso pode causar uma divisão por zero.
  */
 
 /**

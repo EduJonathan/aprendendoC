@@ -2,14 +2,21 @@
 #include <math.h>
 
 /**
- * remainder(): Retorna o resto da divisão de x por 1.
+ * remainder(): Retorna o resto da divisão de x por y, com base no arredondamento de ponto flutuante.
  *
  * SINTAXE: double remainder(double _X, double _Y);
  *
- * @param _X Valor do numerador quociente.
- * @param _Y Valor do denominador quociente.
- * @return Retorna restante da divisão dos argumentos.
- * @note Se y == 0, o resultado é definido pela implementação.
+ * @param _X O numerador da divisão.
+ * @param _Y O denominador da divisão.
+ * @return O resto da divisão de _X por _Y, de acordo com a fórmula:
+ * _X - n * _Y, onde n é o inteiro mais próximo de _X / _Y. O resultado
+ * terá o mesmo sinal que o divisor (_Y), e será ajustado para ser o menor
+ * valor absoluto possível em relação ao divisor.
+ *
+ * @note A função `remainder` calcula o resto de ponto flutuante com base em arredondamento
+ * de ponto flutuante. O resultado será sempre menor que o valor absoluto de _Y.
+ *
+ * @note Se _Y for igual a zero, o comportamento é indefinido e pode resultar em um erro de divisão por zero.
  */
 
 /**

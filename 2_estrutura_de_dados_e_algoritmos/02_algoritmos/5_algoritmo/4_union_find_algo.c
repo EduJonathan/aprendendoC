@@ -42,7 +42,6 @@ UnionFind *uf_create(int size)
         uf->parent[i] = i;
         uf->rank[i] = 0;
     }
-
     return uf;
 }
 

@@ -2,12 +2,20 @@
 #include <math.h>
 
 /**
- * llrint(): Arredonda um número para o inteiro mais próximo e retorna como tipo long long.
+ * llrint(): Arredonda um número para o inteiro mais próximo e retorna como tipo `long long`.
  *
  * SINTAXE: long long llrint(double _X);
  *
- * @param _X Valor a ser arredondado.
- * @return O inteiro mais próximo do valor fornecido como tipo long long.
+ * @param _X O valor de entrada, que pode ser um número real (do tipo `double`).
+ * @return O inteiro mais próximo de _X, arredondado de acordo com a regra padrão de arredondamento.
+ *         O valor é retornado como um número do tipo `long long`.
+ *
+ * @note A função `llrint` arredonda o número conforme a convenção de arredondamento
+ * "round half to even", ou seja, quando o valor está exatamente no meio entre dois inteiros,
+ * ele será arredondado para o inteiro par mais próximo.
+ *
+ * @note A função retorna um valor do tipo `long long`, que pode representar números inteiros
+ * maiores do que o tipo `int`.
  */
 
 /**

@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <locale.h>
 #include <time.h>
+
+#define SEGUNDOS_DIA (60 * 60 * 24)
 
 /**
  * difftime(): Calcula a diferença em segundos entre dois valores do tipo `time_t`, representando
@@ -18,11 +21,11 @@
  * - O valor retornado é a diferença entre os dois instantes de tempo, ou seja,
  *   `time_end - time_beg`. Se `time_end` for maior que `time_beg`, o valor retornado
  *   será positivo; caso contrário, será negativo.
- * 
+ *
  * - A função é útil para medir intervalos de tempo entre dois eventos em segundos.
- * 
+ *
  * - A precisão do cálculo é garantida pela representação do tipo `double`.
- * 
+ *
  * - Para comparar intervalos de tempo ou determinar a duração de um evento, `difftime()`
  *   é uma função bastante comum.
  */
@@ -41,39 +44,40 @@
  */
 void calcular_diferenca_data(struct tm *data_referencia)
 {
-    // Obtém a data e hora atual
-    time_t agora = 0;
-    time(&agora);
+    time_t agora = time(NULL);
+    struct tm data_atual = *localtime(&agora);
 
-    // Converte a data e hora atual para uma estrutura tm
-    struct tm *data_atual = localtime(&agora);
+    // Ajusta a referência para 25/09 do ano atual
+    data_referencia->tm_year = data_atual.tm_year;
+    data_referencia->tm_mon = 8; // Setembro (0 = jan)
+    data_referencia->tm_mday = 25;
+    data_referencia->tm_hour = 0;
+    data_referencia->tm_min = 0;
+    data_referencia->tm_sec = 0;
 
-    // Cria a data de referência (25 de setembro do ano atual)
-    data_referencia->tm_year = data_atual->tm_year; // Ano atual
-    data_referencia->tm_mon = 8;                    // Setembro (mês 8, porque começa de 0)
-    data_referencia->tm_mday = 25;                  // Dia 25
-
-    // Converte a data de referência para time_t (segundos desde a época)
     time_t tempo_referencia = mktime(data_referencia);
-
     if (tempo_referencia == -1)
     {
-        printf("Erro ao calcular o tempo da data de referência.\n");
+        printf("Erro ao calcular a data de referência.\n");
         return;
     }
 
-    // Calcula a diferença entre as datas em segundos
     double segundos_diferenca = difftime(agora, tempo_referencia);
+    int dias = (int)(segundos_diferenca / SEGUNDOS_DIA);
 
-    // Converte a diferença de segundos para dias
-    int dias_diferenca = segundos_diferenca / (60 * 60 * 24);
-
-    // Calcula os meses e dias
-    int meses_diferenca = dias_diferenca / 30; // Aproximação de meses (30 dias por mês)
-    int dias_restantes = dias_diferenca % 30;
-
-    // Exibe a diferença
-    printf("O dia 25 de setembro foi há %d meses e %d dias!\n", meses_diferenca, dias_restantes);
+    if (dias >= 0)
+    {
+        int meses = dias / 30;
+        int resto = dias % 30;
+        printf("O dia 25 de setembro foi há %d meses e %d dias!\n", meses, resto);
+    }
+    else
+    {
+        int dias_restantes = -dias;
+        int meses = dias_restantes / 30;
+        int resto = dias_restantes % 30;
+        printf("Faltam %d meses e %d dias para 25 de setembro!\n", meses, resto);
+    }
 }
 
 /**
@@ -87,19 +91,21 @@ void calcular_diferenca_data(struct tm *data_referencia)
  */
 int calcularDiasFaltando(struct tm dataAtual, struct tm dataDestino)
 {
-    // Converter as duas estruturas tm para time_t
+    dataAtual.tm_hour = dataDestino.tm_hour = 0;
+    dataAtual.tm_min = dataDestino.tm_min = 0;
+    dataAtual.tm_sec = dataDestino.tm_sec = 0;
+
     time_t tempoAtual = mktime(&dataAtual);
     time_t tempoDestino = mktime(&dataDestino);
 
-    // Calcular a diferença em segundos
-    double diferencaSegundos = difftime(tempoDestino, tempoAtual);
-
-    // Converter de segundos para dias
-    return diferencaSegundos / (60 * 60 * 24); // 60 segundos * 60 minutos * 24 horas
+    double dif = difftime(tempoDestino, tempoAtual);
+    return (int)(dif / SEGUNDOS_DIA);
 }
 
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     // Obtém o tempo atual
     time_t now = 0;
     time(&now);

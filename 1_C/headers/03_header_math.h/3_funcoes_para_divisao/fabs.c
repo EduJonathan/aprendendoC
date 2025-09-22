@@ -2,12 +2,18 @@
 #include <math.h>
 
 /**
- * fabs(double): calcula o valor absoluto de um número double.
+ * fabs(): Calcula o valor absoluto de um número `double`.
  *
  * SINTAXE: double fabs(double _X);
  *
- * @param _X Número do qual é calculado o valor absoluto.
- * @return O valor absoluto de _X.
+ * @param _X O número de entrada, do tipo `double`, do qual será calculado o valor absoluto.
+ * @return O valor absoluto de _X, ou seja, o valor de _X sem o sinal negativo.
+ *         O valor retornado é do tipo `double`.
+ *
+ * @note A função `fabs` retorna o valor absoluto de números reais, removendo o sinal negativo
+ * se presente. Por exemplo, `fabs(-3.14)` retorna `3.14`, e `fabs(3.14)` retorna `3.14`.
+ *
+ * @note A função sempre retorna um valor do tipo `double`, independentemente de o número de entrada ser positivo ou negativo.
  */
 
 /**

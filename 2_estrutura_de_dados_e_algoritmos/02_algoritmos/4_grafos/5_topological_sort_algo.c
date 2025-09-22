@@ -183,7 +183,6 @@ void freeGraph(Graph *graph)
             temp = next;
         }
     }
-
     free(graph->adjLists);
     free(graph->inDegree);
     free(graph);

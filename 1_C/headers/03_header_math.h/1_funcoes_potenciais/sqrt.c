@@ -2,13 +2,20 @@
 #include <math.h>
 
 /**
- * sqrt(square root): Função calcula a raiz quadrada
+ * sqrt(): Calcula a raiz quadrada de um número não-negativo.
  *
  * SINTAXE: double sqrt(double _X);
  *
- * @param _X Valor para calcular a raiz quadrada (x >= 0).
- * @return A raiz quadrada de x.
- * @note Para valores de x < 0, o comportamento não é definido.
+ * @param _X O número do qual se deseja calcular a raiz quadrada. Deve ser maior ou igual a 0.
+ *           Para valores negativos, o comportamento não é definido.
+ * @return A raiz quadrada de _X, se _X >= 0. Caso _X seja negativo, o comportamento da função
+ * é indefinido.
+ *
+ * @note A função `sqrt` calcula a raiz quadrada de números do tipo `double`.
+ *
+ * @note Para valores negativos de _X, o comportamento pode resultar em erro ou valor indefinido.
+ * Caso seja necessário trabalhar com números negativos, considere usar a função `cbrt` (raiz cúbica),
+ * ou trate o erro antes de chamar a função.
  */
 
 /**

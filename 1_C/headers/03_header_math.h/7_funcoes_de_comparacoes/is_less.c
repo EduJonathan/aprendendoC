@@ -3,12 +3,17 @@
 #include <math.h>
 
 /**
- * isless: Verifica se o primeiro número é estritamente menor que o segundo.
+ * isless(): Verifica se o primeiro número de ponto flutuante é estritamente menor que o segundo.
  *
  * SINTAXE: #define isless(x, y);
  *
  * @param _X Primeiro valor de ponto flutuante para comparação.
  * @param _Y Segundo valor de ponto flutuante para comparação.
+ *
+ * @return Retorna um valor não zero (verdadeiro) se _X for estritamente menor que _Y,
+ * caso contrário retorna 0 (falso).
+ *
+ * @note Se qualquer valor for NaN, a comparação retorna falso, pois NaN não é comparável.
  */
 
 /**

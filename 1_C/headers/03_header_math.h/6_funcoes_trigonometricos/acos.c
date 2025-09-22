@@ -2,20 +2,30 @@
 #include <math.h>
 
 /**
- * acos(double _X): Calcula o arco cosseno de um ângulo em radianos.
+ * acos(): Calcula o arco cosseno de _X, ou seja, o ângulo em radianos cujo cosseno é _X.
+ * O arco cosseno é a função inversa do cosseno, e é definido no intervalo [0, π].
+ * A função retorna um valor em radianos, e o valor de _X deve estar no intervalo [-1, 1].
  *
  * SINTAXE: double acos(double _X);
  *
- * @param _X Valor a ser informado para calcular o arco cosseno
- * @return O arco cosseno de x.
+ * @param _X O valor para o qual calcular o arco cosseno. O valor de _X deve estar no intervalo [-1, 1].
+ * @return O arco cosseno de _X, retornado como um número do tipo `double` no intervalo [0, π].
+ * Se _X estiver fora do intervalo válido, a função retornará `NaN`.
  *
- * Parâmetros (x)   | valor do retorno
+ * Parâmetro (_X)   | Valor do retorno
  * -------------------------------------
- * x = [-1, +1]     | [-π / 2, +π / 2] em radianos
- * -1 > x or x > 1  | NaN (not a number)
- * x = 1            | 0 em radianos
- * x = 0            | 0 em radianos
- * x = -1           | π em radianos
+ * _X = [ -1, 1 ]   | Valor retornado em [ 0, π ] em radianos
+ * _X = 1            | 0 radianos
+ * _X = 0            | π / 2 radianos
+ * _X = -1           | π radianos
+ * _X < -1 ou _X > 1 | NaN (não é um número válido)
+ *
+ * @note O arco cosseno é definido apenas para valores de _X no intervalo [-1, 1]. Para valores fora
+ * desse intervalo, a função retorna `NaN`, pois não existe um valor de ângulo cujo cosseno seja menor
+ * que -1 ou maior que 1.
+ *
+ * @note A função `acos` retorna o valor em radianos. Para converter para graus, multiplique o resultado por 180/π.
+ * @note A função `acos` é útil em cálculos trigonométricos, geometria e em problemas que envolvem ângulos entre vetores.
  */
 
 /**

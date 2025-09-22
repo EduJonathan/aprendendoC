@@ -2,12 +2,16 @@
 #include <math.h>
 
 /**
- * floor(): Arredonda para baixo um número float.
+ * floor(): Arredonda para baixo um número, retornando o maior número inteiro menor ou igual ao valor fornecido.
  *
- * SINTAXE: double ceil(double _X);
+ * SINTAXE: double floor(double _X);
  *
- * @param _X Valor a ser informado.
- * @return O maior número inteiro menor ou igual ao valor fornecido.
+ * @param _X O valor de entrada. Pode ser um número real (positivo ou negativo).
+ * @return O maior número inteiro menor ou igual a _X, arredondado para baixo.
+ *         Se _X já for um número inteiro, o valor retornado será o próprio _X.
+ *
+ * @note A função `floor` sempre arredonda o número para o inteiro mais próximo para baixo.
+ * @note A função retorna um número do tipo `double`, representando o valor arredondado.
  */
 
 /**

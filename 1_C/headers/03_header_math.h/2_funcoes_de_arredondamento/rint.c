@@ -1,13 +1,21 @@
 #include <stdio.h>
 #include <math.h>
-
 /**
- * rint(): Arredonda um número para o inteiro mais próximo, com base no tipo de dado.
+ * rint(): Arredonda um número para o inteiro mais próximo, com base no tipo de dado `double`.
  *
  * SINTAXE: double rint(double _X);
  *
- * @param _X Valor a ser arredondado.
- * @return O inteiro mais próximo do valor fornecido, com base na precisão do tipo de dado.
+ * @param _X O valor de entrada, que pode ser um número real (do tipo `double`).
+ * @return O inteiro mais próximo de _X, com base no tipo `double`, mas retornado como um
+ * número `double`. O valor é arredondado de acordo com a convenção de arredondamento
+ * "round half to even" (arredondamento para o inteiro par mais próximo, quando o valor
+ * está exatamente no meio).
+ *
+ * @note A função `rint` arredonda o número para o inteiro mais próximo, mas sempre retorna um valor do tipo `double`.
+ *
+ * @note Quando o valor de _X está exatamente no meio entre dois inteiros, o arredondamento
+ * segue a convenção "round half to even", ou seja, o valor será arredondado para o inteiro
+ * par mais próximo.
  */
 
 /**

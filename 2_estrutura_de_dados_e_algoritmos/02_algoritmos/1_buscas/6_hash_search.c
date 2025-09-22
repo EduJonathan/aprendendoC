@@ -167,6 +167,7 @@ HashNode *search(HashTable *ht, int key)
     }
     return NULL; // Não encontrado
 }
+
 /**
  * @brief Remove um par chave-valor da tabela hash.
  */

@@ -2,13 +2,15 @@
 #include <math.h>
 
 /**
- * cbrt(): Encontra a raiz cúbica
+ * cbrt(): Calcula a raiz cúbica de um número não-negativo.
  *
  * SINTAXE: double cbrt(float _X);
  *
- * @param _X valor para calcular a raiz cúbica (x >= 0).
- * @return A raiz cúbica de x.
- * @note Para valores de x < 0, o comportamento não é definido.
+ * @param _X O número para calcular a raiz cúbica. Deve ser maior ou igual a 0.
+ *           Para valores negativos, o comportamento não é definido.
+ * @return A raiz cúbica de _X, se _X >= 0.
+ *         Se _X < 0, o comportamento é indefinido (pode gerar erro ou comportamento inesperado).
+ * @note Para valores negativos de _X, recomenda-se tratar o erro antes de chamar esta função.
  */
 
 /**

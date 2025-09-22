@@ -2,12 +2,22 @@
 #include <math.h>
 
 /**
- * log(double _X): calcula o logaritmo natural (ln) de x.
+ * log(): Calcula o logaritmo natural (ln) de _X, ou seja, o logaritmo de base e,
+ * onde e é a constante de Euler (aproximadamente 2.71828).
  *
  * SINTAXE: double log(double _X);
  *
- * @param _X Número do qual é calculado o logaritmo natural.
- * @return O logaritmo natural de _X.
+ * @param _X O número do qual será calculado o logaritmo natural. Deve ser um número positivo (x > 0).
+ * @return O logaritmo natural de _X, ou seja, ln(_X), retornado como um número do tipo `double`.
+ *
+ * @note O logaritmo natural de um número é a potência à qual a constante de Euler (e) deve
+ * ser elevada para obter o número _X. Por exemplo, log(2.71828) retorna aproximadamente 1,
+ * já que e^1 = e.
+ *
+ * @note A função retorna um valor indefinido para valores de _X <= 0, resultando em um erro de domínio.
+ *
+ * @note Para valores muito pequenos de _X (próximos de zero), a função retorna um valor negativo
+ * muito grande,indicando que o logaritmo de números pequenos tende a menos infinito.
  */
 
 /**

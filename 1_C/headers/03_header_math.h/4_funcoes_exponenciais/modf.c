@@ -2,15 +2,26 @@
 #include <math.h>
 
 /**
- * modf (double,double *): número em partes fracionárias e inteira.
- * Divide x em partes integrais e fracionárias, cada uma com o mesmo sinal de x.
- * Armazena a parte integral em *Y ip e devolve a parte fracionária.
+ * modf(): Divide um número de ponto flutuante em duas partes: a parte inteira e a parte fracionária.
+ * A parte inteira é armazenada no ponteiro `ip`, e a parte fracionária é retornada pela função.
+ * Ambas as partes terão o mesmo sinal de `x`.
  *
  * SINTAXE: double modf(double x, double *ip);
  *
- * @param x Valor a ser dividido em partes integrais e fracionárias.
- * @param integerPart Ponteiro para armazenar a parte inteira.
- * @return Parte fracionária do valor x.
+ * @param x O número a ser dividido em partes. Pode ser qualquer número real (positivo ou negativo).
+ * @param ip Ponteiro para armazenar a parte inteira do número. A parte inteira será armazenada em `*ip`,
+ * com o mesmo sinal de `x`.
+ *
+ * @return A parte fracionária do número `x`, com o mesmo sinal de `x`.
+ *
+ * @note A função `modf` separa o número `x` em duas partes: a parte inteira e a parte fracionária.
+ * A parte inteira é armazenada em `*ip` e a parte fracionária é retornada como o valor de retorno.
+ * A função pode ser útil em cálculos onde é necessário obter as duas partes de um número de ponto
+ * flutuante.
+ *
+ * @note Para valores inteiros de `x`, a parte fracionária será zero e a parte inteira será o próprio valor de `x`.
+ *
+ * @note O sinal da parte inteira e da parte fracionária será o mesmo que o sinal de `x`.
  */
 
 /**

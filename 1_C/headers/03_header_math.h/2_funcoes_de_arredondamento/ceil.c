@@ -6,8 +6,12 @@
  *
  * SINTAXE: double ceil(double _X);
  *
- * @param _X Valor a ser calculado.
- * @return O menor número inteiro maior ou igual ao valor fornecido.
+ * @param _X O valor de entrada. Pode ser um número real (positivo ou negativo).
+ * @return O menor número inteiro maior ou igual ao valor de _X, arredondado para cima.
+ *         Se _X já for um número inteiro, o valor retornado será o próprio _X.
+ *
+ * @note A função `ceil` arredonda o número para o inteiro mais próximo, sempre para cima.
+ * @note A função sempre retorna um número do tipo `double`, representando o valor arredondado.
  */
 
 /**

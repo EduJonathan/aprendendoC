@@ -2,12 +2,19 @@
 #include <math.h>
 
 /**
- * log10(double _X): calcula o logaritmo na base 10 de x.
+ * log10(): Calcula o logaritmo na base 10 de _X, ou seja, o valor de y tal que 10^y = _X.
  *
  * SINTAXE: double log10(double _X);
  *
- * @param _X Número do qual é calculado o logaritmo na base 10.
- * @return O logaritmo na base 10 de _X.
+ * @param _X O número do qual será calculado o logaritmo na base 10. Deve ser um número positivo (x > 0).
+ * @return O logaritmo na base 10 de _X, ou seja, log10(_X), retornado como um número do tipo `double`.
+ *
+ * @note A função retorna o valor y tal que 10^y = _X. Por exemplo, log10(1000) retorna 3, pois 10^3 = 1000.
+ *
+ * @note O logaritmo de base 10 é amplamente utilizado em várias disciplinas, incluindo ciência, engenharia, e finanças.
+ *
+ * @note A função retorna um erro ou valor indefinido se _X <= 0.
+ * @note Para valores de _X muito pequenos (próximos de zero), o logaritmo se aproxima de menos infinito.
  */
 
 /**

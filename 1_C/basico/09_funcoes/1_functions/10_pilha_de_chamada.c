@@ -38,11 +38,17 @@
  */
 void exibirProfundidade(int profundidade, const char *nome_funcao)
 {
+    // %*s funciona como indentação dinâmica baseada no valor passado antes da string.
+    // profundidade * 2 define a largura mínima (número de caracteres) a ser impressa.
+    // "" → é a string a ser impressa, aqui uma string vazia.
+    // O efeito prático: imprime espaços em branco até completar a largura,
+    // criando um recuo proporcional à profundidade.
     printf("%*s> %s (Profundidade: %d)\n", profundidade * 2, "", nome_funcao, profundidade);
 }
 
 /**
  * @brief Função de nível 3 (folha da chamada).
+ *
  * @param profundidade Nível atual da pilha.
  * @return Novo valor da profundidade após a execução.
  */

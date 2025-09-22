@@ -2,12 +2,20 @@
 #include <math.h>
 
 /**
- * log2(double _X): calcula o logaritmo na base 2 de um número.
+ * log2(): Calcula o logaritmo na base 2 de _X, ou seja, o valor de y tal que 2^y = _X.
  *
  * SINTAXE: double log2(double _X);
  *
- * @param _X Número do qual é calculado o logaritmo na base 2.
- * @return O logaritmo na base 2 de _X.
+ * @param _X O número do qual será calculado o logaritmo na base 2.Deve ser um número positivo (x > 0).
+ * @return O logaritmo na base 2 de _X, ou seja, log2(_X), retornado como um número do tipo `double`.
+ *
+ * @note A função retorna o valor y tal que 2^y = _X. Por exemplo, log2(8) retorna 3, pois 2^3 = 8.
+ *
+ * @note A função retorna um erro ou valor indefinido se _X <= 0.
+ * @note Para valores de _X muito pequenos (próximos de zero), o logaritmo se aproxima de menos infinito.
+ *
+ * @note A função é útil especialmente em computação e teoria da informação, onde a base 2 é
+ * frequentemente utilizada.
  */
 
 /**
@@ -16,7 +24,7 @@
  * @param x Valor para o qual o logaritmo na base 2 é calculado. Deve ser maior que 0.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return O logaritmo na base 2 de x, arredondado para o tipo float.
- * 
+ *
  * @note A função `log2f` é usada para calcular o logaritmo na base 2 para números do tipo float.
  */
 float return_log2F(float x, const char *dataType)
@@ -32,7 +40,7 @@ float return_log2F(float x, const char *dataType)
  * @param x Valor para o qual o logaritmo na base 2 é calculado. Deve ser maior que 0.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return O logaritmo na base 2 de x, arredondado para o tipo double.
- * 
+ *
  * @note A função `log2` é usada para calcular o logaritmo na base 2 para números do tipo double.
  */
 double return_log2D(double x, const char *dataType)
@@ -48,7 +56,7 @@ double return_log2D(double x, const char *dataType)
  * @param x Valor para o qual o logaritmo na base 2 é calculado. Deve ser maior que 0.
  * @param dataType Descrição do tipo de dado utilizado para a exibição.
  * @return O logaritmo na base 2 de x, arredondado para o tipo long double.
- * 
+ *
  * @note A função `log2l` é usada para calcular o logaritmo na base 2 para números do tipo long double.
  */
 long double return_log2LD(long double x, const char *dataType)

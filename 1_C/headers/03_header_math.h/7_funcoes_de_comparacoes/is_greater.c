@@ -3,12 +3,17 @@
 #include <math.h>
 
 /**
- * isgreater: Verifica se um número de ponto flutuante é estritamente maior que outro.
+ * isgreater(): Verifica se um número de ponto flutuante é estritamente maior que outro.
  *
- * SINTAXE: #define isgreater(x,y);
+ * SINTAXE: #define isgreater(x, y);
  *
- * @param _X Primeiro valor de ponto flutuante para comparação.
- * @param _Y Segundo valor de ponto flutuante para comparação.
+ * @param _X O primeiro número de ponto flutuante a ser comparado.
+ * @param _Y O segundo número de ponto flutuante a ser comparado.
+ *
+ * @return Retorna um valor não zero (verdadeiro) se _X for maior que _Y, caso contrário retorna 0 (falso).
+ *         Se qualquer um dos valores for NaN, retorna falso, pois NaN não é comparável.
+ *
+ * @note A função lida corretamente com NaN e infinito. A comparação retorna verdadeiro apenas quando _X > _Y.
  */
 
 /**
