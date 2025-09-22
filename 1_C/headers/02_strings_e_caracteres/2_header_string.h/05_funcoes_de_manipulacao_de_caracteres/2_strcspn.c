@@ -2,14 +2,14 @@
 #include <string.h>
 
 /**
- * strcspn: Calcula o comprimento do segmento inicial de uma string que não contém nenhum dos
- * caracteres especificados em outra string.
- *
- * SINTAXE: size_t strcspn(const char *str1, const char *str2);
+ * A função `strcspn()` retorna o comprimento do segmento inicial de `str1` que não contém
+ * nenhum dos caracteres encontrados em `str2`. A busca para quando um caractere de `str1`
+ * é encontrado em `str2`.
  *
  * @param str1 Ponteiro para a string a ser analisada.
  * @param str2 Ponteiro para a string contendo os caracteres a serem evitados.
- * @return O comprimento do segmento inicial sem nenhum dos caracteres especificados em str2.
+ *
+ * @return O comprimento do segmento inicial de `str1` que não contém caracteres de `str2`.
  */
 
 /**

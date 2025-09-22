@@ -2,16 +2,17 @@
 #include <string.h>
 
 /**
- * strcpy(string copy): É uma função que ele copia um elemento de uma string e através do
- * parâmetro de acordo como inserimos na função, retornando um ponteiro do fim de uma string,
- * seu uso vem de alterar o conteúdo de uma string.
+ * A função `strcpy()` copia todos os caracteres da string `src` (incluindo o
+ * caractere nulo `'\0'`) para a string `dest`.
  *
- * SINTAXE: char *strcpy(char * __restrict__ __dst, const char * __restrict__ __src);
+ * @param dest Ponteiro para o destino, onde a string será copiada.
+ *             Deve ter espaço suficiente para armazenar `src`.
+ * @param src  Ponteiro para a string de origem.
  *
- * @param dest é o parâmetro do destino da string.
- * @param src é parâmetro do conteúdo da string de origem que é essa a qual o parâmetro
- * destino (dest) irá recebe-la.
- * @return retorna um ponteiro para o fim da string.
+ * @return Retorna um ponteiro para `dest`.
+ *
+ * @note A função não verifica o tamanho de `dest`. Use com cuidado para evitar
+ *       *buffer overflows*. Prefira `strncpy()` quando for necessário limitar a cópia.
  */
 
 /**

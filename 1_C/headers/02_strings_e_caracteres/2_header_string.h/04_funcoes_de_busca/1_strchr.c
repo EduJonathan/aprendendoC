@@ -2,14 +2,14 @@
 #include <string.h>
 
 /**
- * strchr(): Procura um caractere dentro da string.
+ * A função `strchr()` busca o caractere `c` na string `str` e retorna um ponteiro
+ * para a primeira ocorrência encontrada. Se o caractere não for encontrado,
+ * retorna NULL.
  *
- * SINTAXE: char *strchr(const char *_Str, int _Val);
+ * @param str Ponteiro para a string onde será feita a busca.
+ * @param c   Caractere a ser procurado (passado como int, mas convertido para char).
  *
- * @param _Str Insere um ponteiro para char.
- * @param _Val Insere um valor caractere para realizar a busca.
- * @return Retorna um ponteiro para a primeira ocorrência de ch em str ou ponteiro NULL
- * se ch nao for encontrado.
+ * @return Ponteiro para a primeira ocorrência de `c` em `str`, ou NULL se não encontrado.
  */
 
 /**

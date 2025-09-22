@@ -12,7 +12,7 @@
 int isPolindrome(char str[])
 {
     int left = 0;
-    int right = strlen(str) - 1;
+    size_t right = strlen(str) - 1;
 
     while (left < right)
     {

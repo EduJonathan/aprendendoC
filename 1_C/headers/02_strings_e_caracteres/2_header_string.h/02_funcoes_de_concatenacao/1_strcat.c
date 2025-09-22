@@ -2,16 +2,17 @@
 #include <string.h>
 
 /**
- * strcat(string concat): Função de concatenção (juntar duas strings em uma), recebendo as
- * strings como parâmetros, onde sempre o primeiro parâmetro a qual a função irá receber, será
- * a que terá acesso sempre ao segundo parâmetros.
+ * A função `strcat()` adiciona o conteúdo da string `src` ao final da string `dest`,
+ * sobrescrevendo o caractere nulo (`'\0'`) de `dest` e adicionando um novo no final.
  *
- * SINTAXE: char *strcat(char *__restrict__ _Dest, const char *__restrict__ _Source);
+ * @param dest Ponteiro para a string de destino, que deve conter espaço suficiente
+ *             para armazenar a string resultante.
+ * @param src  Ponteiro para a string de origem que será adicionada ao final de `dest`.
  *
- * @param _Dest: Ponteiro para a string de destino onde a string de origem será concatenada.
- * Esta string deve ter espaço suficiente para acomodar a concatenação.
- * @param _Source Ponteiro para a string de origem que será adicionada ao final da string de destino.
- * @return Um ponteiro para a string de destino (dest).
+ * @return Retorna um ponteiro para `dest`.
+ *
+ * @note A função não verifica o tamanho de `dest`. Use com cuidado para evitar
+ *       *buffer overflows*. Prefira `strncat()` para limitar a concatenação.
  */
 
 /**

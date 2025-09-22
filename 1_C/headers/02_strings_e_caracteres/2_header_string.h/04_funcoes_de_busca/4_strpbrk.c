@@ -2,15 +2,14 @@
 #include <string.h>
 
 /**
- * strpbrk(): Encontra a primeira ocorrência de qualquer caractere da string de busca na
- * string fornecida.
+ * A função `strpbrk()` procura a primeira ocorrência de qualquer caractere presente
+ * na string `control` na string `str`. Retorna um ponteiro para o primeiro caractere
+ * encontrado ou NULL se nenhum caractere da string de controle for encontrado na string fornecida.
  *
- * SINTAXE: char *strpbrk(const char *_Str, const char *_Control);
+ * @param str Ponteiro para a string onde será realizada a busca.
+ * @param control Ponteiro para a string contendo os caracteres a serem procurados em `str`.
  *
- * @param _Str: Ponteiro para a string onde será realizada a busca.
- * @param _Control: Ponteiro para a string contendo os caracteres a serem procurados na str1.
- * @return Retorna um ponteiro para a primeira ocorrência de um caractere da string de busca
- * na string fornecida ou NULL se nenhuma ocorrência for encontrada.
+ * @return Ponteiro para a primeira ocorrência de qualquer caractere de `control` em `str`, ou NULL se não encontrado.
  */
 
 /**

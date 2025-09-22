@@ -14,8 +14,7 @@ char *strpbrk(char *string1, char *string2)
 {
     // Pecorrendo todo array de string1 até o '\0', e passando posição por posição
     int i = 0, j = 0, pos = 0, flag = 0;
-    for (i = 0; string1[i] != '\0'; i++)
-        ;
+    for (i = 0; string1[i] != '\0'; i++);
 
     // Pecorrendo todo array de string2 até o '\0', e passando posição por posição
     for (i = 0; string2[i] != '\0' && !flag; i++)

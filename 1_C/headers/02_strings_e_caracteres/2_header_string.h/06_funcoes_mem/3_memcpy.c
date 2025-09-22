@@ -2,17 +2,20 @@
 #include <string.h>
 
 /**
- * memcpy() Copia um bloco de memória de uma localização para outra. A função memcpy copia
- * `n` bytes do bloco de memória apontado por src para o bloco de memória apontado por dest.
+ * A função `memcpy()` copia exatamente `n` bytes de memória de um local (src) para outro (dest).
  *
- * SINTAXE: void *memcpy(void *dest, const void *src, size_t n);
+ * Ela é comumente usada para transferir dados entre arrays, buffers e estruturas de dados.
+ * A função não verifica se os blocos de memória se sobrepõem; para essa situação,
+ * deve-se usar a função `memmove()`.
  *
- * @param dest - ponteiro para o array de destino onde o conteúdo deve ser copiado,
- * convertido em um ponteiro do tipo void*.
- * @param src - ponteiro para a fonte dos dados a serem copiados, convertido em um ponteiro do
- * tipo void*.
- * @param n - número de bytes a serem copiados. A função retorna um ponteiro para o destino,
- * que é dest.
+ * @param dest Ponteiro para o bloco de memória de destino onde os dados serão copiados.
+ * @param src Ponteiro para o bloco de memória de origem, de onde os dados serão copiados.
+ * @param n Número de bytes a serem copiados da área de memória `src` para `dest`.
+ *
+ * @return Um ponteiro para o bloco de memória de destino (`dest`).
+ *
+ * @note Se as áreas de memória `src` e `dest` se sobrepuserem, o comportamento é indefinido.
+ * Para isso, use a função `memmove()`, que lida com sobreposições corretamente.
  */
 
 /**

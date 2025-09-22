@@ -2,18 +2,18 @@
 #include <string.h>
 
 /**
- * strncat: Função que concatena um número especificado de caracteres de uma cadeia para outra.
+ * A função `strncat()` adiciona até `n` caracteres da string `src` ao final da string `dest`,
+ * e adiciona um caractere nulo (`'\0'`) ao final do resultado.
  *
- * SINTAXE: char *strncat(char *__restrict__ _Dest, const char *__restrict__ _Source, size_t _Count);
+ * @param dest Ponteiro para a string de destino. Deve conter espaço suficiente para o
+ *               conteúdo adicional e ser terminada com `'\0'`.
+ * @param src Ponteiro para a string de origem, também terminada com `'\0'`.
+ * @param count Número máximo de caracteres a serem copiados de `src`.
  *
- * @param _Dest: Ponteiro para a string de destino, que deve ter espaço suficiente para acomodar
- * a string concatenada. Esta string deve ser terminada com um caractere nulo ('\0').
- * @param Source: Ponteiro para a string de origem que será concatenada ao final da string
- * de destino. Esta string também deve ser terminada com um caractere nulo.
- * @param _Count: Número máximo de caracteres a serem concatenados da string de origem para
- * a string de destino. O valor de n pode ser menor que o comprimento da string de origem, e a
- * função concatenará apenas `n` caracteres da string de origem.
- * @return Um ponteiro para a string de destino (dest).
+ * @return Retorna um ponteiro para `dest`.
+ *
+ * @note A função sempre adiciona `'\0'` no final. O uso incorreto pode causar
+ *       *buffer overflow* se `dest` não tiver espaço suficiente.
  */
 
 /**

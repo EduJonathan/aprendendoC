@@ -3,24 +3,27 @@
 #include <locale.h>
 
 /**
- * strxfrm() em C é usada para transformar uma string de acordo com a ordem de
- * classificação definida pela configuração local (locale). Ela é útil para preparar
- * strings para ordenação, especialmente em contextos onde a ordem dos caracteres pode
- * variar dependendo do idioma ou das regras de ordenação.
+ * A função `strxfrm()` transforma uma string `src` para uma forma que pode ser usada em
+ * operações de comparação ou ordenação de strings, conforme as regras de localidade
+ * (como ordem alfabética, caracteres acentuados, etc). Isso permite que a comparação de
+ * strings leve em consideração as particularidades de cada idioma ou cultura.
  *
- * SINTAXE: size_t strxfrm(char *dest, const char *src, size_t n);
+ * @param dest Ponteiro para o buffer de destino onde a string transformada será armazenada.
+ * @param src Ponteiro para a string de origem que será transformada de acordo com a localidade.
+ * @param n Tamanho máximo do buffer de destino `dest`, incluindo o espaço para o caractere nulo `'\0'`.
  *
- * @param dest Ponteiro para o buffer onde a string transformada será armazenada.
- * @param src Ponteiro para a string a ser transformada.
- * @param n O tamanho máximo do buffer dest (em bytes), incluindo o espaço para o
- * caractere nulo '\0'.
- * @return O comprimento da string transformada se o buffer for suficiente, ou -1 se o
- * buffer for muito pequeno.
+ * @return O comprimento da string transformada, ou seja, o número de caracteres que seriam
+ *         copiados para `dest` se `n` fosse suficientemente grande. Se o valor retornado for
+ *         maior ou igual a `n`, significa que o buffer `dest` é pequeno e o conteúdo pode
+ *         estar truncado. Caso o buffer seja grande o suficiente, a string é completamente transformada.
  *
- * @details Retorna o comprimento da string transformada, que é o número de caracteres que
- * seriam escritos em dest se n fosse suficientemente grande. Se o valor retornado for maior
- * ou igual a n, então a string não foi completamente transformada e o conteúdo de dest pode
- * estar truncado.
+ * @details A função é útil para preparar strings para operações de ordenação e comparação,
+ *          garantindo que elas respeitem as convenções de cada localidade configurada. O
+ *          tamanho de `dest` deve ser suficiente para armazenar a string transformada.
+ *
+ * @note Se o valor retornado for maior ou igual a `n`, o conteúdo de `dest` pode estar truncado.
+ *       Para garantir que toda a string seja transformada, o tamanho do buffer `dest` deve ser
+ *       maior que o valor retornado.
  */
 
 /**
@@ -69,6 +72,5 @@ int main(int argc, char **argv)
         printf("Original: %s\n", original);
         printf("Transformada: %s\n", transformed);
     }
-
     return 0;
 }

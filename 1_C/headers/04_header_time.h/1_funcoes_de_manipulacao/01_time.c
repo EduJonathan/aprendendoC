@@ -5,16 +5,28 @@
 #define BUFFER_SIZE 100
 
 /**
- * time: Função da biblioteca de manipulação de tempo (time.h)
+ * time(): Retorna o tempo atual em segundos desde a "época" (1º de janeiro de 1970, 00:00:00 UTC).
+ * Pode ser usada para obter o tempo atual ou preencher uma variável do tipo `time_t`.
  *
  * SINTAXE: time_t time(time_t *_Time);
  *
- * Sua sintaxe é criada através do time_t, que é criado através de um estrutura time_t
- * para representar o tempo.
+ * @param _Time Ponteiro para um valor `time_t` onde o tempo atual pode ser armazenado (opcional).
+ * Se for `NULL`, a função retorna o tempo atual sem modificar nenhum valor.
  *
- * @param _Time: Ponteiro para um objeto do tipo time_t que representa o tempo em segundos.
- * @return Retorna o tempo atual em segundos desde a "época"
- * (que é 1º de janeiro de 1970 às 00:00:00 UTC).
+ * @return Retorna o tempo atual em segundos desde a "época". Se `_Time` não for `NULL`,
+ * o valor também é armazenado na variável apontada por `_Time`.
+ *
+ * @note Importante:
+ * - A "época" (ou *epoch*) é um ponto de referência usado para medir o tempo e é fixada
+ *   em 1º de janeiro de 1970, 00:00:00 UTC.
+ * 
+ * - O valor retornado representa o número de segundos desde esse ponto de referência.
+ * 
+ * - A função é comumente usada em aplicações que exigem timestamps, como logging ou
+ *   comparação de tempos.
+ * 
+ * - O tipo `time_t` é um tipo aritmético inteiro, mas sua representação exata pode variar
+ *   dependendo da plataforma (geralmente é um número inteiro de 32 bits ou 64 bits).
  */
 
 /**
@@ -34,30 +46,6 @@ void imprimirTempo(time_t tempo)
     {
         printf("O tempo atual é %s(%lld segundos desde a 'época')\n", asctime(gmtime(&tempo)), tempo);
     }
-
-    /**
-     * asctime(): Função da biblioteca de manipulação de tempo (time.h) que converte um tempo
-     * representado em segundos desde a "época" (que é 1º de janeiro de 1970 às 00:00:00 UTC)
-     * para uma representação de tempo local
-     *
-     * SINTAXE: char *asctime(const struct tm *timeptr);
-     *
-     * @param timeptr: Ponteiro para uma estrutura struct tm que contém informações sobre a data e hora.
-     * @return Retorna um ponteiro para uma string que representa a data e hora em formato ASCII.
-     */
-
-    /**
-     * gtime(): Função da biblioteca de manipulação de tempo (time.h), é usada para converter
-     * um valor de tempo, expresso em segundos desde a "época" (o tempo 0, geralmente 1 de
-     * janeiro de 1970), para uma estrutura tm que representa uma data e hora no formato UTC
-     * (Tempo Universal Coordenado).
-     *
-     * SINTAXE: struct tm *gmtime(const time_t *_Time);
-     *
-     * @param _Time: Ponteiro para um objeto do tipo time_t que representa o tempo em segundos.
-     * @return A função retorna um ponteiro para uma estrutura tm, que contém os valores de
-     * data e hora em formato UTC (ano, mês, dia, hora, minuto, segundo, etc.).
-     */
 }
 
 /**

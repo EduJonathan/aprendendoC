@@ -5,19 +5,32 @@
 #define BUFFER_SIZE 100
 
 /**
- * STRFTIME: Função usada para formatar a data e hora em uma string de caracteres.
- * strftime ("string format time") Essa função é geralmente utilizada em conjunto com
- * a função localtime para obter informações sobre o tempo local.
+ * strftime(): Converte e formata a data e hora em uma string de caracteres de acordo com
+ * um formato especificado pelo usuário. Comumente utilizada junto com `localtime()` para
+ * obter informações sobre o tempo local e apresentá-las de forma legível.
  *
  * SINTAXE: size_t strftime(char *str, size_t max, const char *format, const struct tm *timeptr);
  *
- * @param str Ponteiro para um array de caracteres onde a string formatada será armazenada.
+ * @param str Ponteiro para o buffer onde a string formatada será armazenada.
+ * @param max Tamanho máximo do buffer (incluindo o caractere nulo `\0`).
+ * @param format String de formato que especifica a representação desejada da data e hora.
+ * @param timeptr Ponteiro para a estrutura `tm` com informações sobre a data e hora.
  *
- * @param max Número máx. de caracteres que podem ser armazenados em str, incluindo o caractere nulo ('\0').
+ * @return Retorna o número de caracteres escritos, excluindo o caractere nulo de terminação.
+ *          Se o buffer for pequeno, o valor será truncado conforme o tamanho `max`.
  *
- * @param format String de formato que especifica como a data e hora devem ser formatadas na string resultante.
+ * @note Importante:
+ * - A função `strftime()` é útil quando você precisa exibir ou manipular datas e horas
+ * em um formato específico.
  *
- * @param timeptr ponteiro para uma estrutura struct tm que contém informações sobre a data e hora.
+ * - A string de formato pode incluir diferentes especificadores, como `%d` (dia), `%m` (mês),
+ * `%Y` (ano), `%H` (hora),`%M` (minuto), `%S` (segundo), e outros, para construir o formato desejado.
+ *
+ * - A função não adiciona o caractere nulo de terminação, que deve ser incluído no tamanho
+ * especificado por `max`.
+ *
+ * - Caso o formato ou o buffer de saída sejam incompatíveis, a função retornará o número
+ * de caracteres que foram efetivamente escritos.
  */
 
 /**

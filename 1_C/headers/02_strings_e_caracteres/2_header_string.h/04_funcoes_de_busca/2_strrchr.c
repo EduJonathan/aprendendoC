@@ -2,13 +2,14 @@
 #include <string.h>
 
 /**
- * strrchr(): É usada para encontrar a última ocorrência de um caractere específico em uma string.
+ * A função `strrchr()` busca o caractere `c` na string `str` e retorna um ponteiro
+ * para a **última** ocorrência encontrada. Se o caractere não for encontrado,
+ * retorna NULL.
  *
- * SINTAXE: char *strrchr(const char *_Str, int _Ch);
- * @param _Str Insere um ponteiro para char
- * @param _Ch Insere um valor caractere para realizar a busca
- * @return Retorna um ponteiro para a primeira ocorrência de ch em str ou ponteiro NULL se ch
- * não for encontrado
+ * @param str Ponteiro para a string onde será feita a busca.
+ * @param c   Caractere a ser procurado (passado como int, mas convertido para char).
+ *
+ * @return Ponteiro para a última ocorrência de `c` em `str`, ou NULL se não encontrado.
  */
 
 /**

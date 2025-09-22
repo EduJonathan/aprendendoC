@@ -2,14 +2,18 @@
 #include <string.h>
 
 /**
- * strcspn(): Função encontra a posição do caractere de '\n' e substitui por '\0' (terminador nulo).
+ * A função `strcspn()` encontra a posição do primeiro caractere na string `_Str` que
+ * corresponde a qualquer caractere presente em `_Control`. Ela retorna o número de
+ * caracteres desde o início de `_Str` até o primeiro caractere que está presente em `_Control`.
  *
- * SINTAXE: size_t strcspn(const char *_Str, const char *_Control);
+ * Se nenhum caractere de `_Str` for encontrado em `_Control`, a função retorna o comprimento
+ * total de `_Str`.
  *
- * @param _Str Ponteiro para char informada
- * @param _Control Subtituição do caractere de controle '\n' por '\0'.
- * @return Retorna um ponteiro para a primeira ocorrência de um caractere da string de busca
- * na string fornecida ou NULL se nenhuma ocorrência for encontrada.
+ * @param _Str Ponteiro para a string a ser analisada.
+ * @param _Control Ponteiro para a string de controle, contendo os caracteres a serem evitados em `_Str`.
+ *
+ * @return O número de caracteres iniciais de `_Str` que não estão presentes em `_Control`.
+ * Se nenhum caractere de `_Str` for encontrado em `_Control`, a função retorna o comprimento total de `_Str`.
  */
 
 /**

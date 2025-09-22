@@ -3,21 +3,21 @@
 #include <stdlib.h>
 
 /**
- * strdup(): Usada para duplicar uma string, alocando memória dinamicamente para armazenar
- * uma cópia da string original.
+ * A função `strdup()` cria uma nova string alocada dinamicamente que contém uma
+ * cópia exata da string fornecida, incluindo o caractere nulo de terminação `'\0'`.
+ * Se a alocação de memória falhar, a função retorna `NULL`.
  *
- * SINTAXE: char *strdup(const char *s);
+ * @param s Ponteiro para a string que será duplicada.
  *
- * @param s: Um ponteiro para a string que você deseja duplicar. *
- * @return Retorna um ponteiro para uma nova string alocada dinamicamente que contém uma cópia
- * da string s. Se a alocação falhar, retorna NULL.
+ * @return Retorna um ponteiro para a nova string duplicada alocada dinamicamente.
+ *         Se a alocação falhar, retorna `NULL`.
  *
- * @details strdup aloca memória suficiente para a nova string, que inclui o caractere nulo
- * terminador '\0'. O programador é responsável por liberar essa memória com free quando não
- * for mais necessária.
+ * @details A função `strdup()` aloca memória suficiente para a nova string, incluindo o caractere nulo
+ * de terminação `'\0'`. O programador deve garantir que a memória alocada seja liberada com `free()`
+ * quando não for mais necessária.
  *
- * @details strdup não é parte do padrão C, em algumas plataformas, você pode precisar
- * implementar sua própria função de duplicação.
+ * @note `strdup()` não faz parte do padrão C, mas é amplamente disponível em plataformas POSIX.
+ * Em plataformas que não oferecem essa função, pode ser necessário implementar uma versão personalizada.
  */
 
 /**

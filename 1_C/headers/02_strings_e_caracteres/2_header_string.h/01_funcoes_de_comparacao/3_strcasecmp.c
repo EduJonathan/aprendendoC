@@ -2,17 +2,18 @@
 #include <string.h>
 
 /**
- * strcasecmp (string case compare): Função que compara duas strings iguais, que por mais que
- * sejam diferente (uma escrita em maiúscula) e outra escrita (em minuscula), ele vai comparar
- * sem diferenciar o case-sensitive da string.
+ * A função `strcasecmp()` compara as strings `str1` e `str2` de forma case-insensitive,
+ * ou seja, sem considerar diferenças entre letras maiúsculas e minúsculas.
  *
- * SINTAXE: int strcasecmp(const char *_Str1, const char *_Str2);
+ * @param str1 Ponteiro para a primeira string.
+ * @param str2 Ponteiro para a segunda string.
  *
- * @param _Str1 O primeiro ponteiro para char
- * @param _Str2 O segundo ponteiro para char
- * @return retorna um inteiro com as comparações sendo realizadas com os valores de seu parâmetros.
+ * @return Um valor inteiro:
+ *         - `< 0` se `str1` for menor que `str2`,
+ *         - `0` se forem iguais,
+ *         - `> 0` se `str1` for maior que `str2`.
  *
- * @note A função compara o case sensitive das strings.
+ * @note Essa função não faz parte do padrão ANSI C, mas é amplamente suportada em sistemas POSIX.
  */
 
 /**

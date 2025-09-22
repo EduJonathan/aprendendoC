@@ -3,35 +3,23 @@
 #include <time.h>
 
 /**
- * As funções ctime e ctime_s são ambas usadas em C para converter um valor de
- * tempo (geralmente representado como time_t) em uma string que representa esse tempo em
- * formato legível.
- *
- * DIFERENÇAS ENTRE CTIME E CTIME_S:
- * ctime(): A função ctime é uma função padrão de C, definida na biblioteca <time.h>,
- * que converte um valor de tipo time_t (que geralmente representa o número de segundos
- * desde o "Epoch" - 1º de janeiro de 1970) para uma string formatada como uma data e hora
- * legível.
+ * ctime(): Converte um valor de tipo `time_t` para uma string representando a data e hora legível em formato ASCII.
  *
  * SINTAXE: char *ctime(const time_t *timeptr);
  *
- * @param timeptr: Ponteiro para um objeto do tipo time_t que representa o tempo em segundos.
- * @return Retorna um ponteiro para uma string que representa a data e hora em formato ASCII.
+ * @param timeptr: Ponteiro para um valor `time_t` (segundos desde a "época").
+ * @return: Retorna uma string representando a data e hora legível.
  *
  * ------------------------------------------------------------------------------------------
  *
- * ctime_s(): versão mais segura de ctime, introduzida para evitar problemas de segurança,
- * como vazamento de memória ou sobrescrição acidental de buffers. Ela faz parte da
- * especificação do C11 e é amplamente usada em compiladores que priorizam segurança,
- * como o MSVC (Microsoft Visual C++).
+ * ctime_s(): Versão segura de `ctime()`, evitando riscos de segurança como overflows de buffer.
  *
  * SINTAXE: errno_t ctime_s(char *str, rsize_t maxsize, const time_t *timeptr);
- * @param str: O ponteiro para o buffer onde a string formatada será armazenada.
- * @param maxsize: O tamanho máximo do buffer (em bytes), para garantir que a função
- * não cause overflow de buffer.
- * @param timeptr: Um ponteiro para a variável do tipo time_t que contém o tempo a ser convertido.
- * @return A função retorna 0 em caso de sucesso ou um código de erro (errno_t) se algo der
- * errado, como um buffer muito pequeno para armazenar a string.
+ *
+ * @param str: Ponteiro para o buffer onde a string formatada será armazenada.
+ * @param maxsize: Tamanho máximo do buffer para evitar overflow.
+ * @param timeptr: Ponteiro para um valor `time_t`.
+ * @return: Retorna 0 em caso de sucesso ou código de erro (`errno_t`).
  */
 
 /**
@@ -45,8 +33,8 @@
 void calcular_dia_da_semana(const char *data_input)
 {
     struct tm data_tm = {0};
-    time_t tempo = 0;        // Variável do tipo time_t para armazenar o tempo em segundos
-    char data_formatada[26]; // Para armazenar a string formatada da data
+    time_t tempo = 0;              // Variável do tipo time_t para armazenar o tempo em segundos
+    char data_formatada[26] = {0}; // Para armazenar a string formatada da data
 
     // Usando sscanf para ler a data no formato DD/MM/YYYY
     sscanf(data_input, "%d/%d/%d", &data_tm.tm_mday, &data_tm.tm_mon, &data_tm.tm_year);

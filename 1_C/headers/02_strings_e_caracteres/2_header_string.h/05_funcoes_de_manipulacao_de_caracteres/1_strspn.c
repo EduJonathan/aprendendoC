@@ -2,13 +2,14 @@
 #include <string.h>
 
 /**
- * strspn: Calcula o comprimento do segmento inicial de uma string que contém apenas
- * caracteres presentes em um conjunto especificado.
+ * A função `strspn()` retorna o comprimento do segmento inicial da string `str` que contém
+ * apenas caracteres encontrados na string `charset`. A busca para quando um caractere de `str`
+ * não é encontrado em `charset`.
  *
- * SINTAXE: size_t strspn(const char *str, const char *charset);
+ * @param str     Ponteiro para a string a ser analisada.
+ * @param charset Ponteiro para a string contendo os caracteres permitidos.
  *
- * @param str Ponteiro para a string a ser analisada.
- * @param charset Ponteiro para o conjunto de caracteres permitidos.
+ * @return O comprimento do segmento inicial de `str` que contém apenas caracteres presentes em `charset`.
  */
 
 /**

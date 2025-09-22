@@ -2,13 +2,14 @@
 #include <string.h>
 
 /**
- * strstr(): Função utilizada para dentro de uma string, outras strings.
+ * A função `strstr()` busca a primeira ocorrência da substring `_SubStr` na string
+ * `Str` e retorna um ponteiro para o início dessa ocorrência.
+ * Se a substring não for encontrada, retorna NULL.
  *
- * SINTAXE: char *strstr(const char *_Str, const char *_SubStr);
- * @param _Str Ponteiro para a string onde será procurada a substring.
- * @param _SubStr Ponteiro para a substring que será procurada na Str.
- * @return Retorna um ponteiro para a primeira ocorrência da substring na string ou ponteiro
- * NULL se a substring nao for encontrada.
+ * @param Str Ponteiro para a string onde será feita a busca.
+ * @param _SubStr   Ponteiro para a substring a ser procurada.
+ *
+ * @return Ponteiro para a primeira ocorrência da substring em `Str`, ou NULL se não encontrada.
  */
 
 /**
@@ -29,15 +30,9 @@ void procurandoSubstringComStrstr(const char *string, const char *substring)
     if (result) // Se Equivale a "result != NULL"
     {
         printf("Substring encontrada na posição: %ld\n", result - string);
+
+        // Derreferenciando result um por um
         printf("Substring encontrada na posição: %c%c%c%c%c\n", *result, *(result + 1), *(result + 2), *(result + 3), *(result + 4));
-        /*
-         * printf(" Substring encontrada na posição: %c%c%c%c%c\n", *result, *(result + 1),
-         * *(result + 2), *(result + 3), *(result + 4));
-         * Se retirar a operador '*' ao imprimir os caracteres da substring encontrada, você estará
-         * imprimindo diretamente os valores de cada caractere, em vez de seus conteúdos.
-         * Isso ocorre porque a função printf espera que você forneça os valores reais dos
-         * caracteres, não os endereços de memória.
-         */
     }
     else
     {

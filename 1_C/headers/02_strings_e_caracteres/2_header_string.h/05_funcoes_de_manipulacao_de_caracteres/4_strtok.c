@@ -1,13 +1,22 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 /**
- * strtok: Divide uma string em tokens usando delimitadores especificados.
+ * A função `strtok()` divide a string `str` em tokens, onde cada token é uma sequência
+ * de caracteres delimitada por um ou mais caracteres encontrados em `delim`.
  *
- * SINTAXE: char *strtok(char *__restrict__ _Str, const char *__restrict__ _Delim);
+ * A função substitui o delimitador por um caractere nulo (`\0`) e retorna um ponteiro
+ * para o token encontrado. Chamadas subsequentes de `strtok` devem passar `NULL` como
+ * o primeiro parâmetro, para continuar a tokenização da mesma string.
  *
- * @param _Str Ponteiro para a string a ser dividida em tokens.
- * @param _Delim Ponteiro para a string contendo os delimitadores.
+ * @param str Ponteiro para a string a ser dividida em tokens.
+ * @param delim Ponteiro para a string contendo os caracteres delimitadores.
+ *
+ * @return Ponteiro para o próximo token encontrado, ou NULL se não houver mais tokens.
+ *
+ * @note A função `strtok()` modifica a string original, substituindo os delimitadores por
+ * caracteres nulos (`'\0'`). Se for necessário preservar a string original, use uma cópia dela.
  */
 
 /**
@@ -23,20 +32,18 @@
  */
 void imprimirTokens(const char *str, const char *delimiters)
 {
-    // Aqui, você está declarando um array de caracteres chamado tempStr com o tamanho
-    // igual ao tamanho da string `str`.
-    char tempStr[strlen(str) + 1]; // Buffer para evitar modificar a string original
+    // Aloca memória dinamicamente para o buffer temporário
+    char *tempStr = (char *)malloc(strlen(str) + 1); // +1 para o caractere nulo '\0'
+    if (tempStr == NULL)
+    {
+        printf("Erro ao alocar memória.\n");
+        return; // Retorna se a alocação falhar
+    }
 
-    // Copia uma quantidade específica de caracteres de uma string para outra. copia até
-    // sizeof(tempStr) caracteres da string str para o array tempStr. e o sizeof(tempStr)
-    // garante que você copie no máximo o tamanho do array,
-    // tempStr (que é igual ao tamanho de str).
-    strncpy(tempStr, str, sizeof(tempStr)); // Copia a string para o buffer
+    // Copia a string para o buffer temporário para que a original não seja alterada
+    strncpy(tempStr, str, strlen(str) + 1); // Garante que a string seja copiada corretamente
 
-    // divide a string tempStr em tokens usando os delimitadores especificados na string
-    // delimiters. A primeira chamada a strtok inicializa a tokenização, retornando o primeiro
-    // token encontrado. Em chamadas subsequentes, você deve passar NULL como o primeiro
-    // argumento para continuar a tokenização da mesma string.
+    // A primeira chamada ao strtok inicializa a tokenização
     char *token = strtok(tempStr, delimiters); // Obtém o primeiro token
 
     // Itera sobre os tokens até que não haja mais
@@ -45,6 +52,9 @@ void imprimirTokens(const char *str, const char *delimiters)
         printf("Token: %s\n", token);     // Imprime o token atual
         token = strtok(NULL, delimiters); // Obtém o próximo token
     }
+
+    // Libera a memória alocada
+    free(tempStr);
 }
 
 int main(int argc, char **argv)
@@ -56,7 +66,7 @@ int main(int argc, char **argv)
     imprimirTokens(str, delimiters);
 
     /*
-     * A função `strtok` divide a string "str" com base nos delimitadores especificados
+     * A função `strtok` divide a string `str` com base nos delimitadores especificados
      * (vírgula e ponto de exclamação). Ela retorna um token por vez, substituindo o
      * delimitador encontrado por um caractere nulo (`\0`).
      *

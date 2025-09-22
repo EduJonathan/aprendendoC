@@ -2,16 +2,19 @@
 #include <string.h>
 
 /**
- * strncmp(): Função que compara cadeia de caracteres de acordo com a quantidade de 'n'.
+ * A função `strncasecmp()` compara até `n` caracteres das strings `str1` e `str2`
+ * sem diferenciar maiúsculas de minúsculas (case-insensitive).
  *
- * SINTAXE: int strncasecmp (const char *_Str1, const char *_Str2, size_t MaxCount);
+ * @param str1     Ponteiro para a primeira string.
+ * @param str2     Ponteiro para a segunda string.
+ * @param n        Número máximo de caracteres a comparar.
  *
- * @param _Str1 O primeiro ponteiro para char
- * @param _Str2 O segundo ponteiro para char
- * @param MaxCount Número de caracteres a serem comparados
- * @return retorna um inteiro com as comparações sendo realizadas com os valores de seu parâmetros.
+ * @return Um valor inteiro:
+ *         - `< 0` se `str1` for menor que `str2`,
+ *         - `0` se forem iguais nos primeiros `n` caracteres,
+ *         - `> 0` se `str1` for maior que `str2`.
  *
- * @note Não compara o case-sensitive.
+ * @note Essa função não é parte do padrão ANSI C, mas é comum em sistemas POSIX.
  */
 
 /**

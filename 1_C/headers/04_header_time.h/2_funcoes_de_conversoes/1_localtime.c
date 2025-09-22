@@ -3,15 +3,31 @@
 #include <time.h>
 
 /**
- * localtime(): Função da biblioteca de manipulação de tempo (time.h) que converte um
- * tempo representado em segundos desde a "época" (1º de janeiro de 1970 também 00:00:00 UTC)
- * para uma representação de tempo local.
+ * localtime(): Converte um valor de tempo `time_t` (segundos desde a "época" - 1º de janeiro de 1970)
+ * para uma representação de tempo local, ajustada para o fuso horário e o horário de verão, se aplicável.
  *
  * SINTAXE: struct tm *localtime(const time_t *time);
  *
- * @param time: Ponteiro para um objeto do tipo time_t que representa o tempo em segundos.
- * @return Retorna um ponteiro para uma estrutura struct tm que contém informações sobre a
- * data e hora.
+ * @param time Ponteiro para um valor `time_t` representando o tempo em segundos desde a "época".
+ *
+ * @return Retorna um ponteiro para uma estrutura `struct tm` com a data e hora local, incluindo:
+ * - `tm_sec` (segundos), `tm_min` (minutos), `tm_hour` (hora), `tm_mday` (dia do mês),
+ * - `tm_mon` (mês), `tm_year` (ano desde 1900), `tm_wday` (dia da semana), `tm_yday` (dia do ano),
+ * - `tm_isdst` (indicador de horário de verão).
+ *
+ * A função ajusta automaticamente os valores de acordo com a localização geográfica do sistema.
+ *
+ * @note Importante:
+ * - A função `localtime()` converte o tempo em UTC para o tempo local, ajustando para o
+ *   fuso horário e horário de verão.
+ * 
+ * - A estrutura retornada contém valores que representam o tempo local de acordo com a
+ *   configuração do sistema operacional.
+ * 
+ * - A estrutura `struct tm` é útil para manipulação de datas e horas em formato legível.
+ * 
+ * - A função `localtime()` não deve ser usada de maneira simultânea em múltiplas threads
+ *   sem sincronização, pois a estrutura `struct tm` retornada é compartilhada entre as chamadas.
  */
 
 /**

@@ -5,14 +5,26 @@
 #define BUFFER_SIZE 100
 
 /**
- * mktime(): A função `mktime` converte uma estrutura `tm`, que contém informações sobre
- * a data e hora, para um valor do tipo `time_t`, que representa o número de segundos
- * desde a "época" (1º de janeiro de 1970). Essa conversão pode ser útil para cálculos
- * de data e hora ou para manipular o tempo de maneira mais flexível.
+ * mktime(): Converte uma estrutura `tm` (contendo data e hora) para um valor do tipo
+ * `time_t`, que representa o número de segundos desde a "época" (1º de janeiro de 1970,
+ * 00:00:00 UTC). Útil para cálculos de data e hora ou manipulação flexível de tempo.
  *
- * @param timeptr Ponteiro para uma estrutura `tm` contendo a data e hora a serem convertidas.
- * @return Retorna o número de segundos desde 1º de janeiro de 1970 (época) ou `-1`
- * em caso de erro (data inválida).
+ * SINTAXE: time_t mktime(struct tm *timeptr);
+ *
+ * @param timeptr: Ponteiro para a estrutura `tm` com a data e hora a serem convertidas.
+ * @return: Retorna o número de segundos desde a "época" ou `-1` se a data for inválida.
+ * 
+ * @note Importante:
+ * - A função `mktime()` ajusta automaticamente os campos inválidos da estrutura `tm`.
+ *   Por exemplo, se o campo `tm_mon` (mês) for maior que 11 (mês inválido), a função
+ *   ajustará o valor do mês e o ano de acordo com a necessidade.
+ * 
+ * - A função `mktime()` pode alterar os valores dos campos da estrutura `tm` após a
+ *   conversão, especialmente o campo `tm_wday` (dia da semana) e `tm_yday` (dia do ano),
+ *   que são recalculados com base na data fornecida.
+ * 
+ * - O valor retornado é o número de segundos desde a "época", podendo ser utilizado
+ *   para cálculos de tempo, comparações e manipulação de data e hora.
  */
 
 // Definindo um enum para as festividades

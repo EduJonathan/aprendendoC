@@ -3,14 +3,21 @@
 #include <time.h>
 
 /**
- * clock(): Função da biblioteca de manipulação de tempo (time.h) que retorna o tempo de
- * CPU em clock_t.O clock_t serve para medir o tempo de CPU consumido por um programa,
- * mas o que você deseja é introduzir uma pausa ou atraso entre as execuções.
+ * clock(): Retorna o tempo de CPU consumido pelo programa, expresso em unidades de `clock_t`.
+ * Esse valor representa o tempo de CPU utilizado desde o início da execução do programa.
  *
  * SINTAXE: clock_t clock(void);
- * @return Retorna um valor de clock_t que representa o tempo de CPU em milissegundos.
  *
- * CLOCKS_PER_SEC: Constante da biblioteca time.h que representa o número de clocks por segundo.
+ * @return: Retorna um valor do tipo `clock_t`, representando o tempo de CPU consumido pelo
+ *          programa em unidades de "clock ticks".
+ *
+ * @note Importante:
+ * - O valor retornado pela função `clock()` é o número de "clock ticks" consumidos pela
+ *   execução do programa até o momento da chamada.
+ * 
+ * - Para converter o valor de `clock_t` para segundos, use a constante `CLOCKS_PER_SEC`.
+ * 
+ * - A função mede o tempo de CPU, não o tempo real de execução do programa.
  */
 
 /**

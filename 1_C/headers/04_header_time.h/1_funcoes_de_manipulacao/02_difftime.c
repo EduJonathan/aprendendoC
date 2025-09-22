@@ -2,14 +2,29 @@
 #include <time.h>
 
 /**
- * difftime(): É função da biblioteca de manipulação de tempo (time.h) que calcula
- * a diferença em segundos entre dois intervalos de valores do tipo time_t. *
+ * difftime(): Calcula a diferença em segundos entre dois valores do tipo `time_t`, representando
+ * dois instantes de tempo. Retorna o resultado como um valor `double`, permitindo precisão
+ * até frações de segundo.
  *
  * SINTAXE: double difftime(time_t time1, time_t time2);
  *
- * @param time_beg: Tempo inicial em segundos.
- * @param time_end: Tempo final em segundos.
- * @return retorna a diferença em segundos entre dois instantes de tempo.
+ * @param time_beg: Primeiro instante de tempo (tempo inicial) em segundos desde a "época".
+ * @param time_end: Segundo instante de tempo (tempo final) em segundos desde a "época".
+ *
+ * @return: Retorna a diferença em segundos entre `time_end` e `time_beg`, com precisão
+ * de frações de segundo. A fórmula é: `difftime = time_end - time_beg`.
+ *
+ * @note Importante:
+ * - O valor retornado é a diferença entre os dois instantes de tempo, ou seja,
+ *   `time_end - time_beg`. Se `time_end` for maior que `time_beg`, o valor retornado
+ *   será positivo; caso contrário, será negativo.
+ * 
+ * - A função é útil para medir intervalos de tempo entre dois eventos em segundos.
+ * 
+ * - A precisão do cálculo é garantida pela representação do tipo `double`.
+ * 
+ * - Para comparar intervalos de tempo ou determinar a duração de um evento, `difftime()`
+ *   é uma função bastante comum.
  */
 
 /**

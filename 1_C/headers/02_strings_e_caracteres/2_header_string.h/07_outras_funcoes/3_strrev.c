@@ -2,12 +2,13 @@
 #include <string.h>
 
 /**
- * strrev(string reverse): Função que inverte a string.
+ * A função `strrev()` inverte os caracteres de uma string fornecida, modificando a string original.
+ * Ela começa do final da string e troca os caracteres até chegar ao início. O caractere nulo de
+ * terminação `'\0'` permanece na posição correta.
  *
- * SINTAXE: char *strrev(char *_Str);
+ * @param _Str Ponteiro para a string a ser invertida.
  *
- * @param _Str Informar (string) ponteiro para char
- * @return Retorna a string invertida
+ * @return Retorna a mesma string invertida (a string é modificada no local).
  */
 
 /**

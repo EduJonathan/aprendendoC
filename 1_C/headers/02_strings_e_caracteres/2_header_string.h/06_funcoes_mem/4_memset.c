@@ -2,17 +2,15 @@
 #include <string.h>
 
 /**
- * memset: Preenche bloco de memória: Define os primeiros bytes de num do bloco de memória
- * apontado por ptr para o valor especificado (interpretado como um caractere não assinado).
- * A função memset define todos os bytes do bloco de memória apontado por ptr para o valor
- * especificado.
+ * A função `memset()` preenche os primeiros `num` bytes do bloco de memória apontado por `ptr`
+ * com o valor especificado em `value`, que é convertido para um caractere não assinado (`unsigned char`).
+ * É comumente usada para inicializar ou limpar áreas de memória com um valor padrão.
  *
- * SINTAXE: void *memset(void *ptr, int value, size_t num );
+ * @param ptr Ponteiro para o bloco de memória que será preenchido.
+ * @param value Valor a ser definido para os bytes do bloco de memória. O valor é convertido para `unsigned char`.
+ * @param num Número de bytes a serem preenchidos com o valor especificado.
  *
- * @param ptr Ponteiro para o bloco de memória a ser preenchido.
- * @param value Valor a ser definido para os bytes. Convertido para unsigned char.
- * @param num Número de bytes a serem preenchidos com o valor.
- * @return Um ponteiro para o bloco de memória preenchido (ptr).
+ * @return Um ponteiro para o bloco de memória preenchido (`ptr`).
  */
 
 /**

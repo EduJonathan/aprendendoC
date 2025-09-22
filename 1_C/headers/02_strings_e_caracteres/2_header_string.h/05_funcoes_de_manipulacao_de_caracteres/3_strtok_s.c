@@ -2,15 +2,15 @@
 #include <string.h>
 
 /**
- * strtok_s: é uma função segura que requer um ponteiro auxiliar para armazenar o estado
- * da tokenização. E o strtok_s divide a string src em tokens, mas não é necessário
- * re-tokenizar cada token obtido. O código imprime os tokens de src divididos por vírgulas.
+ * A função `strtok_s()` divide a string `str` em tokens, utilizando o delimitador especificado
+ * em `delim`. Diferente de `strtok()`, `strtok_s()` é uma versão segura, pois requer um ponteiro
+ * auxiliar `context` para armazenar o estado da tokenização entre chamadas consecutivas.
  *
- * SINTAXE: char *strtok_s(char *_Str, const char *_Delim, char **_Context);
+ * @param str     Ponteiro para a string que será tokenizada.
+ * @param delim   Ponteiro para a string de delimitadores usados para dividir os tokens.
+ * @param context Ponteiro auxiliar que mantém o estado da tokenização entre chamadas consecutivas.
  *
- * @param _Str Ponteiro para a string
- * @param _Delim Delimitador usado para dividir a string
- * @param _Context O ponteiro auxiliar para armazenar o estado da tokenização
+ * @return Ponteiro para o próximo token encontrado, ou NULL se não houver mais tokens.
  */
 
 /**
@@ -21,14 +21,9 @@
  */
 void imprimirTokens(const char *src, const char *delim)
 {
-    // Buffer para evitar modificar a string original
-    char str[25];
-
-    // Copiando determinado quantidade de caracteres
-    strncpy(str, src, sizeof(str));
-
-    // Garante que a string está bem terminada
-    str[sizeof(str) - 1] = '\0';
+    char str[25] = {0};             // Buffer para evitar modificar a string original
+    strncpy(str, src, sizeof(str)); // Copiando determinado quantidade de caracteres
+    str[sizeof(str) - 1] = '\0';    // Garante que a string está bem terminada
 
     // Ponteiro auxiliar para armazenar o estado da tokenização
     char *context = NULL;

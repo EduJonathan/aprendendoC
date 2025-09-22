@@ -107,13 +107,11 @@ int main(int argc, char **argv)
 
     printf("Fim da execução, profundidade final: %d\n", profundidade);
 
-
     printf("-----------------------------------------\n");
-    
+
     printf("\n=== Demonstração de Profundidade da Pilha (Recursiva - Soma dos 5 primeiros números naturais) ===\n");
 
     profundidade = 1;
-
     imprimirProfundidade(profundidade, "main");
 
     int resultado_natural = n_natural(5, profundidade + 1);

@@ -2,27 +2,21 @@
 #include <string.h>
 
 /**
- * strncpy(): É usada para copiar os primeiros n caracteres de uma string para outra string.
+ * Copia no máximo n caracteres de `src` para `dest`. Se `src` for menor que `n`,
+ * o restante de `dest` será preenchido com '\0'. Caso contrário, `dest` pode não
+ * ser terminada com '\0'.
  *
- * SINTAXE: char *strncpy(char *__restrict__ _Dest, const char *__restrict__ _Source, size_t _Count);
+ * @param dest Ponteiro para a string de destino (com espaço suficiente).
+ * @param src  Ponteiro para a string de origem.
+ * @param n    Número máximo de caracteres a copiar.
  *
- * @param dest Ponteiro para a string de destino onde os caracteres serão copiados. A string
- * dest deve ter espaço suficiente para armazenar os caracteres copiados e, se necessário, o
- * caractere nulo ('\0').
+ * @return Retorna um ponteiro para `dest`.
  *
- * @param src Ponteiro para a string de origem que será copiada para a string de destino.
- * Esta string é a fonte dos caracteres a serem copiados.
- *
- * @param n Número máximo de caracteres a serem copiados da string de origem para a string de
- * destino. Se a string de origem for menor do que n, strncpy preencherá o restante da string
- * de destino com caracteres nulos ('\0'), mas se a string de origem for maior ou igual a n, a
- * string de destino não será automaticamente terminada com um caractere nulo.
- * @return Um ponteiro para a string de destino (dest).
+ * @note Garanta a terminação com '\0' se `src` tiver tamanho >= n.
  */
 
 /**
  * @brief Copia os primeiros n caracteres de uma string para outra.
- *
  *
  * @param dest Ponteiro para a string de destino onde os caracteres serão copiados.
  * @param src Ponteiro para a string de origem de onde os caracteres serão copiados.

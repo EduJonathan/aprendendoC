@@ -2,14 +2,14 @@
 #include <string.h>
 
 /**
- * strlen(string length): função que retorna o comprimento da cadeia de caracteres de byte
- * terminada em '\0' que é o NULL(vazio ou fim) de uma string, ou seja, o strlen retorna a
- * quantidade de caracteres que uma string possue.
+ * strlen(string length): Calcula e retorna o número de caracteres presentes em uma string,
+ * excluindo o caractere nulo de terminação (`'\0'`). Ela percorre a string até encontrar
+ * o caractere nulo, que marca o fim da string, e retorna a quantidade de caracteres
+ * até esse ponto.
  *
- * SINTAXE: size_t strlen(const char *_Str);
+ * @param _Str Ponteiro para a string (cadeia de caracteres) cuja longitudade será calculada.
  *
- * @param _Str Informar um ponteiro para char (string).asm
- * @return Retorna o comprimento da cadeia de caracteres de byte terminada em '\0'.
+ * @return O número de caracteres da string, excluindo o caractere nulo de terminação.
  */
 
 /**

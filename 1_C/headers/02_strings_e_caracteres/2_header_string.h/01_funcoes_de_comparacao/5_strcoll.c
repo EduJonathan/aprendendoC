@@ -3,23 +3,20 @@
 #include <locale.h>
 
 /**
- * strcoll(): Função retorna um valor que indica a relação entre as cadeias de caracteres, é
- * útil quando precisa comparar strings que podem conter caracteres específicos de um idioma
- * ou cultura, e deseja que a comparação seja sensível à localização.
+ * A função `strcoll()` compara as strings `str1` e `str2` considerando as regras
+ * específicas de ordenação da localidade configurada no programa, o que a torna
+ * útil para comparações sensíveis à cultura e idioma.
  *
- * SINTAXE: int strcoll(const char *_Str1, const char *_Str2);
+ * @param str1 Ponteiro para a primeira string.
+ * @param str2 Ponteiro para a segunda string.
  *
- * @param _Str1 Primeiro ponteiro para char a ser passado
- * @param _Str2 Primeiro ponteiro para char a ser passado
- * @return Retorna um inteiro que indica o resultado da comparação.
+ * @return Um inteiro indicando a relação entre as strings:
+ *         - < 0 : `str1` é menor que `str2`
+ *         - = 0 : `str1` é igual a `str2`
+ *         - > 0 : `str1` é maior que `str2`
  *
- *  Valor       |    Significado
- * Menos de 0	| string1 menor que string2
- * igual a 0    | equivalente para string2
- * Maior que 0	| string1 maior que string2
- *
- * Se é sem sucesso, errno é alterado. O valor de errno pode ser definido como EINVAL
- * (Os argumentos string1 ou string2 contêm caracteres que não estão disponíveis na localidade atual)
+ * @note Se ocorrer erro, a variável `errno` pode ser ajustada para `EINVAL`, indicando
+ *       que uma das strings contém caracteres inválidos na localidade atual.
  */
 
 /**

@@ -2,18 +2,22 @@
 #include <string.h>
 
 /**
- * memmove: Copia um bloco de memória de uma localização para outra. A função memmove copia
- * `n` bytes de src para dest, garantindo que a cópia seja feita corretamente mesmo se as áreas
- * de memória se sobrepuserem. copia n caracteres de str2 a str1, mas para blocos de memória
- * sobrepostos, memmove() é uma abordagem mais segura do que memcpy().
+ * A função `memmove()` copia `n` bytes do bloco de memória apontado por `src` para o bloco
+ * de memória apontado por `dest`. Ao contrário de `memcpy()`, `memmove()` lida corretamente
+ * com casos onde as áreas de memória se  sobrepõem. A cópia é feita de forma segura, garantindo
+ * que os dados não sejam corrompidos, mesmo quando `src` e `dest` se sobrepõem.
  *
- * SINTAXE: void *memmove(void *_Dst, const void *_Src, size_t _Size);
+ * @param dest Ponteiro para o bloco de memória de destino, onde os dados serão copiados.
+ * @param src Ponteiro para o bloco de memória de origem, de onde os dados serão copiados.
+ * @param n Número de bytes a serem copiados do bloco de memória `src` para o bloco de memória `dest`.
  *
- * @param dest Ponteiro para o bloco de memória de destino.
- * @param src Ponteiro para o bloco de memória de origem.
- * @param n Número de bytes a serem copiados.
- * @return Um ponteiro para o bloco de memória de destino (dest).
+ * @return Um ponteiro para o bloco de memória de destino (`dest`).
+ *
+ * @note Se as áreas de memória não se sobrepõem, `memmove()` funciona de maneira semelhante
+ * a `memcpy()`. No entanto, quando há sobreposição, `memmove()` garante que a cópia seja
+ * feita corretamente, evitando problemas de corrupção de dados.
  */
+
 
 /**
  * copyString: Copia o conteúdo de uma string de origem para uma string de destino usando a

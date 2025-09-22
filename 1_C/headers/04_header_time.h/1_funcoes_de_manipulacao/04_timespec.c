@@ -3,14 +3,21 @@
 #include <time.h>
 
 /**
- * TIMESPEC: A estrutura timespec é usada em C para representar intervalos de tempo de alta
- * precisão, Ela é frequentemente utilizada quando se lida com temporização ou medições
- * de tempo, especialmente em funções que necessitam de valores de tempo mais precisos
- * que os que podem ser representados com time_t (que geralmente lida com segundos).
+ * TIMESPEC: A estrutura `timespec` é usada em C para representar intervalos de tempo de
+ * alta precisão, permitindo a manipulação de tempos com uma resolução muito maior que
+ * a de `time_t`. Ela é particularmente útil em situações que exigem medições de tempo
+ * de alta precisão, como temporização em sistemas de tempo real ou medições de desempenho
+ * com frações de segundo (como nanossegundos).
  *
- * Diferença para o time_t: time_t representa o tempo em segundos desde a "Epoch", enquanto
- * timespec pode representar o tempo com uma resolução muito maior, incluindo frações de
- * segundo (nanosegundos), proporcionando mais precisão.
+ * A estrutura é comumente utilizada em funções que exigem controle detalhado do tempo,
+ * como `nanosleep()`, `clock_gettime()`, entre outras.
+ *
+ * DIFERENÇA PARA: 
+ * `time_t`: A principal diferença entre `time_t` e `timespec` é que `time_t` representa o
+ * tempo em segundos desde a "época" (1º de janeiro de 1970, 00:00:00 UTC).
+ *
+ * Enquanto `timespec` pode representar o tempo com uma resolução muito maior,
+ * incluindo frações de segundo, como nanossegundos, proporcionando uma maior precisão.
  */
 
 /**

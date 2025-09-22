@@ -2,17 +2,16 @@
 #include <string.h>
 
 /**
- * memchr(): A função memchr procura a primeira ocorrência de um valor específico em um bloco
- * de memória. A função memchr retorna um ponteiro para a primeira ocorrência do valor
- * especificado ou NULL se o valor não for encontrado. Nos retorna um ponteiro para a primeira
- * ocorrência de ch em buffer ou ponteiro NULL se ch não for encontrado.
+ * A função `memchr()` pesquisa o valor `val` no bloco de memória `buffer` até o número
+ * máximo de bytes especificado por `maxcount`. Ela retorna um ponteiro para a primeira
+ * ocorrência do valor encontrado ou NULL se o valor não for encontrado dentro do
+ * intervalo especificado.
  *
- * SINTAXE: void memchr(const void *buffer, int Val, size_t Maxcount);
+ * @param buffer Ponteiro para o bloco de memória onde a pesquisa será realizada.
+ * @param val    O valor a ser procurado, passado como um `int`, mas comparado byte a byte.
+ * @param maxcount O número de bytes a serem analisados a partir do início de `buffer`.
  *
- * @param buffer Ponteiro para o bloco de memória onde a pesquisa é realizada.
- * @param c Valor a ser procurado, passado como um int mas comparado byte a byte.
- * @param n Número de bytes a serem analisados.
- * @return Ponteiro para a primeira ocorrência de c ou NULL se não encontrado
+ * @return Ponteiro para a primeira ocorrência de `val` ou NULL se não for encontrado.
  */
 
 /**
