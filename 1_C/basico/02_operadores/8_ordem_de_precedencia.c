@@ -1,8 +1,21 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// Este código exibe a ordem de precedência, ordem de precedência são regras que as instruções
-// recebem para serem resolvidas primeiro(tendo mais preferências) do que outras.
+/**
+ * A precedência de operadores define a ordem em que as operações são executadas
+ * em uma expressão. Operadores com maior precedência são avaliados primeiro.
+ *
+ * Ordem geral de precedência (da maior para a menor):
+ * 1. Parênteses: ()
+ * 2. Operadores unários: ++, --, +, -, !, ~
+ * 3. Multiplicativos: *, /, %
+ * 4. Aditivos: +, -
+ * 5. Relacionais: <, <=, >, >=
+ * 6. Igualdade: ==, !=
+ * 7. Lógicos E: &&
+ * 8. Lógicos OU: ||
+ * 9. Atribuição: =, +=, -=, etc.
+ */
 
 int main(int argc, char **argv)
 {

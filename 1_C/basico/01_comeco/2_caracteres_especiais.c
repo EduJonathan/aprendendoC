@@ -1,8 +1,14 @@
 #include <stdio.h>
 
-// Caracteres especiais (caracteres de escape): Permitem realizar ações específicas na exibição,
-// e sempre são precedidos pelo caractere '\'. São úteis para controlar a saída de dados de forma
-// mais dinâmica.
+/**
+ * Caracteres de escape: são sequências iniciadas pelo caractere '\' que representam
+ * ações especiais ou símbolos que não podem ser digitados diretamente no código-fonte.
+ * Eles servem para controlar a formatação da saída ou inserir caracteres que teriam outro
+ * significado no programa.
+ * Usar caracteres de escape permite criar saídas mais organizadas,
+ * formatar texto, inserir símbolos especiais e controlar a forma
+ * como o conteúdo é exibido no terminal.
+ */
 
 int main(int argc, char **argv)
 {

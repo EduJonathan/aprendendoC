@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-/*
+/**
+ * CONDICIONAIS E EXPRESSÕES LÓGICAS EM C
+ *
  * As expressões de condições múltiplas ajudam a evitar a repetição de blocos de código,
  * permitindo combinar várias verificações em uma única instrução `if`. Ao simplificar as
  * condições, é importante garantir que elas não sejam mutuamente exclusivas e que a lógica
@@ -10,6 +12,12 @@
  * Para isso, as condições devem ser formuladas de forma que cubram casos distintos sem
  * sobreposições, representando corretamente o comportamento desejado. Isso possibilita a
  * redução do código, mantendo a clareza e a funcionalidade.
+ *
+ * Pontos importantes:
+ * - Em C, qualquer valor diferente de 0(false) é considerado verdadeiro (true)
+ * - O valor 0 é considerado falso (false)
+ * - Operadores lógicos (&&, ||, !) seguem regras de short-circuit evaluation
+ * - Operadores bitwise (&, |, ~, ^, <<, >>) trabalham com bits
  */
 
 int main(int argc, char **argv)
