@@ -2,13 +2,24 @@
 #include <stdlib.h>
 
 /**
- * PROTOTIPOS: São assinaturas de funções que indica ao compilador quando ele ler o código,
- * dizendo que há funções logo após a main, ou que possa está em outro arquivo.
- * Exemplo o printf() dentre outras funções é um protótipo de função que já está declarado
- * no arquivo stdio.h, assim como várias outras funções de outras bibliotecas.
+ * PROTÓTIPOS DE FUNÇÃO:
+ * Um protótipo de função é uma declaração que informa ao compilador sobre a
+ * existência de uma função, incluindo seu nome, tipo de retorno e parâmetros,
+ * antes que a função seja realmente definida no código.
  *
- * @note do jeito que o protótipo da função foi declarado no arquivo, tanto ele como seus
- * parâmetros precisa serem declarados da mesma forma, seja na main ou em outro arquivo.
+ * Isso permite que você utilize a função em trechos de código que aparecem
+ * antes da definição completa, ou mesmo que a função esteja em outro arquivo.
+ *
+ * Exemplo:
+ * O printf() é uma função cuja declaração (protótipo) já está presente na biblioteca
+ * <stdio.h>. Graças a esse protótipo, você pode chamar printf() em qualquer parte
+ * do seu código sem que o compilador reclame, mesmo antes de ver a definição da função.
+ *
+ * @note
+ * O protótipo deve corresponder exatamente à definição da função, incluindo:
+ *  - tipo de retorno
+ *  - tipo e ordem dos parâmetros
+ * Qualquer diferença pode gerar erros de compilação ou comportamento inesperado.
  */
 
 // Maneiras de se declarar protótipos de funções

@@ -80,7 +80,8 @@ int main(int argc, char **argv)
      * compilar e executar para melhor execução principalmente das threads.
      * Como compilar? No terminal
      *
-     * > "C:\\Users\\EDUARDO_OLIVEIRA\\Documents\\aprendendoC\\C\\headers\\07_header_pthreads.h>"
+     * > C:\Users\Usuario\Documents\aprendendoC\1_C\headers\07_header_pthreads.h>
+     * > A flag -pthread é essencial para vincular a biblioteca de threads
      * > gcc -o nome arquivo.c -pthread
      * > .\nome.exe
      */

@@ -1,4 +1,4 @@
-# ⚙️ Flags de Compilação
+# 🚩⚙️ Flags de Compilação
 
 Flags de compilação são **parâmetros passados ao compilador** para alterar o comportamento da compilação. Elas permitem:
 
@@ -180,11 +180,12 @@ Garantindo que o código seja compatível com uma versão específica da linguag
 
 ### 💡 Observação importante
 
-> Para que as opções `-std=c` funcionem, o compilador precisa reconhecer o padrão solicitado.
-> Se estiver usando um compilador instalado via navegador ou um ambiente online, verifique se ele é recente
+> Para que as opções `-std=c` funcionem, o compilador precisa reconhecer o padrão solicitado.  
+> Se estiver usando um compilador instalado via navegador ou um ambiente online, verifique se ele é recente  
 > (por exemplo, `GCC ≥ 4.7` para `-std=c11`). Compiladores muito antigos simplesmente não entendem essas flags
-> ou podem ignorá-las.
-> Entenda que flag não `atualiza` o compilador; ela só `ativa` recursos que o compilador já implementa.
+> ou podem ignorá-las.  
+> Entenda que flag não `atualiza` o compilador; ela só `ativa` recursos que o compilador já implementa.  
+> Use `-std=c versão` para arquivos `.c` e `-std=c++ versão` para arquivos `.cpp`.
 
 ```bash
 # Padrão ANSI C 1989/1990
@@ -326,7 +327,7 @@ gcc -Wall -Wno-uninitialized -Wno-maybe-uninitialized arquivo.c -o programa
 
 void callback(int param)
 {
-  (void)param;  # // Solução no código - melhor prática
+  (void)param; # // Solução no código - melhor prática
 }
 ```
 

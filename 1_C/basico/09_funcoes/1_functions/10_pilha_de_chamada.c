@@ -28,6 +28,10 @@
  * - Conhecimento da pilha permite aplicar técnicas como *tail call optimization*,
  *   que podem reduzir o consumo de memória eliminando quadros desnecessários
  *   em chamadas recursivas de cauda.
+ *
+ * **Observação**
+ * - Esse comportamento se aplica a **todas as funções**, sejam definidas pelo programador
+ * ou fornecidas por bibliotecas do compilador, como `printf()`, `scanf()`, `strlen()`e outras.
  */
 
 /**

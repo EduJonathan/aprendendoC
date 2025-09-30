@@ -55,46 +55,53 @@ void *calculate_times(void *args)
     thread_args *data = (thread_args *)args;
     int i = data->process_id;
 
-    // Calcular o tempo de chegada (g[i]) e o tempo de espera (w[i])
     if (i == 0)
     {
-        data->g[i] = data->a[i]; // O primeiro processo começa na sua chegada
+        data->g[i] = data->a[i];
     }
     else
     {
-        data->g[i] = data->g[i - 1] + data->b[i - 1]; // Os outros começam após o processo anterior
+        data->g[i] = data->g[i - 1] + data->b[i - 1];
     }
 
-    // Tempo de espera = Tempo de chegada - Tempo de chegada do processo
     data->w[i] = data->g[i] - data->a[i];
-
-    // Tempo de turnaround = Tempo de término - Tempo de chegada
     data->t[i] = data->g[i] + data->b[i] - data->a[i];
 
-    // Protegendo as atualizações das variáveis globais
     pthread_mutex_lock(data->mutex);
     *data->awt += data->w[i];
     *data->att += data->t[i];
     pthread_mutex_unlock(data->mutex);
+
+    free(data); // Liberar a memória alocada para args
     return NULL;
 }
 
 int main(int argc, char **argv)
 {
-    int n = 0,                // Número de processos
-        a[MAX_PROCESSES] = 0, // Número de processos
-        b[MAX_PROCESSES] = 0, // Número de processos
-        w[MAX_PROCESSES] = 0, // Número de processos
-        t[MAX_PROCESSES] = 0, // Número de processos
-        g[MAX_PROCESSES] = 0; // Número de processos
+    // Numero de processos
+    int n = 0;
+    int a[MAX_PROCESSES] = {0};
+    int b[MAX_PROCESSES] = {0};
+    int w[MAX_PROCESSES] = {0};
+    int t[MAX_PROCESSES] = {0};
+    int g[MAX_PROCESSES] = {0};
 
     pthread_t threads[MAX_PROCESSES];
-    pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+    pthread_mutex_t mutex;
     float att = 0, awt = 0;
+
+    // Inicializar o mutex
+    pthread_mutex_init(&mutex, NULL);
 
     // Entrada de dados
     printf("Entre com número de processos: ");
     scanf("%d", &n);
+
+    if (n > MAX_PROCESSES || n <= 0)
+    {
+        printf("Número de processos inválido! Deve ser entre 1 e %d\n", MAX_PROCESSES);
+        return 1;
+    }
 
     printf("Entre com a quantidade de burst time\n");
     for (int i = 0; i < n; i++)
@@ -124,7 +131,6 @@ int main(int argc, char **argv)
         args->awt = &awt;
         args->mutex = &mutex;
 
-        // Criando a thread
         pthread_create(&threads[i], NULL, calculate_times, (void *)args);
     }
 
@@ -142,7 +148,7 @@ int main(int argc, char **argv)
     printf("\n\tProcess\tWaiting Time\tTurnaround Time\n");
     for (int i = 0; i < n; i++)
     {
-        printf("\t\tP%d\t\t%d\t\t%d\n", i + 1, w[i], t[i]);
+        printf("\tP%d\t\t%d\t\t%d\n", i + 1, w[i], t[i]);
     }
 
     printf("\nThe average waiting time is %.2f\n", awt);
@@ -152,6 +158,9 @@ int main(int argc, char **argv)
     pthread_mutex_destroy(&mutex);
     return 0;
 
+    // PARA COMPILAR: gcc -Wall -Wextra -std=c17 -pthread -o fcfs 3_pthread_mutex.c
+    // .\fcfs.exe
+
     /**
      * @brief Funções principais do pthread_mutex_t:
      *
@@ -160,8 +169,7 @@ int main(int argc, char **argv)
      * controlar o acesso concorrente a recursos compartilhados. Dentre ele, suas funções
      * principais são:
      *
-     * - int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr): Inicializa
-     * um mutex.
+     * - int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr): Inicializa um mutex.
      *
      * - int pthread_mutex_destroy(pthread_mutex_t *mutex): Destrói o mutex.
      *

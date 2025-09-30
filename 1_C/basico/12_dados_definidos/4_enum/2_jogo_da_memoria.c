@@ -155,7 +155,7 @@ int main(int argc, char **argv)
      *
      * Para compilar o código, use o seguinte comando:
      * > "C:\\Users\\nomeUsuario\\Documents\\aprendendoC\\1_C\\basico\\12_dados_definidos\\4_enum"
-     * > gcc 2_enums.c -o jogo_memoria
+     * > gcc 2_jogo_da_memoria.c -o jogo_memoria
      * > .\jogo_memoria.exe
      */
     printf("OBRIGADO POR JOGAR!!\n");

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char ***argv)
+int main(int argc, char **argv)
 {
     // Variáveis para armazenar os dados do cadastro
     char primeiro_nome[50] = {0};

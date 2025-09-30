@@ -164,11 +164,18 @@ Cada estrutura tem uma complexidade típica:
 
 ### 🔀 5. Condições de Fluxo (if/else)
 
-Não alteram diretamente a complexidade, mas podem:
+- Não alteram diretamente a complexidade, mas podem:
 
-- Mudar o caminho de execução
-- Criar casos diferentes (melhor, médio ou pior caso)
-- Controlar repetições
+  - Mudar o caminho de execução;
+  - Criar diferentes cenários (melhor, médio ou pior caso);
+  - Controlar repetições.
+
+- **Observação:** tente diminuir a quantidade de `if/else` quando:
+  - Há múltiplos casos baseados em um mesmo valor → usar `switch`;
+  - As decisões podem ser representadas em **tabelas ou arrays de funções**;
+  - É possível aplicar **polimorfismo** ou abstração para substituir condições complexas;
+  - Utilize **expressões lógicas** (`!`, `||`, `&&`) para combinar condições e reduzir blocos `if`;
+  - Prefira **operador ternário (`? :`)** para atribuições simples com duas opções, mantendo o código mais enxuto.
 
 ---
 

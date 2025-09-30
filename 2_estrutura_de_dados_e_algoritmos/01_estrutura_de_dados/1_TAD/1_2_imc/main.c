@@ -72,7 +72,7 @@ int main(int argc, char **argv)
 
     printf("-------------------------------------\n");
 
-    struct Pessoa *eduardo = malloc(sizeof(struct Pessoa));
+    struct Pessoa *eduardo = (struct Pessoa *)malloc(sizeof(struct Pessoa));
     if (eduardo == NULL)
     {
         printf("Erro ao alocar memória para Eduardo.\n");

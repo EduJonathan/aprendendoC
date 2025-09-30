@@ -6,8 +6,6 @@
  * (ou ISO C) que o compilador segue, retonando um número inteiro.
  */
 
-#include <stdio.h>
-
 /* Estrutura que relaciona o valor de __STDC_VERSION__ com o nome do padrão C */
 typedef struct
 {

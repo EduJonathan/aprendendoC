@@ -184,7 +184,7 @@ void multiplica_matrizes(const int A[][N], const int B[][N], int C[][N])
     }
 }
 
-int main(int argc, char const *argv[])
+int main(int argc, char **argv)
 {
     srand(time(NULL)); /* Para inicialização randômica opcional */
 

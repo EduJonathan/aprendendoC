@@ -19,16 +19,24 @@ typedef struct
     sem_t *chopsticks; /**< Semáforos representando os garfos */
 } Philosopher;
 
+sem_t semaforo_verde,  /*Semáforo para controlar a luz verde. veículos podem passar */
+    semaforo_amarelo,  /* Semáforo para controlar a luz amarela. Indicando preparar para parar.*/
+    semaforo_vermelho; /* Semáforo para controlar a luz vermelha. Informando para parar */
+
+int executando = 1; /* Variável de controle para parar a execução. */
+
 /**
  * @brief Função que simula a ação de um filósofo pensando e comendo.
  *
  * O Problema dos Filósofos é um problema clássico de sincronização e concorrência.
- * O problema descreve uma situação em que vários filósofos sentam-se à mesa de jantar(circular) e
- * alternam entre pensar e comer. Para comer, um filósofo precisa de dois garfos, mas os garfos são
- * compartilhados entre os filósofos, criando um problema de deadlock (interbloqueio) e
- * starvation (fome). O filósofo pega dois garfos, come e, em seguida, solta os garfos.
- * Isso é repetido 5 vezes. A função utiliza semáforos para garantir que os garfos sejam usados
- * de maneira segura.
+ * O problema descreve uma situação em que vários filósofos sentam-se à
+ * mesa de jantar(circular) e alternam entre pensar e comer.
+ * Para comer, um filósofo precisa de dois garfos, mas os garfos são compartilhados
+ * entre os filósofos, criando um problema de deadlock (interbloqueio) e starvation (fome).
+ * O filósofo pega dois garfos, come e, em seguida, solta os garfos.
+ *
+ * Isso é repetido 5 vezes. A função utiliza semáforos para garantir que os garfos
+ * sejam usados de maneira segura.
  *
  * @param arg Ponteiro para a estrutura Philosopher contendo as informações do filósofo.
  * @return NULL
@@ -42,28 +50,27 @@ void *thread_func(void *arg)
 
     for (int i = 0; i < 5; ++i)
     {
-        // Pegando os garfos
+        // Pensando
+        printf("\nPhilosopher %d -> Pensando...", id);
+        sleep(1);
+
+        // Tentando pegar os garfos
         sem_wait(&chopsticks[id]);
         sem_wait(&chopsticks[(id + 1) % n]);
 
+        // Comendo
         printf("\nPhilosopher %d -> Começou a comer", id);
-        sleep(1); // Simula o tempo comendo
+        sleep(1);
         printf("\nPhilosopher %d -> Terminando de comer", id);
 
         // Liberando os garfos
         sem_post(&chopsticks[id]);
         sem_post(&chopsticks[(id + 1) % n]);
-
-        sleep(1); // Simula o tempo pensando
     }
+
+    printf("\nPhilosopher %d -> Finalizou todas as refeições", id);
     return NULL;
 }
-
-sem_t semaforo_verde,  /*Semáforo para controlar a luz verde. veículos podem passar */
-    semaforo_amarelo,  /* Semáforo para controlar a luz amarela. Indicando preparar para parar.*/
-    semaforo_vermelho; /* Semáforo para controlar a luz vermelha. Informando para parar */
-
-int executando = 1; /* Variável de controle para parar a execução. */
 
 /**
  * @brief Função que simula o ciclo de troca das luzes do semáforo.
@@ -81,24 +88,23 @@ void *semaforo_func(void *arg)
 {
     while (executando)
     {
-        // O loop continua enquanto 'executando' for 1
-        // Luz verde: veículo pode passar
+        // Luz verde
         sem_wait(&semaforo_verde);
         printf("Luz verde: Veículos podem passar!\n");
-        sleep(3);                    /**< Simula o tempo que a luz verde fica acesa */
-        sem_post(&semaforo_amarelo); /**< Passa para a luz amarela */
+        sleep(3);
+        sem_post(&semaforo_amarelo);
 
-        // Luz amarela: atenção, vai mudar para vermelho
+        // Luz amarela
         sem_wait(&semaforo_amarelo);
         printf("Luz amarela: Prepare-se para parar!\n");
-        sleep(1);                     /**< Simula o tempo que a luz amarela fica acesa */
-        sem_post(&semaforo_vermelho); /**< Passa para a luz vermelha */
+        sleep(1);
+        sem_post(&semaforo_vermelho);
 
-        // Luz vermelha: veículos devem parar
+        // Luz vermelha
         sem_wait(&semaforo_vermelho);
         printf("Luz vermelha: Veículos devem parar!\n");
-        sleep(3);                  /**< Simula o tempo que a luz vermelha fica acesa */
-        sem_post(&semaforo_verde); /**< Passa para a luz verde */
+        sleep(3);
+        sem_post(&semaforo_verde);
     }
 
     printf("Simulação do semáforo encerrada.\n");
@@ -107,40 +113,44 @@ void *semaforo_func(void *arg)
 
 int main(int argc, char **argv)
 {
+    printf("=== INICIANDO SIMULAÇÃO DO SEMÁFORO ===\n");
+
     pthread_t semaforo_thread;
 
     // Inicializando os semáforos
-    sem_init(&semaforo_verde, 0, 1);    /**< A luz verde começa acesa */
-    sem_init(&semaforo_amarelo, 0, 0);  /**< A luz amarela começa apagada */
-    sem_init(&semaforo_vermelho, 0, 0); /**< A luz vermelha começa apagada */
+    sem_init(&semaforo_verde, 0, 1);
+    sem_init(&semaforo_amarelo, 0, 0);
+    sem_init(&semaforo_vermelho, 0, 0);
 
-    // Criando a thread para simulação
+    // Criando a thread para simulação do semáforo
     pthread_create(&semaforo_thread, NULL, semaforo_func, NULL);
 
-    // Aguardando a execução por 10 segundos antes de parar
+    // Executar simulação do semáforo por 10 segundos
     sleep(10);
-    printf("Parando a simulação...\n");
 
-    // Mudando a variável de controle para 0, para parar o loop de simulação
+    printf("Parando a simulação do semáforo...\n");
     executando = 0;
 
-    // Aguardando a execução da thread até que ela finalize
+    // Forçar a transição para garantir que a thread saia do loop
+    sem_post(&semaforo_verde);
+
     pthread_join(semaforo_thread, NULL);
 
-    // Destruindo semáforos após o uso
+    // Destruindo semáforos
     sem_destroy(&semaforo_verde);
     sem_destroy(&semaforo_amarelo);
     sem_destroy(&semaforo_vermelho);
 
     printf("\n========================================\n");
+    printf("=== INICIANDO JANTAR DOS FILÓSOFOS ===\n");
 
-    int n = 0; // Número de filósofos
+    int n = 0;
     printf("\nEntre com a quantidade de filosofos: ");
     scanf("%d", &n);
 
-    if (n > MAX)
+    if (n > MAX || n <= 1)
     {
-        printf("Numero máximo excedido de filosofos!\n");
+        printf("Número de filósofos inválido! Deve ser entre 2 e %d\n", MAX);
         return 1;
     }
 
@@ -148,7 +158,7 @@ int main(int argc, char **argv)
     sem_t chopsticks[MAX];
     Philosopher philosophers[MAX];
 
-    // Inicializa os semáforos (garfos disponíveis)
+    // Inicializa os semáforos (garfos)
     for (int i = 0; i < n; ++i)
     {
         if (sem_init(&chopsticks[i], 0, 1) == -1)
@@ -184,7 +194,7 @@ int main(int argc, char **argv)
 
     printf("\n\nTodos os filosofos terminaram de comer.\n");
 
-    // Destruindo os semáforos
+    // Destruindo os semáforos dos garfos
     for (int i = 0; i < n; ++i)
     {
         if (sem_destroy(&chopsticks[i]) == -1)
@@ -193,6 +203,12 @@ int main(int argc, char **argv)
             exit(1);
         }
     }
+
+    // Para Compilar: gcc -Wall -Wextra -std=c17 -pthread -o simulacao 4_sem_t.c
+    // .\simulacao.exe
+
+    printf("=== PROGRAMA FINALIZADO ===\n");
+    return 0;
 
     /**
      * O tipo sem_t é um tipo de dado utilizado em programação concorrente para representar
@@ -214,5 +230,4 @@ int main(int argc, char **argv)
      *
      * Dentre outras inclusas em #include <semaphore.h>
      */
-    return 0;
 }

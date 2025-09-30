@@ -74,7 +74,7 @@ Erros como parênteses ou chaves mal colocados são detectados aqui.
 # Exemplo de erro:
 int main()
 {
-  printf("Erro de sintaxe" # // Erro: falta o fechamento de parênteses
+  printf("Erro de sintaxe" # // Erro: falta o fechamento de parênteses, além do ;
 }
 ```
 
@@ -89,7 +89,7 @@ Variáveis declaradas antes do uso. Número e tipos corretos de argumentos em ch
 # Exemplo de erro:
 int main()
 {
-  printf("%d", x); # // Erro: 'x' não foi declarado
+  printf("%d", x); # // Erro: 'x' não foi declarado ou identifier "x" is undefined
 }
 ```
 
@@ -97,9 +97,9 @@ int main()
 
 ### 5. 🔄 Geração de Código Intermediário
 
-O código é convertido em uma representação intermediária (ex.: arquivos .o ou .obj), que é independente da
+O código é convertido em uma representação intermediária (ex.: arquivos `.o` ou `.obj`), que é independente da
 arquitetura da máquina. Essa etapa otimiza o código para as próximas fases, mas o resultado ainda não é executável.  
-Exemplo: `gcc -c arquivo.c -o arquivo.o` Gera um arquivo objeto (.o) a partir do código-fonte.
+Exemplo: `gcc -c arquivo.c -o arquivo.o` Gera um arquivo objeto (`.o`) a partir do código-fonte.
 
 ---
 
@@ -191,7 +191,8 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 
 - Em programas C/C++ evite espaços, acentuações(`´`, `^`) e caracteres especiais(exe.: `ç`, `%`, `&`)
   em nomes de **arquivos** e **diretórios(pastas)**. Use nomes como **arquivo_c.c** ou **arquivoC.c**.
-  Pois no momento de compilar e caso estiver (`arquivo` `c.c`) o compilador poderá entender que há
+
+- Pois no momento de compilar e caso estiver (`arquivo` e `c.c`) o compilador poderá entender que há
   2 ou múltiplos arquivos a ser compilados, no caso `arquivo` (por mais que não tenha uma extensão,
   sendo entendido como `arquivo.txt`) e `c.c`.
 
@@ -210,7 +211,7 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 │ └── for_each.c
 
 ```bash
-# Esteja no caminho do direório para poder compilar
+# Esteja no caminho do diretório para poder compilar
 "C:\Users\UserName\Documents\aprendendoC\1_C\basico\13_pre_processamento\1_diretiva_include\1_1_for_each>"
 
 gcc for_each.c -o programa
@@ -248,6 +249,25 @@ gcc -o nomeDoExecutavel arquivoA.c arquivoB.c
 # Mas, se você já tinha um arquivo programa.o importante (ex: objeto de outro módulo),
 # ele será substituído.
 gcc -c arquivo.c -o programa.o
+```
+
+```bash
+# CURIOSIDADE: ao compilar um arquivo C sem especificar um nome de saída com a opção -o,
+# o compilador GCC gera automaticamente um executável com um nome padrão.
+
+# Exemplo de compilação:
+gcc arquivoA.c
+
+# Resultado:
+# - No Linux/macOS: será gerado um executável chamado "a.out"
+# - No Windows (MinGW/Cygwin): será gerado um executável chamado "a.exe"
+
+# Para executar:
+# No Linux/macOS:
+./a.out
+
+# No Windows:
+.\a.exe
 ```
 
 ---

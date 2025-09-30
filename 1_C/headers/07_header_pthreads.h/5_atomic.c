@@ -159,7 +159,7 @@ int main(int argc, char **argv)
 
     /**
      * Compile e execute este código com:
-     * gcc -std=c11 -o nomeDoArquivo arquivo.c -lpthread
+     * gcc -std=c11 -o nomeDoArquivo 5_atomic.c -lpthread
      *
      * Este exemplo demonstra uma fila lock-free (sem bloqueio) usando
      * operações atômicas. A fila é inicializada com um nó "dummy" (fictício)
