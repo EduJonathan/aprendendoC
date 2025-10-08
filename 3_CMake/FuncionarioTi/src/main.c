@@ -162,5 +162,17 @@ int main(void)
         imprimir_pessoa(&equipe[i]);
     }
 
+    /**
+     * Para compilar e executar:
+     * esteja dentro da pasta build (criada pelo cmake)
+     *
+     * Digite os comandos:
+     * C:\Users\Eduardo Jonathan\Documents\aprendendoC\3_CMake\FuncionarioTi\build> ninja
+     * [2/2] Linking C executable c_moderno_example.exe
+     *
+     * E compile e execute:
+     * C:\Users\Eduardo Jonathan\Documents\aprendendoC\3_CMake\FuncionarioTi\build>
+     * .\c_moderno_example.exe
+     */
     return EXIT_SUCCESS;
 }

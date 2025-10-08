@@ -7,9 +7,6 @@ As diretivas de pré-processamento são instruções **executadas antes da compi
 - Criar macros.
 - Controlar condicionalmente a compilação de trechos de código.
 
-> 💡 É possível também usar **flags (sinalizadores)** na linha de comando do terminal
-> para modificar o comportamento da compilação conforme a necessidade do desenvolvedor.
-
 ---
 
 ## ⚙ Processo de Compilação
