@@ -67,7 +67,9 @@
       "is_armstrong.h": "c",
       "functions_aritmeticas.h": "c",
       "lista_circular.h": "c",
-      "fila.h": "c"
+      "fila.h": "c",
+      "stdckdint.h": "c",
+      "stdc-predef.h": "c"
     }
   }
 }

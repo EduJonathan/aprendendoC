@@ -143,13 +143,13 @@ pilhas (stacks), filas (queues), listas duplamente encadeadas, entre outros.
 Embora seja mais focado em teoria, esse site oferece algumas visualizações e
 recursos interativos que são úteis para quem quer estudar algoritmos com mais profundidade.
 
-### 7. [GeeksforGeeks Visualizations](https://www.geeksforgeeks.org/data-structures/)
+### 6. [GeeksforGeeks Visualizations](https://www.geeksforgeeks.org/data-structures/)
 
 Embora o GeeksforGeeks seja mais conhecido por tutoriais e artigos, também oferece algumas
 visualizações e implementações de estruturas de dados e algoritmos, o que pode ser muito
 útil para quem está começando.
 
-### 8. [LeetCode Visualizer](https://leetcode.com/)
+### 7. [LeetCode Visualizer](https://leetcode.com/)
 
 Embora o LeetCode seja mais focado em desafios de programação, ele também oferece
 uma ferramenta para visualizar soluções de algoritmos, o que pode ser útil para ver

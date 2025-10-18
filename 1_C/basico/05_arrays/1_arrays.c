@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stddef.h>
 
 /**
  * ARRAYS: Ou vetores, são estruturas unidimensionais que armazenam uma coleção de
@@ -17,6 +18,7 @@
  * INDEX: Individualizadas as posições de cada valor por meios de índices, começando por 0.
  * INDICES: limitação de quantos elementos deseja que o vetor possua
  *
+
  * SINTAXE: <tipo de dado><nome do array>[Nº elementos];
  * int arr[10]; // declaração de um array
  * arr[0] -> posição ou index/indíce 0
@@ -60,7 +62,7 @@ int main(int argc, char **argv)
      * automaticamente ao tamanho do sistema em que o código está sendo compilado.
      * O uso de size_t também ajuda a evitar problemas relacionados a tamanhos negativos,
      * uma vez que size_t é um tipo sem sinal (não possui representação de números negativos),
-     * seu formatador é "%zu".
+     * pode ser incluído através da header #include <stddef> e seu formatador é "%zu".
      */
 
     printf(" Tamanho total do 'array'       : %zu bytes\n", tamanho_total);
