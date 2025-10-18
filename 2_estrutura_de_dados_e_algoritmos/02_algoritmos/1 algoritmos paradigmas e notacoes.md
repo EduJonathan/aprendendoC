@@ -191,11 +191,9 @@ Muitas linguagens oferecem métodos com complexidade já definida:
 
 ### 📊 Gráfico de Complexidade Big-O
 
-![Gráfico de Complexidade Big-O](https://github.com/EduJonathan/aprendendoC/blob/main/img/Grafico_das_Notacoes_BigO.png)
-**Comparação das notações Big-O mais comuns**
+![Gráfico de Complexidade Big-O](img/Grafico_das_Notacoes_BigO.png)
 
-![Tempos de Execução](https://github.com/EduJonathan/aprendendoC/blob/main/img/tempo_big_o.png)
-**Performance de algoritmos em diferentes estruturas de dados**
+![Tempos de Execução](img/tempo_big_o.png)
 
 ---
 
