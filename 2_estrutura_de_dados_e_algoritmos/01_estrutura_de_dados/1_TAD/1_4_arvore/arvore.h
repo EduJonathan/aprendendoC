@@ -19,8 +19,6 @@ struct arvore
     struct no **raiz; /**< Ponteiro para o ponteiro da raiz */
 };
 
-// Protótipos das funções
-
 /**
  * @brief Cria um novo nó
  * @param valor Valor a ser armazenado no nó

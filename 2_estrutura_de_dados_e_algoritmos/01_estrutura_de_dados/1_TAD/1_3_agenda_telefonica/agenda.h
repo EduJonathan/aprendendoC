@@ -21,8 +21,6 @@ struct agenda
     struct contato *tabela[TAMANHO_TABELA]; /**< Tabela hash de contatos */
 };
 
-// Protótipos das funções
-
 /**
  * @brief Calcula o hash para um nome
  * @param nome Nome para calcular o hash

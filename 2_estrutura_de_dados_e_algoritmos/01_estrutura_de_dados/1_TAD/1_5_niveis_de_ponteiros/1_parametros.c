@@ -7,8 +7,7 @@
  *
  * A escolha do nível de indireção (quantidade de asteriscos) depende do que se deseja modificar:
  *
- * - * (ponteiro simples): permite acessar e alterar os dados armazenados no objeto
- * apontado, mas não trocar o ponteiro original.
+ * - * (ponteiro simples): permite acessar e alterar os dados armazenados no objeto apontado, mas não trocar o ponteiro original.
  *
  * - ** (ponteiro duplo): permite, além de acessar dados, alterar o próprio ponteiro
  * original (por exemplo, mudar a cabeça de uma lista encadeada).
