@@ -69,7 +69,8 @@
       "lista_circular.h": "c",
       "fila.h": "c",
       "stdckdint.h": "c",
-      "stdc-predef.h": "c"
+      "stdc-predef.h": "c",
+      "cmath": "c"
     }
   }
 }
