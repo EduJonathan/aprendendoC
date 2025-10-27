@@ -37,7 +37,6 @@ int main(int argc, char **argv)
 
     // Letras maiúsculas (A-F)
     printf(" HEX de 'HEXADECIMAL' (%%X) : %X\n", HEXADECIMAL);
-
     printf(" HEX de 'ULI' (%%lx / %%lX) : %lx / %lX\n", ULI, ULI);
     printf(" HEX de 'ULLI' (%%llx / %%llX) : %llx / %llX\n", ULLI, ULLI);
 
@@ -54,12 +53,13 @@ int main(int argc, char **argv)
 
     printf(" Endereço de 'OCTAL' (%%p) : %p\n", (void *)&OCTAL);
     printf(" Endereço de 'HEXADECIMAL' : %p\n", (void *)&HEXADECIMAL);
-    /*
+    /**
      * %p: exibe o endereço de memória (em hexadecimal), usado com ponteiros.
      * É necessário fazer casting para (void *) em compiladores mais exigentes.
      *
      * ⚠️ ATENÇÃO:
      * printf(" PREFIXO DO ENDEREÇO DE MEMÓRIA DA VARIÁVEL 'OCTAL' É : %#p\n", (void *)&OCTAL);
+     * 
      * ERROR: flag '#' results in undefined behavior with 'p' conversion specifier [-Wformat]
      * O modificador '#' NÃO DEVE ser usado com %p — gera comportamento indefinido.
      */

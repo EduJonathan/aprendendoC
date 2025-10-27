@@ -213,7 +213,7 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 
 gcc for_each.c -o programa
 gcc for each.c -o programa   # ERRO: o compilador entende como dois arquivos
-gcc "for_each.c" -o programa # Aspas protegem o nome, mas evite usar
+gcc "for each.c" -o programa # Aspas protegem o nome, mas evite usar
 ```
 
 ## ✍ Sobrescrita de Arquivos

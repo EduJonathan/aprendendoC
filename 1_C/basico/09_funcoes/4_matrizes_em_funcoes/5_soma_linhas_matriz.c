@@ -88,8 +88,7 @@ int main(int argc, char **argv)
 {
     int matriz[LINHAS][COLUNAS] = {0}; // Matriz para armazenar os valores
     int somaLinhas[LINHAS] = {0};      // Vetor para armazenar as somas
-
-    srand(time(NULL)); // Inicializa a semente para números aleatórios
+    srand(time(NULL));                 // Inicializa a semente para números aleatórios
 
     // Preenche a matriz com números aleatórios de 0 a 9
     for (size_t linha = 0ull; linha < LINHAS; linha++)

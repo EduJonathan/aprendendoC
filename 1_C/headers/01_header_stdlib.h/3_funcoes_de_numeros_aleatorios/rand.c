@@ -18,7 +18,7 @@
  *
  * @param quantidade Número de números aleatórios a serem gerados e impressos.
  */
-void gerarENumerosAleatorios(int quantidade)
+void gerarNumerosAleatorios(int quantidade)
 {
     /**
      * srand: Inicializa a "semente" do gerador de números aleatórios com base no tempo atual.
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     const int quantidadeDeNumeros = 5;
 
     // Chama a função para gerar e imprimir números aleatórios
-    gerarENumerosAleatorios(quantidadeDeNumeros);
+    gerarNumerosAleatorios(quantidadeDeNumeros);
 
     /*
      * srand(time(NULL)): A função srand é utilizada para inicializar a semente do gerador

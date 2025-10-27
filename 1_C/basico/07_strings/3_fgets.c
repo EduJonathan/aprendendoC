@@ -20,7 +20,7 @@
  * esse caractere depois, caso não seja desejado.
  */
 
-int main(void)
+int main(int argc, char **argv)
 {
   // --- Primeiro nome --------------------------------------------------------
   char nome[10] = {0}; // Vetor com espaço para até 9 caracteres + '\0'

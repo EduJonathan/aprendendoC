@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 
 #define NUM_TIMES 4 // Número de times
 #define MAX_NOME 50 // Tamanho máximo para o nome do time

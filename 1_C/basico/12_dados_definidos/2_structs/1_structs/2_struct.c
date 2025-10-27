@@ -6,9 +6,9 @@
  */
 struct usuario
 {
-	unsigned short int idade_do_usuario; /**< Campo para armazenar idade do usuario */
-	float peso_do_usuario;				 /**< Campo para armazenar peso do usuario */
-	char nome_do_usuario[100];			 /**< Campo para armazenar nome do usuario */
+	unsigned short int idade_do_usuario; // Campo para armazenar idade do usuario.
+	float peso_do_usuario;				 // Campo para armazenar peso do usuario.
+	char nome_do_usuario[100];			 // Campo para armazenar nome do usuario.
 };
 
 int main(int argc, char **argv)

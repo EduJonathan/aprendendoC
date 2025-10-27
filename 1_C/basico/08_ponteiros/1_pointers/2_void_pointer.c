@@ -73,10 +73,10 @@ int main(int argc, char **argv)
 
     printf(" TYPE-CASTING INT: %d\n", *(int *)voidToPointerInt);
     printf(" TYPE-CASTING FLOAT: %f\n", *(float *)voidToPointerFloat);
-    /* printf(" TYPE-CASTING FLOAT: %lf\n", *(double *)voidToPointerFloat); 0.0000 */
+    /* printf(" TYPE-CASTING FLOAT: %lf\n", *(double *)voidToPointerFloat); */ // 0.0000
 
     printf(" TYPE-CASTING CHAR: %c\n", *(char *)voidToPointerChar);
     printf(" TYPE-CASTING CHAR(ASCII): %d\n", *(char *)voidToPointerChar); // 98: b na tabela ASCII
-    /* printf(" TYPE-CASTING CHAR: %d\n", *(int *)voidToPointerChar); lixo de memoria. */
+    /* printf(" TYPE-CASTING CHAR: %d\n", *(int *)voidToPointerChar);*/    // lixo de memoria.
     return 0;
 }

@@ -44,7 +44,11 @@ int main(int argc, char **argv)
     printf(" QUANTIDADE DE BYTES DO TIPO SIGNED CHAR : %zu byte\n", sizeof(signed char));
     printf(" QUANTIDADE DE BYTES DO TIPO UNSIGNED CHAR : %zu byte\n", sizeof(unsigned char));
 
+    printf("\n=================================================================\n");
+    printf("\n\t>> TAMANHO EM BYTES DE OUTROS TIPOS <<\n");
+
     printf("\n QUANTIDADE DE BYTES DO TIPO BOOL : %zu byte\n", sizeof(bool));
+    printf("QUANTIDADE DE BYTES DO TIPO SIZE_T : %zu byte\n", sizeof(size_t));
 
     printf("\n=================================================================\n");
     printf("\n\t>> DESCOBRINDO LIMITE MÁXIMO DE CADA TIPO DE DADO <<\n");

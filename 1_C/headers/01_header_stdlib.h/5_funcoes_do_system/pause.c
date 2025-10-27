@@ -17,6 +17,7 @@ int main(int argc, char **argv)
     printf("\n=== Uso de system(\"pause\") ===\n");
 
     printf("O programa está pausado. Pressione Enter para continuar...\n");
+
     // Pausa a execução do programa até que o usuário pressione uma tecla
     system("pause"); // Note que isso funciona apenas em sistemas Windows
 

@@ -62,7 +62,7 @@ int main(int argc, char **argv)
      * automaticamente ao tamanho do sistema em que o código está sendo compilado.
      * O uso de size_t também ajuda a evitar problemas relacionados a tamanhos negativos,
      * uma vez que size_t é um tipo sem sinal (não possui representação de números negativos),
-     * pode ser incluído através da header #include <stddef> e seu formatador é "%zu".
+     * pode ser incluído através da header #include <stddef.h> e seu formatador é "%zu".
      */
 
     printf(" Tamanho total do 'array'       : %zu bytes\n", tamanho_total);

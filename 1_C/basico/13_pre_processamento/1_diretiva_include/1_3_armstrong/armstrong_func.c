@@ -1,6 +1,3 @@
-#ifndef ARMSTRONG_FUNC_H
-#define ARMSTRONG_FUNC_H
-
 #include <stdbool.h>
 #include <math.h>
 #include "is_armstrong.h"
@@ -46,5 +43,3 @@ bool is_armstrong_number(int candidate)
     }
     return sum == temp;
 }
-
-#endif

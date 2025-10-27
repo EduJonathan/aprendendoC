@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char **arv)
+int main(int argc, char **argv)
 {
     char string[10] = {0}; /* Vetor de 10 posições para armazenar o nome do usuário */
 
