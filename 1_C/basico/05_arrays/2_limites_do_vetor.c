@@ -23,10 +23,10 @@ int main(int argc, char **argv)
 	array[3] = 11; // Passamos do limite do vetor
 
 	printf("\n\tINDEX\t Valores\tEnd. de Memoria Alocadas\n");
-	printf(" array[0] = %8d\t\t %p\n", array[0], &array[0]);
-	printf(" array[1] = %8d\t\t %p\n", array[1], &array[1]);
-	printf(" array[2] = %8d\t\t %p\n", array[2], &array[2]);
-	printf(" array[3] = %8d\t\t %p\n", array[3], &array[3]);
+	printf(" array[0] = %8d\t\t %p\n", array[0], (void *)&array[0]);
+	printf(" array[1] = %8d\t\t %p\n", array[1], (void *)&array[1]);
+	printf(" array[2] = %8d\t\t %p\n", array[2], (void *)&array[2]);
+	printf(" array[3] = %8d\t\t %p\n", array[3], (void *)&array[3]);
 
 	/*
 	 * Siga as instruções abaixo para entender a situação e o comportamento de

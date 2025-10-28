@@ -1,17 +1,17 @@
 #include <stdio.h>
 
+/*
+ * Os operadores de incremento (++) e decremento (--) possuem embutida
+ * uma operação de atribuição. Eles podem ser usados antes ou depois do nome da variável:
+ *
+ * => ++x (pré-incremento): soma 1 à variável x antes de utilizar seu valor.
+ * => x++ (pós-incremento): soma 1 à variável x depois de utilizar seu valor.
+ * => --x (pré-decremento): subtrai 1 da variável x antes de utilizar seu valor.
+ * => x-- (pós-decremento): subtrai 1 da variável x depois de utilizar seu valor.
+ */
+
 int main(int argc, char **argv)
 {
-    /*
-     * Os operadores de incremento (++) e decremento (--) possuem embutida
-     * uma operação de atribuição. Eles podem ser usados antes ou depois do nome da variável:
-     *
-     * => ++x (pré-incremento): soma 1 à variável x antes de utilizar seu valor.
-     * => x++ (pós-incremento): soma 1 à variável x depois de utilizar seu valor.
-     * => --x (pré-decremento): subtrai 1 da variável x antes de utilizar seu valor.
-     * => x-- (pós-decremento): subtrai 1 da variável x depois de utilizar seu valor.
-     */
-
     printf("\n\tINCREMENTO:\n");
 
     int incremento = 10;
@@ -36,8 +36,11 @@ int main(int argc, char **argv)
 
     /*
      * O operador de pré-incremento (++incremento) é o primeiro a ser
-     * realizado dentro da expressão. Somente depois de incrementado, o valor de
-     * incremento é atribuído à variável pre_incremento. Equivale a:
+     * realizado dentro da expressão. Somente depois de incrementado,
+     * o valor de incremento é atribuído à variável pre_incremento.
+     *
+     * Se equivale a:
+     *
      * incremento = incremento + 1; // incremento = 13
      * pre_incremento = incremento; // pre_incremento = 13
      */
@@ -51,7 +54,10 @@ int main(int argc, char **argv)
     /*
      * O operador de pós-incremento (incremento++) é o último a ser realizado dentro
      * da expressão. Primeiro, o valor de incremento é atribuído à variável pos_incremento,
-     * e só depois incrementa. Equivale a:
+     * e só depois incrementa.
+     *
+     * Se equivale a:
+     *
      * pos_incremento = incremento; // pos_incremento = 13
      * incremento = incremento + 1; // incremento = 14
      */
@@ -83,7 +89,10 @@ int main(int argc, char **argv)
     /*
      * O operador de pré-decremento (--decremento) é o primeiro a ser realizado
      * dentro da expressão. Somente depois de decrementado, o valor de decremento é
-     * atribuído à variável pre_decremento. Equivale a:
+     * atribuído à variável pre_decremento.
+     *
+     * Se Equivale a:
+     *
      * decremento = decremento - 1; // decremento = 7
      * pre_decremento = decremento; // pre_decremento = 7
      */
@@ -97,7 +106,10 @@ int main(int argc, char **argv)
     /*
      * O operador de pós-decremento (decremento--) é o último a ser realizado
      * dentro da expressão. Primeiro, o valor de decremento é atribuído à variável
-     * pos_decremento, e só depois decrementa. Equivale a:
+     * pos_decremento, e só depois decrementa.
+     *
+     * Se Equivale a:
+     *
      * pos_decremento = decremento; // pos_decremento = 7
      * decremento = decremento - 1; // decremento = 6
      */

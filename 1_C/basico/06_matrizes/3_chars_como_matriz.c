@@ -10,8 +10,8 @@
  * ou frases em uma única estrutura.
  *
  * Exemplo:
- *   char palavra[10];          // Vetor de caracteres (string)
- *   char frases[5][20];        // Matriz de caracteres: 5 strings com até 19 caracteres + '\0'
+ *   char palavra[10];   // Vetor de caracteres (string)
+ *   char frases[5][20]; // Matriz de caracteres: 5 strings com até 19 caracteres + '\0'
  */
 
 int main(int argc, char **argv)
