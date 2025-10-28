@@ -131,7 +131,7 @@ void medir_tempo(const char *nome, int (*func)(int, int), int m, int n)
     double tempo = ((double)(fim - inicio)) * 1000 / CLOCKS_PER_SEC;
 
     printf("\nMétodo: %s\n", nome);
-    printf("Caminhos de (0,0) até (%d,%d): %d\n", m - 1, n - 1, resultado);
+    printf("Caminhos de (0, 0) até (%d, %d): %d\n", m - 1, n - 1, resultado);
     printf("Tempo: %.3lf ms\n", tempo);
 
     if (strcmp(nome, "Recursivo Puro") == 0)

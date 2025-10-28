@@ -71,7 +71,8 @@ void calcular_dias_para_aniversario(const char *aniversario)
 
     // Verifica se o aniversário já passou neste ano
     if (data_aniversario.tm_mon < data_atual->tm_mon ||
-        (data_aniversario.tm_mon == data_atual->tm_mon && data_aniversario.tm_mday < data_atual->tm_mday))
+        (data_aniversario.tm_mon == data_atual->tm_mon &&
+         data_aniversario.tm_mday < data_atual->tm_mday))
     {
         // Se o aniversário já passou, ajusta para o próximo ano
         data_aniversario.tm_year = data_atual->tm_year + 1;
