@@ -1,7 +1,9 @@
 #include <math.h>
 #include <string.h>
-#include <string.h>
 #include "pessoa.h"
+
+#ifndef _STRUCT_CATEGORIA_IMC
+#define _STRUCT_CATEGORIA_IMC
 
 /**
  * @brief Estrutura auxiliar para mapear intervalos de IMC a descrições.
@@ -11,6 +13,8 @@ struct IMCCategoria
     float limite;          ///< Limite superior do intervalo de IMC
     const char *descricao; ///< Descrição da categoria
 };
+
+#endif
 
 /**
  * @brief Tabela de categorias de IMC.

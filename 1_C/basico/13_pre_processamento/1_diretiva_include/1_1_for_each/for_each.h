@@ -48,4 +48,5 @@ void for_each(void *arr, size_t size, void (*action)(void *), size_t size_elem);
  * inclusões serão ignoradas. Esse padrão é conhecido como "guarda de inclusão" (include guard).
  *
  * @note O nome do include guard (FOR_EACH_H) não precisa ser exatamente o nome do arquivo.
+ * @note include guard necessariamente não precisa ser para arquivos, pode ser para (structs/unions/enums)
  */

@@ -1,8 +1,10 @@
 #ifndef PESSOA_H
 #define PESSOA_H
 
-#include <stdio.h>
 #include <stdbool.h>
+
+#ifndef _STRUCT_PESSOA
+#define _STRUCT_PESSOA
 
 /**
  * @brief Estrutura que representa uma pessoa.
@@ -17,6 +19,11 @@ struct Pessoa
     float peso;     ///< Peso da pessoa em kg
 };
 
+#endif
+
+#ifndef _STRUCT_IMC
+#define _STRUCT_IMC
+
 /**
  * @brief Estrutura que representa o IMC de uma pessoa.
  *
@@ -27,6 +34,8 @@ struct IMC
     float valor;        ///< Valor do IMC
     char descricao[50]; ///< Descrição da categoria do IMC
 };
+
+#endif
 
 /**
  * @brief Inicializa uma estrutura de pessoa com as informações fornecidas.
