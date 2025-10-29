@@ -4,6 +4,8 @@
  * POINTERS: Ponteiros são variáveis especiais que armazenam endereços de memória de
  * outras variáveis, para uma manipulação mais eficiente não no conteúdo da variável
  * em si, e sim na memória que o ponteiro aponta.
+ * 
+ * @note Ponteiros em sistemas mais modernos, não importando o tipo tem como tamanho(sizeof()) 8 bytes.
  */
 
 int main(int argc, char **argv)
