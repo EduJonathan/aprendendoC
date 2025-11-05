@@ -61,7 +61,7 @@ struct lista
 // Cria nó (*)
 struct s *criar_no(int valor)
 {
-    struct s *novo = malloc(sizeof(struct s));
+    struct s *novo = (struct s *)malloc(sizeof(struct s));
     if (!novo)
     {
         fprintf(stderr, "Erro: falha ao alocar memória para novo nó\n");
@@ -97,7 +97,7 @@ struct s **inserir_inicio(struct s **cabeca, int valor)
 // Inicializa lista (***)
 struct s ***inicializar_lista(struct lista *l)
 {
-    l->cabeca = malloc(sizeof(struct s *));
+    l->cabeca = (struct s **)malloc(sizeof(struct s *));
     if (!l->cabeca)
         exit(1);
     *(l->cabeca) = NULL;
