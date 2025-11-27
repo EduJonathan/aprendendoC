@@ -6,7 +6,7 @@ int main(int argc, char **arv)
 
     // Solicita o nome do usuário
     printf("Digite seu nome: ");
-    gets(string); // ⚠️ Função insegura: veja explicação abaixo.
+    gets(string); // Função insegura: veja explicação abaixo.
 
     // Exibe o nome lido
     printf("%s\n", string);

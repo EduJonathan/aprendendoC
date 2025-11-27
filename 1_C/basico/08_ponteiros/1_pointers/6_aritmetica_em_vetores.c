@@ -32,34 +32,38 @@ int main(int argc, char **argv)
     printf(" Valor após decrementar para ptr[0]: %d\n", *ptr);
 
     /**
-     * O processo de incremento e decremento dos ponteiros é realizado através da
-     * aritmética de ponteiros. Aritmética de ponteiros envolve operações de adição e
-     * subtração realizadas nos ponteiros. Diferentemente de um array que percorre seus
-     * elementos um por um, a aritmética de ponteiros percorre através dos bytes da memória.
-     * 
-     * --------------------------------------------
-     * | Endereços |  Conteúdo (4 bytes por int)  |
-     * |-----------|------------------------------|
-     * | 0x5ffe78  | *ptr = &arr[0]               | <- ptr aponta para arr[0], contendo 5
-     * | 0x5ffe80  | arr[0] = 5                   | <- Elemento 0 do array
-     * | 0x5ffe84  | arr[1] = 4                   | <- Elemento 1 do array
-     * | 0x5ffe88  | ptr[2] = 6                   | <- Elemento 2 do array
-     * --------------------------------------------
+     * INCREMENTO E DECREMENTO DE PONTEIROS:
      *
-     * Quando incrementamos ptr (ptr++), avançamos 4 bytes, pois sizeof(int) é utilizado.
-     * O ponteiro passa a apontar para o próximo dado do tipo int. Assim, ptr[0] aponta para arr[1].
+     * O incremento e decremento de ponteiros é realizado através da **aritmética de ponteiros**,
+     * que permite adicionar ou subtrair valores a um ponteiro, movendo-o entre elementos
+     * consecutivos de um array ou bloco contíguo de memória.
      *
-     * Por exemplo:
-     * ptr = ptr + 1; // Avança 4 bytes (sizeof(int)) para o próximo elemento, apontando para arr[1]
-     * ptr = ptr + 2; // Avança 8 bytes, apontando para arr[2]
+     * Diferente de arrays, que utilizam índices, a aritmética de ponteiros navega pelos
+     * endereços de memória levando em conta o tamanho do tipo apontado.
      *
-     * Essa operação é fundamental para percorrer elementos de um array e acessar dados
-     * consecutivos na memória. Vale ressaltar que o tamanho do tipo é crucial na aritmética
-     * de ponteiros, garantindo que o ponteiro avance adequadamente para o próximo elemento do array.
+     * Exemplo de memória para um array de inteiros (4 bytes cada):
      *
-     * IMPORTANTE: A última operação mencionada (ptr = ptr + 4) parece ser um equívoco,
-     * e a operação correta deveria ser ptr = ptr + 1 ou ptr += 1, pois deseja-se avançar
-     * para o próximo elemento, não retroceder.
+     * ----------------------------------------
+     * | Endereços |  Conteúdo                |
+     * |-----------|--------------------------|
+     * | 0x5ffe78  | arr[0] = 5               | <- ptr aponta para arr[0]
+     * | 0x5ffe7c  | arr[1] = 4               |
+     * | 0x5ffe80  | arr[2] = 6               |
+     * ----------------------------------------
+     *
+     * Quando incrementamos o ponteiro:
+     *
+     *     ptr++;       // Avança sizeof(int) bytes (4 bytes), agora aponta para arr[1]
+     *     ptr = ptr+2; // Avança 2 * sizeof(int) bytes, apontando para arr[2]
+     *
+     * Assim, o ponteiro sempre avança em blocos do tamanho do tipo que aponta, garantindo
+     * acesso correto aos elementos consecutivos do array.
+     *
+     * IMPORTANTE:
+     * - O tamanho do tipo é crucial: para `int*`, o ponteiro avança 4 bytes; para `double*`,
+     *   normalmente 8 bytes, etc.
+     * - Operações como `ptr = ptr + 4` só fazem sentido se você realmente deseja pular 4 elementos,
+     *   não apenas o próximo.
      */
 
     printf("\n=============================================================================\n");

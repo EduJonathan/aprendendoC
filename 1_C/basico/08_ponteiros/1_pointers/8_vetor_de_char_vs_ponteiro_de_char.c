@@ -3,23 +3,36 @@
 #include <stdlib.h>
 
 /**
- * VETOR DE CARACTERES VS PONTEIRO PARA CHAR
+ * VETOR DE CARACTERES VS. PONTEIRO PARA CHAR
  *
  * Quando usamos:
- * - char str[] = "hello": declaramos um ARRAY DE CARACTERES de tamanho 6,
- *   com a liberdade de alterar cada índice. A string é copiada para o array.
- * - const char *str = "hello": declaramos um ponteiro para uma string literal
- *   constante, permitindo apenas leitura, pois modificações causam erro de segmentação.
  *
- * char * (Ponteiro para Caractere):
- * - Representa o endereço do primeiro caractere de uma string ou um único caractere.
- * - Pode apontar para memória alocada dinamicamente (ex: com malloc).
- * - O tamanho não é fixo, e o ponteiro pode ser reatribuído.
+ * - char str[] = "hello":
+ *     Declaramos um ARRAY DE CARACTERES com tamanho 6 (incluindo '\0').
+ *     A string literal é COPIADA para dentro do array, permitindo que cada
+ *     posição seja modificada livremente.
  *
- * USO:
- * - char[]: Ideal para strings fixas ou mutáveis com tamanho conhecido.
- * - char *: Usado para strings constantes ou dinâmicas, com reatribuição de endereço.
- * @note A escolha depende do contexto e dos requisitos do programa.
+ * - const char *str = "hello":
+ *     Declaramos um PONTEIRO para uma **string literal constante**.
+ *     Esse ponteiro pode mudar para apontar para outra string, mas o conteúdo
+ *     da string literal não pode ser modificado — tentativas de alteração
+ *     causam comportamento indefinido (geralmente erro de segmentação).
+ *
+ * char * (Ponteiro para caractere):
+ * - Representa o endereço de um caractere ou do primeiro caractere de uma string.
+ * - Pode apontar para memória alocada dinamicamente (ex.: malloc).
+ * - O ponteiro pode ser reatribuído a outro endereço.
+ * - A mutabilidade depende da memória para a qual aponta.
+ *
+ * USO RECOMENDADO:
+ * - char[] : Ideal para strings mutáveis com tamanho conhecido ou quando desejamos
+ *            armazenar a cópia local da string.
+ *
+ * - char * : Usado para strings literais (com const) ou memória dinâmica quando
+ *            precisamos alterar o tamanho ou reatribuir o ponteiro.
+ *
+ * @note A escolha depende do contexto: mutabilidade, tempo de vida e necessidade
+ *       de realocação ou reatribuição.
  */
 
 int main(int argc, char **argv)

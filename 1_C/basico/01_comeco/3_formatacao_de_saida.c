@@ -95,6 +95,20 @@ int main(int argc, char **argv)
 	 * "%04d": Preenche com zeros à esquerda, se necessário, para garantir pelo menos 4 dígitos.
 	 */
 
+	printf("\n-----------------------------------------------------\n");
+	printf("\n\t>> Formatação Especial <<\n");
+
+	// Neste exemplo é criado um efeito prático: imprime espaços em branco
+	// até completar a largura criando um recuo proporcional à profundidade.
+	int indetacao = 3; // Quanto maior é, maior será o espaçamento
+	const char *texto = "Exemplo";
+
+	printf("%*s> %s (indentação: %d)\n",
+		   indetacao * 2, // largura: número de espaços
+		   "",			  // string vazia — usada como "preenchimento"
+		   texto,		  // texto após o marcador
+		   indetacao);	  // valor da indentação
+
 	/// @attention Antes de começar a trabalhar com as variáveis, é importante entender os TIPOS DE DADOS.
 	/// Vamos explorar mais sobre como escolher o tipo correto para diferentes valores e qual o impacto disso na formatação.
 

@@ -7,13 +7,13 @@ int main(int argc, char **argv)
     printf("OLÁ! ");
 
     printf("Este é meu 1º código, olá! meu nome é Eduardo e estou programando em C\n");
-    // Os dois primeiros printf irão ter uma saída que ocorrerá na mesma linha do
-    // terminal, o '\n' é um caractere especial ou caractere de escape que realiza ação
-    // de quebra de linha, significa que a próxima função de saída de texto não esteja
+    // Os dois primeiros printf irão ter uma saída na mesma linha do terminal.
+    // O '\n' é um caractere especial ou caractere de escape que realiza ação de quebra de linha,
+    // significa que a próxima função de saída de texto não esteja
     // na mesma linha que as duas primeiras linhas estavam.
 
     // E por último, temos o puts(put string ou insere string). Seu limite é apenas
-    // apresentar textos e também caracteres especiais como '\n' e outros.
+    // apresentar textos e também caracteres especiais como '\n' dentre outros.
     // Para formatação, ele não é tão versátil quanto o printf.
     puts("Texto inserido pela função puts");
     puts("\nHELLO WORLD!");

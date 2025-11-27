@@ -16,11 +16,11 @@
  * - Ponteiro para `str` em caso de sucesso.
  * - `NULL` se ocorrer erro ou se o fim de arquivo for atingido sem caracteres lidos.
  *
- * ⚠️ **Importante**: `fgets` **lê o '\n'** se houver espaço. É comum remover
+ * **Importante**: `fgets` **lê o '\n'** se houver espaço. É comum remover
  * esse caractere depois, caso não seja desejado.
  */
 
-int main(void)
+int main(int argc, char **argv)
 {
   // --- Primeiro nome --------------------------------------------------------
   char nome[10] = {0}; // Vetor com espaço para até 9 caracteres + '\0'

@@ -142,40 +142,28 @@ int main(int argc, char **argv)
     /**
      * Regras para nomear variáveis em C:
      *
-     * ✅ NOMEAÇÕES VÁLIDAS:
+     * NOMEAÇÕES VÁLIDAS:
      *
-     * 1. Devem começar com uma letra (a-z ou A-Z) ou underscore (_)
-     *    Ex: nome, _valor, dados_recebidos
+     * 1. Devem começar com uma letra (a-z ou A-Z) ou underscore (_). | Ex: nome, _valor, dados_recebidos
+     * 2. Podem conter números após o primeiro caractere. | Ex: num1, valor2, dado3_total
+     * 3. Não devem conter espaços ou caracteres especiais. | Errado: nome completo, preço$, valor@total
+     * 4. Não podem começar com números. | Errado: 1valor | Correto: valor1
+     * 5. Devem ser declaradas antes de serem utilizadas | Ex: int idade = 18; printf("%d", idade);
+     * 6. É recomendável inicializar variáveis ao declará-las | Ex: int x = 0; float pi = 3.14f;
      *
-     * 2. Podem conter números após o primeiro caractere
-     *    Ex: num1, valor2, dado3_total
+     * 7. Não podem ser palavras reservadas(keywords) da linguagem | Errado: int, return, if, printf
+     *    Obs: Mesmo que variando a capitalização das keywords, como `Int`, `Printf` são tecnicamente válidas, mas **não recomendadas**
      *
-     * 3. Não devem conter espaços ou caracteres especiais
-     *    Errado: nome completo, preço$, valor@total
-     *
-     * 4. Não podem começar com números
-     *    Errado: 1valor | Correto: valor1
-     *
-     * 5. Não podem ser palavras reservadas(keywords) da linguagem
-     *    Errado: int, return, if, printf
-     *    Obs: Mesmo com variando a capitalização das keywords, como `Int`, `Printf` são tecnicamente válidas, mas **não recomendadas**
-     *
-     * 6. Devem ser descritivos e significativos
+     * 8. Devem ser descritivos e significativos
      *    Evite: x, y, a1
      *    Prefira: total_alunos, idade_usuario
      *
-     * 7. Devem ser únicas dentro do mesmo escopo
+     * 9. Devem ser únicas dentro do mesmo escopo
      *    Não é possível ter duas variáveis com o mesmo nome no mesmo bloco de código.
      *
-     * 8. Devem seguir a convenção da linguagem:
+     * 10. Devem seguir a convenção da linguagem:
      *    Em C, é comum o uso de `snake_case` (letras minúsculas e underscores).
      *    Ex: nome_completo, taxa_media
-     *
-     * 9. Devem ser declaradas antes de serem utilizadas
-     *    Ex: int idade = 18; printf("%d", idade);
-     *
-     * 10. É recomendável inicializar variáveis ao declará-las
-     *     Ex: int x = 0; float pi = 3.14;
      *
      * 11. Não se pode declarar a mesma variável com tipos diferentes no mesmo escopo
      *     Errado: int valor; float valor;
@@ -186,12 +174,12 @@ int main(int argc, char **argv)
      * 13. Os nomes devem ser consistentes com o uso
      *     Ex: `nome_completo` é mais apropriado que `n`, se a variável guarda um nome.
      *
-     * 💡 DICA:
+     * DICA:
      *    Use nomes que indiquem claramente o propósito da variável. Isso facilita a leitura,
      *    manutenção e colaboração no código.
      *
-     * ✅ TODAS essas regras visam garantir clareza, legibilidade e evitar erros no código.
-     *    Elas são boas práticas válidas para todas as linguagens de programação.
+     * TODAS essas regras visam garantir clareza, legibilidade e evitar erros no código.
+     * Elas são boas práticas válidas para todas as linguagens de programação.
      */
 
     return 0;

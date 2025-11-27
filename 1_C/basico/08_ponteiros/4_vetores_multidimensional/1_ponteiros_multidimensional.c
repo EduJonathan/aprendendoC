@@ -2,36 +2,51 @@
 #include <stdlib.h>
 
 /*
- * ARRAYS MULTIDIMENSIONAIS: Em C, arrays multidimensionais podem ser tratados como um
- * "ponteiro para ponteiro" (ponteiro para um array de ponteiros), ou como um conceito conhecido
- * como "cadeias de ponteiros" (chains of pointers). Quando declaramos um array multidimensional,
- * o compilador aloca a memória de forma contígua. Isso significa que, embora a estrutura do array
- * seja conceitualmente bidimensional (ou de mais dimensões), os dados são armazenados de forma
- * linear na memória. Podemos acessar os elementos de um array multidimensional de duas maneiras:
+ * ARRAYS MULTIDIMENSIONAIS:
  *
- * 1. Usando a notação tradicional de colchetes, por exemplo: `mat[linha][coluna]`.
- * 2. Usando ponteiros, que nos permitem acessar os elementos de forma semelhante,
- * mas com a notação de ponteiros: `*(*(mat + linha) + coluna)`.
+ * Em C, arrays multidimensionais são armazenados em memória de forma CONTÍGUA,
+ * mesmo que sejam representados conceitualmente como tabelas (2D) ou cubos (3D).
+ * Diferente de “ponteiro para ponteiro”, arrays multidimensionais **não** são
+ * compostos por cadeias de ponteiros — a menos que você explicitamente os crie assim.
  *
- * Para entender melhor o funcionamento da notação com ponteiros, podemos
- * analisar a expressão: `*(*(mat + linha) + coluna)`:
+ * Quando você declara, por exemplo:
  *
- * - `mat` é um ponteiro para o primeiro elemento do array, ou seja, um ponteiro
- * para o primeiro "sub-array" (linha) do array.
+ *     int mat[3][4];
  *
- * - `mat + linha` desloca o ponteiro até a linha desejada.
+ * o compilador aloca 3 * 4 inteiros de maneira sequencial na memória.
+ * Nesse caso, `mat` é do tipo “ponteiro para array de 4 inteiros”:
  *
- * - `*(mat + linha)` acessa a linha que foi deslocada e retorna um ponteiro para o
- * primeiro elemento dessa linha.
+ *     int (*)[4]
  *
- * - `*(mat + linha) + coluna` desloca esse ponteiro até a posição da coluna desejada na linha.
+ * e **não** `int **`.
  *
- * - Finalmente, `*(*(mat + linha) + coluna)` acessa o valor da célula na posição
- * [linha][coluna] do array.
+ * ACESSO AOS ELEMENTOS:
  *
- * Isso demonstra como é possível acessar os elementos de um array multidimensional
- * utilizando ponteiros de forma eficiente, aproveitando o fato de que os arrays em C
- * são armazenados de maneira contígua na memória.
+ * Podemos acessar os elementos de duas formas equivalentes:
+ *
+ * 1. Via notação tradicional: mat[linha][coluna] *
+ * 2. Via aritmética de ponteiros: *(*(mat + linha) + coluna)
+ *
+ * ENTENDENDO A EXPRESSÃO DE PONTEIROS:
+ *
+ * - `mat` é um ponteiro para o primeiro subarray (primeira linha).
+ * - `mat + linha` desloca o ponteiro para a linha desejada.
+ * - `*(mat + linha)` acessa essa linha e retorna um ponteiro para seu primeiro elemento.
+ * - `*(mat + linha) + coluna` desloca esse ponteiro até a coluna desejada.
+ *
+ * - Finalmente: *(*(mat + linha) + coluna)
+ *   acessa o valor na posição [linha][coluna].
+ *
+ * Esse mecanismo funciona porque arrays em C são contíguos. Assim, a notação com
+ * colchetes e a notação com ponteiros são totalmente equivalentes em arrays
+ * multidimensionais declarados de forma estática (ex.: int mat[3][4]).
+ *
+ * OBSERVAÇÃO:
+ * Um array multidimensional **não é** a mesma coisa que um “ponteiro para ponteiro”. Memorize:
+ *
+ * int mat[3][4]   -->  contíguo na memória, tipo int (*)[4]
+ * int **ptr       -->  ponteiro para ponteiro, normalmente usado para
+ * matrizes alocadas dinâmica e irregularmente.
  */
 
 int main(int argc, char **argv)

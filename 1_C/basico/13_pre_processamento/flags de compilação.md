@@ -149,7 +149,7 @@ gcc -Winit-self arquivo.c -o programa
 gcc -fopenmp arquivo.c -o programa
 ```
 
-```bash
+```c
 #include <omp.h>
 #include <stdio.h>
 
@@ -160,7 +160,7 @@ int main()
   return 0;
 }
 
-# gcc -fopenmp paralelo.c -o paralelo
+// gcc -fopenmp paralelo.c -o paralelo
 ```
 
 ---
@@ -322,12 +322,12 @@ gcc -Wall -Wno-uninitialized -Wno-maybe-uninitialized arquivo.c -o programa
   Não use -w (que suprime TODOS os avisos). Documente o motivo: Comente por que cada aviso está sendo suprimido
   Tenha preferência na correção do código
 
-```bash
-# // Em vez de suprimir -Wunused-parameter:
+```c
+// Em vez de suprimir -Wunused-parameter:
 
 void callback(int param)
 {
-  (void)param; # // Solução no código - melhor prática
+  (void)param; // Solução no código - melhor prática
 }
 ```
 

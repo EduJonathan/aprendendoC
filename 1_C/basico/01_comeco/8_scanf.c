@@ -135,7 +135,7 @@ int main(int argc, char **argv)
     /**
      * OBS: Entradas múltiplas com scanf não são ideais (falha se input malformado).
      *
-     * ⚠️ Entrada múltipla na mesma linha:
+     * Entrada múltipla na mesma linha:
      * Embora funcional, dificulta validação de erros. Prefira ler cada valor
      * separadamente ou usar `fgets()` + `sscanf()` para validação.
      */

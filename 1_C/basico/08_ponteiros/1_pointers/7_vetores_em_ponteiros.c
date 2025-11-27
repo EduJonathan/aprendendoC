@@ -1,10 +1,22 @@
 #include <stdio.h>
 
 /**
- * Este código tem como intuito provar que um vetor pode ser tratado como um ponteiro
- * para SOMENTE com acesso dele(vetor) ao seu primeiro elemento, permitindo a aritmética de
- * ponteiros NAVEGAR pelos elementos do vetor apartir deste acesso.
- * Porém é totalmente diferente quando um ponteiro assume armazenando o seu endereço.
+ * Este código demonstra que um vetor pode ser tratado como um ponteiro **somente no
+ * sentido de que seu nome representa o endereço do primeiro elemento**. A partir desse
+ * endereço inicial, é possível utilizar aritmética de ponteiros para navegar pelos
+ * elementos do vetor.
+ *
+ * Contudo, isso **não transforma o vetor em um ponteiro real**. A diferença fundamental
+ * aparece quando tentamos alterar o endereço armazenado:
+ *
+ * - O nome de um vetor é um endereço FIXO, determinado na compilação. Ele não pode ser
+ *   modificado ou receber outro endereço.
+ *
+ * - Já um ponteiro comum é uma variável que armazena um endereço de memória e pode ser
+ *   alterado livremente (reatribuído, incrementado, etc.).
+ *
+ * Portanto, embora vetores e ponteiros compartilhem comportamentos semelhantes em
+ * expressões, eles não são equivalentes e possuem características distintas.
  */
 
 int main(int argc, char **argv)

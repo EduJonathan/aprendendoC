@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-/*
- * A aritmética de ponteiros é uma característica da linguagem de programação C, permitindo
- * que realize operações aritméticas diretamente sobre os endereços de memória apontados
- * por ponteiros. Isso pode ser útil para navegar por arrays, estruturas ou qualquer bloco
- * contíguo de memória. Neste código estarei mostrando aritmética de ponteiro em operadores
- * aritméticos e incremento e decremento.
+/**
+ * A aritmética de ponteiros é um recurso da linguagem C que permite realizar operações
+ * diretamente sobre endereços de memória armazenados em ponteiros.
+ * Esse recurso é especialmente útil para percorrer arrays, estruturas ou qualquer região
+ * contínua de memória. No código a seguir, serão demonstrados exemplos de
+ * aritmética de ponteiros com operadores aritméticos, além das operações de incremento e decremento.
  */
 
 int main(int argc, char **argv)
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 
     printf("\n=============================================================================\n");
     printf("\n-- Endereços e Conteúdos Iniciais --\n");
-    
+
     printf("v1: %d (endereço %p)\n", v1, (void *)&v1);
     printf("v2: %d (endereço %p)\n", v2, (void *)&v2);
     printf("pointer1 aponta para %p, pointer2 aponta para %p\n",

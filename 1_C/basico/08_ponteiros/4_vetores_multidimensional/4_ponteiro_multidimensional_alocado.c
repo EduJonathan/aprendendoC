@@ -2,9 +2,13 @@
 #include <stdlib.h> // Necessário para alocação dinâmica com malloc
 
 /**
- * A alocação dinâmica é o processo de solicitar memória para armazenar dados enquanto
- * o programa está sendo executado e neste código demonstra como alocar memória para
- * uma matriz 2D de inteiros de forma dinâmica e preencher, acessar e liberar a memória.
+ * A alocação dinâmica é o processo de solicitar memória em tempo de execução,
+ * permitindo que o programa reserve exatamente a quantidade de memória necessária
+ * enquanto está sendo executado.
+ *
+ * Neste código, demonstramos como alocar dinamicamente memória para uma matriz 2D
+ * de inteiros, preenchê-la, acessar seus elementos e, ao final, liberar corretamente
+ * toda a memória alocada.
  */
 
 int main(int argc, char **argv)

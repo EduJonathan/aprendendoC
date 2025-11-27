@@ -1,17 +1,17 @@
 #include <stdio.h>
 
+/**
+ * Os operadores de incremento (++) e decremento (--) possuem embutida
+ * uma operação de atribuição. Eles podem ser usados antes ou depois do nome da variável:
+ *
+ * => ++x (pré-incremento): soma 1 à variável x antes de utilizar seu valor.
+ * => x++ (pós-incremento): soma 1 à variável x depois de utilizar seu valor.
+ * => --x (pré-decremento): subtrai 1 da variável x antes de utilizar seu valor.
+ * => x-- (pós-decremento): subtrai 1 da variável x depois de utilizar seu valor.
+ */
+
 int main(int argc, char **argv)
 {
-    /*
-     * Os operadores de incremento (++) e decremento (--) possuem embutida
-     * uma operação de atribuição. Eles podem ser usados antes ou depois do nome da variável:
-     *
-     * => ++x (pré-incremento): soma 1 à variável x antes de utilizar seu valor.
-     * => x++ (pós-incremento): soma 1 à variável x depois de utilizar seu valor.
-     * => --x (pré-decremento): subtrai 1 da variável x antes de utilizar seu valor.
-     * => x-- (pós-decremento): subtrai 1 da variável x depois de utilizar seu valor.
-     */
-
     printf("\n\tINCREMENTO:\n");
 
     int incremento = 10;

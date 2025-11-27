@@ -3,32 +3,64 @@
 int main(int argc, char **argv)
 {
     /**
-     * ERRO:
+     * ERRO NO USO DO VETOR DE PONTEIROS
+     *
      * int v1[3] = {1, 2, 3};
      * int v2[3] = {4, 5, 6};
      * int v3[3] = {7, 8, 9};
      * int v4[3] = {10, 11, 12};
-     * int *pt[3]; //vetor de ponteiros do tipo inteiro
-
+     *
+     * int *pt[3]; // vetor de ponteiros do tipo inteiro
+     *
      * pt[0] = v1;
      * pt[1] = v2;
      * pt[2] = v3;
-     * pt[3] = v4;
+     * pt[3] = v4;   // <-- ERRO
      *
-     * O código apresenta problemas:
-     * A declaração int *pt[3] cria um vetor de ponteiros, mas como você está acessando
-     * quatro vetores, deveria ser int *pt[4] para alocar espaço suficiente.
-     * A linha pt[3] = v4; está causando um problema, pois pt tem apenas três elementos.
-     * Para corrigir, podemos aumentar o tamanho de pt para 4 ou remover essa atribuição.
-     * No loop for, você estamos usando (*pt)++, mas isso incrementará o valor do
-     * primeiro elemento do
+     * PROBLEMA:
+     * A declaração `int *pt[3]` cria um vetor com APENAS TRÊS elementos (pt[0], pt[1], pt[2]).
+     * Entretanto, o código tenta escrever em pt[3], que NÃO EXISTE. Isso causa comportamento
+     * indefinido. Se a intenção é armazenar quatro vetores, o correto seria:
      *
-     * for(int i = 0; i < 3; i++)
+     *     int *pt[4];
+     *
+     * ou remover a atribuição a pt[3].
+     *
+     * ---
+     * ERRO NO LOOP:
+     *
+     * for (int i = 0; i < 3; i++)
      * {
-     *	 printf("v3[%d] = %d\n", i, (*pt)++);
+     *     printf("v3[%d] = %d\n", i, (*pt)++);
      * }
      *
-     * primeiro vetor (v1) três vezes. precisamos usar pt[i] para acessar cada vetor.
+     * Nesse caso, `(*pt)` equivale a `pt[0]`, pois `pt` aponta para o primeiro elemento
+     * do vetor de ponteiros. Assim, `(*pt)++` incrementa o ponteiro pt[0], fazendo com
+     * que ele percorra os elementos de v1 — e não os vetores v1, v2, v3 individualmente.
+     *
+     * Para acessar cada vetor corretamente, você deve usar pt[i]:
+     *
+     * for (int i = 0; i < 3; i++)
+     * {
+     *    printf("v%d[%d] = %d\n", i + 1, i, pt[i][i]);
+     * }
+     *
+     * Ou, se quiser percorrer cada vetor separadamente com ponteiro:
+     *
+     *     for (int i = 0; i < 3; i++)
+     *     {
+     *         int *p = pt[i];
+     *         for (int j = 0; j < 3; j++)
+     *         {
+     *             printf("%d ", *(p + j));
+     *         }
+     *         printf("\n");
+     *     }
+     *
+     * RESUMO:
+     * - O tamanho do vetor de ponteiros deve ser suficiente para as atribuições.
+     * - `(*pt)` sempre acessa o primeiro ponteiro (pt[0]).
+     * - Para acessar os vetores corretamente, use pt[i].
      */
 
     int v0[3] = {0, 1, 2};   // Vetor 1 com três elementos

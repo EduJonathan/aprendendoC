@@ -1,22 +1,24 @@
 #include <stdio.h>
 
 /*
- * Vetor de ponteiros: Um vetor de ponteiros é um array onde cada elemento é um ponteiro,
- * ou seja, cada posição do vetor armazena o endereço de memória de uma variável ou estrutura
- * de dados. Em C, isso significa que o vetor pode apontar para diferentes locais de memória,
- * como outros arrays, strings, ou qualquer outra variável ou estrutura que possa ser
- * referenciada por ponteiros.
+ * Vetor de ponteiros:
  *
- * Vetores de ponteiros são úteis em situações onde você precisa manipular ou acessar um conjunto
- * de dados de forma dinâmica, ou quando há a necessidade de manipular diferentes tipos de dados
- * de forma eficiente. Eles são frequentemente utilizados em:
+ * Um vetor de ponteiros é um array cujos elementos são ponteiros. Cada posição armazena
+ * um endereço de memória, podendo apontar para variáveis, strings, arrays ou estruturas.
+ * Isso permite que cada elemento do vetor referencie diferentes regiões da memória.
  *
- * - Manipulação de strings (onde cada elemento do vetor aponta para uma string),
- * - Alocação dinâmica de matrizes (em que cada ponteiro pode apontar para um array de tamanho variável),
- * - Estruturas de dados complexas, como listas encadeadas e árvores, onde os ponteiros referenciam nós ou elementos em diferentes partes da memória.
+ * Vetores de ponteiros são úteis quando é necessário manipular dados de forma flexível
+ * e dinâmica. Eles permitem que cada elemento tenha tamanhos ou estruturas diferentes,
+ * já que cada ponteiro pode apontar para áreas distintas.
  *
- * Usar um vetor de ponteiros oferece flexibilidade ao trabalhar com dados dinâmicos e
- * estruturados, permitindo acessar e modificar dados de maneira eficiente.
+ * Exemplos de uso comuns:
+ * - Manipulação de strings: cada elemento aponta para uma string diferente.
+ * - Matrizes dinâmicas: cada ponteiro pode apontar para um array de tamanho variável.
+ * - Estruturas de dados complexas (listas, árvores, grafos): ponteiros para nós espalhados
+ *   pela memória.
+ *
+ * Em resumo, vetores de ponteiros fornecem flexibilidade e eficiência ao lidar com dados
+ * dinâmicos e estruturas heterogêneas.
  */
 
 int main(int argc, char **argv)

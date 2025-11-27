@@ -58,7 +58,7 @@ int main(int argc, char **argv)
      * %p: exibe o endereço de memória (em hexadecimal), usado com ponteiros.
      * É necessário fazer casting para (void *) em compiladores mais exigentes.
      *
-     * ⚠️ ATENÇÃO:
+     * ATENÇÃO:
      * printf(" PREFIXO DO ENDEREÇO DE MEMÓRIA DA VARIÁVEL 'OCTAL' É : %#p\n", (void *)&OCTAL);
      * ERROR: flag '#' results in undefined behavior with 'p' conversion specifier [-Wformat]
      * O modificador '#' NÃO DEVE ser usado com %p — gera comportamento indefinido.

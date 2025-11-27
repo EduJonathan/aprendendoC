@@ -1,20 +1,32 @@
 #include <stdio.h>
 
 /**
- * Chains of Pointers: Um ponteiro armazena o endereço de memória de uma variável. Mas,
- * o que acontece quando um ponteiro guarda o endereço de outro ponteiro? Um ponteiro é uma
- * variável especial, pois, ao invés de armazenar um valor direto, ele armazena o endereço de
- * memória de uma variável, e essa variável, por sua vez, armazena o valor real. Ou seja, um
- * ponteiro possui os mesmos atributos de uma variável comum:
+ * CHAINS OF POINTERS (Cadeias de Ponteiros):
  *
- * -> Endereço de memória alocado
- * -> Nome (identificador/variável)
- * -> Valor (endereço de memória)
+ * Um ponteiro armazena o endereço de memória de uma variável. Mas também é possível
+ * que um ponteiro armazene o endereço de outro ponteiro, formando uma “cadeia de
+ * ponteiros”.
  *
- * Esse conceito é chamado de "chains of pointers", ou corrente de ponteiros, onde um
- * ponteiro pode apontar para outro ponteiro, criando uma cadeia. O risco aqui é perder a
- * referência do endereço, o que pode ser perigoso em situações como alocação dinâmica de
- * memória para matrizes ou listas encadeadas.
+ * Assim como uma variável comum, um ponteiro possui:
+ *  -> Um endereço de memória próprio;
+ *  -> Um nome (identificador);
+ *  -> Um valor armazenado — que, no caso do ponteiro, é o endereço de outra variável.
+ *
+ * Quando um ponteiro aponta para outro ponteiro, temos uma cadeia como:
+ *
+ *      int x = 10;
+ *      int *p  = &x;   // p aponta para x
+ *      int **pp = &p;  // pp aponta para p
+ *
+ * Esse mecanismo é útil em várias situações, como:
+ *  - Funções que precisam modificar ponteiros passados como argumento;
+ *  - Estruturas dinâmicas (listas, árvores, matrizes alocadas dinamicamente);
+ *  - Implementação de abstrações genéricas.
+ *
+ * ATENÇÃO:
+ * Cadeias de ponteiros aumentam o risco de perda de referência (dangling pointers),
+ * especialmente quando usadas junto com alocação dinâmica. Perder um ponteiro intermediário
+ * pode tornar impossível liberar a memória corretamente.
  */
 
 int main(int argc, char **argv)

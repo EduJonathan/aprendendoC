@@ -1,19 +1,27 @@
 #include <stdio.h>
 
 /**
- * Ponteiro e arrays são a mesma coisa? ponteiros tem um forte relacionamento com arrays,
- * pelo fato do array ser tratado de forma unânime e simultânea através de sua nomeação, o
- * array age por si só como um ponteiro atuando no primeiro elemento do array, porém não, não
- * são a mesma coisa, arrays são alocações contíguas na memória, enquanto ponteiro ARMAZENA
- * um endereço.
+ * Ponteiros e arrays são a mesma coisa?
  *
- * int *ponteiro = NULL;
- * int arr[3] = {0};
+ * Não. Apesar de terem um relacionamento muito próximo, ponteiros e arrays não são equivalentes.
  *
- * ponteiro = arr; ou &arr[0];
+ * Arrays representam um bloco contínuo de memória, contendo um número fixo de
+ * elementos. Já um ponteiro é uma variável que ARMAZENA um endereço de memória.
  *
- * Apartir deste momento acontece o que já esperado
- * [ponteiro] -> arr[0]
+ * A relação entre eles surge porque, em muitas expressões, o nome de um array
+ * "decai" para um ponteiro para seu primeiro elemento. Por isso, é comum usar
+ * ponteiros para percorrer arrays.
+ *
+ * Exemplo:
+ *     int *ponteiro = NULL;
+ *     int arr[3] = {0};
+ *     ponteiro = arr; // equivalente a: ponteiro = &arr[0];
+ *
+ * A partir desse momento, temos o comportamento esperado:
+ *
+ *     ponteiro -> arr[0]
+ *
+ * Ou seja, `ponteiro` passa a apontar para o primeiro elemento do array.
  */
 
 int main(int argc, char **argv)

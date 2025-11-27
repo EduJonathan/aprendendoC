@@ -26,8 +26,8 @@ O pré-processador prepara o código-fonte antes da compilação, executando as 
 - Expande macros definidas com #define.
 - Processa diretivas, como #include (para incluir arquivos) ou #ifdef (para compilação condicional).
 
-```bash
-# Exemplo:
+```c
+// Exemplo:
 
 #define MAX 100
 #include <stdio.h>
@@ -38,7 +38,7 @@ int main()
   return 0;
 }
 
-# Use `gcc -E arquivo.c` para visualizar o resultado do pré-processamento.
+// Use `gcc -E arquivo.c` para visualizar o resultado do pré-processamento.
 ```
 
 ---
@@ -67,11 +67,11 @@ Exemplo de tokens para `int x = 5;`:
 O compilador verifica se os tokens formam estruturas válidas, como expressões ou blocos de código corretos.
 Erros como parênteses ou chaves mal colocados são detectados aqui.
 
-```bash
-# Exemplo de erro:
+```c
+// Exemplo de erro:
 int main()
 {
-  printf("Erro de sintaxe" # // Erro: falta o fechamento de parênteses, além do ;
+  printf("Erro de sintaxe" // Erro: falta o fechamento de parênteses, além do ;
 }
 ```
 
@@ -82,11 +82,11 @@ int main()
 Valida o significado do código, garantindo que ele faça sentido. Exemplos de verificações:
 Variáveis declaradas antes do uso. Número e tipos corretos de argumentos em chamadas de funções.
 
-```bash
-# Exemplo de erro:
+```c
+// Exemplo de erro:
 int main()
 {
-  printf("%d", x); # // Erro: 'x' não foi declarado ou identifier "x" is undefined
+  printf("%d", x); // Erro: 'x' não foi declarado ou identifier "x" is undefined
 }
 ```
 
@@ -129,7 +129,7 @@ O **linker** combina os arquivos objeto com bibliotecas externas, resolvendo ref
 a funções e variáveis. Ele substitui referências simbólicas (ex.: nome de uma função) por
 endereços reais de memória, gerando o arquivo executável (ex.: `.exe` no Windows ou `.out` no Linux).
 
-```bash:
+```bash
 
 gcc arquivo.o -o programa
 

@@ -1,14 +1,24 @@
 #include <stdio.h>
 
 /*
- * void pointer (ponteiro para void): É um tipo especial de ponteiro que pode armazenar
- * o endereço de qualquer tipo de dado. É útil em situações em que se deseja criar
- * funções ou estruturas de dados genéricas, capazes de manipular diferentes tipos
- * sem a necessidade de criar versões específicas para cada um.
+ * VOID POINTER (ponteiro para void):
  *
- * Atenção: a desreferenciação de um ponteiro void só pode ser feita após a conversão
- * explícita para outro tipo de ponteiro, pois o compilador não sabe o tamanho ou o tipo
- * de dado apontado.
+ * Um ponteiro para void é um tipo especial de ponteiro capaz de armazenar o endereço
+ * de qualquer tipo de dado. Ele é amplamente utilizado na implementação de funções e
+ * estruturas de dados genéricas, permitindo manipular diferentes tipos sem duplicar código.
+ *
+ * IMPORTANTE:
+ * Um ponteiro void **não pode ser desreferenciado diretamente**, pois o compilador
+ * não conhece o tipo nem o tamanho do dado ao qual ele aponta. Para acessar o valor,
+ * é necessário converter (cast) o ponteiro para um tipo específico antes da
+ * desreferenciação.
+ *
+ * Exemplo:
+ *
+ *     void *p;
+ *     int x = 10;
+ *     p = &x;
+ *     printf("%d\n", *(int *)p); // conversão antes da desreferência
  */
 
 int main(int argc, char **argv)
