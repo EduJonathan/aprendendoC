@@ -6,8 +6,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#ifndef _APPEND_H
-#define _APPEND_H
+#ifndef _APPEND_
+#define _APPEND_
 
 /**
  * @brief Estrutura que representa uma string

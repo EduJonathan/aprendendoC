@@ -154,25 +154,17 @@ int main(int argc, char **argv)
      * 7. Não podem ser palavras reservadas(keywords) da linguagem | Errado: int, return, if, printf
      *    Obs: Mesmo que variando a capitalização das keywords, como `Int`, `Printf` são tecnicamente válidas, mas **não recomendadas**
      *
-     * 8. Devem ser descritivos e significativos
+     * 8. Devem ser descritivos e significativos para com seu uso
      *    Evite: x, y, a1
      *    Prefira: total_alunos, idade_usuario
      *
-     * 9. Devem ser únicas dentro do mesmo escopo
-     *    Não é possível ter duas variáveis com o mesmo nome no mesmo bloco de código.
+     * 9. Devem ser únicas dentro do mesmo escopo. Não é possível ter duas variáveis
+     *    com o mesmo nome no mesmo bloco de código, independente se o tipo for diferente
+     *    Exemplo: int valor; float valor;
      *
      * 10. Devem seguir a convenção da linguagem:
      *    Em C, é comum o uso de `snake_case` (letras minúsculas e underscores).
      *    Ex: nome_completo, taxa_media
-     *
-     * 11. Não se pode declarar a mesma variável com tipos diferentes no mesmo escopo
-     *     Errado: int valor; float valor;
-     *
-     * 12. Se já existe uma variável com certo nome, não é possível declarar outra com o mesmo nome,
-     *     mesmo que de tipo diferente, no mesmo escopo.
-     *
-     * 13. Os nomes devem ser consistentes com o uso
-     *     Ex: `nome_completo` é mais apropriado que `n`, se a variável guarda um nome.
      *
      * DICA:
      *    Use nomes que indiquem claramente o propósito da variável. Isso facilita a leitura,

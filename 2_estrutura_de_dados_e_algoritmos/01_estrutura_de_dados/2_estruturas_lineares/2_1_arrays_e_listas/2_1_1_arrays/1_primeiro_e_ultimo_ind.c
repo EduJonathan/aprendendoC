@@ -18,6 +18,18 @@ void elementos(int array[], size_t tamanho, int *primeiroElemento, int *Elemento
     *ultimoElemento = array[tamanho - 1]; // Ultimo elemento
 }
 
+int soma_extremidades(int arr[], size_t tam, size_t first_extremo, size_t second_extremo)
+{
+    if (first_extremo >= tam || second_extremo >= tam)
+    {
+        fprintf(stderr, "ERROR: índice fora do range do array!");
+    }
+
+    // Soma os elementos em posições específicas
+    int soma_extremos = arr[first_extremo] + arr[second_extremo];
+    return soma_extremos;
+}
+
 int main(int argc, char **argv)
 {
     int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -34,7 +46,12 @@ int main(int argc, char **argv)
     // Resulta 6 por conta que lembrando que array começa em 0,
     // correspondendo o sexto elemento do array a posição 5
     printf("Elemento do meio: %d\n", meio);
-
     printf("Ultimo elemento: %d\n", ultimo);
+
+    int soma_extremos1 = soma_extremidades(array, tamanho, 0, 9);
+    printf("Soma dos extremos (array[0] = 1 + array[9] = 10) = %d\n", soma_extremos1);
+
+    int soma_fora_do_range = soma_extremidades(array, tamanho, 0, 10);
+    printf("Soma dos extremos fora do range (array[0] = 1 + array[10] = indefinido) = %d\n", soma_fora_do_range);
     return 0;
 }

@@ -43,7 +43,6 @@ float return_float(void)
 {
     // ceilf(): Fornecido por math.h, retorna o menor valor aproximado
     float valorAprox = ceilf(0.78F);
-
     printf(" VALOR APROXIMADO: %f\n", valorAprox);
     return valorAprox; // Retorna um valor em ponto flutuante
 }
@@ -59,7 +58,6 @@ double return_double(void)
 {
     // pow(): Fornecido por math.h, retorna o valor de potenciação
     double power = pow(5.0, 2.0);
-
     printf(" POTENCIAÇÃO: %lf\n", power);
     return power; // Retorna um valor em ponto flutuante double
 }

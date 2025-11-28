@@ -24,7 +24,7 @@
  *
  * Podemos acessar os elementos de duas formas equivalentes:
  *
- * 1. Via notação tradicional: mat[linha][coluna] *
+ * 1. Via notação tradicional: mat[linha][coluna]
  * 2. Via aritmética de ponteiros: *(*(mat + linha) + coluna)
  *
  * ENTENDENDO A EXPRESSÃO DE PONTEIROS:
