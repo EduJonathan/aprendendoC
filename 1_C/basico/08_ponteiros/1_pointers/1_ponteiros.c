@@ -122,27 +122,5 @@ int main(int argc, char **argv)
      * Ou seja, o valor de um ponteiro é um "endereço <PARA> um valor do tipo",
      * e não "<O> valor do tipo" em si.
      */
-
-    printf("\n=================================================================\n");
-    printf("\n\t>>PASSANDO O VALOR DE UM PONTEIRO PARA UMA VARIÁVEL<<\n");
-
-    *ptr = 65; /* Atribuindo outro valor para o contéudo do ponteiro, pode também *ptr = 'A'; */
-    /* Lembrando que char são apenas INTEIROS de 8 bits, e nosso ponteiro também é um INTEIRO. */
-
-    /**
-     * ERRO: num = ptr;
-     * warning : assignment to 'int' from 'int *' makes integer from pointer without a cast
-     * printf(" O valor da variável num atribuido pelo conteudo do ponteiro ptr : %d\n", num);
-     */
-
-    num = *ptr;
-    /* Atribui o valor do ponteiro para a variável num usando o operador de desreferência (*). */
-    /* Agora num possue o valor de ptr para si, ou seja num agora é 65, em ASCII 'A'. */
-
-    /* Passando o conteúdo de num, apontado pelo ponteiro para var. */
-    int var = *ptr;
-
-    printf(" O valor da variável 'num' atribuido pelo conteudo do ponteiro ptr : %d-%c\n", num, num);
-    printf(" O valor da variável 'var' atribuido pelo conteudo do ponteiro ptr : %d-%c\n", var, var);
     return 0;
 }

@@ -8,15 +8,15 @@
  * Eles são bastante comuns tanto em operações aritméticas quanto em operações
  * bit a bit (bitwise), tornando o código mais enxuto e legível.
  *
- * ------------------------------------------------------------
- * |    OPERADORES ARITMÉTICOS     |   OPERADORES BITWISE     |
- * ------------------------------------------------------------
- * |         +=   (soma)           |       &=   (E bit a bit) |
- * |         -=   (subtração)      |       |=   (OU bit a bit)|
- * |         *=   (multiplicação)  |       ^=   (XOR)         |
- * |         /=   (divisão)        |       >>=  (desloca dir.)|
- * |         %=   (resto)          |       <<=  (desloca esq.)|
- * ------------------------------------------------------------
+ * -------------------------------------------------------------
+ * |    OPERADORES ARITMÉTICOS     |   OPERADORES BITWISE      |
+ * -------------------------------------------------------------
+ * |         +=   (soma)           |       &=   (E bit a bit)  |
+ * |         -=   (subtração)      |       |=   (OU bit a bit) |
+ * |         *=   (multiplicação)  |       ^=   (XOR)          |
+ * |         /=   (divisão)        |       >>=  (desloca dir.) |
+ * |         %=   (resto)          |       <<=  (desloca esq.) |
+ * -------------------------------------------------------------
  */
 
 int main(int argc, char **argv)

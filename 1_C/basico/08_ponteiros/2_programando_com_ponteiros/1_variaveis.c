@@ -59,6 +59,27 @@ int main(int argc, char **argv)
     printf("Atribuição via ponteiros:\n");
     printf("numero = %d\ntotal = %d\n", numero, total);
 
+    printf("\n=================================================================\n");
+    printf("\n\t>>PASSANDO O VALOR DE UM PONTEIRO PARA UMA VARIÁVEL<<\n");
+
+    int num = 'V';
+    int other = 'A';
+    int *pointer = &other; // <-- APONTA PARA UM ENDEREÇO VÁLIDO
+
+    /**
+     * ERRO: num = pointer;
+     * warning : assignment to 'int' from 'int *' makes integer from pointer without a cast
+     * printf(" O valor da variável num atribuido pelo conteudo do ponteiro pointer : %d\n", num);
+     */
+
+    num = *pointer; // Agora OK
+    /* Atribui o valor do ponteiro para a variável num usando o operador de desreferência (*). */
+    /* Agora num possue o valor de pointer para si, ou seja num agora é 65, em ASCII 'A'. */
+    int var = *pointer;
+
+    printf(" O valor da variável 'num' atribuido pelo conteudo do ponteiro pointer : %d-%c\n", num, num);
+    printf(" O valor da variável 'var' atribuido pelo conteudo do ponteiro pointer : %d-%c\n", var, var);
+
     printf("\n===============================================\n");
 
     /* Parte 5: Expressões complexas */
