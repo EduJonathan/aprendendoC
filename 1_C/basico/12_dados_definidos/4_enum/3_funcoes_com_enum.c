@@ -19,10 +19,7 @@ enum moeda
  *
  * @return 0 para CARA e 1 para COROA
  */
-int jogarMoeda(void)
-{
-    return rand() % 2;
-}
+int jogarMoeda(void) { return rand() % 2; }
 
 /**
  * @brief Função que determina quem começa o jogo com base em dois lançamentos de moeda.
