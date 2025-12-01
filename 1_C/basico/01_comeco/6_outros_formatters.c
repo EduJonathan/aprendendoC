@@ -83,10 +83,5 @@ int main(int argc, char **argv)
     printf(" %Lg | %Lg\n", NOTACAO, NOTACAO);
     printf(" %LG | %LG\n", NOTACAO, NOTACAO);
 
-    printf(" %e\n", NOTACAO_CIENTIFICA);
-    printf(" %E\n", NOTACAO_CIENTIFICA);
-    printf(" %g\n", NOTACAO_CIENTIFICA);
-    printf(" %G\n", NOTACAO_CIENTIFICA);
-
     return 0;
 }
