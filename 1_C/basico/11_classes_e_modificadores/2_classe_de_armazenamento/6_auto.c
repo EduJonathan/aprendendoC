@@ -18,7 +18,7 @@
  *
  * Observação:
  * - Em C++ moderno (C++11+), `auto` também permite inferência de tipo, mas em C isso não existe.
- * - O uso explícito de `auto` em C é raríssimo e desnecessário.
+ * - O uso explícito de `auto` em C é raríssimo e desnecessário, sendo mais utilizado em C++.
  */
 
 int main(int argc, char **argv)

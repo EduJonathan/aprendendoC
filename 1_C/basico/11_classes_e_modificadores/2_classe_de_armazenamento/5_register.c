@@ -46,8 +46,5 @@ int main(int argc, char **argv)
     // Imprimindo o resultado
     printf("r = %d\n", r); // OUTPUT: 58
 
-    // NOTA: Não é possível usar &r ou armazenar ponteiro para 'r'
-    // printf("%p\n", &r); // ERRO: endereço de variável register não permitido
-
     return 0;
 }
