@@ -21,8 +21,8 @@
  * (nenhum) | double                  | %lf ou %f
  * L        | long double             | %Lf
  *
- * @note: Literais binários (0b) são suportados em C11 ou posterior.
- * @note: Sufixos maiúsculos (U, L, LL) são preferidos por convenção, mas minúsculos (u, l, ll) são equivalentes.
+ * @note Literais binários (0b) são suportados em C11 ou posterior.
+ * @note Sufixos maiúsculos (U, L, LL) são preferidos por convenção, mas minúsculos (u, l, ll) são equivalentes.
  */
 
 int main(int argc, char **argv)
@@ -32,20 +32,11 @@ int main(int argc, char **argv)
     printf("\n=========================================================\n");
     printf("\n\t==>TIPOS INTEIROS<==\n");
 
-    unsigned int numeroSemSinal = 42U;
-    // ou unsigned int numeroSemSinal = 42u;
-
-    unsigned long outroNumeroLongo = 5678UL;
-    // ou unsigned long outroNumeroLongo = 5678ul;
-
-    long numeroLongo = 1234L;
-    // ou long numeroLongo = 1234l;
-
-    long long numeroMuitoLongo = 123456789LL;
-    // ou long long numeroMuitoLongo = 123456789ll;
-
-    unsigned long long outroNumeroMuitoLongo = 987654321ULL;
-    // ou unsigned long long outroNumeroMuitoLongo = 987654321ull;
+    unsigned int numeroSemSinal = 42U;                       // Ou o prefixo `u`
+    unsigned long outroNumeroLongo = 5678UL;                 // Ou o prefixo `ul`
+    long numeroLongo = 1234L;                                // Ou o prefixo `l`
+    long long numeroMuitoLongo = 123456789LL;                // Ou o prefixo `ll`
+    unsigned long long outroNumeroMuitoLongo = 987654321ULL; // Ou o prefixo `ll`
 
     printf(" Unsigned int       : %10u\n", numeroSemSinal);
     printf(" Long               : %10ld\n", numeroLongo);
@@ -92,15 +83,12 @@ int main(int argc, char **argv)
     printf("\n=========================================================\n");
     printf("\n\t==>PONTOS FLUTUANTES<==\n");
 
-    // ou float numeroFlutuante = 3.14f;
-    float numeroFlutuante = 3.14F;
+    float numeroFlutuante = 3.14F; // Ou Prefixo `f`
 
     // Os computadores e compiladores atuais já tratam valores de ponto flutuante,
     // como double, sem necessitar de um sufixo
     double numeroDouble = 64.78;
-
-    // ou long double numeroDuploPrecisao = 2.718l;
-    long double numeroDuploPrecisao = 2.718L;
+    long double numeroDuploPrecisao = 2.718L; // Ou Prefixo `l`
 
     printf(" Float       : %10.2f\n", numeroFlutuante);
     printf(" Double      : %10.2lf\n", numeroDouble);

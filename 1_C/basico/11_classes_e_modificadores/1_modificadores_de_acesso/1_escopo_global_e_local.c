@@ -3,19 +3,24 @@
 
 /*
  * VARIÁVEIS GLOBAIS:
- * São declaradas fora de qualquer função e têm escopo global, ou seja, podem ser acessadas
- * por todo o código. Embora sejam convenientes, o uso excessivo pode aumentar o consumo de
- * memória e tornar o código mais difícil de entender e manter. Além disso, pode haver
- * conflitos de nomes com variáveis locais, o que torna o código mais propenso a erros.
- * Por isso, sempre que possível, prefira variáveis locais.
+ * São declaradas fora de qualquer função e possuem escopo global, podendo ser acessadas
+ * por qualquer parte do código. Embora práticas em alguns casos, seu uso excessivo pode
+ * causar aumento desnecessário no consumo de memória, dificultar o entendimento do programa
+ * e reduzir a modularidade.
+ *
+ * Também aumentam o risco de conflitos de nomes e efeitos colaterais, já que qualquer função
+ * pode modificar seu valor. Por isso, recomenda-se evitar variáveis globais quando for possível
+ * usar variáveis locais ou passar valores por parâmetro.
  */
 
 /**
- * VARIÁVEIS LOCAIS: 
- * São declaradas dentro de funções ou blocos de código (como loops ou condicionais) 
- * e só podem ser acessadas dentro desse escopo. Elas são destruídas após o término da
- * função ou bloco e consomem menos memória. O uso de variáveis locais facilita o entendimento,
- * modulariza o código e ajuda a evitar conflitos de nomes e problemas de memória.
+ * VARIÁVEIS LOCAIS:
+ * São declaradas dentro de funções ou blocos de código (como loops, condicionais ou escopos
+ * delimitados por chaves) e só podem ser acessadas dentro desse escopo. Quando a função ou
+ * bloco termina, essas variáveis são destruídas automaticamente, liberando memória.
+ *
+ * O uso de variáveis locais torna o código mais claro, modular e seguro, evitando conflitos de
+ * nomes e minimizando efeitos colaterais entre diferentes partes do programa.
  */
 
 int X = 104;             // Variável global

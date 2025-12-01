@@ -44,11 +44,13 @@
 #endif
 
 /**
- * #pragma warning(push) → No MSVC (Visual Studio Compiler), salva o estado atual das
+ * - #pragma warning(push) → No MSVC (Visual Studio Compiler), salva o estado atual das
  * advertências antes de desativar alguma.
- * #pragma warning(disable : 4996) → No MSVC, desativa o aviso C4996, que geralmente ocorre
+ * 
+ * - #pragma warning(disable : 4996) → No MSVC, desativa o aviso C4996, que geralmente ocorre
  * ao usar funções consideradas inseguras, como scanf() e strcpy().
- * #pragma warning(pop) → Restaura os warnings para o estado anterior.
+ * 
+ * - #pragma warning(pop) → Restaura os warnings para o estado anterior.
  */
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -102,8 +104,7 @@ int main(int argc, char **argv)
     funcaoComVariavel();
 
     /**
-     * Aconselho a compilação para melhor resultado das diretivas em cada cenário
-     * com a seguinte linha:
+     * Aconselho a compilação para melhor resultado das diretivas em cada cenário com as seguinte linhas:
      * > gcc -Wall -O1 -std=c11 pragma_warning.c -o teste
      * > gcc -O3 -std=c11 pragma_warning.c -o teste
      * > gcc -O0 -std=c11 pragma_warning.c -o teste

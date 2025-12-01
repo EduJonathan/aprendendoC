@@ -1,93 +1,64 @@
 #include <stdio.h>
 
 /**
- * STATIC: A palavra-chave `static` em C e C++ indica que uma variável tem escopo de arquivo,
- * ou seja, ela é visível em todo o arquivo onde foi declarada, mas mantém seu valor entre
- * chamadas consecutivas da função ou do bloco onde foi declarada. Isso significa que, ao
- * contrário de variáveis locais comuns, que são reinicializadas toda vez que a função é chamada,
- * as variáveis `static` preservam seu valor entre essas chamadas, permitindo que um estado
- * persistente seja mantido durante a execução do programa.
+ * STATIC:
+ * A palavra-chave `static` em C indica que uma variável mantém seu valor entre
+ * chamadas consecutivas da função ou do bloco onde foi declarada.
  *
- * USO:
- * O modificador `static` é útil quando você precisa de uma variável que mantenha seu valor
- * entre as chamadas de uma função, mas que não precise ser acessada fora dessa função ou do
- * arquivo em que foi declarada. No entanto, o uso de `static` deve ser cuidadoso, pois pode
- * tornar o código mais difícil de entender e de depurar, devido à persistência do valor,
- * o que pode levar a efeitos colaterais inesperados se o estado da variável não for
- * gerenciado corretamente.
+ * - Variáveis locais comuns são criadas e destruídas a cada chamada da função;
+ *   já variáveis `static` preservam seu valor entre as chamadas.
  *
- * @note: Variáveis `static` não podem ser usadas como membros de `structs`, pois o armazenamento
- * de membros de `struct` deve ser alocado de forma consistente, o que contraria o comportamento de
- * persistência de uma variável `static`.
+ * - Variáveis `static` declaradas fora de qualquer função têm escopo de arquivo,
+ *   ou seja, só são visíveis dentro do arquivo em que foram declaradas.
+ *
+ * USOS:
+ * - Manter estado interno de uma função sem expor variáveis globalmente.
+ * - Criar contadores ou caches persistentes.
+ *
+ * ATENÇÃO:
+ * - Uso excessivo pode causar efeitos colaterais difíceis de depurar.
+ * - Variáveis `static` não podem ser membros de `struct`.
  */
 
 /**
- * @brief Função que irá incrementar uma variável estática a cada chamada da função
+ * @brief Incrementa uma variável estática e uma variável local em cada chamada.
  *
- * esse exemplo demonstra o uso de variáveis estáticas.
- *
- * @return void
+ * Variável `a` é estática: preserva seu valor entre chamadas.
+ * Variável `b` é local: reinicializa a cada chamada.
  */
 void teste_static_global(void)
 {
-    // Declarando uma variável estática
-    static int a = 0;
-
-    // Incrementa essa variável a cada chamada da função por 5
-    a += 5;
-
-    // Declarando uma variável inteira
-    int b = 0;
-
-    // Incrementa essa variável a cada chamada da função por 1
-    // b é uma variável local, significa que ela será reinicializada a cada vez que a
-    // função é chamada. ela é incrementada em 1 a cada chamada.
-    b++;
+    static int a = 0; // mantém o valor entre chamadas
+    int b = 0;        // reinicia a cada chamada
+    a += 5;           // incrementa 5 a cada chamada
+    b++;              // incrementa 1 a cada chamada, mas reinicia sempre
 
     printf("STATIC a: %d\tINT b: %d\n", a, b);
-    printf("STATIC a: %d\tINT b: %d\n", a, b);
-    /*
-     * Note que a variável `b` dentro da função teste_static_global não é estática e,
-     * portanto, é reinicializada a cada chamada da função. Isso reflete o comportamento
-     * esperado das variáveis estáticas, onde o valor de `a` é mantido entre as chamadas
-     * da função teste_static_global, enquanto o valor de `b` é reinicializado a
-     * cada chamada.
-     */
 }
 
 /**
- * @brief Procedimento que irá incrementar uma variável estática a cada chamada da função
+ * @brief Incrementa uma variável estática de função a cada chamada.
  *
- * @note A primeira vez que `estatico()` for chamada, `a` será 5. Na segunda vez, será 6,
- * e assim por diante. Isso acontece porque a variável `a` é preservada entre as chamadas,
- * mantendo seu valor.
+ * Demonstra persistência do valor de uma variável `static`.
  */
 void estatico(void)
 {
-    // Variavel `a` é estatica e tem escopo de de função
-    static int a = 5;
+    static int a = 5; // primeira chamada = 5
 
-    // Imprimindo o valor da variável
-    printf("\nValor de a: %d\n", a);
-
-    // Vai incrementando o valor da variável
-    a++;
+    printf("Valor de a: %d\n", a);
+    a++; // mantém incremento entre chamadas
 }
 
 int main(int argc, char **argv)
 {
-    estatico();
-    /// OUTPUT: 5
-
-    estatico();
-    /// OUTPUT: 6
+    // Demonstração do escopo de função e persistência de variáveis estáticas
+    estatico(); // OUTPUT: 5
+    estatico(); // OUTPUT: 6
 
     printf("\n===================\n");
 
-    teste_static_global();
-    /// OUTPUT: 5 1
+    teste_static_global(); // OUTPUT: STATIC a: 5    INT b: 1
+    teste_static_global(); // OUTPUT: STATIC a: 10   INT b: 1
 
-    teste_static_global();
-    /// OUTPUT: 10 1
     return 0;
 }

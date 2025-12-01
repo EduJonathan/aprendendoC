@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h> // Necessário para alocação dinâmica com malloc
+#include <stdlib.h>
 
 /**
  * A alocação dinâmica é o processo de solicitar memória em tempo de execução,

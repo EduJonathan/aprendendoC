@@ -1,31 +1,41 @@
 #include <stdio.h>
 
 /**
- * VARIÁVEIS DE BLOCO: São declaradas dentro de um conjunto de chaves, seja fora ou dentro
- * de uma função, seu tratamento ocorrer somente dentro de onde foram estão declaradas {},
- * não devem possuir as mesmas nomeações tanto de varíaveis globais, quanto de varíaveis
- * locais, ou então elas perderá o acesso.
+ * VARIÁVEIS DE BLOCO:
+ * São variáveis declaradas dentro de um par de chaves `{ }`, seja dentro de uma função
+ * ou dentro de um bloco interno (como em if, while, for ou blocos anônimos).
+ *
+ * Elas possuem escopo restrito ao bloco onde foram declaradas: só podem ser acessadas
+ * dentro desse conjunto de chaves. Quando o bloco termina, essas variáveis deixam de
+ * existir.
+ *
+ * Caso uma variável dentro de um bloco tenha o mesmo nome de uma variável local ou global,
+ * ocorre "sombreamento" (shadowing): a variável mais interna esconde a externa dentro
+ * daquele escopo, mas a variável original continua existindo fora do bloco.
  */
 
 int main(int argc, char **argv)
 {
-    // Variáveis locais
+    // Variáveis locais da função main
     int a = 8;
     int p = 5;
 
-    // Variáveis de bloco
+    // Bloco interno
     {
-        int b = 12;
-        int r = a + b;
-        int p = 3;
+        int b = 12;    // variável de bloco
+        int r = a + b; // variável de bloco
+        int p = 3;     // esta 'p' SOMBREIA a 'p' local acima
+
         printf("a + b: %d\n", r);
+        printf("p dentro do bloco: %d\n", p); // imprime 3
     }
 
-    // r = b + a;
-    // printf("b + a: %d\n", r);
-    // Erro pois a varíavel r está dentro do escopo de bloco
+    // Erro se tentar usar 'b' ou 'r' aqui: elas existem somente dentro do bloco acima
+    // printf("%d\n", b);  // inválido
+    // printf("%d\n", r);  // inválido
 
-    // Variável 'p' local, sobrescreve a que está no bloco
-    printf(" p: %d\n", p);
+    // Aqui volta a valer o 'p' da função main (que é 5)
+    printf("p fora do bloco: %d\n", p);
+
     return 0;
 }

@@ -25,8 +25,8 @@
  *
  * ATENÇÃO:
  * Cadeias de ponteiros aumentam o risco de perda de referência (dangling pointers),
- * especialmente quando usadas junto com alocação dinâmica. Perder um ponteiro intermediário
- * pode tornar impossível liberar a memória corretamente.
+ * especialmente quando usadas junto com alocação dinâmica.
+ * Perder um ponteiro intermediário pode tornar impossível liberar a memória corretamente.
  */
 
 int main(int argc, char **argv)

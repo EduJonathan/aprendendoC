@@ -6,6 +6,7 @@
  * máquina, permitindo um controle absoluto sobre o hardware. Ao escrever em Assembly,
  * não é necessário utilizar bibliotecas externas ou funções de alto nível, o que permite
  * otimização manual de cada ciclo de clock e controle direto sobre a execução do código.
+ *
  * Embora ofereça grande flexibilidade e desempenho, a escrita em Assembly exige grande cuidado,
  * pois os códigos podem se tornar verbosos e difíceis de manter. Além disso, erros pequenos
  * podem causar falhas graves, tornando a manutenção e depuração um desafio.
@@ -18,11 +19,12 @@
  * @param str A string a ser impressa.
  *
  * @note Esta função usa uma instrução em **assembly inline** (`asm`) para invocar
- * diretamente a chamada de sistema do Linux para escrita (`sys_write`). Ao invés de usar
- * funções como `printf`, a syscall permite uma escrita mais rápida e eficiente, sem a
- * sobrecarga de bibliotecas. O uso de assembly permite um controle preciso sobre os
+ * diretamente a chamada de sistema do Linux para escrita (`sys_write`).
+ * Ao invés de usar funções como `printf`, a syscall permite uma escrita mais rápida e eficiente,
+ * sem a sobrecarga de bibliotecas. O uso de assembly permite um controle preciso sobre os
  * registradores e a execução do código.
- * syscall (chamada de sistema) é específica do Linux, que não é compatível
+ *
+ * @note syscall (chamada de sistema) é específica do Linux, que não é compatível
  * com o ambiente Windows. Caso não estiver imprimindo em seu terminal este é o problema.
  */
 void println(const char *str)

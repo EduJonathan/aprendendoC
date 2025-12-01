@@ -1,14 +1,19 @@
 #include <stdio.h>
 
 /**
- * PARAMETROS: São os valores que uma função ou método recebe quando é chamado.
- * Eles atuam como "entradas" que podem ser manipuladas dentro da função, permitindo
- * realizar operações ou cálculos baseados nos valores fornecidos. Os parâmetros são
- * definidos no momento da chamada da função, geralmente a partir da função principal (como main).
+ * PARÂMETROS: São valores que uma função recebe no momento em que é chamada.
+ * Eles funcionam como “entradas” da função e permitem que ela execute operações
+ * com base nos dados fornecidos.
  *
- * É importante destacar que, embora possamos realizar diversas operações com os parâmetros
- * dentro da função, seus valores originais permanecem inalterados fora do escopo da função,
- * a menos que estejam sendo passados por referência.
+ * Os parâmetros são declarados na definição da função e recebem seus valores
+ * através dos argumentos passados na chamada. Dentro da função, comportam-se
+ * como variáveis locais.
+ *
+ * @note A ordem dos parâmetros é importante. Por convenção, recomenda-se:
+ *       1. Primeiro os dados essenciais (inputs principais),
+ *       2. Depois configurações, opções ou modificadores,
+ *       3. E por último parâmetros de saída (ponteiros usados para retornar valores).
+ *       Essa organização torna a função mais clara, evita erros e facilita sua utilização.
  */
 
 /**

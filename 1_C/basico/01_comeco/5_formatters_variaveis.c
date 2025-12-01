@@ -15,13 +15,13 @@ int main(int argc, char **argv)
     double PI = 3.14;          // Números reais com maior precisão (64 bits)
     char letra = 'A';          // Caractere único
 
+    /// OBS: O sinal de '=' significa atribuição/inicialização de um valor a variáveis.
+
     printf(" O VALOR DA VARIÁVEL 'numero_positivo' É : %d\n", numero_positivo); // %d -> para tipo int
     printf(" O VALOR DA VARIÁVEL 'numero_negativo' É : %d\n", numero_negativo); // %d -> para tipo int
     printf(" O VALOR DA VARIÁVEL 'real' É : %f\n", real);                       // %f -> para tipo float
     printf(" O VALOR DA VARIÁVEL 'PI' É : %lf\n", PI);                          // %lf -> para tipo double
     printf(" O VALOR DA VARIÁVEL 'letra' É : %c\n", letra);                     // %c -> para tipo char
-
-    /// OBS: O sinal de '=' significa atribuição ou inicialização de um valor a variáveis.
 
     printf("\n======================================================================\n");
     printf("\n\t==>SEÇÃO PARA VALORES BOOLEANOS<==\n");

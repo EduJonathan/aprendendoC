@@ -11,8 +11,8 @@
  *
  * Especificadores de formato determinam como o valor será exibido (por exemplo, %d
  * para números inteiros, %f para números de ponto flutuante, %s para strings, etc.),
- * e os valores a serem exibidos são passados como argumentos após a vírgula. O printf()
- * substitui cada especificador de formato pelo respectivo valor.
+ * e os valores a serem exibidos são passados como argumentos após a vírgula.
+ * O printf() substitui cada especificador de formato pelo respectivo valor.
  */
 
 int main(int argc, char **argv)

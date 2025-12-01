@@ -33,10 +33,15 @@ float extern_function(float num1, float num2)
 
 int main(int argc, char **argv)
 {
+    // Usando a função externa
     extern_function(56.0F, 4.0F);
     printf("\n-------------------------------------\n");
 
-    printf("Endereço de global_extern no arquivo main.c: %p\n", &global_extern);
+    // Mostrando endereço da variável externa
+    printf("Endereço de global_extern no main.c: %p\n", (void *)&global_extern);
+
+    // Chamando função que manipula variáveis externas
     teste();
+
     return 0;
 }

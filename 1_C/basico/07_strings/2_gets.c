@@ -27,8 +27,8 @@ int main(int argc, char **arv)
      * ['e']['d']['u']['a']['r']['d']['o'][' ']['j']['o']['\0']
      *   0    1    2    3    4    5    6    7    8    9   10  ← já fora do limite
      *
-     * O compilador costuma emitir aviso: **"warning: the 'gets' function is dangerous
-     * and should not be used"**.
+     * O compilador costuma emitir aviso
+     * **"warning: the 'gets' function is dangerous and should not be used"**.
      *
      * ### Alternativa segura: `fgets()`
      *
