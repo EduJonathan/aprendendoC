@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 
 /* __func__: Exibe o nome da função na qual a macro __func__ é exibida. */
 
@@ -31,7 +30,7 @@ void myFunction(void)
         }                                                                                            \
         callCount++;                                                                                 \
         stackDepth++;                                                                                \
-        callStack[stackDepth - 1] = __func__; /* Store function name */                              \
+        callStack[stackDepth - 1] = __func__;                                                        \
         if (stackDepth > maxDepth)                                                                   \
             maxDepth = stackDepth;                                                                   \
         printf("\n-> Chamada %2d | Pilha: %2d | Entrando em %s\n", callCount, stackDepth, __func__); \

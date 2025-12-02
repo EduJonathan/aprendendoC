@@ -1,20 +1,23 @@
 #include <stdio.h>
 
 /**
- * FUNÇÕES MACRO: Uma macro em C é uma maneira de definir uma sequência de código que pode
- * ser reutilizada em diferentes partes do programa. Em vez de escrever a mesma expressão
- * repetidamente, você define uma macro uma vez e a utiliza sempre que necessário.
- * No caso de funções macro, elas podem receber parâmetros e são substituídas diretamente
- * no código-fonte pelo pré-processador.
+ * FUNÇÕES MACRO: Macros em C permitem definir trechos de código reutilizáveis que são
+ * substituídos diretamente pelo pré-processador antes da compilação. Quando recebem
+ * parâmetros, funcionam como “funções inline textuais”, evitando repetições no código.
  *
- * IMPORTANTE: Por padrão, macros devem ser escritas em uma única linha. No entanto,
- * se for necessário escrever macros em várias linhas, podemos usar a barra invertida (\)
- * no final de cada linha para indicar que a linha continua na próxima. Isso ajuda a organizar
- * o código sem quebrar a funcionalidade da macro.
+ * IMPORTANTE: Por padrão, macros são escritas em uma única linha. Para criar macros
+ * multilinha, utiliza-se a barra invertida (\) ao final de cada linha, indicando que a
+ * instrução continua na próxima. Isso facilita a organização sem alterar o comportamento
+ * da macro.
  */
 
-// Macro para trocar os valores de duas variáveis de qualquer tipo.
-// A macro recebe três parâmetros: os dois valores a serem trocados e o tipo de dado.
+/**
+ * Macro para trocar os valores de duas variáveis de qualquer tipo.
+ *
+ * @note O parâmetro `dataType` permite que a macro funcione com qualquer tipo
+ *       (int, float, char, etc.). Um valor temporário é usado para armazenar `a`
+ *       enquanto os valores são trocados.
+ */
 #define TROCA(a, b, dataType) \
     {                         \
         dataType temp = a;    \
@@ -22,17 +25,13 @@
         b = temp;             \
     }
 
-/*
- * Por que usamos `dataType`? A necessidade de um tipo genérico para os parâmetros `a` e `b`
- * se deve ao fato de que a macro pode ser usada para variáveis de tipos diferentes
- * (por exemplo, `int`, `float`, `char`, etc.). O parâmetro `dataType` permite que a macro
- * seja flexível, funcionando com qualquer tipo de dado. O valor de `a` é armazenado
- * temporariamente em `temp`, permitindo a troca dos valores de `a` e `b`.
+/**
+ * Macro para determinar o valor mínimo e máximo entre dois números.
+ *
+ * @note O padrão `do { ... } while (0)` garante que a macro seja tratada como
+ *       uma única instrução, evitando problemas quando usada em `if`, loops
+ *       ou outros blocos de controle.
  */
-
-// Macro para encontrar o valor mínimo e máximo entre dois números.
-// A macro recebe quatro parâmetros: os dois números a comparar e as variáveis
-// para armazenar o valor mínimo e o valor máximo.
 #define MIN_MAX(numero1, numero2, min, max) \
     do                                      \
     {                                       \
@@ -48,20 +47,18 @@
         }                                   \
     } while (0) // O do-while(0) garante que a macro seja tratada como uma única expressão
 
-/*
- * Por que usar `do...while(0)`? O uso do `do-while(0)` evita que a macro gere erros quando
- * usada em diferentes contextos, como dentro de uma estrutura condicional ou de um loop.
- * Sem esse padrão, o código gerado pela macro poderia ser interpretado incorretamente.
- * O `do-while(0)` garante que a macro seja tratada como uma instrução única e evita a
- * necessidade de um ponto e vírgula extra ao utilizá-la.
- */
-
 // Definindo a macro "let" para criar uma variável de tipo e nome especificados
 #define let(type, name)                                  \
     /* Cria uma variável do tipo "type" e nome "name" */ \
     type name
 
-// Definindo a macro "match", que simula uma estrutura switch-case com base no valor fornecido
+/**
+ * Macro "match": simula uma estrutura switch-case baseada em um valor.
+ *
+ * @note A macro `match` permite criar uma lógica semelhante ao switch-case,
+ *       executando ações específicas conforme o valor fornecido. É uma forma
+ *       de gerar despachos condicionais usando apenas o pré-processador.
+ */
 #define match(value, ...)                                                       \
     ({                                                                          \
         /* Armazena o valor em uma variável do mesmo tipo do valor fornecido */ \
@@ -76,25 +73,19 @@
     })
 
 /**
- * Esta macro `match` é uma implementação simples de um switch-case que permite
- * executar ações específicas com base no valor de uma variável.
- * O typeof(value) é uma construção do GCC que obtém o tipo da variável `value`.
- * Isso é útil para garantir que o tipo correto seja usado no switch.
+ * Macro para criar um caso dentro de um switch.
+ *
+ * @note A macro recebe um valor (`val`) e uma ação (`action`) e os expande como um
+ *       caso do switch. É apenas uma substituição textual, mas não é recomendável
+ *       redefinir palavras-chave da linguagem (como `case`), pois pode causar
+ *       confusão e dificultar a leitura do código.
  */
-
-// Definindo a macro "case", que especifica o comportamento para um valor no switch
 #define case(val, action)                                          \
     case val:                                                      \
                                                                    \
         action; /* Para o valor "val", executa a ação fornecida */ \
                                                                    \
         break; /* Interrompe o switch após a execução */
-
-/*
- * A macro `case` é usada para definir os casos dentro do switch, onde `val` representa
- * o valor a ser comparado e `action` representa a ação a ser executada se o valor
- * corresponder ao caso.
- */
 
 int main(int argc, char **argv)
 {

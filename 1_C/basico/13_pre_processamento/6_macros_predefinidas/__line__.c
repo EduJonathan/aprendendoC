@@ -1,8 +1,6 @@
 #include <stdio.h>
 
-/*
- * __LINE__: É o número da linha (dentro do arquivo fonte fornecido) na qual a macro__LINE__ é exibido.
- */
+// __LINE__: É o número da linha (dentro do arquivo fonte fornecido) na qual a macro__LINE__ é exibido.
 
 // Definição da macro PRINT_MACRO
 #define PRINT_MACRO(str) \

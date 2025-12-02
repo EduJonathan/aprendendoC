@@ -50,19 +50,17 @@ int main(int argc, char **argv)
     size_t n_Elementos = sizeof(array) / sizeof(array[0]); // Obtém o número de elementos no vetor
 
     /**
-     * SIZE_T: O size_t é um tipo de dado usado para representar o tamanho de objetos em bytes.
-     * O principal propósito do size_t é fornecer um tipo de dado que é grande o
-     * suficiente para representar o tamanho do objeto. Utilizado para:
+     * SIZE_T: Tipo de dado sem sinal destinado a representar tamanhos e contagens de objetos em bytes.
      *
-     * 1. Para armazenar o tamanho do tipo de dado int em bytes.
-     * 2. Para representar o número de elementos em um array ao realizar alocação dinâmica de memória.
-     * 3. Como o tipo para índices de loop quando se trabalha com estruturas de dados.
+     * Vantagens sobre int/unsigned int:
+     *   - Sempre sem sinal, evitando valores negativos para tamanhos e índices.
+     *   - Garantido ser grande o suficiente para representar o tamanho máximo de qualquer objeto,
+     *     garantindo portabilidade entre sistemas 32 e 64 bits.
+     *   - Ideal para contar elementos de arrays, armazenar tamanhos retornados por sizeof
+     *     e para índices de loops quando se trabalha com estruturas de dados.
+     *   - Seu tamanho é praticamente um unsigned long long, sendo seu sufixo `ULL`.
      *
-     * Usando size_t, deixamos o código mais portável, pois ele se ajusta
-     * automaticamente ao tamanho do sistema em que o código está sendo compilado.
-     * O uso de size_t também ajuda a evitar problemas relacionados a tamanhos negativos,
-     * uma vez que size_t é um tipo sem sinal (não possui representação de números negativos),
-     * pode ser incluído através da header #include <stddef> e seu formatador é "%zu".
+     * Pode ser incluído via <stddef> (ou outros headers padrão) e impresso com o formato "%zu".
      */
 
     printf(" Tamanho total do 'array'       : %zu bytes\n", tamanho_total);

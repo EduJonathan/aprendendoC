@@ -1,10 +1,23 @@
 #include <stdio.h>
 
 /**
- * #undef: É usado para remover a definição de uma macro previamente definida com #define.
- * Quando terminado de utilizar uma macro definida com #define e deseja liberar o nome
- * para ser utilizado novamente ou para evitar conflitos de definição, você pode
- * utilizar #undef.
+ * O diretivo `#undef` é utilizado para remover a definição de uma macro previamente
+ * declarada com `#define`. Isso é útil quando se deseja:
+ *
+ *   - liberar o nome da macro para reutilização posterior,
+ *   - evitar conflitos com outras definições,
+ *   - redefinir uma macro com um novo valor,
+ *   - garantir que trechos condicionais (#ifdef / #ifndef) reflitam o estado desejado.
+ *
+ * Após um `#undef`, o nome deixa de ser reconhecido como macro pelo pré-processador,
+ * permitindo que seja testado com `#ifdef` ou redefinido com `#define` novamente.
+ *
+ * No exemplo abaixo:
+ *   1. `MAX_TAMANHO` é definido como 100;
+ *   2. É utilizado normalmente em um `printf`;
+ *   3. Em seguida, é removido com `#undef MAX_TAMANHO`;
+ *   4. O bloco condicional `#ifdef` detecta que a macro não existe mais;
+ *   5. Por fim, `MAX_TAMANHO` é redefinida com um novo valor (10).
  */
 
 // Definimos o nome MAX_TAMANHO para o valor 100

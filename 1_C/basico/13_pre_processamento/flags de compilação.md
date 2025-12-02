@@ -184,7 +184,7 @@ Garantindo que o código seja compatível com uma versão específica da linguag
 > Se estiver usando um compilador instalado via navegador ou um ambiente online, verifique se ele é recente  
 > (por exemplo, `GCC ≥ 4.7` para `-std=c11`). Compiladores muito antigos simplesmente não entendem essas flags
 > ou podem ignorá-las.  
-> Entenda que flag não `atualiza` o compilador; ela só `ativa` recursos que o compilador já implementa.  
+> Entenda que a flag não `atualiza` o compilador; ela só `ativa` recursos que o compilador já implementa.  
 > Use `-std=c versão` para arquivos `.c` e `-std=c++ versão` para arquivos `.cpp`.
 
 ```bash

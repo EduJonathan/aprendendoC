@@ -16,12 +16,15 @@
 #define COLUNAS 4U  // E aqui criamos para representar 4 colunas
 #define PI 3.14159  // Definindo uma constante simbólica
 
-// Definindo uma macro (macro se define quando estiver entre parênteses), aqui temos uma
-// macro que calcula o quadrado de um número
+/**
+ * Definindo uma macro (macro se define quando estiver entre parênteses),
+ * aqui temos uma macro que calcula o quadrado de um número.
+ *
+ * @note 'x' é um parâmetro que quando aplicado um valor para ele na chamada do define
+ * todos os param 'x' será substituido por esse valor, para evitar conflitos e erros
+ * nos parâmetros separem por "()"
+ */
 #define SQUARE(x) ((x) * (x))
-// 'x' é um parâmetro que quando aplicado um valor para ele na chamada do define todos os
-// param 'x' será substituido por esse valor, para evitar conflitos e erros nos parâmetros
-// separem por "()"
 
 #define MIN(a, b) (((a) < (b)) ? a : b)                    // Macro com argumentos
 #define PRINT_MENSAGEM(msg) printf("Mensagem: %s\n", msg); // Exibindo mensagem

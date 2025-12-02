@@ -186,18 +186,20 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 
 ## ⚠️ CUIDADOS IMPORTANTES
 
-- Em programas C/C++ evite espaços, acentuações(`´`, `^`) e caracteres especiais(exe.: `ç`, `%`, `&`)
-  em nomes de **arquivos** e **diretórios(pastas)**. Use nomes como **arquivo_c.c** ou **arquivoC.c**.
+- Em programas C/C++ em arquivos e diretórios
+
+  - Nomes de **arquivos** e **diretórios(pastas)**. Use nomes como **arquivo_c.c** ou **arquivoC.c**.
+  - Evite espaços, acentuações(`´`, `^`) e caracteres especiais(exe.: `ç`, `%`, `&`).
 
 - Pois no momento de compilar e caso estiver (`arquivo` e `c.c`) o compilador poderá entender que há
-  2 ou múltiplos arquivos a ser compilados, no caso `arquivo` (por mais que não tenha uma extensão,
-  sendo entendido como `arquivo.txt`) e `c.c`.
+  2 ou múltiplos arquivos a ser compilados, no caso `arquivo` (que por mais que não tenha uma extensão,
+  é entendido como `arquivo.txt`) e `c.c`.
 
 ❌ ERRADO
 
 13 diretiva include/ `# <- Diretório raiz`  
 ├── 1 1 for each/ `# <- Subdiretório`  
-│ └── for each.c
+│ └── for each.c `# <- Arquivo`
 
 ---
 
@@ -205,7 +207,7 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 
 13_diretiva_include/ `# <- Diretório raiz`  
 ├── 1_1_for_each/ `# <- Subdiretório`  
-│ └── for_each.c
+│ └── for_each.c `# <- Arquivo`
 
 ```bash
 # Esteja no caminho do diretório para poder compilar

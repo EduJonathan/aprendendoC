@@ -9,13 +9,18 @@
  * @param arr Ponteiro para o array (qualquer tipo).
  * @param size Número de elementos no array.
  * @param action Expressão a ser aplicada a cada elemento, usando 'x' como o elemento atual.
- * @note O usuário deve garantir que 'arr' não seja NULL e que 'size' seja positivo.
  *
- * @note typeof() é um operador especial do compilador GCC (e outros compiladores compatíveis)
+ * @note O usuário deve garantir que 'arr' não seja NULL e que 'size' seja positivo.
+ * typeof() é um operador especial do compilador GCC (e outros compiladores compatíveis)
  * que permite obter o tipo de uma expressão ou variável em tempo de compilação.
- * No código: o (arr)[0] - pega o primeiro elemento do array
- * typeof((arr)[0]) - obtém o tipo desse elemento
- * Cria uma variável x do mesmo tipo que os elementos do array
+ *
+ * No código:
+ *
+ * - o (arr)[0] - pega o primeiro elemento do array.
+ *
+ * - typeof((arr)[0]) - obtém o tipo desse elemento.
+ *
+ * - Cria uma variável x do mesmo tipo que os elementos do array.
  */
 #define foreach(arr, size, action)              \
     do                                          \
@@ -44,8 +49,10 @@ void for_each(void *arr, size_t size, void (*action)(void *), size_t size_elem);
 
 /**
  * A diretiva #ifndef protege contra a inclusão repetida do conteúdo do arquivo de cabeçalho.
- * Se FOR_EACH_H já estiver definido (ou seja, já foi incluído), as próximas
- * inclusões serão ignoradas. Esse padrão é conhecido como "guarda de inclusão" (include guard).
+ * Se FOR_EACH_H já estiver definido (ou seja, já foi incluído), as próximas inclusões serão
+ * ignoradas. Esse padrão é conhecido como "guarda de inclusão" (include guard).
  *
- * @note O nome do include guard (FOR_EACH_H) não precisa ser exatamente o nome do arquivo.
+ * @note O nome do include guard (FOR_EACH_H) não precisa ser exatamente o nome do arquivo,
+ * mas que precisa fazer sentido a nomeação, e também esta guarda de inclusão pode ser para
+ * tipos de dados definidos(structs, enums, unions).
  */

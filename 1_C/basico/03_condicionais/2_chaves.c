@@ -1,6 +1,17 @@
 #include <stdio.h>
 
-/* Este código demonstra o uso e comportamento de chaves "{}" nos if's */
+/**
+ * Este código demonstra o uso e o comportamento das chaves "{}" em instruções condicionais.
+ *
+ * @note Embora o uso de chaves não seja obrigatório quando há apenas uma instrução
+ *       associada ao `if`, recomenda-se empregá-las sempre. O uso consistente de "{}"
+ *       melhora a legibilidade, reduz ambiguidades e evita erros de lógica — especialmente
+ *       ao adicionar novas linhas de código no futuro.
+ *
+ * Mesmo quando opcional, delimitar explicitamente o bloco condicional com chaves
+ * ajuda a garantir que todas as instruções relacionadas ao `if` sejam executadas
+ * conforme previsto, prevenindo comportamentos inesperados.
+ */
 
 int main(int argc, char **argv)
 {
@@ -112,13 +123,6 @@ int main(int argc, char **argv)
     /**
      * OUTPUT:
      * Nenhuma saída
-     */
-
-    /**
-     * @note O uso de chaves vem na visão do programador, ou seja na tese não tem problema
-     * em não utilizar {}, mas é recomendado o uso para evitar confusão no controle de fluxo.
-     * Mesmo que o uso de chaves não seja obrigatório, elas ajudam a garantir que todas as 
-     * instruções sejam executadas corretamente dentro de um bloco condicional.
      */
 
     return 0;

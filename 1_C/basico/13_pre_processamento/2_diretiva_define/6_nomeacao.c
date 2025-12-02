@@ -2,27 +2,33 @@
 #include <stdlib.h>
 
 /**
- * CURIOSIDADES: A diretiva #define em C pode ser usada para criar **macros** que
- * permitem renomear tipos, variáveis e até funções. Ela substitui um nome por um valor
- * ou expressão durante a pré-compilação do código. Isso pode ser útil para tornar o código
- * mais legível e reutilizável, além de facilitar manutenções e alterações.
+ * CURIOSIDADES: A diretiva `#define` permite criar *macros* que realizam substituição
+ * textual durante a fase de pré-processamento. Isso significa que, antes da compilação,
+ * o pré-processador substitui cada ocorrência do identificador definido pelo conteúdo
+ * especificado na macro.
  *
- * #define não apenas pode definir simples valores ou expressões, mas também pode envolver
- * operações, como calcular o tamanho de um vetor. Um exemplo comum é a definição de uma
- * macro para calcular o número de elementos de um array.
+ * Com `#define`, é possível:
+ *   - criar constantes simbólicas,
+ *   - definir expressões reutilizáveis,
+ *   - renomear tipos e funções,
+ *   - criar macros com parâmetros que se comportam como funções inline,
+ *   - calcular valores em tempo de pré-processamento (ex: número de elementos de um array).
  *
- * EXEMPLO:
- * #define SIZE(array) (sizeof(array) / sizeof(array[0])
+ * Um exemplo clássico é criar uma macro para determinar o tamanho de um array estático:
+ *
+ *     #define SIZE(array) (sizeof(array) / sizeof((array)[0]))
+ *
+ * É importante lembrar que o pré-processador não interpreta regras da linguagem C:
+ * ele apenas realiza substituições textuais. Portanto, o uso de macros deve ser feito
+ * com cuidado para evitar comportamentos inesperados, ambiguidades ou conflitos.
  */
 
 /* Renomeia o tipo long long para LLONG, possivel em uso em funções e declarações. */
 #define LLONG long long
 
-/**
- * Renomeia a função printf para que ela seja chamada como __mingw_printf, permitindo
- * então uma sobrecarga da função. Pois ela irá chamar o printf, com o mesmo poder de
- * processamento que o __mingw_printf possui. NÃO é muito recomendável.
- */
+// Redireciona todas as chamadas de `printf` para `__mingw_printf`.
+// Embora funcional, isso pode dificultar depuração, reduzir portabilidade e gerar confusão,
+// por isso é uma prática desencorajada.
 #define printf __mingw_printf
 
 void sizeDoArray(long double **array, LLONG *size)

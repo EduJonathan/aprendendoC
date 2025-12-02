@@ -1,7 +1,3 @@
-#ifndef ARMSTRONG_FUNC_H
-#define ARMSTRONG_FUNC_H
-
-#include <stdbool.h>
 #include <math.h>
 #include "is_armstrong.h"
 
@@ -36,8 +32,12 @@ int count_digits(int number)
  */
 bool is_armstrong_number(int candidate)
 {
-    int sum = 0, rem = 0, temp = candidate;
+    int sum = 0,
+        rem = 0,
+        temp = candidate;
+
     int num_digits = count_digits(candidate);
+    
     while (candidate != 0)
     {
         rem = candidate % 10;
@@ -46,5 +46,3 @@ bool is_armstrong_number(int candidate)
     }
     return sum == temp;
 }
-
-#endif
