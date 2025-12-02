@@ -4,8 +4,8 @@
 
 #define VERTICES 10
 
-#ifndef ARESTA_H
-#define ARESTA_H
+#ifndef ARESTA
+#define ARESTA
 
 /**
  * @brief Estrutura que representa uma aresta em um grafo direcionado.
@@ -21,8 +21,8 @@ typedef struct Aresta
 
 #endif
 
-#ifndef GRAFO_H
-#define GRAFO_H
+#ifndef GRAFO
+#define GRAFO
 
 /**
  * @brief Estrutura que representa um grafo direcionado.

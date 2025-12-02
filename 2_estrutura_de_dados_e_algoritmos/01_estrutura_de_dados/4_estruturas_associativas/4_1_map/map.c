@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define SIZETABLEHASH 10
+#define SIZE_TABLE_HASH 10
 
-#ifndef MAP_H
-#define MAP_H
+#ifndef MAP
+#define MAP
 
 /**
  * @struct Map
@@ -22,8 +22,8 @@ typedef struct Map
 
 #endif
 
-#ifndef TABLE_H
-#define TABLE_H
+#ifndef TABLE
+#define TABLE
 
 /**
  * @struct Tabela
@@ -245,7 +245,7 @@ void liberarTabela(Tabela *table)
 
 int main(int argc, char **argv)
 {
-    Tabela *tabela = criarTabela(SIZETABLEHASH);
+    Tabela *tabela = criarTabela(SIZE_TABLE_HASH);
     if (tabela == NULL)
     {
         fprintf(stderr, "Erro: Falha na criação da tabela\n");

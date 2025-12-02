@@ -177,7 +177,7 @@ void generateStack(Stack **stack)
             return;
         }
 
-        void *value;
+        void *value = NULL;
         printf("Digite o valor para o elemento %zu: ", i);
         if (!readValue(type, &value))
         {

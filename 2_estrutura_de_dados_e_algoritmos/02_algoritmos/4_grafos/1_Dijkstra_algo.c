@@ -49,8 +49,8 @@ bool dijkstra(int graph[MAX][MAX], int n, int startNode)
     int pred[MAX] = {0};       // Vetor de predecessores de cada vértice
     bool visited[MAX] = {0};   // Vetor de vértices visitados
     int contador = 0;          // Contador de vértices visitados
-    int DistanciaMinima;       // Distância mínima
-    int nextNode;              // Próximo nó a ser visitado
+    int DistanciaMinima = 0;   // Distância mínima
+    int nextNode = 0;          // Próximo nó a ser visitado
 
     // Inicializando a matriz de custos
     for (int i = 0; i < n; i++)

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef NOADJACENTE_H
-#define NOADJACENTE_H
+#ifndef NOAD_JACENTE
+#define NOAD_JACENTE
 
 /**
  * @brief Estrutura que representa um nó na lista de adjacência de um grafo.
@@ -17,8 +17,8 @@ typedef struct noAdjacente
 
 #endif
 
-#ifndef LISTAADJACENTE_H
-#define LISTAADJACENTE_H
+#ifndef LISTA_ADJACENTE
+#define LISTA_ADJACENTE
 
 /**
  * @brief Estrutura que representa a lista de adjacência de um vértice.
@@ -32,8 +32,8 @@ typedef struct listaAdjacente
 
 #endif
 
-#ifndef GRAFO_H
-#define GRAFO_H
+#ifndef GRAFO
+#define GRAFO
 
 /**
  * @brief Estrutura que representa um grafo não direcionado.
