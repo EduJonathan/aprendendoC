@@ -60,6 +60,6 @@ int main(int argc, char **argv)
     const char *string = argStr(str);
 
     /// O primeiro @param de printf é "const char *__format"
-    printf(string);
+    printf(string); // Ou printf("%s", string)
     return 0;
 }

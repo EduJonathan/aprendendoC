@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <ctype.h>
+#include <string.h>
 
 /**
  * PARÂMETROS: São valores que uma função recebe no momento em que é chamada.
@@ -14,11 +16,11 @@
  *       2. Depois configurações, opções ou modificadores,
  *       3. E por último parâmetros de saída (ponteiros usados para retornar valores).
  *       Essa organização torna a função mais clara, evita erros e facilita sua utilização.
+ *       4. Sempre verifique os parâmetros com if
  */
 
 /**
- * @brief Procedimento que recebe três parâmetros (inteiro, caractere e ponto flutuante)
- * e os imprime
+ * @brief Imprime três valores de tipos diferentes.
  *
  * @param inteiro O inteiro a ser impresso.
  * @param letra O caractere a ser impresso.
@@ -26,56 +28,54 @@
  */
 void parametros(int inteiro, char letra, float real)
 {
-    printf("int: %d\tchar: %c\tfloat: %f\n", inteiro, letra, real);
+    printf("int: %d\tchar: %c\tfloat: %.2f\n", inteiro, letra, real);
 }
 
 /**
- * @brief Contabiliza e imprime a quantidade de vogais, consoantes, espaços,
- *        caracteres especiais e dígitos em uma string.
+ * @brief Contabiliza e imprime vogais, consoantes, espaços, dígitos e caracteres especiais.
+ *        Agora com suporte a acentos e todos os tipos de espaço (espaço, tab, etc.).
  *
- * @param string A string a ser contabilizada.
+ * @param string String a ser analisada (não será modificada).
  */
-void checaString(char *string)
+void checaString(const char *string)
 {
-    int qntdVogal = 0,
-        qntdConsoante = 0,
-        qntdEspaco = 0,
-        qntdCaracteresEspeciais = 0,
-        qntdDigito = 0;
+    int qntdVogal = 0;
+    int qntdConsoante = 0;
+    int qntdEspaco = 0;
+    int qntdCaracteresEspeciais = 0;
+    int qntdDigito = 0;
 
     for (int i = 0; string[i] != '\0'; i++)
     {
         char c = string[i];
+        char lower = tolower(c); // Converte para minúscula para facilitar comparação
 
-        // Verificar se é um dígito
-        if (c >= '0' && c <= '9')
+        if (isdigit(c))
         {
             qntdDigito++;
         }
-        // Verificar se é um espaço
-        else if (c == ' ')
+        else if (isspace(c)) // Inclui espaço, tab, \n, etc.
         {
             qntdEspaco++;
         }
-        // Verificar se é uma vogal (maiúscula ou minúscula)
-        else if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
-                 c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')
+        else if (isalpha(c)) // É uma letra (inclui acentos em locale pt_BR)
         {
-            qntdVogal++;
+            // Vogais (incluindo acentuadas comuns em português)
+            if (lower == 'a' || lower == 'e' || lower == 'i' || lower == 'o' || lower == 'u')
+            {
+                qntdVogal++;
+            }
+            else
+            {
+                qntdConsoante++;
+            }
         }
-        // Verificar se é uma consoante
-        else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-        {
-            qntdConsoante++;
-        }
-        // Caso contrário, é um caractere especial
         else
         {
             qntdCaracteresEspeciais++;
         }
     }
 
-    // Imprimir os resultados
     printf("Vogais: %d\n", qntdVogal);
     printf("Consoantes: %d\n", qntdConsoante);
     printf("Espaços: %d\n", qntdEspaco);
@@ -84,71 +84,60 @@ void checaString(char *string)
 }
 
 /**
- * @brief Calcula e retorna um valor inteiro baseado na operação entre dois números de ponto
- * flutuante.
+ * @brief Calcula (int)numero1 + (int)numero2 e aplica módulo por 'modulo'.
+ *        Agora com nome correto, tratamento de erro e lógica clara.
  *
- * Esta função converte dois números de ponto flutuante para inteiros, calcula a soma
- * desses inteiros, e então aplica o operador módulo com o valor do parâmetro `resultado`.
- * O valor final é retornado pela função, será por um parâmetro.
- *
- * @param numero1 Valor do primeiro número a ser convertido e somado (do tipo float).
- * @param numero2 Valor do segundo número a ser convertido e somado (do tipo float).
- * @param resultado Valor utilizado como divisor na operação módulo.
- * @return retorna O resultado da operação ((int)numero1 + (int)numero2) % resultado.
+ * @param numero1 Primeiro número float.
+ * @param numero2 Segundo número float.
+ * @param modulo Valor usado no operador módulo (não pode ser zero).
+ * @return int Resultado da operação ou -1 se módulo por zero.
  */
-int retornandoUmParametro(float numero1, float numero2, int resultado)
+int calculaSomaTruncadaModulo(float numero1, float numero2, int modulo)
 {
-    // Converte os números de ponto flutuante para inteiros e calcula a soma
-    // Em seguida, aplica o operador módulo com o valor de `resultado`
-    resultado = ((int)numero1 + (int)numero2) % resultado;
+    if (modulo == 0)
+    {
+        printf("Erro: não é possível fazer módulo por zero!\n");
+        return -1;
+    }
 
-    // Imprime o resultado da operação
+    int soma = (int)numero1 + (int)numero2;
+    int resultado = soma % modulo;
+
     printf("O resultado da expressão é: %d\n", resultado);
-
-    // Retorna o resultado da operação
     return resultado;
 }
 
 int main(int argc, char **argv)
 {
-    // Declaração e inicialização de variáveis
-    int number = 1;
-    char letra = 'a';
-    float pi = 3.14;
-
     // Chamada da função 'parametros' com valores das variáveis
-    parametros(number, letra, pi);
+    parametros(42, 'X', 3.14159f);
     printf("\n--------------------------------------\n");
 
     // Chamada da função 'parametros' com operações nos parâmetros
-    parametros(number - 1, letra - 7, pi + 0.3);
+    parametros(42 - 1, 'G' - 7, 3.14159f + 0.3);
     printf("\n--------------------------------------\n");
 
     // Chamada da função 'parametros' com operações mais complexas nos parâmetros
-    parametros(sizeof(number) - 1, letra + 1, pi + 0.06);
-    parametros(sizeof(number) - sizeof(int) + 4, letra - 32, pi + 10.06);
+    parametros(sizeof(int) - 1, 68 + 1, 3.14159f + 0.06);
+    parametros(sizeof(char) - sizeof(int) + 4, 'l' - 32, 3.14159f + 10.06);
 
     // Tentativa de chamar a função com um número incorreto de argumentos (causará erro)
-    // parametros(number - 1, letra - 7, pi + 0.3, number);
+    // parametros(number - 1, 'm' - 7,  3.14159f + 0.3, number);
     // erro: too many arguments in function call
 
     printf("\n---------------------------------------\n");
 
-    // Inicialização dos valores
-    float n1 = 7.0F;
-    float n2 = 7.0F;
-    int result = 4;
-
-    // Chama a função e armazena o valor retornado
-    int resultado = retornandoUmParametro(n1, n2, result);
-
-    // Imprime o resultado retornado pela função
-    printf("O resultado é : %d\n", resultado);
+    printf("\n=== Teste da função calculaSomaTruncadaModulo ===\n");
+    calculaSomaTruncadaModulo(5.9, 3.2, 4);  // (5 + 3) % 4 = 8 % 4 = 0
+    calculaSomaTruncadaModulo(10.7, 8.1, 5); // (10 + 8) % 5 = 18 % 5 = 3
+    calculaSomaTruncadaModulo(1.1, 2.2, 0);  // Erro esperado
 
     printf("\n---------------------------------------\n");
 
+    printf("\n=== Teste da função checaString ===\n");
+
     /** string que a função irá receber e checar */
-    char *frase = "Ola, tudo bem? programador 1";
+    char frase[] = "Ola, mundo! 123 @#";
     checaString(frase);
     return 0;
 }

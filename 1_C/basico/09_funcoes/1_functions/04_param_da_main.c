@@ -72,19 +72,8 @@ int main(int argc, char **argv, char **env)
     for (int i = 1; i < argc; ++i)
     {
         // Converte cada argumento para inteiro e soma ao total
+        // Quando se passa os argumentos mesmo que sejam números no console antes de compilar
         sum += atoi(argv[i]);
-
-        /**
-         * Quando se passa os argumentos mesmo que sejam números no console antes de compilar
-         *
-         * > C:\Users\nomeUser\Documents\aprendendoC\1_C\basico\09_funcoes\1_functions>
-         * > gcc 04_param_da_main.c -o main.exe
-         * > .\main.exe 10 45 20
-         *
-         * EXE: .\main.exe 10 45 20, este argumentos serão strings devido ao tipo de
-         * dado char **argv, então convertemos com a função `atoi`, pois se não a visualização 
-         * será 0.
-         */
 
         // Exibindo os valores utilizados
         printf("Os argumentos utilizando em 'argc' foram %d: %s\n", i, argv[i]);
@@ -114,6 +103,16 @@ int main(int argc, char **argv, char **env)
 
     // Libera a memória alocada
     free(sortedNumbers);
+
+    /**
+     * > C:\Users\nomeUser\Documents\aprendendoC\1_C\basico\09_funcoes\1_functions>
+     * 
+     * > gcc 04_param_da_main.c -o main.exe
+     * > .\main.exe 10 45 20
+     *
+     * EXE: "10" "45" "20", estes argumentos serão strings devido ao tipo de dado char **argv,
+     * então convertemos com a função `atoi`, pois se não a visualização será 0.
+     */
 
     return 0;
 }

@@ -3,31 +3,39 @@
 
 /**
  * RECURSÃO:
- * A recursão é uma técnica onde uma função chama a si mesma para resolver um problema.
- * Isso pode ser útil quando um problema pode ser dividido em subproblemas menores de
- * forma semelhante ao original.
- * Em termos simples, uma função recursiva divide o problema em partes menores e resolve
- * essas partes de forma repetida até que um caso base seja atingido, ou seja, um cenário
- * simples onde o problema pode ser resolvido diretamente.
+ * A recursão é uma técnica de programação em que uma função chama a si mesma
+ * para resolver um problema. Ela é útil quando esse problema pode ser dividido
+ * em subproblemas menores, semelhantes ao original.
+ *
+ * Em termos simples, uma função recursiva resolve pequenas partes do problema
+ * repetidamente até alcançar um caso base — um ponto onde o problema se torna
+ * simples o suficiente para ser resolvido diretamente.
  *
  * COMO FUNCIONA:
- * Caso Base: A recursão sempre precisa de um ponto de parada, que é o chamado "caso base".
- * Esse é o momento em que a função não chama mais a si mesma. Sem esse caso base, a função
- * ficaria chamando a si mesma infinitamente, o que causaria um estouro de pilha (stack overflow).
+ * - Caso Base: Toda função recursiva deve ter um caso base, que é a condição
+ *   que interrompe as chamadas recursivas. Sem ele, a função continuaria
+ *   chamando a si mesma indefinidamente, resultando em um erro conhecido como
+ *   "stack overflow" (estouro de pilha).
  *
- * Chamada Recursiva: A função chama a si mesma, mas com parâmetros diferentes,
- * geralmente reduzindo o problema até que atinja o caso base.
+ * - Chamada Recursiva: É o momento em que a função chama a si mesma, geralmente
+ *   com parâmetros reduzidos, aproximando a execução do caso base.
+ *
+ * CUIDADOS:
+ * - Garanta que o caso base sempre seja alcançado, evitando loops infinitos.
+ * - Tenha atenção à lógica de retorno e às operações feitas antes e depois
+ *   das chamadas recursivas, pois qualquer erro pode gerar resultados
+ *   incorretos ou consumo excessivo de memória.
  */
 
 /**
- * @brief Função recursiva para imprimir os `n` números consecutivos
- *        pares ou ímpares, dependendo se `n` é par ou ímpar.
+ * @brief Função recursiva que imprime números pares ou ímpares decrescentes.
  *
- * A função recursiva imprime os `n` números consecutivos pares ou ímpares,
- * dependendo se o número `n` é par ou ímpar. A cada chamada recursiva,
- * decrementa `n` em 2 até que `n` seja menor ou igual a 0, quando a recursão termina.
+ * A função imprime o valor atual de `n` e chama a si mesma reduzindo o número
+ * em 2. Dessa forma, se `n` for par, serão impressos números pares; se `n`
+ * for ímpar, serão impressos números ímpares. A recursão termina quando `n`
+ * torna-se menor ou igual a 0.
  *
- * @param n O número para o qual a função será chamada.
+ * @param n Valor inicial a ser impresso.
  */
 void recursao(int n)
 {
@@ -41,12 +49,16 @@ void recursao(int n)
 }
 
 /**
- * @brief Função recursiva que imprime números repetidos.
+ * @brief Função recursiva que imprime números em um padrão de árvore binária.
  *
- * A função imprime o número `n` e depois chama a si mesma duas vezes com
- * o valor `n - 1`.
+ * A função imprime o número `n` e realiza duas chamadas recursivas com o
+ * valor `n - 1`. Isso gera uma estrutura de recursão em forma de árvore,
+ * resultando em múltiplas repetições dos mesmos valores.
  *
- * @param n O número inicial para impressão.
+ * Exemplo da ordem de impressão para n = 3:
+ *   3 2 1 1 2 1 1
+ *
+ * @param n Valor inicial para impressão.
  */
 void fun(int n)
 {
@@ -59,13 +71,15 @@ void fun(int n)
 }
 
 /**
- * @brief Função recursiva para inverter uma string.
+ * @brief Função recursiva para inverter uma string in-place.
  *
- * A função inverte os caracteres da string entre os índices `inicio` e `fim`.
+ * A função troca os caracteres nas posições `inicio` e `fim`, avançando
+ * em direção ao centro da string até que `inicio` seja maior ou igual a `fim`,
+ * momento em que a recursão é encerrada.
  *
  * @param str A string a ser invertida.
- * @param inicio O índice inicial da string.
- * @param fim O índice final da string.
+ * @param inicio Índice inicial da troca.
+ * @param fim Índice final da troca.
  */
 void function(char *str, int inicio, int fim)
 {

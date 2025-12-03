@@ -44,19 +44,11 @@ void torre(int num, char from_peg, char to_peg, char aux_peg)
     torre(num - 1, aux_peg, to_peg, from_peg);
 }
 
-/**
- * @brief Função principal do programa.
- *
- * Define o número de discos e inicia o algoritmo.
- *
- * @return int Retorna 0 ao finalizar corretamente.
- */
 int main(int argc, char **argv)
 {
     int n = 3; // Número de discos da Torre de Hanói
 
     printf("Passos para resolver a Torre de Hanói com %d discos:\n\n", n);
     torre(n, 'A', 'C', 'B'); // A = origem, C = destino, B = auxiliar
-
     return 0;
 }

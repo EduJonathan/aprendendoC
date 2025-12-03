@@ -14,8 +14,8 @@
  * redução do código, mantendo a clareza e a funcionalidade.
  *
  * Pontos importantes:
- * - Em C, qualquer valor diferente de 0(false) é considerado verdadeiro (true)
- * - O valor 0 é considerado falso (false)
+ * - Em C, qualquer valor booleano retornado diferente de 0(false) é considerado verdadeiro (true)
+ * - O valor 0 é considerado falso (false), e 1 (true)
  * - Operadores lógicos (&&, ||, !) seguem regras de short-circuit evaluation
  * - Operadores bitwise (&, |, ~, ^, <<, >>) trabalham com bits
  */
@@ -113,7 +113,6 @@ int main(int argc, char **argv)
     // (12) || (12)
     // (true) || (true)
     // true
-    /// @note Qualquer número maior que zero é true
 
     printf("\n=======================================================\n");
     printf("\n\t>>A EXPRESSÃO É<<\n");
