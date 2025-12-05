@@ -1,7 +1,10 @@
 # 📚 Biblioteca estáticas e dinâmicas
 
-**Site Referência para explicação sobre bibliotecas**
-![Site terminal root](https://terminalroot.com.br/2024/09/diferenca-entre-bibliotecas-estatica-e-dinamica.html#google_vignette)
+## Referências
+
+Conforme explicado por Marcos Oliveira [neste artigo][ref-terminalroot].
+
+[ref-terminalroot]: https://terminalroot.com.br/2024/09/diferenca-entre-bibliotecas-estatica-e-dinamica.html "Diferença entre bibliotecas estática e dinâmica – Terminal Root (2024)"
 
 ## Bibliotecas(lib)
 

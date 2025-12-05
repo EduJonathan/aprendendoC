@@ -301,9 +301,10 @@ inteiros correspondentes. Exemplo: 'A' → 65 em decimal.
 
 ------------------------------------
 
-❗ Curiosidade:
+❗ Curiosidade Importante:
 
-A tabela ASCII em si não existe, é somente uma organização, um mapeamento para representação de cada caractere
+A tabela ASCII NÃO existe fisicamente na memória. É apenas um acordo histórico de mapeamento:
+o número 65 sempre representa a letra 'A' maiúscula.
 
 ------------------------------------
 
