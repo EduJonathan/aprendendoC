@@ -1,6 +1,13 @@
 #include "../include/println.h"
 #include <stdio.h>
 
+/**
+ * O código tem como objetivo testar a função println implementada em Assembly por "debaixo dos panos"
+ * linkado através de uma biblioteca estática.
+ * A função println é semelhante ao printf, mas adiciona uma nova linha automaticamente após a impressão.
+ * Ela suporta vários formatos, como %d, %s, %c, entre outros.
+ */
+
 int main(int argc, char **argv)
 {
     println("Primeiros testes da função println:");
