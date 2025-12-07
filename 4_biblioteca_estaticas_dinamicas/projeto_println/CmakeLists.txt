@@ -1,0 +1,68 @@
+# Makefile para bibliotecas estáticas e dinâmicas
+
+CC = gcc
+ASM = nasm
+ASMFLAGS_STATIC = -f elf64 -g
+ASMFLAGS_SHARED = -f elf64 -g -DPIC
+CFLAGS = -Wall -Wextra -I./include -g
+LDFLAGS_STATIC = -no-pie
+LDFLAGS_SHARED = -no-pie -Wl,-rpath,'$$ORIGIN/../lib/shared'
+
+TARGET_STATIC = test_static
+TARGET_SHARED = test_shared
+LIB_STATIC = lib/static/libprintln.a
+LIB_SHARED = lib/shared/libprintln.so
+
+ASM_SRC = assembly/println.asm
+ASM_OBJ_STATIC = lib/static/println.o
+ASM_OBJ_SHARED = lib/shared/println.o
+MAIN_OBJ = src/main.o
+
+# Alvo padrão: construir ambos
+all: static shared
+
+# Biblioteca estática
+static: $(TARGET_STATIC)
+
+$(TARGET_STATIC): $(LIB_STATIC) $(MAIN_OBJ)
+	$(CC) $(CFLAGS) -o $@ $(MAIN_OBJ) -L./lib/static -lprintln $(LDFLAGS_STATIC)
+
+$(LIB_STATIC): $(ASM_OBJ_STATIC)
+	ar rcs $@ $^
+
+$(ASM_OBJ_STATIC): $(ASM_SRC)
+	mkdir -p lib/static
+	$(ASM) $(ASMFLAGS_STATIC) -o $@ $<
+
+# Biblioteca dinâmica
+shared: $(TARGET_SHARED)
+
+$(TARGET_SHARED): $(LIB_SHARED) $(MAIN_OBJ)
+	$(CC) $(CFLAGS) -o $@ $(MAIN_OBJ) -L./lib/shared -lprintln $(LDFLAGS_SHARED)
+
+$(LIB_SHARED): $(ASM_OBJ_SHARED)
+	$(CC) -shared -fPIC -o $@ $^
+
+$(ASM_OBJ_SHARED): $(ASM_SRC)
+	mkdir -p lib/shared
+	$(ASM) $(ASMFLAGS_SHARED) -o $@ $<
+
+# Objeto principal
+$(MAIN_OBJ): src/main.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Limpeza
+clean:
+	rm -f $(TARGET_STATIC) $(TARGET_SHARED) \
+	      $(LIB_STATIC) $(LIB_SHARED) \
+	      $(ASM_OBJ_STATIC) $(ASM_OBJ_SHARED) \
+	      $(MAIN_OBJ)
+
+# Executar testes
+run-static: static
+	./$(TARGET_STATIC)
+
+run-shared: shared
+	LD_LIBRARY_PATH=./lib/shared:$$LD_LIBRARY_PATH ./$(TARGET_SHARED)
+
+.PHONY: all static shared clean run-static run-shared
