@@ -2,12 +2,15 @@
 #define PRINTLN_H
 
 /**
- * @brief Função para imprimir uma string com quebra de linha ('\n') automática no final da string.
- * onde ao invés de utilizarmos `printf("string\n")`, utilizaremos `_println("string")`.
+ * @brief Função para imprimir uma string com quebra de linha ('\\n') automática no final da string.
+ * Onde ao invés de utilizarmos `printf("string\\n")`, utilizaremos `_println("string")`.
  *
- * O diferencial dessa função será sua implementação que em vez de utilizar escopo de função,
- * o controle dessa função será realizado pela linguagem assembly, linkada através da biblioteca dinâmica.
- * No momento o código assembly. E não possue implementação para outros formatores `(%d, %s, %c, etc)`.
+ * O diferencial dessa função será sua implementação que em vez de utilizar escopo de função, ou seja:
+ *
+ * `int _println(const char *fmt, ...) { // implementação }`,
+ *
+ * o controle dessa função será realizado 100% pela linguagem assembly, linkada através da biblioteca dinâmica.
+ * No momento o código não possue implementação para outros formatores `(%d, %s, %c, etc)`.
  * Futuramente será implementado suporte para esses formatos.
  *
  * @param fmt A string de formato que pode conter especificadores de formato.
