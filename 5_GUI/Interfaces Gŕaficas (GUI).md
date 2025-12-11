@@ -1,18 +1,73 @@
 # Interfaces Gráficas (GUI)
 
-`GUI` _(Graphical User Interface)_ é todo tipo de interface gráfica utilizada por um programa
-para interação com o usuário. Diferente de aplicações em modo texto, uma GUI depende de elementos
-visuais como `janelas`, `botões`, `menus`, `ícones` e `caixas de diálogo`.
+Uma GUI (Graphical User Interface) é toda interface visual utilizada por um programa para interação com o usuário.
+Diferente de aplicações em modo texto (como consoles), a GUI depende de elementos visuais como:
 
-GUI também está diretamente ligada à **programação orientada a eventos**, onde a aplicação reage a ações do usuário, como:
+- janelas
+- botões
+- menus
+- ícones
+- caixas de diálogo
+- entradas de texto
+- seletores (checkbox, dropdown etc.)
 
-- cliques do mouse.
-- pressionamento de teclas.
-- movimentação do cursor.
-- redimensionamento de janelas.
-- eventos do sistema operacional.
+Esses componentes permitem que o usuário execute ações de forma intuitiva, utilizando
+principalmente o mouse, o teclado e, em sistemas modernos, até toque.
 
-Ou seja, uma `GUI` não segue uma sequência linear tradicional de código, mas responde continuamente aos eventos disparados.
+---
+
+## 🎮 Programação orientada a eventos
+
+GUIs funcionam através de eventos. Ao invés de seguir um fluxo linear de cima para baixo, o programa:
+
+1. fica escutando eventos gerados pelo usuário ou pelo sistema.
+2. processa esses eventos quando acontecem.
+3. atualiza a interface conforme necessário.
+
+Eventos comuns incluem:
+
+- cliques do mouse
+- teclas pressionadas
+- movimentação do cursor
+- arrastar/soltar arquivos
+- redimensionamento da janela
+- foco/desfoque de elementos
+- eventos internos do sistema operacional
+- Isso cria uma aplicação sempre reativa.
+
+---
+
+## ✅ Vantagens de usar GUI
+
+**Experiência intuitiva:**: Interfaces gráficas são mais fáceis de usar, especialmente para usuários iniciantes.
+**Interatividade rica:**: É possível combinar vários tipos de entrada (mouse, teclado, toque).
+**Layouts complexos:**: Permitem organizar muitos elementos em telas visuais elaboradas.
+**Padrões estabelecidos:**: Bibliotecas como Qt, GTK, wxWidgets, ImGui, SDL2, SFML etc. já oferecem componentes prontos.
+**Escalabilidade visual:**: Com esforços relativamente pequenos, é possível criar interfaces avançadas com menus, painéis e animações.
+
+---
+
+## ❌ Desvantagens de usar GUI
+
+- **Complexidade maior:** A arquitetura orientada a eventos pode ser confusa para iniciantes, pois a execução não é linear.
+- **Maior consumo de recursos:** GUIs exigem processamento e memória comparados a programas em modo texto.
+- **Dependência de bibliotecas:** Cada plataforma pode exigir adaptações diferentes.
+- **Depuração mais difícil:** Bugs podem surgir de interações complexas entre eventos.
+- **Requer mais cálculos:** Mesmo com bibliotecas prontas, muitos aspectos dependem de lógica própria:
+  - álgebra para posicionamento
+  - cálculos de hitbox
+  - manipulação de coordenadas
+  - detecção de colisão entre elementos
+  - gerenciamento de estados
+
+> Interfaces gráficas tornam aplicativos mais amigáveis e modernos, porém exigem:
+> cuidados com cálculos matemáticos,
+> organização de estados,
+> algoritmos bem estruturados,
+> e atenção ao fluxo de eventos.
+> Elas não seguem uma sequência linear tradicional — o programa reage ao usuário e ao sistema a todo momento.
+
+---
 
 ## Tempos Passados
 
