@@ -39,11 +39,11 @@ Eventos comuns incluem:
 
 ## ✅ Vantagens de usar GUI
 
-**Experiência intuitiva:**: Interfaces gráficas são mais fáceis de usar, especialmente para usuários iniciantes.
-**Interatividade rica:**: É possível combinar vários tipos de entrada (mouse, teclado, toque).
-**Layouts complexos:**: Permitem organizar muitos elementos em telas visuais elaboradas.
-**Padrões estabelecidos:**: Bibliotecas como Qt, GTK, wxWidgets, ImGui, SDL2, SFML etc. já oferecem componentes prontos.
-**Escalabilidade visual:**: Com esforços relativamente pequenos, é possível criar interfaces avançadas com menus, painéis e animações.
+- **Experiência intuitiva:** Interfaces gráficas são mais fáceis de usar, especialmente para usuários iniciantes.
+- **Interatividade rica:** É possível combinar vários tipos de entrada (mouse, teclado, toque).
+- **Layouts complexos:** Permitem organizar muitos elementos em telas visuais elaboradas.
+- **Padrões estabelecidos:** Bibliotecas como Qt, GTK, wxWidgets, ImGui, SDL2, SFML etc. já oferecem componentes prontos.
+- **Escalabilidade visual:** Com esforços relativamente pequenos, é possível criar interfaces avançadas com menus, painéis e animações.
 
 ---
 
