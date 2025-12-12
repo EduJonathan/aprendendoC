@@ -24,69 +24,57 @@
 int main(int argc, char **argv)
 {
     printf("\n-----------------------------------------------------\n");
-    printf("\n\t\t>>VOID POINTERS<<\n");
+    printf("\n\t\t>> VOID POINTERS <<\n");
     printf("\n-----------------------------------------------------\n");
-    printf("\t>>IMPRIMINDO INFORMAÇÕES SOBRE\n");
+    printf("\t>> IMPRIMINDO INFORMAÇÕES DAS VARIÁVEIS\n\n");
 
     int a = 10;
     float b = 5.5f;
     char ch = 'b';
 
-    printf(" CONTEÚDO DA VARIÁVEL 'a'  = %d ENDEREÇO DA VARIÁVEL   'a'  = %p\n", a, &a);
-    printf(" CONTEÚDO DA VARIÁVEL 'b'  = %.2f ENDEREÇO DA VARIÁVEL 'b'  = %p\n", b, &b);
-    printf(" CONTEÚDO DA VARIÁVEL 'ch' = %c ENDEREÇO DA VARIÁVEL   'ch' = %p\n", ch, &ch);
+    printf(" CONTEÚDO 'a'  = %d   | ENDEREÇO 'a'  = %p\n", a, (void *)&a);
+    printf(" CONTEÚDO 'b'  = %.2f | ENDEREÇO 'b'  = %p\n", b, (void *)&b);
+    printf(" CONTEÚDO 'ch' = %c   | ENDEREÇO 'ch' = %p\n", ch, (void *)&ch);
 
-    printf("\n=============================================================================\n");
-    printf("\t>>IMPRIMINDO INFORMAÇÕES SOBRE voidToPointerInt\n");
+    printf("\n=====================================================\n");
+    printf("\t>> PONTEIRO VOID APONTANDO PARA INT\n\n");
 
-    /* Inserindo NULL em voidToPointerInt e atribuindo para receber o endereço da variável `a`*/
-    void *voidToPointerInt = NULL;
-    printf(" O Valor do ponteiro quando inserirmos NULL       : %p\n", voidToPointerInt);
+    void *voidPtr = NULL;
+    printf(" Valor inicial do ponteiro (NULL) : %p\n", (void *)voidPtr);
 
-    /* Atribuindo o endereço de memória a cada ponteiro `void`. */
-    voidToPointerInt = &a;
+    voidPtr = &a;
+    printf(" Endereço do ponteiro voidPtr     : %p\n", (void *)&voidPtr);
+    printf(" Valor armazenado no ponteiro     : %p\n", (void *)voidPtr);
+    printf(" Valor desreferenciado (int)      : %d\n", *(int *)voidPtr);
 
-    /* Imprimindo as informações. */
-    printf(" O endereço de memória de voidToPointerInt        : %p\n", &voidToPointerInt);
-    printf(" O Valor do ponteiro voidToPointerInt aponta para : %p\n", voidToPointerInt);
+    printf("\n=====================================================\n");
+    printf("\t>> PONTEIRO VOID APONTANDO PARA FLOAT\n\n");
 
-    printf("\n=============================================================================\n");
-    printf("\t>>IMPRIMINDO INFORMAÇÕES SOBRE voidToPointerFloat\n");
+    voidPtr = &b;
+    printf(" Valor armazenado no ponteiro     : %p\n", (void *)voidPtr);
+    printf(" Valor desreferenciado (float)    : %.2f\n", *(float *)voidPtr);
 
-    /* Inserindo NULL em voidToPointerFloat e atribuindo para recebe o endereço da variável `b` */
-    void *voidToPointerFloat = NULL;
-    printf(" O Valor do ponteiro quando inserirmos NULL         : %p\n", voidToPointerFloat);
+    /*
+     * ERRO CONCEITUAL (comentado):
+     * O ponteiro aponta para float, mas o cast é double.
+     * Isso gera comportamento indefinido.
+     */
+    /* printf(" ERRO: %lf\n", *(double *)voidPtr); */
 
-    /* Atribuindo o endereço de memória a cada ponteiro `void`. */
-    voidToPointerFloat = &b;
+    printf("\n=====================================================\n");
+    printf("\t>> PONTEIRO VOID APONTANDO PARA CHAR\n\n");
 
-    /* Imprimindo as informações. */
-    printf(" O endereço de memória de voidToPointerFloat        : %p\n", &voidToPointerFloat);
-    printf(" O Valor do ponteiro voidToPointerFloat aponta para : %p\n", voidToPointerFloat);
+    voidPtr = &ch;
+    printf(" Valor armazenado no ponteiro     : %p\n", (void *)voidPtr);
+    printf(" Valor desreferenciado (char)     : %c\n", *(char *)voidPtr);
+    printf(" Valor ASCII do char              : %d\n", (int)*(char *)voidPtr);
 
-    printf("\n=============================================================================\n");
-    printf("\t>>IMPRIMINDO INFORMAÇÕES SOBRE voidToPointerChar\n");
+    /*
+     * ERRO CONCEITUAL (comentado):
+     * Cast incorreto gera lixo de memória.
+     */
+    /* printf(" ERRO: %d\n", *(int *)voidPtr); */
 
-    /* Inserindo NULL em voidToPointerChar e atribuindo receber o endereço da variável `ch`. */
-    void *voidToPointerChar = NULL;
-    printf(" O Valor do ponteiro quando inserirmos NULL        : %p\n", voidToPointerChar);
-
-    /* Atribuindo o endereço de memória a cada ponteiro `void`. */
-    voidToPointerChar = &ch;
-
-    /* Imprimindo as informações. */
-    printf(" O endereço de memória de voidToPointerChar        : %p\n", &voidToPointerChar);
-    printf(" O Valor do ponteiro voidToPointerChar aponta para : %p\n", voidToPointerChar);
-
-    printf("\n=============================================================================\n");
-    printf("\t>>DERREFERENCIANDO CADA PONTEIRO VOID\n");
-
-    printf(" TYPE-CASTING INT: %d\n", *(int *)voidToPointerInt);
-    printf(" TYPE-CASTING FLOAT: %f\n", *(float *)voidToPointerFloat);
-    /* printf(" TYPE-CASTING FLOAT: %lf\n", *(double *)voidToPointerFloat); 0.0000 */
-
-    printf(" TYPE-CASTING CHAR: %c\n", *(char *)voidToPointerChar);
-    printf(" TYPE-CASTING CHAR(ASCII): %d\n", *(char *)voidToPointerChar); // 98: b na tabela ASCII
-    /* printf(" TYPE-CASTING CHAR: %d\n", *(int *)voidToPointerChar); lixo de memoria. */
+    printf("\n=====================================================\n");
     return 0;
 }

@@ -1,0 +1,56 @@
+# Comentários e Documentação no Código
+
+Comentários são essenciais para compreender o funcionamento de cada parte de um programa.
+Eles facilitam a manutenção, o aprendizado e a colaboração entre desenvolvedores.
+Neste exemplo, demonstramos como organizar melhor os comentários utilizando o caractere `@`,
+amplamente adotado por ferramentas de documentação automática, como o Doxygen.
+
+## O uso de tags com @ permite estruturar e categorizar informações, tornando a documentação:
+
+- Mais clara
+- Mais informativa
+- Mais fácil de navegar e manter
+
+---
+
+## Tipos de Comentários Documentáveis
+
+⟶ Para destacar comentários de documentação, recomenda-se:
+
+᛫ /// → Comentários de linha única com tags especiais. exemplo: /// @author Eduardo
+
+---
+
+⟶ Para comentários de múltiplas linhas, utilize dois asteriscos no início do bloco, conforme o exemplo abaixo:
+
+᛫ /** ... */ → Comentários de múltiplas linhas documentáveis.
+
+/**
+ * TAGS MAIS COMUNS:
+ *
+ * @author / @authors   Indica o(s) autor(es) do código.
+ * @brief               Breve descrição da função ou do propósito do bloco de código.
+ * @param               Descreve um parâmetro da função.
+ * @arg                 Alternativa ao @param.
+ * @return              Descreve o valor retornado por uma função.
+ * @file                Indica o propósito do arquivo atual.
+ * @defgroup / @ingroup Agrupa elementos relacionados (funções, tipos, etc.).
+ * @example             Fornece um exemplo de uso.
+ * @todo                Marca uma tarefa pendente.
+ * @bug                 Indica um erro conhecido no código.
+ * @note                Observações adicionais importantes.
+ * @version             Define a versão atual do código.
+ * @attention           Chama atenção para um ponto crítico do código.
+ * @warning             Destaca riscos ou problemas potenciais.
+ *
+ * ...entre outras.
+ */
+
+---
+
+## Benefícios do Uso de Tags
+
+- Padronização da documentação.
+- Melhor leitura do código.
+- Facilidade na geração de documentação automática.
+- Organização profissional do projeto.
