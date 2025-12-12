@@ -9,7 +9,7 @@
  *
  * `int _println(const char *fmt, ...) { // implementação }`,
  *
- * o controle dessa função será realizado 100% pela linguagem assembly, linkada através da biblioteca dinâmica.
+ * o controle dessa função será realizado 100% pela linguagem assembly, linkada através da biblioteca estática.
  * No momento o código não possue implementação para outros formatores `(%d, %s, %c, etc)`.
  * Futuramente será implementado suporte para esses formatos.
  *
