@@ -19,6 +19,12 @@ int main(int argc, char **argv)
 {
     FILE *arquivo = fopen("dados.bin", "rb");
 
+    if (arquivo == NULL)
+    {
+        perror("Erro ao abrir o arquivo para leitura");
+        return 1;
+    }
+
     fseek(arquivo, 0, SEEK_END); // Move o ponteiro para o final do arquivo
 
     // Obtém a posição atual e retorna o número de bytes já lidos ou escritos no arquivo.

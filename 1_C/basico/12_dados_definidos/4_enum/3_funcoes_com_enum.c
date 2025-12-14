@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> // Inclui a biblioteca para usar a função rand, srand
 #include <time.h>   // Inclui a biblioteca para usar a função time
-#include <string.h>
+#include <string.h> // Inclui a biblioteca para usar strncmp
 
 /**
  * @enum moeda
@@ -10,8 +10,8 @@
  */
 enum moeda
 {
-    CARA,
-    COROA
+    CARA = 0, /**< Valor para a opção CARA */
+    COROA = 1 /**< Valor para a opção COROA */
 };
 
 /**
@@ -103,28 +103,42 @@ int jogadorEscolhePedraPapelTesoura(const char *escolhaDoJogador, const char *es
 
 int main(int argc, char **argv)
 {
-    srand(time(NULL));
+    srand(time(NULL)); // Inicializa o gerador de números aleatórios
 
     enum moeda jogador1;
     enum moeda jogador2;
+    int escolha = 0;
 
-    printf("Jogador 1 escolha (0) para CARA ou (1) para COROA: ");
-    scanf("%d", &jogador1);
+    // Entrada do jogador 1
+    do
+    {
+        printf("Jogador 1 escolha (0) para CARA ou (1) para COROA: ");
+        scanf("%d", &escolha);
+    } while (escolha != CARA && escolha != COROA);
+    jogador1 = (enum moeda)escolha;
 
-    printf("Jogador 2 escolha (0) para CARA ou (1) para COROA: ");
-    scanf("%d", &jogador2);
+    // Entrada do jogador 2
+    do
+    {
+        printf("Jogador 2 escolha (0) para CARA ou (1) para COROA: ");
+        scanf("%d", &escolha);
+    } while (escolha != CARA && escolha != COROA);
+    jogador2 = (enum moeda)escolha;
 
     // Determina quem começa com o lançamento da moeda
     quemComeca(jogador1, jogador2);
 
     char escolhaDoJogador[20] = {0}; // Array para armazenar a escolha do jogador
 
+    // Entrada do jogador para o jogo Pedra, Papel ou Tesoura
     printf("Jogador 1 escolha (pedra, papel ou tesoura): ");
     scanf("%s", escolhaDoJogador);
 
+    // Escolha do computador
     char *escolhaComputer = escolhaDoComputador();
     printf("Computador escolhe: %s\n", escolhaComputer);
 
+    // Resultado do jogo
     int resultado = jogadorEscolhePedraPapelTesoura(escolhaDoJogador, escolhaComputer);
 
     if (resultado == 1)

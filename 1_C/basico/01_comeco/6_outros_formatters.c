@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 
     int OCTAL = 48;
     int HEXADECIMAL = 69;
-    unsigned long int ULI = 45ull;
+    unsigned long int ULI = 45ul;
     unsigned long long int ULLI = 42ull;
 
     //================== OCTAL ==================//

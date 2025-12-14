@@ -21,6 +21,9 @@
  * - O uso explícito de `auto` em C é raríssimo e desnecessário, sendo mais utilizado em C++.
  */
 
+// variável global auto explícita
+/* auto char auto_var = 'A'; */ // ERROR: file-scope declaration of ‘auto_var’ specifies ‘auto’
+
 int main(int argc, char **argv)
 {
     // Variáveis auto explícitas (opcional, comportamento padrão)

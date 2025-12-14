@@ -21,6 +21,12 @@ int main(int argc, char **argv)
 {
     FILE *arquivo = fopen("dados.bin", "wb"); // Abre o arquivo binário para escrita
 
+    if (arquivo == NULL)
+    {
+        perror("Erro ao abrir o arquivo para escrita");
+        return 1;
+    }
+
     int numeros[] = {10, 20, 30, 40, 50};
 
     // Escreve os números no arquivo e grava um array de inteiros em um arquivo binário.

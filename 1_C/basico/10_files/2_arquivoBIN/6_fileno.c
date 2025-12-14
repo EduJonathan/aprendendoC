@@ -21,6 +21,12 @@ int main(int argc, char **argv)
 {
     FILE *arquivo = fopen("dados.bin", "rb");
 
+    if (arquivo == NULL)
+    {
+        perror("Erro ao abrir o arquivo para leitura");
+        return 1;
+    }
+
     // Obtém descritor do arquivo e retorna o identificador de arquivo que o
     // sistema operacional usa internamente.
     int descritor = fileno(arquivo);
