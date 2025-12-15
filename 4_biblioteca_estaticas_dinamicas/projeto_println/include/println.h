@@ -2,8 +2,8 @@
 #define PRINTLN_H
 
 /**
- * @brief Função para imprimir uma string com quebra de linha ('\\n') automática no final da string.
- * Onde ao invés de utilizarmos `printf("string\\n")`, utilizaremos `_println("string")`.
+ * @brief Imprime uma string no stdout com quebra de linha automática.
+ * Implementação 100% Assembly usando syscall write (Linux x86_64).
  *
  * O diferencial dessa função será sua implementação que em vez de utilizar escopo de função, ou seja:
  *
@@ -17,6 +17,6 @@
  * @param ... Argumentos adicionais para formatação, se necessário.
  * @return Retorna o número de caracteres impressos, excluindo o caractere nulo final.
  */
-int _println(const char *, ...);
+int _println(const char *str);
 
 #endif // PRINTLN_H

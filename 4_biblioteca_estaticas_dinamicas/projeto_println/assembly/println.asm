@@ -1,30 +1,44 @@
-; println_static.asm - Para biblioteca estática
 section .text
     global _println
-    extern printf
 
 _println:
     push rbp
     mov rbp, rsp
-    push rbx
-    
-    ; Chamar printf com argumentos originais
-    xor eax, eax
-    call printf wrt ..plt
-    mov rbx, rax
-    
-    ; Imprimir nova linha
-    mov rdi, fmt_newline
-    xor eax, eax
-    call printf wrt ..plt
-    
-    add rbx, 1
-    mov rax, rbx
-    
-    pop rbx
-    mov rsp, rbp
+
+    push rdi            ; salva ponteiro da string
+
+    ; strlen
+    mov rsi, rdi
+    xor rcx, rcx
+
+.len_loop:
+    cmp byte [rsi + rcx], 0
+    je .len_done
+    inc rcx
+    jmp .len_loop
+
+.len_done:
+    ; rcx = len
+
+    ; write(1, str, len)
+    mov rax, 1          ; sys_write
+    mov rdi, 1          ; stdout
+    pop rsi             ; rsi = str
+    mov rdx, rcx        ; len
+    syscall
+
+    ; write(1, "\n", 1)
+    mov rax, 1
+    mov rdi, 1
+    lea rsi, [rel newline]
+    mov rdx, 1
+    syscall
+
+    ; return len + 1
+    lea rax, [rcx + 1]
+
     pop rbp
     ret
 
 section .rodata
-fmt_newline: db 10, 0
+newline: db 10

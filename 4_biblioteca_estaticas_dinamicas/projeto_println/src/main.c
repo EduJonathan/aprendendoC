@@ -25,11 +25,15 @@
 int main(int argc, char **argv)
 {
     // Testes básicos
-    _println("Hello, World!");
+    _println("Hello, Assembly World");
+    _println("Sem libc");
+    _println("Syscall direto");
 
     // Comparação com printf normal
     printf("printf normal\n");
-    _println("\n_println com nova linha automática");
+    _println("\nHello, Assembly World");
+    _println("Sem libc");
+    _println("Syscall direto");
 
     return 0;
 }
