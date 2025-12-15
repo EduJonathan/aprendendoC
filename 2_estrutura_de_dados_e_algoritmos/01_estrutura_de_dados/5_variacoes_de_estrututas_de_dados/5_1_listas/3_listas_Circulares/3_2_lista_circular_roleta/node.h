@@ -7,8 +7,8 @@
  *
  * Cada nó contém o nome de uma arma e um ponteiro para o próximo nó.
  */
-typedef struct Node
+typedef struct node
 {
     char weapon[MAX_WEAPON_NAME]; /**< Nome da arma */
-    struct Node *next;            /**< Ponteiro para o próximo nó */
+    struct node *next;            /**< Ponteiro para o próximo nó */
 } Node;

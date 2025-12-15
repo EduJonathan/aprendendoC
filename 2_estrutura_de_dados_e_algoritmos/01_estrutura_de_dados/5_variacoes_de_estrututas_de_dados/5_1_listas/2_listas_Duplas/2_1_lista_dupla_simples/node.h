@@ -7,9 +7,9 @@
  * para o nó seguinte (next). Essa estrutura é útil para operações bidirecionais, como
  * percorrimento reverso, mas consome mais memória devido aos dois ponteiros por nó.
  */
-typedef struct Node
+typedef struct node
 {
     int data;          /**< O valor armazenado no nó */
-    struct Node *next; /**< Ponteiro para o nó seguinte na lista */
-    struct Node *prev; /**< Ponteiro para o nó anterior na lista */
+    struct node *next; /**< Ponteiro para o nó seguinte na lista */
+    struct node *prev; /**< Ponteiro para o nó anterior na lista */
 } Node;

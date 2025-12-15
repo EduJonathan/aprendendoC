@@ -7,7 +7,7 @@
  *
  * Contém um ponteiro para o primeiro e o último elemento, além de controlar a quantidade de elementos.
  */
-typedef struct List
+typedef struct list
 {
     unsigned int size; /**< Quantidade de elementos na lista */
     Element *first;    /**< Ponteiro para o primeiro elemento da lista */

@@ -5,9 +5,9 @@
  *
  * Cada elemento contém um valor (data) e ponteiros para o próximo e o anterior elemento.
  */
-typedef struct Element
+typedef struct element
 {
     int data;             /**< Valor armazenado no elemento */
-    struct Element *next; /**< Ponteiro para o próximo elemento */
-    struct Element *prev; /**< Ponteiro para o elemento anterior */
+    struct element *next; /**< Ponteiro para o próximo elemento */
+    struct element *prev; /**< Ponteiro para o elemento anterior */
 } Element;

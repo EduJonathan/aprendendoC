@@ -25,7 +25,9 @@ void inserirCircular(No **cabeca, No *novo)
         novo->proximo = *cabeca; // Circular: aponta para si mesmo
         return;
     }
+
     No *temp = *cabeca;
+    
     while (temp->proximo != *cabeca)
     {
         temp = temp->proximo;
@@ -43,29 +45,30 @@ void imprimirAgenda(No *cabeca)
     }
 
     No *temp = cabeca;
+
     do
     {
         printf("Dia %d: ", temp->diaSemana);
-        switch (temp->tipo)
-        {
-        case TIPO_REUNIAO:
-        {
-            Reuniao *r = (Reuniao *)temp->dados;
-            printf("Reunião - Título: %s, Horário: %s\n", r->titulo, r->horario);
-            break;
-        }
-        case TIPO_LEMBRETE_PAGAMENTO:
-        {
-            LembretePagamento *lp = (LembretePagamento *)temp->dados;
-            printf("Lembrete Pagamento - Valor: %.2f, Descrição: %s\n", lp->valor, lp->descricao);
-            break;
-        }
-        case TIPO_ANIVERSARIO:
-        {
-            Aniversario *a = (Aniversario *)temp->dados;
-            printf("Aniversário - Nome: %s, Data: %s\n", a->nome, a->data);
-            break;
-        }
+            switch (temp->tipo)
+            {
+            case TIPO_REUNIAO:
+            {
+                Reuniao *r = (Reuniao *)temp->dados;
+                printf("Reunião - Título: %s, Horário: %s\n", r->titulo, r->horario);
+                break;
+            }
+            case TIPO_LEMBRETE_PAGAMENTO:
+            {
+                LembretePagamento *lp = (LembretePagamento *)temp->dados;
+                printf("Lembrete Pagamento - Valor: %.2f, Descrição: %s\n", lp->valor, lp->descricao);
+                break;
+            }
+            case TIPO_ANIVERSARIO:
+            {
+                Aniversario *a = (Aniversario *)temp->dados;
+                printf("Aniversário - Nome: %s, Data: %s\n", a->nome, a->data);
+                break;
+            }
         }
         temp = temp->proximo;
     } while (temp != cabeca);
