@@ -10,11 +10,11 @@
  *
  * 1. Compile a biblioteca estática ou dinâmica primeiro (conforme instruções na respectiva pasta).
  *
- * # Biblioteca
- * gcc -fPIC -shared -o lib/libpermissoes.so src/permissoes_lib.c (Linux)
+ * # Recompila a biblioteca (importante recompilar depois de adicionar _GNU_SOURCE)
+ * gcc -fPIC -shared -o lib/libpermissoes.so src/permissoes_lib.c -I./include
  *
  * 2. Compile este programa com o comando:
- * gcc -o main src/main.c -L./lib -lpermissoes -Wl,-rpath,'$ORIGIN/lib'
+ * gcc -o main src/main.c -L./lib -lpermissoes -Wl,-rpath,'$ORIGIN/lib' -I./include
  *
  * 3. Teste(aqui é um caso onde você deve ter um arquivo chamado "arquivo.txt" no mesmo diretório):
  * caso não tenha, crie um arquivo de teste com o comando dentro do diretório raiz do projeto:

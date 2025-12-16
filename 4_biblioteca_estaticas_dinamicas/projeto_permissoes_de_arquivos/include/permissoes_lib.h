@@ -14,8 +14,8 @@
 #endif
 
 /**
- * @brief Converte o modo do arquivo para string simbólica (ex: -rwxr-xr--)
- * O buffer str deve ter no mínimo 11 bytes
+ * @brief Converte o modo do arquivo para string simbólica (ex: -rwxr-xr-x)
+ * O buffer str deve ter no mínimo 11 bytes (10 caracteres + '\0')
  *
  * @param modo O modo do arquivo (st_mode da struct stat)
  * @param str Buffer para armazenar a string resultante
