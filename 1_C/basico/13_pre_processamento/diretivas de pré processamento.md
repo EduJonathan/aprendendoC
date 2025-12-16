@@ -215,7 +215,7 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 
 gcc for_each.c -o programa
 gcc for each.c -o programa   # ERRO: o compilador entende como dois arquivos
-gcc "for_each.c" -o programa # Aspas protegem o nome, mas evite usar
+gcc "for each.c" -o programa # Aspas protegem o nome, mas evite usar
 ```
 
 ## ✍ Sobrescrita de Arquivos
@@ -224,48 +224,46 @@ gcc "for_each.c" -o programa # Aspas protegem o nome, mas evite usar
   importantes com a flag `-o` para com o arquivo de saída.
 
 ```bash
-# Este comando gera um executável chamado programa.c
-# MAS, se houver um arquivo-fonte chamado programa.c,
-# ele será sobrescrito pelo executável gerado, o que é catastrófico, pois
-# você perde o código-fonte original ele será sobrescrito pelo binário gerado!
-gcc arquivo_c.c -o programa.txt
-# ou
+# Atenção: a opção `-o` define o nome do arquivo de saída (executável).
+# Se já existir um arquivo com esse nome (ex.: programa.c),
+# ele será sobrescrito pelo binário gerado, causando perda do código-fonte.
 gcc arquivo_c.c -o programa.c
 ```
 
 ```bash
-# Cuidado ao compilar com, a intenção provavelmente era compilar "arquivoB.c",
-# mas a opção -o está mandando gerar um executável chamado "arquivoA.c".
-# Então em antes de "arquivoA.c" deve ser o nome do executável de imediato em vez do arquivo.
+# Atenção: a opção `-o` define o nome do executável, não um arquivo de código.
+# Neste comando, o GCC gera um executável chamado "arquivoA.c".
 gcc -o arquivoA.c arquivoB.c
 
-# Solução
+# Forma correta
 gcc -o nomeDoExecutavel arquivoA.c arquivoB.c
+
 ```
 
 ```bash
-# Outro caso é: Este comando compila arquivo.c em código objeto (.o) ao invés de um executável.
-# Mas, se você já tinha um arquivo programa.o importante (ex: objeto de outro módulo),
-# ele será substituído.
+# Atenção: com a opção `-c`, o GCC gera um arquivo objeto (.o), não um executável.
+# A opção `-o` define o nome desse arquivo.
+# Se já existir um arquivo com esse nome (ex.: programa.o),
+# ele será sobrescrito.
 gcc -c arquivo.c -o programa.o
 ```
 
 ```bash
-# CURIOSIDADE: ao compilar um arquivo C sem especificar um nome de saída com a opção -o,
-# o compilador GCC gera automaticamente um executável com um nome padrão.
+# CURIOSIDADE: ao compilar um arquivo C sem usar a opção `-o`,
+# o GCC gera automaticamente um executável com nome padrão.
 
-# Exemplo de compilação:
+# Exemplo:
 gcc arquivoA.c
 
 # Resultado:
-# - No Linux/macOS: será gerado um executável chamado "a.out"
-# - No Windows (MinGW/Cygwin): será gerado um executável chamado "a.exe"
+# - Linux/macOS: executável chamado "a.out"
+# - Windows (MinGW/Cygwin): executável chamado "a.exe"
 
-# Para executar:
-# No Linux/macOS:
+# Execução:
+# Linux/macOS:
 ./a.out
 
-# No Windows:
+# Windows:
 .\a.exe
 ```
 
