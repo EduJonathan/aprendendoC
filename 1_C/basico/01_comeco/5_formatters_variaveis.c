@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+/// FORMATADORES: São usados para controlar a exibição e entrada de dados no C, sendo sempre precedidos por '%'.
+/// VARIÁVEIS: Representam identificadores que armazenam valores de diferentes tipos de dados.
+
 int main(int argc, char **argv)
 {
-    /// FORMATADORES: São usados para controlar a exibição e entrada de dados no C, sendo sempre precedidos por '%'.
-    /// VARIÁVEIS: Representam identificadores que armazenam valores de diferentes tipos de dados.
-
     printf("\n==================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPOS DE DADOS PRIMITIVOS<==\n");
 

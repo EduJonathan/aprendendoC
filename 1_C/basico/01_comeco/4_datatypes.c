@@ -66,7 +66,7 @@ int main(int argc, char **argv)
     printf(" SHORT_MIN : %d  E SHORT_MAX : %d\n", SHRT_MIN, SHRT_MAX);
     printf(" LONG_MIN : %ld E LONG_MAX : %ld\n", LONG_MIN, LONG_MAX);
     printf(" SIGNED LONG_LONG_MIN : %lld E SIGNED LONG_LONG_MAX : %lld\n", LLONG_MIN, LLONG_MAX);
-    printf(" LONG_LONG_MIN : %lld E LONG_LONG_MAX : %lld\n", LONG_LONG_MIN, LONG_LONG_MAX);
+    printf(" LONG_LONG_MIN : %lld E LONG_LONG_MAX : %lld\n", LLONG_MIN, LLONG_MAX);
 
     printf("\n=================================================================\n");
     printf("\n\t>> RANGE MÁXIMO DO TIPO INT UNSIGNED <<\n\n");
