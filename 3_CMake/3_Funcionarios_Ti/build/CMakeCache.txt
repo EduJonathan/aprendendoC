@@ -14,15 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//Value Computed by CMake
-3_Funcionarios_TI_BINARY_DIR:STATIC=/home/eduardo/Documentos/aprendendoC/3_CMake/3_Funcionarios_Ti/build
-
-//Value Computed by CMake
-3_Funcionarios_TI_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-3_Funcionarios_TI_SOURCE_DIR:STATIC=/home/eduardo/Documentos/aprendendoC/3_CMake/3_Funcionarios_Ti
-
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 

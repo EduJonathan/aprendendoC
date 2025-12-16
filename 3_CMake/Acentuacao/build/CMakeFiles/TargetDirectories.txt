@@ -1,3 +1,0 @@
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/Acentuacao/build/CMakeFiles/meu_programa.dir
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/Acentuacao/build/CMakeFiles/edit_cache.dir
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/Acentuacao/build/CMakeFiles/rebuild_cache.dir

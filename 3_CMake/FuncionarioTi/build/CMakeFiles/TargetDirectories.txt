@@ -1,7 +1,0 @@
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/c_moderno_example.dir
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/edit_cache.dir
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/rebuild_cache.dir
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/list_install_components.dir
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/install.dir
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/install/local.dir
-C:/Users/Eduardo Jonathan/Documents/aprendendoC/3_CMake/FuncionarioTi/build/CMakeFiles/install/strip.dir
