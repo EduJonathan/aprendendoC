@@ -1,4 +1,5 @@
 #include "../include/parser.h"
+#include <string.h>
 
 int parse_log_data(const void *raw_data, size_t data_size, void **parsed_output)
 {

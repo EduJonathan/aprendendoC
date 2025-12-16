@@ -1,4 +1,5 @@
 #include "../include/util.h"
+#include <stdlib.h>
 
 int file_exists(const char *path)
 {
