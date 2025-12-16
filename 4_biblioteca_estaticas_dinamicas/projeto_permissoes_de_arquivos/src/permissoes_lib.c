@@ -6,29 +6,46 @@
 
 PERMISSOES_API void modo_para_string(mode_t modo, char str[11])
 {
-    // Preenche com hífens nas posições de permissão (índices 1 a 9)
     memset(str, '-', 10);
     str[10] = '\0';
 
-    // Tipo de arquivo
-    if (S_ISREG(modo))
+    // Tipo de arquivo usando switch
+    switch (modo & S_IFMT)
+    {
+    case S_IFREG:
         str[0] = '-';
-    else if (S_ISDIR(modo))
-        str[0] = 'd';
-    else if (S_ISLNK(modo))
-        str[0] = 'l';
-    else if (S_ISCHR(modo))
-        str[0] = 'c';
-    else if (S_ISBLK(modo))
-        str[0] = 'b';
-    else if (S_ISFIFO(modo))
-        str[0] = 'p';
-    else if (S_ISSOCK(modo))
-        str[0] = 's';
-    else
-        str[0] = '?';
+        break;
 
-    // Permissões básicas
+    case S_IFDIR:
+        str[0] = 'd';
+        break;
+
+    case S_IFLNK:
+        str[0] = 'l';
+        break;
+
+    case S_IFCHR:
+        str[0] = 'c';
+        break;
+
+    case S_IFBLK:
+        str[0] = 'b';
+        break;
+
+    case S_IFIFO:
+        str[0] = 'p';
+        break;
+
+    case S_IFSOCK:
+        str[0] = 's';
+        break;
+
+    default:
+        str[0] = '?';
+        break;
+    }
+
+    // Permissões do dono
     if (modo & S_IRUSR)
         str[1] = 'r';
     if (modo & S_IWUSR)
@@ -36,6 +53,7 @@ PERMISSOES_API void modo_para_string(mode_t modo, char str[11])
     if (modo & S_IXUSR)
         str[3] = 'x';
 
+    // Grupo
     if (modo & S_IRGRP)
         str[4] = 'r';
     if (modo & S_IWGRP)
@@ -43,6 +61,7 @@ PERMISSOES_API void modo_para_string(mode_t modo, char str[11])
     if (modo & S_IXGRP)
         str[6] = 'x';
 
+    // Outros
     if (modo & S_IROTH)
         str[7] = 'r';
     if (modo & S_IWOTH)
@@ -50,26 +69,11 @@ PERMISSOES_API void modo_para_string(mode_t modo, char str[11])
     if (modo & S_IXOTH)
         str[9] = 'x';
 
-    // Bits especiais: setuid, setgid, sticky bit
+    // Bits especiais (setuid, setgid, sticky)
     if (modo & S_ISUID)
-    {
-        if (modo & S_IXUSR)
-            str[3] = 's';
-        else
-            str[3] = 'S';
-    }
+        str[3] = (modo & S_IXUSR) ? 's' : 'S';
     if (modo & S_ISGID)
-    {
-        if (modo & S_IXGRP)
-            str[6] = 's';
-        else
-            str[6] = 'S';
-    }
+        str[6] = (modo & S_IXGRP) ? 's' : 'S';
     if (modo & S_ISVTX)
-    {
-        if (modo & S_IXOTH)
-            str[9] = 't';
-        else
-            str[9] = 'T';
-    }
+        str[9] = (modo & S_IXOTH) ? 't' : 'T';
 }
