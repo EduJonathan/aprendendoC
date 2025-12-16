@@ -1,0 +1,6 @@
+# ninja log v5
+3	363	1765900921677567787	CMakeFiles/c_moderno_example.dir/src/utils.c.o	2e093ed6daa30c90
+3	380	1765900921725566437	CMakeFiles/c_moderno_example.dir/src/processador.c.o	3855bf9210b932a6
+2	392	1765900921736566127	CMakeFiles/c_moderno_example.dir/src/pessoa.c.o	332e4c1b8212fa08
+2	392	1765900921736566127	CMakeFiles/c_moderno_example.dir/src/main.c.o	75cfeb44c7d6769b
+392	481	1765900921819563793	c_moderno_example	eb8b30383995815f
