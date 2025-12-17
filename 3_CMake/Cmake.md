@@ -1,28 +1,27 @@
-# CMake: Sistema de Construção para Projetos C/C++
+# 🔨 CMake: Sistema de Construção para Projetos C/C++
 
 ## O que é o CMake?
 
 CMake é uma ferramenta de código aberto usada para gerenciar o processo de construção (build)
 de projetos de software, principalmente em linguagens como C/C++.
-Ele é um **sistema de construção multiplataforma** que automatiza a configuração, compilação
-e instalação de projetos, eliminando a necessidade de **configurar manualmente** arquivos
-de build para diferentes sistemas operacionais (Windows, Linux, macOS) ou compiladores (GCC, Clang, MSVC, etc.).
 
-Diferentemente de ferramentas como o `make`, que dependem de Makefiles específicos para
-cada plataforma, o CMake gera arquivos de build nativos (como Makefiles no Linux ou soluções
-Visual Studio no Windows) a partir de um conjunto de scripts de configuração escritos em sua
-própria linguagem. Esses scripts são definidos em arquivos chamados `CMakeLists.txt`.
+Ele é um **sistema de construção multiplataforma** que automatiza a _configuração_, _compilação_
+e instalação de projetos, eliminando a necessidade de **configurar manualmente** arquivos de build
+para diferentes sistemas operacionais `(Windows, Linux, macOS)` ou compiladores `(GCC, Clang, MSVC, etc.)`.
+
+> Esses scripts são definidos em arquivos chamados `CMakeLists.txt`.
 
 O CMake é amplamente utilizado em projetos de grande escala, como bibliotecas (Boost, OpenCV)
 e softwares (KDE, MySQL), devido à sua flexibilidade e capacidade de lidar com dependências complexas.
 
+---
+
 ## Como o CMake se compara a outras ferramentas?
 
-Embora o CMake seja frequentemente associado a C/C++, ele pode ser comparado a ferramentas
-de gerenciamento de construção e configuração em outras linguagens de programação.
-Abaixo, apresentamos uma comparação com ferramentas equivalentes:
+Embora o CMake seja frequentemente associado a C/C++, ele pode ser comparado a ferramentas de gerenciamento de construção
+e configuração em outras linguagens de programação.
 
----
+> Abaixo, apresentamos uma comparação com ferramentas equivalentes:
 
 | Linguagem      | Ferramenta             | Função Principal                                                           |
 | -------------- | ---------------------- | -------------------------------------------------------------------------- |
@@ -32,9 +31,8 @@ Abaixo, apresentamos uma comparação com ferramentas equivalentes:
 | **C#**         | **MSBuild / .NET CLI** | Automatiza a construção e gerenciamento de projetos .NET.                  |
 | **JavaScript** | **npm / Yarn**         | Gerencia pacotes, scripts e dependências para projetos JavaScript/Node.js. |
 
-Enquanto ferramentas como `venv` (Python) ou `npm` (JavaScript) focam no gerenciamento
-de dependências e ambientes, o CMake é mais voltado para a **compilação** e
-**configuração de builds**, lidando com aspectos como:
+Enquanto ferramentas como `venv` (em Python) ou `npm` (em JavaScript) focam no gerenciamento de dependências e ambientes,
+o CMake é mais voltado para a **compilação** e **configuração de builds**, lidando com aspectos como:
 
 - Localização de bibliotecas externas.
 - Configuração de compiladores e flags de compilação.
@@ -43,7 +41,7 @@ de dependências e ambientes, o CMake é mais voltado para a **compilação** e
 
 ---
 
-## Por que usar o CMake?
+## ⁉️ Por que usar o CMake?
 
 O CMake oferece várias vantagens para desenvolvedores de C/C++:
 
@@ -63,11 +61,142 @@ O CMake oferece várias vantagens para desenvolvedores de C/C++:
 
 ---
 
-## Boas Práticas no CMake
+## Exemplo Básico de Uso
 
-- Use `target_include_directories` em vez de `include_directories`.
-- Prefira `PUBLIC`, `PRIVATE` e `INTERFACE` para controle de visibilidade.
-- Estruture o projeto em subdiretórios claros: `include/`, `src/`, `tests/`.
+### 🗂️ Suponha que tenhas este hierarquia de diretório
+
+MeuProjeto/ `# <- diretório pastas raiz`  
+├── CMakeLists.txt `# <- CMakeLists.txt escreva dessa maneira`  
+├── src/ `# <- Diretório que fica todas as implementações de código fonte(funções e main)`  
+│ └── main.c  
+└── include/ `# <- Diretório que fica todas as declarações do código(protótipos de funções, structs)`  
+ └── meu_header.h
+
+> Exemplo de caminho no terminal (Windows): `C:\Users\NomeUsuario\Documents\MeuProjeto\`  
+> Exemplo de caminho no terminal (Linux): `~/home/eduardo/Documentos/aprendendoC/3_CMake/MeuProjeto`
+
+---
+
+## 🏗️ Como criar um Cmake
+
+Ao trabalhar com CMake, sempre esteja no diretório raiz do projeto, ou seja, onde está localizado o arquivo `CMakeLists.txt`.
+criado por antes mesmo da build, este diretório é o ponto de referência para:
+
+- caminhos relativos
+- arquivos de código-fonte
+- diretórios de include
+- criação da pasta `build/`
+
+Tendo este conceito em mente, estando em seu projeto `~/home/eduardo/Documentos/aprendendoC/3_CMake/MeuProjeto`
+e já tendo configurado seu arquivo `CMakeLists.txt`, com a seguinte configuração
+
+---
+
+```cmake
+cmake_minimum_required(VERSION 3.10)
+
+# Nome do projeto
+project(MeuProjeto C)
+
+# Define o padrão da linguagem C
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# Diretório dos headers
+include_directories(include)
+
+# Cria o executável
+add_executable(meu_programa
+    src/main.c
+)
+
+target_include_directories(meu_programa
+    PRIVATE include
+)
+```
+
+---
+
+Logo após a configuração do cmake, começarmos criação da build, estando novamente como dito dentro de seu projeto raiz
+
+```bash
+# 🐧 Linux
+eduardo@jonathan:~/Documentos/aprendendoC/3_CMake/MeuProjeto
+
+mkdir build       # Cria a pasta build
+cd build          # Altera seu posicionamento atual de MeuProjeto -> MeuProjeto/build
+cmake ..          # Configura o projeto usando o CMakeLists.txt da raiz
+cmake -G Ninja .. # Usando o gerador Ninja (opcional), e se você tiver instalado
+
+# -----
+
+# 🪟 Windows (PowerShell)
+PS C:\\Users\\NomeUsuario\\Documents\\MeuProjeto\\
+
+mkdir build # Cria a pasta build
+cd build    # Altera seu posicionamento atual de MeuProjeto -> MeuProjeto/build
+cmake ..    # Configura o projeto usando o CMakeLists.txt da raiz
+```
+
+> O comando cmake .. diz: "Use o `CMakeLists.txt` que está um nível acima (diretório raiz)"  
+> Nunca execute cmake fora da pasta build. Isso evita arquivos de build espalhados pelo projeto.
+> Use apenas **um** gerador por diretório build. Não execute `cmake ..` e depois `cmake -G Ninja ..` no mesmo build
+
+---
+
+## 🔨 Compilando
+
+Após a configuração:
+
+```bash
+    cmake --build . # Irá gerar o executável
+    Ninja           # Caso Você tenha utilizado cmake -G Ninja ..
+
+```
+
+- `Linux/macOs`: meu_programa
+- `Windows`: meu_programa.exe
+
+---
+
+MeuProjeto/  
+├── CMakeLists.txt  
+├── src/  
+│ └── main.c  
+├── include/  
+│ └── meu_header.h  
+└── build/  
+├── CMakeCache.txt  
+├── Makefile / build files  
+└── meu_programa
+
+> Lembre-se de realizar todos estes passos no terminal de seu sistema operacional
+
+---
+
+## ⚠️ CUIDADOS
+
+Tenha SEMPRE atenção aos nomes de **arquivos** e **diretórios(pastas)**. Alterações fora do código,
+como renomear pastas ou arquivos, podem quebrar o projeto, pois os caminhos passam a não existir.
+
+Exemplo de problema
+
+Suponha que você renomeie os seguintes:
+
+- MeuProjeto → Projeto (Nome do diretório do exemplo acima)
+- meu_header.h → header.h (Nome do arquivo do exemplo acima)
+
+Toda essa alteração, já causa um _efeito colateral_ muito forte
+
+❗ Efeito colateral
+
+Renomear arquivos ou diretórios exige:
+
+- Atualizar os caminhos e referências de arquivos no `CMakeLists.txt`
+- Atualizar tanto os caminhos no `CMakeLists.txt`, igualmente os caminhos `CMakeLists.txt` dentro do pasta `build/`
+- Caso não funcionar possivelmente apagar e recriar a pasta `build/` e recompilar
+
+> Se algo estranho acontecer com o CMake, apague a pasta build/ e gere novamente.
 
 ---
 
@@ -79,115 +208,7 @@ O CMake oferece várias vantagens para desenvolvedores de C/C++:
 
 ---
 
-## Integração com IDEs
-
-O CMake se integra bem com IDEs populares:
-
-- **Visual Studio**: Gere uma solução com `cmake -G "Visual Studio 17 2022" ..` e abra o arquivo `.sln` gerado.
-- **CLion**: Abra a pasta do projeto; o CLion detecta automaticamente o `CMakeLists.txt`.
-- **VS Code**: Use a extensão "CMake Tools" para configurar e compilar projetos diretamente.
-
----
-
-## Exemplo Básico de Uso
-
-### Suponha que tenhas este diretório
-
-MeuProjeto/  
-├── CMakeLists.txt  
-├── src/  
-│ └── main.c  
-└── include/  
-└── meu_header.h
-
-> O caminho do diretório no terminal estará algo como: `C:\Users\NomeUsuario\Documents\MeuProjeto\`
-
----
-
-### Conteúdo do CMakeLists.txt
-
-Para o diretório descrito (`C:\Users\NomeUsuario\Documents\MeuProjeto`),
-o arquivo `CMakeLists.txt` pode ser configurado assim:
-
-```cmake
-cmake_minimum_required(VERSION 3.10)
-project(MeuProjeto VERSION 1.0 LANGUAGES CXX)
-
-# Define o padrão C++
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-# Adiciona o diretório de includes
-target_include_directories(meu_programa PRIVATE include)
-
-# Adiciona o executável
-add_executable(meu_programa src/main.cpp)
-```
-
----
-
-### 1. Navegue até a pasta do projeto
-
-C:\Users\NomeUsuario\Documents> cd MeuProjeto  
-C:\Users\NomeUsuario\Documents\MeuProjeto> dir  
-Volume in drive C has no label.  
-Directory of C:\Users\NomeUsuario\Documents\MeuProjeto
-
-CMakeLists.txt  
-src  
-include
-
-### 2. Crie um diretório separado para a build
-
-C:\Users\NomeUsuario\Documents\MeuProjeto> mkdir build (Aqui você irá criar a build em MeuProjeto)
-C:\Users\NomeUsuario\Documents\MeuProjeto> cd build (Vá para a pasta build)
-
-### 3. Gere os arquivos de build com CMake
-
-`C:\Users\NomeUsuario\Documents\MeuProjeto\build> cmake ..`
-
-`-- The C compiler identification is MSVC 19.35.32215.0`  
-`-- The CXX compiler identification is MSVC 19.35.32215.0`  
-`-- Detecting C compiler ABI info`  
-`-- Detecting C compiler ABI info - done`  
-`-- Configuring done`  
-`-- Generating done`  
-`-- Build files have been written to: C:/Users/NomeUsuario/Documents/MeuProjeto/build`
-
-### 4. (Opcional) Para gerar projeto Visual Studio no Windows
-
-C:\Users\NomeUsuario\Documents\MeuProjeto\build> `cmake -G "Visual Studio 17 2022" ..`
-
-## 5. Compile o projeto
-
-C:\Users\NomeUsuario\Documents\MeuProjeto\build> `cmake --build .` ou `ninja` se for o caso
-
-`[ 50%] Building CXX object CMakeFiles\meu_programa.dir\src\main.cpp.obj`  
-`[100%] Linking CXX executable meu_programa.exe`  
-`[100%] Built target meu_programa`
-
-### 6. Execute o programa
-
-C:\Users\NomeUsuario\Documents\MeuProjeto\build> `.\meu_programa.exe`  
-**Olá, mundo! Meu programa C++ compilou com CMake!**
-
-### 7. Limpar a build (opcional)
-
-C:\Users\NomeUsuario\Documents\MeuProjeto\build> `rmdir /s /q \*`
-
----
-
-### 🔍 Observação: Recompilando Após Alterações
-
-Após realizar alterações em arquivos `.hpp` ou `.cpp`, é necessário recompilar o projeto
-para que as mudanças sejam aplicadas. Para isso, execute novamente o comando de compilação
-na pasta `build`:
-
-```bash
-cmake --build .
-```
-
-### Tipos De Construção
+### 🛠️ Tipos De Construção
 
 Atualmente, contamos com 3 formas de construir (buildar) o projeto, cada uma indicada
 para um nível diferente de complexidade e crescimento do código.
