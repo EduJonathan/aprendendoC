@@ -63,7 +63,7 @@ O CMake oferece várias vantagens para desenvolvedores de C/C++:
 
 ## Exemplo Básico de Uso
 
-### 🗂️ Suponha que tenhas este hierarquia de diretório
+### 🗂️ Suponha que tenha esta hierarquia de diretório
 
 MeuProjeto/ `# <- diretório pastas raiz`  
 ├── CMakeLists.txt `# <- CMakeLists.txt escreva dessa maneira`  
@@ -72,7 +72,7 @@ MeuProjeto/ `# <- diretório pastas raiz`
 └── include/ `# <- Diretório que fica todas as declarações do código(protótipos de funções, structs)`  
  └── meu_header.h
 
-> Exemplo de caminho no terminal (Windows): `C:\Users\NomeUsuario\Documents\MeuProjeto\`  
+> Exemplo de caminho no terminal (Windows): `C:\Users\NomeUsuario\Documents\aprendendoC\3_CMake\MeuProjeto\`  
 > Exemplo de caminho no terminal (Linux): `~/home/eduardo/Documentos/aprendendoC/3_CMake/MeuProjeto`
 
 ---
@@ -80,7 +80,7 @@ MeuProjeto/ `# <- diretório pastas raiz`
 ## 🏗️ Como criar um Cmake
 
 Ao trabalhar com CMake, sempre esteja no diretório raiz do projeto, ou seja, onde está localizado o arquivo `CMakeLists.txt`.
-criado por antes mesmo da build, este diretório é o ponto de referência para:
+Criado antes mesmo da build, pois este diretório é o ponto de referência para:
 
 - caminhos relativos
 - arquivos de código-fonte
@@ -110,6 +110,7 @@ add_executable(meu_programa
     src/main.c
 )
 
+# Evita vazamento de includes para outros targets, Escala melhor quando o projeto cresce e É o padrão atual do CMake
 target_include_directories(meu_programa
     PRIVATE include
 )
@@ -131,14 +132,14 @@ cmake -G Ninja .. # Usando o gerador Ninja (opcional), e se você tiver instalad
 # -----
 
 # 🪟 Windows (PowerShell)
-PS C:\\Users\\NomeUsuario\\Documents\\MeuProjeto\\
+PS C:\\Users\\NomeUsuario\\Documents\\aprendendoC\\3_CMake\\MeuProjeto\\
 
 mkdir build # Cria a pasta build
 cd build    # Altera seu posicionamento atual de MeuProjeto -> MeuProjeto/build
 cmake ..    # Configura o projeto usando o CMakeLists.txt da raiz
 ```
 
-> O comando cmake .. diz: "Use o `CMakeLists.txt` que está um nível acima (diretório raiz)"  
+> O comando `cmake .` diz: "Use o `CMakeLists.txt` que está um nível acima (diretório raiz)"  
 > Nunca execute cmake fora da pasta build. Isso evita arquivos de build espalhados pelo projeto.
 > Use apenas **um** gerador por diretório build. Não execute `cmake ..` e depois `cmake -G Ninja ..` no mesmo build
 
@@ -149,9 +150,8 @@ cmake ..    # Configura o projeto usando o CMakeLists.txt da raiz
 Após a configuração:
 
 ```bash
-    cmake --build . # Irá gerar o executável
-    Ninja           # Caso Você tenha utilizado cmake -G Ninja ..
-
+cmake --build . # Irá gerar o executável
+Ninja           # Caso Você tenha utilizado cmake -G Ninja ..
 ```
 
 - `Linux/macOs`: meu_programa
