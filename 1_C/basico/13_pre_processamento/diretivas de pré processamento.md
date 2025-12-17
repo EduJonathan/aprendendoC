@@ -37,7 +37,6 @@ int main()
   printf("Tamanho: %d\n", MAX);
   return 0;
 }
-
 // Use `gcc -E arquivo.c` para visualizar o resultado do pré-processamento.
 ```
 
@@ -195,6 +194,8 @@ Já em `gcc -c arquivo.c -o arquivo.o`
   2 ou múltiplos arquivos a ser compilados, no caso `arquivo` (que por mais que não tenha uma extensão,
   é entendido como `arquivo.txt`) e `c.c`.
 
+---
+
 ❌ ERRADO
 
 13 diretiva include/ `# <- Diretório raiz`  
@@ -209,6 +210,8 @@ Já em `gcc -c arquivo.c -o arquivo.o`
 ├── 1_1_for_each/ `# <- Subdiretório`  
 │ └── for_each.c `# <- Arquivo`
 
+---
+
 ```bash
 # Esteja no caminho do diretório para poder compilar
 "C:\Users\UserName\Documents\aprendendoC\1_C\basico\13_pre_processamento\1_diretiva_include\1_1_for_each>"
@@ -220,8 +223,7 @@ gcc "for each.c" -o programa # Aspas protegem o nome, mas evite usar
 
 ## ✍ Sobrescrita de Arquivos
 
-- E cuidado com a sobrescrição de arquivos: Tenha cuidado para não sobrescrever arquivos
-  importantes com a flag `-o` para com o arquivo de saída.
+> Cuidado com a sobrescrição de arquivos, para não sobrescrever arquivos importantes com a flag `-o` para com o arquivo de saída.
 
 ```bash
 # Atenção: a opção `-o` define o nome do arquivo de saída (executável).
@@ -230,6 +232,10 @@ gcc "for each.c" -o programa # Aspas protegem o nome, mas evite usar
 gcc arquivo_c.c -o programa.c
 ```
 
+---
+
+>
+
 ```bash
 # Atenção: a opção `-o` define o nome do executável, não um arquivo de código.
 # Neste comando, o GCC gera um executável chamado "arquivoA.c".
@@ -237,8 +243,9 @@ gcc -o arquivoA.c arquivoB.c
 
 # Forma correta
 gcc -o nomeDoExecutavel arquivoA.c arquivoB.c
-
 ```
+
+---
 
 ```bash
 # Atenção: com a opção `-c`, o GCC gera um arquivo objeto (.o), não um executável.
@@ -248,9 +255,10 @@ gcc -o nomeDoExecutavel arquivoA.c arquivoB.c
 gcc -c arquivo.c -o programa.o
 ```
 
+---
+
 ```bash
-# CURIOSIDADE: ao compilar um arquivo C sem usar a opção `-o`,
-# o GCC gera automaticamente um executável com nome padrão.
+# CURIOSIDADE: Mesmo que ao compilar um código-fonte C sem usar a opção `-o`, é gerado automaticamente um executável com nome padrão.
 
 # Exemplo:
 gcc arquivoA.c
@@ -269,11 +277,24 @@ gcc arquivoA.c
 
 ---
 
+```bash
+# ÚLTIMA curiosidade é, se você compilar com a flag para renomear o executável -o
+# com o mesmo nome que você escolheu para compilar outro código-fonte .c, ele sobrescreve o arquivo anterior,
+# Exemplo
+
+gcc -o nome_do_executavel codigoA.c # Compila codigo-fonte A
+gcc -o nome_do_executavel codigoB.c # sobrescreve o executável anterior do código-fonte A, para ser o executável do código-fonte B
+```
+
+---
+
 ## 📝 OBSERVAÇÕES
 
 O processo de compilação é composto por diversas etapas, cada uma com papel fundamental na
 transformação do código-fonte em um programa executável. Com o uso adequado de diretivas e flags,
 podemos otimizar, condicionar e modular o código conforme necessário.
+
+---
 
 ## IMPORTANTE SOBRE C/C++
 
