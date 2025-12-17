@@ -118,6 +118,34 @@ target_include_directories(meu_programa
 
 ---
 
+> Exemplo configurando a compilação com flags de compilação
+
+```cmake
+cmake_minimum_required(VERSION 3.10)
+project(MeuProjeto C)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+add_executable(meu_programa
+    src/main.c
+)
+
+target_include_directories(meu_programa
+    PRIVATE include
+)
+
+target_compile_options(meu_programa
+    PRIVATE
+        -Wall
+        -Wextra
+        $<$<CONFIG:Debug>:-g -O0>
+        $<$<CONFIG:Release>:-O2 -DNDEBUG>
+)
+```
+
+---
+
 Logo após a configuração do cmake, começarmos criação da build, estando novamente como dito dentro de seu projeto raiz
 
 ```bash
@@ -139,9 +167,9 @@ cd build    # Altera seu posicionamento atual de MeuProjeto -> MeuProjeto/build
 cmake ..    # Configura o projeto usando o CMakeLists.txt da raiz
 ```
 
-> O comando `cmake .` diz: "Use o `CMakeLists.txt` que está um nível acima (diretório raiz)"  
-> Nunca execute cmake fora da pasta build. Isso evita arquivos de build espalhados pelo projeto.
-> Use apenas **um** gerador por diretório build. Não execute `cmake ..` e depois `cmake -G Ninja ..` no mesmo build
+> O comando `cmake ..` diz: "Use o `CMakeLists.txt` que está um nível acima (diretório raiz)"  
+> Nunca execute cmake fora da pasta build. Isso evita arquivos de build espalhados pelo projeto.  
+> Use apenas **um** gerador por diretório build, ou seja, não execute `cmake ..` e depois `cmake -G Ninja ..` no mesmo build.
 
 ---
 
@@ -170,7 +198,7 @@ MeuProjeto/
 ├── Makefile / build files  
 └── meu_programa
 
-> Lembre-se de realizar todos estes passos no terminal de seu sistema operacional
+> Lembre-se de realizar todos estes passos no terminal de seu sistema operacional.
 
 ---
 
