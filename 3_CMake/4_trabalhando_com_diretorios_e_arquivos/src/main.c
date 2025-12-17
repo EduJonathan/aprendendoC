@@ -16,8 +16,8 @@
  * #include <errno.h>
  *
  * int main(void) {
- * DIR *dir;
- * struct dirent *entry;
+ * DIR *dir = NULL;
+ * struct dirent *entry = NULL;
  *
  * dir = opendir(".");  // "." = diretório atual
  * if (dir == NULL) {
@@ -91,15 +91,11 @@ int main(int argc, char **argv)
 
             if (choice == 1)
             {
-                copy_file(source, dest)
-                    ? printf("\nArquivo copiado com sucesso!\n")
-                    : printf("\nErro ao copiar arquivo.\n");
+                copy_file(source, dest) ? printf("\nArquivo copiado com sucesso!\n") : printf("\nErro ao copiar arquivo.\n");
             }
             else
             {
-                move_file(source, dest)
-                    ? printf("\nArquivo movido com sucesso!\n")
-                    : printf("\nErro ao mover arquivo.\n");
+                move_file(source, dest) ? printf("\nArquivo movido com sucesso!\n") : printf("\nErro ao mover arquivo.\n");
             }
 
             printf("\nPressione Enter para voltar ao menu...");

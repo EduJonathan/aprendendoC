@@ -73,7 +73,7 @@ MeuProjeto/ `# <- diretório pastas raiz`
  └── meu_header.h
 
 > Exemplo de caminho no terminal (Windows): `C:\Users\NomeUsuario\Documents\aprendendoC\3_CMake\MeuProjeto\`  
-> Exemplo de caminho no terminal (Linux): `~/home/eduardo/Documentos/aprendendoC/3_CMake/MeuProjeto`
+> Exemplo de caminho no terminal (Linux): `~/home/eduardo/Documentos/aprendendoC/3_CMake/MeuProjeto/`
 
 ---
 
@@ -150,12 +150,12 @@ Logo após a configuração do cmake, começarmos criação da build, estando no
 
 ```bash
 # 🐧 Linux
-eduardo@jonathan:~/Documentos/aprendendoC/3_CMake/MeuProjeto
+eduardo@jonathan:~/Documentos/aprendendoC/3_CMake/MeuProjeto/
 
 mkdir build       # Cria a pasta build
 cd build          # Altera seu posicionamento atual de MeuProjeto -> MeuProjeto/build
 cmake ..          # Configura o projeto usando o CMakeLists.txt da raiz
-cmake -G Ninja .. # Usando o gerador Ninja (opcional), e se você tiver instalado
+cmake -G Ninja .. # Usando o gerador Ninja (opcional), e se você caso também tiver instalado
 
 # -----
 
@@ -186,6 +186,8 @@ Ninja           # Caso Você tenha utilizado cmake -G Ninja ..
 - `Windows`: meu_programa.exe
 
 ---
+
+Ao final seu projeto estará tecnicamente assim
 
 MeuProjeto/  
 ├── CMakeLists.txt  
