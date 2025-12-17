@@ -11,9 +11,9 @@
 #define CENTER_X (WINDOW_W / 2) // Centro X do relógio
 #define CENTER_Y (WINDOW_H / 2) // Centro Y do relógio
 
-SDL_Window *window = NULL;
+SDL_Window   *window   = NULL;
 SDL_Renderer *renderer = NULL;
-TTF_Font *font = NULL;
+TTF_Font     *font     = NULL;
 
 void draw_hand(float angle_deg, float length, int thickness, Uint8 r, Uint8 g, Uint8 b)
 {
