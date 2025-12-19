@@ -136,6 +136,8 @@ gcc arquivo.o -o programa
 .\programa.exe # Executa no Windows
 ```
 
+---
+
 ### 📩 NOTA
 
 - Cada etapa é essencial para transformar o código-fonte em um programa funcional.
@@ -169,7 +171,9 @@ gcc -o nomeParaArquivoExecutavel nomeDoArquivo.c
 .\nomeExecutavel.exe # Windows
 ```
 
-Estes passos geram e executa o arquivo executável dentro do terminal.
+---
+
+> Estes passos geram e executa o arquivo executável dentro do terminal.
 
 `gcc -o nomeParaArquivoExecutavel nomeDoArquivo.c`
 

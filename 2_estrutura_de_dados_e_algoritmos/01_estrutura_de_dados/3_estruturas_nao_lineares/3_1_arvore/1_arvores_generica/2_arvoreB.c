@@ -3,8 +3,8 @@
 
 #define MAX 10 /**< Tamanho máximo do array de dados */
 
-#ifndef NODE_H
-#define NODE_H
+#ifndef NODE
+#define NODE
 
 /**
  * @struct node

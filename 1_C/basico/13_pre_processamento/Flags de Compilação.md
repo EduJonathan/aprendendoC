@@ -149,6 +149,8 @@ gcc -Winit-self arquivo.c -o programa
 gcc -fopenmp arquivo.c -o programa
 ```
 
+---
+
 ```c
 #include <omp.h>
 #include <stdio.h>
@@ -159,7 +161,6 @@ int main()
   printf("Thread %d\n", omp_get_thread_num());
   return 0;
 }
-
 // gcc -fopenmp paralelo.c -o paralelo
 ```
 
@@ -319,17 +320,21 @@ gcc -Wall -Wno-uninitialized -Wno-maybe-uninitialized arquivo.c -o programa
 ## ⚠️ Cuidados Importantes
 
 - Use `-Wall` `-Wextra` primeiro: Veja todos os avisos antes de suprimir qualquer um suprima seletivamente:
-  Não use -w (que suprime TODOS os avisos). Documente o motivo: Comente por que cada aviso está sendo suprimido
-  Tenha preferência na correção do código
+  Não use -w (que suprime TODOS os avisos).
+
+> Documente o motivo: Comente por que cada aviso está sendo suprimido Tenha preferência na correção do código
+
+---
 
 ```c
 // Em vez de suprimir -Wunused-parameter:
-
 void callback(int param)
 {
   (void)param; // Solução no código - melhor prática
 }
 ```
+
+---
 
 ```bash
 # 1. Primeiro compile com todos os avisos
@@ -347,11 +352,8 @@ gcc -Wall -Wextra -Werror arquivo.c -o programa
 
 ## 🛠️ Automação com Scripts e Makefiles
 
-- Um `script` é basicamente um arquivo de texto que guarda comandos que você normalmente
-  digitaria no terminal. Ele guarda o comando gcc para compilar o programa.
-
-- Um `Makefile` é um arquivo especial usado pelo comando make para automatizar a compilação
-  de projetos maiores. Ele entende dependências entre arquivos e só recompila o que mudou.
+Automação de builds com scripts e Makefiles é o processo de eliminar configurações e execuções manuais,
+padronizando tarefas como compilação, testes, empacotamento e deploy por meio de comandos automatizados.
 
 ---
 

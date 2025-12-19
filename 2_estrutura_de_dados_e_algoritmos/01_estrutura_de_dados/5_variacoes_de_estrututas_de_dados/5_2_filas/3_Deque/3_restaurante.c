@@ -3,13 +3,13 @@
 #include <stdbool.h>
 #include <string.h>
 
-typedef struct Pedido
+typedef struct pedido
 {
     int id;
     char cliente[50];
     bool is_vip;
-    struct Pedido *prox;
-    struct Pedido *ant;
+    struct pedido *prox;
+    struct pedido *ant;
 } Pedido;
 
 typedef struct
@@ -21,7 +21,7 @@ typedef struct
 
 /**
  * @brief Inicializa um deque vazio.
- * 
+ *
  * @param dq Ponteiro para o deque.
  */
 void inicializar(Deque *dq)
@@ -35,7 +35,7 @@ void inicializar(Deque *dq)
 
 /**
  * @brief Verifica se o deque está vazio.
- * 
+ *
  * @param dq Ponteiro para o deque.
  * @return 1 se vazio, 0 caso contrário.
  */
@@ -48,7 +48,7 @@ int esta_vazio(Deque *dq)
 
 /**
  * @brief Verifica se um ID já existe no deque.
- * 
+ *
  * @param dq Ponteiro para o deque.
  * @param id ID a ser verificado.
  * @return true se o ID existe, false caso contrário.
@@ -70,7 +70,7 @@ bool id_existe(Deque *dq, int id)
 
 /**
  * @brief Cria um novo pedido.
- * 
+ *
  * @param id Identificador do pedido.
  * @param cliente Nome do cliente.
  * @param is_vip true para VIP, false para comum.
@@ -101,7 +101,7 @@ Pedido *criar_pedido(int id, char *cliente, bool is_vip)
 
 /**
  * @brief Insere um pedido no deque (VIP no início, comum no fim).
- * 
+ *
  * @param dq Ponteiro para o deque.
  * @param id ID do pedido.
  * @param cliente Nome do cliente.
@@ -134,7 +134,7 @@ void inserir(Deque *dq, int id, char *cliente, bool is_vip)
         }
 
         if (atual == NULL)
-        { 
+        {
             // Inserir no fim
             if (esta_vazio(dq))
             {
@@ -149,14 +149,15 @@ void inserir(Deque *dq, int id, char *cliente, bool is_vip)
             }
         }
         else if (atual == dq->inicio)
-        { 
+        {
             // Inserir no início
             novo->prox = dq->inicio;
             dq->inicio->ant = novo;
             dq->inicio = novo;
         }
         else
-        { // Inserir antes de atual
+        { 
+            // Inserir antes de atual
             novo->prox = atual;
             novo->ant = atual->ant;
             atual->ant->prox = novo;
@@ -307,7 +308,7 @@ void limpar_deque(Deque *dq)
 int main(int argc, char **argv)
 {
     Deque pedidos;
-    
+
     inicializar(&pedidos);
     inserir(&pedidos, 1, "João", false);
     inserir(&pedidos, 2, "Maria", false);

@@ -11,11 +11,11 @@
  *
  * Cada nó contém uma chave (string), um valor (int) e um ponteiro para o próximo nó.
  */
-typedef struct No
+typedef struct Node
 {
-    char *key;       /**< Chave associada ao nó */
-    int value;       /**< Valor associado à chave */
-    struct No *prox; /**< Ponteiro para o próximo nó */
+    char *key;         /**< Chave associada ao nó */
+    int value;         /**< Valor associado à chave */
+    struct Node *prox; /**< Ponteiro para o próximo nó */
 } No;
 
 /**

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef FILA_H
-#define FILA_H
+#ifndef NODE
+#define NODE
 
 /**
  * @brief Estrutura de um nó da fila.
@@ -11,7 +11,7 @@
  * Fila é uma estrutura de dados linear que segue a ordem FIFO (First In First Out).
  * Os elementos são inseridos no final da fila e removidos do início.
  * Muitas vezes utilizada em algoritmos de processamento de tarefas, impressão, etc.
- * 
+ *
  * A fila é uma estrutura dinâmica, onde os elementos podem ser adicionados ou removidos
  * sem a necessidade de um tamanho fixo.
  */

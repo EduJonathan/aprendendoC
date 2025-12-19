@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef NOAD_JACENTE
-#define NOAD_JACENTE
+#ifndef NO_ADJACENTE
+#define NO_ADJACENTE
 
 /**
  * @brief Estrutura que representa um nó na lista de adjacência de um grafo.

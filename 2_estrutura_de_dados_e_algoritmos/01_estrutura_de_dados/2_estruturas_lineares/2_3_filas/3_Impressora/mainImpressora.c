@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "impressora.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
     Queue queue;
     initializeQueue(&queue);

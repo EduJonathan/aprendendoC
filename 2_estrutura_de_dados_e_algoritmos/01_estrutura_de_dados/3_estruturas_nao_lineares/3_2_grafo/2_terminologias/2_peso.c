@@ -12,11 +12,11 @@
  *
  * Contém o vértice de destino (caractere), o peso da aresta e um ponteiro para a próxima aresta.
  */
-typedef struct Aresta
+typedef struct arestas
 {
-    char destino;        /**< Vértice de destino da aresta (A a J) */
-    int peso;            /**< Peso da aresta (ex.: distância ou custo) */
-    struct Aresta *prox; /**< Ponteiro para a próxima aresta */
+    char destino;         /**< Vértice de destino da aresta (A a J) */
+    int peso;             /**< Peso da aresta (ex.: distância ou custo) */
+    struct arestas *prox; /**< Ponteiro para a próxima aresta */
 } Aresta;
 
 #endif

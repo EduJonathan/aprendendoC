@@ -15,7 +15,7 @@ automatizar tarefas, resolver problemas computacionais como:
 
 ---
 
-## 🧠📚 Paradigmas de Programação
+## Paradigmas de Programação
 
 Paradigmas de programação são modelos ou estilos de desenvolvimento que orientam a forma  
 como os programas são estruturados e escritos. Cada paradigma possui uma forma distinta de  
@@ -23,39 +23,49 @@ pensar e organizar a lógica do software.
 
 ---
 
-🔹 **Principais paradigmas:**
+## **Principais paradigmas:**
 
 **Paradigma Imperativo**  
-O programador descreve passo a passo o que o computador deve fazer.  
-🔸 Ex.: C, Python (modo imperativo), Java  
+O programador descreve passo a passo o que o computador deve fazer.
+
+> Ex.: C, Python (modo imperativo), Java
+
 🛠 Usa comandos, variáveis e estruturas de controle (if, for, while).
 
 ---
 
 **Paradigma Declarativo**  
-Foca em _o que deve ser feito_, e não como fazer.  
-🔸 Ex.: SQL, HTML, Prolog  
+Foca em _o que deve ser feito_, e não como fazer.
+
+> Ex.: SQL, HTML, Prolog
+
 🛠 O programador descreve os resultados desejados, e o sistema decide como alcançá-los.
 
 ---
 
 **Paradigma Funcional**  
-Baseado em funções matemáticas puras, sem efeitos colaterais.  
-🔸 Ex.: Haskell, Lisp, Elixir, partes de Python e JavaScript  
+Baseado em funções matemáticas puras, sem efeitos colaterais.
+
+> Ex.: Haskell, Lisp, Elixir, partes de Python e JavaScript
+
 🛠 Usa funções como unidades básicas, evitando o uso de variáveis mutáveis.
 
 ---
 
 **Paradigma Orientado a Objetos (POO)**  
-Organiza o código em "objetos", que combinam dados (atributos) e comportamentos (métodos).  
-🔸 Ex.: Java, C++, Python, Ruby  
+Organiza o código em "objetos", que combinam dados (atributos) e comportamentos (métodos).
+
+> Ex.: Java, C++, Python, Ruby
+
 🛠 Promove reutilização de código, encapsulamento, herança e polimorfismo.
 
 ---
 
 **Paradigma Lógico**  
-Baseado em lógica formal e regras. O programa é uma coleção de fatos e regras, e a execução consiste em realizar inferências.  
-🔸 Ex.: Prolog  
+Baseado em lógica formal e regras. O programa é uma coleção de fatos e regras, e a execução consiste em realizar inferências.
+
+> Ex.: Prolog
+
 🛠 Muito usado em sistemas de IA simbólica.
 
 ---
@@ -63,9 +73,11 @@ Baseado em lógica formal e regras. O programa é uma coleção de fatos e regra
 **Paradigma Orientado a Eventos**  
 No paradigma orientado a eventos, a execução do programa é direcionada por eventos,
 como cliques de mouse, pressionamento de teclas, mensagens do sistema ou sensores.
-É muito utilizado em interfaces gráficas (GUIs), aplicações web e sistemas interativos.  
-🔸 Ex.: de linguagens/frameworks: JavaScript (navegador), C# com WinForms/WPF,
-Java com Swing/JavaFX, Python com Tkinter/PyQt, C++ com wxWidgets e outros.  
+É muito utilizado em interfaces gráficas (GUIs), aplicações web e sistemas interativos.
+
+> Ex. de linguagens/frameworks: JavaScript `(navegador)`, C# com `WinForms/WPF`,  
+> Java com `Swing/JavaFX`, Python com `Tkinter/PyQt`, C++ com `wxWidgets` e outros.
+
 🛠 Muito usado em desenvolvimento de interfaces gráficas, jogos e sistemas reativos.
 
 ---
@@ -90,8 +102,10 @@ Para isso, usamos as **notações assintóticas**, que descrevem o comportamento
 
 Essas notações ajudam a comparar algoritmos e escolher a melhor solução para diferentes cenários e tamanhos de entrada.
 
-A complexidade de um algoritmo é uma medida que nos ajuda a entender o desempenho em termos de tempo de execução
-(tempo de complexidade) e uso de memória (espaço de complexidade).
+---
+
+A complexidade de um algoritmo é uma medida que nos ajuda a entender o desempenho
+em termos de tempo de execução `(tempo de complexidade)` e uso de memória `(espaço de complexidade)`.
 Esses conceitos são fundamentais para comparar algoritmos e escolher a melhor solução para  
 um problema, e entenda que seja o que estiver fazendo (algoritmo, backend, banco de dados,
 interface gráfica, entender e aplicar estes conceitos de bigO é essencial).

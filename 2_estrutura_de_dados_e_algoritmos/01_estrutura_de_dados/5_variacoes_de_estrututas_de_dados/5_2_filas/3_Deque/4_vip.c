@@ -25,18 +25,18 @@ typedef struct
 /** @struct Node
  *  @brief Nó do Deque, armazena ponteiro genérico para um pedido.
  */
-typedef struct Node
+typedef struct node
 {
     void *data;        /**< Ponteiro genérico para FoodOrder ou DrinkOrder */
     char *type;        /**< Identifica o tipo do pedido ("Food" ou "Drink") */
-    struct Node *next; /**< Próximo nó */
-    struct Node *prev; /**< Nó anterior */
+    struct node *next; /**< Próximo nó */
+    struct node *prev; /**< Nó anterior */
 } Node;
 
 /** @struct Deque
  *  @brief Estrutura principal do Deque (duplamente encadeado).
  */
-typedef struct Deque
+typedef struct deque
 {
     Node *front; /**< Ponteiro para o primeiro nó */
     Node *rear;  /**< Ponteiro para o último nó */

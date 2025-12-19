@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char **argv)
 {
@@ -8,6 +9,15 @@ int main(int argc, char **argv)
     printf("Seu Sistema é o macOS\n");
 #elif defined(__linux__) // Macro Definido para compilações no Linux.
     printf("Seu Sistema é o Linux\n");
+#else
+    printf("Sistema não identificado\n");
+#endif
+
+// Verifica se o sistema é windows e executa o comando específico do sistema para a limpeza de tela do terminal
+#ifdef _WIN32
+    system("cls");
+#elif defined(__APPLE__) || defined(__linux__)
+    system("clear");
 #else
     printf("Sistema não identificado\n");
 #endif

@@ -6,7 +6,7 @@ CMake é uma ferramenta de código aberto usada para gerenciar o processo de con
 de projetos de software, principalmente em linguagens como C/C++.
 
 Ele é um **sistema de construção multiplataforma** que automatiza a _configuração_, _compilação_
-e instalação de projetos, eliminando a necessidade de **configurar manualmente** arquivos de build
+e _instalação de projetos_, eliminando a necessidade de **configurar manualmente** arquivos de build
 para diferentes sistemas operacionais `(Windows, Linux, macOS)` ou compiladores `(GCC, Clang, MSVC, etc.)`.
 
 > Esses scripts são definidos em arquivos chamados `CMakeLists.txt`.

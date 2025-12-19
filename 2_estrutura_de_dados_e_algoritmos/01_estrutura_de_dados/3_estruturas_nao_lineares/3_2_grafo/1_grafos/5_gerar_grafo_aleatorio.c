@@ -8,10 +8,10 @@
 /**
  * @brief Estrutura que representa uma aresta no grafo.
  */
-typedef struct Aresta
+typedef struct arestas
 {
-    int destino;            /**< Vértice de destino da aresta */
-    struct Aresta *proxima; /**< Ponteiro para a próxima aresta */
+    int destino;             /**< Vértice de destino da aresta */
+    struct arestas *proxima; /**< Ponteiro para a próxima aresta */
 } Aresta;
 
 /**
@@ -21,7 +21,7 @@ typedef struct Aresta
  * A lista de adjacência é eficiente para grafos esparsos, com complexidade de espaço O(V + E)
  * e complexidade de tempo O(V) para verificar arestas no pior caso.
  */
-typedef struct Grafo
+typedef struct grafo
 {
     int numVertices;     /**< Número de vértices no grafo */
     Aresta **adjacentes; /**< Array de listas de adjacência */

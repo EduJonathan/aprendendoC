@@ -11,7 +11,7 @@
  * Armazena elementos únicos em um array dinâmico, com complexidade O(n) para inserção e busca
  * devido à verificação de duplicatas. O tamanho máximo é definido na criação.
  */
-typedef struct Conjunto
+typedef struct set
 {
     int *elementos;    /**< Array dinâmico de elementos */
     size_t tamanho;    /**< Número de elementos atuais */

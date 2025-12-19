@@ -2,34 +2,6 @@
 #include <stdbool.h>
 
 /**
- * Algoritmos de buscas(search): São algoritmos que logicamente realizam a busca de
- * um determinado valor dentro de uma estrutura(seja array, matriz, listas, dentre outras)
- * Existem diferentes tipos de algoritmos, cada um com suas peculiaridades, complexidades
- * de tempo e espaço de execução.
- *
- * @note Para todos os algoritmos de busca, existem parâmetros principais:
- *
- * 1. O valor a ser buscado (o alvo).
- * 2. O tamanho da estrutura de dados (denotado por 'n').
- * 3. A complexidade do algoritmo: Relacionada ao tempo de execução da busca
- *
- * 4. Principais tarefas de busca:
- * ● Comparações: A busca normalmente envolve comparar o valor alvo com os elementos
- * da estrutura de dados. Exemplo: Na Busca Linear, cada elemento é comparado até
- * encontrar o alvo.
- *
- * ● Divisão (Busca Binária): Em buscas em estruturas ordenadas, a lista é dividida
- * recursivamente para reduzir a área de pesquisa. Exemplo: Busca Binária, onde a lista
- * é dividida ao meio em cada iteração.
- *
- * ● Acesso direto (Busca Hash): Algoritmos de busca em tabelas hash utilizam uma função
- * de hash para acessar diretamente o valor alvo.
- *
- * Cada algoritmo tem suas vantagens e desvantagens dependendo da situação e
- * da estrutura de dados utilizada.
- */
-
-/**
  * @brief Função de busca linear com contagem de comparações
  *
  * O algoritmo de busca linear percorre todos os elementos do array,

@@ -13,11 +13,11 @@
  *
  * Cada nó contém uma chave (string), um valor (char) e um ponteiro para o próximo nó.
  */
-typedef struct Map
+typedef struct Mapa
 {
-    char *key;        /**< Chave associada ao par chave-valor */
-    char value;       /**< Valor associado à chave */
-    struct Map *next; /**< Ponteiro para o próximo nó */
+    char *key;         /**< Chave associada ao par chave-valor */
+    char value;        /**< Valor associado à chave */
+    struct Mapa *next; /**< Ponteiro para o próximo nó */
 } Map;
 
 #endif

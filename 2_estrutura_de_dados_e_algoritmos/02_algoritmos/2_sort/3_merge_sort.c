@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 // Variáveis globais para contar comparações e trocas
 static long long comparacoes = 0;

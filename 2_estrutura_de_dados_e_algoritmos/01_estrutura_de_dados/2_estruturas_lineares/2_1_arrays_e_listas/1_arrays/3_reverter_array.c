@@ -41,10 +41,11 @@ int main(int argc, char **argv)
     reverterArray(array, tamanho);
 
     // Imprimindo o array invertido
-    printf("Array Reverso fica: ");
+    printf("\nArray Reverso fica: ");
     for (size_t i = 0ull; i < tamanho; i++)
     {
         printf("%d ", array[i]);
     }
+    printf("\n");
     return 0;
 }

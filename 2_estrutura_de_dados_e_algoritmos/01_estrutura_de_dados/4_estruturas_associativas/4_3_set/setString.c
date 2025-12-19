@@ -13,7 +13,7 @@
  * Armazena strings únicas em um array dinâmico, com complexidade O(n) para inserção e busca
  * devido à verificação de duplicatas. O tamanho máximo é definido na criação.
  */
-typedef struct Conjunto
+typedef struct set
 {
     char **dados;      /**< Array dinâmico de strings */
     size_t tamanho;    /**< Número de elementos atuais */
@@ -208,7 +208,7 @@ int main(int argc, char **argv)
     {
         adicionarElemento(setz, setx->dados[i]);
     }
-    
+
     for (size_t i = 0; i < sety->tamanho; i++)
     {
         adicionarElemento(setz, sety->dados[i]);
@@ -219,7 +219,7 @@ int main(int argc, char **argv)
 
     printf("Conjunto Y: ");
     imprimirConjunto(sety);
-    
+
     printf("União (Z): ");
     imprimirConjunto(setz);
 

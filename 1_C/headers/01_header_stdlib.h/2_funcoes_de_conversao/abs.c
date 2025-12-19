@@ -4,7 +4,7 @@
 /**
  * Abs (absolute): O valor absoluto ou módulo de um número real 'a', denotado por |a|,
  * é definido como a distância de a até 0.
- *
+ */
 
 /**
  * SINTAXE: int abs(int _X);
@@ -18,7 +18,7 @@
  *
  * @param absInt O valor inteiro para o qual o valor absoluto será calculado.
  * @return O valor absoluto de `absInt`.
- * 
+ *
  */
 int absoluteInt(int absInt) { return abs(absInt); }
 
@@ -35,7 +35,7 @@ int absoluteInt(int absInt) { return abs(absInt); }
  * Esta função usa a função `labs` para calcular o valor absoluto de um número longo.
  *
  * @param absLong O valor long para o qual o valor absoluto será calculado.
- * @return O valor absoluto de `absLong`. 
+ * @return O valor absoluto de `absLong`.
  */
 long absoluteLong(long absLong)
 {
@@ -50,13 +50,13 @@ long absoluteLong(long absLong)
  * SINTAXE: long long labs(long long _X);
  *
  * @param _X Valor long long
- * @return O valor absoluto de _X 
- * --------------------------------------- 
+ * @return O valor absoluto de _X
+ * ---------------------------------------
  * @brief Calcula o valor absoluto de um número longo longo.
  *
  * Esta função usa a função `llabs` para calcular o valor absoluto de um número longo longo.
  * @param absLongLong O valor longo longo para o qual o valor absoluto será calculado.
- * @return O valor absoluto de `absLongLong`. 
+ * @return O valor absoluto de `absLongLong`.
  */
 long long absoluteLongLong(long long absLongLong)
 {

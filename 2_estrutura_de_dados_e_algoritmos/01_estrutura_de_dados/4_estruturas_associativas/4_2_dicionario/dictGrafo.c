@@ -10,11 +10,11 @@
  *
  * Contém o vértice de destino (caractere), o peso da aresta e um ponteiro para a próxima aresta.
  */
-typedef struct Aresta
+typedef struct arestas
 {
-    char destino;        /**< Vértice de destino (A a J) */
-    int peso;            /**< Peso da aresta */
-    struct Aresta *prox; /**< Ponteiro para a próxima aresta */
+    char destino;         /**< Vértice de destino (A a J) */
+    int peso;             /**< Peso da aresta */
+    struct arestas *prox; /**< Ponteiro para a próxima aresta */
 } Aresta;
 
 /**
@@ -24,7 +24,7 @@ typedef struct Aresta
  * Usa listas de adjacência para armazenar arestas, com complexidade de espaço O(V + E)
  * e complexidade de tempo O(V) para verificar arestas no pior caso.
  */
-typedef struct Grafo
+typedef struct grafo
 {
     int numVertices; /**< Número de vértices (máximo 26, A-Z) */
     Aresta **adj;    /**< Array de listas de adjacência */

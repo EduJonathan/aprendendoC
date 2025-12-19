@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef GRAFO_H
-#define GRAFO_H
+#ifndef GRAFO
+#define GRAFO
 
 /**
  * @brief Estrutura que representa um grafo não direcionado.

@@ -92,29 +92,5 @@ int main(int argc, char **argv)
         printf("%d ", segundaParte2[i]);
     }
     printf("\n");
-
-    /**
-     * O erro "expression must have a constant value" ocorre porque, no C/C++,
-     * os tamanhos de arrays estáticos devem ser conhecidos em tempo de compilação.
-     * Ou seja, as dimensões dos arrays precisam ser definidas por valores constantes
-     * ou literais no momento da compilação, e não por variáveis ou expressões que só
-     * podem ser avaliadas em tempo de execução.
-     *
-     * Seja definida por #define ou você define globalmente tanto variáveis const como os arrays
-     *
-     * DEFINE:
-     * #define meio1 5
-     * #define tamanho1 10
-     *
-     * -------------------------
-     *
-     * VARIÁVEIS GLOBAIS:
-     * const int meio1 = 5;   // Constante global
-     * const int tamanho1 = 10; // Constante global
-     *
-     * int array1[meio1];   // Array com tamanho definido pela constante meio1
-     * int array2[tamanho1 - meio1];  // Array com tamanho definido pela constante tamanho1
-     */
-
     return 0;
 }

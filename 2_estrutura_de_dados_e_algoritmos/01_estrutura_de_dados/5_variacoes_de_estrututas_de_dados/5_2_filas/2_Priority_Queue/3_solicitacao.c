@@ -7,11 +7,11 @@
  *
  * Representa uma solicitação com andar, prioridade e ponteiro para o próximo nó.
  */
-typedef struct No
+typedef struct no
 {
     int andar;          /**< Número do andar solicitado */
     int prioridade;     /**< Prioridade da solicitação */
-    struct No *proximo; /**< Ponteiro para o próximo nó */
+    struct no *proximo; /**< Ponteiro para o próximo nó */
 } No;
 
 /**

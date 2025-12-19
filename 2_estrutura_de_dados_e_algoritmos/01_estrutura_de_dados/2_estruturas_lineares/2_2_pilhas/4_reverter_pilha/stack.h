@@ -1,9 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stddef.h>
 
 /**
  * @brief Enum para representar os tipos de dados suportados.
@@ -38,7 +36,7 @@ typedef struct Stack
  *
  * @param stack Ponteiro duplo para o topo da pilha.
  */
-void generateStack(Stack **stack);
+void generateStack(Stack **stack, DataType type);
 
 /**
  * @brief Imprime os elementos da pilha.
@@ -48,7 +46,7 @@ void generateStack(Stack **stack);
  *
  * @param stack Ponteiro para o topo da pilha.
  */
-void printStack(Stack *stack);
+void printStack(const Stack *stack, DataType type);
 
 /**
  * @brief Inverte a ordem dos elementos da pilha.
@@ -74,7 +72,7 @@ void freeStack(Stack **stack);
  * @param stack Ponteiro para o topo da pilha.
  * @return Número de elementos na pilha.
  */
-size_t stackSize(Stack *stack);
+size_t stackSize(const Stack *stack);
 
 /**
  * @brief Ordena os elementos da pilha em ordem crescente.
@@ -83,7 +81,7 @@ size_t stackSize(Stack *stack);
  *
  * @param stack Ponteiro duplo para o topo da pilha.
  */
-void sortStack(Stack **stack);
+void sortStack(Stack **stack, DataType type);
 
 /**
  * @brief Busca um elemento na pilha.
@@ -95,6 +93,6 @@ void sortStack(Stack **stack);
  * @param type Tipo do valor a ser buscado.
  * @return 1 se o valor for encontrado, 0 caso contrário ou se a pilha for vazia/NULL.
  */
-int searchStack(Stack *stack, void *value, DataType type);
+int searchStack(const Stack *stack, const void *value, DataType type);
 
 #endif

@@ -16,19 +16,19 @@ typedef struct
  * @struct Node
  * @brief Nó da fila de prioridade (lista duplamente encadeada).
  */
-typedef struct Node
+typedef struct node
 {
     void *data;        /**< Ponteiro genérico para os dados armazenados. */
     int priority;      /**< Prioridade: maior valor = maior prioridade. */
-    struct Node *next; /**< Próximo nó na fila. */
-    struct Node *prev; /**< Nó anterior na fila. */
+    struct node *next; /**< Próximo nó na fila. */
+    struct node *prev; /**< Nó anterior na fila. */
 } Node;
 
 /**
  * @struct PriorityQueue
  * @brief Estrutura que representa a fila de prioridade.
  */
-typedef struct PriorityQueue
+typedef struct Priority_Queue
 {
     Node *front; /**< Ponteiro para o primeiro nó (maior prioridade). */
     Node *rear;  /**< Ponteiro para o último nó (menor prioridade). */

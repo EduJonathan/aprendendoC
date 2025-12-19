@@ -10,7 +10,7 @@
  *
  * Contém uma chave e um valor, ambos como strings com tamanho máximo definido.
  */
-typedef struct ParChaveValor
+typedef struct Chave_valor
 {
     char chave[MAX_CHAVE_VALOR]; /**< Chave associada ao valor */
     char valor[MAX_CHAVE_VALOR]; /**< Valor associado à chave */

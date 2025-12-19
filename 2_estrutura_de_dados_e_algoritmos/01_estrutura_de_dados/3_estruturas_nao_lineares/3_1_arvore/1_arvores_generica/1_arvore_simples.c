@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef NODE_H
-#define NODE_H
+#ifndef NODE
+#define NODE
 
 /**
  * @brief Estrutura que representa um nó na árvore.
