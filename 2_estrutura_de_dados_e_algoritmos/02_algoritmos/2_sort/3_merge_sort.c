@@ -38,6 +38,7 @@ void merge(int *arr, int esquerda, int middle, int direita)
     }
 
     left[n1] = INT_MAX; // Sentinela
+    
     for (int j = 0; j < n2; j++)
     {
         right[j] = arr[middle + 1 + j];
@@ -48,6 +49,7 @@ void merge(int *arr, int esquerda, int middle, int direita)
     for (int i = 0, j = 0, k = esquerda; k <= direita; k++)
     {
         comparacoes++; // Conta a comparação
+
         if (left[i] <= right[j])
         {
             arr[k] = left[i++];

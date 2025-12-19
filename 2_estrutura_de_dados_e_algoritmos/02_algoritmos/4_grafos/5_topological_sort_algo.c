@@ -28,10 +28,10 @@
  */
 
 // Estrutura para representar um nó na lista de adjacência
-typedef struct Node
+typedef struct node
 {
     int vertex;
-    struct Node *next;
+    struct node *next;
 } Node;
 
 // Estrutura para representar o grafo

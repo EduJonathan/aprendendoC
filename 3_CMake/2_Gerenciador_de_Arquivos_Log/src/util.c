@@ -1,5 +1,6 @@
 #include "../include/util.h"
 #include <stdlib.h>
+#include <unistd.h> // Para acess
 
 int file_exists(const char *path)
 {

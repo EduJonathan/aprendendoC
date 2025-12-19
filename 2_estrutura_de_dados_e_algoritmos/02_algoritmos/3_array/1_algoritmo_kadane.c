@@ -45,6 +45,7 @@ int kadane(int arr[], int n)
             // do elemento atual, redefine a soma da subarray até o índice atual
             max_ending_here = arr[i];
         }
+        
         if (max_ending_here > max_so_far)
         {
             // Atualiza a maior soma encontrada até o momento

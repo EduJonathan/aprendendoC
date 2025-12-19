@@ -32,6 +32,7 @@ void calcularFalhas(const char *padrao, int *falhas, int tamanhoPadrao)
         {
             j = falhas[j - 1]; // Retrocede para o último prefixo válido
         }
+        
         if (padrao[i] == padrao[j])
         {
             j++; // Incrementa o comprimento do prefixo

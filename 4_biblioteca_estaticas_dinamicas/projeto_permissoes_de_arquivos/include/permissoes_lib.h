@@ -10,7 +10,7 @@
     #define PERMISSOES_API __declspec(dllimport)
 #endif
 #else
-#define PERMISSOES_API
+    #define PERMISSOES_API
 #endif
 
 /**
