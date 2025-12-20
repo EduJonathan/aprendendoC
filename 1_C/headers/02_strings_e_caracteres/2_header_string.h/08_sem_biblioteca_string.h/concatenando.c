@@ -39,11 +39,11 @@ int main(int argc, char **argv)
 
     // Solicitar ao usuário para inserir a primeira string
     printf("Entre com uma frase (MAX.: 20 CARACTERES): ");
-    scanf("%19[^\n]", str1);
+    scanf("%s19[^\n]", str1);
 
     // Solicitar ao usuário para inserir a segunda string
     printf("Entre com mais uma frase (MAX.: 20 CARACTERES): ");
-    scanf("%19[^\n]", str2);
+    scanf("%s19[^\n]", str2);
 
     // Concatenar as duas strings
     concatenarStrings(str1, str2);

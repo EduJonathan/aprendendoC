@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
     int escolha = 0;
 
-    while (1)
+    while (true)
     {
         printf("\n\tDeseja fazer login na sua conta\n");
         printf(" Digite: \n[1] -> Para sim\n[0] -> Para não: ");

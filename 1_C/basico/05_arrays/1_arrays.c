@@ -78,23 +78,23 @@ int main(int argc, char **argv)
     printf("\n\tALTERANDO CONTEÚDO POSIÇÃO POR POSIÇÃO: \n");
 
     printf(" ALTERANDO A POSIÇÃO 1 DE array[0] é: ");
-    scanf("%c", &array[0]);
+    scanf(" %c", &array[0]);
     setbuf(stdin, NULL);
 
     printf(" ALTERANDO A POSIÇÃO 2 DE array[1] é: ");
-    scanf("%c", &array[1]);
+    scanf(" %c", &array[1]);
     setbuf(stdin, NULL);
 
     printf(" ALTERANDO A POSIÇÃO 3 DE array[2] é: ");
-    scanf("%c", &array[2]);
+    scanf(" %c", &array[2]);
     setbuf(stdin, NULL);
 
     printf(" ALTERANDO A POSIÇÃO 4 DE array[3] é: ");
-    scanf("%c", &array[3]);
+    scanf(" %c", &array[3]);
     setbuf(stdin, NULL);
 
     printf(" ALTERANDO A POSIÇÃO 5 DE array[4] é: ");
-    scanf("%c", &array[4]);
+    scanf(" %c", &array[4]);
     setbuf(stdin, NULL);
 
     printf("\n\t>>IMPRIMINDO CONTEÚDO ALTERADO<<\n");
