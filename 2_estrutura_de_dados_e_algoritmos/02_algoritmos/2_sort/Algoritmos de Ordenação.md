@@ -1,4 +1,4 @@
-# Algoritmos de Ordenação (Sort)
+# 🎲 Algoritmos de Ordenação (Sort)
 
 Algoritmos de ordenação são responsáveis por organizar os elementos de uma estrutura de dados,
 como arrays ou listas, em uma sequência definida (crescente, decrescente ou outro critério).
@@ -41,7 +41,7 @@ dependendo da estrutura de dados e do caso de uso.
 
 - **Estrutura:** listas ou arrays.
 - **Complexidade:** O(n log n)
-- **Descrição:** Usa a estratégia dividir e conquistar:\*\* divide a lista em duas metades, ordena cada metade recursivamente e depois combina as duas partes.
+- **Descrição:** Usa a estratégia dividir e conquistar: divide a lista em duas metades, ordena cada metade recursivamente e depois combina as duas partes.
 - **Vantagem:** Eficiente mesmo para listas grandes.
 - **Desvantagem:** Usa memória extra para criar sublistas.
 

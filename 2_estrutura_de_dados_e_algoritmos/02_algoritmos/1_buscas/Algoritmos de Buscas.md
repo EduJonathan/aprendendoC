@@ -1,4 +1,4 @@
-# Algoritmos de Busca (Search)
+# 🔎 Algoritmos de Busca (Search)
 
 Algoritmos de busca são métodos que permitem localizar um determinado valor dentro de uma estrutura de dados, como arrays, listas ou matrizes. Cada algoritmo possui características próprias, com vantagens, desvantagens e diferentes complexidades de tempo e espaço.
 
