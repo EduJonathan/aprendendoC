@@ -27,9 +27,61 @@
     #type ": " arg
 
 // Definições de constantes para tipos de mensagem
-#define ERROR 1
+#define ERROR   1
 #define WARNING 2
-#define INFO 3
+#define INFO    3
+
+// 1. Define a estrutura e cria um apelido (typedef) para facilitar o uso
+#define class(name, block)    \
+    typedef struct name name; \
+    struct name block
+
+// 2. Define o construtor: aloca memória e executa o bloco de inicialização
+#define class_constructor(name, ctor_block)        \
+    name *name##_new(void)                         \
+    {                                              \
+        name *self = (name *)malloc(sizeof(name)); \
+        do                                         \
+        {                                          \
+            ctor_block                             \
+        } while (0);                               \
+        return self;                               \
+    }
+
+#define new(class_name) class_name##_new()
+
+// 3. Função de suporte para o atributo cleanup (liberação automática)
+void autoFree_func(void *ptr_ptr)
+{
+    void *ptr = *(void **)ptr_ptr;
+    if (ptr)
+    {
+        printf("[Log] Liberando memoria automaticamente...\n");
+        free(ptr);
+    }
+}
+
+#define autoFree __attribute__((cleanup(autoFree_func)))
+#define var      __auto_type
+
+class(TestClass, {
+    int a;
+    int b;
+    int (*sum)(struct TestClass *self); // Ponteiro para função (Método)
+});
+
+// Função que será usada como método da "classe"
+int TestClassSum(TestClass *self)
+{
+    return self->a + self->b;
+}
+
+// Implementação do construtor da TestClass
+class_constructor(TestClass, {
+    self->a = 0;
+    self->b = 0;
+    self->sum = TestClassSum; // Atribui a função ao ponteiro
+});
 
 int main(int argc, char **argv)
 {
@@ -49,5 +101,16 @@ int main(int argc, char **argv)
 
     printf("%s\n", MSG_FORMAT(INFO, "teste3"));
     /// OUTPUT: "INFO" ": " "teste3"
+
+    {
+        // 'autoFree' fará com que o objeto seja liberado assim que sair deste escopo { }
+        autoFree var obj = new(TestClass);
+        obj->a = 5;
+        obj->b = 4;
+
+        // Chamando o método através do ponteiro e passando 'obj' como 'self'
+        printf("Resultado da soma: %d\n", obj->sum(obj));
+    }
+    // Aqui a memória já foi liberada automaticamente pelo autoFree_func
     return 0;
 }
