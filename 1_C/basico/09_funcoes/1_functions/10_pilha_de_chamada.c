@@ -23,8 +23,7 @@
  *
  * **Por que é importante entender**
  * - Ajuda a evitar problemas de desempenho e uso excessivo de memória.
- * - Em funções recursivas, profundidade excessiva pode causar *stack overflow*
- *   (estouro da pilha).
+ * - Em funções recursivas, profundidade excessiva pode causar *stack overflow* (estouro da pilha).
  * - Conhecimento da pilha permite aplicar técnicas como *tail call optimization*,
  *   que podem reduzir o consumo de memória eliminando quadros desnecessários
  *   em chamadas recursivas de cauda.

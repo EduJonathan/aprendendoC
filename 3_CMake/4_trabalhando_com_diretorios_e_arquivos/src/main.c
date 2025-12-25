@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "utils.h"
-#include "dir_list.h"
-#include "file_ops.h"
+#include "../includes/utils.h"
+#include "../includes/dir_list.h"
+#include "../includes/file_ops.h"
 
 /**
  * Este projeto demonstra o uso de dirent.h para manipulação de sistemas de arquivos em C.

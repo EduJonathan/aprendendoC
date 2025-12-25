@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "file_ops.h"
+#include "../includes/file_ops.h"
 
 /**
  * @brief Copia o conteúdo de um arquivo para um novo destino.

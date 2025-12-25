@@ -24,6 +24,8 @@
 
 int main(int argc, char **argv)
 {
+    _println("Testando a função _println()");
+    
     // Testes básicos
     _println("Hello, Assembly World");
     _println("Sem libc");

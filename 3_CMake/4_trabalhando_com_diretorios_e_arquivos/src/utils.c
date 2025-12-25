@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "utils.h"
+#include "../includes/utils.h"
 
 /**
  * @brief Limpa o console de comandos de forma portável.

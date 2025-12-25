@@ -112,7 +112,7 @@ void demonstrar_processadores(void)
     }
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
     printf("=== Sistema de Gerenciamento de Pessoas ===\n");
 

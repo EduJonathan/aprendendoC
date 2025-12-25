@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <string.h>
-#include "dir_list.h"
+#include "../includes/dir_list.h"
 
 /**
  * @brief Lista os arquivos do diretório atual.
