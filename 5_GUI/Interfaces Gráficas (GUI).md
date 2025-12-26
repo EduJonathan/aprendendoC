@@ -230,3 +230,12 @@ Aplicações desktop profissionais (IDE, players de mídia, ferramentas administ
   [SDL Wiki – Documentação Oficial](https://doc.qt.io)
 
 > As wiki contém tutoriais, referência completa das funções, exemplos e guias de configuração para todas as plataformas suportadas.
+
+---
+
+Existem outras ferramentas para se trabalhar como a GTK:
+
+- **GTK**: Aplicações desktop modernas (Linux/Windows/macOS)
+- **ncurses**: Interfaces avançadas para o terminal
+- **ImGUI**: GUI imediata (para ferramentas/editors)
+- **Raylib**: Extremamente amigável para jogos
