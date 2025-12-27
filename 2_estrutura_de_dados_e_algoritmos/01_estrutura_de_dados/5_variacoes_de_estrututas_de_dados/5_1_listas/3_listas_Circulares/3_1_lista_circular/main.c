@@ -129,6 +129,9 @@ int main(int argc, char **argv)
         while (getchar() != '\n'); // Limpa buffer
     }
 
+    // Caso a opção 9 não seja escolhida
+    list_free(&head);
+
     /**
      * Compile e execute com:
      * gcc -std=c17 -o lista_circular main.c lista_circular.c

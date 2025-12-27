@@ -221,8 +221,7 @@ int main(int argc, char **argv)
         }
         else
         {
-            printf(filaVazia(&alt_tab) ? MSG_VAZIA : "Apenas um programa aberto: %s\n",
-                   alt_tab.programas[alt_tab.front]);
+            printf(filaVazia(&alt_tab) ? MSG_VAZIA : "Apenas um programa aberto: %s\n", alt_tab.programas[alt_tab.front]);
         }
     }
 

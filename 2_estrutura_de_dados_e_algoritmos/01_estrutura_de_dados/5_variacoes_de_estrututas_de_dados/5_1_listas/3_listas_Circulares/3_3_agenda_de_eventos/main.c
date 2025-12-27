@@ -1,3 +1,4 @@
+#define _GNU_SOURCE // <- diretiva de compilação (se estiver em um sistema POSIX como Linux ou macOS) para garantir que strdup ou outras funções esteja disponível.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

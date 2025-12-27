@@ -29,16 +29,20 @@ int main(int argc, char **argv)
     printf("\nDesfazendo alterações:\n");
     undo(editor);
     exibirEstado(editor);
+
     undo(editor);
     exibirEstado(editor);
+
     undo(editor); // Tentativa de undo além do início
 
     // Testando Redo
     printf("\nRefazendo alterações:\n");
     redo(editor);
     exibirEstado(editor);
+
     redo(editor);
     exibirEstado(editor);
+    
     redo(editor); // Tentativa de redo além do fim
 
     // Liberando a memória

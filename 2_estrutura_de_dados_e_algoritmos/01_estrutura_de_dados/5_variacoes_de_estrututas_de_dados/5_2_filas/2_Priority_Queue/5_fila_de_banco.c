@@ -3,7 +3,6 @@
 #include <string.h>
 
 /**
- * @struct SenhaData
  * @brief Representa os dados de uma senha do banco.
  */
 typedef struct
@@ -13,7 +12,6 @@ typedef struct
 } SenhaData;
 
 /**
- * @struct Node
  * @brief Nó da fila de prioridade (lista duplamente encadeada).
  */
 typedef struct node
@@ -25,7 +23,6 @@ typedef struct node
 } Node;
 
 /**
- * @struct PriorityQueue
  * @brief Estrutura que representa a fila de prioridade.
  */
 typedef struct Priority_Queue
@@ -50,6 +47,7 @@ PriorityQueue *createPriorityQueue()
 
 /**
  * @brief Insere um elemento na fila de acordo com sua prioridade.
+ *
  * @param pq Ponteiro para a fila de prioridade.
  * @param data Ponteiro genérico para os dados a serem inseridos.
  * @param priority Valor da prioridade (maior = mais urgente).
@@ -97,6 +95,7 @@ void enqueue(PriorityQueue *pq, void *data, int priority)
 
 /**
  * @brief Remove e retorna o elemento de maior prioridade da fila.
+ *
  * @param pq Ponteiro para a fila de prioridade.
  * @return Ponteiro genérico para os dados removidos, ou NULL se vazia.
  */
@@ -128,12 +127,8 @@ void *dequeue(PriorityQueue *pq)
 
 /**
  * @brief Libera toda a memória utilizada pela fila de prioridade.
- * @param pq Ponteiro para a fila a ser liberada.
  *
- * @note Esta função chama free() para cada elemento retornado por dequeue().
- *       Se os dados apontados por @c data também tiverem sido alocados
- *       dinamicamente, é responsabilidade do chamador garantir que a
- *       desalocação seja apropriada.
+ * @param pq Ponteiro para a fila a ser liberada.
  */
 void freePriorityQueue(PriorityQueue *pq)
 {
@@ -146,6 +141,7 @@ void freePriorityQueue(PriorityQueue *pq)
 
 /**
  * @brief Imprime no console o estado atual da fila, da frente para o fim.
+ * 
  * @param pq Ponteiro para a fila de prioridade.
  */
 void printQueue(PriorityQueue *pq)

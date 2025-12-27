@@ -15,6 +15,7 @@ typedef struct no
 
 /**
  * @brief Cria um novo nó com o texto especificado
+ * 
  * @param texto Texto a ser armazenado no nó
  * @return Ponteiro para o novo nó alocado
  */

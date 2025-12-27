@@ -4,7 +4,7 @@
 #include <time.h>
 #include <locale.h>
 
-/** @struct FoodOrder
+/**
  *  @brief Representa um pedido de comida.
  */
 typedef struct
@@ -13,8 +13,8 @@ typedef struct
     int prepTime;   /**< Tempo de preparo em minutos */
 } FoodOrder;
 
-/** @struct DrinkOrder
- *  @brief Representa um pedido de bebida.
+/**
+ * @brief Representa um pedido de bebida.
  */
 typedef struct
 {
@@ -22,8 +22,8 @@ typedef struct
     char *size;      /**< Tamanho: "Pequeno", "Médio" ou "Grande" */
 } DrinkOrder;
 
-/** @struct Node
- *  @brief Nó do Deque, armazena ponteiro genérico para um pedido.
+/**
+ * @brief Nó do Deque, armazena ponteiro genérico para um pedido.
  */
 typedef struct node
 {
@@ -33,8 +33,8 @@ typedef struct node
     struct node *prev; /**< Nó anterior */
 } Node;
 
-/** @struct Deque
- *  @brief Estrutura principal do Deque (duplamente encadeado).
+/**
+ * @brief Estrutura principal do Deque (duplamente encadeado).
  */
 typedef struct deque
 {
@@ -45,6 +45,7 @@ typedef struct deque
 
 /**
  * @brief Cria um Deque vazio.
+ *
  * @return Ponteiro para o Deque criado.
  */
 Deque *createDeque(void)
@@ -114,6 +115,7 @@ void pushRear(Deque *deque, void *data, char *type)
 
 /**
  * @brief Remove um pedido do início do Deque.
+ *
  * @param deque Ponteiro para o Deque.
  * @param type  Ponteiro para receber o tipo do pedido removido.
  * @return Ponteiro genérico para o pedido removido.
@@ -148,6 +150,7 @@ void *popFront(Deque *deque, char **type)
 
 /**
  * @brief Libera toda a memória do Deque.
+ *
  * @param deque Ponteiro para o Deque.
  */
 void freeDeque(Deque *deque)
@@ -171,6 +174,7 @@ void freeDeque(Deque *deque)
 
 /**
  * @brief Processa e exibe um pedido, de acordo com o tipo.
+ *
  * @param data Ponteiro genérico para o pedido.
  * @param type String com o tipo do pedido.
  */

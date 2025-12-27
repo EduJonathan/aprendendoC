@@ -226,6 +226,7 @@ void exibir_lista(ListaEncadeada *lista, void (*exibir_dado)(void *))
 
 /**
  * @brief Exibe a lista identificando automaticamente os tipos
+ * 
  * @param lista Lista a ser exibida
  */
 void exibir_lista_automatico(ListaEncadeada *lista)
@@ -273,6 +274,7 @@ void exibir_lista_automatico(ListaEncadeada *lista)
 
 /**
  * @brief Libera a memória da lista
+ * 
  * @param lista Lista a ser liberada
  */
 void liberar_lista(ListaEncadeada *lista)

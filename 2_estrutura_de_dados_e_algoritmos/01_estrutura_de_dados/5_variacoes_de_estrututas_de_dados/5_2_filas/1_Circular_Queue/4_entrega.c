@@ -98,7 +98,6 @@ int enqueue(CircularQueue *queue, void *data)
     {
         queue->rear = (queue->rear + 1) % queue->capacity;
     }
-
     queue->items[queue->rear] = data;
     queue->size++;
     return 1;
@@ -126,7 +125,6 @@ void *dequeue(CircularQueue *queue)
         queue->front = -1;
         queue->rear = -1;
     }
-
     return data;
 }
 

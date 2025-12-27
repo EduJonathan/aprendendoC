@@ -108,6 +108,9 @@ int main(int argc, char **argv)
         while (getchar() != '\n'); // Limpa buffer
     }
 
+    // Caso a opção 8 não for escolhida
+    list_free(&head);
+
     /**
      * Compile e execute com:
      * gcc -std=c17 -o duplamente main_lista_duplamente_encadeada.c lista_duplamente_encadeada.c

@@ -51,6 +51,7 @@ typedef struct No
 
 /**
  * @brief Cria um novo nó para a lista circular.
+ * 
  * @param tipo Tipo do evento (Reunião, Lembrete, Aniversário).
  * @param dados Ponteiro para os dados do evento.
  * @param diaSemana Dia da semana (0 a 6).
@@ -60,6 +61,7 @@ No *criarNo(TipoEvento tipo, void *dados, int diaSemana);
 
 /**
  * @brief Insere um nó na lista circular, mantendo a estrutura circular.
+ * 
  * @param cabeca Ponteiro para o ponteiro da cabeça da lista.
  * @param novo Nó a ser inserido.
  */
@@ -67,12 +69,14 @@ void inserirCircular(No **cabeca, No *novo);
 
 /**
  * @brief Imprime a agenda percorrendo a lista circular uma vez.
+ * 
  * @param cabeca Ponteiro para a cabeça da lista.
  */
 void imprimirAgenda(No *cabeca);
 
 /**
  * @brief Libera a memória da lista circular.
+ * 
  * @param cabeca Ponteiro para a cabeça da lista.
  */
 void liberarAgenda(No *cabeca);

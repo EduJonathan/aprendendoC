@@ -89,7 +89,6 @@ bool inserirElementoNaFila(filaCircular *queue, int elemento)
         printf("Erro: Apenas valores não negativos são permitidos.\n");
         return false;
     }
-
     queue->atras = (queue->atras + 1) % QUEUE_SIZE;
     queue->elementos[queue->atras] = elemento;
     queue->contador++;
@@ -111,7 +110,6 @@ int removerElementoNaFila(filaCircular *queue)
         printf("Fila vazia! Não é possível remover.\n");
         return -1;
     }
-
     int elementoRemovido = queue->elementos[queue->frente];
     queue->elementos[queue->frente] = 0; // Opcional: limpa o espaço
     queue->frente = (queue->frente + 1) % QUEUE_SIZE;
