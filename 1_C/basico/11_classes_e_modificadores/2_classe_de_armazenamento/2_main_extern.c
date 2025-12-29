@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "1_extern.c"
+#include "1_extern.h"
 
 /*
  * global_extern = 3;

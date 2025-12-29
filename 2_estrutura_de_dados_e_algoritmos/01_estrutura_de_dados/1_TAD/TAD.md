@@ -92,7 +92,6 @@ struct tEvent
     int timeout;
 };
 
-
 pEvent Event_Create(int id, int timeout)
 {
     pEvent pt;
@@ -188,7 +187,8 @@ estão contidas no arquivo `Event.c`.
 Dessa forma, o processo de build garante que a separação entre interface e implementação seja mantida,
 reforçando o encapsulamento e a abstração dos dados.
 
-> Nesse caso utilizem então para compilar: `gcc -std=c17 Event.c Event_main.c -o event`  
+> Nesse caso utilizem então para compilar:  
+> `gcc -std=c17 Event.c Event_main.c -o event`  
 > `./event`
 
 ---

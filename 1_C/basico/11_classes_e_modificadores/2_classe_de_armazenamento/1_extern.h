@@ -26,11 +26,11 @@ extern int global_extern;
 // Declaração da variável do tipo array com a palavra-chave 'extern'
 extern const char meuArray[5];
 
-// Declarando função com a palavra-chave 'extern' que retorna um tipo float
-// e aceita 2 parâmetros float
+// Declarando função com a palavra-chave 'extern' que retorna um tipo float e possui 2 parâmetros float
 extern float extern_function(float, float);
 
 /// @brief Procedimento para realizar algumas operações com as variáveis extern
+/// NÃO É RECOMENDADO IMPLEMENTAR FUNÇÕES DENTRO DE arquivos .h, esta funções é para afins de explicações
 extern void teste(void)
 {
     // Imprimir o valor e endereço da variável global_extern
