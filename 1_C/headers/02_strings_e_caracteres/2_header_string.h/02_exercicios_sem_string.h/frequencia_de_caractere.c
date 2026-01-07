@@ -13,27 +13,33 @@
 void contarFrequenciaCaractere(const char *frase)
 {
     int c = 0;
-    int count[26] = {0}; /**< Vetor para armazenar a contagem de cada caractere ('a' a 'z') */
+    int count[26] = {0};
 
-    while (frase[c] != '\0') // Enquanto não encontrar o final da string
+    while (frase[c] != '\0')
     {
-        // Verifica se o caractere está entre 'a' e 'z'
-        if (frase[c] >= 'a' && frase[c] <= 'z')
+        char atual = frase[c];
+
+        // Se for maiúscula, transforma em minúscula usando a lógica ASCII
+        // A diferença entre 'A' (65) e 'a' (97) é sempre 32
+        if (atual >= 'A' && atual <= 'Z')
         {
-            // Incrementa a contagem do caractere
-            count[frase[c] - 'a']++;
+            atual = atual + 32;
         }
 
-        // Avança para o próximo caractere
+        // Agora verifica se é uma letra minúscula
+        if (atual >= 'a' && atual <= 'z')
+        {
+            count[atual - 'a']++;
+        }
         c++;
     }
 
-    // Exibe a contagem de cada caractere
     for (c = 0; c < 26; c++)
     {
-        if (count[c] > 0) // Exibe apenas os caracteres que apareceram na string
+        if (count[c] > 0)
         {
-            printf("O caractere '%c' ocorre %d vez(es) na frase.\n", c + 97, count[c]);
+            // Usar 'a' + c é mais legível que 97 + c
+            printf("O caractere '%c' ocorre %d vez(es).\n", 'a' + c, count[c]);
         }
     }
 }
@@ -44,7 +50,7 @@ int main(int argc, char **argv)
 
     // Solicita ao usuário para inserir uma frase com no máximo 20 caracteres
     printf("Entre com uma string (MAX. 20 CARACTERES): ");
-    scanf("%19[^\n]", frase); // Lê até 19 caracteres ou até a quebra de linha
+    fgets(frase, sizeof(frase), stdin);
 
     // Chama a função para contar a frequência de caracteres
     contarFrequenciaCaractere(frase);

@@ -9,26 +9,38 @@
  * @param str String a ser verificada.
  * @return 1 se a string for polindromo, 0 caso contrario.
  */
-int isPolindrome(char str[])
+int isPalindrome(char str[])
 {
     int left = 0;
-    size_t right = strlen(str) - 1;
+    int right = 0;
 
-    while (left < right)
+    // Encontrar o tamanho da string manualmente (substituindo strlen)
+    while (str[right] != '\0')
     {
-        // Verificando se os caracteres sao iguais, caso contrario nao eh um polindromo
-        if (str[left] != str[right])
-        {
-            // não é um polindromo
-            return 0;
-        }
-
-        left++;  // avançando para o próximo caractere
-        right--; // avançando para o caractere anterior
+        right++;
     }
 
-    // é um polindromo
-    return 1;
+    // Ajustar para o último caractere válido
+    right--;
+
+    // Importante: Se o fgets capturou o '\n', ignore-o
+    if (right >= 0 && str[right] == '\n')
+    {
+        right--;
+    }
+
+    // Lógica de comparação das extremidades
+    while (left < right)
+    {
+        if (str[left] != str[right])
+        {
+            return 0; // Não é palíndromo
+        }
+        left++;
+        right--;
+    }
+
+    return 1; // É palíndromo
 }
 
 int main(int argc, char **argv)
@@ -36,7 +48,7 @@ int main(int argc, char **argv)
     // Declarando uma string e pedindo para o usuário digitar uma string
     char str[100] = {0};
     printf("Digite uma string: ");
-    scanf("%99[^\n]", str);
+    fgets(str, sizeof(str), stdin);
 
     if (isPolindrome(str))
     {

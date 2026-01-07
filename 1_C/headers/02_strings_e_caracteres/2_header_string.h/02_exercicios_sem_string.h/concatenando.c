@@ -10,25 +10,34 @@
  * @param str1 A primeira string, que será modificada para conter a concatenação.
  * @param str2 A segunda string, que será concatenada à primeira string.
  */
-void concatenarStrings(char *str1, const char *str2)
+void concatenarStrings(char *str1, const char *str2, int tamanhoMaximo)
 {
     int i = 0, j = 0;
 
-    // Encontrar o final da primeira string
-    while (str1[i] != '\0')
+    // Encontrar o final da primeira string (ou o limite do buffer)
+    while (str1[i] != '\0' && i < tamanhoMaximo - 1)
     {
-        // Loop para garantir que a string final tenha no máximo 19 caracteres (o último é '\0')
-        i++; // Incrementa o contador para cada caractere
+        // Remove o caractere de nova linha (\n) se ele existir
+        if (str1[i] == '\n')
+        {
+            break; // Para aqui para começar a sobrescrever o \n
+        }
+        i++;
     }
 
-    // Concatenar a segunda string ao final da primeira
-    while (str2[j] != '\0' && i < 19)
+    // Concatenar a segunda string
+    while (str2[j] != '\0' && i < tamanhoMaximo - 1)
     {
-        // Garantir que a string final tenha no máximo 19 caracteres (o último é '\0')
+        // Não queremos copiar o \n da segunda string também
+        if (str2[j] == '\n')
+        {
+            j++;
+            continue;
+        }
         str1[i++] = str2[j++];
     }
 
-    // Adicionar o caractere nulo ao final da string concatenada
+    // Garante o fechamento da string
     str1[i] = '\0';
 }
 
@@ -39,14 +48,14 @@ int main(int argc, char **argv)
 
     // Solicitar ao usuário para inserir a primeira string
     printf("Entre com uma frase (MAX.: 20 CARACTERES): ");
-    scanf("%s19[^\n]", str1);
+    fgets(str1, sizeof(str1), stdin);
 
     // Solicitar ao usuário para inserir a segunda string
     printf("Entre com mais uma frase (MAX.: 20 CARACTERES): ");
-    scanf("%s19[^\n]", str2);
+    fgets(str2, sizeof(str2), stdin);
 
     // Concatenar as duas strings
-    concatenarStrings(str1, str2);
+    concatenarStrings(str1, str2, sizeof(str1));
 
     // Exibir a string concatenada
     printf("String concatenada: %s\n", str1);
