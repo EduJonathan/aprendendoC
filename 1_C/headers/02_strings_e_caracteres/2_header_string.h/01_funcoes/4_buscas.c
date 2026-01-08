@@ -11,7 +11,7 @@ typedef enum
     SEARCH_STRRCHR, // Procura a última ocorrência de um caractere
     SEARCH_STRSTR,  // Procura a primeira ocorrência de uma substring
     SEARCH_STRPBRK  // Procura o primeiro caractere que esteja em um conjunto
-} Funcoes_Busca;
+} BUSQUE_STRINGS;
 
 /**
  * @brief Retorna o nome da função de busca
@@ -19,7 +19,7 @@ typedef enum
  * @param type O tipo de função de busca
  * @return Nome da função como string
  */
-const char *get_search_name(Funcoes_Busca type)
+const char *get_search_name(BUSQUE_STRINGS type)
 {
     switch (type)
     {
@@ -36,7 +36,7 @@ const char *get_search_name(Funcoes_Busca type)
         return "strpbrk";
 
     default:
-        return "desconhecida";
+        return "Função Desconhecida";
     }
 }
 
@@ -47,7 +47,7 @@ const char *get_search_name(Funcoes_Busca type)
  * @param needle A substring ou caractere(s) a serem buscados
  * @param type O tipo de função de busca a ser utilizada
  */
-void demonstrar_busca(const char *haystack, const char *needle, Funcoes_Busca type)
+void demonstrar_busca(const char *haystack, const char *needle, BUSQUE_STRINGS type)
 {
     const char *resultado = NULL;
 

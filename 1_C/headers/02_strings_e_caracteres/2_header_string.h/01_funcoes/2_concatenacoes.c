@@ -10,7 +10,7 @@ typedef enum
 {
     CNT_STRCAT,
     CNT_STRNCAT
-} Funcoes_Concatenacao;
+} CONCATENE_STRINGS;
 
 /**
  * Estrutura para armazenar informações sobre uma operação de concatenação
@@ -20,7 +20,7 @@ typedef struct
     const char *s1;            // String destino original (antes da cópia)
     const char *s2;            // String a ser anexada
     size_t n;                  // Quantidade máxima de caracteres (usado apenas em strncat)
-    Funcoes_Concatenacao type; // Tipo de função utilizada
+    CONCATENE_STRINGS type; // Tipo de função utilizada
     char resultado[256];       // Buffer para armazenar a string concatenada
 } Resultado_Concatenacao;
 
@@ -30,7 +30,7 @@ typedef struct
  * @param type Tipo da função de concatenação
  * @return Nome da função como string
  */
-const char *get_concat_name(Funcoes_Concatenacao type)
+const char *get_concat_name(CONCATENE_STRINGS type)
 {
     switch (type)
     {
@@ -41,7 +41,7 @@ const char *get_concat_name(Funcoes_Concatenacao type)
         return "strncat";
 
     default:
-        return "desconhecida";
+        return "Função Desconhecida";
     }
 }
 

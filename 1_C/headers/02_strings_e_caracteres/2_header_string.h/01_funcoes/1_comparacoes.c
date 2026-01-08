@@ -13,7 +13,7 @@ typedef enum
     CMP_STRCASECMP,
     CMP_STRNCASECMP,
     CMP_STRCOLL
-} Funcoes_Comparacao_String;
+} COMPARE_STRINGS;
 
 /**
  * Estrutura para armazenar o resultado de uma comparação de strings e informações relacionadas
@@ -24,7 +24,7 @@ typedef struct
     const char *s2;                 // segunda string
     int result;                     // resultado da comparação
     size_t n;                       // usado apenas pelas funções `n`
-    Funcoes_Comparacao_String type; // tipo de comparação realizada
+    COMPARE_STRINGS type; // tipo de comparação realizada
 } Resultado_Comparacao_String;
 
 /**
@@ -53,7 +53,7 @@ const char *interpretar_resultado(int res)
  * @param type Tipo de comparação de strings
  * @return Resultado_Comparacao_String Estrutura contendo o resultado da comparação e informações relacionadas
  */
-const char *get_compare_name(Funcoes_Comparacao_String type)
+const char *get_compare_name(COMPARE_STRINGS type)
 {
     switch (type)
     {
@@ -73,7 +73,7 @@ const char *get_compare_name(Funcoes_Comparacao_String type)
         return "strcoll";
 
     default:
-        return "unknown";
+        return "Função Desconhecida";
     }
 }
 
@@ -83,7 +83,7 @@ const char *get_compare_name(Funcoes_Comparacao_String type)
  * @param res Resultado numérico da comparação
  * @return const char* Interpretação do resultado ("IGUAIS", "S1 VEM ANTES (MENOR)", "S1 VEM DEPOIS (MAIOR)")
  */
-Resultado_Comparacao_String compare_strings(const char *s1, const char *s2, size_t n, Funcoes_Comparacao_String type)
+Resultado_Comparacao_String compare_strings(const char *s1, const char *s2, size_t n, COMPARE_STRINGS type)
 {
     Resultado_Comparacao_String res;
     res.s1 = s1;

@@ -55,7 +55,7 @@ const char *get_func_name(Funcoes_Restantes type)
         return "snprintf";
 
     default:
-        return "unknown";
+        return "Função Desconhecida";
     }
 }
 

@@ -10,7 +10,7 @@ typedef enum
 {
     CP_STRCPY,
     CP_STRNCPY
-} Funcoes_Copia_String;
+} COPIE_STRINGS;
 
 /**
  * Estrutura para armazenar o resultado de uma operação de cópia de strings
@@ -21,14 +21,14 @@ typedef struct
     char *dest;                // buffer destino (modificado)
     size_t dest_size;          // tamanho total do buffer destino (para segurança)
     size_t n;                  // número máximo de caracteres a copiar (usado apenas por strncpy)
-    Funcoes_Copia_String type; // tipo de cópia realizada
+    COPIE_STRINGS type; // tipo de cópia realizada
     char dest_before[64];      // conteúdo do destino ANTES da cópia (para demonstração)
 } Resultado_Copia_String;
 
 /**
  * @brief Retorna o nome da função de cópia correspondente ao tipo
  */
-const char *get_copy_name(Funcoes_Copia_String type)
+const char *get_copy_name(COPIE_STRINGS type)
 {
     switch (type)
     {
@@ -39,7 +39,7 @@ const char *get_copy_name(Funcoes_Copia_String type)
         return "strncpy";
 
     default:
-        return "unknown";
+        return "Função Desconhecida";
     }
 }
 
@@ -53,7 +53,7 @@ const char *get_copy_name(Funcoes_Copia_String type)
  * @param type Tipo de função de cópia
  * @return Resultado_Copia_String Estrutura com informações da operação
  */
-Resultado_Copia_String copy_strings(const char *src, char *dest, size_t dest_size, size_t n, Funcoes_Copia_String type)
+Resultado_Copia_String copy_strings(const char *src, char *dest, size_t dest_size, size_t n, COPIE_STRINGS type)
 {
     Resultado_Copia_String res;
 

@@ -21,7 +21,7 @@ typedef enum
     FUNC_STRCSPN,
     FUNC_STRTOK,
     FUNC_STRTOK_S
-} Funcoes_String;
+} MANIPULE_STRINGS;
 
 /**
  * Estrutura para armazenar informações do teste
@@ -31,14 +31,14 @@ typedef struct
     const char *str;     // string principal
     const char *charset; // conjunto de caracteres aceitos/rejeitados (para spn/cspn)
     size_t result;       // valor retornado pela função
-    Funcoes_String type; // qual função foi usada
+    MANIPULE_STRINGS type; // qual função foi usada
     char *token_example; // usado apenas para demonstrar strtok/strtok_s
 } Resultado_Testes;
 
 /**
  * Retorna o nome da função para impressão
  */
-const char *get_function_name(Funcoes_String type)
+const char *get_function_name(MANIPULE_STRINGS type)
 {
     switch (type)
     {
@@ -55,7 +55,7 @@ const char *get_function_name(Funcoes_String type)
         return "strtok_s";
 
     default:
-        return "unknown";
+        return "Função Desconhecida";
     }
 }
 
@@ -67,7 +67,7 @@ const char *get_function_name(Funcoes_String type)
  * @param type Indica se é strspn ou strcspn
  * @return size_t Comprimento do prefixo conforme a função
  */
-size_t test_spn_cspn(const char *str, const char *charset, Funcoes_String type)
+size_t test_spn_cspn(const char *str, const char *charset, MANIPULE_STRINGS type)
 {
     size_t len;
     if (type == FUNC_STRSPN)

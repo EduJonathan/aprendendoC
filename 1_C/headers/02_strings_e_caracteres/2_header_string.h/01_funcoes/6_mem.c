@@ -13,7 +13,7 @@ typedef enum
     MEM_MEMMOVE,
     MEM_MEMSET,
     MEM_MEMCMP
-} Funcoes_Memoria;
+} MEMORIA_STRINGS;
 
 /**
  * Estrutura para armazenar informações sobre uma operação de memória
@@ -26,13 +26,13 @@ typedef struct
     const void *src;       // Fonte (para memcpy/memmove/memcmp)
     int fill_value;        // Valor de preenchimento (para memset)
     size_t n;              // Número de bytes a operar
-    Funcoes_Memoria type;  // Tipo da função
+    MEMORIA_STRINGS type;  // Tipo da função
 } Operacao_Memoria;
 
 /**
  * @brief Retorna o nome da função de memória como string
  */
-const char *get_mem_name(Funcoes_Memoria type)
+const char *get_mem_name(MEMORIA_STRINGS type)
 {
     switch (type)
     {
@@ -49,7 +49,7 @@ const char *get_mem_name(Funcoes_Memoria type)
         return "memcmp";
 
     default:
-        return "unknown";
+        return "Função Desconhecida";
     }
 }
 
