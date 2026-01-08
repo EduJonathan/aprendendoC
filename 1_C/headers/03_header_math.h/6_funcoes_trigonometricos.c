@@ -14,12 +14,12 @@ typedef enum
     MATH_ATAN,
     MATH_ATAN2,
     MATH_COUNT
-} FuncoesPotenciais;
+} FUNCOES_TRIGONOMETRICAS;
 
 /* Estrutura que descreve cada operação */
 typedef struct
 {
-    FuncoesPotenciais type;
+    FUNCOES_TRIGONOMETRICAS type;
     const char *name;
     int num_args; // 1 para unárias, 2 para atan2
 
@@ -52,7 +52,7 @@ typedef struct
     float f_result;
     double d_result;
     long double ld_result;
-    FuncoesPotenciais type;
+    FUNCOES_TRIGONOMETRICAS type;
 } ResultadosMatematicos;
 
 /**
@@ -63,7 +63,7 @@ typedef struct
  * @param type Tipo da operação matemática
  * @return ResultadosMatematicos Estrutura contendo os resultados em diferentes precisões
  */
-ResultadosMatematicos compute_math(double x, double y, FuncoesPotenciais type)
+ResultadosMatematicos compute_math(double x, double y, FUNCOES_TRIGONOMETRICAS type)
 {
     ResultadosMatematicos res = {
         .x = x,
@@ -117,7 +117,7 @@ void print_math_result(const ResultadosMatematicos *r)
 
 typedef struct
 {
-    FuncoesPotenciais op;
+    FUNCOES_TRIGONOMETRICAS op;
     double x;
     double y; // usado apenas por atan2
 } TestarValores;

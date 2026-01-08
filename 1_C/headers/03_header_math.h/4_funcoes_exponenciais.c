@@ -13,12 +13,12 @@ typedef enum
     MATH_LOG10,
     MATH_MODF,
     MATH_COUNT
-} FuncoesPotenciais;
+} FUNCOES_EXPONENCIAIS;
 
 /* Estrutura que descreve cada operação */
 typedef struct
 {
-    FuncoesPotenciais type;
+    FUNCOES_EXPONENCIAIS type;
     const char *name;
     int num_args; // 1 ou 2 (ldexp usa 2)
 
@@ -59,7 +59,7 @@ typedef struct
     int d_exp;
     int ld_exp;
 
-    FuncoesPotenciais type;
+    FUNCOES_EXPONENCIAIS type;
 } ResultadosMatematicos;
 
 /**
@@ -70,7 +70,7 @@ typedef struct
  * @param type Tipo da operação matemática
  * @return ResultadosMatematicos Estrutura contendo os resultados em diferentes precisões
  */
-ResultadosMatematicos compute_math(double x, double y, FuncoesPotenciais type)
+ResultadosMatematicos compute_math(double x, double y, FUNCOES_EXPONENCIAIS type)
 {
     ResultadosMatematicos res = {
         .x = x,

@@ -9,12 +9,12 @@ typedef enum
     MATH_REMAINDER,
     MATH_REMQUO,
     MATH_COUNT
-} FuncoesPotenciais;
+} FUNCOES_DIVISIONAIS;
 
 /* Estrutura que descreve cada operação */
 typedef struct
 {
-    FuncoesPotenciais type;
+    FUNCOES_DIVISIONAIS type;
     const char *name;
     int num_args; // 1 para fabs, 2 para as outras
 
@@ -50,7 +50,7 @@ typedef struct
     int d_quotient;
     int ld_quotient;
 
-    FuncoesPotenciais type;
+    FUNCOES_DIVISIONAIS type;
 } ResultadosMatematicos;
 
 /**
@@ -61,7 +61,7 @@ typedef struct
  * @param type Tipo da operação matemática
  * @return ResultadosMatematicos Estrutura contendo os resultados em diferentes precisões
  */
-ResultadosMatematicos compute_math(double x, double y, FuncoesPotenciais type)
+ResultadosMatematicos compute_math(double x, double y, FUNCOES_DIVISIONAIS type)
 {
     ResultadosMatematicos res = {
         .x = x,
@@ -135,7 +135,7 @@ typedef struct
 {
     double x;
     double y;
-    FuncoesPotenciais type;
+    FUNCOES_DIVISIONAIS type;
 } TestCase;
 
 int main(int argc, char **argv)

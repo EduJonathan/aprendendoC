@@ -11,12 +11,12 @@ typedef enum
     MATH_ACOSH,
     MATH_ATANH,
     MATH_COUNT
-} FuncoesPotenciais;
+} FUNCOES_HIPERPBOLICAS;
 
 /* Estrutura que descreve cada operação */
 typedef struct
 {
-    FuncoesPotenciais type;
+    FUNCOES_HIPERPBOLICAS type;
     const char *name;
     int num_args; // sempre 1 para essas funções
 
@@ -42,7 +42,7 @@ typedef struct
     float f_result;
     double d_result;
     long double ld_result;
-    FuncoesPotenciais type;
+    FUNCOES_HIPERPBOLICAS type;
 } ResultadosMatematicos;
 
 /**
@@ -52,7 +52,7 @@ typedef struct
  * @param type Tipo da operação matemática
  * @return ResultadosMatematicos Estrutura contendo os resultados em diferentes precisões
  */
-ResultadosMatematicos compute_math(double x, FuncoesPotenciais type)
+ResultadosMatematicos compute_math(double x, FUNCOES_HIPERPBOLICAS type)
 {
     ResultadosMatematicos res = {
         .x = x,

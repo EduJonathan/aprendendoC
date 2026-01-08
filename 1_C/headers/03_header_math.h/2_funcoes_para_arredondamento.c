@@ -14,12 +14,12 @@ typedef enum
     MATH_LROUND,
     MATH_LLRROUND,
     MATH_COUNT
-} FuncoesRounds;
+} FUNCOES_DE_ARREDONDAMENTO;
 
 /* Estrutura que descreve cada operação matemática */
 typedef struct
 {
-    FuncoesRounds type;
+    FUNCOES_DE_ARREDONDAMENTO type;
     const char *name;
 
     /* Ponteiros para as versões em diferentes precisões */
@@ -54,7 +54,7 @@ typedef struct
     long double ld_result;
     long l_result;
     long long ll_result;
-    FuncoesRounds type;
+    FUNCOES_DE_ARREDONDAMENTO type;
 } ResultadosMatematicos;
 
 /**
@@ -64,7 +64,7 @@ typedef struct
  * @param type Tipo de função matemática a ser aplicada.
  * @return Estrutura com todos os resultados.
  */
-ResultadosMatematicos compute_math(double x, FuncoesRounds type)
+ResultadosMatematicos compute_math(double x, FUNCOES_DE_ARREDONDAMENTO type)
 {
     ResultadosMatematicos res = {
         .x = x,
@@ -144,7 +144,7 @@ int main(int argc, char **argv)
     {
         double x = valores_teste[i];
 
-        for (FuncoesRounds t = 0; t < MATH_COUNT; t++)
+        for (FUNCOES_DE_ARREDONDAMENTO t = 0; t < MATH_COUNT; t++)
         {
             ResultadosMatematicos res = compute_math(x, t);
             imprimir_resultados(&res);

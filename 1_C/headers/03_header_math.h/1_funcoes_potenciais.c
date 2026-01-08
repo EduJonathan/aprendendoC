@@ -11,7 +11,7 @@ typedef enum
     MATH_HYPOT,
     MATH_SQRT,
     MATH_COUNT // Conta o número total de operações
-} FuncoesPotenciais;
+} FUNCOES_POTENCIAIS;
 
 /**
  * @brief Estrutura de metadados para operações matemáticas
@@ -19,7 +19,7 @@ typedef enum
  */
 typedef struct
 {
-    FuncoesPotenciais type; // Tipo da operação
+    FUNCOES_POTENCIAIS type; // Tipo da operação
     const char *name;       // Nome da operação
     int num_args;           // Número de argumentos necessários para a operação
 } Metadados;
@@ -46,7 +46,7 @@ typedef struct
     float f_result;         // Resultado em precisão float
     double d_result;        // Resultado em precisão double
     long double ld_result;  // Resultado em precisão long double
-    FuncoesPotenciais type; // Tipo da operação matemática
+    FUNCOES_POTENCIAIS type; // Tipo da operação matemática
 } ResultadosMatematicos;
 
 /**
@@ -57,7 +57,7 @@ typedef struct
  * @param type Tipo da operação matemática
  * @return ResultadosMatematicos Estrutura contendo os resultados em diferentes precisões
  */
-ResultadosMatematicos compute_math(double x, double y, FuncoesPotenciais type)
+ResultadosMatematicos compute_math(double x, double y, FUNCOES_POTENCIAIS type)
 {
     // Inicializa a estrutura de resultados
     ResultadosMatematicos res = {
