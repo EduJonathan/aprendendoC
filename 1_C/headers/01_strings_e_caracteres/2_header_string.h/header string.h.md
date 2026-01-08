@@ -110,10 +110,10 @@ O valor retornado pelas funções de comparação segue a regra:
 
 ## Observações Gerais
 
-**Strings em C:** São sequências de bytes não-nulos terminadas por '\0'.
-**Buffer overflow:** Funções como strcpy, strcat e sprintf não verificam limites.
-**Alternativas mais seguras (C11):** strcpy_s, strcat_s, memcpy_s (nem sempre disponíveis).
-**Funções n:** As funçõessão as que determinam até onde a operação deva acontecer.
+- **Strings em C:** São sequências de bytes não-nulos terminadas por '\0'.
+- **Buffer overflow:** Funções como strcpy, strcat e sprintf não verificam limites.
+- **Alternativas mais seguras (C11):** strcpy_s, strcat_s, memcpy_s (nem sempre disponíveis).
+- **Funções n:** Essas funções são as que determinam até onde a operação deva acontecer/checar.
 
 - Tipos importantes:
 

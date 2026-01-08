@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     printf("Argumento (fase) de z1: %.2f rad\n", argumento);
 
     // creal(z): Retorna a parte real de um número complexo z.
-    // cimag(z) : Retorna a parte imaginária de um número complexo z.
+    // cimag(z): Retorna a parte imaginária de um número complexo z.
 
     /**
      * Na biblioteca <complex.h>, Os números complexos tem funções de retornos semelhantes
