@@ -24,36 +24,14 @@ typedef enum
     CTYPE_COUNT
 } CtypeFunction;
 
-// Estrutura para resultados em caracteres
-typedef struct
-{
-    char input;
-    int output;
-    CtypeFunction type;
-} CtypeCharResult;
-
 // Estrutura para operações de ctype
 typedef struct
 {
-    CtypeFunction type;
-    const char *name;
-    int (*classify)(int);
-    int (*transform)(int);
+    CtypeFunction type;    // Tipo da função
+    const char *name;      // Nome da função
+    int (*classify)(int);  // Ponteiro para função que classifica caracteres
+    int (*transform)(int); // Ponteiro para função que transforma caracteres
 } CtypeOperation;
-
-// Estrutura para resultados em strings
-typedef struct
-{
-    const char *input;
-    bool result;
-    CtypeFunction type;
-} CtypeStringResult;
-
-typedef enum
-{
-    STRING_ALL, // todos os caracteres devem passar
-    STRING_ANY  // pelo menos um caractere deve passar
-} StringPolicy;
 
 // Definição do array de operações, detalhe isascii não é padrão C, então se não estiver disponível
 // pode ser substituído por uma função personalizada, ou apenas removido se não for necessário.
@@ -73,6 +51,29 @@ const CtypeOperation CTYPE_OPERATIONS[CTYPE_COUNT] = {
     {CTYPE_ISXDIGIT, "isxdigit", isxdigit, NULL},
     {CTYPE_TOLOWER, "tolower", NULL, tolower},
     {CTYPE_TOUPPER, "toupper", NULL, toupper}};
+
+// Estrutura para resultados em caracteres
+typedef struct
+{
+    char input;
+    int output;
+    CtypeFunction type;
+} CtypeCharResult;
+
+// Estrutura para resultados em strings
+typedef struct
+{
+    const char *input;  // string de entrada
+    bool result;        // resultado da verificação
+    CtypeFunction type; // tipo da função aplicada
+} CtypeStringResult;
+
+// Política para verificação de strings
+typedef enum
+{
+    STRING_ALL, // todos os caracteres devem passar
+    STRING_ANY  // pelo menos um caractere deve passar
+} StringPolicy;
 
 /**
  * @brief Aplica uma função de verificação de caractere a um único caractere
@@ -124,8 +125,8 @@ CtypeStringResult ctype_apply_string(const char *str, CtypeFunction type, String
 
     while (*str)
     {
-        CtypeCharResult r = ctype_apply_char(*str, type);
-        bool ok = r.output != 0;
+        CtypeCharResult r = ctype_apply_char(*str, type); // Aplica a função ao caractere atual
+        bool ok = r.output != 0;                          // Converte para bool, verifica se é diferente de zero
 
         if (policy == STRING_ALL && !ok)
         {
@@ -200,6 +201,7 @@ void print_string_result(const CtypeStringResult *r)
     printf("  resultado: %s\n\n", r->result ? "true" : "false");
 }
 
+// Estrutura para testes
 typedef struct
 {
     char input_char;

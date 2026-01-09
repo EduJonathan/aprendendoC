@@ -3,6 +3,11 @@
 /*
  * Funções chamadas em outras funções, são utéis para que o código possa realizar
  * determinada instrução, fazendo somente e única dentro daquele bloco de código.
+ *
+ * CUIDADOS:
+ * - Evite funções muito longas; prefira funções curtas e focadas em uma única tarefa.
+ * - Use nomes descritivos para funções e parâmetros para melhorar a legibilidade.
+ * - Documente suas funções com comentários para explicar seu propósito e uso.
  */
 
 /**
