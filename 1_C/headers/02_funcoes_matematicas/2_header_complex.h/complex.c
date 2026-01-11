@@ -8,10 +8,6 @@
  * 𝑎 => é a parte real,
  * 𝑏 => é a parte imaginária,
  * 𝑖 => é a unidade imaginária, tal que 𝑖² = −1
- *
- * a biblioteca <complex.h> oferece uma maneira prática de manipular números complexos.
- * Usando o tipo complex e as funções fornecidas, você pode realizar operações como
- * soma, multiplicação, conjugado, cálculo de módulo e argumento com facilidade.
  */
 
 int main(int argc, char **argv)
