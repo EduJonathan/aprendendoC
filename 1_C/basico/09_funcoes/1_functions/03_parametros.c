@@ -32,55 +32,48 @@ void parametros(int inteiro, char letra, float real)
 }
 
 /**
- * @brief Contabiliza e imprime vogais, consoantes, espaços, dígitos e caracteres especiais.
- *        Agora com suporte a acentos e todos os tipos de espaço (espaço, tab, etc.).
+ * @brief Analisa uma string e conta vogais, consoantes, espaços, caracteres especiais e dígitos.
  *
- * @param string String a ser analisada (não será modificada).
+ * @param str A string a ser analisada.
  */
-void checaString(const char *string)
+void checaString(const char *str)
 {
-    int qntdVogal = 0;
-    int qntdConsoante = 0;
-    int qntdEspaco = 0;
-    int qntdCaracteresEspeciais = 0;
-    int qntdDigito = 0;
-
-    for (int i = 0; string[i] != '\0'; i++)
+    if (str == NULL)
     {
-        char c = string[i];
-        char lower = tolower(c); // Converte para minúscula para facilitar comparação
-
-        if (isdigit(c))
-        {
-            qntdDigito++;
-        }
-        else if (isspace(c)) // Inclui espaço, tab, \n, etc.
-        {
-            qntdEspaco++;
-        }
-        else if (isalpha(c)) // É uma letra (inclui acentos em locale pt_BR)
-        {
-            // Vogais (incluindo acentuadas comuns em português)
-            if (lower == 'a' || lower == 'e' || lower == 'i' || lower == 'o' || lower == 'u')
-            {
-                qntdVogal++;
-            }
-            else
-            {
-                qntdConsoante++;
-            }
-        }
-        else
-        {
-            qntdCaracteresEspeciais++;
-        }
+        printf("Erro: string nula fornecida para análise.\n");
+        return;
     }
 
-    printf("Vogais: %d\n", qntdVogal);
-    printf("Consoantes: %d\n", qntdConsoante);
-    printf("Espaços: %d\n", qntdEspaco);
-    printf("Caracteres especiais: %d\n", qntdCaracteresEspeciais);
-    printf("Dígitos: %d\n", qntdDigito);
+    int v = 0, c = 0, esp = 0, esp_espec = 0, dig = 0;
+
+    // Vogais em português (incluindo acentuadas mais comuns)
+    const char *vogais = "aeiou";
+
+    for (int i = 0; str[i]; i++)
+    {
+        char ch = str[i];
+
+        if (isdigit(ch))
+            dig++;
+        else if (isspace(ch))
+            esp++;
+        else if (isalpha(ch))
+        {
+            // strrchr retorna != NULL se encontrar
+            if (strrchr(vogais, ch))
+                v++;
+            else
+                c++;
+        }
+        else
+            esp_espec++;
+    }
+
+    printf("Vogais.............: %d\n", v);
+    printf("Consoantes.........: %d\n", c);
+    printf("Espaços............: %d\n", esp);
+    printf("Caracteres especiais: %d\n", esp_espec);
+    printf("Dígitos............: %d\n", dig);
 }
 
 /**
