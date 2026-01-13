@@ -4,40 +4,6 @@
 #include <stdlib.h>
 
 /**
- * A biblioteca <stdlib.h> é uma das bibliotecas padrão mais importantes em C,
- * fornecendo funções essenciais para:
- *
- * - Alocação dinâmica de memória
- * - Conversão de tipos
- * - Geração de números aleatórios
- * - Controle de processos
- * - Operações com variáveis de ambiente
- *
- * -------------------------
- *
- * Funções de Alocação de Memória
- * As principais funções de alocação de memória disponíveis em <stdlib.h> são:
- *
- * +-----------+-------------------------------------+--------------------------------------------+
- * | Função    | Propósito                           | Sintaxe                                    |
- * +-----------+-------------------------------------+--------------------------------------------+
- * | malloc()  | Aloca memória não inicializada      | void *malloc(size_t size);                 |
- * +-----------+-------------------------------------+--------------------------------------------+
- * | calloc()  | Aloca e inicializa memória com zero | void *calloc(size_t num, size_t size);     |
- * +-----------+-------------------------------------+--------------------------------------------+
- * | realloc() | Realoca memória para novo tamanho   | void *realloc(void *ptr, size_t new_size); |
- * +-----------+-------------------------------------+--------------------------------------------+
- * | free()    | Libera memória previamente alocada  | void free(void *ptr);                      |
- * +-----------+-------------------------------------+--------------------------------------------+
- *
- * A alocação dinâmica permite:
- * - Alocar espaço de memória durante a execução do programa (tempo de execução).
- * - Alocar memória apenas quando necessária.
- * * Redimensionar blocos de memória conforme necessário.
- * - Gerenciar eficientemente recursos de memória.
- *
- * A mais utilizada nesse concenso é o malloc:
- *
  * SINTAXE: void *malloc(size_t _Size);
  *
  * @param _Size Tamanho da memória a ser alocada.
