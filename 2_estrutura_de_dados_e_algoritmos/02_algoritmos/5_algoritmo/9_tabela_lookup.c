@@ -76,63 +76,60 @@ Keyword lookup_table[KEYMAX] = {
     {"while", 0}};
 
 /**
- * @brief Função de comparação para busca binária
+ * @brief Função de autocomplete que sugere palavras com base no prefixo fornecido.
  *
- * @param a Ponteiro para o token
- * @param b Ponteiro para a estrutura Keyword
- * @return int Resultado da comparação
+ * @param prefix Prefixo digitado pelo usuário.
  */
-int compare_keywords(const void *a, const void *b)
+void autocomplete(const char *prefix)
 {
-    return strncmp((char *)a, ((Keyword *)b)->word, KEYMAX);
-}
+    int len = strlen(prefix);
+    if (len == 0)
+        return;
 
-/**
- * @brief Conta as ocorrências das keywords no texto
- *
- * @param text Texto de entrada
- */
-void count_keywords(char *text)
-{
-    char *delimiters = " ,.;:()[]\n\t\r";
-    char *token = strtok(text, delimiters);
+    int found = 0;
+    printf("\nSugestoes para '%s':\n", prefix);
+    printf("---------------------------\n");
 
-    while (token != NULL)
+    for (int i = 0; i < KEYMAX; i++)
     {
-        // Converte o token para minúsculo para garantir o match
-        for (int i = 0; token[i]; i++)
-            token[i] = tolower(token[i]);
-
-        // Realiza o LookUp usando busca binária nativa
-        Keyword *match = bsearch(token, lookup_table, KEYMAX, sizeof(Keyword), compare_keywords);
-
-        if (match)
+        // strncmp compara apenas até o comprimento do prefixo digitado
+        if (strncmp(prefix, lookup_table[i].word, len) == 0)
         {
-            match->count++;
+            printf("- %s\n", lookup_table[i].word);
+            found++;
         }
-        token = strtok(NULL, delimiters);
+    }
+
+    if (found == 0)
+    {
+        printf("Nenhuma correspondencia encontrada.\n");
+    }
+    else
+    {
+        printf("Total: %d sugestao(oes).\n", found);
     }
 }
 
 int main(int argc, char **argv)
 {
-    char input[500];
+    char search[50];
 
-    printf("Digite o texto: ");
-    if (fgets(input, sizeof(input), stdin))
+    while (1)
     {
-        count_keywords(input);
-
-        printf("\n********* Resultado do Lookup *********\n");
-        printf("%-15s %s\n", "Keyword", "Count");
-        printf("---------------------------------------\n");
-
-        for (int i = 0; i < KEYMAX; i++)
+        printf("\nDigite um caractere (Exemplo: 'a') ou as iniciais de uma palavra (Exemplo: 'un') para autocomplete (ou 'sair'): ");
+        if (fgets(search, sizeof(search), stdin))
         {
-            if (lookup_table[i].count > 0)
-            {
-                printf("%-15s %d\n", lookup_table[i].word, lookup_table[i].count);
-            }
+            // Remove o \n do fgets
+            search[strcspn(search, "\n")] = 0;
+
+            if (strcmp(search, "sair") == 0)
+                break;
+
+            // Converte para minúsculo para busca case-insensitive
+            for (int i = 0; search[i]; i++)
+                search[i] = tolower(search[i]);
+
+            autocomplete(search);
         }
     }
 
