@@ -1,6 +1,6 @@
 <!-- @format -->
 
-# Header string.h
+# Header `<string.h>`
 
 A header string.h (ou `<string.h>`) é parte da biblioteca padrão da linguagem C e fornece
 funções prontas para operar principalmente com strings, que em C são representadas por arrays

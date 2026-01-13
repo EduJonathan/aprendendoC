@@ -1,4 +1,6 @@
-# Introdução
+<!-- @format -->
+
+# Header `<wchar.h>`
 
 - O tipo char em C é normalmente usado para armazenar caracteres de 1 byte, o que o limita
   a representar apenas 256 caracteres diferentes, dependendo da codificação (geralmente ASCII).
