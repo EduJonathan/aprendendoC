@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # Estruturas Lineares
 
 São onde os dados são armazenados de forma sequencial, isso significa que cadacelemento(exceto o primeiro e o último)
@@ -80,3 +82,15 @@ Uma fila funciona como a fila de espera em um banco ou a fila de processos em um
 - Características: Acesso apenas ao primeiro elemento da fila.
 - Operações principais: enqueue (enfileirar) e dequeue (desenfileirar).
 - Aplicações: Impressoras(gestão de tarefas), Filas de processos em sistemas operacionais e transmissão de pacotes em redes.
+
+---
+
+## 🎯 Conclusão
+
+Dominar estruturas de dados lineares é fundamental para:
+
+- Escrever código eficiente.
+- Escolher a melhor solução para cada problema.
+- Entender algoritmos mais complexos.
+- Cada estrutura tem seu propósito ideal - entender suas características
+  e saber quando aplicá-las para obter o melhor desempenho em seu código.

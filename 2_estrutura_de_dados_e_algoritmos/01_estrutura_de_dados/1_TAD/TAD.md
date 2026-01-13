@@ -12,11 +12,11 @@ Conforme explicado por Embacados [neste artigo][ref-embarcados].
 
 ## Conceito de TADS
 
-A site utilizado como referência implementa o conceito de abstração de dados, proposto por `Barbara Liskov em 1974`,
-como uma ideia da abstração criada por funções. Sendo assim, cria o objetivo de definir um tipo de dado que possa ser
-independente de qualquer implementação específica e separado do utilizador da aplicação.
-Dito de outra maneira, um tipo de dado abstrato é caracterizado por definir um conjunto de valores e de operações para
-manipular esses valores.
+O site em destaque como referência implementa o conceito de abstração de dados, proposto por `Barbara Liskov em 1974`,
+como uma ideia da abstração criada por funções.
+Sendo assim, cria o objetivo de definir um tipo de dado que possa ser independente de qualquer implementação específica
+e separado do utilizador da aplicação. Dito de outra maneira, um tipo de dado abstrato é caracterizado por definir
+um conjunto de valores e de operações para manipular esses valores.
 
 ---
 
@@ -38,7 +38,7 @@ Abaixo segue a definição de cada tipo de arquivo:
 ## Exemplo
 
 ```h
-// Arquivo cabeçalho(Event.h)
+// Include Guard Para Arquivo cabeçalho(Event.h)
 #ifndef EVENT_H
 #define EVENT_H
 

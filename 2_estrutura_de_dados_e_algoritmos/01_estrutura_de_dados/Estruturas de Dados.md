@@ -64,15 +64,3 @@ visualizações e implementações de estruturas de dados e algoritmos, o que po
 Embora o LeetCode seja mais focado em desafios de programação, ele também oferece
 uma ferramenta para visualizar soluções de algoritmos, o que pode ser útil para ver
 como diferentes soluções se comportam em tempo real.
-
----
-
-## 🎯 Conclusão
-
-Dominar estruturas de dados lineares é fundamental para:
-
-- Escrever código eficiente.
-- Escolher a melhor solução para cada problema.
-- Entender algoritmos mais complexos.
-- Cada estrutura tem seu propósito ideal - entender suas características
-  e saber quando aplicá-las para obter o melhor desempenho em seu código.
