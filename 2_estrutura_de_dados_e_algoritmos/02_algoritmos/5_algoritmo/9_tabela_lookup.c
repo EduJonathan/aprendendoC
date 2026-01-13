@@ -84,7 +84,7 @@ Keyword lookup_table[KEYMAX] = {
  */
 int compare_keywords(const void *a, const void *b)
 {
-    return strcmp((char *)a, ((Keyword *)b)->word);
+    return strncmp((char *)a, ((Keyword *)b)->word, KEYMAX);
 }
 
 /**
