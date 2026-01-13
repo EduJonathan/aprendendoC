@@ -36,7 +36,7 @@ _variáveis de condição_, tornando possível o desenvolvimento de aplicações
 A biblioteca Pthreads disponibiliza uma variedade de headers e mecanismos que permitem trabalhar com
 concorrência, sincronização e controle de recursos compartilhados.
 
-📌 <pthread.h>
+### <pthread.h>
 
 - Funções para criação e controle de threads
 
@@ -60,7 +60,7 @@ concorrência, sincronização e controle de recursos compartilhados.
 
 ---
 
-📌 <semaphore.h>
+### <semaphore.h>
 
 - Funções de semáforos, Semáforos são úteis para controle de acesso a um número limitado de recursos.
 
@@ -73,7 +73,7 @@ concorrência, sincronização e controle de recursos compartilhados.
 
 ---
 
-📌 <stdatomic.h>
+### <stdatomic.h>
 
 - Operações atômicas (C11), oferece operações indivisíveis (sem necessidade de mutex em muitos casos simples).
 
@@ -84,3 +84,27 @@ concorrência, sincronização e controle de recursos compartilhados.
 | `atomic_store()`                  | Escreve um valor atômico com segurança.             |
 | `atomic_fetch_add()`              | Incrementa um valor atômico de forma segura.        |
 | `atomic_fetch_sub()`              | Decrementa um valor atômico de forma segura.        |
+
+---
+
+### Considerações
+
+> Para compilar programas que usam a biblioteca `<pthreads.h>` (e `<semaphore.h>`), utilize a flag `-pthread`:
+
+```bash
+# Programa só com pthreads (recomendado)
+gcc -Wall -pthread programa.c -o programa
+
+# Ou com g++ se for C++
+g++ -Wall -pthread programa.cpp -o programa
+
+# Programa com pthreads + stdatomic.h
+gcc -Wall -pthread -std=c11 programa.c -o programa
+# -std=c11 ou -std=c17/c18/c23 normalmente é necessário para usar _Atomic / stdatomic.h
+
+# Forma antiga (ainda funciona na maioria dos casos, mas menos recomendada hoje)
+gcc -Wall programa.c -o programa -lpthread
+```
+
+A flag `-pthread` é a forma recomendada atualmente, pois além de linkar corretamente a biblioteca, ativa definições
+apropriadas no pré-processador. A opção `-lpthread` ainda funciona em muitos casos, mas não é a abordagem ideal.
