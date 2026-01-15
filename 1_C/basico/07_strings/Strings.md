@@ -70,73 +70,73 @@ o 0 a 31 e o 127, e existem as que são utilizadas que é para impressões, send
 ---
 
 ```text
-Binário     Oct  Dec  Hex  Abrev  Notação^  Escape  Nome
+Binário     Oct  Dec  Hex  Abrev  Notação^  Escape    Nome
 ----------------------------------------------------------------------------
-00000000    000   0   00   NUL    ^@        \0      Null                   |
+| 00000000    000   0   00   NUL    ^@        \0      Null                 |
 ----------------------------------------------------------------------------
-00000001    001   1   01   SOH    ^A                Start of Header        |
+| 00000001    001   1   01   SOH    ^A                Start of Header      |
 ----------------------------------------------------------------------------
-00000010    002   2   02   STX    ^B                Start of Text          |
+| 00000010    002   2   02   STX    ^B                Start of Text        |
 ----------------------------------------------------------------------------
-00000011    003   3   03   ETX    ^C                End of Text            |
+| 00000011    003   3   03   ETX    ^C                End of Text          |
 ----------------------------------------------------------------------------
-00000100    004   4   04   EOT    ^D                End of Transmission    |
+| 00000100    004   4   04   EOT    ^D                End of Transmission  |
 ----------------------------------------------------------------------------
-00000101    005   5   05   ENQ    ^E                Enquiry                |
+| 00000101    005   5   05   ENQ    ^E                Enquiry              |
 ----------------------------------------------------------------------------
-00000110    006   6   06   ACK    ^F                Acknowledge            |
+| 00000110    006   6   06   ACK    ^F                Acknowledge          |
 ----------------------------------------------------------------------------
-00000111    007   7   07   BEL    ^G        \a      Bell                   |
+| 00000111    007   7   07   BEL    ^G        \a      Bell                 |
 ----------------------------------------------------------------------------
-00001000    010   8   08   BS     ^H        \b      Backspace              |
+| 00001000    010   8   08   BS     ^H        \b      Backspace            |
 ----------------------------------------------------------------------------
-00001001    011   9   09   HT     ^I        \t      Horizontal Tab         |
+| 00001001    011   9   09   HT     ^I        \t      Horizontal Tab       |
 ----------------------------------------------------------------------------
-00001010    012  10   0A   LF     ^J        \n      Line Feed              |
+| 00001010    012  10   0A   LF     ^J        \n      Line Feed            |
 ----------------------------------------------------------------------------
-00001011    013  11   0B   VT     ^K        \v      Vertical Tab           |
+| 00001011    013  11   0B   VT     ^K        \v      Vertical Tab         |
 ----------------------------------------------------------------------------
-00001100    014  12   0C   FF     ^L        \f      Form Feed              |
+| 00001100    014  12   0C   FF     ^L        \f      Form Feed            |
 ----------------------------------------------------------------------------
-00001101    015  13   0D   CR     ^M        \r      Carriage Return        |
+| 00001101    015  13   0D   CR     ^M        \r      Carriage Return      |
 ----------------------------------------------------------------------------
-00001110    016  14   0E   SO     ^N                Shift Out              |
+| 00001110    016  14   0E   SO     ^N                Shift Out            |
 ----------------------------------------------------------------------------
-00001111    017  15   0F   SI     ^O                Shift In               |
+| 00001111    017  15   0F   SI     ^O                Shift In             |
 ----------------------------------------------------------------------------
-00010000    020  16   10   DLE    ^P                Data Link Escape       |
+| 00010000    020  16   10   DLE    ^P                Data Link Escape     |
 ----------------------------------------------------------------------------
-00010001    021  17   11   DC1    ^Q                Device Control 1       |
+| 00010001    021  17   11   DC1    ^Q                Device Control 1     |
 ----------------------------------------------------------------------------
-00010010    022  18   12   DC2    ^R                Device Control 2       |
+| 00010010    022  18   12   DC2    ^R                Device Control 2     |
 ----------------------------------------------------------------------------
-00010011    023  19   13   DC3    ^S                Device Control 3       |
+| 00010011    023  19   13   DC3    ^S                Device Control 3     |
 ----------------------------------------------------------------------------
-00010100    024  20   14   DC4    ^T                Device Control 4       |
+| 00010100    024  20   14   DC4    ^T                Device Control 4     |
 ----------------------------------------------------------------------------
-00010101    025  21   15   NAK    ^U                Negative Ack           |
+| 00010101    025  21   15   NAK    ^U                Negative Ack         |
 ----------------------------------------------------------------------------
-00010110    026  22   16   SYN    ^V                Synchronous Idle       |
+| 00010110    026  22   16   SYN    ^V                Synchronous Idle     |
 ----------------------------------------------------------------------------
-00010111    027  23   17   ETB    ^W                End Transmission Block |
+| 00010111    027  23   17   ETB    ^W                End Transmission Bloc|
 ----------------------------------------------------------------------------
-00011000    030  24   18   CAN    ^X                Cancel                 |
+| 00011000    030  24   18   CAN    ^X                Cancel               |
 ----------------------------------------------------------------------------
-00011001    031  25   19   EM     ^Y                End of Medium          |
+| 00011001    031  25   19   EM     ^Y                End of Medium        |
 ----------------------------------------------------------------------------
-00011010    032  26   1A   SUB    ^Z                Substitute             |
+| 00011010    032  26   1A   SUB    ^Z                Substitute           |
 ----------------------------------------------------------------------------
-00011011    033  27   1B   ESC    ^[        \e      Escape                 |
+| 00011011    033  27   1B   ESC    ^[        \e      Escape               |
 ----------------------------------------------------------------------------
-00011100    034  28   1C   FS     ^\                File Separator         |
+| 00011100    034  28   1C   FS     ^\                File Separator       |
 ----------------------------------------------------------------------------
-00011101    035  29   1D   GS     ^]                Group Separator        |
+| 00011101    035  29   1D   GS     ^]                Group Separator      |
 ----------------------------------------------------------------------------
-00011110    036  30   1E   RS     ^^                Record Separator       |
+| 00011110    036  30   1E   RS     ^^                Record Separator     |
 ----------------------------------------------------------------------------
-00011111    037  31   1F   US     ^_                Unit Separator         |
+| 00011111    037  31   1F   US     ^_                Unit Separator       |
 ----------------------------------------------------------------------------
-01111111    177 127   7F   DEL    ^?                Delete                 |
+| 01111111    177 127   7F   DEL    ^?                Delete               |
 ----------------------------------------------------------------------------
 
 ```
@@ -147,7 +147,7 @@ Binário     Oct  Dec  Hex  Abrev  Notação^  Escape  Nome
 
 > Sinais de controle gráficos (imprimíveis)
 
-````text
+```text
 Binário     Oct   Dec  Hex  Caractere
 ----------------------------------------
 | 00100000 | 040 | 32 | 20 |  (espaço) |
@@ -214,7 +214,7 @@ Binário     Oct   Dec  Hex  Caractere
 ----------------------------------------
 | 00111111 | 077 | 63 | 3F |    ?      |
 ----------------------------------------
-`` `
+```
 
 ---
 
@@ -285,11 +285,11 @@ Binário     Oct   Dec  Hex Caractere
 ------------------------------------
 | 01011111 | 137 | 95 | 5F |    _  |
 ------------------------------------
-````
+```
 
 ---
 
-````text
+```text
 Binário     Oct   Dec   Hex  Caractere
 --------------------------------------
 | 01100000 | 140 | 96  | 60 |    `   |
@@ -354,7 +354,7 @@ Binário     Oct   Dec   Hex  Caractere
 --------------------------------------
 | 01111110 | 176 | 126 | 7E |    ~   |
 --------------------------------------
-`   ``
+```
 
 ---
 
@@ -362,8 +362,9 @@ Binário     Oct   Dec   Hex  Caractere
 
 Entender a tabela ASCII é essencial em C pois é assim que na linguagem funciona os tipo char ou strings em C,
 cada caractere de uma string é representado internamente por um código numérico da tabela ASCII, pois o tipo
-char nada mais é que um inteiro de 8 bits (1 byte). Assim, 'A', '0', '!' etc. são armazenados como seus valores
-inteiros correspondentes. Exemplo: 'A' → 65 em decimal.
+char nada mais é que um inteiro de 8 bits (1 byte).
+
+> Assim, 'A', '0', '!' etc. são armazenados como seus valores, inteiros correspondentes. Exemplo: 'A' → 65 em decimal.
 
 - O tipo char é um inteiro de 8 bits (1 byte)
 - Cada caractere é armazenado como um valor numérico
@@ -375,14 +376,13 @@ inteiros correspondentes. Exemplo: 'A' → 65 em decimal.
 ## ❗ Curiosidade Importante
 
 A tabela ASCII não existe fisicamente na memória.
-
-Ela é apenas um acordo histórico de mapeamento: o número 65 sempre representa a letra 'A' maiúscula.
+Ela é apenas um acordo histórico de mapeamento para cada caractere: o número 65 sempre representa a letra 'A' maiúscula.
 
 📚 Bibliotecas úteis para strings e caracteres
 
 ```c
 #include <string.h> // strlen, strcpy, strcmp, etc.
 #include <ctype.h> // isalpha, isdigit, toupper, etc.
-````
+```
 
 > Essas bibliotecas fornecem funções essenciais para manipulação e análise de strings e caracteres em C.
