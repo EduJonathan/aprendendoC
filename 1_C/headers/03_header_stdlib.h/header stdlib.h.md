@@ -92,7 +92,7 @@ Entender a diferença entre **Heap** e **Stack** é fundamental para o uso corre
 ```c
 void func() {
   int x = 10; // Alocado na Stack
-}
+} // vida útil de x termina ao sair do bloco
 ```
 
 ---
@@ -143,6 +143,7 @@ Essas funções convertem strings em valores numéricos ou realizam operações 
 > ⚠️ **Observação:**
 > Funções como `atoi`, `atof` e `atol` **não possuem verificação de erro**.
 > Prefira `strtol`, `strtod`, etc., em código profissional.
+> função `itoa` não é padrão da linguagem.
 
 ---
 

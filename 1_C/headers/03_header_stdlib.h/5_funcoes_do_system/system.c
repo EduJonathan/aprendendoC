@@ -24,18 +24,23 @@ void executaComando(const char *string) { system(string); }
 
 int main(int argc, char **argv)
 {
-    // Muda a cor do terminal(cmd) do windows
-    executaComando("color a");
 
-    // Limpa a tela do console
-    // executaComando("clear"); // Para Linux
-    // executaComando("cls"); // Para Windows
+#if defined(_WIN32)
+    executaComando("color a"); // Verde no Windows
+    executaComando("cls");
+#endif
 
-    // Escreve no terminal "echo Hello, World!"
+#if defined(__linux__)
+    executaComando("clear");
+    executaComando("echo -e \"\\033[0;32m\""); // Verde no Linux
+#endif
+
+#if defined(__linux__) || defined(_WIN32)
     executaComando("echo Hello, World!");
+#endif
 
-    // "Congela" o terminal até clicar em qualquer outra tecla para sair
-    executaComando("pause");
+    // "Congela" o terminal até clicar em qualquer outra tecla para sair(Não utilize nem no Windows PowerShell nem no Linux)
+    // executaComando("pause");
 
     return 0;
 }

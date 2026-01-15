@@ -45,7 +45,7 @@ O valor retornado pelas funções de comparação segue a regra:
 
 - < 0 → a primeira string é lexicograficamente menor que a segunda
 - == 0 → as strings são iguais
-- > 0 → a primeira string é lexicograficamente maior que a segunda
+- \> 0 → a primeira string é lexicograficamente maior que a segunda
 
 ⚠️ O valor exato retornado não é garantido (podendo retornar até mesmo qualquer valor negativo(-3 por exemplo) ou positivo), apenas o sinal importa.
 
@@ -113,7 +113,7 @@ O valor retornado pelas funções de comparação segue a regra:
 - **Strings em C:** São sequências de bytes não-nulos terminadas por '\0'.
 - **Buffer overflow:** Funções como strcpy, strcat e sprintf não verificam limites.
 - **Alternativas mais seguras (C11):** strcpy_s, strcat_s, memcpy_s (nem sempre disponíveis).
-- **Funções n:** Essas funções são as que determinam até onde a operação deva acontecer/checar.
+- **Funções `n`:** Essas funções são as que determinam até onde a operação deva acontecer/checar.
 
 - Tipos importantes:
 
