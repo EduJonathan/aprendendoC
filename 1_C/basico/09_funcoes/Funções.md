@@ -65,11 +65,11 @@ int main() {
 
 ---
 
-## Destacando os principais pontos sobre funções na linguagem C
+## Destacando os principais pontos sobre funções
 
 ### Passagem por valor vs Passagem por referência
 
-- Passagem por valor
+#### Passagem por valor
 
 Na passagem por valor, a função recebe uma cópia do valor original.
 Qualquer modificação feita dentro da função não afeta a variável no escopo chamador.
@@ -86,16 +86,16 @@ int main() {
 }
 ```
 
-- Passagem por referência (via ponteiros)
+#### Passagem por referência (via ponteiros)
 
 Em C, a passagem por referência é simulada com ponteiros. A função recebe o endereço da variável, podendo modificá-la diretamente.
 
 ```c
 void incrementa(int *x) {
+    // Sempre verifique parâmetros e ponteiros
     if(x == NULL)
         return;
     (*x)++;
-    // Sempre verifique parâmetros e ponteiros
 }
 
 int main() {
@@ -111,29 +111,25 @@ int main() {
 
 ### Recursividade
 
-Recursividade ocorre quando uma função chama a si mesma para resolver um problema, dividindo-o em versões menores até atingir um caso base.
+**Recursividade** é uma técnica de programação na qual uma função chama a si mesma para resolver um problema,
+dividindo-o em subproblemas menores até alcançar uma condição de parada. Toda função recursiva possui dois elementos fundamentais:
 
-Toda recursão possui:
-
-- **Caso base:** condição que encerra as chamadas
-- **Caso recursivo:** chamada da função para resolver parte do problema
+- Caso base: condição que encerra as chamadas recursivas.
+- Caso recursivo: chamada da própria função para resolver uma parte menor do problema.
 
 ```c
 int fatorial(int n) {
-    if (n == 0)
+    if (n == 0 || n == 1)
         return 1; // Caso base
     return n * fatorial(n-1); // Caso recursivo
 }
 ```
 
-- recursão é constituidas por:
+> Cuidados ao usar recursão
 
-- **Caso base:** Condição que determina onde a recursão deve parar suas chamadas.
-- **Caso recursivo:** É a chamada da própria função realizando operações complexas
-- **Cuidados:**
-  - **Tenha** sempre um caso base e **faça** o possível para a recursão atingi-lo, afim parar a execução e não
-    causar o **estouro(Overflow)** de pilha de chamada.
-  - **Tenha** absoluta atenção na operação do caso recursivo.
+- Sempre defina um caso base e garanta que a função eventualmente o alcance; caso contrário, ocorrerá um estouro de pilha (stack overflow).
+- Tenha atenção à lógica do caso recursivo, certificando-se de que o problema está sendo reduzido a cada chamada.
+- Evite recursão desnecessária em problemas simples, pois chamadas recursivas possuem custo maior de memória e processamento.
 
 ---
 
@@ -141,9 +137,10 @@ int fatorial(int n) {
 
 > Esse é um dos conceitos mais importantes (e invisíveis) quando se trabalha com funções, especialmente recursivas.
 
-- O que é a Pilha de Chamadas (Call Stack)?
+#### O que é a Pilha de Chamadas (Call Stack)?
 
-Sempre que uma função é chamada (inclusive a `main`), o sistema operacional reserva um bloco de memória chamado frame de ativação (ou activation record) e o coloca no topo da pilha de chamadas. Cada frame contém:
+Sempre que uma função é chamada (inclusive a `main`), o sistema operacional reserva um bloco de memória chamado
+**frame de ativação (ou activation record)** e o coloca no topo da pilha de chamadas. Cada frame contém:
 
 - Endereço de retorno (para onde voltar depois que a função terminar)
 - Parâmetros passados
@@ -153,32 +150,45 @@ Sempre que uma função é chamada (inclusive a `main`), o sistema operacional r
 > Exemplo simplificado de pilha durante recursão fatorial(4):
 
 ```text
-            TOPO DA PILHA
-        ┌────────────────────┐
-        │ fatorial(1)        │  ← caso base (retorna 1)
-        ├────────────────────┤
-        │ fatorial(2)        │  ← espera retorno * 2
-        ├────────────────────┤
-        │ fatorial(3)        │  ← espera retorno * 3
-        ├────────────────────┤
-        │ fatorial(4)        │  ← chamada inicial
-        ├────────────────────┤
-        │ main()             │
-        └────────────────────┘
-            BASE DA PILHA
+        TOPO DA PILHA
+    ┌────────────────────┐
+    │ fatorial(1)        │  ← caso base (retorna 1)
+    ├────────────────────┤
+    │ fatorial(2)        │  ← espera retorno * 2
+    ├────────────────────┤
+    │ fatorial(3)        │  ← espera retorno * 3
+    ├────────────────────┤
+    │ fatorial(4)        │  ← chamada inicial
+    ├────────────────────┤
+    │ main()             │
+    └────────────────────┘
+        BASE DA PILHA
 ```
 
-> Quando a função termina (return), seu frame é removido (pop) do topo da pilha, e o controle volta para o frame anterior.
+> A cada novo fram `(push)` Quando uma função termina `(return)`, seu frame é removido `(pop)` do topo da pilha, e o controle retorna para o frame anterior.
 
 ---
 
-- Profundidade da Pilha
+#### Profundidade da Pilha
 
-É simplesmente quantos frames da mesma função (ou cadeia de chamadas) estão empilhados ao mesmo tempo.
+A profundidade da pilha representa a **quantidade de frames** (registros de ativação) que estão empilhados
+simultaneamente durante a execução de uma função, seja por chamadas da mesma função ou por uma cadeia de chamadas diferentes.
+
+```c
+int fibonacci(int n) {
+    if (n <= 1)
+        return n;              // Caso base
+    return fibonacci(n - 1) + fibonacci(n - 2); // Caso recursivo
+}
+```
 
 > Exemplo:
 
-- fatorial(5) → profundidade máxima ≈ 6 (main + 5 chamadas)
+- fibonacci(5) → profundidade máxima ≈ 6 (cadeia mais profunda: main → fib(5) → fib(4) → fib(3) → fib(2) → fib(1))
+
+> ⚠️ Apesar de a profundidade máxima ser linear (O(n)), o número total de chamadas cresce exponencialmente (O(2ⁿ)),
+> tornando essa abordagem ineficiente para valores grandes de `n`.
+
 - Árvore binária balanceada → profundidade ≈ log₂(n)
 - Lista encadeada longa → profundidade ≈ n (pode explodir rápido!)
 
@@ -190,8 +200,7 @@ Tenha em mente que funções também **possuem endereço na memória**. A partir
 
 #### 1. Ponteiros para Função (O "Endereço")
 
-Um ponteiro para função é o nível mais baixo dessa hierarquia. Ele é literalmente uma variável que armazena o
-endereço de memória de uma função já definida.
+Um ponteiro para função é uma variável que armazena o endereço de uma função já definida.
 
 - **Onde vive:** Comum em C e C++.
 - **Limitação:** Ele aponta para um bloco de código estático. Ele não consegue "carregar" dados extras com ele (não tem estado).
@@ -222,11 +231,7 @@ int main() {
 
 #### 2. Callbacks (O "Papel/Função")
 
-O termo Callback não é uma estrutura de dados, mas sim um padrão de projeto.
-
-Um callback é qualquer pedaço de código que você passa para outra função esperando que ele
-seja `chamado de volta` (call back) em um momento específico.
-Você pode implementar um callback usando um ponteiro para função, uma interface ou uma Lambda.
+Um callback é um padrão de projeto onde uma função é passada como argumento para outra, para ser executada em um momento específico.
 
 ```c
 #include <stdio.h>
@@ -252,14 +257,13 @@ int main() {
 }
 ```
 
-> Resumo: O ponteiro para função é a ferramenta, e o callback é o uso que você dá a ela.
+> O ponteiro para função é a ferramenta; o callback é o uso que você faz dela.
 
 #### 3. Lambdas (A "Função Anônima e Inteligente")
 
-Antes de mais nada, **lambdas** não é nativo de C, sendo programável com mais técnicas como **C++**, **Java**, **Python**,
-em **C** deve ser implementada manualmente que é um desafio por si só.
-As Lambdas são funções anônimas (sem nome) definidas no meio do código. A grande diferença para o ponteiro
-de função tradicional é o `Closure` (Fechamento).
+Lambdas não são nativas de C, tendo que implementar 'manualmente', que é um desafio por si só.
+Linguagens como C++, Java e Python oferecem suporte direto. Em C, é possível simular closures
+combinando ponteiros de função com um contexto de dados.
 
 - **Estado:** Diferente de um ponteiro de função puro, uma Lambda pode `capturar` variáveis do ambiente ao seu redor.
 - **Exemplo:** Se você tem uma variável taxa = 0.1 fora da função, a Lambda consegue `ler` essa taxa e usá-la no cálculo interno,
@@ -296,6 +300,7 @@ int main() {
 - **Recursão:** problemas naturalmente hierárquicos (com cuidado)
 - **Callbacks:** comportamento customizável e desacoplado
 - **`Closures` em C:** quando é necessário combinar estado + callback
+- **Pilha de chamadas** é mais recomendado para entender recursão
 
 ---
 

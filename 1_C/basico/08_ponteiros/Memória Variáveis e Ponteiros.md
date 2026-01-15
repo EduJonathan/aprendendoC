@@ -2,9 +2,9 @@
 
 # 📌 Introdução
 
-Na programação, quase todas as operações envolvem manipulação direta da memória RAM.
-Quando declaramos variáveis ou usamos ponteiros, estamos interagindo com endereços de memória que a linguagem
-abstrai para nossa conveniência.
+Na programação, quase todas as operações envolvem manipulação direta da **memória RAM**.
+Quando declaramos variáveis ou usamos ponteiros, estamos interagindo com **endereços de memória**
+que a linguagem abstrai para nossa conveniência.
 
 > **Analogia:** imagine gerenciar um armário com milhares de gavetas numeradas, sem nenhum rótulo.
 > As linguagens nos poupam dessa loucura, permitindo trabalhar com nomes de variáveis em vez de endereços numéricos brutos.
@@ -99,17 +99,14 @@ Porque eles oferecem **controle total e eficiência**:
 
 ---
 
-## 💭 Ponteiros **NÃO** são “endereços que armazenam endereços”
+## 💭 Ponteiros **NÃO** são `endereços que armazenam endereços`
 
 É incorreto dizer que **um ponteiro é um endereço que guarda outro endereço**.
 Um ponteiro é uma **variável comum** que, por convenção e semântica, armazena o endereço de outra variável.
 O fato de o próprio ponteiro possuir um endereço é apenas consequência de toda variável precisar ocupar um espaço na memória.
 
-- 💡 Observação importante:
-
-> Essa semântica padrão de alojar dados em espaços na memória, equivale a **TODOS** os tipos de dados
-> (**int**, **float**, **structs**, etc...) Tanto para C, quanto qualquer linguagem, mas em C temos mais acesso,
-> e com ponteiros não seria diferente, porém ele possuem esta caracteristica especial
+> 💡 Todos os tipos de dados (int, float, struct, etc.) ocupam espaço na memória.
+> Ponteiros seguem a mesma regra, mas possuem a semântica especial de representar endereços.
 
 ---
 
@@ -132,17 +129,18 @@ Porque ponteiros são **tipos parametrizados**:
 - `struct Pessoa *`
 
 Cada ponteiro carrega informação sobre o tipo e o tamanho do dado apontado.
-O mais próximo de um “ponteiro genérico” é o `void *`, que pode armazenar qualquer endereço,
-mas perde a informação de tipo — exigindo _cast_ para dereferenciar.
+O mais próximo de um `ponteiro genérico` é o `void *`, que poderíamos definir como um tipo `pointer`,
+que pode armazenar qualquer endereço, mas perde a informação de tipo — exigindo _cast_ para dereferenciar.
 
 ---
 
-## 💭 Curiosidade — Por que os dados são armazenados em binário?
+💭 Curiosidade — Por que os dados são armazenados em binário?
 
-Computadores operam com circuitos eletrônicos que possuem dois estados básicos: `ligado (1)` e `desligado (0)`.
-Esses estados são facilmente representados fisicamente por transistores, tornando o sistema binário a forma mais
-eficiente de representar qualquer tipo de dado. Então para facilitar a leitura humana, valores binários são frequentemente
-exibidos em formatos decimal ou hexadecimal por meio de formatadores como `%d` e `%x`.
+Computadores operam com circuitos eletrônicos que possuem dois estados estáveis: `ligado (1)` e `desligado (0)`.
+Esses estados são facilmente representados por transistores, tornando o sistema binário a forma mais confiável
+e eficiente de representar informações.
+Então para facilitar a leitura humana, valores binários são frequentemente exibidos em decimal ou hexadecimal,
+utilizando formatadores como `%d` e `%x.`
 
 ---
 

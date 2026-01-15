@@ -132,7 +132,7 @@ int main(void) {
 
 ### Bit-fiels (Campos de bits)
 
-Os campos de bits permitem que você especifique exatamente quantos bits cada membro de uma struct deve ocupar.
+Os **campos de bits** permitem que você especifique exatamente quantos bits cada membro de uma struct deve ocupar.
 Isso é essencial em programação de baixo nível (como drivers ou sistemas embarcados)
 para economizar memória ou mapear registradores de hardware.
 
@@ -152,10 +152,16 @@ struct Status {
 
 ---
 
-### Union e seu compartilhamento "estranho" de memória
+### `union` e o compartilhamento de memória
 
-A union é diferente da struct, apesar dela fazer as mesmas coisas, ela não soma os tamanhos.
-Ela reserva apenas o espaço do maior membro. Todos os membros começam no mesmo endereço de memória.
+Apesar de union e struct possuírem sintaxe semelhante, seu comportamento em memória é diferente.
+
+- struct: soma os tamanhos dos membros (com padding)
+- union: reserva apenas o espaço do maior membro
+
+Todos os membros de uma union começam no mesmo endereço de memória.
+
+---
 
 > Regra de ouro: Você pode armazenar vários tipos, mas só pode ler um por vez (o último que foi gravado).
 
@@ -165,11 +171,12 @@ union Dado {
     char c;     // 1 byte
     double d;   // 8 bytes
 };
-
 // sizeof(union Dado) será 8 bytes (o tamanho do double).
 ```
 
-Mas gera uma dúvida **E SE**
+---
+
+**E se** os maiores tipos tiverem o mesmo tamanho?
 
 ```c
 union Dado {
@@ -177,8 +184,7 @@ union Dado {
     char c;   // 1 byte
     float d; // 4 bytes
 };
-
-// Qual o tamanho dessa union, sendo que ela possui de maior tanto **int** e **float** possuem os mesmos 4 bytes, mas são tipos diferentes?
+// Qual o tamanho dessa union? sendo que ela possui de maior tanto **int** e **float** possuem os mesmos 4 bytes, mas são tipos diferentes
 ```
 
 ---
@@ -187,8 +193,7 @@ union Dado {
 
 > O tamanho de uma union é igual ao tamanho do maior membro, arredondado para atender aos  
 > requisitos de alinhamento do membro mais exigente. Ou seja: O compilador analisa todos os membros  
-> O maior tamanho é 4 bytes.  
-> O maior alinhamento exigido é 4 bytes.
+> O maior tamanho é 4 bytes. O maior alinhamento exigido é 4 bytes.
 
 Descobrindo o seguinte:
 
@@ -202,17 +207,18 @@ Descobrindo o seguinte:
 
 ### Sobre Enums
 
-Com enums não há padding interno e não há alinhamento interno, O enum é tratado como um único valor inteiro.
-
----
+Enums não possuem padding interno nem alinhamento entre membros, pois são tratados como um único valor inteiro.
 
 ### 📏 Qual o tamanho de um enum?
 
-- Depende da implementação (isso é importante!).
+Depende da implementação (isso é importante!). Na prática: Em muitos compiladores (GCC, Clang, MSVC):
 
-Na prática: Em muitos compiladores (GCC, Clang, MSVC): `sizeof(enum) == sizeof(int)` (normalmente 4 bytes),
-Mas o padrão C diz: Um enum deve ser capaz de representar todos os seus valores. Ou seja, O compilador pode escolher
-o menor tipo inteiro capaz de armazenar os valores do enum.
+```c
+sizeof(enum) == sizeof(int) // normalmente 4 bytes
+```
+
+Porém, o padrão C apenas exige que o tipo escolhido seja capaz de representar todos os valores do `enum`.
+O compilador pode optar pelo menor tipo inteiro suficiente.
 
 ---
 
@@ -226,10 +232,13 @@ o menor tipo inteiro capaz de armazenar os valores do enum.
 
 ---
 
-- Atenção ao usar `-fshort-enums`
-  - Não é portável
-  - Pode quebrar ABI
-  - Pode causar incompatibilidade entre módulos
+### Atenção ao usar `-fshort-enums`
+
+- Não é portável
+- Pode quebrar ABI
+- Pode causar incompatibilidade entre módulos
+
+---
 
 Não recomendável para:
 
@@ -237,16 +246,17 @@ Não recomendável para:
 - código compartilhado
 - interfaces públicas
 
+---
+
 ```c
 enum Pequeno {
     A,
     B,
     C
 };
-
 // Configuração  sizeof(enum)
 // Padrão        4 bytes
 // -fshort-enums 1 byte
 ```
 
-> Resumo: `-fshort-enums` troca segurança e portabilidade por economia de memória.
+> Resumo: `-fshort-enums` troca **segurança** e **portabilidade** por **economia de memória**.
