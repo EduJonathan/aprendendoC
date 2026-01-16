@@ -165,7 +165,7 @@ Sempre que uma função é chamada (inclusive a `main`), o sistema operacional r
         BASE DA PILHA
 ```
 
-> A cada novo fram `(push)` Quando uma função termina `(return)`, seu frame é removido `(pop)` do topo da pilha, e o controle retorna para o frame anterior.
+> A cada novo frame `(push)` Quando uma função termina `(return)`, seu frame é removido `(pop)` do topo da pilha, e o controle retorna para o frame anterior.
 
 ---
 

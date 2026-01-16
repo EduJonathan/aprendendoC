@@ -156,8 +156,8 @@ struct Status {
 
 Apesar de union e struct possuírem sintaxe semelhante, seu comportamento em memória é diferente.
 
-- struct: soma os tamanhos dos membros (com padding)
-- union: reserva apenas o espaço do maior membro
+- **struct:** soma os tamanhos dos membros (com padding)
+- **union:** reserva apenas o espaço do maior membro
 
 Todos os membros de uma union começam no mesmo endereço de memória.
 
