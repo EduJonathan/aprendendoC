@@ -114,6 +114,11 @@ O valor retornado pelas funções de comparação segue a regra:
 - **Buffer overflow:** Funções como strcpy, strcat e sprintf não verificam limites.
 - **Alternativas mais seguras (C11):** strcpy_s, strcat_s, memcpy_s (nem sempre disponíveis).
 - **Funções `n`:** Essas funções são as que determinam até onde a operação deva acontecer/checar.
+- **Funções `n`:** Apesar de serem seguras, **NÃO** substituem 100% seus derivados por completo.
+
+  - **Comportamento diferente:** strncpy() não garante \0 no final se n for muito pequeno
+  - **Eficiência:** strncpy() preenche o restante do buffer com \0 quando a string fonte é menor
+  - **Casos específicos:** Às vezes você quer comportamento diferente
 
 - Tipos importantes:
 
