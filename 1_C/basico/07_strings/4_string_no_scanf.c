@@ -72,6 +72,10 @@ int main(int argc, char **argv)
 	setbuf(stdin, NULL);
 
 	printf("\nNome: %s %s \nSEXO: %c\n", primeiro_nome, segundo_nome, sexo);
+	
+	/* Limpa o buffer de forma portátil */
+	int c = 0;
+	while ((c = getchar()) != '\n' && c != EOF);
 
 	printf("\n=============================================================================\n");
 	printf("\n\t>>SCANF-APRIMORADO PARA STRINGS<<\n");
@@ -90,9 +94,8 @@ int main(int argc, char **argv)
 	char str_input_aprimorado[20] = {0};
 
 	printf("Digite seu primeiro e segundo nome: ");
-	scanf("%19s[^\n]", str_input_aprimorado);
+	scanf("%19[^\n]", str_input_aprimorado);
 	printf("Seu nome completo é: %s\n", str_input_aprimorado);
-	setbuf(stdin, NULL);
 
 	/**
 	 * @note scanf("%[^\n]", str_input_aprimorado);
@@ -109,12 +112,16 @@ int main(int argc, char **argv)
 	 * porém lembre-se, NÃO é uma boa prática ultrapassar os limites do vetor.
 	 */
 
+	/* Limpa o buffer de forma portátil */
+	c = 0;
+	while ((c = getchar()) != '\n' && c != EOF);
+
 	printf("\n-----------------------------------------------------\n");
 
-	// Trecho de código verifica cada atributo do vetor(índice, conteúdo e endereço de memória).
+	/* Verifica cada posição do vetor */
 	for (int i = 0; str_input_aprimorado[i] != '\0'; i++)
 	{
-		printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, str_input_aprimorado[i], &str_input_aprimorado[i]);
+		printf("Índice: %d\tConteúdo: %c\tEndereço: %p\n", i, str_input_aprimorado[i], (void *)&str_input_aprimorado[i]);
 	}
 	return 0;
 }
