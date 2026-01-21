@@ -61,6 +61,17 @@ O IEEE 754 suporta diferentes níveis de precisão, cada um com sua estrutura e 
 
 - **Binário:** `1 10000001 10010000000000000000000`
 - **Hexadecimal:** `0xC0C80000`
+- **Octal:** `30062000000₈`
+- **Decimal:** `-6.25`
+
+---
+
+### 4. Entendimento rápido
+
+- **Sinal =** `1 → número negativo`
+- **Expoente =** `10000001₂ = 129 → 129 − 127 = 2`
+- **Mantissa =** `1.1001₂ = 1.5625`
+- **Valor =** `−1.5625 × 2² = −6.25`
 
 ---
 
@@ -78,8 +89,8 @@ O IEEE 754 padroniza a representação de situações que fogem do normal:
 > **Importância**: Essas representações permitem que operações continuem de forma controlada, sem travar o programa,
 > e são essenciais para detecção de erros. Existem dois tipos de NaN:
 
-- NaN Silencioso (quiet NaN): Propaga através das operações sem gerar exceção
-- NaN Sinalizador (signaling NaN): Gera uma exceção quando usado em operações
+- **NaN Silencioso (quiet NaN):** Propaga através das operações sem gerar exceção
+- **NaN Sinalizador (signaling NaN):** Gera uma exceção quando usado em operações
 
 ---
 
@@ -98,7 +109,7 @@ float x = 0.1; # Na verdade, armazena ≈ 0.10000000149011612
 # Exemplo famoso:
 float a = 0.1;
 float b = 0.2;
-float c = a + b; # // c ≠ 0.3, mas algo como 0.300000004
+float c = a + b; # c ≠ 0.3, mas algo como 0.300000004
 ```
 
 > Isso ocorre porque `0.1` e `0.2` não são representáveis exatamente em binário, causando erros na soma.
@@ -114,8 +125,8 @@ float c = a + b; # // c ≠ 0.3, mas algo como 0.300000004
 
 ### Não Associatividade
 
-> Devido a arredondamentos, operações em ponto flutuante não são associativas:  
-> operações como: `(a + b) + c` podem diferir de `a + (b + c)`
+> Devido a arredondamentos, operações em ponto flutuante não são associativas, operações como:  
+> `(a + b) + c` podem diferir de `a + (b + c)`
 
 ---
 
@@ -123,17 +134,9 @@ float c = a + b; # // c ≠ 0.3, mas algo como 0.300000004
 
 ### 1. Conversores e Visualizadores
 
-#### IEEE 754 Converter
-
-[babbage.cs.qc.cuny.edu](https://babbage.cs.qc.cuny.edu/IEEE-754/)
-
 #### FloatConverter
 
 [h-schmidt.net](https://www.h-schmidt.net/FloatConverter/IEEE754.html)
-
-#### IEEE-754 Analysis
-
-[babbage.cs.qc.cuny.edu](https://babbage.cs.qc.cuny.edu/IEEE-754/analysis.xhtml)
 
 ---
 
@@ -150,14 +153,6 @@ float c = a + b; # // c ≠ 0.3, mas algo como 0.300000004
 #### Binary Convert
 
 [binaryconvert.com](https://www.binaryconvert.com)
-
----
-
-### 3. Ferramentas para Casos Especiais
-
-#### NaN Box Debugger
-
-[bartaz.github.io](https://bartaz.github.io/nan-boxing/)
 
 ---
 
