@@ -1,6 +1,6 @@
 # Interfaces Gráficas (GUI)
 
-Uma GUI (Graphical User Interface) é toda interface visual utilizada por um programa para interação com o usuário.
+Uma **GUI (Graphical User Interface)** é toda interface visual utilizada por um programa para interação com o usuário.
 Diferente de aplicações em modo texto (como consoles), a GUI depende de elementos visuais como:
 
 - janelas
@@ -18,7 +18,7 @@ principalmente o mouse, o teclado e, em sistemas modernos, até toque.
 
 ## 🎮 Programação orientada a eventos
 
-GUIs funcionam através de eventos. Ao invés de seguir um fluxo linear de cima para baixo, o programa:
+`GUIs` funcionam através de eventos. Ao invés de seguir um fluxo linear de cima para baixo, o programa:
 
 1. fica escutando eventos gerados pelo usuário ou pelo sistema.
 2. processa esses eventos quando acontecem.
