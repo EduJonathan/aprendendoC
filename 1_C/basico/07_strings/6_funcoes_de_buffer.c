@@ -25,7 +25,7 @@
  * - Também não remove dados já presentes no buffer.
  *
  * 4. Limpeza manual do buffer (FORMA CORRETA E PORTÁVEL):
- * - Lê e descarta caracteres até encontrar '\n' ou EOF.
+ * - Lê e descarta caracteres até encontrar '\n' ou EOF(End of File / Fim do arquivo).
  *
  *   int c;
  *   while ((c = getchar()) != '\n' && c != EOF);
@@ -90,7 +90,8 @@ int main(int argc, char **argv)
 
     /* Limpeza manual do buffer (forma portável) */
     int c = 0;
-    while ((c = getchar()) != '\n' && c != EOF);
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
 
     printf("Digite mais uma palavra: ");
     scanf("%99s", letra);
@@ -118,7 +119,8 @@ int main(int argc, char **argv)
     printf("Utilizando fgets e sscanf (MELHOR PRÁTICA)\n");
 
     /* Limpa o buffer antes do fgets */
-    while ((c = getchar()) != '\n' && c != EOF);
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
 
     char buffer[100];
     printf("Digite uma palavra final: ");
