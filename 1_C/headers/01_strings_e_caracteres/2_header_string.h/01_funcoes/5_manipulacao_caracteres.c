@@ -5,16 +5,14 @@
 
 // Definindo explicitamente que estamos no Windows para usar strtok_s
 #ifdef _WIN32
-// strtok_s está disponível nativamente
+    // strtok_s está disponível nativamente
 #else
-// Em sistemas não-Windows, podemos definir um alias ou desabilitar
+    // Em sistemas não-Windows, podemos definir um alias ou desabilitar
 #warning strtok_s nao esta disponivel nativamente neste sistema. Demo sera ignorada.
-#define NO_STRTOK_S
+    #define NO_STRTOK_S
 #endif
 
-/**
- * Enum para identificar qual função estamos testando
- */
+// Enum para identificar qual função estamos testando
 typedef enum
 {
     FUNC_STRSPN,
@@ -28,11 +26,11 @@ typedef enum
  */
 typedef struct
 {
-    const char *str;     // string principal
-    const char *charset; // conjunto de caracteres aceitos/rejeitados (para spn/cspn)
-    size_t result;       // valor retornado pela função
+    const char *str;       // string principal
+    const char *charset;   // conjunto de caracteres aceitos/rejeitados (para spn/cspn)
+    size_t result;         // valor retornado pela função
     MANIPULE_STRINGS type; // qual função foi usada
-    char *token_example; // usado apenas para demonstrar strtok/strtok_s
+    char *token_example;   // usado apenas para demonstrar strtok/strtok_s
 } Resultado_Testes;
 
 /**

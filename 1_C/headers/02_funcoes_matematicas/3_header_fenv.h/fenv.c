@@ -325,16 +325,17 @@ void test_rounding_impact(void)
     set_rounding_mode(original_mode);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
     printf("===============================================\n");
     printf("TESTE DA BIBLIOTECA <fenv.h>\n");
+    
     printf("Compilador: %s\n",
-#if defined(__STDC_VERSION__)
+        #if defined(__STDC_VERSION__)
            __STDC_VERSION__ >= 199901L ? "C99 ou superior" : "C89/C90"
-#else
+        #else
            "Desconhecido"
-#endif
+        #endif
     );
 
     printf("IEEE 754 Suportado: %s\n", FE_TONEAREST == 0 ? "Provavelmente SIM" : "Verificar implementação");

@@ -21,18 +21,20 @@ typedef enum
 typedef int (*UnaryFunc)(double);          // Ponteiro para função para quem depende de um argumento
 typedef int (*BinaryFunc)(double, double); // Ponteiro para função para quem depende de dois argumentos
 
+// Funções que checam operações matemáticas de comparação e classificação unárias
 static int w_fpclassify(double x) { return fpclassify(x); }
-static int w_isinf(double x) { return isinf(x); }
-static int w_isnan(double x) { return isnan(x); }
-static int w_isnormal(double x) { return isnormal(x); }
-static int w_isfinite(double x) { return isfinite(x); }
+static int w_isinf(double x)      { return isinf(x); }
+static int w_isnan(double x)      { return isnan(x); }
+static int w_isnormal(double x)   { return isnormal(x); }
+static int w_isfinite(double x)   { return isfinite(x); }
 
-static int w_isgreater(double x, double y) { return isgreater(x, y); }
+// Funções que checam operações matemáticas de comparação binárias
+static int w_isgreater(double x, double y)      { return isgreater(x, y); }
 static int w_isgreaterequal(double x, double y) { return isgreaterequal(x, y); }
-static int w_isless(double x, double y) { return isless(x, y); }
-static int w_islessequal(double x, double y) { return islessequal(x, y); }
-static int w_islessgreater(double x, double y) { return islessgreater(x, y); }
-static int w_isunordered(double x, double y) { return isunordered(x, y); }
+static int w_isless(double x, double y)         { return isless(x, y); }
+static int w_islessequal(double x, double y)    { return islessequal(x, y); }
+static int w_islessgreater(double x, double y)  { return islessgreater(x, y); }
+static int w_isunordered(double x, double y)    { return isunordered(x, y); }
 
 /* Descrição da operação */
 typedef struct
@@ -47,18 +49,17 @@ typedef struct
 /* Tabela central */
 static const MathOperation ops[MATH_COUNT] =
     {
-        {MATH_FPCLASSIFY, "fpclassify", 1, w_fpclassify, NULL},
-        {MATH_ISINF, "isinf", 1, w_isinf, NULL},
-        {MATH_ISNAN, "isnan", 1, w_isnan, NULL},
-        {MATH_ISNORMAL, "isnormal", 1, w_isnormal, NULL},
-        {MATH_ISFINITE, "isfinite", 1, w_isfinite, NULL},
-        {MATH_ISGREATER, "isgreater", 2, NULL, w_isgreater},
-        {MATH_ISGREATEREQUAL, "isgreaterequal", 2, NULL, w_isgreaterequal},
-        {MATH_ISLESS, "isless", 2, NULL, w_isless},
-        {MATH_ISLESSEQUAL, "islessequal", 2, NULL, w_islessequal},
-        {MATH_ISLESSGREATER, "islessgreater", 2, NULL, w_islessgreater},
-        {MATH_ISUNORDERED, "isunordered", 2, NULL, w_isunordered}};
-
+        {MATH_FPCLASSIFY,     "fpclassify",     1, w_fpclassify, NULL},
+        {MATH_ISINF,          "isinf",          1, w_isinf,      NULL},
+        {MATH_ISNAN,          "isnan",          1, w_isnan,      NULL},
+        {MATH_ISNORMAL,       "isnormal",       1, w_isnormal,   NULL},
+        {MATH_ISFINITE,       "isfinite",       1, w_isfinite,   NULL},
+        {MATH_ISGREATER,      "isgreater",      2, NULL,         w_isgreater},
+        {MATH_ISGREATEREQUAL, "isgreaterequal", 2, NULL,         w_isgreaterequal},
+        {MATH_ISLESS,         "isless",         2, NULL,         w_isless},
+        {MATH_ISLESSEQUAL,    "islessequal",    2, NULL,         w_islessequal},
+        {MATH_ISLESSGREATER,  "islessgreater",  2, NULL,         w_islessgreater},
+        {MATH_ISUNORDERED,    "isunordered",    2, NULL,         w_isunordered}};
 /**
  * @brief Avalia a operação matemática.
  *
@@ -73,7 +74,6 @@ static int math_eval(MathOpType type, double x, double y)
 
     if (op->arity == 1)
         return op->unary(x);
-
     return op->binary(x, y);
 }
 
@@ -155,10 +155,10 @@ int main(int argc, char **argv)
         double x = valores[i]; // Preenche `x` com os valores de teste
 
         print_result(MATH_FPCLASSIFY, x, 0.0);
-        print_result(MATH_ISINF, x, 0.0);
-        print_result(MATH_ISNAN, x, 0.0);
-        print_result(MATH_ISNORMAL, x, 0.0);
-        print_result(MATH_ISFINITE, x, 0.0);
+        print_result(MATH_ISINF,      x, 0.0);
+        print_result(MATH_ISNAN,      x, 0.0);
+        print_result(MATH_ISNORMAL,   x, 0.0);
+        print_result(MATH_ISFINITE,   x, 0.0);
 
         printf("--------------------------------------------------\n");
     }
@@ -166,17 +166,19 @@ int main(int argc, char **argv)
     /* ---- Testes binários ---- */
     printf("\n--- Testes de Comparação ---\n\n");
 
+    // Pares de valores para comparação
     double pares[][2] = {
-        {1.0, 2.0},
-        {2.0, 1.0},
-        {1.0, 1.0},
-        {NAN, 1.0},
-        {1.0, NAN},
-        {NAN, NAN},
-        {INFINITY, 1.0},
-        {1.0, INFINITY},
+        {1.0,       2.0},
+        {2.0,       1.0},
+        {1.0,       1.0},
+        {NAN,       1.0},
+        {1.0,       NAN},
+        {NAN,       NAN},
+        {INFINITY,  1.0},
+        {1.0,       INFINITY},
         {-INFINITY, INFINITY}};
 
+    // Lista das operações de comparação
     MathOpType comparacoes[] = {
         MATH_ISGREATER,
         MATH_ISGREATEREQUAL,

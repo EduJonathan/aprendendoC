@@ -27,30 +27,30 @@ typedef enum
 // Estrutura para operações de ctype
 typedef struct
 {
-    CtypeFunction type;    // Tipo da função
-    const char *name;      // Nome da função
-    int (*classify)(int);  // Ponteiro para função que classifica caracteres
-    int (*transform)(int); // Ponteiro para função que transforma caracteres
+    CtypeFunction type;     // Tipo da função
+    const char *name;       // Nome da função
+    int (*classify) (int);  // Ponteiro para função que classifica caracteres
+    int (*transform)(int);  // Ponteiro para função que transforma caracteres
 } CtypeOperation;
 
 // Definição do array de operações, detalhe isascii não é padrão C, então se não estiver disponível
 // pode ser substituído por uma função personalizada, ou apenas removido se não for necessário.
 const CtypeOperation CTYPE_OPERATIONS[CTYPE_COUNT] = {
-    {CTYPE_ISASCII, "isascii", isascii, NULL},
-    {CTYPE_ISALNUM, "isalnum", isalnum, NULL},
-    {CTYPE_ISALPHA, "isalpha", isalpha, NULL},
-    {CTYPE_ISBLANK, "isblank", isblank, NULL},
-    {CTYPE_ISCNTRL, "iscntrl", iscntrl, NULL},
-    {CTYPE_ISDIGIT, "isdigit", isdigit, NULL},
-    {CTYPE_ISGRAPH, "isgraph", isgraph, NULL},
-    {CTYPE_ISLOWER, "islower", islower, NULL},
-    {CTYPE_ISPRINT, "isprint", isprint, NULL},
-    {CTYPE_ISPUNCT, "ispunct", ispunct, NULL},
-    {CTYPE_ISSPACE, "isspace", isspace, NULL},
-    {CTYPE_ISUPPER, "isupper", isupper, NULL},
+    {CTYPE_ISASCII,  "isascii",  isascii,  NULL},
+    {CTYPE_ISALNUM,  "isalnum",  isalnum,  NULL},
+    {CTYPE_ISALPHA,  "isalpha",  isalpha,  NULL},
+    {CTYPE_ISBLANK,  "isblank",  isblank,  NULL},
+    {CTYPE_ISCNTRL,  "iscntrl",  iscntrl,  NULL},
+    {CTYPE_ISDIGIT,  "isdigit",  isdigit,  NULL},
+    {CTYPE_ISGRAPH,  "isgraph",  isgraph,  NULL},
+    {CTYPE_ISLOWER,  "islower",  islower,  NULL},
+    {CTYPE_ISPRINT,  "isprint",  isprint,  NULL},
+    {CTYPE_ISPUNCT,  "ispunct",  ispunct,  NULL},
+    {CTYPE_ISSPACE,  "isspace",  isspace,  NULL},
+    {CTYPE_ISUPPER,  "isupper",  isupper,  NULL},
     {CTYPE_ISXDIGIT, "isxdigit", isxdigit, NULL},
-    {CTYPE_TOLOWER, "tolower", NULL, tolower},
-    {CTYPE_TOUPPER, "toupper", NULL, toupper}};
+    {CTYPE_TOLOWER,  "tolower",  NULL,     tolower},
+    {CTYPE_TOUPPER,  "toupper",  NULL,     toupper}};
 
 // Estrutura para resultados em caracteres
 typedef struct

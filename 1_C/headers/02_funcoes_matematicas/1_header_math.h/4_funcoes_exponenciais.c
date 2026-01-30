@@ -23,13 +23,13 @@ typedef struct
     int num_args; // 1 ou 2 (ldexp usa 2)
 
     /* Funções principais */
-    float (*f_func)(float, float);
-    double (*d_func)(double, double);
+    float       (*f_func)(float, float);
+    double      (*d_func)(double, double);
     long double (*ld_func)(long double, long double);
 
     /* Para frexp e modf: retornam a parte fracionária e preenchem expoente/inteiro via ponteiro */
-    float (*f_frac)(float, int *);
-    double (*d_frac)(double, int *);
+    float       (*f_frac)(float, int *);
+    double      (*d_frac)(double, int *);
     long double (*ld_frac)(long double, int *);
 } MathOperation;
 
@@ -91,16 +91,20 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_EXPONENCIAIS type
     /* Funções normais (exp, exp2, log*, ldexp) */
     if (op->f_func)
         res.f_result = op->f_func((float)x, (float)y);
+
     if (op->d_func)
         res.d_result = op->d_func(x, y);
+
     if (op->ld_func)
         res.ld_result = op->ld_func((long double)x, (long double)y);
 
     /* Funções que retornam fração e preenchem expoente/inteiro */
     if (op->f_frac)
         res.f_result = op->f_frac((float)x, &res.f_exp);
+
     if (op->d_frac)
         res.d_result = op->d_frac(x, &res.d_exp);
+
     if (op->ld_frac)
         res.ld_result = op->ld_frac((long double)x, &res.ld_exp);
 
@@ -123,12 +127,9 @@ void print_math_result(const ResultadosMatematicos *r)
 
     if (r->type == MATH_FREXP || r->type == MATH_MODF)
     {
-        printf("  float:       fração = %.9g    %s = %d\n",
-               r->f_result, (r->type == MATH_FREXP ? "expoente" : "inteiro"), r->f_exp);
-        printf("  double:      fração = %.17g   %s = %d\n",
-               r->d_result, (r->type == MATH_FREXP ? "expoente" : "inteiro"), r->d_exp);
-        printf("  long double: fração = %.21Lg  %s = %d\n",
-               r->ld_result, (r->type == MATH_FREXP ? "expoente" : "inteiro"), r->ld_exp);
+        printf("  float:       fração = %.9g    %s = %d\n", r->f_result, (r->type == MATH_FREXP ? "expoente" : "inteiro"), r->f_exp);
+        printf("  double:      fração = %.17g   %s = %d\n", r->d_result, (r->type == MATH_FREXP ? "expoente" : "inteiro"), r->d_exp);
+        printf("  long double: fração = %.21Lg  %s = %d\n", r->ld_result, (r->type == MATH_FREXP ? "expoente" : "inteiro"), r->ld_exp);
     }
     else
     {

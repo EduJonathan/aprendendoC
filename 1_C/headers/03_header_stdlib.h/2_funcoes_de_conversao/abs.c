@@ -23,8 +23,8 @@ typedef struct
 } AbsMetadata;
 
 const AbsMetadata ABS_LOOKUP[ABS_COUNT] = {
-    [ABS_INT] = {ABS_INT, "abs", "%d"},
-    [ABS_LONG] = {ABS_LONG, "labs", "%ld"},
+    [ABS_INT]   = {ABS_INT,   "abs",   "%d"},
+    [ABS_LONG]  = {ABS_LONG,  "labs",  "%ld"},
     [ABS_LLONG] = {ABS_LLONG, "llabs", "%lld"},
 };
 

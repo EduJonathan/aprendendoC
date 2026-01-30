@@ -81,50 +81,49 @@ void executar_operacao_memoria(Operacao_Memoria op)
 
     switch (op.type)
     {
-    case MEM_MEMCPY:
-    case MEM_MEMMOVE:
-    {
-        const unsigned char *src_bytes = (const unsigned char *)op.src;
-        printf("Copiando %zu bytes de src=[%02X %02X %02X ...] para dest\n", op.n,
-               src_bytes[0], src_bytes[1], src_bytes[2] >= op.n ? 0 : src_bytes[2]);
+        case MEM_MEMCPY:
+        case MEM_MEMMOVE:
+        {
+            const unsigned char *src_bytes = (const unsigned char *)op.src;
+            printf("Copiando %zu bytes de src=[%02X %02X %02X ...] para dest\n", op.n,
+                src_bytes[0], src_bytes[1], src_bytes[2] >= op.n ? 0 : src_bytes[2]);
 
-        void *resultado = NULL;
-        if (op.type == MEM_MEMCPY)
-            resultado = memcpy(op.dest, op.src, op.n);
-        else
-            resultado = memmove(op.dest, op.src, op.n);
+            void *resultado = NULL;
+            if (op.type == MEM_MEMCPY)
+                resultado = memcpy(op.dest, op.src, op.n);
+            else
+                resultado = memmove(op.dest, op.src, op.n);
 
-        unsigned char *dest_bytes = (unsigned char *)op.dest;
-        printf("→ dest após operação = [%02X %02X %02X ...] (retorno: %p)\n",
-               dest_bytes[0], dest_bytes[1], dest_bytes[2] >= op.n ? 0 : dest_bytes[2], resultado);
-        break;
-    }
-    case MEM_MEMSET:
-    {
-        printf("Preenchendo %zu bytes de dest com valor %d (0x%02X)\n",
-               op.n, op.fill_value, (unsigned char)op.fill_value);
+            unsigned char *dest_bytes = (unsigned char *)op.dest;
+            printf("→ dest após operação = [%02X %02X %02X ...] (retorno: %p)\n",
+                dest_bytes[0], dest_bytes[1], dest_bytes[2] >= op.n ? 0 : dest_bytes[2], resultado);
+            break;
+        }
+        case MEM_MEMSET:
+        {
+            printf("Preenchendo %zu bytes de dest com valor %d (0x%02X)\n", op.n, op.fill_value, (unsigned char)op.fill_value);
 
-        void *resultado = memset(op.dest, op.fill_value, op.n);
+            void *resultado = memset(op.dest, op.fill_value, op.n);
 
-        unsigned char *dest_bytes = (unsigned char *)op.dest;
-        printf("→ dest após operação = [%02X %02X %02X ...] (retorno: %p)\n",
-               dest_bytes[0], dest_bytes[1], dest_bytes[2] >= op.n ? dest_bytes[0] : dest_bytes[2], resultado);
-        break;
-    }
-    case MEM_MEMCMP:
-    {
-        const unsigned char *src_bytes = (const unsigned char *)op.src;
-        const unsigned char *dest_bytes = (const unsigned char *)op.dest;
+            unsigned char *dest_bytes = (unsigned char *)op.dest;
+            printf("→ dest após operação = [%02X %02X %02X ...] (retorno: %p)\n",
+                dest_bytes[0], dest_bytes[1], dest_bytes[2] >= op.n ? dest_bytes[0] : dest_bytes[2], resultado);
+            break;
+        }
+        case MEM_MEMCMP:
+        {
+            const unsigned char *src_bytes = (const unsigned char *)op.src;
+            const unsigned char *dest_bytes = (const unsigned char *)op.dest;
 
-        printf("Comparando %zu bytes: dest=[%02X %02X %02X ...] vs src=[%02X %02X %02X ...]\n",
-               op.n,
-               dest_bytes[0], dest_bytes[1], dest_bytes[2] >= op.n ? 0 : dest_bytes[2],
-               src_bytes[0], src_bytes[1], src_bytes[2] >= op.n ? 0 : src_bytes[2]);
+            printf("Comparando %zu bytes: dest=[%02X %02X %02X ...] vs src=[%02X %02X %02X ...]\n",
+                op.n,
+                dest_bytes[0], dest_bytes[1], dest_bytes[2] >= op.n ? 0 : dest_bytes[2],
+                src_bytes[0], src_bytes[1], src_bytes[2] >= op.n ? 0 : src_bytes[2]);
 
-        int resultado = memcmp(op.dest, op.src, op.n);
-        printf("→ Resultado: %d (%s)\n", resultado, interpretar_memcmp(resultado));
-        break;
-    }
+            int resultado = memcmp(op.dest, op.src, op.n);
+            printf("→ Resultado: %d (%s)\n", resultado, interpretar_memcmp(resultado));
+            break;
+        }
     }
 }
 

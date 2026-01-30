@@ -20,8 +20,8 @@ typedef enum
 typedef struct
 {
     FUNCOES_POTENCIAIS type; // Tipo da operação
-    const char *name;       // Nome da operação
-    int num_args;           // Número de argumentos necessários para a operação
+    const char *name;        // Nome da operação
+    int num_args;            // Número de argumentos necessários para a operação
 } Metadados;
 
 /**
@@ -30,10 +30,10 @@ typedef struct
  * Cada entrada contém o tipo da operação, o nome e o número de argumentos necessários.
  */
 const Metadados MATH_LOOKUP[MATH_COUNT] = {
-    [MATH_POW] = {MATH_POW, "pow", 2},
-    [MATH_CBRT] = {MATH_CBRT, "cbrt", 1},
+    [MATH_POW]   = {MATH_POW,   "pow",   2},
+    [MATH_CBRT]  = {MATH_CBRT,  "cbrt",  1},
     [MATH_HYPOT] = {MATH_HYPOT, "hypot", 2},
-    [MATH_SQRT] = {MATH_SQRT, "sqrt", 1}};
+    [MATH_SQRT]  = {MATH_SQRT,  "sqrt",  1}};
 
 /**
  * @brief Estrutura para armazenar os resultados de uma operação matemática
@@ -41,11 +41,11 @@ const Metadados MATH_LOOKUP[MATH_COUNT] = {
  */
 typedef struct
 {
-    double x;               // Primeiro argumento
-    double y;               // Segundo argumento (se aplicável)
-    float f_result;         // Resultado em precisão float
-    double d_result;        // Resultado em precisão double
-    long double ld_result;  // Resultado em precisão long double
+    double x;                // Primeiro argumento
+    double y;                // Segundo argumento (se aplicável)
+    float f_result;          // Resultado em precisão float
+    double d_result;         // Resultado em precisão double
+    long double ld_result;   // Resultado em precisão long double
     FUNCOES_POTENCIAIS type; // Tipo da operação matemática
 } ResultadosMatematicos;
 

@@ -26,7 +26,7 @@ typedef struct
     int resultado_int;       // para snprintf
     char *resultado_str;     // para strdup
     size_t len_transformed;  // para strxfrm
-    Funcoes_Restantes type;
+    Funcoes_Restantes type;  // Tipo da função que foi executada
 } Resultado_Funcao;
 
 /**
@@ -74,52 +74,52 @@ void demonstrar_funcao(const char *str, const char *reject, Funcoes_Restantes ty
 
     switch (type)
     {
-    case FUNC_STRCSPN:
-    {
-        size_t len = strcspn(str, reject);
-        printf("\"%s\" até encontrar algum de \"%s\" → %zu caracteres\n", str, reject, len);
+        case FUNC_STRCSPN:
+        {
+            size_t len = strcspn(str, reject);
+            printf("\"%s\" até encontrar algum de \"%s\" → %zu caracteres\n", str, reject, len);
 
-        if (len < strlen(str))
-            printf("→ Primeiro caractere rejeitado: '%c' na posição %zu\n", str[len], len);
-        else
-            printf("→ Nenhum caractere de \"%s\" encontrado\n", reject);
-        break;
-    }
-    case FUNC_STRLEN:
-    {
-        size_t len = strlen(str);
-        printf("\"%s\" → comprimento = %zu\n", str, len);
-        break;
-    }
-    case FUNC_STRDUP:
-    {
-        char *duplicata = strdup(str);
-        printf("\"%s\" → duplicata alocada em %p: \"%s\"\n", str, (void *)duplicata, duplicata);
-        free(duplicata); // sempre liberar!
-        break;
-    }
-    case FUNC_STRXFRM:
-    {
-        setlocale(LC_COLLATE, "pt_BR.UTF-8");
-        char buffer[256];
-        size_t len = strxfrm(buffer, str, sizeof(buffer));
-        printf("\"%s\" → transformado para ordenação local = \"%s\" (tamanho necessário: %zu)\n", str, buffer, len);
-        break;
-    }
-    case FUNC_SNPRINTF:
-    {
-        char buffer[50];
-        int valor = 42;
-        double pi = 3.14159;
+            if (len < strlen(str))
+                printf("→ Primeiro caractere rejeitado: '%c' na posição %zu\n", str[len], len);
+            else
+                printf("→ Nenhum caractere de \"%s\" encontrado\n", reject);
+            break;
+        }
+        case FUNC_STRLEN:
+        {
+            size_t len = strlen(str);
+            printf("\"%s\" → comprimento = %zu\n", str, len);
+            break;
+        }
+        case FUNC_STRDUP:
+        {
+            char *duplicata = strdup(str);
+            printf("\"%s\" → duplicata alocada em %p: \"%s\"\n", str, (void *)duplicata, duplicata);
+            free(duplicata); // sempre liberar!
+            break;
+        }
+        case FUNC_STRXFRM:
+        {
+            setlocale(LC_COLLATE, "pt_BR.UTF-8");
+            char buffer[256];
+            size_t len = strxfrm(buffer, str, sizeof(buffer));
+            printf("\"%s\" → transformado para ordenação local = \"%s\" (tamanho necessário: %zu)\n", str, buffer, len);
+            break;
+        }
+        case FUNC_SNPRINTF:
+        {
+            char buffer[50];
+            int valor = 42;
+            double pi = 3.14159;
 
-        int ret = snprintf(buffer, sizeof(buffer), "Inteiro: %d | Double: %.3f | String: %s", valor, pi, "Olá");
+            int ret = snprintf(buffer, sizeof(buffer), "Inteiro: %d | Double: %.3f | String: %s", valor, pi, "Olá");
 
-        printf("Formatação → buffer = \"%s\" | retorno = %d (bytes que seriam escritos)\n", buffer, ret);
+            printf("Formatação → buffer = \"%s\" | retorno = %d (bytes que seriam escritos)\n", buffer, ret);
 
-        if (ret >= sizeof(buffer))
-            printf("→ ATENÇÃO: buffer pequeno! Truncamento ocorreu.\n");
-        break;
-    }
+            if (ret >= sizeof(buffer))
+                printf("→ ATENÇÃO: buffer pequeno! Truncamento ocorreu.\n");
+            break;
+        }
     }
 }
 

@@ -23,8 +23,8 @@ typedef struct
 } DivMetadata;
 
 const DivMetadata DIV_LOOKUP[DIV_COUNT] = {
-    [DIV_INT] = {DIV_INT, "div_t", "%d"},
-    [DIV_LONG] = {DIV_LONG, "ldiv_t", "%ld"},
+    [DIV_INT]   = {DIV_INT,   "div_t",   "%d"},
+    [DIV_LONG]  = {DIV_LONG,  "ldiv_t",  "%ld"},
     [DIV_LLONG] = {DIV_LLONG, "lldiv_t", "%lld"},
 };
 

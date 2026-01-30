@@ -17,11 +17,11 @@ typedef enum
  */
 typedef struct
 {
-    const char *s1;            // String destino original (antes da cópia)
-    const char *s2;            // String a ser anexada
-    size_t n;                  // Quantidade máxima de caracteres (usado apenas em strncat)
+    const char *s1;         // String destino original (antes da cópia)
+    const char *s2;         // String a ser anexada
+    size_t n;               // Quantidade máxima de caracteres (usado apenas em strncat)
     CONCATENE_STRINGS type; // Tipo de função utilizada
-    char resultado[256];       // Buffer para armazenar a string concatenada
+    char resultado[256];    // Buffer para armazenar a string concatenada
 } Resultado_Concatenacao;
 
 /**
@@ -76,12 +76,12 @@ int main(int argc, char **argv)
     printf("=== DEMONSTRAÇÃO DE strcat E strncat ===\n\n");
 
     Resultado_Concatenacao testes[] = {
-        {"Olá, ", "mundo!", 0, CNT_STRCAT},                // strcat completo
-        {"Bom ", "dia!", 0, CNT_STRCAT},                   // strcat completo
-        {"ABC", "DEFGHI", 3, CNT_STRNCAT},                 // só anexa "DEF"
-        {"Teste", "123456789", 5, CNT_STRNCAT},            // anexa "12345"
+        {"Olá, ", "mundo!",             0,   CNT_STRCAT},  // strcat completo
+        {"Bom ", "dia!",                0,   CNT_STRCAT},  // strcat completo
+        {"ABC", "DEFGHI",               3,   CNT_STRNCAT}, // só anexa "DEF"
+        {"Teste", "123456789",          5,   CNT_STRNCAT}, // anexa "12345"
         {"Seguro", " com limite longo", 100, CNT_STRNCAT}, // limite maior que s2 → comportamento igual a strcat
-        {"", "vazio + algo", 0, CNT_STRCAT},               // string vazia como destino
+        {"", "vazio + algo",            0,   CNT_STRCAT},  // string vazia como destino
     };
 
     // Calcular o número de testes

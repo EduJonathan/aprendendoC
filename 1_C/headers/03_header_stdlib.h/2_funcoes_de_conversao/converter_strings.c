@@ -29,11 +29,11 @@ typedef struct
     int num_args; // Quantidade de argumentos necessários
 
     // Ponteiros para as funções (assinaturas diferentes)
-    double (*func_atof)(const char *);
-    int (*func_atoi)(const char *);
-    long (*func_atol)(const char *);
-    double (*func_strtod)(const char *, char **);
-    long (*func_strtol)(const char *, char **, int);
+    double        (*func_atof)(const char *);
+    int           (*func_atoi)(const char *);
+    long          (*func_atol)(const char *);
+    double        (*func_strtod)(const char *, char **);
+    long          (*func_strtol)(const char *, char **, int);
     unsigned long (*func_strtoul)(const char *, char **, int);
 } Conversor;
 
@@ -41,12 +41,12 @@ typedef struct
  * @brief Tabela central de conversores – tudo definido aqui
  */
 const Conversor CONVERSORES[CONV_COUNT] = {
-    [CONV_ATOF] = {CONV_ATOF, "atof", 1, atof, NULL, NULL, NULL, NULL, NULL},
-    [CONV_ATOI] = {CONV_ATOI, "atoi", 1, NULL, atoi, NULL, NULL, NULL, NULL},
-    [CONV_ATOL] = {CONV_ATOL, "atol", 1, NULL, NULL, atol, NULL, NULL, NULL},
-    [CONV_STRTOD] = {CONV_STRTOD, "strtod", 2, NULL, NULL, NULL, strtod, NULL, NULL},
-    [CONV_STRTOL] = {CONV_STRTOL, "strtol", 3, NULL, NULL, NULL, NULL, strtol, NULL},
-    [CONV_STRTOUL] = {CONV_STRTOUL, "strtoul", 3, NULL, NULL, NULL, NULL, NULL, strtoul},
+    [CONV_ATOF]     = {CONV_ATOF,   "atof",     1, atof, NULL, NULL, NULL,   NULL,   NULL},
+    [CONV_ATOI]     = {CONV_ATOI,    "atoi",    1, NULL, atoi, NULL, NULL,   NULL,   NULL},
+    [CONV_ATOL]     = {CONV_ATOL,    "atol",    1, NULL, NULL, atol, NULL,   NULL,   NULL},
+    [CONV_STRTOD]   = {CONV_STRTOD,  "strtod",  2, NULL, NULL, NULL, strtod, NULL,   NULL},
+    [CONV_STRTOL]   = {CONV_STRTOL,  "strtol",  3, NULL, NULL, NULL, NULL,   strtol, NULL},
+    [CONV_STRTOUL]  = {CONV_STRTOUL, "strtoul", 3, NULL, NULL, NULL, NULL,   NULL,   strtoul},
 };
 
 /**
@@ -82,6 +82,7 @@ ResultadoConv converter(const char *str, int base, CONV_TIPO tipo)
         res.endptr = (char *)str;
         return res;
     }
+
     if (tipo < 0 || tipo >= CONV_COUNT)
     {
         res.errno_val = EINVAL;
@@ -211,21 +212,21 @@ typedef struct
     CONV_TIPO tipo;
 } CasoTeste;
 
+// Casos normais
 const CasoTeste testes[] = {
-    // Casos normais
-    {"  -123.4567abc", 0, CONV_ATOF},
-    {"  -123.4567abc", 0, CONV_STRTOD},
-    {"  2147483647", 0, CONV_ATOI},
+    {"  -123.4567abc",        0, CONV_ATOF},
+    {"  -123.4567abc",        0, CONV_STRTOD},
+    {"  2147483647",          0, CONV_ATOI},
     {"  9223372036854775807", 0, CONV_ATOL},
-    {"  0xCAFEBABE", 0, CONV_STRTOUL},
+    {"  0xCAFEBABE",          0, CONV_STRTOUL},
 
     // Casos de erro
-    {NULL, 0, CONV_STRTOD},
-    {"", 0, CONV_ATOI},
-    {"abc", 0, CONV_STRTOL},
-    {"999999999999999999999", 10, CONV_STRTOL},
+    {NULL,                     0,  CONV_STRTOD},
+    {"",                       0,  CONV_ATOI},
+    {"abc",                    0,  CONV_STRTOL},
+    {"999999999999999999999",  10, CONV_STRTOL},
     {"-999999999999999999999", 10, CONV_STRTOL},
-    {"123", 37, CONV_STRTOUL},
+    {"123",                    37, CONV_STRTOUL},
 };
 
 int main(int argc, char **argv)

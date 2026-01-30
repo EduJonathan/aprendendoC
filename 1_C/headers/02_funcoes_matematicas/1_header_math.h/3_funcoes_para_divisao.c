@@ -14,26 +14,26 @@ typedef enum
 /* Estrutura que descreve cada operação */
 typedef struct
 {
-    FUNCOES_DIVISIONAIS type;
-    const char *name;
-    int num_args; // 1 para fabs, 2 para as outras
+    FUNCOES_DIVISIONAIS type; // Tipo da operação
+    const char *name;         // Nome da função
+    int num_args;             // 1 para fabs, 2 para as outras
 
-    float (*f_func)(float, float);
-    double (*d_func)(double, double);
+    float       (*f_func)(float, float);
+    double      (*d_func)(double, double);
     long double (*ld_func)(long double, long double);
 
     // Para remquo: ponteiros para as funções que preenchem o quociente
-    float (*f_remquo)(float, float, int *);
-    double (*d_remquo)(double, double, int *);
+    float       (*f_remquo)(float, float, int *);
+    double      (*d_remquo)(double, double, int *);
     long double (*ld_remquo)(long double, long double, int *);
 } MathOperation;
 
 /* Tabela central de operações */
 const MathOperation MATH_OPERATIONS[MATH_COUNT] = {
-    [MATH_FABS] = {MATH_FABS, "fabs", 1, (float (*)(float, float))fabsf, (double (*)(double, double))fabs, (long double (*)(long double, long double))fabsl, NULL, NULL, NULL},
-    [MATH_FMOD] = {MATH_FMOD, "fmod", 2, fmodf, fmod, fmodl, NULL, NULL, NULL},
-    [MATH_REMAINDER] = {MATH_REMAINDER, "remainder", 2, remainderf, remainder, remainderl, NULL, NULL, NULL},
-    [MATH_REMQUO] = {MATH_REMQUO, "remquo", 2, NULL, NULL, NULL, remquof, remquo, remquol},
+    [MATH_FABS]      = {MATH_FABS, "fabs", 1, (float (*)(float, float))fabsf, (double (*)(double, double))fabs, (long double (*)(long double, long double))fabsl, NULL, NULL, NULL},
+    [MATH_FMOD]      = {MATH_FMOD,      "fmod",      2, fmodf,      fmod,      fmodl,      NULL,    NULL,   NULL},
+    [MATH_REMAINDER] = {MATH_REMAINDER, "remainder", 2, remainderf, remainder, remainderl, NULL,    NULL,   NULL},
+    [MATH_REMQUO]    = {MATH_REMQUO,    "remquo",    2, NULL,       NULL,      NULL,       remquof, remquo, remquol},
 };
 
 /* Estrutura de resultados – agora com quociente para remquo */
@@ -84,16 +84,20 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_DIVISIONAIS type)
     /* Funções normais (fabs, fmod, remainder) */
     if (op->f_func)
         res.f_result = op->f_func((float)x, (float)y);
+
     if (op->d_func)
         res.d_result = op->d_func(x, y);
+
     if (op->ld_func)
         res.ld_result = op->ld_func((long double)x, (long double)y);
 
     /* remquo – precisa do quociente */
     if (op->f_remquo)
         res.f_result = op->f_remquo((float)x, (float)y, &res.f_quotient);
+
     if (op->d_remquo)
         res.d_result = op->d_remquo(x, y, &res.d_quotient);
+
     if (op->ld_remquo)
         res.ld_result = op->ld_remquo((long double)x, (long double)y, &res.ld_quotient);
 

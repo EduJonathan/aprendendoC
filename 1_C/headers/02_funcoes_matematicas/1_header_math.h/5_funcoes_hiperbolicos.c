@@ -20,16 +20,16 @@ typedef struct
     const char *name;
     int num_args; // sempre 1 para essas funções
 
-    float (*f_func)(float);
-    double (*d_func)(double);
+    float       (*f_func)(float);
+    double      (*d_func)(double);
     long double (*ld_func)(long double);
 } MathOperation;
 
 /* Tabela central – tudo definido aqui */
 const MathOperation MATH_OPERATIONS[MATH_COUNT] = {
-    [MATH_SINH] = {MATH_SINH, "sinh", 1, sinhf, sinh, sinhl},
-    [MATH_COSH] = {MATH_COSH, "cosh", 1, coshf, cosh, coshl},
-    [MATH_TANH] = {MATH_TANH, "tanh", 1, tanhf, tanh, tanhl},
+    [MATH_SINH]  = {MATH_SINH,  "sinh",  1, sinhf,  sinh,  sinhl},
+    [MATH_COSH]  = {MATH_COSH,  "cosh",  1, coshf,  cosh,  coshl},
+    [MATH_TANH]  = {MATH_TANH,  "tanh",  1, tanhf,  tanh,  tanhl},
     [MATH_ASINH] = {MATH_ASINH, "asinh", 1, asinhf, asinh, asinhl},
     [MATH_ACOSH] = {MATH_ACOSH, "acosh", 1, acoshf, acosh, acoshl},
     [MATH_ATANH] = {MATH_ATANH, "atanh", 1, atanhf, atanh, atanhl},
@@ -70,8 +70,10 @@ ResultadosMatematicos compute_math(double x, FUNCOES_HIPERPBOLICAS type)
 
     if (op->f_func)
         res.f_result = op->f_func((float)x);
+
     if (op->d_func)
         res.d_result = op->d_func(x);
+
     if (op->ld_func)
         res.ld_result = op->ld_func((long double)x);
 

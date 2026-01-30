@@ -23,25 +23,25 @@ typedef struct
     const char *name;
     int num_args; // 1 para unárias, 2 para atan2
 
-    float (*f_func)(float); // unárias
-    double (*d_func)(double);
+    float       (*f_func)(float); // unárias
+    double      (*d_func)(double);
     long double (*ld_func)(long double);
 
     // Versões binárias para atan2
-    float (*f_bin)(float, float);
-    double (*d_bin)(double, double);
+    float       (*f_bin)(float, float);
+    double      (*d_bin)(double, double);
     long double (*ld_bin)(long double, long double);
 } MathOperation;
 
 /* Tabela central – tudo definido aqui */
 const MathOperation MATH_OPERATIONS[MATH_COUNT] = {
-    [MATH_SIN] = {MATH_SIN, "sin", 1, sinf, sin, sinl, NULL, NULL, NULL},
-    [MATH_COS] = {MATH_COS, "cos", 1, cosf, cos, cosl, NULL, NULL, NULL},
-    [MATH_TAN] = {MATH_TAN, "tan", 1, tanf, tan, tanl, NULL, NULL, NULL},
-    [MATH_ASIN] = {MATH_ASIN, "asin", 1, asinf, asin, asinl, NULL, NULL, NULL},
-    [MATH_ACOS] = {MATH_ACOS, "acos", 1, acosf, acos, acosl, NULL, NULL, NULL},
-    [MATH_ATAN] = {MATH_ATAN, "atan", 1, atanf, atan, atanl, NULL, NULL, NULL},
-    [MATH_ATAN2] = {MATH_ATAN2, "atan2", 2, NULL, NULL, NULL, atan2f, atan2, atan2l},
+    [MATH_SIN]   = {MATH_SIN,   "sin",   1, sinf,  sin,  sinl,  NULL,   NULL,  NULL},
+    [MATH_COS]   = {MATH_COS,   "cos",   1, cosf,  cos,  cosl,  NULL,   NULL,  NULL},
+    [MATH_TAN]   = {MATH_TAN,   "tan",   1, tanf,  tan,  tanl,  NULL,   NULL,  NULL},
+    [MATH_ASIN]  = {MATH_ASIN,  "asin",  1, asinf, asin, asinl, NULL,   NULL,  NULL},
+    [MATH_ACOS]  = {MATH_ACOS,  "acos",  1, acosf, acos, acosl, NULL,   NULL,  NULL},
+    [MATH_ATAN]  = {MATH_ATAN,  "atan",  1, atanf, atan, atanl, NULL,   NULL,  NULL},
+    [MATH_ATAN2] = {MATH_ATAN2, "atan2", 2, NULL,  NULL, NULL,  atan2f, atan2, atan2l},
 };
 
 /* Estrutura de resultados */
@@ -83,16 +83,20 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_TRIGONOMETRICAS t
     /* Funções unárias */
     if (op->f_func)
         res.f_result = op->f_func((float)x);
+
     if (op->d_func)
         res.d_result = op->d_func(x);
+
     if (op->ld_func)
         res.ld_result = op->ld_func((long double)x);
 
     /* Função binária (atan2) */
     if (op->f_bin)
         res.f_result = op->f_bin((float)y, (float)x); // ordem: y, x
+
     if (op->d_bin)
         res.d_result = op->d_bin(y, x);
+
     if (op->ld_bin)
         res.ld_result = op->ld_bin((long double)y, (long double)x);
 
@@ -128,14 +132,14 @@ int main(int argc, char **argv)
 
     /* Casos de teste unários (ângulos em radianos) */
     TestarValores testes_unarios[] = {
-        {MATH_SIN, 0.0, 0.0},
-        {MATH_SIN, M_PI / 6, 0.0}, // 30°
-        {MATH_SIN, M_PI / 4, 0.0}, // 45°
-        {MATH_COS, M_PI / 3, 0.0}, // 60°
-        {MATH_TAN, M_PI / 4, 0.0}, // 45°
-        {MATH_ASIN, 0.5, 0.0},
-        {MATH_ACOS, 0.5, 0.0},
-        {MATH_ATAN, 1.0, 0.0}};
+        {MATH_SIN,  0.0,      0.0},
+        {MATH_SIN,  M_PI / 6, 0.0}, // 30°
+        {MATH_SIN,  M_PI / 4, 0.0}, // 45°
+        {MATH_COS,  M_PI / 3, 0.0}, // 60°
+        {MATH_TAN,  M_PI / 4, 0.0}, // 45°
+        {MATH_ASIN, 0.5,      0.0},
+        {MATH_ACOS, 0.5,      0.0},
+        {MATH_ATAN, 1.0,      0.0}};
 
     const size_t n_unarios = sizeof(testes_unarios) / sizeof(testes_unarios[0]);
 

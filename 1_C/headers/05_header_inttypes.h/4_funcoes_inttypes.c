@@ -33,10 +33,10 @@ typedef struct
 } ImaxMetadata;
 
 const ImaxMetadata IMAX_LOOKUP[IMAX_COUNT] = {
-    [IMAX_ABS] = {IMAX_ABS, "imaxabs", "%" PRIdMAX, 0, 0, 0},
-    [IMAX_DIV] = {IMAX_DIV, "imaxdiv", "%" PRIdMAX, 0, 0, 0},
-    [STR_TO_IMAX] = {STR_TO_IMAX, "strtoimax", "%" PRIdMAX, 0, 1, 0},
-    [STR_TO_UMAX] = {STR_TO_UMAX, "strtoumax", "%" PRIuMAX, 1, 1, 0},
+    [IMAX_ABS]      = {IMAX_ABS,      "imaxabs",   "%" PRIdMAX, 0, 0, 0},
+    [IMAX_DIV]      = {IMAX_DIV,      "imaxdiv",   "%" PRIdMAX, 0, 0, 0},
+    [STR_TO_IMAX]   = {STR_TO_IMAX,   "strtoimax", "%" PRIdMAX, 0, 1, 0},
+    [STR_TO_UMAX]   = {STR_TO_UMAX,   "strtoumax", "%" PRIuMAX, 1, 1, 0},
     [WCSTR_TO_IMAX] = {WCSTR_TO_IMAX, "wcstoimax", "%" PRIdMAX, 0, 1, 1},
     [WCSTR_TO_UMAX] = {WCSTR_TO_UMAX, "wcstoumax", "%" PRIuMAX, 1, 1, 1},
 };

@@ -17,12 +17,12 @@ typedef enum
  */
 typedef struct
 {
-    const char *src;           // string fonte (original)
-    char *dest;                // buffer destino (modificado)
-    size_t dest_size;          // tamanho total do buffer destino (para segurança)
-    size_t n;                  // número máximo de caracteres a copiar (usado apenas por strncpy)
-    COPIE_STRINGS type; // tipo de cópia realizada
-    char dest_before[64];      // conteúdo do destino ANTES da cópia (para demonstração)
+    const char *src;      // string fonte (original)
+    char *dest;           // buffer destino (modificado)
+    size_t dest_size;     // tamanho total do buffer destino (para segurança)
+    size_t n;             // número máximo de caracteres a copiar (usado apenas por strncpy)
+    COPIE_STRINGS type;   // tipo de cópia realizada
+    char dest_before[64]; // conteúdo do destino ANTES da cópia (para demonstração)
 } Resultado_Copia_String;
 
 /**
@@ -78,7 +78,7 @@ Resultado_Copia_String copy_strings(const char *src, char *dest, size_t dest_siz
     else if (type == CP_STRNCPY)
     {
         strncpy(dest, src, n);
-        
+
         // Importante: strncpy NÃO garante o terminador nulo se n >= tamanho da fonte!
         if (n < dest_size && strlen(src) >= n)
         {

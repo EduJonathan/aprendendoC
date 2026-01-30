@@ -20,10 +20,10 @@ typedef enum
  */
 typedef struct
 {
-    const char *s1;                 // primeira string
-    const char *s2;                 // segunda string
-    int result;                     // resultado da comparação
-    size_t n;                       // usado apenas pelas funções `n`
+    const char *s1;       // primeira string
+    const char *s2;       // segunda string
+    int result;           // resultado da comparação
+    size_t n;             // usado apenas pelas funções `n`
     COMPARE_STRINGS type; // tipo de comparação realizada
 } Resultado_Comparacao_String;
 

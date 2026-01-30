@@ -19,30 +19,30 @@ typedef enum
 /* Estrutura que descreve cada operação matemática */
 typedef struct
 {
-    FUNCOES_DE_ARREDONDAMENTO type;
-    const char *name;
+    FUNCOES_DE_ARREDONDAMENTO type; // Tipo da operação
+    const char *name;               // Nome da operação
 
     /* Ponteiros para as versões em diferentes precisões */
-    float (*f_func)(float);              // versão float
-    double (*d_func)(double);            // versão double
+    float       (*f_func)(float);          // versão float
+    double      (*d_func)(double);        // versão double
     long double (*ld_func)(long double); // versão long double
 
     /* Ponteiros para versões que retornam inteiros (se aplicável) */
-    long (*l_func)(double);       // lrint / lround
+    long      (*l_func)(double);  // lrint / lround
     long long (*ll_func)(double); // llrint / llround
 } MathOperation;
 
 /* Tabela com todas as operações */
 const MathOperation MATH_OPERATIONS[MATH_COUNT] = {
-    [MATH_CEIL] = {MATH_CEIL, "ceil", ceilf, ceil, ceill, NULL, NULL},
-    [MATH_FLOOR] = {MATH_FLOOR, "floor", floorf, floor, floorl, NULL, NULL},
-    [MATH_ROUND] = {MATH_ROUND, "round", roundf, round, roundl, NULL, NULL},
-    [MATH_TRUNC] = {MATH_TRUNC, "trunc", truncf, trunc, truncl, NULL, NULL},
-    [MATH_RINT] = {MATH_RINT, "rint", rintf, rint, rintl, NULL, NULL},
-    [MATH_LRINT] = {MATH_LRINT, "lrint", NULL, NULL, NULL, lrint, NULL},
-    [MATH_LLRINT] = {MATH_LLRINT, "llrint", NULL, NULL, NULL, NULL, llrint},
-    [MATH_LROUND] = {MATH_LROUND, "lround", NULL, NULL, NULL, lround, NULL},
-    [MATH_LLRROUND] = {MATH_LLRROUND, "llround", NULL, NULL, NULL, NULL, llround},
+    [MATH_CEIL]     = {MATH_CEIL,     "ceil",    ceilf,  ceil, ceill,   NULL,  NULL},
+    [MATH_FLOOR]    = {MATH_FLOOR,    "floor",   floorf, floor, floorl, NULL,  NULL},
+    [MATH_ROUND]    = {MATH_ROUND,    "round",   roundf, round, roundl, NULL,  NULL},
+    [MATH_TRUNC]    = {MATH_TRUNC,    "trunc",   truncf, trunc, truncl, NULL,  NULL},
+    [MATH_RINT]     = {MATH_RINT,     "rint",    rintf,  rint, rintl,   NULL,  NULL},
+    [MATH_LRINT]    = {MATH_LRINT,    "lrint",   NULL,   NULL, NULL,   lrint,  NULL},
+    [MATH_LLRINT]   = {MATH_LLRINT,   "llrint",  NULL,   NULL, NULL,   NULL,   llrint},
+    [MATH_LROUND]   = {MATH_LROUND,   "lround",  NULL,   NULL, NULL,   lround, NULL},
+    [MATH_LLRROUND] = {MATH_LLRROUND, "llround", NULL,   NULL, NULL,   NULL,   llround},
 };
 
 /* Estrutura para armazenar os resultados */
@@ -117,8 +117,10 @@ void imprimir_resultados(const ResultadosMatematicos *res)
     {
         if (op->f_func)
             printf("  float:       %.6g\n", res->f_result);
+
         if (op->d_func)
             printf("  double:      %.6g\n", res->d_result);
+
         if (op->ld_func)
             printf("  long double: %.6Lg\n", res->ld_result);
     }
@@ -128,6 +130,7 @@ void imprimir_resultados(const ResultadosMatematicos *res)
     {
         printf("  long:        %ld\n", res->l_result);
     }
+
     if (op->ll_func)
     {
         printf("  long long:   %lld\n", res->ll_result);
