@@ -30,10 +30,10 @@ typedef struct
 
 /* Tabela central de operações */
 const MathOperation MATH_OPERATIONS[MATH_COUNT] = {
-    [MATH_FABS]      = {MATH_FABS, "fabs", 1, (float (*)(float, float))fabsf, (double (*)(double, double))fabs, (long double (*)(long double, long double))fabsl, NULL, NULL, NULL},
     [MATH_FMOD]      = {MATH_FMOD,      "fmod",      2, fmodf,      fmod,      fmodl,      NULL,    NULL,   NULL},
     [MATH_REMAINDER] = {MATH_REMAINDER, "remainder", 2, remainderf, remainder, remainderl, NULL,    NULL,   NULL},
     [MATH_REMQUO]    = {MATH_REMQUO,    "remquo",    2, NULL,       NULL,      NULL,       remquof, remquo, remquol},
+    [MATH_FABS]      = {MATH_FABS,      "fabs",      1, (float (*)(float, float))fabsf, (double (*)(double, double))fabs, (long double (*)(long double, long double))fabsl, NULL, NULL, NULL},
 };
 
 /* Estrutura de resultados – agora com quociente para remquo */

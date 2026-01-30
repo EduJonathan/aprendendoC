@@ -35,14 +35,14 @@ typedef struct
 
 /* Tabela central – tudo definido aqui */
 const MathOperation MATH_OPERATIONS[MATH_COUNT] = {
-    [MATH_EXP] = {MATH_EXP, "exp", 1, (float (*)(float, float))expf, (double (*)(double, double))exp, (long double (*)(long double, long double))expl, NULL, NULL, NULL},
-    [MATH_EXP2] = {MATH_EXP2, "exp2", 1, (float (*)(float, float))exp2f, (double (*)(double, double))exp2, (long double (*)(long double, long double))exp2l, NULL, NULL, NULL},
-    [MATH_FREXP] = {MATH_FREXP, "frexp", 1, NULL, NULL, NULL, frexpf, frexp, frexpl},
+    [MATH_EXP]   = {MATH_EXP,   "exp",   1, (float (*)(float, float))expf, (double (*)(double, double))exp, (long double (*)(long double, long double))expl, NULL, NULL, NULL},
+    [MATH_EXP2]  = {MATH_EXP2,  "exp2",  1, (float (*)(float, float))exp2f, (double (*)(double, double))exp2, (long double (*)(long double, long double))exp2l, NULL, NULL, NULL},
     [MATH_LDEXP] = {MATH_LDEXP, "ldexp", 2, (float (*)(float, float))ldexpf, (double (*)(double, double))ldexp, (long double (*)(long double, long double))ldexpl, NULL, NULL, NULL},
-    [MATH_LOG] = {MATH_LOG, "log", 1, (float (*)(float, float))logf, (double (*)(double, double))log, (long double (*)(long double, long double))logl, NULL, NULL, NULL},
-    [MATH_LOG2] = {MATH_LOG2, "log2", 1, (float (*)(float, float))log2f, (double (*)(double, double))log2, (long double (*)(long double, long double))log2l, NULL, NULL, NULL},
+    [MATH_LOG]   = {MATH_LOG,   "log",   1, (float (*)(float, float))logf, (double (*)(double, double))log, (long double (*)(long double, long double))logl, NULL, NULL, NULL},
+    [MATH_LOG2]  = {MATH_LOG2,  "log2",  1, (float (*)(float, float))log2f, (double (*)(double, double))log2, (long double (*)(long double, long double))log2l, NULL, NULL, NULL},
     [MATH_LOG10] = {MATH_LOG10, "log10", 1, (float (*)(float, float))log10f, (double (*)(double, double))log10, (long double (*)(long double, long double))log10l, NULL, NULL, NULL},
-    [MATH_MODF] = {MATH_MODF, "modf", 1, NULL, NULL, NULL, modff, modf, modfl},
+    [MATH_FREXP] = {MATH_FREXP, "frexp", 1, NULL, NULL, NULL, frexpf, frexp, frexpl},
+    [MATH_MODF]  = {MATH_MODF,  "modf",  1, NULL, NULL, NULL, modff, modf, modfl},
 };
 
 /* Estrutura de resultados – com partes fracionárias e inteiras/expoentes */
@@ -127,8 +127,8 @@ void print_math_result(const ResultadosMatematicos *r)
 
     if (r->type == MATH_FREXP || r->type == MATH_MODF)
     {
-        printf("  float:       fração = %.9g    %s = %d\n", r->f_result, (r->type == MATH_FREXP ? "expoente" : "inteiro"), r->f_exp);
-        printf("  double:      fração = %.17g   %s = %d\n", r->d_result, (r->type == MATH_FREXP ? "expoente" : "inteiro"), r->d_exp);
+        printf("  float:       fração = %.9g    %s = %d\n", r->f_result, (r->type == MATH_FREXP  ? "expoente" : "inteiro"), r->f_exp);
+        printf("  double:      fração = %.17g   %s = %d\n", r->d_result, (r->type == MATH_FREXP  ? "expoente" : "inteiro"), r->d_exp);
         printf("  long double: fração = %.21Lg  %s = %d\n", r->ld_result, (r->type == MATH_FREXP ? "expoente" : "inteiro"), r->ld_exp);
     }
     else
