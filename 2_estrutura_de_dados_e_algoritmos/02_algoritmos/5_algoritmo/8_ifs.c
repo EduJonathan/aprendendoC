@@ -32,17 +32,17 @@ typedef struct
 
 // Lookup table com acesso O(1)
 static const NotaDoAluno GRADE_NOTAS[] = {
-    {0.0, false, "Reprovado - Insuficiente"},
-    {1.0, false, "Reprovado - Insuficiente"},
-    {2.0, false, "Reprovado - Insuficiente"},
-    {3.0, false, "Reprovado - Insuficiente"},
-    {4.0, false, "Reprovado - Insuficiente"},
-    {5.0, false, "Reprovado - Recuperação"},
-    {6.0, true, "Aprovado - Satisfatório"},
-    {7.0, true, "Aprovado - Bom"},
-    {8.0, true, "Aprovado - Muito Bom"},
-    {9.0, true, "Aprovado - Excelente"},
-    {10.0, true, "Aprovado - Perfeito"}};
+    {0.0,  false, "Reprovado - Insuficiente"},
+    {1.0,  false, "Reprovado - Insuficiente"},
+    {2.0,  false, "Reprovado - Insuficiente"},
+    {3.0,  false, "Reprovado - Insuficiente"},
+    {4.0,  false, "Reprovado - Insuficiente"},
+    {5.0,  false, "Reprovado - Recuperação"},
+    {6.0,  true,  "Aprovado  - Satisfatório"},
+    {7.0,  true,  "Aprovado  - Bom"},
+    {8.0,  true,  "Aprovado  - Muito Bom"},
+    {9.0,  true,  "Aprovado  - Excelente"},
+    {10.0, true,  "Aprovado  - Perfeito"}};
 
 const int TOTAL_NOTAS = sizeof(GRADE_NOTAS) / sizeof(GRADE_NOTAS[0]);
 
