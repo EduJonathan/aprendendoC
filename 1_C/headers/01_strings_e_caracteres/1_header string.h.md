@@ -108,6 +108,74 @@ O valor retornado pelas funções de comparação segue a regra:
 
 ---
 
+## Header `<locale.h>`
+
+Historicamente, grande parte da padronização da computação foi baseada em convenções da
+localidade americana, como o uso do ponto (`.`) como separador decimal, o formato de datas
+`MM/DD/YYYY` e o conjunto de caracteres ASCII.
+
+O header `<locale.h>` permite configurar o comportamento de um programa em C para
+diferentes localidades (_locales_), respeitando convenções culturais e regionais.
+
+---
+
+## O que é uma _locale_
+
+Uma _locale_ define regras que afetam a forma como o programa lida com dados, incluindo:
+
+- **Formatação de números** Exemplo: `1,234.56` (EUA) vs `1.234,56` (Brasil)
+- **Idioma e codificação de caracteres**
+- **Formatação de datas e horários**
+- **Representação de valores monetários**
+- **Regras de comparação e ordenação de strings**
+
+---
+
+## Para que serve o `<locale.h>`
+
+O `<locale.h>` fornece funções e constantes que permitem:
+
+- Definir a localidade utilizada pelo programa
+- Ajustar automaticamente o comportamento de funções da biblioteca padrão, como:
+  - `printf` e `scanf`
+  - `strcoll`
+  - `strftime`
+  - Funções de classificação de caracteres (`ctype.h`)
+
+---
+
+```c
+#include <stdio.h>
+#include <locale.h>
+
+int main(void) {
+  setlocale(LC_ALL, "pt_BR.UTF-8"); // Definição mais viável para acentuações
+
+  double valor = 1234.56;
+  printf("Valor: %.2f\n", valor);
+
+  return 0;
+}
+```
+
+---
+
+## Categorias de locale
+
+> Algumas categorias comuns são:
+
+| **Constantes**  | **Descrição**               |
+| --------------- | --------------------------- |
+| **LC_ALL**      | Define todas as categorias  |
+| **LC_NUMERIC**  | Formatação de números       |
+| **LC_TIME**     | Datas e horários            |
+| **LC_MONETARY** | Valores monetários          |
+| **LC_CTYPE**    | Classificação de caracteres |
+
+> A função setlocale define as convenções utilizadas pelo programa, desde que a locale especificada esteja instalada no sistema operacional.
+
+---
+
 ## Observações Gerais
 
 - **Strings em C:** São sequências de bytes não-nulos terminadas por '\0'.
@@ -115,13 +183,11 @@ O valor retornado pelas funções de comparação segue a regra:
 - **Alternativas mais seguras (C11):** strcpy_s, strcat_s, memcpy_s (nem sempre disponíveis).
 - **Funções `n`:** Essas funções são as que determinam até onde a operação deva acontecer/checar.
 - **Funções `n`:** Apesar de serem seguras, **NÃO** substituem 100% seus derivados por completo.
-
   - **Comportamento diferente:** strncpy() não garante \0 no final se n for muito pequeno
   - **Eficiência:** strncpy() preenche o restante do buffer com \0 quando a string fonte é menor
   - **Casos específicos:** Às vezes você quer comportamento diferente
 
 - Tipos importantes:
-
   - **size_t:** tipo sem sinal para tamanhos
   - **NULL:** ponteiro nulo
 
@@ -130,3 +196,7 @@ O valor retornado pelas funções de comparação segue a regra:
   - size_t (tamanho)
   - int (comparação)
   - NULL em caso de falha
+
+- O suporte às locales depende do sistema operacional.
+- Nem todas as localidades estão disponíveis por padrão.
+- O uso correto de locales é essencial para programas internacionalizados.
