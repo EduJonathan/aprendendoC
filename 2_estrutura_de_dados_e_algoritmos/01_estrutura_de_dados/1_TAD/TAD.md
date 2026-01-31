@@ -100,7 +100,7 @@ pEvent Event_Create(int id, int timeout)
 
     if(pt != NULL)
     {
-        /*inicializa os elementos da estrutura*/
+        /* inicializa os elementos da estrutura*/
         pt->id = id;
         pt->timeout = timeout;
     }
@@ -112,7 +112,7 @@ void Event_Destroy(pEvent * event)
 {
     if(event != NULL)
     {
-        free(*event); /*event é o ponteiro que possui o endereço da estrutura que será liberada */
+        free(*event); /* event é o ponteiro que possui o endereço da estrutura que será liberada */
 
         /* A indireção múltipla é utilizada para permitir atribuir NULL ao ponteiro da aplicação */
         *event = NULL;
