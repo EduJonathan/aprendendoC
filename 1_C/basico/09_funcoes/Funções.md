@@ -206,6 +206,8 @@ Um ponteiro para função é uma variável que armazena o endereço de uma funç
 - **Limitação:** Ele aponta para um bloco de código estático. Ele não consegue "carregar" dados extras com ele (não tem estado).
 - **Exemplo:** Imagine que você passa o endereço da "receita de bolo" para alguém.
 
+---
+
 ```c
 #include <stdio.h>
 
@@ -228,6 +230,8 @@ int main() {
     return 0;
 }
 ```
+
+---
 
 #### 2. Callbacks (O "Papel/Função")
 
@@ -258,6 +262,8 @@ int main() {
 ```
 
 > O ponteiro para função é a ferramenta; o callback é o uso que você faz dela.
+
+---
 
 #### 3. Lambdas (A "Função Anônima e Inteligente")
 
