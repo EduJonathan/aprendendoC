@@ -47,7 +47,7 @@ const char *get_search_name(BUSQUE_STRINGS type)
  */
 void demonstrar_busca(const char *haystack, const char *needle, BUSQUE_STRINGS type)
 {
-    if(haystack == NULL || needle == NULL)
+    if (haystack == NULL || needle == NULL)
     {
         printf("Strings inválidas fornecidas para busca.\n");
         return;
