@@ -32,7 +32,6 @@ de memória já alocado.
 
 - **O que faz:** Redimensiona um bloco de memória previamente alocado.
 - **Comportamento:**
-
   - Se houver espaço suficiente, o bloco pode ser expandido no mesmo local.
   - Caso contrário, um novo bloco é alocado, os dados antigos são copiados e o bloco anterior é liberado automaticamente.
 
@@ -55,7 +54,6 @@ A função `calloc` é semelhante ao `malloc`, mas possui uma diferença importa
 - **O que faz:** Aloca memória para um número específico de elementos de mesmo tamanho.
 - **Diferencial:** Inicializa todos os bits com zero.
 - **Sintaxe:** Recebe dois parâmetros:
-
   1. Quantidade de elementos
   2. Tamanho de cada elemento
 
@@ -66,8 +64,8 @@ int *ptr = (int*) calloc(5, sizeof(int)); // Aloca 5 inteiros e inicializa todos
 ---
 
 > ⚠️ **Atenção:**
-> Toda memória alocada dinamicamente deve ser liberada com a função `free()`.
-> Caso contrário, ocorre um **Memory Leak (vazamento de memória)**, que consome recursos do sistema
+> Toda memória alocada dinamicamente deve ser liberada com a função `free()`.  
+> Caso contrário, ocorre um **Memory Leak (vazamento de memória)**, que consome recursos do sistema  
 > até comprometer o desempenho ou causar falhas no programa.
 
 ```c
@@ -180,6 +178,7 @@ Funções genéricas para **ordenação** e **busca binária**.
 | Pergunta                             | Resposta           |
 | ------------------------------------ | ------------------ |
 | `qsort` é Quick Sort?                | ❌ Não é garantido |
+| `bsearch` é binary search?           | ❌ Não é garantido |
 | Algoritmo é definido pelo padrão?    | ❌ Não             |
 | `bsearch` precisa de `qsort`?        | ❌ Não             |
 | `bsearch` precisa de array ordenado? | ✅ Sim             |

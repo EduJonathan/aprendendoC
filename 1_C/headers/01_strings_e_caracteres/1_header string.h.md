@@ -47,11 +47,13 @@ O valor retornado pelas funções de comparação segue a regra:
 - == 0 → as strings são iguais
 - \> 0 → a primeira string é lexicograficamente maior que a segunda
 
-⚠️ O valor exato retornado não é garantido (podendo retornar até mesmo qualquer valor negativo(-3 por exemplo) ou positivo), apenas o sinal importa.
+> O valor exato retornado não é garantido (podendo retornar até mesmo qualquer valor negativo(-3 por exemplo) ou positivo),  
+> **APENAS** o sinal importa.
 
 ---
 
-> strcasecmp e strncasecmp não fazem parte do padrão ISO C, são funções POSIX (Linux/Unix). Em Windows, equivalentes comuns são \_stricmp e \_strnicmp.
+> **strcasecmp** e **strncasecmp** não fazem parte do padrão ISO C, são funções POSIX (Linux/Unix).  
+> Em Windows, equivalentes comuns são **stricmp** e **strnicmp**.
 
 ---
 
@@ -88,7 +90,8 @@ O valor retornado pelas funções de comparação segue a regra:
 | `memcmp`  | `int memcmp(const void *s1, const void *s2, size_t n);` | Compara blocos de memória.                 |
 | `memcpy`  | `void *memcpy(void *dest, const void *src, size_t n);`  | Copia `n` bytes (não aceita sobreposição). |
 
-> memcpy e memmove têm o mesmo propósito, porém memcpy é indefinido quando há sobreposição, enquanto memmove lida corretamente com esse caso.
+> **memcpy** e **memmove** têm o mesmo propósito, porém **memcpy** é indefinido quando há sobreposição,  
+> enquanto memmove lida corretamente com esse caso.
 
 ---
 
@@ -102,9 +105,9 @@ O valor retornado pelas funções de comparação segue a regra:
 | `strxfrm`  | `size_t strxfrm(char *dest, const char *src, size_t n);`      | Transforma `src` para uma forma apropriada para comparação com `strcoll`.                         |
 | `snprintf` | `int snprintf(char *str, size_t size, const char *fmt, ...);` | Escreve uma string formatada em `str`, respeitando o limite de tamanho.                           |
 
-> strdup, Não é ISO C padrão (é POSIX). A memória retornada deve ser liberada com free().  
-> strxfrm, Usada em conjunto com strcoll. Depende do locale configurado (setlocale).  
-> snprintf, É a alternativa segura ao sprintf. Sempre limita a escrita ao tamanho do buffer.
+> **strdup**, Não é ISO C padrão (é POSIX). A memória retornada deve ser liberada com free().  
+> **strxfrm**, Usada em conjunto com strcoll. Depende do locale configurado (setlocale).  
+> **snprintf**, É a alternativa segura ao sprintf. Sempre limita a escrita ao tamanho do buffer.
 
 ---
 
@@ -172,7 +175,7 @@ int main(void) {
 | **LC_MONETARY** | Valores monetários          |
 | **LC_CTYPE**    | Classificação de caracteres |
 
-> A função setlocale define as convenções utilizadas pelo programa, desde que a locale especificada esteja instalada no sistema operacional.
+> A função **setlocale** define as convenções utilizadas pelo programa, desde que a locale especificada esteja instalada no sistema operacional.
 
 ---
 

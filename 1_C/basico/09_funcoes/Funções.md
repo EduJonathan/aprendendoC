@@ -67,6 +67,16 @@ int main() {
 
 ## Destacando os principais pontos sobre funções
 
+---
+
+### Parâmetros
+
+Parâmetros são variáveis passadas como informações definidas no cabeçalho da função que recebem valores **(argumentos)**
+externos para processamento. Eles permitem a generalização de funções, permitindo que a mesma lógica seja aplicada a
+diferentes dados. Podem ser obrigatórios, opcionais ou ter valores padrão, dependendo da linguagem de programação.
+
+---
+
 ### Passagem por valor vs Passagem por referência
 
 #### Passagem por valor
@@ -85,6 +95,8 @@ int main() {
     // a continua valendo 10
 }
 ```
+
+---
 
 #### Passagem por referência (via ponteiros)
 
@@ -125,17 +137,20 @@ int fatorial(int n) {
 }
 ```
 
-> Cuidados ao usar recursão
+---
 
-- Sempre defina um caso base e garanta que a função eventualmente o alcance; caso contrário, ocorrerá um estouro de pilha (stack overflow).
-- Tenha atenção à lógica do caso recursivo, certificando-se de que o problema está sendo reduzido a cada chamada.
-- Evite recursão desnecessária em problemas simples, pois chamadas recursivas possuem custo maior de memória e processamento.
+- Cuidados ao usar recursão
+  - Sempre defina um caso base e garanta que a função eventualmente o alcance; caso contrário, ocorrerá um estouro de pilha (stack overflow).
+  - Tenha atenção à lógica do caso recursivo, certificando-se de que o problema está sendo reduzido a cada chamada.
+  - Evite recursão desnecessária em problemas simples, pois chamadas recursivas possuem custo maior de memória e processamento.
 
 ---
 
 ### Pilha de Chamadas (Call Stack) vs Profundidade da Recursão
 
 > Esse é um dos conceitos mais importantes (e invisíveis) quando se trabalha com funções, especialmente recursivas.
+
+---
 
 #### O que é a Pilha de Chamadas (Call Stack)?
 
@@ -165,7 +180,8 @@ Sempre que uma função é chamada (inclusive a `main`), o sistema operacional r
         BASE DA PILHA
 ```
 
-> A cada novo frame `(push)` Quando uma função termina `(return)`, seu frame é removido `(pop)` do topo da pilha, e o controle retorna para o frame anterior.
+> A cada novo frame `(push)` Quando uma função termina `(return)`,  
+> seu frame é removido `(pop)` do topo da pilha, e o controle retorna para o frame anterior.
 
 ---
 
