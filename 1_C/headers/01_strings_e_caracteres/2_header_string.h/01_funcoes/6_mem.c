@@ -4,7 +4,6 @@
 #include <inttypes.h> // Para PRIu8 etc., se necessário
 #include <string.h>
 
-
 // Enum para identificar as funções de manipulação de memória
 typedef enum
 {
@@ -13,7 +12,6 @@ typedef enum
     MEM_MEMSET,
     MEM_MEMCMP
 } MEMORIA_STRINGS;
-
 
 // Estrutura para armazenar informações sobre uma operação de memória
 typedef struct
@@ -208,4 +206,5 @@ int main(int argc, char **argv)
     printf("• memset  → preenche bytes (não valores multi-byte)\n");
     printf("• memcmp  → compara bytes crus (ordem lexicográfica de bytes)\n");
     printf("• Sempre verifique que n ≤ tamanho do buffer destino!\n");
+    return 0;
 }
