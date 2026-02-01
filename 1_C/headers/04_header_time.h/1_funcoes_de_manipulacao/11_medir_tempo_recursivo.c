@@ -190,19 +190,5 @@ int main(int argc, char **argv)
     printf("\n=== Demonstração de Profundidade da Pilha (Recursivo Natural) ===\n");
     medir_tempo("Recursivo Natural", wrapper_natural, m_small - 1, n_small - 1);
 
-    /**
-     * Ordem das chamadas de função (recursiva - caminhos_natural, exemplo para 4x4)
-     * main()
-     * |--------caminhos_natural(4,4)
-     *          |--------caminhos_natural(3,4)
-     *          |        |--------caminhos_natural(2,4)
-     *          |        |        ...
-     *          |        |--------caminhos_natural(0,4)
-     *          |--------caminhos_natural(4,3)
-     *                   |--------caminhos_natural(3,3)
-     *                   |        ...
-     *                   |--------caminhos_natural(4,0)
-     */
-
     return 0;
 }

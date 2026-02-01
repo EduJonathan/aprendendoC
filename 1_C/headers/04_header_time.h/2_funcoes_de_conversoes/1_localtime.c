@@ -20,127 +20,128 @@
  * @note Importante:
  * - A função `localtime()` converte o tempo em UTC para o tempo local, ajustando para o
  *   fuso horário e horário de verão.
- * 
+ *
  * - A estrutura retornada contém valores que representam o tempo local de acordo com a
  *   configuração do sistema operacional.
- * 
+ *
  * - A estrutura `struct tm` é útil para manipulação de datas e horas em formato legível.
- * 
+ *
  * - A função `localtime()` não deve ser usada de maneira simultânea em múltiplas threads
  *   sem sincronização, pois a estrutura `struct tm` retornada é compartilhada entre as chamadas.
  */
 
 /**
- * @brief Função que retorna a data e hora local formatada.
+ * @brief Retorna uma string com data e hora local no formato desejado.
+ * Usa strftime (mais seguro e flexível que asctime).]
  *
- * Esta função obtém o tempo atual do sistema, converte para a hora local
- * e retorna a data e hora no formato de string, utilizando a função asctime().
- *
- * @return Ponteiro para uma string formatada contendo a data e hora local,
- * ou NULL em caso de falha na alocação de memória.
+ * @param format Formato desejado (padrão: "%c" - data e hora local completa)
+ * @return Ponteiro para string alocada dinamicamente (deve ser liberada pelo
  */
-char *get_local_time(void)
+char *get_local_time_str(const char *format)
 {
-    time_t rawtime = 0; // Variável do tipo time_t para armazenar o tempo em segundos
-    struct tm *info = NULL;
-
-    // Obtém o tempo atual
-    time(&rawtime);
-
-    // Converte para hora local
-    info = localtime(&rawtime);
-
-    // Aloca memória para armazenar a string formatada
-    char *formatted_time = (char *)malloc(26 * sizeof(char));
-    // "Thu Oct  3 17:15:09 2024" tem 26 caracteres
-
-    if (formatted_time != NULL)
+    time_t agora;
+    if (time(&agora) == (time_t)-1)
     {
-        // Converte a estrutura tm para uma string formatada
-        // Asctime retorna uma string com o formato: "Thu Oct  3 17:15:09 2024\n"
-        snprintf(formatted_time, 26, "%s", asctime(info));
-        // A função asctime já inclui o '\n' no final, além de converter essa estrutura
-        // tm em uma string legível.
+        return NULL;
     }
-    return formatted_time; // Retorna o ponteiro para a string formatada
+
+    struct tm *local = localtime(&agora);
+    if (!local)
+    {
+        return NULL;
+    }
+
+    // Buffer grande o suficiente para a maioria dos formatos
+    char *buffer = malloc(128);
+    if (!buffer)
+    {
+        return NULL;
+    }
+
+    if (strftime(buffer, 128, format ? format : "%c", local) == 0)
+    {
+        free(buffer);
+        return NULL;
+    }
+
+    return buffer;
 }
 
 /**
- * @brief Função que imprime as informações detalhadas de data e hora.
+ * @brief Imprime os principais campos da struct tm de forma clara e segura
  *
- * Esta função recebe uma estrutura `tm` que contém informações sobre a data e hora
- * e imprime esses valores de forma legível. Também imprime a data formatada (dia/mês/ano).
- *
- * @param data_hora_atual Ponteiro para uma estrutura `tm` contendo a data e hora local.
+ * @param tm Ponteiro para a struct tm a ser impressa
  */
-void print_time(struct tm *data_hora_atual)
+void print_tm_info(const struct tm *tm)
 {
-    // Definindo os labels para cada valor na estrutura tm
-    const char *labels[] = {
-        "DIA",           // tm_mday
-        "MES",           // tm_mon
-        "MES corrigido", // tm_mon + 1
-        "ANO",           // tm_year
-        "ANO corrigido", // tm_year + 1900
-        "Dia do ano",    // tm_yday
-        "Dia da semana", // tm_wday
-        "HORA",          // tm_hour
-        "MINUTO",        // tm_min
-        "SEGUNDO",       // tm_sec
-    };
-
-    // Usando um loop para imprimir os valores
-    printf("\n===============================================\n\n");
-
-    // Imprime os dados em sequência com 10 campos a serem impressos
-    for (int i = 0; i < 10; i++)
+    if (!tm)
     {
-        if (i == 2)
-        {
-            // Imprime a data formatada
-            printf("%s ==============> %d/%d/%d\n", labels[i], data_hora_atual->tm_mday,
-                   data_hora_atual->tm_mon + 1,
-                   data_hora_atual->tm_year + 1900);
-        }
-        else
-        {
-            // Imprime os outros valores
-            printf("%s ==============> %d\n", labels[i], *((int *)data_hora_atual + i));
-        }
+        printf("Estrutura tm inválida.\n");
+        return;
     }
+
+    static const char *dias_semana_pt[] = {
+        "Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira",
+        "Quinta-feira", "Sexta-feira", "Sábado"};
+
+    static const char *meses_pt[] = {
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+
+    puts("\n=== Informações da data/hora atual (horário local) ===\n");
+
+    printf("Data ............: %02d/%02d/%04d\n", tm->tm_mday, tm->tm_mon + 1, tm->tm_year + 1900);
+    printf("Dia da semana ...: %s (%d)\n", dias_semana_pt[tm->tm_wday], tm->tm_wday);
+    printf("Mês .............: %s (%d)\n", meses_pt[tm->tm_mon], tm->tm_mon + 1);
+    printf("Dia do ano ......: %d (de 0 a 365/366)\n", tm->tm_yday);
+    printf("Hora ............: %02d:%02d:%02d\n", tm->tm_hour, tm->tm_min, tm->tm_sec);
+    printf("Horário de verão.: %s (%d)\n", tm->tm_isdst > 0 ? "Ativo" : (tm->tm_isdst < 0 ? "Indeterminado" : "Inativo"), tm->tm_isdst);
+
+    puts("==================================================\n");
 }
 
 int main(int argc, char **argv)
 {
-    // Chama a função e obtém a data e hora local formatada
-    char *local_time = get_local_time();
-
-    if (local_time != NULL)
+    // Forma 1 – usando nossa função com strftime
+    char *tempo_str = get_local_time_str(NULL); // usa %c por padrão
+    if (tempo_str)
     {
-        // Exibe a data e hora local
-        printf("Data e hora local: %s", local_time);
-
-        // Libera a memória alocada
-        free(local_time);
+        printf("Data/hora local (asctime-like): %s\n", tempo_str);
+        free(tempo_str);
     }
     else
     {
-        printf("Erro ao obter a data e hora local.\n");
+        printf("Falha ao obter data/hora local.\n");
     }
 
-    // Ponteiro para struct que armazena data e hora
-    struct tm *data_hora_atual = NULL;
+    // Forma 2 – formatos personalizados
+    char *iso = get_local_time_str("%Y-%m-%d %H:%M:%S %Z");
+    if (iso)
+    {
+        printf("Formato ISO + fuso: %s\n", iso);
+        free(iso);
+    }
 
-    // Varíavel do tipo time_t para armazenar o tempo em segundo
-    time_t seconds;
+    // Forma 3 – acesso direto e impressão detalhada
+    time_t segundos;
+    if (time(&segundos) == (time_t)-1)
+    {
+        printf("Erro ao obter tempo do sistema.\n");
+        return 1;
+    }
 
-    // Obter o tempo de segundos
-    time(&seconds);
+    struct tm *local = localtime(&segundos);
+    if (!local)
+    {
+        printf("Erro na conversão para horário local.\n");
+        return 1;
+    }
 
-    // Conversão de data e hora para o tempo local utilizamos a função localtime
-    data_hora_atual = localtime(&seconds);
+    print_tm_info(local);
 
-    // Imprimindo data e hora
-    print_time(data_hora_atual);
+    // Exemplo extra: data por extenso (depende do locale do sistema)
+    char buf[128];
+    strftime(buf, sizeof(buf), "%A, %d de %B de %Y – %H:%M:%S", local);
+    printf("Por extenso: %s\n", buf);
     return 0;
 }

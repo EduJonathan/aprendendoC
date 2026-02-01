@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 /**
@@ -9,85 +10,107 @@
  *
  * @param timeptr: Ponteiro para um valor `time_t` (segundos desde a "época").
  * @return: Retorna uma string representando a data e hora legível.
- *
- * ------------------------------------------------------------------------------------------
- *
- * ctime_s(): Versão segura de `ctime()`, evitando riscos de segurança como overflows de buffer.
- *
- * SINTAXE: errno_t ctime_s(char *str, rsize_t maxsize, const time_t *timeptr);
- *
- * @param str: Ponteiro para o buffer onde a string formatada será armazenada.
- * @param maxsize: Tamanho máximo do buffer para evitar overflow.
- * @param timeptr: Ponteiro para um valor `time_t`.
- * @return: Retorna 0 em caso de sucesso ou código de erro (`errno_t`).
  */
 
 /**
- * @brief Calcula o dia da semana de uma data fornecida no formato DD/MM/YYYY.
- *
- * calcular_dia_da_semana: Função que recebe uma data no formato DD/MM/YYYY e
- * calcula o dia da semana correspondente.
- *
- * @param data_input Data fornecida no formato DD/MM/YYYY.
- */
+ * @brief Calcula o dia da semana de uma data fornecida no formato DD/MM/YYYY.
+ *
+ * calcular_dia_da_semana: Função que recebe uma data no formato DD/MM/YYYY e
+ * calcula o dia da semana correspondente.
+ *
+ * @param data_input Data fornecida no formato DD/MM/YYYY.
+ */
 void calcular_dia_da_semana(const char *data_input)
 {
     struct tm data_tm = {0};
-    time_t tempo = 0;              // Variável do tipo time_t para armazenar o tempo em segundos
-    char data_formatada[26] = {0}; // Para armazenar a string formatada da data
+    time_t tempo;
 
-    // Usando sscanf para ler a data no formato DD/MM/YYYY
-    sscanf(data_input, "%d/%d/%d", &data_tm.tm_mday, &data_tm.tm_mon, &data_tm.tm_year);
+    // Deixar o sistema decidir sobre horário de verão
+    data_tm.tm_isdst = -1;
 
-    // Ajustando o mês (0-11) e o ano (desde 1900)
-    data_tm.tm_mon -= 1;
-    data_tm.tm_year -= 1900;
-
-    // Convertendo para time_t
-    tempo = mktime(&data_tm);
-
-    // Verificando se a data é válida
-    if (tempo == -1)
+    int dia, mes, ano;
+    if (sscanf(data_input, "%d/%d/%d", &dia, &mes, &ano) != 3)
     {
-        printf("Erro ao converter a data.\n");
+        printf("Formato inválido! Use exatamente DD/MM/AAAA (ex: 25/12/2024)\n");
         return;
     }
 
-    // Usando ctime_s para formatar a data
-    ctime_s(data_formatada, sizeof(data_formatada), &tempo);
+    // Validação básica
+    if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 1900 || ano > 9999)
+    {
+        printf("Valores da data estão fora do intervalo razoável.\n");
+        return;
+    }
 
-    // Exibindo o resultado
-    printf("Data fornecida: %s\n", data_formatada);
-    printf("Dia da semana: %s\n", (data_tm.tm_wday == 0) ? "Domingo" : (data_tm.tm_wday == 1) ? "Segunda-feira"
-                                                                   : (data_tm.tm_wday == 2)   ? "Terça-feira"
-                                                                   : (data_tm.tm_wday == 3)   ? "Quarta-feira"
-                                                                   : (data_tm.tm_wday == 4)   ? "Quinta-feira"
-                                                                   : (data_tm.tm_wday == 5)   ? "Sexta-feira"
-                                                                                              : "Sábado");
+    data_tm.tm_mday = dia;
+    data_tm.tm_mon = mes - 1; // meses: 0 = Janeiro, 11 = Dezembro
+    data_tm.tm_year = ano - 1900;
 
-    printf("Mês: %s\n", (data_tm.tm_mon == 0) ? "Janeiro" : (data_tm.tm_mon == 1) ? "Fevereiro"
-                                                        : (data_tm.tm_mon == 2)   ? "Março"
-                                                        : (data_tm.tm_mon == 3)   ? "Abril"
-                                                        : (data_tm.tm_mon == 4)   ? "Maio"
-                                                        : (data_tm.tm_mon == 5)   ? "Junho"
-                                                        : (data_tm.tm_mon == 6)   ? "Julho"
-                                                        : (data_tm.tm_mon == 7)   ? "Agosto"
-                                                        : (data_tm.tm_mon == 8)   ? "Setembro"
-                                                        : (data_tm.tm_mon == 9)   ? "Outubro"
-                                                        : (data_tm.tm_mon == 10)  ? "Novembro"
-                                                                                  : "Dezembro");
-    printf("Dia do mês: %d\n", data_tm.tm_mday);
+    tempo = mktime(&data_tm);
+    if (tempo == (time_t)-1)
+    {
+        printf("Data inválida ou fora do alcance suportado.\n");
+        return;
+    }
+
+    // Usando ctime()
+    char *str_data = ctime(&tempo);
+    if (str_data == NULL)
+    {
+        printf("Erro ao formatar a data com ctime().\n");
+        return;
+    }
+
+    // ctime() retorna string com \n no final → podemos remover se quiser
+    char data_limpa[32];
+    strncpy(data_limpa, str_data, sizeof(data_limpa) - 1);
+    data_limpa[sizeof(data_limpa) - 1] = '\0';
+    char *p = strchr(data_limpa, '\n');
+
+    // verifica e remove o newline
+    if (p)
+        *p = '\0';
+
+    // Nomes em português (independente do locale do sistema)
+    static const char *dias_pt[] = {
+        "Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira",
+        "Quinta-feira", "Sexta-feira", "Sábado"};
+
+    static const char *meses_pt[] = {
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+
+    printf("\n");
+    printf("Data digitada ........: %02d/%02d/%04d\n", dia, mes, ano);
+    printf("Data por extenso ......: %s\n", data_limpa);
+    printf("Dia da semana .........: %s\n", dias_pt[data_tm.tm_wday]);
+    printf("Mês ...................: %s\n", meses_pt[data_tm.tm_mon]);
+    printf("Dia do mês ............: %d\n", data_tm.tm_mday);
+    printf("Número do dia (0=Domingo): %d\n", data_tm.tm_wday);
 }
 
 int main(int argc, char **argv)
 {
-    char data_input[11] = {0}; // Formato de data: DD/MM/AAAA
+    char data_input[32] = {0};
 
-    // Pedindo a data ao usuário
-    printf("Digite a sua data (DD/MM/AAAA): ");
-    scanf("%10s", data_input);
+    printf("Digite a data (DD/MM/AAAA): ");
+    if (fgets(data_input, sizeof(data_input), stdin) == NULL)
+    {
+        printf("Erro ao ler a entrada.\n");
+        return 1;
+    }
 
-    // Chamando a função para calcular o dia da semana, mês e dia do mês
+    // Remove \n do final
+    data_input[strcspn(data_input, "\n")] = '\0';
+
+    // Remove espaços extras (opcional, mas ajuda)
+    char *p = data_input;
+    while (*p == ' ')
+        p++;
+        
+    if (p != data_input)
+        memmove(data_input, p, strlen(p) + 1);
+
     calcular_dia_da_semana(data_input);
     return 0;
 }

@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include <time.h>
 
 #define BUFFER_SIZE 100
@@ -34,127 +36,123 @@
  */
 
 /**
- * @brief Calcula quantos dias faltam para o próximo aniversário do usuário em UTC e exibe a
- * data em formato UTC.
+ * @brief Calcula e exibe o número de dias restantes para o próximo aniversário
+ *        com base na data de nascimento fornecida em formato "dd/mm/aaaa".
  *
- * O programa recebe a data de aniversário do usuário e calcula o número de dias até o próximo
- * aniversário em horário UTC, levando em consideração se o aniversário já passou no ano atual.
- * Exibe a data do próximo aniversário no formato "Dia da Semana Mês Dia Ano"
- * (por exemplo, "Sat Dec 07 2024").
- *
- * @param aniversario Data de aniversário do usuário no formato "dd/mm/yyyy".
+ * @param entrada String contendo a data de nascimento no formato "dd/mm/aaaa".
  */
-void calcular_dias_para_aniversario(const char *aniversario)
+void calcular_dias_para_aniversario(const char *entrada)
 {
-    // Obtém a data e hora atual
-    time_t agora = 0;
-    time(&agora);
+    if (!entrada || !*entrada)
+    {
+        printf("Data não informada.\n");
+        return;
+    }
 
-    // Converte a data e hora atual para uma estrutura tm em UTC
-    struct tm *data_atual = gmtime(&agora);
-
-    // Estrutura tm para armazenar a data do aniversário
-    struct tm data_aniversario = {0};
-
-    // Lê a data de aniversário no formato "dd/mm/yyyy"
     int dia = 0, mes = 0, ano = 0;
-    if (sscanf(aniversario, "%d/%d/%d", &dia, &mes, &ano) != 3)
+    if (sscanf(entrada, "%d/%d/%d", &dia, &mes, &ano) != 3)
     {
-        printf("Formato de data inválido! Use dd/mm/aaaa.\n");
+        printf("Formato inválido! Use dd/mm/aaaa (ex: 15/07/1995)\n");
         return;
     }
 
-    // Ajusta a data do aniversário
-    data_aniversario.tm_mday = dia;
-    data_aniversario.tm_mon = mes - 1;     // Meses começam do 0, então subtraímos 1
-    data_aniversario.tm_year = ano - 1900; // Anos começam de 1900, então subtraímos 1900
-
-    // Verifica se o aniversário já passou neste ano
-    if (data_aniversario.tm_mon < data_atual->tm_mon ||
-        (data_aniversario.tm_mon == data_atual->tm_mon &&
-         data_aniversario.tm_mday < data_atual->tm_mday))
+    // Validação básica
+    if (ano < 1900 || ano > 3000 || mes < 1 || mes > 12 || dia < 1 || dia > 31)
     {
-        // Se o aniversário já passou, ajusta para o próximo ano
-        data_aniversario.tm_year = data_atual->tm_year + 1;
-    }
-    else
-    {
-        // Caso o aniversário não tenha passado, mantemos o ano atual
-        data_aniversario.tm_year = data_atual->tm_year;
-    }
-
-    // Converte a data do aniversário para time_t (segundos desde a "época")
-    time_t tempo_aniversario = mktime(&data_aniversario);
-
-    if (tempo_aniversario == -1)
-    {
-        printf("Erro ao calcular o tempo do aniversário.\n");
+        printf("Data inválida (ano, mês ou dia fora do intervalo).\n");
         return;
     }
 
-    // Calcula a diferença entre a data do aniversário e a data atual em segundos
-    double segundos_diferenca = difftime(tempo_aniversario, agora);
+    time_t agora_utc = time(NULL);
+    struct tm hoje_utc = *gmtime(&agora_utc);
+    hoje_utc.tm_hour = hoje_utc.tm_min = hoje_utc.tm_sec = 0;
+    hoje_utc.tm_isdst = -1;
+    mktime(&hoje_utc); // normaliza (geralmente não muda nada em UTC)
 
-    // Converte a diferença de segundos para dias
-    int dias_faltando = segundos_diferenca / (60 * 60 * 24);
+    struct tm aniversario = {0};      // inicializa todos os campos com zero
+    aniversario.tm_mday = dia;        // dia do mês
+    aniversario.tm_mon = mes - 1;     // meses em tm vão de 0 a 11
+    aniversario.tm_year = ano - 1900; // ano desde 1900
+    aniversario.tm_hour = 0;          // meia-noite
+    aniversario.tm_min = 0;           // meia-noite
+    aniversario.tm_sec = 0;           // meia-noite
+    aniversario.tm_isdst = -1;        // informação de horário de verão desconhecida
 
-    // Exibe o próximo aniversário no formato "Dia da Semana Mês Dia Ano" em UTC
-    char aniversario_utc[BUFFER_SIZE];
-    strftime(aniversario_utc, sizeof(aniversario_utc), "%a %b %d %Y", &data_aniversario);
+    // Define ano do próximo aniversário
+    int ano_base = hoje_utc.tm_year + 1900;
+    aniversario.tm_year = ano - 1900;
 
-    // Exibe o resultado
-    printf("Faltam %d dias para o seu aniversário, que ocorrerá em %s em UTC.\n",
-           dias_faltando, aniversario_utc);
+    if (ano < ano_base - 100 || ano > ano_base + 100)
+    {
+        printf("Ano muito distante (%d). Provavelmente erro de digitação.\n", ano);
+        return;
+    }
+
+    // Coloca no ano atual ou próximo
+    aniversario.tm_year = hoje_utc.tm_year; // tenta ano atual
+
+    mktime(&aniversario); // normaliza (ajusta se 29/02 em ano não bissexto)
+
+    // Se já passou → próximo ano
+    if (mktime(&aniversario) < agora_utc)
+    {
+        aniversario.tm_year++;
+        mktime(&aniversario); // normaliza novamente
+    }
+
+    // Calcula diferença em dias (arredonda para cima se > 12h, mas aqui usamos floor)
+    double diff_segundos = difftime(mktime(&aniversario), agora_utc);
+    long dias = (long)(diff_segundos / 86400.0);
+
+    // Formata data em português (ou inglês se preferir)
+    char data_formatada[80];
+
+    // strftime em pt_BR pode variar por sistema → usamos formato fixo
+    const char *meses[] = {"jan", "fev", "mar", "abr", "mai", "jun",
+                           "jul", "ago", "set", "out", "nov", "dez"};
+
+    const char *dias_semana[] = {"Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"};
+
+    snprintf(data_formatada, sizeof(data_formatada), "%s, %02d %s %04d",
+             dias_semana[aniversario.tm_wday],
+             aniversario.tm_mday,
+             meses[aniversario.tm_mon],
+             aniversario.tm_year + 1900);
+
+    printf("Faltam **%ld dias** para o seu próximo aniversário.\n", dias);
+    printf("Data: %s (00:00 UTC)\n", data_formatada);
+    printf("Aniversário base: %02d/%02d\n", dia, mes);
 }
 
 int main(int argc, char **argv)
 {
-    // Declaração de variáveis
-    time_t tempo = 0; // Variável do tipo time_t para armazenar o tempo em segundos
-    struct tm *infotempo = NULL;
-    char texto[80] = {0}; // Buffer para armazenar a string formatada
+    char entrada[BUFFER_SIZE] = {0};
 
-    // Imprimindo endereços de memória
-    printf("Endereço de 'tempo': %p\n", (void *)&tempo);
+    printf("Calculadora de dias para o próximo aniversário (UTC)\n");
+    printf("Digite sua data de nascimento (dd/mm/aaaa): ");
 
-    // Obtendo o tempo atual
-    time(&tempo);
+    if (!fgets(entrada, sizeof(entrada), stdin))
+    {
+        printf("Erro ao ler entrada.\n");
+        return 1;
+    }
 
-    // Obtendo informações sobre o tempo local
-    infotempo = localtime(&tempo);
+    entrada[strcspn(entrada, "\n")] = '\0';
 
-    // Imprimindo endereço de memória após a inicialização
-    printf("Endereço de 'infotempo': %p\n", (void *)infotempo);
+    // Remove espaços extras (opcional)
+    char *p = entrada;
+    while (isspace(*p))
+        p++;
+    memmove(entrada, p, strlen(p) + 1);
 
-    // Formatando e imprimindo a hora atual
-    strftime(texto, 80, "Hora atual: %I:%M %p.", infotempo);
-    puts(texto);
+    calcular_dias_para_aniversario(entrada);
 
-    // Formatando e imprimindo a data atual
-    strftime(texto, 80, "Data: %A, %d/%b/%Y", infotempo);
-    puts(texto);
+    // Exemplo de data atual (apenas informativo)
+    time_t agora = time(NULL);
+    struct tm *lt = localtime(&agora);
+    char buf[80];
+    strftime(buf, sizeof(buf), "Hoje (%Y-%m-%d %H:%M %Z)", lt);
+    printf("\n%s\n", buf);
 
-    time_t rawtime = 0;   // Variável do tipo time_t para armazenar o tempo em segundos
-    char limit[80] = {0}; // Buffer para armazenar a string formatada
-
-    time(&rawtime);
-    infotempo = localtime(&rawtime);
-
-    strftime(limit, sizeof(limit), "Data: %Y-%m-%d Hora: %H:%M:%S", infotempo);
-    printf("Data formatada: %s\n", limit);
-
-    printf("\n===============================================\n");
-
-    char aniversario[BUFFER_SIZE] = {0}; // Buffer para armazenar a data de aniversário
-
-    // Solicita o nome da festividade
-    printf("Digite a sua data de aniversário (dd/mm/aaaa): ");
-    fgets(aniversario, sizeof(aniversario), stdin);
-
-    // Remove o caractere de nova linha
-    aniversario[strcspn(aniversario, "\n")] = 0;
-
-    // Chama a função para calcular a quantidade de dias para o aniversário
-    calcular_dias_para_aniversario(aniversario);
     return 0;
 }

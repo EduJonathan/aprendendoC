@@ -30,123 +30,158 @@
  */
 
 /**
- * @brief Função para imprimir o tempo atual
- *
- * imprimirTempo(): Função para imprimir o tempo atual
- *
- * @param tempo: Tempo atual em segundos
+ * @brief Imprime o tempo atual em formato legível + segundos desde a época
+ * @param tempo Valor time_t a ser impresso
  */
 void imprimirTempo(time_t tempo)
 {
-    tempo = time(NULL);
+    if (tempo == (time_t)-1)
+    {
+        printf("Erro: tempo inválido.\n");
+        return;
+    }
 
-    if (tempo != (time_t)(-1))
-        printf("O tempo atual é %s(%lld segundos desde a 'época')\n",
-               asctime(gmtime(&tempo)), (long long)tempo);
+    char *str = asctime(gmtime(&tempo));
+    if (str)
+    {
+        // Remove \n final do asctime
+        char buf[64];
+        strncpy(buf, str, sizeof(buf) - 1);
+        buf[sizeof(buf) - 1] = '\0';
+        char *p = strchr(buf, '\n');
+        if (p)
+            *p = '\0';
+
+        printf("Tempo UTC: %s  (%lld segundos desde 1970-01-01)\n",
+               buf, (long long)tempo);
+    }
+    else
+    {
+        printf("Erro ao formatar tempo.\n");
+    }
 }
 
 /**
- * @brief Calcula quantos dias faltam para uma data informada pelo usuário.
- *
- * O programa recebe uma data no formato "dd/mm/yyyy" e calcula a quantidade de
- * dias que faltam até essa data. Se a data já passou no ano atual, ela considera o próximo
- * ano. Se a data informada for no passado (ano anterior), ele informa que a data já passou.
- *
- * @param data_usuario Data informada pelo usuário no formato "dd/mm/yyyy".
+ * @brief Calcula quantos dias faltam até a data informada
+ *        - Se a data for no passado → avisa
+ *        - Se for no futuro (mesmo ano ou próximo) → calcula dias
+ *        - Usa mktime para validar a data e lidar com anos bissextos
  */
 void calcular_dias_para_data(const char *data_usuario)
 {
-    // Obtém a data e hora atual
     time_t agora = time(NULL);
-    struct tm data_atual = *localtime(&agora);
-
-    // --- ZERA horas/min/seg para considerar só a data ---
-    data_atual.tm_hour = 0;
-    data_atual.tm_min = 0;
-    data_atual.tm_sec = 0;
-    time_t hoje_meia_noite = mktime(&data_atual);
-
-    // Estrutura para armazenar a data fornecida pelo usuário
-    struct tm data_informada = {0};
-    int dia = 0, mes = 0, ano = 0;
-
-    if (sscanf(data_usuario, "%d/%d/%d", &dia, &mes, &ano) != 3)
+    if (agora == (time_t)-1)
     {
-        printf("Formato de data inválido! Use dd/mm/aaaa.\n");
+        printf("Erro ao obter hora atual.\n");
         return;
     }
 
-    data_informada.tm_mday = dia;
-    data_informada.tm_mon = mes - 1;
-    data_informada.tm_year = ano - 1900;
+    struct tm hoje = *localtime(&agora);
+    hoje.tm_hour = 0;
+    hoje.tm_min = 0;
+    hoje.tm_sec = 0;
+    hoje.tm_isdst = -1; // Deixa mktime decidir horário de verão
+    time_t hoje_meia_noite = mktime(&hoje);
 
-    time_t tempo_informado = mktime(&data_informada);
-    if (tempo_informado == -1)
+    if (hoje_meia_noite == (time_t)-1)
     {
-        printf("Erro ao calcular o tempo da data.\n");
+        printf("Erro ao normalizar data atual.\n");
         return;
     }
 
-    // Se a data já passou, avisa
-    if (difftime(tempo_informado, hoje_meia_noite) < 0)
+    struct tm data_tm = {0};
+    data_tm.tm_isdst = -1;
+
+    int d, m, a;
+    if (sscanf(data_usuario, "%d/%d/%d", &d, &m, &a) != 3 ||
+        d < 1 || d > 31 || m < 1 || m > 12 || a < 1900 || a > 9999)
     {
-        printf("Esta data já passou. Tente uma data futura.\n");
+        printf("Formato ou valores inválidos. Use dd/mm/aaaa (ex: 25/12/2025)\n");
         return;
     }
 
-    // Diferença em dias corridos
-    double segundos_diferenca = difftime(tempo_informado, hoje_meia_noite);
-    int dias_faltando = (int)(segundos_diferenca / (60 * 60 * 24));
-    // ou, se quiser contar qualquer fração como 1 dia:
-    // int dias_faltando = (int)ceil(segundos_diferenca / (60*60*24));
+    data_tm.tm_mday = d;
+    data_tm.tm_mon = m - 1;
+    data_tm.tm_year = a - 1900;
 
-    printf("Faltam %d dias para a data informada, que é no dia %02d/%02d/%04d.\n",
-           dias_faltando,
-           data_informada.tm_mday,
-           data_informada.tm_mon + 1,
-           data_informada.tm_year + 1900);
+    time_t alvo = mktime(&data_tm);
+    if (alvo == (time_t)-1)
+    {
+        printf("Data inválida ou fora do intervalo suportado.\n");
+        return;
+    }
+
+    // Ajusta ano se a data já passou no ano atual → considera próximo ano
+    if (difftime(alvo, hoje_meia_noite) < 0)
+    {
+        // Data já passou → tenta próximo ano
+        data_tm.tm_year += 1;
+        alvo = mktime(&data_tm);
+        if (alvo == (time_t)-1)
+        {
+            printf("Não foi possível calcular para o próximo ano.\n");
+            return;
+        }
+
+        // Se mesmo assim estiver no passado (improvável), avisa
+        if (difftime(alvo, hoje_meia_noite) < 0)
+        {
+            printf("Data muito no passado. Não é possível calcular.\n");
+            return;
+        }
+    }
+
+    double segs = difftime(alvo, hoje_meia_noite);
+    int dias = (int)(segs / (24.0 * 3600.0));
+
+    printf("\n");
+    printf("Data alvo ............: %02d/%02d/%04d\n", d, m, a);
+    printf("Faltam ...............: %d dias\n", dias);
+    printf("Data por extenso .....: %.24s\n", asctime(&data_tm)); // 24 chars sem \n
 }
 
 int main(int argc, char **argv)
 {
-    // Criando uma variável para armazenar o tempo atual
-    time_t now = 0;
-
-    // Obtendo o tempo atual
-    time(&now);
-    printf("Tempo atual em segundos: %lld\n", (long long)now);
-
-    // Imprimindo o tempo atual em string
-    imprimirTempo(now);
+    time_t now = time(NULL);
+    if (now != (time_t)-1)
+    {
+        printf("Segundos desde 1970 ........: %lld\n", (long long)now);
+        imprimirTempo(now);
+    }
 
     printf("\n===============================================\n");
 
-    char data_usuario[BUFFER_SIZE] = {0};
+    char buffer[BUFFER_SIZE];
+    char opcao = '\0';
 
-    while (1)
+    do
     {
-        // Solicita que o usuário insira a data
-        printf("Digite uma data no formato dd/mm/aaaa: ");
-        fgets(data_usuario, sizeof(data_usuario), stdin);
-
-        // Remove o caractere de nova linha
-        data_usuario[strcspn(data_usuario, "\n")] = 0;
-
-        // Chama a função para calcular a quantidade de dias para a data informada
-        calcular_dias_para_data(data_usuario);
-
-        // Pergunta ao usuário se deseja continuar ou encerrar
-        char continuar = '\0';
-        printf("\nDeseja verificar outra data? (s/n): ");
-        scanf(" %c", &continuar);
-
-        // Limpa o buffer de entrada de dados após o scanf
-        getchar();
-
-        if (continuar == 'n' || continuar == 'N')
-        {
+        printf("\nDigite uma data (dd/mm/aaaa): ");
+        if (fgets(buffer, sizeof(buffer), stdin) == NULL)
             break;
+
+        buffer[strcspn(buffer, "\n")] = '\0';
+
+        // Remove espaços extras (opcional)
+        char *p = buffer;
+        while (*p == ' ')
+            p++;
+
+        if (p != buffer)
+            memmove(buffer, p, strlen(p) + 1);
+
+        if (strlen(buffer) < 8)
+        {
+            printf("Entrada muito curta.\n");
+            continue;
         }
-    }
+
+        calcular_dias_para_data(buffer);
+
+        printf("\nVerificar outra data? (s/n): ");
+        opcao = getchar();
+        while (getchar() != '\n'); // limpa resto da linha
+
+    } while (opcao == 's' || opcao == 'S');
     return 0;
 }
