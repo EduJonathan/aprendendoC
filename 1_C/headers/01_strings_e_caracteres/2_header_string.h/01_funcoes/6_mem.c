@@ -4,9 +4,8 @@
 #include <inttypes.h> // Para PRIu8 etc., se necessário
 #include <string.h>
 
-/**
- * Enum para identificar as funções de manipulação de memória
- */
+
+// Enum para identificar as funções de manipulação de memória
 typedef enum
 {
     MEM_MEMCPY,
@@ -15,9 +14,8 @@ typedef enum
     MEM_MEMCMP
 } MEMORIA_STRINGS;
 
-/**
- * Estrutura para armazenar informações sobre uma operação de memória
- */
+
+// Estrutura para armazenar informações sobre uma operação de memória
 typedef struct
 {
     const void *dest_orig; // Ponteiro original do destino (para exibição)
@@ -31,6 +29,9 @@ typedef struct
 
 /**
  * @brief Retorna o nome da função de memória como string
+ * 
+ * @param type O tipo de função de memória
+ * @return const char* Nome da função
  */
 const char *get_mem_name(MEMORIA_STRINGS type)
 {
@@ -71,117 +72,140 @@ const char *interpretar_memcmp(int res)
 }
 
 /**
- * @brief Executa a operação de memória especificada e exibe o resultado de forma didática
+ * @brief Executa a operação de memória e imprime os resultados
  *
- * @param op Estrutura contendo os detalhes da operação de memória
+ * @param op Estrutura contendo os parâmetros da operação
+ * @param len Número de bytes a operar
+ * @param max_mostrar Número máximo de bytes a mostrar na saída
  */
-void executar_operacao_memoria(Operacao_Memoria op)
+static void print_primeiros_bytes(const void *ptr, size_t len, size_t max_mostrar)
 {
-    printf("[%s] ", get_mem_name(op.type));
+    const unsigned char *p = (const unsigned char *)ptr;
+    size_t mostrar = len < max_mostrar ? len : max_mostrar;
 
-    switch (op.type)
+    printf("[");
+    
+    for (size_t i = 0; i < mostrar; i++)
     {
-        case MEM_MEMCPY:
-        case MEM_MEMMOVE:
-        {
-            const unsigned char *src_bytes = (const unsigned char *)op.src;
-            printf("Copiando %zu bytes de src=[%02X %02X %02X ...] para dest\n", op.n,
-                src_bytes[0], src_bytes[1], src_bytes[2] >= op.n ? 0 : src_bytes[2]);
+        printf("%02X", p[i]);
+        if (i < mostrar - 1)
+            printf(" ");
+    }
 
-            void *resultado = NULL;
-            if (op.type == MEM_MEMCPY)
-                resultado = memcpy(op.dest, op.src, op.n);
-            else
-                resultado = memmove(op.dest, op.src, op.n);
+    if (len > max_mostrar)
+        printf(" ...");
+    printf("]");
+}
 
-            unsigned char *dest_bytes = (unsigned char *)op.dest;
-            printf("→ dest após operação = [%02X %02X %02X ...] (retorno: %p)\n",
-                dest_bytes[0], dest_bytes[1], dest_bytes[2] >= op.n ? 0 : dest_bytes[2], resultado);
-            break;
-        }
-        case MEM_MEMSET:
-        {
-            printf("Preenchendo %zu bytes de dest com valor %d (0x%02X)\n", op.n, op.fill_value, (unsigned char)op.fill_value);
+/**
+ * @brief Imprime os primeiros bytes de um bloco de memória em formato hexadecimal
+ *
+ * @param dest Ponteiro para o bloco de memória
+ * @param dest_size Número máximo de bytes a imprimir
+ * @param src Nome do bloco (para exibição)
+ * @param n Número de bytes a imprimir
+ * @param fill_value Valor de preenchimento (para memset)
+ * @param type Tipo da função de memória
+ */
+void demonstrar_memoria(void *dest, size_t dest_size, const void *src, size_t n, int fill_value, MEMORIA_STRINGS type)
+{
+    if (n > dest_size && (type == MEM_MEMCPY || type == MEM_MEMMOVE || type == MEM_MEMSET))
+    {
+        printf("[ERRO] Tentativa de escrever %zu bytes em buffer de %zu bytes → operação abortada\n\n", n, dest_size);
+        return;
+    }
 
-            void *resultado = memset(op.dest, op.fill_value, op.n);
+    printf("[%s]  ", get_mem_name(type));
 
-            unsigned char *dest_bytes = (unsigned char *)op.dest;
-            printf("→ dest após operação = [%02X %02X %02X ...] (retorno: %p)\n",
-                dest_bytes[0], dest_bytes[1], dest_bytes[2] >= op.n ? dest_bytes[0] : dest_bytes[2], resultado);
-            break;
-        }
-        case MEM_MEMCMP:
-        {
-            const unsigned char *src_bytes = (const unsigned char *)op.src;
-            const unsigned char *dest_bytes = (const unsigned char *)op.dest;
+    switch (type)
+    {
+    case MEM_MEMCPY:
+    case MEM_MEMMOVE:
+    {
+        printf("copiando %zu bytes  ", n);
+        print_primeiros_bytes(src, n, 5);
+        printf(" → ");
 
-            printf("Comparando %zu bytes: dest=[%02X %02X %02X ...] vs src=[%02X %02X %02X ...]\n",
-                op.n,
-                dest_bytes[0], dest_bytes[1], dest_bytes[2] >= op.n ? 0 : dest_bytes[2],
-                src_bytes[0], src_bytes[1], src_bytes[2] >= op.n ? 0 : src_bytes[2]);
+        void *ret = (type == MEM_MEMCPY) ? memcpy(dest, src, n) : memmove(dest, src, n);
+        print_primeiros_bytes(dest, n, 5);
+        printf("  (retorno = %p)\n\n", (void *)ret);
+        break;
+    }
 
-            int resultado = memcmp(op.dest, op.src, op.n);
-            printf("→ Resultado: %d (%s)\n", resultado, interpretar_memcmp(resultado));
-            break;
-        }
+    case MEM_MEMSET:
+    {
+        printf("preenchendo %zu bytes com 0x%02X  →  ", n, (unsigned char)fill_value);
+        void *ret = memset(dest, fill_value, n);
+        print_primeiros_bytes(dest, n, 5);
+        printf("  (retorno = %p)\n\n", (void *)ret);
+        break;
+    }
+
+    case MEM_MEMCMP:
+    {
+        printf("comparando %zu bytes:  ", n);
+        print_primeiros_bytes(dest, n, 5);
+        printf(" vs ");
+        print_primeiros_bytes(src, n, 5);
+        printf("  →  ");
+
+        int res = memcmp(dest, src, n);
+        printf("%d  (%s)\n\n", res, interpretar_memcmp(res));
+        break;
+    }
     }
 }
 
 int main(int argc, char **argv)
 {
     setlocale(LC_ALL, "pt_BR.UTF-8");
-    printf("=== DEMONSTRAÇÃO DAS FUNÇÕES DE MANIPULAÇÃO DE MEMÓRIA ===\n\n");
 
-    // Buffers para operações (grandes o suficiente para os testes)
-    unsigned char buffer1[32] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF}; // inicializado com alguns valores
-    unsigned char buffer2[32] = {0};
-    unsigned char buffer_overlap[32] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    const unsigned char fonte[] = {0x41, 0x42, 0x43, 0x44, 0x45}; // "ABCDE"
+    printf("=== DEMONSTRAÇÃO: memcpy / memmove / memset / memcmp ===\n\n");
 
-    // Testes de memcpy
-    memset(buffer1, 0xFF, sizeof(buffer1)); // reset
-    executar_operacao_memoria((Operacao_Memoria){
-        .dest = buffer1,
-        .dest_size = sizeof(buffer1),
-        .src = fonte,
-        .n = 5,
-        .type = MEM_MEMCPY});
+    // Buffers de teste
+    unsigned char buf_a[32];
+    unsigned char buf_b[32];
+    unsigned char buf_overlap[16] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}; // Para teste de overlap
+    const unsigned char fonte[] = {0x41, 0x42, 0x43, 0x44, 0x45, 0x46};                      // ABCDEF
 
-    // Testes de memmove (inclusive com overlap)
-    executar_operacao_memoria((Operacao_Memoria){
-        .dest = buffer_overlap + 2,
-        .dest_size = sizeof(buffer_overlap) - 2,
-        .src = buffer_overlap,
-        .n = 6,
-        .type = MEM_MEMMOVE}); // move 6 bytes para frente (overlap)
+    printf("1. memcpy e memmove\n");
+    printf("-------------------------------\n");
 
-    // Testes de memset
-    memset(buffer2, 0, sizeof(buffer2));
+    memset(buf_a, 0xFF, sizeof(buf_a)); // limpa com valor chamativo
 
-    executar_operacao_memoria((Operacao_Memoria){
-        .dest = buffer2,
-        .dest_size = sizeof(buffer2),
-        .fill_value = 0x00,
-        .n = 10,
-        .type = MEM_MEMSET});
+    demonstrar_memoria(buf_a, sizeof(buf_a), fonte, 6, 0, MEM_MEMCPY);
 
-    executar_operacao_memoria((Operacao_Memoria){
-        .dest = buffer2 + 10,
-        .dest_size = sizeof(buffer2) - 10,
-        .fill_value = 0xAA,
-        .n = 8,
-        .type = MEM_MEMSET});
+    // Exemplo clássico de overlap (só memmove é seguro)
+    printf("   → teste de sobreposição (shift left 3 posições):\n");
+    print_primeiros_bytes(buf_overlap, sizeof(buf_overlap), 12);
+    printf("  →  ");
+    demonstrar_memoria(buf_overlap + 3, sizeof(buf_overlap) - 3, buf_overlap, 10, 0, MEM_MEMMOVE);
+    // Note: memcpy aqui causaria comportamento indefinido
 
-    // Testes de memcmp
-    unsigned char bloco1[] = {1, 2, 3, 4, 5};
-    unsigned char bloco2[] = {1, 2, 3, 4, 5};
-    unsigned char bloco3[] = {1, 2, 3, 0x10, 5};
-    unsigned char bloco4[] = {1, 2, 0, 4, 5};
+    printf("2. memset\n");
+    printf("-------------------------------\n");
 
-    executar_operacao_memoria((Operacao_Memoria){.dest = bloco1, .src = bloco2, .n = 5, .type = MEM_MEMCMP});
-    executar_operacao_memoria((Operacao_Memoria){.dest = bloco1, .src = bloco3, .n = 5, .type = MEM_MEMCMP});
-    executar_operacao_memoria((Operacao_Memoria){.dest = bloco1, .src = bloco4, .n = 5, .type = MEM_MEMCMP});
+    demonstrar_memoria(buf_b, sizeof(buf_b), NULL, 12, 0x00, MEM_MEMSET);
+    demonstrar_memoria(buf_b + 12, sizeof(buf_b) - 12, NULL, 8, 0xAA, MEM_MEMSET);
 
-    printf("\n=== FIM DOS TESTES ===\n");
-    return 0;
+    printf("3. memcmp\n");
+    printf("-------------------------------\n");
+
+    unsigned char a[] = {1, 2, 3, 4, 5};
+    unsigned char b[] = {1, 2, 3, 4, 5};
+    unsigned char c[] = {1, 2, 3, 0x10, 5};
+    unsigned char d[] = {1, 2, 0x00, 4, 5};
+    unsigned char e[] = {1, 2, 3, 4};
+
+    demonstrar_memoria(a, sizeof(a), b, 5, 0, MEM_MEMCMP); // igual
+    demonstrar_memoria(a, sizeof(a), c, 5, 0, MEM_MEMCMP); // a < c
+    demonstrar_memoria(a, sizeof(a), d, 5, 0, MEM_MEMCMP); // a > d
+    demonstrar_memoria(a, sizeof(a), e, 4, 0, MEM_MEMCMP); // prefixo igual
+
+    printf("\nObservações importantes:\n");
+    printf("• memcpy  → não garante comportamento correto com regiões sobrepostas\n");
+    printf("• memmove → seguro para regiões sobrepostas (cópia temporária interna)\n");
+    printf("• memset  → preenche bytes (não valores multi-byte)\n");
+    printf("• memcmp  → compara bytes crus (ordem lexicográfica de bytes)\n");
+    printf("• Sempre verifique que n ≤ tamanho do buffer destino!\n");
 }

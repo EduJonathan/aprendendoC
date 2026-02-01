@@ -2,9 +2,7 @@
 #include <locale.h>
 #include <string.h>
 
-/**
- * Enum para as funções de busca em strings
- */
+// Enum para as funções de busca em strings
 typedef enum
 {
     SEARCH_STRCHR,  // Procura a primeira ocorrência de um caractere
@@ -49,6 +47,12 @@ const char *get_search_name(BUSQUE_STRINGS type)
  */
 void demonstrar_busca(const char *haystack, const char *needle, BUSQUE_STRINGS type)
 {
+    if(haystack == NULL || needle == NULL)
+    {
+        printf("Strings inválidas fornecidas para busca.\n");
+        return;
+    }
+    
     const char *resultado = NULL;
 
     printf("[%s] ", get_search_name(type));
@@ -91,17 +95,18 @@ int main(int argc, char **argv)
     printf("=== DEMONSTRAÇÃO DAS FUNÇÕES DE BUSCA EM STRINGS ===\n\n");
 
     // Exemplos didáticos
-    demonstrar_busca("hello world", "o", SEARCH_STRCHR);      // primeiro 'o'
-    demonstrar_busca("hello world", "o", SEARCH_STRRCHR);     // último 'o'
+    demonstrar_busca("hello world", "o",     SEARCH_STRCHR);  // primeiro 'o'
+    demonstrar_busca("hello world", "o",     SEARCH_STRRCHR); // último 'o'
     demonstrar_busca("hello world", "world", SEARCH_STRSTR);  // substring
     demonstrar_busca("hello world", "aeiou", SEARCH_STRPBRK); // primeira vogal
 
     printf("\nMais exemplos:\n");
-    demonstrar_busca("banana", "a", SEARCH_STRCHR);  // primeiro 'a'
-    demonstrar_busca("banana", "a", SEARCH_STRRCHR); // último 'a'
-    demonstrar_busca("programacao em C", "em", SEARCH_STRSTR);
-    demonstrar_busca("abc123xyz", "0123456789", SEARCH_STRPBRK); // primeiro dígito
-    demonstrar_busca("abcdef", "xyz", SEARCH_STRPBRK);           // nenhum → NULL
+
+    demonstrar_busca("banana",           "a",          SEARCH_STRCHR);  // primeiro 'a'
+    demonstrar_busca("banana",           "a",          SEARCH_STRRCHR); // último 'a'
+    demonstrar_busca("programacao em C", "em",         SEARCH_STRSTR);  // substring "em"
+    demonstrar_busca("abc123xyz",        "0123456789", SEARCH_STRPBRK); // primeiro dígito
+    demonstrar_busca("abcdef",           "xyz",        SEARCH_STRPBRK); // nenhum → NULL
 
     printf("\nObservações importantes:\n");
     printf("- strchr  → primeira ocorrência do caractere\n");

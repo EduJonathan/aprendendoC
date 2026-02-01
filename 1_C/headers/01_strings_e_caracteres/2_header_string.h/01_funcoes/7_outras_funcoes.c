@@ -3,9 +3,7 @@
 #include <locale.h>
 #include <string.h>
 
-/**
- * Enum para identificar as funções que vamos demonstrar
- */
+// Enum para identificar as funções que vamos demonstrar
 typedef enum
 {
     FUNC_STRCSPN,
@@ -15,9 +13,7 @@ typedef enum
     FUNC_SNPRINTF
 } Funcoes_Restantes;
 
-/**
- * Estrutura para guardar informações da operação
- */
+// Estrutura para guardar informações da operação
 typedef struct
 {
     const char *str;         // string principal
@@ -66,61 +62,97 @@ const char *get_func_name(Funcoes_Restantes type)
  * @param reject A string de rejeição (para strcspn)
  * @param type O tipo de função a demonstrar
  */
-void demonstrar_funcao(const char *str, const char *reject, Funcoes_Restantes type)
+void demonstrar(const char *str, const char *reject, Funcoes_Restantes tipo)
 {
-    printf("[%s] ", get_func_name(type));
-
-    Resultado_Funcao res = {.str = str, .reject = reject, .type = type};
-
-    switch (type)
+    if (str == NULL || (tipo != FUNC_SNPRINTF && reject == NULL))
     {
-        case FUNC_STRCSPN:
-        {
-            size_t len = strcspn(str, reject);
-            printf("\"%s\" até encontrar algum de \"%s\" → %zu caracteres\n", str, reject, len);
-
-            if (len < strlen(str))
-                printf("→ Primeiro caractere rejeitado: '%c' na posição %zu\n", str[len], len);
-            else
-                printf("→ Nenhum caractere de \"%s\" encontrado\n", reject);
-            break;
-        }
-        case FUNC_STRLEN:
-        {
-            size_t len = strlen(str);
-            printf("\"%s\" → comprimento = %zu\n", str, len);
-            break;
-        }
-        case FUNC_STRDUP:
-        {
-            char *duplicata = strdup(str);
-            printf("\"%s\" → duplicata alocada em %p: \"%s\"\n", str, (void *)duplicata, duplicata);
-            free(duplicata); // sempre liberar!
-            break;
-        }
-        case FUNC_STRXFRM:
-        {
-            setlocale(LC_COLLATE, "pt_BR.UTF-8");
-            char buffer[256];
-            size_t len = strxfrm(buffer, str, sizeof(buffer));
-            printf("\"%s\" → transformado para ordenação local = \"%s\" (tamanho necessário: %zu)\n", str, buffer, len);
-            break;
-        }
-        case FUNC_SNPRINTF:
-        {
-            char buffer[50];
-            int valor = 42;
-            double pi = 3.14159;
-
-            int ret = snprintf(buffer, sizeof(buffer), "Inteiro: %d | Double: %.3f | String: %s", valor, pi, "Olá");
-
-            printf("Formatação → buffer = \"%s\" | retorno = %d (bytes que seriam escritos)\n", buffer, ret);
-
-            if (ret >= sizeof(buffer))
-                printf("→ ATENÇÃO: buffer pequeno! Truncamento ocorreu.\n");
-            break;
-        }
+        printf("[%s] Erro: string NULL não permitida para esta função\n", get_func_name(tipo));
+        return;
     }
+
+    printf("[%s] ", get_func_name(tipo));
+
+    switch (tipo)
+    {
+    case FUNC_STRCSPN:
+    {
+        if (reject == NULL)
+        {
+            printf("Erro: conjunto de rejeição NULL\n");
+            return;
+        }
+        size_t pos = strcspn(str, reject);
+        printf("\"%s\"  →  prefixo sem caracteres de \"%s\" tem %zu bytes\n", str, reject, pos);
+
+        if (pos < strlen(str))
+            printf("   Primeiro caractere rejeitado: '%c' (posição %zu)\n", str[pos], pos);
+        else
+            printf("   Nenhum caractere de \"%s\" encontrado\n", reject);
+        break;
+    }
+
+    case FUNC_STRLEN:
+    {
+        size_t len = strlen(str);
+        printf("\"%s\"  →  comprimento = %zu bytes\n", str, len);
+        break;
+    }
+
+    case FUNC_STRDUP:
+    {
+        char *dup = strdup(str);
+        if (dup == NULL)
+        {
+            printf("Falha na alocação de memória (strdup retornou NULL)\n");
+        }
+        else
+        {
+            printf("\"%s\"  →  duplicata alocada em %p: \"%s\"\n", str, (void *)dup, dup);
+            free(dup);
+        }
+        break;
+    }
+
+    case FUNC_STRXFRM:
+    {
+        // Configurar locale de collation apenas uma vez (idealmente no main)
+        static int locale_configurado = 0;
+        if (!locale_configurado)
+        {
+            if (setlocale(LC_COLLATE, "pt_BR.UTF-8") == NULL)
+                printf("(Aviso: não foi possível configurar LC_COLLATE pt_BR.UTF-8)\n");
+            locale_configurado = 1;
+        }
+
+        char buffer[128] = "";
+        size_t len_necessario = strxfrm(buffer, str, sizeof(buffer));
+
+        printf("\"%s\"  →  forma de ordenação local: \"%s\"\n", str, buffer);
+
+        if (len_necessario >= sizeof(buffer))
+            printf("   (buffer pequeno → seriam necessários %zu bytes)\n", len_necessario + 1);
+        else
+            printf("   (tamanho da transformação: %zu bytes)\n", len_necessario);
+        break;
+    }
+
+    case FUNC_SNPRINTF:
+    {
+        char buffer[60];
+        int idade = 35;
+        double altura = 1.78;
+        const char *cidade = "Teresina";
+
+        int ret = snprintf(buffer, sizeof(buffer), "Idade: %d anos | Altura: %.2f m | Cidade: %s", idade, altura, cidade);
+
+        printf("Formatação → \"%s\"\n", buffer);
+        printf("   Retorno: %d (bytes escritos%s)\n", ret, (ret >= (int)sizeof(buffer)) ? " — TRUNCADO!" : "");
+
+        break;
+    }
+    }
+
+    printf("\n");
 }
 
 int main(int argc, char **argv)
@@ -128,35 +160,44 @@ int main(int argc, char **argv)
     setlocale(LC_ALL, "pt_BR.UTF-8");
     printf("=== DEMONSTRAÇÃO DAS FUNÇÕES RESTANTES DE <string.h> ===\n\n");
 
-    // strcspn
-    demonstrar_funcao("Olá mundo", "aeiou", FUNC_STRCSPN);
-    demonstrar_funcao("xyz123", "0123456789", FUNC_STRCSPN);
-    demonstrar_funcao("abcdef", "xyz", FUNC_STRCSPN);
+    printf("1. strcspn\n");
+    printf("-----------------------\n");
 
-    printf("\n");
+    demonstrar("Olá mundo", "aeiou",      FUNC_STRCSPN);
+    demonstrar("xyz123456", "0123456789", FUNC_STRCSPN);
+    demonstrar("abcdefghi", "xyz",        FUNC_STRCSPN);
 
-    // strlen
-    demonstrar_funcao("Brasil", NULL, FUNC_STRLEN);
-    demonstrar_funcao("", NULL, FUNC_STRLEN);
-    demonstrar_funcao("Olá\nmundo", NULL, FUNC_STRLEN); // \n conta como 1 char
+    printf("\n2. strlen\n");
+    printf("-----------------------\n");
 
-    printf("\n");
+    demonstrar("São Paulo",        NULL, FUNC_STRLEN);
+    demonstrar("",                 NULL, FUNC_STRLEN);
+    demonstrar("café com leite\n", NULL, FUNC_STRLEN);
 
-    // strdup
-    demonstrar_funcao("Memória dinâmica", NULL, FUNC_STRDUP);
-    demonstrar_funcao("", NULL, FUNC_STRDUP);
+    printf("\n3. strdup\n");
+    printf("-----------------------\n");
 
-    printf("\n");
+    demonstrar("Alocação dinâmica", NULL, FUNC_STRDUP);
+    demonstrar("",                  NULL, FUNC_STRDUP);
 
-    // strxfrm
-    demonstrar_funcao("café", NULL, FUNC_STRXFRM);
-    demonstrar_funcao("cacao", NULL, FUNC_STRXFRM);
+    printf("\n4. strxfrm  (ordenação local / collation)\n");
+    printf("-----------------------------------------------\n");
 
-    printf("\n");
+    demonstrar("café",      NULL, FUNC_STRXFRM);
+    demonstrar("cacao",     NULL, FUNC_STRXFRM);
+    demonstrar("São Paulo", NULL, FUNC_STRXFRM);
 
-    // snprintf
-    demonstrar_funcao(NULL, NULL, FUNC_SNPRINTF); // parâmetros ignorados aqui
+    printf("\n5. snprintf  (formatação segura)\n");
+    printf("-----------------------------------------------\n");
+    demonstrar(NULL, NULL, FUNC_SNPRINTF);
 
-    printf("\n=== FIM DA DEMONSTRAÇÃO ===\n");
+    printf("\n=== FIM DOS EXEMPLOS ===\n\n");
+
+    printf("Observações rápidas:\n");
+    printf("• strcspn   → comprimento do prefixo até encontrar caractere rejeitado\n");
+    printf("• strlen    → comprimento sem contar o \\0 final\n");
+    printf("• strdup    → aloca + copia (lembre-se de free!)\n");
+    printf("• strxfrm   → transforma string para ordenação de acordo com LC_COLLATE\n");
+    printf("• snprintf  → formatação segura com limite de tamanho\n");
     return 0;
 }
