@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-/**
- * @brief Enumeração para os tipos de operações matemáticas suportadas
- */
+// Enumeração para os tipos de operações matemáticas suportadas
 typedef enum
 {
     MATH_POW,
@@ -13,10 +11,7 @@ typedef enum
     MATH_COUNT // Conta o número total de operações
 } FUNCOES_POTENCIAIS;
 
-/**
- * @brief Estrutura de metadados para operações matemáticas
- * Cada operação tem um tipo, nome e número de argumentos.
- */
+// Estrutura de metadados para operações matemáticas, Cada operação tem um tipo, nome e número de argumentos.
 typedef struct
 {
     FUNCOES_POTENCIAIS type; // Tipo da operação
@@ -124,9 +119,9 @@ void print_math_result(const ResultadosMatematicos *r)
 
 int main(int argc, char **argv)
 {
-    ResultadosMatematicos r1 = compute_math(2.0, 3.0, MATH_POW);
+    ResultadosMatematicos r1 = compute_math(2.0,  3.0, MATH_POW);
     ResultadosMatematicos r2 = compute_math(27.0, 0.0, MATH_CBRT);
-    ResultadosMatematicos r3 = compute_math(3.0, 4.0, MATH_HYPOT);
+    ResultadosMatematicos r3 = compute_math(3.0,  4.0, MATH_HYPOT);
     ResultadosMatematicos r4 = compute_math(16.0, 0.0, MATH_SQRT);
 
     /* Caso interessante para erro numérico */
