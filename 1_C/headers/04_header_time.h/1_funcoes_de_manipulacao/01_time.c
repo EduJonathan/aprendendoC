@@ -31,6 +31,7 @@
 
 /**
  * @brief Imprime o tempo atual em formato legível + segundos desde a época
+ * 
  * @param tempo Valor time_t a ser impresso
  */
 void imprimirTempo(time_t tempo)
@@ -92,7 +93,7 @@ void calcular_dias_para_data(const char *data_usuario)
     struct tm data_tm = {0};
     data_tm.tm_isdst = -1;
 
-    int d, m, a;
+    int d = 0, m = 0, a = 0;
     if (sscanf(data_usuario, "%d/%d/%d", &d, &m, &a) != 3 ||
         d < 1 || d > 31 || m < 1 || m > 12 || a < 1900 || a > 9999)
     {

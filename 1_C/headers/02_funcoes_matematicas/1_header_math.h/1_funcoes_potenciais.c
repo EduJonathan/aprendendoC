@@ -67,26 +67,26 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_POTENCIAIS type)
     switch (type)
     {
     case MATH_POW:
-        res.f_result = powf((float)x, (float)y);
-        res.d_result = pow(x, y);
+        res.f_result  = powf((float)x, (float)y);
+        res.d_result  = pow(x, y);
         res.ld_result = powl((long double)x, (long double)y);
         break;
 
     case MATH_CBRT:
-        res.f_result = cbrtf((float)x);
-        res.d_result = cbrt(x);
+        res.f_result  = cbrtf((float)x);
+        res.d_result  = cbrt(x);
         res.ld_result = cbrtl((long double)x);
         break;
 
     case MATH_HYPOT:
-        res.f_result = hypotf((float)x, (float)y);
-        res.d_result = hypot(x, y);
+        res.f_result  = hypotf((float)x, (float)y);
+        res.d_result  = hypot(x, y);
         res.ld_result = hypotl((long double)x, (long double)y);
         break;
 
     case MATH_SQRT:
-        res.f_result = sqrtf((float)x);
-        res.d_result = sqrt(x);
+        res.f_result  = sqrtf((float)x);
+        res.d_result  = sqrt(x);
         res.ld_result = sqrtl((long double)x);
         break;
     }

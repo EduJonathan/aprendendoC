@@ -74,82 +74,82 @@ void demonstrar(const char *str, const char *reject, Funcoes_Restantes tipo)
 
     switch (tipo)
     {
-    case FUNC_STRCSPN:
-    {
-        if (reject == NULL)
+        case FUNC_STRCSPN:
         {
-            printf("Erro: conjunto de rejeição NULL\n");
-            return;
-        }
-        size_t pos = strcspn(str, reject);
-        printf("\"%s\"  →  prefixo sem caracteres de \"%s\" tem %zu bytes\n", str, reject, pos);
+            if (reject == NULL)
+            {
+                printf("Erro: conjunto de rejeição NULL\n");
+                return;
+            }
+            size_t pos = strcspn(str, reject);
+            printf("\"%s\"  →  prefixo sem caracteres de \"%s\" tem %zu bytes\n", str, reject, pos);
 
-        if (pos < strlen(str))
-            printf("   Primeiro caractere rejeitado: '%c' (posição %zu)\n", str[pos], pos);
-        else
-            printf("   Nenhum caractere de \"%s\" encontrado\n", reject);
-        break;
-    }
-
-    case FUNC_STRLEN:
-    {
-        size_t len = strlen(str);
-        printf("\"%s\"  →  comprimento = %zu bytes\n", str, len);
-        break;
-    }
-
-    case FUNC_STRDUP:
-    {
-        char *dup = strdup(str);
-        if (dup == NULL)
-        {
-            printf("Falha na alocação de memória (strdup retornou NULL)\n");
-        }
-        else
-        {
-            printf("\"%s\"  →  duplicata alocada em %p: \"%s\"\n", str, (void *)dup, dup);
-            free(dup);
-        }
-        break;
-    }
-
-    case FUNC_STRXFRM:
-    {
-        // Configurar locale de collation apenas uma vez (idealmente no main)
-        static int locale_configurado = 0;
-        if (!locale_configurado)
-        {
-            if (setlocale(LC_COLLATE, "pt_BR.UTF-8") == NULL)
-                printf("(Aviso: não foi possível configurar LC_COLLATE pt_BR.UTF-8)\n");
-            locale_configurado = 1;
+            if (pos < strlen(str))
+                printf("   Primeiro caractere rejeitado: '%c' (posição %zu)\n", str[pos], pos);
+            else
+                printf("   Nenhum caractere de \"%s\" encontrado\n", reject);
+            break;
         }
 
-        char buffer[128] = "";
-        size_t len_necessario = strxfrm(buffer, str, sizeof(buffer));
+        case FUNC_STRLEN:
+        {
+            size_t len = strlen(str);
+            printf("\"%s\"  →  comprimento = %zu bytes\n", str, len);
+            break;
+        }
 
-        printf("\"%s\"  →  forma de ordenação local: \"%s\"\n", str, buffer);
+        case FUNC_STRDUP:
+        {
+            char *dup = strdup(str);
+            if (dup == NULL)
+            {
+                printf("Falha na alocação de memória (strdup retornou NULL)\n");
+            }
+            else
+            {
+                printf("\"%s\"  →  duplicata alocada em %p: \"%s\"\n", str, (void *)dup, dup);
+                free(dup);
+            }
+            break;
+        }
 
-        if (len_necessario >= sizeof(buffer))
-            printf("   (buffer pequeno → seriam necessários %zu bytes)\n", len_necessario + 1);
-        else
-            printf("   (tamanho da transformação: %zu bytes)\n", len_necessario);
-        break;
-    }
+        case FUNC_STRXFRM:
+        {
+            // Configurar locale de collation apenas uma vez (idealmente no main)
+            static int locale_configurado = 0;
+            if (!locale_configurado)
+            {
+                if (setlocale(LC_COLLATE, "pt_BR.UTF-8") == NULL)
+                    printf("(Aviso: não foi possível configurar LC_COLLATE pt_BR.UTF-8)\n");
+                locale_configurado = 1;
+            }
 
-    case FUNC_SNPRINTF:
-    {
-        char buffer[60];
-        int idade = 35;
-        double altura = 1.78;
-        const char *cidade = "Teresina";
+            char buffer[128] = "";
+            size_t len_necessario = strxfrm(buffer, str, sizeof(buffer));
 
-        int ret = snprintf(buffer, sizeof(buffer), "Idade: %d anos | Altura: %.2f m | Cidade: %s", idade, altura, cidade);
+            printf("\"%s\"  →  forma de ordenação local: \"%s\"\n", str, buffer);
 
-        printf("Formatação → \"%s\"\n", buffer);
-        printf("   Retorno: %d (bytes escritos%s)\n", ret, (ret >= (int)sizeof(buffer)) ? " — TRUNCADO!" : "");
+            if (len_necessario >= sizeof(buffer))
+                printf("   (buffer pequeno → seriam necessários %zu bytes)\n", len_necessario + 1);
+            else
+                printf("   (tamanho da transformação: %zu bytes)\n", len_necessario);
+            break;
+        }
 
-        break;
-    }
+        case FUNC_SNPRINTF:
+        {
+            char buffer[60];
+            int idade = 35;
+            double altura = 1.78;
+            const char *cidade = "Teresina";
+
+            int ret = snprintf(buffer, sizeof(buffer), "Idade: %d anos | Altura: %.2f m | Cidade: %s", idade, altura, cidade);
+
+            printf("Formatação → \"%s\"\n", buffer);
+            printf("   Retorno: %d (bytes escritos%s)\n", ret, (ret >= (int)sizeof(buffer)) ? " — TRUNCADO!" : "");
+
+            break;
+        }
     }
 
     printf("\n");

@@ -44,13 +44,10 @@ const char *interpretar_resultado(int res)
 }
 
 /**
- * @brief Compara duas strings usando a função de comparação especificada
- *
- * @param s1 Primeira string
- * @param s2 Segunda string
- * @param n Número máximo de caracteres a comparar (usado apenas pelas funções "n")
+ * @brief Obtém o nome da função de comparação de strings com base no tipo
+ * 
  * @param type Tipo de comparação de strings
- * @return Resultado_Comparacao_String Estrutura contendo o resultado da comparação e informações relacionadas
+ * @return const char* Nome da função de comparação
  */
 const char *get_compare_name(COMPARE_STRINGS type)
 {

@@ -23,12 +23,12 @@ typedef enum
 typedef enum
 {
     EXC_INVALID_OPERATION = FE_INVALID,
-    EXC_DIVISION_BY_ZERO = FE_DIVBYZERO,
-    EXC_OVERFLOW = FE_OVERFLOW,
-    EXC_UNDERFLOW = FE_UNDERFLOW,
-    EXC_INEXACT = FE_INEXACT,
-    EXC_ALL = FE_ALL_EXCEPT,
-    EXC_NONE = 0
+    EXC_DIVISION_BY_ZERO  = FE_DIVBYZERO,
+    EXC_OVERFLOW          = FE_OVERFLOW,
+    EXC_UNDERFLOW         = FE_UNDERFLOW,
+    EXC_INEXACT           = FE_INEXACT,
+    EXC_ALL               = FE_ALL_EXCEPT,
+    EXC_NONE              = 0
 } fp_exception_t;
 
 /**
@@ -36,9 +36,9 @@ typedef enum
  */
 typedef enum
 {
-    FENV_SUCCESS = 0,
-    FENV_ERROR = -1,
-    FENV_EXCEPTION_ACTIVE = 1
+    FENV_SUCCESS          =  0,
+    FENV_ERROR            = -1,
+    FENV_EXCEPTION_ACTIVE =  1
 } fenv_status_t;
 
 /**

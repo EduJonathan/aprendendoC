@@ -86,13 +86,13 @@ int main(int argc, char **argv)
     printf("=== Exemplos de valor absoluto (abs, labs, llabs) ===\n\n");
 
     // Exemplos com int
-    print_abs_result(6, ABS_INT);
+    print_abs_result(6,   ABS_INT);
     print_abs_result(-14, ABS_INT);
-    print_abs_result(0, ABS_INT);
+    print_abs_result(0,   ABS_INT);
 
     // Exemplos com long
     print_abs_result(-987654321L, ABS_LONG);
-    print_abs_result(123456789L, ABS_LONG);
+    print_abs_result(123456789L,  ABS_LONG);
 
     // Exemplos com long long
     print_abs_result(564854LL, ABS_LLONG);

@@ -28,7 +28,7 @@ void calcular_dia_da_semana(const char *data_input)
     // Deixar o sistema decidir sobre horário de verão
     data_tm.tm_isdst = -1;
 
-    int dia, mes, ano;
+    int dia = 0, mes = 0, ano = 0;
     if (sscanf(data_input, "%d/%d/%d", &dia, &mes, &ano) != 3)
     {
         printf("Formato inválido! Use exatamente DD/MM/AAAA (ex: 25/12/2024)\n");

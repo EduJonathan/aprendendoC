@@ -34,7 +34,6 @@ Essas funções são amplamente utilizadas em validação de entrada, análise d
 ## Observações Importantes
 
 - As funções retornam:
-
   - **0** → falso
   - **valor diferente de 0** → verdadeiro
 

@@ -14,7 +14,6 @@ typedef enum
     MEM_MEMCMP
 } MEMORIA_STRINGS;
 
-
 // Estrutura para armazenar informações sobre uma operação de memória
 typedef struct
 {
@@ -119,40 +118,40 @@ void demonstrar_memoria(void *dest, size_t dest_size, const void *src, size_t n,
 
     switch (type)
     {
-    case MEM_MEMCPY:
-    case MEM_MEMMOVE:
-    {
-        printf("copiando %zu bytes  ", n);
-        print_primeiros_bytes(src, n, 5);
-        printf(" → ");
+        case MEM_MEMCPY:
+        case MEM_MEMMOVE:
+        {
+            printf("copiando %zu bytes  ", n);
+            print_primeiros_bytes(src, n, 5);
+            printf(" → ");
 
-        void *ret = (type == MEM_MEMCPY) ? memcpy(dest, src, n) : memmove(dest, src, n);
-        print_primeiros_bytes(dest, n, 5);
-        printf("  (retorno = %p)\n\n", (void *)ret);
-        break;
-    }
+            void *ret = (type == MEM_MEMCPY) ? memcpy(dest, src, n) : memmove(dest, src, n);
+            print_primeiros_bytes(dest, n, 5);
+            printf("  (retorno = %p)\n\n", (void *)ret);
+            break;
+        }
 
-    case MEM_MEMSET:
-    {
-        printf("preenchendo %zu bytes com 0x%02X  →  ", n, (unsigned char)fill_value);
-        void *ret = memset(dest, fill_value, n);
-        print_primeiros_bytes(dest, n, 5);
-        printf("  (retorno = %p)\n\n", (void *)ret);
-        break;
-    }
+        case MEM_MEMSET:
+        {
+            printf("preenchendo %zu bytes com 0x%02X  →  ", n, (unsigned char)fill_value);
+            void *ret = memset(dest, fill_value, n);
+            print_primeiros_bytes(dest, n, 5);
+            printf("  (retorno = %p)\n\n", (void *)ret);
+            break;
+        }
 
-    case MEM_MEMCMP:
-    {
-        printf("comparando %zu bytes:  ", n);
-        print_primeiros_bytes(dest, n, 5);
-        printf(" vs ");
-        print_primeiros_bytes(src, n, 5);
-        printf("  →  ");
+        case MEM_MEMCMP:
+        {
+            printf("comparando %zu bytes:  ", n);
+            print_primeiros_bytes(dest, n, 5);
+            printf(" vs ");
+            print_primeiros_bytes(src, n, 5);
+            printf("  →  ");
 
-        int res = memcmp(dest, src, n);
-        printf("%d  (%s)\n\n", res, interpretar_memcmp(res));
-        break;
-    }
+            int res = memcmp(dest, src, n);
+            printf("%d  (%s)\n\n", res, interpretar_memcmp(res));
+            break;
+        }
     }
 }
 

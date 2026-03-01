@@ -198,7 +198,7 @@ void print_math_result(const ResultadosMatematicos *r)
     printf("\n");
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
     printf("=== Funções exponenciais e logarítmicas em diferentes precisões ===\n\n");
 

@@ -21,12 +21,9 @@ que não podem ser representados com o tipo `char`.
 
 ## 💭 O que é wchar_t?
 
-- **wchar_t**: é um tipo de dado especial em C, utilizado para armazenar caracteres largos,
-  ou seja, caracteres de múltiplos bytes.
-- O tamanho de wchar_t pode variar dependendo do compilador e da plataforma, mas normalmente
-  é de **2 ou 4 bytes**.
-- Em sistemas com codificação Unicode, o tipo wchar_t pode armazenar caracteres de qualquer
-  conjunto Unicode, como UTF-16 ou UTF-32.
+- **wchar_t**: é um tipo de dado especial em C, utilizado para armazenar caracteres largos, ou seja, caracteres de múltiplos bytes.
+- O tamanho de wchar_t pode variar dependendo do compilador e da plataforma, mas normalmente é de **2 ou 4 bytes**.
+- Em sistemas com codificação Unicode, o tipo wchar_t pode armazenar caracteres de qualquer conjunto Unicode, como **UTF-16** ou **UTF-32**.
 
 ---
 
@@ -50,9 +47,9 @@ para representar caracteres que exigem mais de um byte.
 - A `<wctype.h>` oferece funções para lidar com caracteres largos de maneira semelhante às
   funções de `<ctype.h>`, mas com suporte para o tipo wchar_t.
 
-- E a `<wchar.h>` fornece funções para manipulação de strings largas (usando wchar_t) de
+- E a `<wchar.h>` fornece funções para manipulação de strings largas (usando **wchar_t**) de
   maneira semelhante ao que você faria com strings padrão (do tipo char\*), mas com o
-  tipo de dados wchar_t.
+  tipo de dados **wchar_t**.
 
 ---
 
