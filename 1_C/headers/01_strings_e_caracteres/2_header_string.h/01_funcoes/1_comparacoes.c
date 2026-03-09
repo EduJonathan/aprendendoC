@@ -16,16 +16,6 @@ typedef enum
     CMP_STRCOLL
 } COMPARE_STRINGS;
 
-// Estrutura para armazenar o resultado de uma comparação de strings e informações relacionadas
-typedef struct
-{
-    const char *s1;       // primeira string
-    const char *s2;       // segunda string
-    int result;           // resultado da comparação
-    size_t n;             // usado apenas pelas funções `n`
-    COMPARE_STRINGS type; // tipo de comparação realizada
-} Resultado_Comparacao_String;
-
 /**
  * @brief Funções para comparar strings e obter o nome da função de comparação
  *
