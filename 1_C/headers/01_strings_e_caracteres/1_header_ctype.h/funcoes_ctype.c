@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include <ctype.h>
 #include <locale.h>
+#include <ctype.h>
 
 // Enum para identificar as funções de ctype
 typedef enum
@@ -24,181 +24,181 @@ typedef enum
     CTYPE_COUNT
 } CtypeFunction;
 
-// Estrutura para operações de ctype
+// Estrutura que representa uma operação da biblioteca ctype
 typedef struct
 {
-    CtypeFunction type;     // Tipo da função
-    const char *name;       // Nome da função
-    int (*classify) (int);  // Ponteiro para função que classifica caracteres
-    int (*transform)(int);  // Ponteiro para função que transforma caracteres
-} CtypeOperation;
+    CtypeFunction tipo;      // Tipo da função ctype
+    const char *nome;        // Nome da função
+    int (*verificar)  (int); // Função de verificação/classificação
+    int (*transformar)(int); // Função de transformação
+} OperacaoCType;
 
-// Definição do array de operações, detalhe isascii não é padrão C, então se não estiver disponível
-// pode ser substituído por uma função personalizada, ou apenas removido se não for necessário.
-const CtypeOperation CTYPE_OPERATIONS[CTYPE_COUNT] = {
-    {CTYPE_ISASCII,  "isascii",  isascii,  NULL},
-    {CTYPE_ISALNUM,  "isalnum",  isalnum,  NULL},
-    {CTYPE_ISALPHA,  "isalpha",  isalpha,  NULL},
-    {CTYPE_ISBLANK,  "isblank",  isblank,  NULL},
-    {CTYPE_ISCNTRL,  "iscntrl",  iscntrl,  NULL},
-    {CTYPE_ISDIGIT,  "isdigit",  isdigit,  NULL},
-    {CTYPE_ISGRAPH,  "isgraph",  isgraph,  NULL},
-    {CTYPE_ISLOWER,  "islower",  islower,  NULL},
-    {CTYPE_ISPRINT,  "isprint",  isprint,  NULL},
-    {CTYPE_ISPUNCT,  "ispunct",  ispunct,  NULL},
-    {CTYPE_ISSPACE,  "isspace",  isspace,  NULL},
-    {CTYPE_ISUPPER,  "isupper",  isupper,  NULL},
-    {CTYPE_ISXDIGIT, "isxdigit", isxdigit, NULL},
-    {CTYPE_TOLOWER,  "tolower",  NULL,     tolower},
-    {CTYPE_TOUPPER,  "toupper",  NULL,     toupper}};
+/**
+ * Definição da tabela de operações disponíveis
+ * Obs: isascii não é padrão C, pode ser removido se necessário, ou apenas comentar
+ */
+const OperacaoCType OPERACOES_CTYPE[CTYPE_COUNT] = {
+    // {CTYPE_ISASCII,  "isascii",   isascii,  NULL},
+    {CTYPE_ISALNUM,  "isalnum",   isalnum,  NULL},
+    {CTYPE_ISALPHA,  "isalpha",   isalpha,  NULL},
+    {CTYPE_ISBLANK,  "isblank",   isblank,  NULL},
+    {CTYPE_ISCNTRL,  "iscntrl",   iscntrl,  NULL},
+    {CTYPE_ISDIGIT,  "isdigit",   isdigit,  NULL},
+    {CTYPE_ISGRAPH,  "isgraph",   isgraph,  NULL},
+    {CTYPE_ISLOWER,  "islower",   islower,  NULL},
+    {CTYPE_ISPRINT,  "isprint",   isprint,  NULL},
+    {CTYPE_ISPUNCT,  "ispunct",   ispunct,  NULL},
+    {CTYPE_ISSPACE,  "isspace",   isspace,  NULL},
+    {CTYPE_ISUPPER,  "isupper",   isupper,  NULL},
+    {CTYPE_ISXDIGIT, "isxdigit",  isxdigit, NULL},
+    {CTYPE_TOLOWER,  "tolower",   NULL,     tolower},
+    {CTYPE_TOUPPER,  "toupper",   NULL,     toupper}};
 
-// Estrutura para resultados em caracteres
+// Estrutura que armazena o resultado da aplicação em um caractere
 typedef struct
 {
-    char input;
-    int output;
-    CtypeFunction type;
-} CtypeCharResult;
+    char entrada;       // Caractere de entrada
+    int saida;          // Resultado da operação
+    CtypeFunction tipo; // Tipo da função aplicada
+} ResultadoCaractere;
 
-// Estrutura para resultados em strings
+// Estrutura que armazena o resultado da aplicação em uma string
 typedef struct
 {
-    const char *input;  // string de entrada
-    bool result;        // resultado da verificação
-    CtypeFunction type; // tipo da função aplicada
-} CtypeStringResult;
+    const char *entrada; // String de entrada
+    bool resultado;      // Resultado final da verificação
+    CtypeFunction tipo;  // Tipo da função aplicada
+} ResultadoString;
 
-// Política para verificação de strings
+// Política de avaliação de strings
 typedef enum
 {
-    STRING_ALL, // todos os caracteres devem passar
-    STRING_ANY  // pelo menos um caractere deve passar
-} StringPolicy;
+    STRING_TODOS,   // Todos os caracteres devem passar no teste
+    STRING_QUALQUER // Pelo menos um caractere deve passar
+} PoliticaString;
 
 /**
- * @brief Aplica uma função de verificação de caractere a um único caractere
+ * @brief Aplica uma função ctype a um único caractere
  *
- * @param c Caractere a ser verificado
- * @param type Tipo de função de verificação (CTYPE_IS*)
- * @return CtypeCharResult Estrutura contendo o resultado da verificação
+ * @param c Caractere a ser avaliado
+ * @param tipo Tipo da função ctype
+ * @return ResultadoCaractere Estrutura com o resultado
  */
-CtypeCharResult ctype_apply_char(char c, CtypeFunction type)
+ResultadoCaractere aplicar_ctype_caractere(char c, CtypeFunction tipo)
 {
-    CtypeCharResult res = {.input = c, .output = 0, .type = type};
+    ResultadoCaractere resultado = {.entrada = c, .saida = 0, .tipo = tipo};
 
-    if (type >= CTYPE_COUNT)
-        return res;
+    if (tipo >= CTYPE_COUNT)
+        return resultado;
 
-    const CtypeOperation *op = &CTYPE_OPERATIONS[type];
-    int uc = (unsigned char)c;
+    const OperacaoCType *op = &OPERACOES_CTYPE[tipo];
+    int valor = (unsigned char)c;
 
-    if (op->classify)
-        res.output = op->classify(uc);
-    else if (op->transform)
-        res.output = op->transform(uc);
+    if (op->verificar)
+        resultado.saida = op->verificar(valor);
+    else if (op->transformar)
+        resultado.saida = op->transformar(valor);
 
-    return res;
+    return resultado;
 }
 
 /**
- * @brief Aplica uma função de verificação de caractere a todos os caracteres de uma string
+ * @brief Aplica uma função de verificação ctype a todos os caracteres de uma string
  *
- * @param str String a ser verificada
- * @param type Tipo de função de verificação (CTYPE_IS*)
- * @param policy Política de verificação (STRING_ALL ou STRING_ANY)
- * @return CtypeStringResult Estrutura contendo o resultado da verificação
+ * @param texto String a ser avaliada
+ * @param tipo Tipo da função ctype
+ * @param politica Política de avaliação da string
+ * @return ResultadoString Estrutura com o resultado
  */
-CtypeStringResult ctype_apply_string(const char *str, CtypeFunction type, StringPolicy policy)
+ResultadoString aplicar_ctype_string(const char *texto, CtypeFunction tipo, PoliticaString politica)
 {
-    CtypeStringResult res = {
-        .input = str,
-        .result = (policy == STRING_ALL),
-        .type = type};
+    ResultadoString resultado = {
+        .entrada = texto,
+        .resultado = (politica == STRING_TODOS),
+        .tipo = tipo};
 
-    if (!str || type >= CTYPE_COUNT)
-        return res;
+    if (!texto || tipo >= CTYPE_COUNT)
+        return resultado;
 
-    const CtypeOperation *op = &CTYPE_OPERATIONS[type];
+    const OperacaoCType *op = &OPERACOES_CTYPE[tipo];
 
-    if (!op->classify)
-        return res;
+    if (!op->verificar)
+        return resultado;
 
-    while (*str)
+    while (*texto)
     {
-        CtypeCharResult r = ctype_apply_char(*str, type); // Aplica a função ao caractere atual
-        bool ok = r.output != 0;                          // Converte para bool, verifica se é diferente de zero
+        ResultadoCaractere r = aplicar_ctype_caractere(*texto, tipo);
+        bool valido = r.saida != 0;
 
-        if (policy == STRING_ALL && !ok)
+        if (politica == STRING_TODOS && !valido)
         {
-            res.result = false;
-            return res;
+            resultado.resultado = false;
+            return resultado;
         }
 
-        if (policy == STRING_ANY && ok)
+        if (politica == STRING_QUALQUER && valido)
         {
-            res.result = true;
-            return res;
+            resultado.resultado = true;
+            return resultado;
         }
 
-        str++;
+        texto++;
     }
 
-    return res;
+    return resultado;
 }
 
 /**
- * @brief Transforma uma string aplicando a função de transformação especificada
+ * @brief Transforma uma string aplicando uma função ctype modificadora
  *
- * @param str String a ser transformada (modificada in-place)
- * @param type Tipo de função de transformação (CTYPE_TOLOWER ou CTYPE_TOUPPER)
+ * @param texto String a ser transformada (in-place)
+ * @param tipo Tipo da função de transformação
  */
-void ctype_transform_string(char *str, CtypeFunction type)
+void transformar_string_ctype(char *texto, CtypeFunction tipo)
 {
-    if (!str || type >= CTYPE_COUNT)
+    if (!texto || tipo >= CTYPE_COUNT)
         return;
 
-    const CtypeOperation *op = &CTYPE_OPERATIONS[type];
+    const OperacaoCType *op = &OPERACOES_CTYPE[tipo];
 
-    if (!op->transform)
+    if (!op->transformar)
         return;
 
-    while (*str)
+    while (*texto)
     {
-        CtypeCharResult r = ctype_apply_char(*str, type);
-        *str = (char)r.output;
-        str++;
+        ResultadoCaractere r = aplicar_ctype_caractere(*texto, tipo);
+        *texto = (char)r.saida;
+        texto++;
     }
 }
-
 /**
  * @brief Imprime o resultado da verificação de caractere
  *
- * @param r Ponteiro para a estrutura CtypeCharResult contendo o resultado
+ * @param r Ponteiro para a estrutura ResultadoCaractere contendo o resultado
  */
-void print_char_result(const CtypeCharResult *r)
+void print_char_result(const ResultadoCaractere *r)
 {
-    const CtypeOperation *op = &CTYPE_OPERATIONS[r->type];
+    const OperacaoCType *op = &OPERACOES_CTYPE[r->tipo];
 
-    printf("[%s] '%c' (0x%02X)\n",
-           op->name, r->input, (unsigned char)r->input);
+    printf("[%s] '%c' (0x%02X)\n", op->nome, r->entrada, (unsigned char)r->entrada);
 
-    if (op->classify)
-        printf("  resultado: %s\n\n", r->output ? "true" : "false");
+    if (op->verificar)
+        printf("  resultado: %s\n\n", r->saida ? "true" : "false");
     else
-        printf("  resultado: '%c'\n\n", r->output);
+        printf("  resultado: '%c'\n\n", r->saida);
 }
 
 /**
  * @brief Imprime o resultado da verificação de string
  *
- * @param r Ponteiro para a estrutura CtypeStringResult contendo o resultado
+ * @param r Ponteiro para a estrutura ResultadoString contendo o resultado
  */
-void print_string_result(const CtypeStringResult *r)
+void print_string_result(const ResultadoString *r)
 {
-    const CtypeOperation *op = &CTYPE_OPERATIONS[r->type];
+    const OperacaoCType *op = &OPERACOES_CTYPE[r->tipo];
 
-    printf("[%s] \"%s\"\n", op->name, r->input);
-    printf("  resultado: %s\n\n", r->result ? "true" : "false");
+    printf("[%s] \"%s\"\n", op->nome, r->entrada);
+    printf("  resultado: %s\n\n", r->resultado ? "true" : "false");
 }
 
 // Estrutura para testes
@@ -225,7 +225,7 @@ int main(int argc, char **argv)
     {
         for (CtypeFunction f = CTYPE_ISASCII; f <= CTYPE_ISXDIGIT; f++)
         {
-            CtypeCharResult cr = ctype_apply_char(testes[i].input_char, f);
+            ResultadoCaractere cr = aplicar_ctype_caractere(testes[i].input_char, f);
             print_char_result(&cr);
         }
     }
@@ -238,9 +238,9 @@ int main(int argc, char **argv)
             char str_copy[100];
             snprintf(str_copy, sizeof(str_copy), "%s", testes[i].input_string);
 
-            printf("Antes de [%s]: \"%s\"\n", CTYPE_OPERATIONS[f].name, str_copy);
-            ctype_transform_string(str_copy, f);
-            printf("Depois de [%s]: \"%s\"\n\n", CTYPE_OPERATIONS[f].name, str_copy);
+            printf("Antes de [%s]: \"%s\"\n", OPERACOES_CTYPE[f].nome, str_copy);
+            transformar_string_ctype(str_copy, f);
+            printf("Depois de [%s]: \"%s\"\n\n", OPERACOES_CTYPE[f].nome, str_copy);
         }
     }
     return 0;
