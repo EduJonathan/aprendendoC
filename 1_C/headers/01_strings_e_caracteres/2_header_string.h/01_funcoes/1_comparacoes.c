@@ -127,9 +127,12 @@ void compare_strings(const char *s1, const char *s2, size_t n, COMPARE_STRINGS t
         break;
     }
 
-    printf("[%s] \"%s\" vs \"%s\"%s -> %d (%s)\n", get_compare_name(type), s1, s2,
-           (type == CMP_STRNCMP || type == CMP_STRNCASECMP) ? printf(" (n=%zu)", n), "" : "",
-           res, interpretar_resultado(res));
+    if (type == CMP_STRNCMP || type == CMP_STRNCASECMP)
+        printf("[%s] \"%s\" vs \"%s\" (n=%zu) -> %d (%s)\n",
+               get_compare_name(type), s1, s2, n, res, interpretar_resultado(res));
+    else
+        printf("[%s] \"%s\" vs \"%s\" -> %d (%s)\n",
+               get_compare_name(type), s1, s2, res, interpretar_resultado(res));
 }
 
 int main(int argc, char **argv)
