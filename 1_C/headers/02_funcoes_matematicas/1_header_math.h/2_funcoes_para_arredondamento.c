@@ -23,12 +23,12 @@ typedef struct
     const char *name;               // Nome da operação
 
     /* Ponteiros para as versões em diferentes precisões */
-    float       (*f_func)(float);          // versão float
-    double      (*d_func)(double);        // versão double
+    float       (*f_func) (float);          // versão float
+    double      (*d_func) (double);        // versão double
     long double (*ld_func)(long double); // versão long double
 
     /* Ponteiros para versões que retornam inteiros (se aplicável) */
-    long      (*l_func)(double);  // lrint / lround
+    long      (*l_func) (double);  // lrint / lround
     long long (*ll_func)(double); // llrint / llround
 } MathOperation;
 
@@ -83,16 +83,16 @@ ResultadosMatematicos compute_math(double x, FUNCOES_DE_ARREDONDAMENTO type)
     const MathOperation *op = &MATH_OPERATIONS[type];
 
     if (op->f_func)
-        res.f_result = op->f_func((float)x);
+        res.f_result  = op->f_func((float)x);
 
     if (op->d_func)
-        res.d_result = op->d_func(x);
+        res.d_result  = op->d_func(x);
 
     if (op->ld_func)
         res.ld_result = op->ld_func((long double)x);
 
     if (op->l_func)
-        res.l_result = op->l_func(x);
+        res.l_result  = op->l_func(x);
 
     if (op->ll_func)
         res.ll_result = op->ll_func(x);

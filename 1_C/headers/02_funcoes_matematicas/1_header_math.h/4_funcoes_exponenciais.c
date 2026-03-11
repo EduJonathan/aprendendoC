@@ -102,28 +102,28 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_EXPONENCIAIS type
     if (type == MATH_LDEXP)
     {
         int exp = (int)y; // y deve ser inteiro em valor
-        res.f_result = ldexpf((float)x, exp);
-        res.d_result = ldexp(x, exp);
+        res.f_result  = ldexpf((float)x, exp);
+        res.d_result  = ldexp(x, exp);
         res.ld_result = ldexpl((long double)x, exp);
         return res;
     }
 
     // Funções normais de 1 argumento (exp, exp2, log*, etc.), não precisam de y
     if (op->f_func)
-        res.f_result = op->f_func((float)x, (float)y);
+        res.f_result  = op->f_func((float)x, (float)y);
 
     if (op->d_func)
-        res.d_result = op->d_func(x, y);
+        res.d_result  = op->d_func(x, y);
 
     if (op->ld_func)
         res.ld_result = op->ld_func((long double)x, (long double)y);
 
     // frexp
     if (op->f_frexp)
-        res.f_result = op->f_frexp((float)x, &res.f_exp);
+        res.f_result  = op->f_frexp((float)x, &res.f_exp);
 
     if (op->d_frexp)
-        res.d_result = op->d_frexp(x, &res.d_exp);
+        res.d_result  = op->d_frexp(x, &res.d_exp);
 
     if (op->ld_frexp)
         res.ld_result = op->ld_frexp((long double)x, &res.ld_exp);
@@ -131,22 +131,22 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_EXPONENCIAIS type
     // modf – parte inteira no ponteiro (mesmo tipo!)
     if (op->f_modf)
     {
-        float intpart;
-        res.f_result = op->f_modf((float)x, &intpart);
+        float intpart = 0.0f;
+        res.f_result  = op->f_modf((float)x, &intpart);
         res.f_intpart = intpart;
     }
     
     if (op->d_modf)
     {
-        double intpart;
-        res.d_result = op->d_modf(x, &intpart);
+        double intpart = 0.0;
+        res.d_result  = op->d_modf(x, &intpart);
         res.d_intpart = intpart;
     }
     
     if (op->ld_modf)
     {
-        long double intpart;
-        res.ld_result = op->ld_modf((long double)x, &intpart);
+        long double intpart = 0.0L;
+        res.ld_result  = op->ld_modf((long double)x, &intpart);
         res.ld_intpart = intpart;
     }
 

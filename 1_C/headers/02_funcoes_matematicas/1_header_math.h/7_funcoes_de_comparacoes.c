@@ -18,7 +18,7 @@ typedef enum
     MATH_COUNT
 } MathOpType;
 
-typedef int (*UnaryFunc)(double);          // Ponteiro para função para quem depende de um argumento
+typedef int (*UnaryFunc) (double);          // Ponteiro para função para quem depende de um argumento
 typedef int (*BinaryFunc)(double, double); // Ponteiro para função para quem depende de dois argumentos
 
 // Funções que checam operações matemáticas de comparação e classificação unárias
@@ -60,6 +60,7 @@ static const MathOperation ops[MATH_COUNT] =
         {MATH_ISLESSEQUAL,    "islessequal",    2, NULL,         w_islessequal},
         {MATH_ISLESSGREATER,  "islessgreater",  2, NULL,         w_islessgreater},
         {MATH_ISUNORDERED,    "isunordered",    2, NULL,         w_isunordered}};
+
 /**
  * @brief Avalia a operação matemática.
  *
@@ -188,7 +189,7 @@ int main(int argc, char **argv)
         MATH_ISUNORDERED};
 
     const size_t n_pares = sizeof(pares) / sizeof(pares[0]);
-    const size_t n_comp = sizeof(comparacoes) / sizeof(comparacoes[0]);
+    const size_t n_comp  = sizeof(comparacoes) / sizeof(comparacoes[0]);
 
     for (size_t i = 0; i < n_pares; ++i)
     {

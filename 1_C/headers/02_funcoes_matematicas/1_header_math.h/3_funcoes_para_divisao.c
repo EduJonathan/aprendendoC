@@ -99,8 +99,8 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_DIVISIONAIS type)
     // Caso especial: fabs (só 1 argumento)
     if (type == MATH_FABS)
     {
-        res.f_result = fabsf((float)x);
-        res.d_result = fabs(x);
+        res.f_result  = fabsf((float)x);
+        res.d_result  = fabs(x);
         res.ld_result = fabsl((long double)x);
         return res;
     }
@@ -108,12 +108,12 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_DIVISIONAIS type)
     // Funções normais de 2 argumentos (fmod, remainder)
     if (op->f_func)
     {
-        res.f_result = op->f_func((float)x, (float)y);
+        res.f_result  = op->f_func((float)x, (float)y);
     }
 
     if (op->d_func)
     {
-        res.d_result = op->d_func(x, y);
+        res.d_result  = op->d_func(x, y);
     }
 
     if (op->ld_func)
@@ -124,12 +124,12 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_DIVISIONAIS type)
     // remquo (precisa passar ponteiro para quociente)
     if (op->f_remquo)
     {
-        res.f_result = op->f_remquo((float)x, (float)y, &res.f_quotient);
+        res.f_result  = op->f_remquo((float)x, (float)y, &res.f_quotient);
     }
 
     if (op->d_remquo)
     {
-        res.d_result = op->d_remquo(x, y, &res.d_quotient);
+        res.d_result  = op->d_remquo(x, y, &res.d_quotient);
     }
     
     if (op->ld_remquo)

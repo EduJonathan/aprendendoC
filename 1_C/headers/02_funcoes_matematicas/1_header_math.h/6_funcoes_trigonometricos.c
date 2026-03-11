@@ -23,13 +23,13 @@ typedef struct
     const char *name;
     int num_args; // 1 para unárias, 2 para atan2
 
-    float       (*f_func)(float); // unárias
-    double      (*d_func)(double);
+    float       (*f_func) (float); // unárias
+    double      (*d_func) (double);
     long double (*ld_func)(long double);
 
     // Versões binárias para atan2
-    float       (*f_bin)(float, float);
-    double      (*d_bin)(double, double);
+    float       (*f_bin) (float, float);
+    double      (*d_bin) (double, double);
     long double (*ld_bin)(long double, long double);
 } MathOperation;
 
@@ -82,20 +82,20 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_TRIGONOMETRICAS t
 
     /* Funções unárias */
     if (op->f_func)
-        res.f_result = op->f_func((float)x);
+        res.f_result  = op->f_func((float)x);
 
     if (op->d_func)
-        res.d_result = op->d_func(x);
+        res.d_result  = op->d_func(x);
 
     if (op->ld_func)
         res.ld_result = op->ld_func((long double)x);
 
     /* Função binária (atan2) */
     if (op->f_bin)
-        res.f_result = op->f_bin((float)y, (float)x); // ordem: y, x
+        res.f_result  = op->f_bin((float)y, (float)x); // ordem: y, x
 
     if (op->d_bin)
-        res.d_result = op->d_bin(y, x);
+        res.d_result  = op->d_bin(y, x);
 
     if (op->ld_bin)
         res.ld_result = op->ld_bin((long double)y, (long double)x);
@@ -157,10 +157,10 @@ int main(int argc, char **argv)
 
     /* Casos de teste binários (atan2) */
     TestarValores testes_binarios[] = {
-        {MATH_ATAN2, 1.0, 1.0},   //  45°
-        {MATH_ATAN2, 1.0, -1.0},  // 135°
+        {MATH_ATAN2,  1.0,  1.0},   // 45°
+        {MATH_ATAN2,  1.0, -1.0},  // 135°
         {MATH_ATAN2, -1.0, -1.0}, // -135°
-        {MATH_ATAN2, -1.0, 1.0}   // -45°
+        {MATH_ATAN2, -1.0,  1.0} // -45°
     };
 
     const size_t n_binarios = sizeof(testes_binarios) / sizeof(testes_binarios[0]);

@@ -20,8 +20,8 @@ typedef struct
     const char *name;
     int num_args; // sempre 1 para essas funções
 
-    float       (*f_func)(float);
-    double      (*d_func)(double);
+    float       (*f_func) (float);
+    double      (*d_func) (double);
     long double (*ld_func)(long double);
 } MathOperation;
 
@@ -69,10 +69,10 @@ ResultadosMatematicos compute_math(double x, FUNCOES_HIPERPBOLICAS type)
     const MathOperation *op = &MATH_OPERATIONS[type];
 
     if (op->f_func)
-        res.f_result = op->f_func((float)x);
+        res.f_result  = op->f_func((float)x);
 
     if (op->d_func)
-        res.d_result = op->d_func(x);
+        res.d_result  = op->d_func(x);
 
     if (op->ld_func)
         res.ld_result = op->ld_func((long double)x);
