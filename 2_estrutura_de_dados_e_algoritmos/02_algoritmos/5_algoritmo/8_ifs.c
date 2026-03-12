@@ -78,32 +78,35 @@ typedef enum
     CATEGORY_COUNT
 } CharCategory;
 
+// Tabela lookup que será utilizada para armazenar a classificação de cada caractere ASCII, permitindo acesso O(1) para classificação
 static CharCategory charLookup[128];
 
+// Função para inicializar a tabela de lookup com as classificações de caracteres
 void initCharLookup(void)
 {
+    // Laço para classificar caracteres especiais armazenando na tabela de lookup
     for (int i = 0; i < 128; i++)
     {
         charLookup[i] = SPECIAL;
     }
 
-    // Digits
+    // Laço para classificar dígitos
     for (int i = '0'; i <= '9'; i++)
     {
         charLookup[i] = DIGIT;
     }
 
-    // Space
+    // Classificar espaço
     charLookup[' '] = SPACE;
 
-    // Vowels
+    // Classificar vogais
     const char *vowels = "aeiouAEIOU";
     for (int i = 0; vowels[i]; i++)
     {
         charLookup[(unsigned char)vowels[i]] = VOWEL;
     }
 
-    // Consonants
+    // Classificar consoantes (tudo que não é vogal, dígito ou espaço)
     for (int i = 'a'; i <= 'z'; i++)
     {
         if (strchr(vowels, i) == NULL)
@@ -111,6 +114,7 @@ void initCharLookup(void)
             charLookup[i] = CONSONANT;
         }
     }
+
     for (int i = 'A'; i <= 'Z'; i++)
     {
         if (strchr(vowels, i) == NULL)
@@ -120,11 +124,13 @@ void initCharLookup(void)
     }
 }
 
+// Função para classificar um caractere usando a tabela de lookup
 CharCategory classifyChar(char c)
 {
     return (c < 128) ? charLookup[(unsigned char)c] : SPECIAL;
 }
 
+// Função para contar categorias de caracteres em uma string
 void checaString(const char *string)
 {
     int counts[CATEGORY_COUNT] = {0};
