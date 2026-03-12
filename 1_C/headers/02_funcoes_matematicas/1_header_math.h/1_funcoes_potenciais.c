@@ -28,7 +28,8 @@ const Metadados MATH_LOOKUP[MATH_COUNT] = {
     [MATH_POW]   = {MATH_POW,   "pow",   2},
     [MATH_CBRT]  = {MATH_CBRT,  "cbrt",  1},
     [MATH_HYPOT] = {MATH_HYPOT, "hypot", 2},
-    [MATH_SQRT]  = {MATH_SQRT,  "sqrt",  1}};
+    [MATH_SQRT]  = {MATH_SQRT,  "sqrt",  1}
+};
 
 /**
  * @brief Estrutura para armazenar os resultados de uma operação matemática

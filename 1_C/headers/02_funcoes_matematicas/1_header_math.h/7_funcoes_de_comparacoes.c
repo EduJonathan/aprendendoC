@@ -59,7 +59,8 @@ static const MathOperation ops[MATH_COUNT] =
         {MATH_ISLESS,         "isless",         2, NULL,         w_isless},
         {MATH_ISLESSEQUAL,    "islessequal",    2, NULL,         w_islessequal},
         {MATH_ISLESSGREATER,  "islessgreater",  2, NULL,         w_islessgreater},
-        {MATH_ISUNORDERED,    "isunordered",    2, NULL,         w_isunordered}};
+        {MATH_ISUNORDERED,    "isunordered",    2, NULL,         w_isunordered}
+    };
 
 /**
  * @brief Avalia a operação matemática.

@@ -23,8 +23,8 @@ typedef struct
     const char *name;               // Nome da operação
 
     /* Ponteiros para as versões em diferentes precisões */
-    float       (*f_func) (float);          // versão float
-    double      (*d_func) (double);        // versão double
+    float       (*f_func) (float);         // versão float
+    double      (*d_func) (double);       // versão double
     long double (*ld_func)(long double); // versão long double
 
     /* Ponteiros para versões que retornam inteiros (se aplicável) */

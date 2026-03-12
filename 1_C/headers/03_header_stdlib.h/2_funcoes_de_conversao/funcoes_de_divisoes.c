@@ -55,9 +55,9 @@ DivResult compute_div(long long num, long long den, DivType type)
     {
     case DIV_INT:
     {
-        div_t d = div((int)num, (int)den);
+        div_t d  = div((int)num, (int)den);
         res.quot = d.quot;
-        res.rem = d.rem;
+        res.rem  = d.rem;
         break;
     }
 
@@ -65,15 +65,15 @@ DivResult compute_div(long long num, long long den, DivType type)
     {
         ldiv_t d = ldiv(num, den); // long → já cabe em long long
         res.quot = d.quot;
-        res.rem = d.rem;
+        res.rem  = d.rem;
         break;
     }
 
     case DIV_LLONG:
     {
         lldiv_t d = lldiv(num, den);
-        res.quot = d.quot;
-        res.rem = d.rem;
+        res.quot  = d.quot;
+        res.rem   = d.rem;
         break;
     }
 

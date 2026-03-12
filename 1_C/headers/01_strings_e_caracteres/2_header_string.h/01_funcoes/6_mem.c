@@ -4,7 +4,6 @@
 #include <inttypes.h> // Para PRIu8 etc., se necessário
 #include <string.h>
 
-
 // Enum para identificar as funções de manipulação de memória
 typedef enum
 {

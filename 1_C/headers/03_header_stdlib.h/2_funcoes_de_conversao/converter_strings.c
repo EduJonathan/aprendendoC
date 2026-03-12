@@ -29,11 +29,11 @@ typedef struct
     int num_args; // Quantidade de argumentos necessários
 
     // Ponteiros para as funções (assinaturas diferentes)
-    double        (*func_atof)(const char *);
-    int           (*func_atoi)(const char *);
-    long          (*func_atol)(const char *);
-    double        (*func_strtod)(const char *, char **);
-    long          (*func_strtol)(const char *, char **, int);
+    double        (*func_atof)   (const char *);
+    int           (*func_atoi)   (const char *);
+    long          (*func_atol)   (const char *);
+    double        (*func_strtod) (const char *, char **);
+    long          (*func_strtol) (const char *, char **, int);
     unsigned long (*func_strtoul)(const char *, char **, int);
 } Conversor;
 
@@ -41,12 +41,12 @@ typedef struct
  * @brief Tabela central de conversores – tudo definido aqui
  */
 const Conversor CONVERSORES[CONV_COUNT] = {
-    [CONV_ATOF]     = {CONV_ATOF,   "atof",     1, atof, NULL, NULL, NULL,   NULL,   NULL},
-    [CONV_ATOI]     = {CONV_ATOI,    "atoi",    1, NULL, atoi, NULL, NULL,   NULL,   NULL},
-    [CONV_ATOL]     = {CONV_ATOL,    "atol",    1, NULL, NULL, atol, NULL,   NULL,   NULL},
-    [CONV_STRTOD]   = {CONV_STRTOD,  "strtod",  2, NULL, NULL, NULL, strtod, NULL,   NULL},
-    [CONV_STRTOL]   = {CONV_STRTOL,  "strtol",  3, NULL, NULL, NULL, NULL,   strtol, NULL},
-    [CONV_STRTOUL]  = {CONV_STRTOUL, "strtoul", 3, NULL, NULL, NULL, NULL,   NULL,   strtoul},
+    [CONV_ATOF]    = {CONV_ATOF,    "atof",    1, atof, NULL, NULL, NULL,   NULL,   NULL},
+    [CONV_ATOI]    = {CONV_ATOI,    "atoi",    1, NULL, atoi, NULL, NULL,   NULL,   NULL},
+    [CONV_ATOL]    = {CONV_ATOL,    "atol",    1, NULL, NULL, atol, NULL,   NULL,   NULL},
+    [CONV_STRTOD]  = {CONV_STRTOD,  "strtod",  2, NULL, NULL, NULL, strtod, NULL,   NULL},
+    [CONV_STRTOL]  = {CONV_STRTOL,  "strtol",  3, NULL, NULL, NULL, NULL,   strtol, NULL},
+    [CONV_STRTOUL] = {CONV_STRTOUL, "strtoul", 3, NULL, NULL, NULL, NULL,   NULL,   strtoul},
 };
 
 /**

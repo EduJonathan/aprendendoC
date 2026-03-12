@@ -52,7 +52,8 @@ const OperacaoCType OPERACOES_CTYPE[CTYPE_COUNT] = {
     {CTYPE_ISUPPER,  "isupper",   isupper,  NULL},
     {CTYPE_ISXDIGIT, "isxdigit",  isxdigit, NULL},
     {CTYPE_TOLOWER,  "tolower",   NULL,     tolower},
-    {CTYPE_TOUPPER,  "toupper",   NULL,     toupper}};
+    {CTYPE_TOUPPER,  "toupper",   NULL,     toupper}
+};
 
 // Estrutura que armazena o resultado da aplicação em um caractere
 typedef struct
