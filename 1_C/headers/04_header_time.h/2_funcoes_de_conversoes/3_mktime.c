@@ -109,8 +109,8 @@ static int calcula_pascoa(int ano, int *mes_out, int *dia_out)
     int l = (32 + 2 * e + 2 * i - h - k) % 7; // Dia da semana da Lua cheia pascal
     int m = (a + 11 * h + 22 * l) / 451;      // Correção para o mês
 
-    int mes = (h + l - 7 * m + 114) / 31; // 3 = março, 4 = abril
-    int dia = ((h + l - 7 * m + 114) % 31) + 1;
+    int mes = (h + l - 7 * m + 114) / 31;       // 3 = março, 4 = abril
+    int dia = ((h + l - 7 * m + 114) % 31) + 1; // dia do mês
 
     *mes_out = mes - 1; // struct tm usa 0-11
     *dia_out = dia;
@@ -133,11 +133,11 @@ static int calcula_carnaval(int ano, int *mes_out, int *dia_out)
 
     // Carnaval = Páscoa - 47 dias
     struct tm data = {0};
-    data.tm_year = ano - 1900;
-    data.tm_mon = mes_p;
-    data.tm_mday = dia_p;
-    data.tm_hour = 12; // meio-dia para evitar problemas de horário de verão
-    data.tm_isdst = -1;
+    data.tm_year   = ano - 1900;
+    data.tm_mon    = mes_p;
+    data.tm_mday   = dia_p;
+    data.tm_hour   = 12; // meio-dia para evitar problemas de horário de verão
+    data.tm_isdst  = -1;
 
     time_t t = mktime(&data);
     if (t == (time_t)-1)
@@ -173,17 +173,17 @@ void calcular_proxima(const char *nome)
         return;
     }
 
-    time_t agora = time(NULL);
+    time_t agora   = time(NULL);
     struct tm hoje = *localtime(&agora);
-    hoje.tm_hour = hoje.tm_min = hoje.tm_sec = 0;
-    hoje.tm_isdst = -1;
-    mktime(&hoje); // normaliza
+    hoje.tm_hour   = hoje.tm_min = hoje.tm_sec = 0;
+    hoje.tm_isdst  = -1;
 
+    mktime(&hoje);            // normalizar (ajusta campos como tm_wday, tm_yday)
     struct tm evento = hoje; // copia ano, etc.
 
-    int ano_base = hoje.tm_year + 1900;
+    int ano_base = hoje.tm_year + 1900; // ano atual para cálculo de móveis
+    int ok = 0; // flag para indicar se a data foi calculada com sucesso
 
-    int ok = 0;
     if (f->dia > 0)
     {
         // Fixo
@@ -203,8 +203,8 @@ void calcular_proxima(const char *nome)
         return;
     }
 
-    evento.tm_hour = 12;
-    evento.tm_min = evento.tm_sec = 0;
+    evento.tm_hour  = 12;
+    evento.tm_min   = evento.tm_sec = 0;
     evento.tm_isdst = -1;
     mktime(&evento);
 
@@ -215,7 +215,7 @@ void calcular_proxima(const char *nome)
         if (f->dia > 0)
         {
             evento.tm_year = proximo_ano - 1900;
-            evento.tm_mon = f->mes;
+            evento.tm_mon  = f->mes;
             evento.tm_mday = f->dia;
         }
         else if (f->calcula_movel)
@@ -223,7 +223,8 @@ void calcular_proxima(const char *nome)
             f->calcula_movel(proximo_ano, &evento.tm_mon, &evento.tm_mday);
             evento.tm_year = proximo_ano - 1900;
         }
-        evento.tm_hour = 12;
+
+        evento.tm_hour  = 12;
         evento.tm_isdst = -1;
         mktime(&evento);
     }

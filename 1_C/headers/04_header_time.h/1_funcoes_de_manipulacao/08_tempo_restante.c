@@ -31,10 +31,10 @@ bool calculaTempoRestante(int hora_alvo, int minuto_alvo, int *diff_horas, int *
     }
 
     struct tm alvo = *local;
-    alvo.tm_hour = hora_alvo;
-    alvo.tm_min = minuto_alvo;
-    alvo.tm_sec = 0;
-    alvo.tm_isdst = -1; // deixa mktime decidir sobre horário de verão
+    alvo.tm_hour   = hora_alvo;
+    alvo.tm_min    = minuto_alvo;
+    alvo.tm_sec    = 0;
+    alvo.tm_isdst  = -1; // deixa mktime decidir sobre horário de verão
 
     time_t tempo_alvo = mktime(&alvo);
     if (tempo_alvo == (time_t)-1)
@@ -51,7 +51,7 @@ bool calculaTempoRestante(int hora_alvo, int minuto_alvo, int *diff_horas, int *
     }
 
     // Converte para horas e minutos
-    *diff_horas = (int)(diferenca / 3600.0);
+    *diff_horas   = (int)(diferenca / 3600.0);
     *diff_minutos = (int)((diferenca - (*diff_horas * 3600.0)) / 60.0);
 
     return true;

@@ -53,8 +53,7 @@ void imprimirTempo(time_t tempo)
         if (p)
             *p = '\0';
 
-        printf("Tempo UTC: %s  (%lld segundos desde 1970-01-01)\n",
-               buf, (long long)tempo);
+        printf("Tempo UTC: %s  (%lld segundos desde 1970-01-01)\n", buf, (long long)tempo);
     }
     else
     {
@@ -77,11 +76,13 @@ void calcular_dias_para_data(const char *data_usuario)
         return;
     }
 
-    struct tm hoje = *localtime(&agora);
-    hoje.tm_hour = 0;
-    hoje.tm_min = 0;
-    hoje.tm_sec = 0;
-    hoje.tm_isdst = -1; // Deixa mktime decidir horário de verão
+    struct tm hoje         = *localtime(&agora);
+    hoje.tm_hour           = 0;
+    hoje.tm_min            = 0;
+    hoje.tm_sec            = 0;
+    hoje.tm_isdst          = -1; // Deixa mktime decidir horário de verão
+
+    // Normaliza para meia-noite (evita problemas de horário de verão)
     time_t hoje_meia_noite = mktime(&hoje);
 
     if (hoje_meia_noite == (time_t)-1)
@@ -91,7 +92,7 @@ void calcular_dias_para_data(const char *data_usuario)
     }
 
     struct tm data_tm = {0};
-    data_tm.tm_isdst = -1;
+    data_tm.tm_isdst  = -1;
 
     int d = 0, m = 0, a = 0;
     if (sscanf(data_usuario, "%d/%d/%d", &d, &m, &a) != 3 ||
@@ -102,10 +103,10 @@ void calcular_dias_para_data(const char *data_usuario)
     }
 
     data_tm.tm_mday = d;
-    data_tm.tm_mon = m - 1;
+    data_tm.tm_mon  = m - 1;
     data_tm.tm_year = a - 1900;
-
     time_t alvo = mktime(&data_tm);
+    
     if (alvo == (time_t)-1)
     {
         printf("Data inválida ou fora do intervalo suportado.\n");

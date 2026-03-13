@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 
     // Laço for para realizar uma tarefa repetitiva
     long sum = 0l;
-    for (long i = 0; i < 1000000000; i++)
+    for (long i = 0l; i < 1000000000l; i++)
     {
         sum += i; // Soma simples
     }

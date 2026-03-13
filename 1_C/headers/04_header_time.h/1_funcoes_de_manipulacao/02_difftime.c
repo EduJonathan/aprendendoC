@@ -52,20 +52,20 @@ void calcular_diferenca_25_setembro(void)
         return;
     }
 
-    struct tm hoje = *localtime(&agora);
-    hoje.tm_hour = hoje.tm_min = hoje.tm_sec = 0;
-    hoje.tm_isdst = -1;
+    struct tm hoje         = *localtime(&agora);
+    hoje.tm_hour           = hoje.tm_min = hoje.tm_sec = 0;
+    hoje.tm_isdst          = -1;
     time_t hoje_meia_noite = mktime(&hoje);
 
     // Data de referência: 25 de setembro do ano atual
     struct tm ref = {0};
-    ref.tm_isdst = -1;
-    ref.tm_year = hoje.tm_year;
-    ref.tm_mon = 8; // setembro = 8
-    ref.tm_mday = 25;
-    ref.tm_hour = 0;
-    ref.tm_min = 0;
-    ref.tm_sec = 0;
+    ref.tm_isdst  = -1;
+    ref.tm_year   = hoje.tm_year;
+    ref.tm_mon    = 8; // setembro = 8
+    ref.tm_mday   = 25;
+    ref.tm_hour   = 0;
+    ref.tm_min    = 0;
+    ref.tm_sec    = 0;
 
     time_t tempo_ref = mktime(&ref);
     if (tempo_ref == (time_t)-1)
@@ -82,7 +82,7 @@ void calcular_diferenca_25_setembro(void)
     {
         // Já passou
         int meses = dias_totais / 30;
-        int dias = dias_totais % 30;
+        int dias  = dias_totais % 30;
         printf("O dia 25 de setembro de %d foi há %d meses e %d dias.\n", ref.tm_year + 1900, meses, dias);
     }
     else
@@ -111,11 +111,11 @@ void calcular_diferenca_25_setembro(void)
  */
 int calcular_dias_entre(struct tm *atual, struct tm *destino)
 {
-    atual->tm_hour = atual->tm_min = atual->tm_sec = 0;
+    atual->tm_hour   = atual->tm_min = atual->tm_sec = 0;
     destino->tm_hour = destino->tm_min = destino->tm_sec = 0;
-    atual->tm_isdst = destino->tm_isdst = -1;
+    atual->tm_isdst  = destino->tm_isdst = -1;
 
-    time_t t_atual = mktime(atual);
+    time_t t_atual   = mktime(atual);
     time_t t_destino = mktime(destino);
 
     if (t_atual == (time_t)-1 || t_destino == (time_t)-1)
@@ -143,9 +143,10 @@ int main(int argc, char **argv)
 
     // 1. Tempo desde o início do mês
     struct tm inicio_mes = hoje;
-    inicio_mes.tm_mday = 1;
-    inicio_mes.tm_hour = inicio_mes.tm_min = inicio_mes.tm_sec = 0;
-    inicio_mes.tm_isdst = -1;
+    inicio_mes.tm_mday   = 1;
+    inicio_mes.tm_hour   = inicio_mes.tm_min = inicio_mes.tm_sec = 0;
+    inicio_mes.tm_isdst  = -1;
+
     time_t t_inicio = mktime(&inicio_mes);
     double segs_mes = difftime(now, t_inicio);
 
@@ -180,10 +181,10 @@ int main(int argc, char **argv)
     }
 
     struct tm destino = {0};
-    destino.tm_mday = d;
-    destino.tm_mon = m - 1;
-    destino.tm_year = a - 1900;
-    destino.tm_isdst = -1;
+    destino.tm_mday   = d;
+    destino.tm_mon    = m - 1;
+    destino.tm_year   = a - 1900;
+    destino.tm_isdst  = -1;
 
     int dias = calcular_dias_entre(&hoje, &destino);
 

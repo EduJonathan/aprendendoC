@@ -43,7 +43,7 @@ void calcular_dia_da_semana(const char *data_input)
     }
 
     data_tm.tm_mday = dia;
-    data_tm.tm_mon = mes - 1; // meses: 0 = Janeiro, 11 = Dezembro
+    data_tm.tm_mon  = mes - 1; // meses: 0 = Janeiro, 11 = Dezembro
     data_tm.tm_year = ano - 1900;
 
     tempo = mktime(&data_tm);

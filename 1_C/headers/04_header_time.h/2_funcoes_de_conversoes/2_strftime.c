@@ -63,20 +63,21 @@ void calcular_dias_para_aniversario(const char *entrada)
         return;
     }
 
-    time_t agora_utc = time(NULL);
+    time_t agora_utc   = time(NULL);
     struct tm hoje_utc = *gmtime(&agora_utc);
-    hoje_utc.tm_hour = hoje_utc.tm_min = hoje_utc.tm_sec = 0;
-    hoje_utc.tm_isdst = -1;
+    hoje_utc.tm_hour   = hoje_utc.tm_min = hoje_utc.tm_sec = 0;
+    hoje_utc.tm_isdst  = -1;
+
     mktime(&hoje_utc); // normaliza (geralmente não muda nada em UTC)
 
-    struct tm aniversario = {0};      // inicializa todos os campos com zero
-    aniversario.tm_mday = dia;        // dia do mês
-    aniversario.tm_mon = mes - 1;     // meses em tm vão de 0 a 11
-    aniversario.tm_year = ano - 1900; // ano desde 1900
-    aniversario.tm_hour = 0;          // meia-noite
-    aniversario.tm_min = 0;           // meia-noite
-    aniversario.tm_sec = 0;           // meia-noite
-    aniversario.tm_isdst = -1;        // informação de horário de verão desconhecida
+    struct tm aniversario = {0};        // inicializa todos os campos com zero
+    aniversario.tm_mday   = dia;        // dia do mês
+    aniversario.tm_mon    = mes - 1;    // meses em tm vão de 0 a 11
+    aniversario.tm_year   = ano - 1900; // ano desde 1900
+    aniversario.tm_hour   = 0;          // meia-noite
+    aniversario.tm_min    = 0;          // meia-noite
+    aniversario.tm_sec    = 0;          // meia-noite
+    aniversario.tm_isdst  = -1;         // informação de horário de verão desconhecida
 
     // Define ano do próximo aniversário
     int ano_base = hoje_utc.tm_year + 1900;
@@ -148,7 +149,7 @@ int main(int argc, char **argv)
     calcular_dias_para_aniversario(entrada);
 
     // Exemplo de data atual (apenas informativo)
-    time_t agora = time(NULL);
+    time_t agora  = time(NULL);
     struct tm *lt = localtime(&agora);
     char buf[80];
     strftime(buf, sizeof(buf), "Hoje (%Y-%m-%d %H:%M %Z)", lt);

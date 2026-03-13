@@ -31,13 +31,11 @@ int diasEmMes(int ano, int mes)
     if (mes < 1 || mes > 12)
         return -1; // erro
 
-    static const int dias_por_mes[13] = {
-        0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static const int dias_por_mes[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     int dias = dias_por_mes[mes];
     if (mes == 2 && isAnoBissexto(ano))
         dias = 29;
-
     return dias;
 }
 
@@ -68,11 +66,11 @@ int main(int argc, char **argv)
 
     // Preparar struct tm para o dia 1º do mês
     struct tm tm_in = {0};
-    tm_in.tm_year = ano - 1900;
-    tm_in.tm_mon = mes - 1;
-    tm_in.tm_mday = 1;
-    tm_in.tm_hour = 12;  // hora do meio-dia evita problemas de horário de verão
-    tm_in.tm_isdst = -1; // deixa mktime decidir
+    tm_in.tm_year   = ano - 1900;
+    tm_in.tm_mon    = mes - 1;
+    tm_in.tm_mday   = 1;
+    tm_in.tm_hour   = 12;  // hora do meio-dia evita problemas de horário de verão
+    tm_in.tm_isdst  = -1; // deixa mktime decidir
 
     if (mktime(&tm_in) == (time_t)-1)
     {

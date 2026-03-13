@@ -4,10 +4,10 @@
 
 #define MAX 100
 
-int contador_puro = 0;
-int contador_memo = 0;
+int contador_puro    = 0;
+int contador_memo    = 0;
 int contador_natural = 0;
-int cache[MAX][MAX] = {0};
+int cache[MAX][MAX]  = {0};
 
 /**
  * @brief Inicializa a matriz de cache com -1.

@@ -40,12 +40,12 @@ void calcular_idade(const char *data_nascimento)
         return;
     }
 
-    nascimento.tm_mday = d;
-    nascimento.tm_mon = m - 1; // 0 = janeiro
-    nascimento.tm_year = a - 1900;
-    nascimento.tm_hour = 0;
-    nascimento.tm_min = 0;
-    nascimento.tm_sec = 0;
+    nascimento.tm_mday  = d;
+    nascimento.tm_mon   = m - 1; // 0 = janeiro
+    nascimento.tm_year  = a - 1900;
+    nascimento.tm_hour  = 0;
+    nascimento.tm_min   = 0;
+    nascimento.tm_sec   = 0;
     nascimento.tm_isdst = -1; // deixa mktime decidir horário de verão
 
     time_t t_nasc = mktime(&nascimento);
@@ -64,9 +64,9 @@ void calcular_idade(const char *data_nascimento)
     }
 
     struct tm hoje = *localtime(&agora);
-    hoje.tm_hour = hoje.tm_min = hoje.tm_sec = 0;
-    hoje.tm_isdst = -1;
-    time_t t_hoje = mktime(&hoje);
+    hoje.tm_hour   = hoje.tm_min = hoje.tm_sec = 0;
+    hoje.tm_isdst  = -1;
+    time_t t_hoje  = mktime(&hoje);
 
     if (t_hoje == (time_t)-1)
     {
@@ -80,14 +80,13 @@ void calcular_idade(const char *data_nascimento)
     int mes_nasc = nascimento.tm_mon;
 
     // Ainda não fez aniversário este ano?
-    if (mes_atual < mes_nasc ||
-        (mes_atual == mes_nasc && hoje.tm_mday < nascimento.tm_mday))
+    if (mes_atual < mes_nasc || (mes_atual == mes_nasc && hoje.tm_mday < nascimento.tm_mday))
     {
         anos--;
     }
 
     // Cálculo de dias totais (opcional, mas interessante)
-    double segs = difftime(t_hoje, t_nasc);
+    double segs      = difftime(t_hoje, t_nasc);
     long dias_totais = (long)(segs / 86400.0);
 
     // Mostra resultado
