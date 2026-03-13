@@ -73,7 +73,8 @@ ResultadosMatematicos compute_math(double x, FUNCOES_DE_ARREDONDAMENTO type)
         .d_result = 0.0,
         .ld_result = 0.0L,
         .l_result = 0L,
-        .ll_result = 0LL};
+        .ll_result = 0LL
+    };
 
     if (type >= MATH_COUNT)
     {

@@ -59,7 +59,8 @@ ResultadosMatematicos compute_math(double x, FUNCOES_HIPERPBOLICAS type)
         .type = type,
         .f_result = 0.0f,
         .d_result = 0.0,
-        .ld_result = 0.0L};
+        .ld_result = 0.0L
+    };
 
     if (type >= MATH_COUNT)
     {
@@ -104,7 +105,8 @@ int main(int argc, char **argv)
         0.5,
         -0.5,
         10.0,
-        0.99999};
+        0.99999
+    };
 
     size_t n = sizeof(valores) / sizeof(valores[0]);
 

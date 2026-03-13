@@ -91,7 +91,8 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_EXPONENCIAIS type
         .ld_exp = 0,
         .f_intpart = 0.0,
         .d_intpart = 0.0,
-        .ld_intpart = 0.0L};
+        .ld_intpart = 0.0L
+    };
 
     if (type >= MATH_COUNT)
         return res;

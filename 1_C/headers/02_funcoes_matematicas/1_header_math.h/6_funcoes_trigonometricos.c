@@ -71,7 +71,8 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_TRIGONOMETRICAS t
         .type = type,
         .f_result = 0.0f,
         .d_result = 0.0,
-        .ld_result = 0.0L};
+        .ld_result = 0.0L
+    };
 
     if (type >= MATH_COUNT)
     {
@@ -139,7 +140,8 @@ int main(int argc, char **argv)
         {MATH_TAN,  M_PI / 4, 0.0}, // 45°
         {MATH_ASIN, 0.5,      0.0},
         {MATH_ACOS, 0.5,      0.0},
-        {MATH_ATAN, 1.0,      0.0}};
+        {MATH_ATAN, 1.0,      0.0}
+    };
 
     const size_t n_unarios = sizeof(testes_unarios) / sizeof(testes_unarios[0]);
 

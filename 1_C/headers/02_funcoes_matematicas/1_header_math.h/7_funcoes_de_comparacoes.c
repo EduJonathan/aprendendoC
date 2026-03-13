@@ -145,7 +145,8 @@ int main(int argc, char **argv)
         1e-308, /* subnormal */
         INFINITY,
         -INFINITY,
-        NAN};
+        NAN
+    };
 
     const size_t n_valores = sizeof(valores) / sizeof(valores[0]);
 
@@ -178,7 +179,8 @@ int main(int argc, char **argv)
         {NAN,       NAN},
         {INFINITY,  1.0},
         {1.0,       INFINITY},
-        {-INFINITY, INFINITY}};
+        {-INFINITY, INFINITY}
+    };
 
     // Lista das operações de comparação
     MathOpType comparacoes[] = {
@@ -187,7 +189,8 @@ int main(int argc, char **argv)
         MATH_ISLESS,
         MATH_ISLESSEQUAL,
         MATH_ISLESSGREATER,
-        MATH_ISUNORDERED};
+        MATH_ISUNORDERED
+    };
 
     const size_t n_pares = sizeof(pares) / sizeof(pares[0]);
     const size_t n_comp  = sizeof(comparacoes) / sizeof(comparacoes[0]);

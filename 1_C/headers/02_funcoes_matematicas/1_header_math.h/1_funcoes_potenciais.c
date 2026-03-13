@@ -59,7 +59,8 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_POTENCIAIS type)
     ResultadosMatematicos res = {
         .x = x,
         .y = y,
-        .type = type};
+        .type = type
+    };
 
     // Verifica se o tipo de operação é válido
     if (type < 0 || type >= MATH_COUNT)

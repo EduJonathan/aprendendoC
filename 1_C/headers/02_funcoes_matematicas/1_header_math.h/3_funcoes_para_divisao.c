@@ -33,22 +33,26 @@ const MathOperation MATH_OPERATIONS[MATH_COUNT] = {
     [MATH_FABS] = {
         MATH_FABS, "fabs", 1,
         NULL, NULL, NULL,
-        NULL, NULL, NULL},
+        NULL, NULL, NULL
+    },
 
     [MATH_FMOD] = {
         MATH_FMOD, "fmod", 2,
         fmodf, fmod, fmodl,
-        NULL, NULL, NULL},
+        NULL, NULL, NULL
+    },
     
     [MATH_REMAINDER] = {
         MATH_REMAINDER, "remainder", 2,
         remainderf, remainder, remainderl,
-        NULL, NULL, NULL},
+        NULL, NULL, NULL
+    },
     
     [MATH_REMQUO] = {
         MATH_REMQUO, "remquo", 2,
         NULL, NULL, NULL,
-        remquof, remquo, remquol},
+        remquof, remquo, remquol
+    },
 };
 
 /* Estrutura de resultados – agora com quociente para remquo */
@@ -87,7 +91,8 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_DIVISIONAIS type)
         .ld_result = 0.0L,
         .f_quotient = 0,
         .d_quotient = 0,
-        .ld_quotient = 0};
+        .ld_quotient = 0
+    };
 
     if (type >= MATH_COUNT)
     {
