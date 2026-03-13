@@ -116,7 +116,8 @@ ResultadoString aplicar_ctype_string(const char *texto, CtypeFunction tipo, Poli
     ResultadoString resultado = {
         .entrada = texto,
         .resultado = (politica == STRING_TODOS),
-        .tipo = tipo};
+        .tipo = tipo
+    };
 
     if (!texto || tipo >= CTYPE_COUNT)
         return resultado;

@@ -110,6 +110,7 @@ void compare_strings(const char *s1, const char *s2, size_t n, COMPARE_STRINGS t
         case CMP_STRCASECMP:
             res = _stricmp(s1, s2);
             break;
+
         case CMP_STRNCASECMP:
             res = _strnicmp(s1, s2, n);
             break;
@@ -117,6 +118,7 @@ void compare_strings(const char *s1, const char *s2, size_t n, COMPARE_STRINGS t
         case CMP_STRCASECMP:
             res = strcasecmp(s1, s2);
             break;
+
         case CMP_STRNCASECMP:
             res = strncasecmp(s1, s2, n);
             break;
@@ -128,11 +130,9 @@ void compare_strings(const char *s1, const char *s2, size_t n, COMPARE_STRINGS t
     }
 
     if (type == CMP_STRNCMP || type == CMP_STRNCASECMP)
-        printf("[%s] \"%s\" vs \"%s\" (n=%zu) -> %d (%s)\n",
-               get_compare_name(type), s1, s2, n, res, interpretar_resultado(res));
+        printf("[%s] \"%s\" vs \"%s\" (n=%zu) -> %d (%s)\n", get_compare_name(type), s1, s2, n, res, interpretar_resultado(res));
     else
-        printf("[%s] \"%s\" vs \"%s\" -> %d (%s)\n",
-               get_compare_name(type), s1, s2, res, interpretar_resultado(res));
+        printf("[%s] \"%s\" vs \"%s\" -> %d (%s)\n", get_compare_name(type), s1, s2, res, interpretar_resultado(res));
 }
 
 int main(int argc, char **argv)

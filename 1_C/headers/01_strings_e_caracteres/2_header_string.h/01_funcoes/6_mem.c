@@ -117,6 +117,7 @@ void demonstrar_memoria(void *dest, size_t dest_size, const void *src, size_t n,
 
     switch (type)
     {
+        // Tecnicamente, memcpy e memmove têm a mesma assinatura, mas seu comportamento difere em casos de sobreposição de memória
         case MEM_MEMCPY:
         case MEM_MEMMOVE:
         {
@@ -206,4 +207,6 @@ int main(int argc, char **argv)
     printf("• memset  → preenche bytes (não valores multi-byte)\n");
     printf("• memcmp  → compara bytes crus (ordem lexicográfica de bytes)\n");
     printf("• Sempre verifique que n ≤ tamanho do buffer destino!\n");
+
+    return 0;
 }
