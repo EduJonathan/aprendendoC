@@ -26,8 +26,8 @@ uint8_t, uint16_t, uint32_t, uint64_t // Sem sinal
 ---
 
 ```c
-int_least8_t, int_least64_t  // Pelo menos X bits
-int_fast8_t, int_fast64_t    // Mais rápido com pelo menos X bits
+int_least8_t, int_least64_t // Pelo menos X bits
+int_fast8_t, int_fast64_t   // Mais rápido com pelo menos X bits
 ```
 
 > **leastX_t:** garante no mínimo `X` bits.
@@ -41,10 +41,10 @@ int_fast8_t, int_fast64_t    // Mais rápido com pelo menos X bits
 
 ```c
 // Tipo básico - compilador escolhe tamanho otimizado
-for (int i = 0; i < 100; i++)  // 'int' é geralmente mais eficiente
+for (int i = 0; i < 100; i++); // 'int' é geralmente mais eficiente
 
 // Tipo fixo - pode ser menos eficiente em algumas arquiteturas
-for (int32_t i = 0; i < 100; i++)
+for (int32_t i = 0; i < 100; i++);
 ```
 
 Os tipos básicos (`int`, `long`, etc.) costumam ser melhores em:
