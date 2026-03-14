@@ -6,11 +6,13 @@ typedef enum
 {
     MATH_EXP,
     MATH_EXP2,
+    MATH_EXPM1,
     MATH_FREXP,
     MATH_LDEXP,
     MATH_LOG,
     MATH_LOG2,
     MATH_LOG10,
+    MATH_LOG1P,
     MATH_MODF,
     MATH_COUNT
 } FUNCOES_EXPONENCIAIS;
@@ -40,14 +42,16 @@ typedef struct
 
 /* Tabela central – tudo definido aqui */
 const MathOperation MATH_OPERATIONS[MATH_COUNT] = {
-    [MATH_EXP]   = {MATH_EXP,   "exp",   1, NULL, NULL, NULL, NULL,   NULL,  NULL,   NULL, NULL,  NULL},
-    [MATH_EXP2]  = {MATH_EXP2,  "exp2",  1, NULL, NULL, NULL, NULL,   NULL,  NULL,   NULL, NULL,  NULL},
-    [MATH_FREXP] = {MATH_FREXP, "frexp", 1, NULL, NULL, NULL, frexpf, frexp, frexpl, NULL, NULL,  NULL},
-    [MATH_LDEXP] = {MATH_LDEXP, "ldexp", 2, NULL, NULL, NULL, NULL,   NULL,  NULL,   NULL, NULL,  NULL}, // tratado separado
-    [MATH_LOG]   = {MATH_LOG,   "log",   1, NULL, NULL, NULL, NULL,   NULL,  NULL,   NULL, NULL,  NULL},
-    [MATH_LOG2]  = {MATH_LOG2,  "log2",  1, NULL, NULL, NULL, NULL,   NULL,  NULL,   NULL, NULL,  NULL},
-    [MATH_LOG10] = {MATH_LOG10, "log10", 1, NULL, NULL, NULL, NULL,   NULL,  NULL,   NULL, NULL,  NULL},
-    [MATH_MODF]  = {MATH_MODF,  "modf",  1, NULL, NULL, NULL, NULL,   NULL,  NULL,   modff, modf, modfl},
+    [MATH_EXP]   = {MATH_EXP,   "exp",   1, expf,   exp,   expl,   NULL,   NULL,  NULL,   NULL,  NULL, NULL},
+    [MATH_EXP2]  = {MATH_EXP2,  "exp2",  1, exp2f,  exp2,  exp2l,  NULL,   NULL,  NULL,   NULL,  NULL, NULL},
+    [MATH_EXPM1] = {MATH_EXPM1, "expm1", 1, expm1f, expm1, expm1l, NULL,   NULL,  NULL,   NULL,  NULL, NULL},
+    [MATH_FREXP] = {MATH_FREXP, "frexp", 1, NULL,   NULL,  NULL,   frexpf, frexp, frexpl, NULL,  NULL, NULL},
+    [MATH_LDEXP] = {MATH_LDEXP, "ldexp", 2, NULL,   NULL,  NULL,   NULL,   NULL,  NULL,   NULL,  NULL, NULL},
+    [MATH_LOG]   = {MATH_LOG,   "log",   1, logf,   log,   logl,   NULL,   NULL,  NULL,   NULL,  NULL, NULL},
+    [MATH_LOG2]  = {MATH_LOG2,  "log2",  1, log2f,  log2,  log2l,  NULL,   NULL,  NULL,   NULL,  NULL, NULL},
+    [MATH_LOG10] = {MATH_LOG10, "log10", 1, log10f, log10, log10l, NULL,   NULL,  NULL,   NULL,  NULL, NULL},
+    [MATH_LOG1P] = {MATH_LOG1P, "log1p", 1, log1pf, log1p, log1pl, NULL,   NULL,  NULL,   NULL,  NULL, NULL},
+    [MATH_MODF]  = {MATH_MODF,  "modf",  1, NULL,   NULL,  NULL,   NULL,   NULL,  NULL,   modff, modf, modfl},
 };
 
 /* Estrutura de resultados – com partes fracionárias e inteiras/expoentes */
@@ -81,8 +85,8 @@ ResultadosMatematicos compute_math(double x, double y, FUNCOES_EXPONENCIAIS type
 {
     ResultadosMatematicos res = {
         .x = x,
-        .y = y,
-        .type = type,
+        .y = y, 
+        .type = type, 
         .f_result = 0.0f,
         .d_result = 0.0,
         .ld_result = 0.0L,
@@ -209,14 +213,20 @@ int main(int argc, char **argv)
         double y;
         FUNCOES_EXPONENCIAIS type;
     } tests[] = {
-        {1.0,     0.0, MATH_EXP},
-        {8.0,     0.0, MATH_EXP2},
-        {1.0,     0.0, MATH_LOG},
-        {1024.0,  0.0, MATH_LOG2},
-        {1000.0,  0.0, MATH_LOG10},
-        {6.5,     3.0, MATH_LDEXP},
-        {13.625,  0.0, MATH_FREXP},
-        {-13.625, 0.0, MATH_MODF},
+        {1.0,        0.0, MATH_EXP},
+        {8.0,        0.0, MATH_EXP2},
+        {1.0,        0.0, MATH_EXPM1}, 
+        {1e-8,       0.0, MATH_EXPM1},
+        {1e-10,      0.0, MATH_EXPM1},
+        {1.0,        0.0, MATH_LOG},
+        {1024.0,     0.0, MATH_LOG2},
+        {1000.0,     0.0, MATH_LOG10},
+        {1e-8,       0.0, MATH_LOG1P},
+        {1e-10,      0.0, MATH_LOG1P},
+        {1.0 + 1e-9, 0.0, MATH_LOG1P},
+        {6.5,        3.0, MATH_LDEXP},
+        {13.625,     0.0, MATH_FREXP},
+        {-13.625,    0.0, MATH_MODF},
     };
 
     for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); i++)

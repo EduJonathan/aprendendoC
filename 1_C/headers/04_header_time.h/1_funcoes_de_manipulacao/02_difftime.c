@@ -89,8 +89,8 @@ void calcular_diferenca_25_setembro(void)
     {
         // Ainda vai chegar este ano
         int dias_faltam = -dias_totais;
-        int meses = dias_faltam / 30;
-        int dias = dias_faltam % 30;
+        int meses       = dias_faltam / 30;
+        int dias        = dias_faltam % 30;
         printf("Faltam %d meses e %d dias para 25 de setembro de %d.\n", meses, dias, ref.tm_year + 1900);
     }
 

@@ -76,11 +76,11 @@ void calcular_dias_para_data(const char *data_usuario)
         return;
     }
 
-    struct tm hoje         = *localtime(&agora);
-    hoje.tm_hour           = 0;
-    hoje.tm_min            = 0;
-    hoje.tm_sec            = 0;
-    hoje.tm_isdst          = -1; // Deixa mktime decidir horário de verão
+    struct tm hoje = *localtime(&agora);
+    hoje.tm_hour   = 0;
+    hoje.tm_min    = 0;
+    hoje.tm_sec    = 0;
+    hoje.tm_isdst  = -1; // Deixa mktime decidir horário de verão
 
     // Normaliza para meia-noite (evita problemas de horário de verão)
     time_t hoje_meia_noite = mktime(&hoje);
@@ -105,7 +105,7 @@ void calcular_dias_para_data(const char *data_usuario)
     data_tm.tm_mday = d;
     data_tm.tm_mon  = m - 1;
     data_tm.tm_year = a - 1900;
-    time_t alvo = mktime(&data_tm);
+    time_t alvo     = mktime(&data_tm);
     
     if (alvo == (time_t)-1)
     {

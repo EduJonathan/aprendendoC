@@ -127,7 +127,7 @@ static int calcula_pascoa(int ano, int *mes_out, int *dia_out)
  */
 static int calcula_carnaval(int ano, int *mes_out, int *dia_out)
 {
-    int mes_p, dia_p;
+    int mes_p = 0, dia_p = 0;
     if (!calcula_pascoa(ano, &mes_p, &dia_p))
         return 0;
 
@@ -187,7 +187,7 @@ void calcular_proxima(const char *nome)
     if (f->dia > 0)
     {
         // Fixo
-        evento.tm_mon = f->mes;
+        evento.tm_mon  = f->mes;
         evento.tm_mday = f->dia;
         ok = 1;
     }

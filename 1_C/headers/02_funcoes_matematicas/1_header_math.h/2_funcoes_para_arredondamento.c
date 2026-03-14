@@ -13,6 +13,7 @@ typedef enum
     MATH_LLRINT,
     MATH_LROUND,
     MATH_LLRROUND,
+    MATH_NEARBYINT,
     MATH_COUNT
 } FUNCOES_DE_ARREDONDAMENTO;
 
@@ -34,15 +35,16 @@ typedef struct
 
 /* Tabela com todas as operações */
 const MathOperation MATH_OPERATIONS[MATH_COUNT] = {
-    [MATH_CEIL]     = {MATH_CEIL,     "ceil",    ceilf,  ceil,  ceill,  NULL,   NULL},
-    [MATH_FLOOR]    = {MATH_FLOOR,    "floor",   floorf, floor, floorl, NULL,   NULL},
-    [MATH_ROUND]    = {MATH_ROUND,    "round",   roundf, round, roundl, NULL,   NULL},
-    [MATH_TRUNC]    = {MATH_TRUNC,    "trunc",   truncf, trunc, truncl, NULL,   NULL},
-    [MATH_RINT]     = {MATH_RINT,     "rint",    rintf,  rint,  rintl,  NULL,   NULL},
-    [MATH_LRINT]    = {MATH_LRINT,    "lrint",   NULL,   NULL,  NULL,   lrint,  NULL},
-    [MATH_LLRINT]   = {MATH_LLRINT,   "llrint",  NULL,   NULL,  NULL,   NULL,   llrint},
-    [MATH_LROUND]   = {MATH_LROUND,   "lround",  NULL,   NULL,  NULL,   lround, NULL},
-    [MATH_LLRROUND] = {MATH_LLRROUND, "llround", NULL,   NULL,  NULL,   NULL,   llround},
+    [MATH_CEIL]      = {MATH_CEIL,      "ceil",      ceilf,      ceil,      ceill,      NULL,  NULL},
+    [MATH_FLOOR]     = {MATH_FLOOR,     "floor",     floorf,     floor,     floorl,     NULL,  NULL},
+    [MATH_ROUND]     = {MATH_ROUND,     "round",     roundf,     round,     roundl,     NULL,  NULL},
+    [MATH_TRUNC]     = {MATH_TRUNC,     "trunc",     truncf,     trunc,     truncl,     NULL,  NULL},
+    [MATH_RINT]      = {MATH_RINT,      "rint",      rintf,      rint,      rintl,      NULL,  NULL},
+    [MATH_LRINT]     = {MATH_LRINT,     "lrint",     NULL,       NULL,      NULL,       lrint, NULL},
+    [MATH_LLRINT]    = {MATH_LLRINT,    "llrint",    NULL,       NULL,      NULL,       NULL,   llrint},
+    [MATH_LROUND]    = {MATH_LROUND,    "lround",    NULL,       NULL,      NULL,       lround, NULL},
+    [MATH_LLRROUND]  = {MATH_LLRROUND,  "llround",   NULL,       NULL,      NULL,       NULL,   llround},
+    [MATH_NEARBYINT] = {MATH_NEARBYINT, "nearbyint", nearbyintf, nearbyint, nearbyintl, NULL,   NULL},
 };
 
 /* Estrutura para armazenar os resultados */
@@ -109,38 +111,37 @@ ResultadosMatematicos compute_math(double x, FUNCOES_DE_ARREDONDAMENTO type)
 void imprimir_resultados(const ResultadosMatematicos *res)
 {
     const char *nome = MATH_OPERATIONS[res->type].name;
-    printf("Resultados para %s(%.6g):\n", nome, res->x);
+    printf("┌─ %s(%.10g)\n", nome, res->x);
 
     const MathOperation *op = &MATH_OPERATIONS[res->type];
 
-    /* Funções que retornam valores de ponto flutuante */
-    if (op->f_func || op->d_func || op->ld_func)
-    {
-        if (op->f_func)
-            printf("  float:       %.6g\n", res->f_result);
+    if (op->f_func)
+        printf("│  float       → %.12g\n", (double)res->f_result);
 
-        if (op->d_func)
-            printf("  double:      %.6g\n", res->d_result);
+    if (op->d_func)
+        printf("│  double      → %.15g\n", res->d_result);
 
-        if (op->ld_func)
-            printf("  long double: %.6Lg\n", res->ld_result);
-    }
+    if (op->ld_func)
+        printf("│  long double → %.18Lg\n", res->ld_result);
 
-    /* Funções que retornam inteiros */
     if (op->l_func)
-    {
-        printf("  long:        %ld\n", res->l_result);
-    }
+        printf("│  long        → %ld\n", res->l_result);
 
     if (op->ll_func)
-    {
-        printf("  long long:   %lld\n", res->ll_result);
-    }
+        printf("│  long long   → %lld\n", res->ll_result);
+
+    printf("└──────────────────────────────────────\n\n");
 }
 
 int main(int argc, char **argv)
 {
-    double valores_teste[] = {3.7, 2.45, -1.8, 4.5, 5.6, -4.3, 0.0, 1.999999999};
+    double valores_teste[] = {
+        3.7, 2.45, -1.8, 4.5,
+        0.5, -0.5, 2.5, -2.5,
+        1.999999999, 2.000000001,
+        -3.999999999, 4.500000001,
+        0.0, INFINITY, -INFINITY, NAN
+    };
 
     printf("=== Testando todas as funções de arredondamento ===\n\n");
 

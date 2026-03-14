@@ -75,9 +75,9 @@ void calcular_idade(const char *data_nascimento)
     }
 
     // Cálculo preciso da idade
-    int anos = hoje.tm_year - nascimento.tm_year;
+    int anos      = hoje.tm_year - nascimento.tm_year;
     int mes_atual = hoje.tm_mon;
-    int mes_nasc = nascimento.tm_mon;
+    int mes_nasc  = nascimento.tm_mon;
 
     // Ainda não fez aniversário este ano?
     if (mes_atual < mes_nasc || (mes_atual == mes_nasc && hoje.tm_mday < nascimento.tm_mday))
