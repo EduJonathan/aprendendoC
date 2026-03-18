@@ -4,7 +4,7 @@ SRC_DIR = src
 BUILD_DIR = build
 SOURCES = $(wildcard $(SRC_DIR)/*.c)
 OBJECTS = $(SOURCES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
-TARGET = gerenciador_log
+TARGET = $(BUILD_DIR)/gerenciador_log
 
 all: $(TARGET)
 

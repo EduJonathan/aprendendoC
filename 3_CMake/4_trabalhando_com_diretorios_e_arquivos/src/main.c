@@ -30,7 +30,6 @@
  *      // Ignora as entradas "." (atual) e ".." (pai)
  *      if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
  *          continue;
- *
  *      printf("%s\n", entry->d_name);
  * }
  * closedir(dir);
@@ -38,6 +37,17 @@
  * }
  *
  * dirent.h no Windows, Problema: dirent.h não existe nativamente no Windows (MSVC)
+ *
+ * PARA COMPILAR O PROJETO
+ * mkdir build && cd ./build/
+ * make ..
+ * cmake ..
+ * cmake --build .
+ * make
+ *
+ * COMPILAÇÃO EM MODO DEBUG (RECOMENDADO PARA TESTES)
+ * cmake -DCMAKE_BUILD_TYPE=Debug ..
+ * cmake --build .
  */
 
 #define MAX_NAME 256

@@ -31,7 +31,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    const char *input_path = argv[1];
+    const char *input_path  = argv[1];
     const char *output_path = argv[2];
 
     size_t data_size;
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     }
 
     void *parsed_data = NULL;
-    int parse_result = parse_log_data(raw_data, data_size, &parsed_data);
+    int parse_result  = parse_log_data(raw_data, data_size, &parsed_data);
 
     if (parse_result != 0)
     {
@@ -66,7 +66,6 @@ int main(int argc, char **argv)
 
     // Limpeza
     safe_free(&parsed_data);
-    safe_free(&raw_data);
 
     return report_result != 0 ? 1 : 0;
 }

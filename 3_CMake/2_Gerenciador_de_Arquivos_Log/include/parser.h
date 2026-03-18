@@ -5,6 +5,17 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+#ifndef LOGSUMMARY
+#define LOGSUMMARY
+
+typedef struct
+{
+    size_t total_lines;
+    size_t error_lines;
+} LogSummary;
+
+#endif
+
 /**
  * @brief Analisa os dados brutos lidos de um arquivo de log e converte-os em uma estrutura interna.
  *

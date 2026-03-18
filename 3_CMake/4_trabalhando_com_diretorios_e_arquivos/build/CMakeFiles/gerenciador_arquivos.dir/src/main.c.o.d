@@ -20,13 +20,9 @@ CMakeFiles/gerenciador_arquivos.dir/src/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
- /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/string.h \
- /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h \
- /home/eduardo/Documentos/aprendendoC/3_CMake/4_trabalhando_com_diretorios_e_arquivos/includes/utils.h \
- /home/eduardo/Documentos/aprendendoC/3_CMake/4_trabalhando_com_diretorios_e_arquivos/includes/dir_list.h \
- /home/eduardo/Documentos/aprendendoC/3_CMake/4_trabalhando_com_diretorios_e_arquivos/includes/file_ops.h
+ /home/eduardo/Documentos/aprendendoC/3_CMake/4_trabalhando_com_diretorios_e_arquivos/src/../includes/utils.h \
+ /home/eduardo/Documentos/aprendendoC/3_CMake/4_trabalhando_com_diretorios_e_arquivos/src/../includes/dir_list.h \
+ /home/eduardo/Documentos/aprendendoC/3_CMake/4_trabalhando_com_diretorios_e_arquivos/src/../includes/file_ops.h

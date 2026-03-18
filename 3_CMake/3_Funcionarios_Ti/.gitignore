@@ -1,0 +1,35 @@
+# Build
+build/
+cmake_build/
+dist/
+*.ninja
+compile_commands.json
+
+# CMake gerados
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+DartConfiguration.tcl
+Makefile
+
+# Objetos e binários
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.lib
+*.exe
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Dependências manuais
+obj/
+lib/

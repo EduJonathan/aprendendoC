@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = -I/home/eduardo/Documentos/aprendendoC/3_CMake/4_trabalhando_com_diretorios_e_arquivos/includes
 
-C_FLAGS = -std=gnu99 -Wall -Wextra -Wpedantic
+C_FLAGS = -std=c99 -Wall -Wextra -Wpedantic
 

@@ -22,7 +22,8 @@ ProcessadorPessoas criar_processador_impressao(void)
 {
     ProcessadorPessoas proc = {
         .processar = processar_impressao,
-        .finalizar = finalizar_impressao};
+        .finalizar = finalizar_impressao
+    };
     return proc;
 }
 
@@ -55,7 +56,8 @@ ProcessadorPessoas criar_processador_aumento_salario(float percentual)
     ProcessadorPessoas proc = {
         .processar = processar_aumento_salario,
         .finalizar = finalizar_aumento_salario,
-        .dados = dados};
+        .dados = dados
+    };
     return proc;
 }
 
@@ -70,13 +72,17 @@ static void processar_log(Pessoa *p)
     }
 }
 
-static void finalizar_log(void) { log_info("Processador de log finalizado"); }
+static void finalizar_log(void)
+{
+    log_info("Processador de log finalizado");
+}
 
 ProcessadorPessoas criar_processador_log(void)
 {
     ProcessadorPessoas proc = {
         .processar = processar_log,
-        .finalizar = finalizar_log};
+        .finalizar = finalizar_log
+    };
     return proc;
 }
 

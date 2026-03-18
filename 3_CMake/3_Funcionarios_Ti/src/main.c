@@ -32,9 +32,10 @@ void demonstrar_array_pessoas(void)
     // Criar array de pessoas usando inicialização composta
     Pessoa equipe[] = {
         {"Maria Santos", 25, 4500.00f, JUNIOR, NULL},
-        {"Pedro Costa", 35, 6000.00f, PLENO, NULL},
-        {"Ana Oliveira", 28, 4800.00f, PLENO, NULL},
-        {"Joao Silva", 42, 8500.00f, SENIOR, NULL}};
+        {"Pedro Costa",  35, 6000.00f, PLENO,  NULL},
+        {"Ana Oliveira", 28, 4800.00f, PLENO,  NULL},
+        {"Joao Silva",   42, 8500.00f, SENIOR, NULL}
+    };
 
     const size_t num_membros = ARRAY_SIZE(equipe);
 
@@ -68,7 +69,8 @@ void demonstrar_processadores(void)
     Pessoa equipe[] = {
         {"Maria Silva", 28, 5000.00f, JUNIOR, NULL},
         {"Joao Santos", 35, 7000.00f, PLENO, NULL},
-        {"Ana Costa", 42, 9000.00f, SENIOR, NULL}};
+        {"Ana Costa", 42, 9000.00f, SENIOR, NULL}
+    };
 
     const size_t num_membros = ARRAY_SIZE(equipe);
 
@@ -152,7 +154,8 @@ int main(int argc, char **argv)
     printf("\n=== Demonstração Callback ===\n");
     Pessoa equipe[] = {
         {"Maria Silva", 28, 5000.00f, JUNIOR, NULL},
-        {"João Santos", 35, 7000.00f, PLENO, NULL}};
+        {"João Santos", 35, 7000.00f, PLENO, NULL}
+    };
 
     processar_array(equipe, ARRAY_SIZE(equipe), aumentar_salario_10);
 

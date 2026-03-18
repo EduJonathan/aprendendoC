@@ -1,20 +1,18 @@
-#!/bin/bash
-# scripts/clean.sh
+#!/usr/bin/env bash
+set -euo pipefail
 
+# scripts/clean.sh
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BIN_DIR="$PROJECT_DIR/bin"
 
-echo "🧹 Limpando arquivos gerados..."
+echo "🧹  Limpando arquivos gerados..."
 
-# Remover executáveis
 if [ -d "$BIN_DIR" ]; then
-    echo "Removendo executáveis em $BIN_DIR/"
-    rm -f "$BIN_DIR"/* 2>/dev/null || true
-    rmdir "$BIN_DIR" 2>/dev/null || true
+    echo "   Removendo $BIN_DIR/..."
+    rm -rf "$BIN_DIR"
 fi
 
-# Remover arquivos objeto (.o) se existirem
-find "$PROJECT_DIR" -name "*.o" -type f -delete 2>/dev/null || true
-find "$PROJECT_DIR" -name "*.out" -type f -delete 2>/dev/null || true
+# Limpar objetos soltos na raiz ou src (se alguém compilar manualmente)
+find "$PROJECT_DIR" -maxdepth 3 \( -name "*.o" -o -name "*.out" -o -name "*.exe" \) -type f -delete 2>/dev/null || true
 
-echo "✅ Limpeza concluída!"
+echo "✅  Limpeza finalizada!"

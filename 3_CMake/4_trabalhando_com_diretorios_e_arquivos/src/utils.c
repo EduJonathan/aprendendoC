@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include "../includes/utils.h"
+#include <stdlib.h>
 
 /**
  * @brief Limpa o console de comandos de forma portável.
@@ -9,9 +9,9 @@
  */
 void clear_screen(void)
 {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }

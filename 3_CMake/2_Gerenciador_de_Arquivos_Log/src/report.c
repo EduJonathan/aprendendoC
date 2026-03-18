@@ -1,22 +1,25 @@
 #include "../include/report.h"
+#include "../include/parser.h"
+#include <stdio.h>
 
 int generate_report(const void *parsed_data, const char *output_path)
 {
-    if (parsed_data == NULL || output_path == NULL)
-    {
-        return -1; // Parâmetros inválidos
-    }
+    if (!parsed_data || !output_path)
+        return -1;
 
-    FILE *output_file = fopen(output_path, "w");
-    if (output_file == NULL)
-    {
-        return -2; // Falha ao abrir/criar o arquivo de saída
-    }
+    const LogSummary *s = parsed_data;
 
-    // Exemplo simples de geração de relatório: apenas escreve uma mensagem fixa
-    fprintf(output_file, "Relatório Gerado com Sucesso!\n");
-    // Aqui você adicionaria a lógica para formatar e escrever os dados parseados
+    FILE *f = fopen(output_path, "w");
+    if (!f)
+        return -2;
 
-    fclose(output_file);
-    return 0; // Sucesso
+    fprintf(f, "Relatório de Log\n");
+    fprintf(f, "================\n\n");
+    fprintf(f, "Total de linhas:          %zu\n", s->total_lines);
+    fprintf(f, "Linhas com 'error/ERROR': %zu (%.2f%%)\n",
+            s->error_lines,
+            s->total_lines > 0 ? (s->error_lines * 100.0 / s->total_lines) : 0.0);
+
+    fclose(f);
+    return 0;
 }

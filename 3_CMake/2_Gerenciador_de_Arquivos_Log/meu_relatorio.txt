@@ -1,1 +1,5 @@
-Relatório Gerado com Sucesso!
+Relatório de Log
+================
+
+Total de linhas:          5
+Linhas com 'error/ERROR': 2 (40.00%)

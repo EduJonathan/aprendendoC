@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <dirent.h>
-#include <string.h>
 #include "../includes/dir_list.h"
+#include <stdio.h>
+#include <string.h>
+#include <dirent.h>
 
 /**
  * @brief Lista os arquivos do diretório atual.
@@ -13,9 +13,9 @@
  */
 void list_files(void)
 {
-    DIR *dir = NULL;
+    DIR *dir             = NULL;
     struct dirent *entry = NULL;
-    int count = 0;
+    int count            = 0;
 
     dir = opendir(".");
     if (dir == NULL)
@@ -28,8 +28,7 @@ void list_files(void)
 
     while ((entry = readdir(dir)) != NULL)
     {
-        if (strcmp(entry->d_name, ".") == 0 ||
-            strcmp(entry->d_name, "..") == 0)
+        if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
         {
             continue;
         }

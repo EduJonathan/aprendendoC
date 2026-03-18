@@ -1,6 +1,6 @@
+#include "../includes/file_ops.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "../includes/file_ops.h"
 
 /**
  * @brief Copia o conteúdo de um arquivo para um novo destino.
@@ -31,7 +31,7 @@ int copy_file(const char *source, const char *dest)
     }
 
     char buffer[8192];
-    size_t bytes;
+    size_t bytes = 0ul;
 
     while ((bytes = fread(buffer, 1, sizeof(buffer), src)) > 0)
     {
