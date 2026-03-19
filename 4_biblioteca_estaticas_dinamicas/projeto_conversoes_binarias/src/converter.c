@@ -18,10 +18,8 @@ static char map_value(int num)
 ConversionResult *create_conversion(long decimal, BaseType target)
 {
     // Validação da base
-    if (target != BASE_BIN &&
-        target != BASE_OCT &&
-        target != BASE_DEC &&
-        target != BASE_HEX)
+    if (target != BASE_BIN && target != BASE_OCT &&
+        target != BASE_DEC && target != BASE_HEX)
     {
         return NULL;
     }
@@ -35,8 +33,7 @@ ConversionResult *create_conversion(long decimal, BaseType target)
 
     // Tratamento de número negativo
     int is_negative = (decimal < 0);
-    unsigned long temp_dec = is_negative ? (unsigned long)(-decimal)
-                                         : (unsigned long)decimal;
+    unsigned long temp_dec = is_negative ? (unsigned long)(-decimal) : (unsigned long)decimal;
 
     if (temp_dec == 0)
         buffer[i++] = '0';
@@ -76,7 +73,6 @@ void free_conversion(ConversionResult *res)
 {
     if (!res)
         return;
-
     free(res->output);
     free(res);
 }

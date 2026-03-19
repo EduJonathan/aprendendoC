@@ -10,6 +10,17 @@
  * - gcc src/main.c -Iinclude -Llib -lconverter -o conversor_final
  */
 
+ /**
+  * PARA BUILD com cmake utilize
+  * - mkdir build
+  * - cd build
+  * - cmake ..
+  * - cmake --build .
+  * 
+  * - Este dentro da pasta build ainda e entre na pasta bin/ e execute
+  * ./conversor_final 
+  */
+
 typedef struct
 {
     long input;
@@ -50,13 +61,13 @@ void run_tests(const ConversionTestCase *tests, size_t count)
 int main(int argc, char **argv)
 {
     ConversionTestCase tests[] = {
-        {0, BASE_BIN, "0"},
-        {1, BASE_BIN, "1"},
-        {2, BASE_BIN, "10"},
-        {10, BASE_DEC, "10"},
-        {10, BASE_HEX, "A"},
-        {255, BASE_HEX, "FF"},
-        {255, BASE_OCT, "377"},
+        {0,    BASE_BIN, "0"},
+        {1,    BASE_BIN, "1"},
+        {2,    BASE_BIN, "10"},
+        {10,   BASE_DEC, "10"},
+        {10,   BASE_HEX, "A"},
+        {255,  BASE_HEX, "FF"},
+        {255,  BASE_OCT, "377"},
         {-255, BASE_BIN, "-11111111"},
         {-255, BASE_HEX, "-FF"},
     };

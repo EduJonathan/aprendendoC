@@ -1,0 +1,40 @@
+# =========================
+# Build
+# =========================
+build/
+cmake_build/
+dist/
+
+# =========================
+# Arquivos compilados
+# =========================
+*.o
+*.a
+*.so
+*.exe
+
+# Executável
+programa
+
+# =========================
+# CMake
+# =========================
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# =========================
+# Diretórios de artefatos
+# =========================
+lib/

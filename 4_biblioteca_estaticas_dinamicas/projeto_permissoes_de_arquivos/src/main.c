@@ -28,6 +28,14 @@
  * ./main ~/Documentos/aprendendoC/4_biblioteca_estaticas_dinamicas/projeto_permissoes_de_arquivos/lib/libpermissoes.so
  */
 
+/**
+ * Construindo através do Cmake
+ * - mkdir build
+ * - cd build
+ * - cmake ..
+ * - cmake --build .
+ */
+
 int main(int argc, char **argv)
 {
     if (argc != 2)
@@ -39,7 +47,7 @@ int main(int argc, char **argv)
     struct stat file_stat;
     char permissions_str[11];
     struct passwd *pw = NULL;
-    struct group *gr = NULL;
+    struct group *gr  = NULL;
 
     if (stat(argv[1], &file_stat) == -1)
     {

@@ -1,0 +1,46 @@
+# =========================
+# Diretórios de build
+# =========================
+build/
+cmake_build/
+dist/
+
+# =========================
+# Arquivos compilados
+# =========================
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.lib
+
+# Executáveis
+permissoes_info
+*.exe
+
+# =========================
+# CMake
+# =========================
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# =========================
+# IDEs e editores
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# =========================
+# Artefatos intermediários
+# =========================
+obj/
+
+# Diretório de bibliotecas geradas (NÃO colocar código aqui)
+lib/

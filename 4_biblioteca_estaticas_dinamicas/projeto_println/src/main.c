@@ -25,7 +25,7 @@
 int main(int argc, char **argv)
 {
     _println("Testando a função _println()");
-    
+
     // Testes básicos
     _println("Hello, Assembly World");
     _println("Sem libc");
@@ -36,6 +36,18 @@ int main(int argc, char **argv)
     _println("\nHello, Assembly World");
     _println("Sem libc");
     _println("Syscall direto");
+
+    /**
+     * Para Build com Cmake
+     * - mkdir build
+     * - cd build
+     * - cmake ..
+     * - cmake --build .
+     *
+     * Ainda na pasta build, execute o programa
+     *
+     * ./bin/programa
+     */
 
     return 0;
 }
