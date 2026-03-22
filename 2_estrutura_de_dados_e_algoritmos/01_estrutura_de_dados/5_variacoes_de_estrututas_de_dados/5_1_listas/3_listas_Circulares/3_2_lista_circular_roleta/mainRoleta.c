@@ -6,7 +6,7 @@
 int main(int argc, char **argv)
 {
     const char *weapons[] = {"Pistola", "Rifle", "Espingarda", "Metralhadora", "Granada"};
-    int num_weapons = sizeof(weapons) / sizeof(weapons[0]);
+    int num_weapons       = sizeof(weapons) / sizeof(weapons[0]);
 
     WeaponRoulette roulette;
     roulette_init(&roulette, weapons, num_weapons);

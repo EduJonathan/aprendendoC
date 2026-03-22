@@ -48,7 +48,7 @@ void enqueue(Fila *f, int valor)
         return;
     }
     novo->valor = valor;
-    novo->prox = NULL;
+    novo->prox  = NULL;
 
     if (f->tras == NULL)
     {
@@ -72,9 +72,10 @@ int dequeue(Fila *f, int *removido)
 {
     if (f->frente == NULL)
         return 0;
+
     Node *temp = f->frente;
-    *removido = temp->valor;
-    f->frente = temp->prox;
+    *removido  = temp->valor;
+    f->frente  = temp->prox;
 
     if (f->frente == NULL)
         f->tras = NULL;
@@ -108,14 +109,18 @@ void exibir(Fila f)
  */
 void reverter(Fila *f)
 {
-    Node *prev = NULL, *atual = f->frente, *next = NULL;
+    Node *prev  = NULL,
+         *atual = f->frente,
+         *next  = NULL;
+
     f->tras = f->frente;
+    
     while (atual)
     {
-        next = atual->prox;
+        next        = atual->prox;
         atual->prox = prev;
-        prev = atual;
-        atual = next;
+        prev        = atual;
+        atual       = next;
     }
     f->frente = prev;
 }
@@ -129,19 +134,22 @@ void ordenar(Fila *f)
 {
     if (!f->frente)
         return;
+
     int trocou = 0;
+
     do
     {
         trocou = 0;
         Node *a = f->frente;
+
         while (a->prox)
         {
             if (a->valor > a->prox->valor)
             {
-                int tmp = a->valor;
-                a->valor = a->prox->valor;
+                int tmp        = a->valor;
+                a->valor       = a->prox->valor;
                 a->prox->valor = tmp;
-                trocou = 1;
+                trocou         = 1;
             }
             a = a->prox;
         }
@@ -180,7 +188,7 @@ void liberar(Fila *f)
     while (atual)
     {
         Node *temp = atual;
-        atual = atual->prox;
+        atual      = atual->prox;
         free(temp);
     }
     f->frente = f->tras = NULL;

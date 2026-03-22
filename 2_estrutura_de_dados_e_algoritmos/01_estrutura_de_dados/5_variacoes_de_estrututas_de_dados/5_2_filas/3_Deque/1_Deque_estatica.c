@@ -180,6 +180,7 @@ void displayDeque(Deque *dq)
 
     printf("Conteúdo do Deque: ");
     int i = dq->front;
+    
     while (1)
     {
         printf("%d ", dq->data[i]);

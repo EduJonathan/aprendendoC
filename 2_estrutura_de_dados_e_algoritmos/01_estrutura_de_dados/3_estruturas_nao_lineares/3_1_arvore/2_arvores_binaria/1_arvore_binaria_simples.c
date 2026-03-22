@@ -36,8 +36,8 @@ TREE *createNode(int data)
         fprintf(stderr, "Erro: Falha na alocação de memória\n");
         return NULL;
     }
-    node->data = data;
-    node->left = NULL;
+    node->data  = data;
+    node->left  = NULL;
     node->right = NULL;
     return node;
 }

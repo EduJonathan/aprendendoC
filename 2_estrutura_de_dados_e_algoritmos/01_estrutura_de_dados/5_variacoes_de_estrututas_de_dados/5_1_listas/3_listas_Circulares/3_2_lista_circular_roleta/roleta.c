@@ -14,7 +14,7 @@ Node *node_create(const char *weapon)
 
     strncpy(new_node->weapon, weapon, MAX_WEAPON_NAME - 1);
     new_node->weapon[MAX_WEAPON_NAME - 1] = '\0';
-    new_node->next = NULL;
+    new_node->next                        = NULL;
     return new_node;
 }
 
@@ -26,17 +26,16 @@ void roulette_init(WeaponRoulette *roulette, const char *weapons[], int num_weap
         return;
     }
 
-    Node *first_node = node_create(weapons[0]);
+    Node *first_node  = node_create(weapons[0]);
     roulette->current = first_node;
-    Node *last_node = first_node;
+    Node *last_node   = first_node;
 
     for (int i = 1; i < num_weapons; i++)
     {
-        Node *new_node = node_create(weapons[i]);
+        Node *new_node  = node_create(weapons[i]);
         last_node->next = new_node;
-        last_node = new_node;
+        last_node       = new_node;
     }
-
     last_node->next = first_node;
 }
 
@@ -57,7 +56,8 @@ void roulette_move_right(WeaponRoulette *roulette)
     }
 
     Node *current = roulette->current;
-    Node *temp = current;
+    Node *temp    = current;
+
     do
     {
         temp = temp->next;
@@ -100,7 +100,7 @@ void roulette_free(WeaponRoulette *roulette)
     }
 
     Node *current = roulette->current;
-    Node *first = current;
+    Node *first   = current;
     do
     {
         Node *temp = current;

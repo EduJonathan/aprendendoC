@@ -10,9 +10,9 @@ List *list_create(void)
         fprintf(stderr, "Erro ao alocar memória para a lista!\n");
         return NULL;
     }
-    list->size = 0;
+    list->size  = 0;
     list->first = NULL;
-    list->last = NULL;
+    list->last  = NULL;
     printf("Lista criada com sucesso.\n");
     return list;
 }
@@ -82,7 +82,8 @@ void list_print_reverse(const List *list)
 
     printf("\nLista (sentido: fim → início):\n");
     const Element *current = list->last;
-    int index = list->size - 1;
+    int index              = list->size - 1;
+
     while (current != NULL)
     {
         printf("Posição %d: %d\n", index, current->data);
@@ -101,7 +102,8 @@ void list_free(List **list)
     }
 
     Element *current = (*list)->first;
-    int count = 0;
+    int count        = 0;
+    
     while (current != NULL)
     {
         Element *temp = current;

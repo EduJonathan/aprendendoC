@@ -41,7 +41,7 @@ struct node *newNode(void)
         fprintf(stderr, "Erro: Falha na alocação de memória\n");
         return NULL;
     }
-    node->left = NULL;
+    node->left  = NULL;
     node->right = NULL;
     return node;
 }
@@ -64,8 +64,8 @@ struct node *initNode(char data, struct node *left, struct node *right)
     {
         return NULL;
     }
-    node->data = data;
-    node->left = left;
+    node->data  = data;
+    node->left  = left;
     node->right = right;
     return node;
 }

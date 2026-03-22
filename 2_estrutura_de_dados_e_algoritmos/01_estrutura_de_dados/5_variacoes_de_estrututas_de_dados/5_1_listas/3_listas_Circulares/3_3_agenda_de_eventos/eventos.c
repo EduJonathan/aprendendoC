@@ -10,10 +10,10 @@ No *criarNo(TipoEvento tipo, void *dados, int diaSemana)
         printf("Erro: falha na alocação de memória.\n");
         exit(1);
     }
-    novo->tipo = tipo;
-    novo->dados = dados;
+    novo->tipo      = tipo;
+    novo->dados     = dados;
     novo->diaSemana = diaSemana;
-    novo->proximo = NULL;
+    novo->proximo   = NULL;
     return novo;
 }
 
@@ -21,7 +21,7 @@ void inserirCircular(No **cabeca, No *novo)
 {
     if (*cabeca == NULL)
     {
-        *cabeca = novo;
+        *cabeca       = novo;
         novo->proximo = *cabeca; // Circular: aponta para si mesmo
         return;
     }
@@ -79,7 +79,7 @@ void liberarAgenda(No *cabeca)
     if (cabeca == NULL)
         return;
 
-    No *atual = cabeca;
+    No *atual   = cabeca;
     No *proximo = NULL;
 
     // Quebra o ciclo para evitar loop infinito

@@ -65,7 +65,7 @@ void liberarLista(struct Node *inicio)
     struct Node *temp = NULL;
     while (inicio != NULL)
     {
-        temp = inicio;
+        temp   = inicio;
         inicio = inicio->prox;
         free(temp);
     }

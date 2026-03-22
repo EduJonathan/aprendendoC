@@ -29,9 +29,9 @@ Deque *initDeque(int max)
         free(deque);
         return NULL;
     }
-    deque->max = max;
+    deque->max   = max;
     deque->front = -1;
-    deque->rear = -1;
+    deque->rear  = -1;
     return deque;
 }
 
@@ -165,10 +165,11 @@ void deleteFront(Deque *deque)
     }
 
     int removed = deque->array[deque->front];
+
     if (deque->front == deque->rear)
     {
         deque->front = -1;
-        deque->rear = -1;
+        deque->rear  = -1;
     }
     else if (deque->front == deque->max - 1)
     {
@@ -195,10 +196,11 @@ void deleteRear(Deque *deque)
     }
 
     int removed = deque->array[deque->rear];
+
     if (deque->front == deque->rear)
     {
         deque->front = -1;
-        deque->rear = -1;
+        deque->rear  = -1;
     }
     else if (deque->rear == 0)
     {
@@ -279,7 +281,9 @@ void displayDeque(Deque *deque)
     }
 
     printf("Elementos no Deque: ");
+    
     int i = deque->front;
+
     while (1)
     {
         printf("%d ", deque->array[i]);

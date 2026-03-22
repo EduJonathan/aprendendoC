@@ -67,7 +67,7 @@ Grafo *criarGrafo(int numVertices)
     }
 
     g->numVertices = numVertices;
-    g->adj = (Aresta **)calloc(numVertices, sizeof(Aresta *));
+    g->adj         = (Aresta **)calloc(numVertices, sizeof(Aresta *));
     if (g->adj == NULL)
     {
         fprintf(stderr, "Erro: Falha na alocação de memória para as listas de adjacência\n");
@@ -119,9 +119,9 @@ int adicionarAresta(Grafo *g, char origem, char destino, int peso)
         return 0;
     }
     novaAresta->destino = destino;
-    novaAresta->peso = peso;
-    novaAresta->prox = g->adj[indice];
-    g->adj[indice] = novaAresta;
+    novaAresta->peso    = peso;
+    novaAresta->prox    = g->adj[indice];
+    g->adj[indice]      = novaAresta;
     return 1;
 }
 
@@ -182,7 +182,7 @@ void liberarGrafo(Grafo *g)
         while (atual)
         {
             Aresta *temp = atual;
-            atual = atual->prox;
+            atual        = atual->prox;
             free(temp);
         }
         g->adj[i] = NULL;

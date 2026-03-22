@@ -43,7 +43,8 @@ int main(int argc, char **argv)
         {false, false, true, false, false},
         {true, true, false, true, true},
         {false, false, true, false, true},
-        {false, false, true, true, true}};
+        {false, false, true, true, true}
+    };
 
     // Imprimindo o grau de todos os vertices
     imprimeGrauDosVertices(G);

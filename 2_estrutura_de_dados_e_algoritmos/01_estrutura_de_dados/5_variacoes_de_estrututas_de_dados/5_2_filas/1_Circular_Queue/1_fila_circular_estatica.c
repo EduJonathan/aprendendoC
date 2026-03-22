@@ -25,8 +25,8 @@ typedef struct fila
  */
 void inicializarFila(filaCircular *queue)
 {
-    queue->frente = 0;
-    queue->atras = -1;
+    queue->frente   = 0;
+    queue->atras    = -1;
     queue->contador = 0;
     for (int i = 0; i < QUEUE_SIZE; i++)
     {
@@ -89,7 +89,7 @@ bool inserirElementoNaFila(filaCircular *queue, int elemento)
         printf("Erro: Apenas valores não negativos são permitidos.\n");
         return false;
     }
-    queue->atras = (queue->atras + 1) % QUEUE_SIZE;
+    queue->atras                   = (queue->atras + 1) % QUEUE_SIZE;
     queue->elementos[queue->atras] = elemento;
     queue->contador++;
     return true;
@@ -110,9 +110,10 @@ int removerElementoNaFila(filaCircular *queue)
         printf("Fila vazia! Não é possível remover.\n");
         return -1;
     }
-    int elementoRemovido = queue->elementos[queue->frente];
+    
+    int elementoRemovido            = queue->elementos[queue->frente];
     queue->elementos[queue->frente] = 0; // Opcional: limpa o espaço
-    queue->frente = (queue->frente + 1) % QUEUE_SIZE;
+    queue->frente                   = (queue->frente + 1) % QUEUE_SIZE;
     queue->contador--;
     return elementoRemovido;
 }

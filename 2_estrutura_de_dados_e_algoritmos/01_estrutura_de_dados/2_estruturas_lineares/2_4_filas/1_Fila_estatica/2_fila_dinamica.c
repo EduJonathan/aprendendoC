@@ -36,19 +36,19 @@ struct node
 void enQueue(struct node **front, struct node **rear, float valor)
 {
     struct node *newNode = (struct node *)malloc(sizeof(struct node)); ///< Criação de um novo nó
-    newNode->data = valor;                                             ///< Atribui o valor ao nó
-    newNode->next = NULL;                                              ///< O próximo nó é NULL, já que ele será o último
+    newNode->data        = valor;                                      ///< Atribui o valor ao nó
+    newNode->next        = NULL;                                       ///< O próximo nó é NULL, já que ele será o último
 
     // Verifica se a fila está vazia
     if (*front == NULL)
     {
         *front = newNode; ///< Inicializa o ponteiro `front` para o novo nó
-        *rear = newNode;  ///< Inicializa o ponteiro `rear` para o novo nó
+        *rear  = newNode; ///< Inicializa o ponteiro `rear` para o novo nó
     }
     else
     {
         (*rear)->next = newNode; ///< Conecta o nó anterior ao novo
-        *rear = newNode;         ///< Atualiza o ponteiro `rear` para o novo nó
+        *rear         = newNode; ///< Atualiza o ponteiro `rear` para o novo nó
     }
     printf("Valor %f inserido na fila\n", valor);
 }
@@ -144,9 +144,9 @@ void freeQueue(struct node **front, struct node **rear)
 int main(int argc, char **argv)
 {
     struct node *front = NULL; ///< Ponteiro para o início da fila
-    struct node *rear = NULL;  ///< Ponteiro para o final da fila
-    float value = 0.0f;        ///< Variável para armazenar o valor inserido pelo usuário
-    int opcao = 0;             ///< Variável para armazenar a opção escolhida pelo usuário
+    struct node *rear  = NULL; ///< Ponteiro para o final da fila
+    float value        = 0.0f; ///< Variável para armazenar o valor inserido pelo usuário
+    int opcao          = 0;    ///< Variável para armazenar a opção escolhida pelo usuário
 
     do
     {

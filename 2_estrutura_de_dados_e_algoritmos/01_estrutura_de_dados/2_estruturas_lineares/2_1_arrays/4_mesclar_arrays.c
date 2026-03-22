@@ -117,8 +117,8 @@ int main(int argc, char **argv)
     int array2[] = {2, 4, 6, 7};
 
     // Tamanho de cada array e o tamanho total após mesclagem
-    int tamanho1 = sizeof(array1) / sizeof(array1[0]);
-    int tamanho2 = sizeof(array2) / sizeof(array2[0]);
+    int tamanho1        = sizeof(array1) / sizeof(array1[0]);
+    int tamanho2        = sizeof(array2) / sizeof(array2[0]);
     size_t tamanhoTotal = tamanho1 + tamanho2;
 
     // Array para armazenar o array mesclado

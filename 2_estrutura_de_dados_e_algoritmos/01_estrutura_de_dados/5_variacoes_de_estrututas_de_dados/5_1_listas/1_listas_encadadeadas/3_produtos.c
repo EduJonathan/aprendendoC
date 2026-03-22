@@ -158,7 +158,7 @@ int main(int argc, char **argv)
     while (atual != NULL)
     {
         TProduto *temp = atual;
-        atual = atual->proximo;
+        atual          = atual->proximo;
         free(temp);
     }
 

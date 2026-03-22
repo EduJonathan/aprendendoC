@@ -52,8 +52,8 @@ Deque *createDeque(void)
 {
     Deque *deque = (Deque *)malloc(sizeof(Deque));
     deque->front = NULL;
-    deque->rear = NULL;
-    deque->size = 0;
+    deque->rear  = NULL;
+    deque->size  = 0;
     return deque;
 }
 
@@ -75,12 +75,12 @@ void pushFront(Deque *deque, void *data, char *type)
     if (deque->size == 0)
     {
         deque->front = newNode;
-        deque->rear = newNode;
+        deque->rear  = newNode;
     }
     else
     {
         deque->front->prev = newNode;
-        deque->front = newNode;
+        deque->front       = newNode;
     }
     deque->size++;
 }
@@ -103,12 +103,12 @@ void pushRear(Deque *deque, void *data, char *type)
     if (deque->size == 0)
     {
         deque->front = newNode;
-        deque->rear = newNode;
+        deque->rear  = newNode;
     }
     else
     {
         deque->rear->next = newNode;
-        deque->rear = newNode;
+        deque->rear       = newNode;
     }
     deque->size++;
 }
@@ -129,11 +129,11 @@ void *popFront(Deque *deque, char **type)
         return NULL;
     }
 
-    Node *temp = deque->front;
-    void *data = temp->data;
-    *type = temp->type;
-
+    Node *temp   = deque->front;
+    void *data   = temp->data;
+    *type        = temp->type;
     deque->front = temp->next;
+
     if (deque->front != NULL)
     {
         deque->front->prev = NULL;
@@ -209,13 +209,16 @@ int main(int argc, char **argv)
     DrinkOrder drink2 = {"Suco de Laranja", "Grande"};
 
     printf("Adicionando pedidos...\n");
-    pushFront(orders, &food1, "Food");
-    pushRear(orders, &drink1, "Drink");
-    pushFront(orders, &food2, "Food");
-    pushRear(orders, &drink2, "Drink");
+
+    pushFront(orders, &food1,  "Food");
+    pushRear(orders,  &drink1, "Drink");
+    pushFront(orders, &food2,  "Food");
+    pushRear(orders,  &drink2, "Drink");
 
     printf("\nProcessando pedidos do início (VIP):\n");
+    
     char *type = NULL;
+
     while (orders->size > 0)
     {
         void *order = popFront(orders, &type);

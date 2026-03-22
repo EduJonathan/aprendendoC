@@ -55,7 +55,7 @@ ListaEncadeada *criar_lista()
         fprintf(stderr, "Erro ao alocar memória para a lista\n");
         return NULL;
     }
-    lista->cabeca = NULL;
+    lista->cabeca  = NULL;
     lista->tamanho = 0;
     return lista;
 }
@@ -126,8 +126,8 @@ No *criar_no(void *dados, size_t tamanho, char tipo)
     }
     memcpy(novo_no->dados, dados, tamanho);
     novo_no->tamanho_dados = tamanho;
-    novo_no->tipo = tipo;
-    novo_no->proximo = NULL;
+    novo_no->tipo          = tipo;
+    novo_no->proximo       = NULL;
     return novo_no;
 }
 
@@ -154,7 +154,7 @@ int inserir_elemento(ListaEncadeada *lista, void *dados, size_t tamanho, char ti
         return 0;
     }
     novo_no->proximo = lista->cabeca;
-    lista->cabeca = novo_no;
+    lista->cabeca    = novo_no;
     lista->tamanho++;
     return 1;
 }
@@ -286,7 +286,7 @@ void liberar_lista(ListaEncadeada *lista)
     while (atual != NULL)
     {
         No *temp = atual;
-        atual = atual->proximo;
+        atual    = atual->proximo;
         free(temp->dados);
         free(temp);
     }
@@ -307,18 +307,18 @@ int main(int argc, char **argv)
 
     // Criar eventos usando time.h
     struct tm tempo1 = {0};
-    tempo1.tm_year = 125; // 2025 - 1900
-    tempo1.tm_mon = 8;    // Setembro (0-11)
-    tempo1.tm_mday = 21;
-    tempo1.tm_hour = 10;
-    tempo1.tm_min = 30;
+    tempo1.tm_year   = 125; // 2025 - 1900
+    tempo1.tm_mon    = 8;   // Setembro (0-11)
+    tempo1.tm_mday   = 21;
+    tempo1.tm_hour   = 10;
+    tempo1.tm_min    = 30;
 
     struct tm tempo2 = {0};
-    tempo2.tm_year = 125;
-    tempo2.tm_mon = 8;
-    tempo2.tm_mday = 22;
-    tempo2.tm_hour = 14;
-    tempo2.tm_min = 0;
+    tempo2.tm_year   = 125;
+    tempo2.tm_mon    = 8;
+    tempo2.tm_mday   = 22;
+    tempo2.tm_hour   = 14;
+    tempo2.tm_min    = 0;
 
     // Criar e adicionar eventos
     Evento evento1 = criar_evento("Reunião de equipe", tempo1);
@@ -331,7 +331,7 @@ int main(int argc, char **argv)
     inserir_elemento(lista, &evento3, sizeof(Evento), 'e');
 
     // Adicionar outros tipos de dados
-    int valor_int = 42;
+    int valor_int     = 42;
     float valor_float = 3.14159f;
 
     inserir_elemento(lista, &valor_int, sizeof(int), 'i');
@@ -351,8 +351,7 @@ int main(int argc, char **argv)
 
     // Calcular diferença entre eventos
     double diff_segundos = difftime(evento2.data_hora.timestamp, evento1.data_hora.timestamp);
-    printf("Diferença entre evento1 e evento2: %.0f segundos (%.1f horas)\n",
-           diff_segundos, diff_segundos / 3600);
+    printf("Diferença entre evento1 e evento2: %.0f segundos (%.1f horas)\n", diff_segundos, diff_segundos / 3600);
 
     // Liberar memória
     liberar_lista(lista);

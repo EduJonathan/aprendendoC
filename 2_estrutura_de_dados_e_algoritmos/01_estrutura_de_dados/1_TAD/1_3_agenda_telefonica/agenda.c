@@ -52,7 +52,7 @@ struct contato *inserir_contato(struct agenda *agenda, const char *nome, const c
         return NULL;
     }
 
-    unsigned int indice = hash(nome);
+    unsigned int indice    = hash(nome);
     struct contato **atual = &(agenda->tabela[indice]);
 
     // Procura a posição correta mantendo a lista ordenada
@@ -91,7 +91,7 @@ struct contato *buscar_contato(struct agenda *agenda, const char *nome)
         return NULL;
     }
 
-    unsigned int indice = hash(nome);
+    unsigned int indice   = hash(nome);
     struct contato *atual = agenda->tabela[indice];
 
     while (atual != NULL)
@@ -112,9 +112,9 @@ struct contato **remover_contato(struct agenda *agenda, const char *nome)
         return NULL;
     }
 
-    unsigned int indice = hash(nome);
+    unsigned int indice    = hash(nome);
     struct contato **atual = &(agenda->tabela[indice]);
-    struct contato *temp = NULL;
+    struct contato *temp   = NULL;
 
     while (*atual != NULL)
     {

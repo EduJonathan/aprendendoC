@@ -61,14 +61,15 @@ void inserir(FilaPrioridade *fila, int valor)
 
     if (estaVazia(fila))
     {
-        fila->inicio = 0;
-        fila->fim = 0;
+        fila->inicio            = 0;
+        fila->fim               = 0;
         fila->filaPrioridade[0] = valor;
         return;
     }
 
     // Encontrar posição de inserção com base na prioridade
     int i = 0;
+    
     for (i = fila->fim; i >= 0; i--)
     {
         if (valor > fila->filaPrioridade[i])

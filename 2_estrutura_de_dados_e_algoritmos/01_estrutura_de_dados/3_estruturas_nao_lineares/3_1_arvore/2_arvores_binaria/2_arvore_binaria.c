@@ -31,7 +31,7 @@ struct node *newNode(int value)
         return NULL;
     }
     node->value = value;
-    node->left = NULL;
+    node->left  = NULL;
     node->right = NULL;
     return node;
 }

@@ -53,7 +53,7 @@ Conjunto *criarConjunto(size_t capacidade)
     {
         s->dados[i] = NULL;
     }
-    s->tamanho = 0;
+    s->tamanho    = 0;
     s->capacidade = capacidade;
     return s;
 }

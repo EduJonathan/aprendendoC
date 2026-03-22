@@ -10,7 +10,7 @@ int list_size(const Node *head)
     if (!head)
         return 0;
 
-    int count = 0;
+    int count           = 0;
     const Node *current = head;
 
     do
@@ -35,7 +35,7 @@ void list_insert_front(Node **head, int value)
     if (*head == NULL)
     {
         new_node->next = new_node;
-        *head = new_node;
+        *head          = new_node;
     }
     else
     {
@@ -45,8 +45,8 @@ void list_insert_front(Node **head, int value)
             last = last->next;
         }
         new_node->next = *head;
-        last->next = new_node;
-        *head = new_node;
+        last->next     = new_node;
+        *head          = new_node;
     }
 
     printf("Elemento %d inserido na posição 0 (início da lista circular).\n", value);
@@ -67,16 +67,18 @@ void list_insert_back(Node **head, int value)
     if (*head == NULL)
     {
         new_node->next = new_node;
-        *head = new_node;
+        *head          = new_node;
     }
     else
     {
         Node *last = *head;
+
         while (last->next != *head)
         {
             last = last->next;
         }
-        last->next = new_node;
+
+        last->next     = new_node;
         new_node->next = *head;
     }
 
@@ -124,7 +126,7 @@ void list_insert_at(Node **head, int value, int position)
     }
 
     new_node->next = current->next;
-    current->next = new_node;
+    current->next  = new_node;
 
     printf("Elemento %d inserido na posição %d da lista circular.\n", value, position);
 }
@@ -137,7 +139,7 @@ void list_remove_front(Node **head)
         return;
     }
 
-    Node *temp = *head;
+    Node *temp        = *head;
     int removed_value = temp->value;
 
     if (temp->next == *head)
@@ -152,7 +154,7 @@ void list_remove_front(Node **head)
         {
             last = last->next;
         }
-        *head = temp->next;
+        *head      = temp->next;
         last->next = *head;
         free(temp);
     }
@@ -169,12 +171,12 @@ void list_remove_back(Node **head)
     }
 
     Node *current = *head;
-    Node *prev = NULL;
-    int pos = 0;
+    Node *prev    = NULL;
+    int pos       = 0;
 
     while (current->next != *head)
     {
-        prev = current;
+        prev    = current;
         current = current->next;
         pos++;
     }
@@ -223,7 +225,7 @@ void list_remove_at(Node **head, int position)
     }
 
     Node *current = *head;
-    Node *prev = NULL;
+    Node *prev    = NULL;
 
     for (int i = 0; i < position; ++i)
     {
@@ -232,7 +234,7 @@ void list_remove_at(Node **head, int position)
     }
 
     int removed_value = current->value;
-    prev->next = current->next;
+    prev->next        = current->next;
     free(current);
 
     printf("Elemento %d removido da posição %d da lista circular.\n", removed_value, position);
@@ -264,7 +266,7 @@ void list_print(const Node *head)
     }
 
     const Node *current = head;
-    int index = 0;
+    int index           = 0;
 
     printf("Lista circular:\n");
     do
@@ -284,13 +286,13 @@ void list_free(Node **head)
     }
 
     Node *current = *head;
-    Node *first = *head;
-    int count = 0;
+    Node *first   = *head;
+    int count     = 0;
 
     do
     {
         Node *temp = current;
-        current = current->next;
+        current    = current->next;
         free(temp);
         count++;
     } while (current != first);

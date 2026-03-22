@@ -18,13 +18,13 @@ void list_insert_front(Node **head, int value)
     if (*head == NULL)
     {
         new_node->next = NULL;
-        *head = new_node;
+        *head          = new_node;
     }
     else
     {
         new_node->next = *head;
-        (*head)->prev = new_node;
-        *head = new_node;
+        (*head)->prev  = new_node;
+        *head          = new_node;
     }
 
     printf("Nó com valor %d inserido na posição 0 (início da lista).\n", value);
@@ -52,12 +52,13 @@ void list_insert_back(Node **head, int value)
     {
         Node *current = *head;
         int pos = 0;
+
         while (current->next != NULL)
         {
             current = current->next;
             pos++;
         }
-        current->next = new_node;
+        current->next  = new_node;
         new_node->prev = current;
         printf("Nó com valor %d inserido na posição %d (final da lista).\n", value, pos + 1);
     }
@@ -72,7 +73,7 @@ void list_remove_front(Node **head)
     }
 
     Node *temp = *head;
-    *head = (*head)->next;
+    *head      = (*head)->next;
 
     if (*head != NULL)
     {
@@ -92,7 +93,8 @@ void list_remove_back(Node **head)
     }
 
     Node *current = *head;
-    int pos = 0;
+    int pos       = 0;
+    
     while (current->next != NULL)
     {
         current = current->next;
@@ -121,7 +123,7 @@ void list_remove_value(Node **head, int value)
     }
 
     Node *current = *head;
-    int pos = 0;
+    int pos       = 0;
     while (current != NULL && current->data != value)
     {
         current = current->next;
@@ -164,7 +166,8 @@ void list_print(const Node *head)
     }
 
     const Node *current = head;
-    int pos = 0;
+    int pos             = 0;
+
     while (current != NULL)
     {
         printf("Posição %d: %d\n", pos, current->data);
@@ -179,7 +182,7 @@ void list_free(Node **head)
     while (current != NULL)
     {
         Node *temp = current;
-        current = current->next;
+        current    = current->next;
         free(temp);
     }
     *head = NULL;

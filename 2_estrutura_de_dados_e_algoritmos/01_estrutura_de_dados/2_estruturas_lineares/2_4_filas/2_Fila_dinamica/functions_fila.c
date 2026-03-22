@@ -63,6 +63,7 @@ int readValue(DataType type, void **value)
 		*value = val;
 		return 1;
 	}
+
 	default:
 		return 0;
 	}
@@ -128,8 +129,8 @@ void enqueue(Queue *queue, void *value, DataType type)
 	}
 
 	newNode->value = value;
-	newNode->type = type;
-	newNode->next = NULL;
+	newNode->type  = type;
+	newNode->next  = NULL;
 
 	if (queue->rear != NULL)
 	{
@@ -150,10 +151,11 @@ void *dequeue(Queue *queue, DataType *type)
 		*type = TYPE_INT; // Default type for empty queue
 		return NULL;
 	}
+	
 	Node *frontNode = queue->front;
-	void *value = frontNode->value;
-	*type = frontNode->type;
-	queue->front = frontNode->next;
+	void *value     = frontNode->value;
+	*type           = frontNode->type;
+	queue->front    = frontNode->next;
 
 	if (queue->front == NULL)
 	{

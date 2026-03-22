@@ -69,20 +69,20 @@ int mochila(int capacidade, int pesos[], int valores[], size_t n)
 
 int main(int argc, char **argv)
 {
-    int valores[] = {60, 100, 120};               // Valores dos itens
-    int pesos[] = {10, 20, 30};                   // Pesos dos itens
-    int capacidade = 50;                          // Capacidade máxima da mochila
-    int n = sizeof(valores) / sizeof(valores[0]); // Número total de itens
+    int valores[]  = {60, 100, 120};                       // Valores dos itens
+    int pesos[]    = {10, 20, 30};                         // Pesos dos itens
+    int capacidade = 50;                                   // Capacidade máxima da mochila
+    int n          = sizeof(valores) / sizeof(valores[0]); // Número total de itens
 
     // Chama a função mochila para calcular o valor máximo que pode ser obtido
     printf("%d", mochila(capacidade, pesos, valores, n));
 
     printf("\n----------------------------------\n");
 
-    int valorItens[] = {60, 100, 120, 80};                    // valorItens dos itens
-    int weights[] = {10, 20, 30, 40};                         // weights dos itens
-    int capacity = 50;                                        // capacidade máxima da mochila
-    size_t size = sizeof(valorItens) / sizeof(valorItens[0]); // Número total de itens
+    int valorItens[] = {60, 100, 120, 80};                         // valorItens dos itens
+    int weights[]    = {10, 20, 30, 40};                           // weights dos itens
+    int capacity     = 50;                                         // capacidade máxima da mochila
+    size_t size      = sizeof(valorItens) / sizeof(valorItens[0]); // Número total de itens
 
     // Chama a função mochila para calcular o valor máximo que pode ser obtido
     int valor = mochila(capacity, weights, valorItens, size);

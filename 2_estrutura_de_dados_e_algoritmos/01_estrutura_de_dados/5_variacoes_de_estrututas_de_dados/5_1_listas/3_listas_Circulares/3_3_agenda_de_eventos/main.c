@@ -14,16 +14,16 @@ int main(int argc, char **argv)
 
     // Criar eventos (alocando memória para strings)
     Reuniao *r1 = (Reuniao *)malloc(sizeof(Reuniao));
-    r1->titulo = strdup("Reunião Equipe");
+    r1->titulo  = strdup("Reunião Equipe");
     r1->horario = strdup("09:00");
 
     LembretePagamento *lp1 = (LembretePagamento *)malloc(sizeof(LembretePagamento));
-    lp1->valor = 100.50;
-    lp1->descricao = strdup("Conta de luz");
+    lp1->valor             = 100.50;
+    lp1->descricao         = strdup("Conta de luz");
 
     Aniversario *a1 = (Aniversario *)malloc(sizeof(Aniversario));
-    a1->nome = strdup("João");
-    a1->data = strdup("21/09");
+    a1->nome        = strdup("João");
+    a1->data        = strdup("21/09");
 
     // Inserir eventos na lista circular
     inserirCircular(&agenda, criarNo(TIPO_REUNIAO, r1, 0));             // Segunda

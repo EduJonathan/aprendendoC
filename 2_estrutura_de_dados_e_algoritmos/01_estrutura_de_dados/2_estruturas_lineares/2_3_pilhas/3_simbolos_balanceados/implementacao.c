@@ -20,8 +20,8 @@ Stack *createStack(unsigned int size)
     }
 
     stack->size = size;
-    stack->top = -1;
-    stack->arr = malloc(size * sizeof(unsigned char));
+    stack->top  = -1;
+    stack->arr  = malloc(size * sizeof(unsigned char));
     if (stack->arr == NULL)
     {
         printf("Erro ao alocar memória para o array da pilha\n");

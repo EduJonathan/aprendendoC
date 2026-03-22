@@ -11,7 +11,8 @@ int main(int argc, char **argv)
 
     unsigned char expression[100] = {0};
     printf("Entre com uma expressão (ex.: \"(([]{}))\"): ");
-    scanf("%99[^\n]", expression);
+    // scanf("%99[^\n]", expression);
+    fgets(expression, sizeof(expression), stdin);
 
     if (parenthesesMatching(expression, stack))
     {

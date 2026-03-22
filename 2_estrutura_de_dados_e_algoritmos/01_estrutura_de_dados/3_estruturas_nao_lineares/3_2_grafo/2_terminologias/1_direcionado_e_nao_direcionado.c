@@ -46,7 +46,8 @@ int main(int argc, char **argv)
         {1, 0, 1, 1, 0},
         {1, 1, 0, 1, 0},
         {0, 1, 1, 0, 1},
-        {0, 0, 0, 1, 0}};
+        {0, 0, 0, 1, 0}
+    };
 
     // Exemplo de um grafo direcionado com 5 vértices
     int grafoDirecionado[5][5] = {
@@ -54,7 +55,8 @@ int main(int argc, char **argv)
         {0, 0, 1, 1, 0},
         {0, 0, 0, 0, 1},
         {0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0}};
+        {0, 0, 0, 0, 0}
+    };
 
     // Uso do operador ternário para verificar e imprimir o tipo de grafo
     printf("O grafo é %s.\n", grafoNaoDirecionadoOuDirecionado(grafoNaoDirecionado, 5) ? "não direcionado" : "direcionado");

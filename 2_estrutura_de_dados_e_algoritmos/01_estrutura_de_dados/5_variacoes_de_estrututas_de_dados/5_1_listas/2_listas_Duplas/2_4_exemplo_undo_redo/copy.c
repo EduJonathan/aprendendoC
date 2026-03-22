@@ -42,7 +42,7 @@ void adicionarEstado(Editor *editor, const char *texto)
         }
         
         // Conectar o novo nó
-        novoNo->anterior = editor->atual;
+        novoNo->anterior       = editor->atual;
         editor->atual->proximo = novoNo;
     }
     editor->atual = novoNo; // Atualizar o estado atual

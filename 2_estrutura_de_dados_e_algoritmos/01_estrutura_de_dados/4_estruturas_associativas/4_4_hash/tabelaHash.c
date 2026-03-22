@@ -110,7 +110,7 @@ int inserirPar(TabelaHash *tabela, const char *key, int valor)
     }
 
     unsigned int index = calcularHash(key, tabela->capacidade);
-    No *atual = tabela->tabela[index];
+    No *atual          = tabela->tabela[index];
     while (atual)
     {
         if (strcmp(atual->key, key) == 0)
@@ -135,8 +135,8 @@ int inserirPar(TabelaHash *tabela, const char *key, int valor)
         free(novo);
         return 0;
     }
-    novo->value = valor;
-    novo->prox = tabela->tabela[index];
+    novo->value           = valor;
+    novo->prox            = tabela->tabela[index];
     tabela->tabela[index] = novo;
     return 1;
 }
@@ -156,7 +156,8 @@ int buscarValor(TabelaHash *tabela, const char *key)
     }
 
     unsigned int index = calcularHash(key, tabela->capacidade);
-    No *atual = tabela->tabela[index];
+    No *atual          = tabela->tabela[index];
+
     while (atual)
     {
         if (strcmp(atual->key, key) == 0)
@@ -185,6 +186,7 @@ void imprimirTabela(TabelaHash *tabela)
     {
         printf("[%zu]: ", i);
         No *atual = tabela->tabela[i];
+
         if (atual == NULL)
         {
             printf("[]");
@@ -225,7 +227,7 @@ void liberarTabelaHash(TabelaHash *tabela)
         while (atual)
         {
             No *temp = atual;
-            atual = atual->prox;
+            atual    = atual->prox;
             free(temp->key);
             free(temp);
         }

@@ -67,7 +67,7 @@ NoAdjacente *newNode(int vertice)
         return NULL;
     }
     node->vertice = vertice;
-    node->prox = NULL;
+    node->prox    = NULL;
     return node;
 }
 

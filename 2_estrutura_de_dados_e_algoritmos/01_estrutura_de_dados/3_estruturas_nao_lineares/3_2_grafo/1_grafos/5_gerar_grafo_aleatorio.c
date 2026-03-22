@@ -141,12 +141,12 @@ int adicionarArestasAleatorias(Grafo *grafo, int maxArestas)
     }
 
     int arestasAdicionadas = 0;
-    int maxPossiveis = grafo->numVertices * (grafo->numVertices - 1); // Máximo de arestas sem laços
-    maxArestas = maxArestas < maxPossiveis ? maxArestas : maxPossiveis;
+    int maxPossiveis       = grafo->numVertices * (grafo->numVertices - 1); // Máximo de arestas sem laços
+    maxArestas             = maxArestas < maxPossiveis ? maxArestas : maxPossiveis;
 
     while (arestasAdicionadas < maxArestas)
     {
-        int src = rand() % grafo->numVertices;
+        int src  = rand() % grafo->numVertices;
         int dest = rand() % grafo->numVertices;
         if (adicionarAresta(grafo, src, dest))
         {
@@ -224,7 +224,7 @@ int main(int argc, char **argv)
     srand(time(NULL));
 
     int numVertices = rand() % MAX_VERTICES + 1;
-    int maxArestas = rand() % MAX_ARESTAS + 1;
+    int maxArestas  = rand() % MAX_ARESTAS + 1;
 
     printf("Total de vértices: %d\tTotal de arestas (tentativas): %d\n", numVertices, maxArestas);
 

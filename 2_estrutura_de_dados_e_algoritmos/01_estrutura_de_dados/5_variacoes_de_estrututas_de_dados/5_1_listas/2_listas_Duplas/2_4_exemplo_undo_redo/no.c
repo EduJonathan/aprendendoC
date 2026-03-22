@@ -13,7 +13,7 @@ No *criarNo(const char *texto)
     }
     strncpy(novoNo->estado.texto, texto, sizeof(novoNo->estado.texto) - 1);
     novoNo->estado.texto[sizeof(novoNo->estado.texto) - 1] = '\0'; // Garantir terminação nula
-    novoNo->anterior = NULL;
-    novoNo->proximo = NULL;
+    novoNo->anterior                                       = NULL;
+    novoNo->proximo                                        = NULL;
     return novoNo;
 }

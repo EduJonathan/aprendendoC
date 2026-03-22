@@ -34,14 +34,15 @@ typedef struct Priority_Queue
 
 /**
  * @brief Cria uma fila de prioridade vazia.
+ * 
  * @return Ponteiro para a nova PriorityQueue.
  */
 PriorityQueue *createPriorityQueue()
 {
     PriorityQueue *pq = (PriorityQueue *)malloc(sizeof(PriorityQueue));
-    pq->front = NULL;
-    pq->rear = NULL;
-    pq->size = 0;
+    pq->front         = NULL;
+    pq->rear          = NULL;
+    pq->size          = 0;
     return pq;
 }
 
@@ -54,32 +55,34 @@ PriorityQueue *createPriorityQueue()
  */
 void enqueue(PriorityQueue *pq, void *data, int priority)
 {
-    Node *newNode = (Node *)malloc(sizeof(Node));
-    newNode->data = data;
+    Node *newNode     = (Node *)malloc(sizeof(Node));
+    newNode->data     = data;
     newNode->priority = priority;
-    newNode->next = NULL;
-    newNode->prev = NULL;
+    newNode->next     = NULL;
+    newNode->prev     = NULL;
 
     if (pq->size == 0)
     {
         pq->front = newNode;
-        pq->rear = newNode;
+        pq->rear  = newNode;
     }
     else if (priority > pq->front->priority)
     {
-        newNode->next = pq->front;
+        newNode->next   = pq->front;
         pq->front->prev = newNode;
-        pq->front = newNode;
+        pq->front       = newNode;
     }
     else
     {
         Node *current = pq->front;
+
         while (current->next != NULL && current->next->priority >= priority)
         {
             current = current->next;
         }
         newNode->next = current->next;
         newNode->prev = current;
+        
         if (current->next != NULL)
         {
             current->next->prev = newNode;
@@ -109,8 +112,8 @@ void *dequeue(PriorityQueue *pq)
 
     Node *temp = pq->front;
     void *data = temp->data;
+    pq->front  = pq->front->next;
 
-    pq->front = pq->front->next;
     if (pq->front != NULL)
     {
         pq->front->prev = NULL;
@@ -151,13 +154,14 @@ void printQueue(PriorityQueue *pq)
         printf("Fila vazia.\n");
         return;
     }
+    
     Node *current = pq->front;
+
     printf("Fila atual (da frente para o fim):\n");
     while (current != NULL)
     {
         SenhaData *senha = (SenhaData *)current->data;
-        printf("- Senha: %s (%s), Prioridade: %d\n",
-               senha->senha, senha->tipo, current->priority);
+        printf("- Senha: %s (%s), Prioridade: %d\n", senha->senha, senha->tipo, current->priority);
         current = current->next;
     }
     printf("\n");

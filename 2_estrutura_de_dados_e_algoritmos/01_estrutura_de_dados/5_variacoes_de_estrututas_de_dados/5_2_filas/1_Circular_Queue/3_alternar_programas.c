@@ -35,8 +35,8 @@ typedef struct
  */
 void inicializarFila(CircularQueue *fila)
 {
-    fila->front = 0;
-    fila->rear = -1;
+    fila->front   = 0;
+    fila->rear    = -1;
     fila->tamanho = 0;
     for (size_t i = 0; i < MAXIMO_PROGRAMAS; i++)
     {
@@ -194,14 +194,14 @@ int main(int argc, char **argv)
         "Vs Code",
         "Excel",
         "Word",
-        "Este nome é muito longo para caber no buffer"};
+        "Este nome é muito longo para caber no buffer"
+    };
 
     for (size_t i = 0; i < 5; i++)
     {
         if (!abrirPrograma(&alt_tab, programas[i]))
         {
-            printf("Erro ao abrir '%s': %s\n", programas[i],
-                   strlen(programas[i]) >= MAX_NOME_PROGRAMA ? MSG_NOME_LONGO : MSG_LIMITE);
+            printf("Erro ao abrir '%s': %s\n", programas[i], strlen(programas[i]) >= MAX_NOME_PROGRAMA ? MSG_NOME_LONGO : MSG_LIMITE);
         }
         else
         {

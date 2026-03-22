@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     // Teste com array de 10 elementos (par)
     int array1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};    // Array de 10 elementos
     int tamanho1 = sizeof(array1) / sizeof(array1[0]); // Tamanho do array1
-    int meio1 = tamanho1 / 2;                          // Dividindo o array em duas partes
+    int meio1    = tamanho1 / 2;                       // Dividindo o array em duas partes
 
     int primeiraParte1[meio1];           // Array para armazenar a primeira parte
     int segundaParte1[tamanho1 - meio1]; // Array para armazenar a segunda parte
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
     // Teste com array de 7 elementos (ímpar)
     int array2[] = {1, 2, 3, 4, 5, 6, 7};              // Array de 7 elementos
     int tamanho2 = sizeof(array2) / sizeof(array2[0]); // Tamanho do array2
-    int meio2 = tamanho2 / 2;                          // Dividindo o array em duas partes
+    int meio2    = tamanho2 / 2;                       // Dividindo o array em duas partes
 
     int primeiraParte2[meio2];           // Array para armazenar a primeira parte
     int segundaParte2[tamanho2 - meio2]; // Array para armazenar a segunda parte

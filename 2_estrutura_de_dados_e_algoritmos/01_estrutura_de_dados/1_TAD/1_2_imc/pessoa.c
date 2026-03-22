@@ -20,7 +20,8 @@ static const struct IMCCategoria categorias[] = {
     {30.0, "Sobrepeso"},
     {35.0, "Obesidade grau I"},
     {40.0, "Obesidade grau II"},
-    {INFINITY, "Obesidade grau III"}}; // Ou FP_INFINITE
+    {INFINITY, "Obesidade grau III"} // Ou FP_INFINITE
+};
 
 bool setPessoa(struct Pessoa *pessoa, const char *nome, unsigned idade, float altura, float peso)
 {
@@ -31,9 +32,9 @@ bool setPessoa(struct Pessoa *pessoa, const char *nome, unsigned idade, float al
     }
     strncpy(pessoa->nome, nome, 99);
     pessoa->nome[99] = '\0'; // Garante terminação nula
-    pessoa->idade = idade;
-    pessoa->altura = altura;
-    pessoa->peso = peso;
+    pessoa->idade    = idade;
+    pessoa->altura   = altura;
+    pessoa->peso     = peso;
     return true;
 }
 

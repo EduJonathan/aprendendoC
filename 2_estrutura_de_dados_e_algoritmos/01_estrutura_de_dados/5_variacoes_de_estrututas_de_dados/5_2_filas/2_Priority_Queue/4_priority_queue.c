@@ -28,8 +28,8 @@ void inicializarFilaPrioridade(FilaPrioridade *fila)
 {
     if (fila == NULL)
         return;
-    fila->inicio = NULL;
-    fila->fim = NULL;
+    fila->inicio  = NULL;
+    fila->fim     = NULL;
     fila->tamanho = 0;
 }
 
@@ -61,8 +61,7 @@ void adicionarElemento(FilaPrioridade *fila, int elemento, int prioridade)
     
     if (prioridade < PRIORIDADE_MINIMA || prioridade > PRIORIDADE_MAXIMA)
     {
-        printf("Erro: Prioridade %d fora do intervalo permitido (%d a %d).\n",
-               prioridade, PRIORIDADE_MINIMA, PRIORIDADE_MAXIMA);
+        printf("Erro: Prioridade %d fora do intervalo permitido (%d a %d).\n", prioridade, PRIORIDADE_MINIMA, PRIORIDADE_MAXIMA);
         return;
     }
 
@@ -73,33 +72,36 @@ void adicionarElemento(FilaPrioridade *fila, int elemento, int prioridade)
         return;
     }
 
-    novoElemento->elemento = elemento;
+    novoElemento->elemento   = elemento;
     novoElemento->prioridade = prioridade;
-    novoElemento->proximo = NULL;
+    novoElemento->proximo    = NULL;
 
     if (fila->inicio == NULL)
     {
         fila->inicio = novoElemento;
-        fila->fim = novoElemento;
+        fila->fim    = novoElemento;
     }
     else
     {
-        No *atual = fila->inicio, *anterior = NULL;
+        No *atual    = fila->inicio,
+           *anterior = NULL;
+
         while (atual != NULL && atual->prioridade > prioridade)
         {
             anterior = atual;
-            atual = atual->proximo;
+            atual    = atual->proximo;
         }
 
         if (anterior == NULL)
         {
             novoElemento->proximo = fila->inicio;
-            fila->inicio = novoElemento;
+            fila->inicio          = novoElemento;
         }
         else
         {
-            anterior->proximo = novoElemento;
+            anterior->proximo     = novoElemento;
             novoElemento->proximo = atual;
+
             if (atual == NULL)
             {
                 fila->fim = novoElemento;
@@ -124,7 +126,8 @@ No *removerElemento(FilaPrioridade *fila)
     }
 
     No *elementoRemovido = fila->inicio;
-    fila->inicio = fila->inicio->proximo;
+    fila->inicio         = fila->inicio->proximo;
+    
     if (fila->inicio == NULL)
     {
         fila->fim = NULL;
@@ -148,8 +151,9 @@ bool buscarElemento(FilaPrioridade *fila, int elemento)
         return false;
     }
 
-    No *atual = fila->inicio;
+    No *atual   = fila->inicio;
     int posicao = 1;
+
     while (atual != NULL)
     {
         if (atual->elemento == elemento)
@@ -243,8 +247,7 @@ void testarFilaPrioridade(void)
     No *maiorPrioridade = peek(&fila);
     if (maiorPrioridade != NULL)
     {
-        printf("Elemento de maior prioridade: %d (Prioridade: %d)\n",
-               maiorPrioridade->elemento, maiorPrioridade->prioridade);
+        printf("Elemento de maior prioridade: %d (Prioridade: %d)\n", maiorPrioridade->elemento, maiorPrioridade->prioridade);
     }
 
     liberarFilaPrioridade(&fila);

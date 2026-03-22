@@ -38,10 +38,10 @@ Node *criarNo(char valor)
         fprintf(stderr, "Erro: Falha na alocação de memória\n");
         exit(1);
     }    
-    no->dado = valor; /**< Atribui o valor ao nó */
-    no->pai = NULL;   /**< Inicializa o ponteiro para o pai como NULL */
-    no->filho = NULL; /**< Inicializa o ponteiro para o filho como NULL */
-    no->irmao = NULL; /**< Inicializa o ponteiro para o irmão como NULL */
+    no->dado  = valor; /**< Atribui o valor ao nó */
+    no->pai   = NULL;  /**< Inicializa o ponteiro para o pai como NULL */
+    no->filho = NULL;  /**< Inicializa o ponteiro para o filho como NULL */
+    no->irmao = NULL;  /**< Inicializa o ponteiro para o irmão como NULL */
     return no;
 }
 
@@ -81,7 +81,7 @@ void inserirFilho(Node *pai, Node *novoNo, int posicao)
             current = current->irmao;
             index++;
         }
-        novoNo->irmao = current->irmao;
+        novoNo->irmao  = current->irmao;
         current->irmao = novoNo;
     }
     novoNo->pai = pai;

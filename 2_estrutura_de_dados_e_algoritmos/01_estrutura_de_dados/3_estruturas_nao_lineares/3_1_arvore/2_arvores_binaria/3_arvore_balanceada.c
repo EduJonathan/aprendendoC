@@ -28,7 +28,7 @@ ArvoreBalanceada *novoNo(int value)
         exit(EXIT_FAILURE);
     }
     no->valor = value;
-    no->left = NULL;
+    no->left  = NULL;
     no->right = NULL;
     return no;
 }
@@ -62,7 +62,7 @@ ArvoreBalanceada *balancearArvore(int *arr, int begin, int last)
     }
 
     // Constrói as subárvores esquerda e direita recursivamente
-    temp->left = balancearArvore(arr, begin, middle - 1);
+    temp->left  = balancearArvore(arr, begin, middle - 1);
     temp->right = balancearArvore(arr, middle + 1, last);
     return temp;
 }

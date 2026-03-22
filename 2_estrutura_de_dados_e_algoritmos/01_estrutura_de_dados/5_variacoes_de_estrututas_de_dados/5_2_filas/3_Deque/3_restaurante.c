@@ -29,8 +29,8 @@ void inicializar(Deque *dq)
     if (dq == NULL)
         return;
     dq->inicio = NULL;
-    dq->fim = NULL;
-    dq->size = 0;
+    dq->fim    = NULL;
+    dq->size   = 0;
 }
 
 /**
@@ -92,10 +92,11 @@ Pedido *criar_pedido(int id, char *cliente, bool is_vip)
     }
     novo->id = id;
     strncpy(novo->cliente, cliente, 49);
+
     novo->cliente[49] = '\0';
-    novo->is_vip = is_vip;
-    novo->prox = NULL;
-    novo->ant = NULL;
+    novo->is_vip      = is_vip;
+    novo->prox        = NULL;
+    novo->ant         = NULL;
     return novo;
 }
 
@@ -139,29 +140,29 @@ void inserir(Deque *dq, int id, char *cliente, bool is_vip)
             if (esta_vazio(dq))
             {
                 dq->inicio = novo;
-                dq->fim = novo;
+                dq->fim    = novo;
             }
             else
             {
-                novo->ant = dq->fim;
+                novo->ant     = dq->fim;
                 dq->fim->prox = novo;
-                dq->fim = novo;
+                dq->fim       = novo;
             }
         }
         else if (atual == dq->inicio)
         {
             // Inserir no início
-            novo->prox = dq->inicio;
+            novo->prox      = dq->inicio;
             dq->inicio->ant = novo;
-            dq->inicio = novo;
+            dq->inicio      = novo;
         }
         else
         { 
             // Inserir antes de atual
-            novo->prox = atual;
-            novo->ant = atual->ant;
+            novo->prox       = atual;
+            novo->ant        = atual->ant;
             atual->ant->prox = novo;
-            atual->ant = novo;
+            atual->ant       = novo;
         }
     }
     else
@@ -192,7 +193,7 @@ Pedido *remover_inicio(Deque *dq)
         return NULL;
 
     Pedido *temp = dq->inicio;
-    dq->inicio = dq->inicio->prox;
+    dq->inicio   = dq->inicio->prox;
 
     if (dq->inicio == NULL)
     {
@@ -219,7 +220,7 @@ Pedido *remover_fim(Deque *dq)
         return NULL;
 
     Pedido *temp = dq->fim;
-    dq->fim = dq->fim->ant;
+    dq->fim      = dq->fim->ant;
 
     if (dq->fim == NULL)
     {
@@ -278,12 +279,14 @@ void exibir_deque(Deque *dq)
         printf("Deque está vazio.\n");
         return;
     }
+
     printf("Pedidos no deque:\n");
+
     Pedido *atual = dq->inicio;
+
     while (atual != NULL)
     {
-        printf("ID: %d, Cliente: %s, Tipo: %s\n",
-               atual->id, atual->cliente, atual->is_vip ? "VIP" : "Comum");
+        printf("ID: %d, Cliente: %s, Tipo: %s\n", atual->id, atual->cliente, atual->is_vip ? "VIP" : "Comum");
         atual = atual->prox;
     }
 }
@@ -310,10 +313,10 @@ int main(int argc, char **argv)
     Deque pedidos;
 
     inicializar(&pedidos);
-    inserir(&pedidos, 1, "João", false);
-    inserir(&pedidos, 2, "Maria", false);
+    inserir(&pedidos, 1, "João",   false);
+    inserir(&pedidos, 2, "Maria",  false);
     inserir(&pedidos, 3, "Carlos", true);
-    inserir(&pedidos, 4, "Ana", false);
+    inserir(&pedidos, 4, "Ana",    false);
 
     exibir_deque(&pedidos);
 
@@ -323,8 +326,7 @@ int main(int argc, char **argv)
         Pedido *proximo = remover_inicio(&pedidos);
         if (proximo != NULL)
         {
-            printf("Pedido %d: %s (%s)\n", proximo->id, proximo->cliente,
-                   proximo->is_vip ? "VIP" : "Comum");
+            printf("Pedido %d: %s (%s)\n", proximo->id, proximo->cliente, proximo->is_vip ? "VIP" : "Comum");
             free(proximo);
         }
     }

@@ -28,13 +28,14 @@ bool inicializarFila(CircularQueue *queue, int capacidade)
 {
     if (capacidade <= 0)
         return false;
+        
     queue->capacity = capacidade;
     queue->elements = (int *)calloc(capacidade, sizeof(int));
     
     if (queue->elements == NULL)
         return false;
     queue->front = 0;
-    queue->rear = -1;
+    queue->rear  = -1;
     queue->count = 0;
     return true;
 }
@@ -72,7 +73,8 @@ bool inserir(CircularQueue *queue, int elemento)
 {
     if (filaCheia(queue))
         return false;
-    queue->rear = (queue->rear + 1) % queue->capacity;
+
+    queue->rear                  = (queue->rear + 1) % queue->capacity;
     queue->elements[queue->rear] = elemento;
     queue->count++;
     return true;
@@ -89,7 +91,8 @@ bool remover(CircularQueue *queue, int *elemento)
 {
     if (filaVazia(queue))
         return false;
-    *elemento = queue->elements[queue->front];
+
+    *elemento    = queue->elements[queue->front];
     queue->front = (queue->front + 1) % queue->capacity;
     queue->count--;
     return true;
@@ -126,9 +129,9 @@ void liberarFila(CircularQueue *queue)
     free(queue->elements);
     queue->elements = NULL;
     queue->capacity = 0;
-    queue->count = 0;
-    queue->front = 0;
-    queue->rear = -1;
+    queue->count    = 0;
+    queue->front    = 0;
+    queue->rear     = -1;
 }
 
 int main(int argc, char **argv)

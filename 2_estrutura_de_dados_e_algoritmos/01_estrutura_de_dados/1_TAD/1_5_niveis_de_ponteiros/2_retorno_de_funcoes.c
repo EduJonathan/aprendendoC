@@ -77,8 +77,8 @@ struct s *criar_no(int valor)
 struct s **inserir_inicio(struct s **cabeca, int valor)
 {
     struct s *novo = criar_no(valor);
-    novo->proximo = *cabeca;
-    *cabeca = novo;
+    novo->proximo  = *cabeca;
+    *cabeca        = novo;
 
     printf("[inserir_inicio **] Nova cabeça: %p -> %d\n", (void *)*cabeca, (*cabeca)->valor);
 

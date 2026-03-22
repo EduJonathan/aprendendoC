@@ -69,9 +69,9 @@ struct Node *newNode(int key)
         fprintf(stderr, "Erro: Falha na alocação de memória\n");
         return NULL;
     }
-    node->key = key;
-    node->left = NULL;
-    node->right = NULL;
+    node->key    = key;
+    node->left   = NULL;
+    node->right  = NULL;
     node->height = 1;
     return node;
 }
@@ -86,7 +86,7 @@ struct Node *newNode(int key)
  */
 struct Node *rightRotate(struct Node *y)
 {
-    struct Node *x = y->left;
+    struct Node *x  = y->left;
     struct Node *T2 = x->right;
 
     x->right = y;
@@ -107,10 +107,10 @@ struct Node *rightRotate(struct Node *y)
  */
 struct Node *leftRotate(struct Node *x)
 {
-    struct Node *y = x->right;
+    struct Node *y  = x->right;
     struct Node *T2 = y->left;
 
-    y->left = x;
+    y->left  = x;
     x->right = T2;
 
     x->height = maximo(height(x->left), height(x->right)) + 1;
@@ -167,7 +167,6 @@ struct Node *insertNode(struct Node *node, int key)
     }
 
     node->height = 1 + maximo(height(node->left), height(node->right));
-
     int balance = getBalance(node);
 
     // Rotação à direita (LL)
@@ -270,7 +269,6 @@ struct Node *deleteNode(struct Node *root, int key)
     }
 
     root->height = 1 + maximo(height(root->left), height(root->right));
-
     int balance = getBalance(root);
 
     // Rotação à direita (LL)

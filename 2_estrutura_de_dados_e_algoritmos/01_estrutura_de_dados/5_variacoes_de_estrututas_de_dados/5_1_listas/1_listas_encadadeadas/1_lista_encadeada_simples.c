@@ -34,7 +34,7 @@ void exibirLista(struct node *no)
 int main(int argc, char **argv)
 {
     struct node *primeiro = NULL;
-    struct node *segundo = NULL;
+    struct node *segundo  = NULL;
     struct node *terceiro = NULL;
 
     // Alocação dinâmica e preenchimento do primeiro nó
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
         printf("Erro ao alocar memória para o primeiro nó.\n");
         return 1;
     }
-    primeiro->no = 10;
+    primeiro->no   = 10;
     primeiro->prox = NULL;
 
     // Alocação e preenchimento do segundo nó
@@ -55,8 +55,8 @@ int main(int argc, char **argv)
         free(primeiro);
         return 1;
     }
-    segundo->no = 20;
-    segundo->prox = NULL;
+    segundo->no    = 20;
+    segundo->prox  = NULL;
     primeiro->prox = segundo; // Liga primeiro -> segundo
 
     // Alocação e preenchimento do terceiro nó
@@ -68,9 +68,9 @@ int main(int argc, char **argv)
         free(primeiro);
         return 1;
     }
-    terceiro->no = 30;
+    terceiro->no   = 30;
     terceiro->prox = NULL;
-    segundo->prox = terceiro; // Liga segundo -> terceiro
+    segundo->prox  = terceiro; // Liga segundo -> terceiro
 
     // Exibe a lista encadeada
     printf("Conteúdo da lista encadeada:\n");

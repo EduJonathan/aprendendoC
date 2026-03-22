@@ -60,9 +60,9 @@ void funcao_tripla(struct Estrutura ***cabeca)
         fprintf(stderr, "Erro de alocacao");
         exit(EXIT_FAILURE);
     }
-    novo->dados = 99;
+    novo->dados   = 99;
     novo->proximo = NULL;
-    **cabeca = novo;
+    **cabeca      = novo;
 }
 
 // Libera memória da lista encadeada

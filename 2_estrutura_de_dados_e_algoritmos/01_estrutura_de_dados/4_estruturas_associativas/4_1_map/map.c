@@ -64,7 +64,7 @@ Tabela *criarTabela(int tamanho)
     }
 
     table->tamanho = tamanho;
-    table->tabela = (Map **)calloc(tamanho, sizeof(Map *));
+    table->tabela  = (Map **)calloc(tamanho, sizeof(Map *));
     if (table->tabela == NULL)
     {
         fprintf(stderr, "Erro: Falha na alocação de memória para o array da tabela\n");
@@ -90,7 +90,7 @@ unsigned int funcaoHash(const char *key, int tamanho)
     }
 
     unsigned long hash = 5381;
-    int c = 0;
+    int c              = 0;
     while ((c = *key++))
     {
         hash = ((hash << 5) + hash) + c; // hash * 33 + c
@@ -118,7 +118,8 @@ int inserirPar(Tabela *table, const char *key, char value)
     }
 
     unsigned int index = funcaoHash(key, table->tamanho);
-    Map *atual = table->tabela[index];
+    Map *atual         = table->tabela[index];
+
     while (atual)
     {
         if (strcmp(atual->key, key) == 0)
@@ -143,8 +144,8 @@ int inserirPar(Tabela *table, const char *key, char value)
         free(novo);
         return 0;
     }
-    novo->value = value;
-    novo->next = table->tabela[index];
+    novo->value          = value;
+    novo->next           = table->tabela[index];
     table->tabela[index] = novo;
     return 1;
 }
@@ -164,7 +165,8 @@ char buscarValor(Tabela *table, const char *key)
     }
 
     unsigned int index = funcaoHash(key, table->tamanho);
-    Map *atual = table->tabela[index];
+    Map *atual         = table->tabela[index];
+
     while (atual)
     {
         if (strcmp(atual->key, key) == 0)
@@ -233,7 +235,7 @@ void liberarTabela(Tabela *table)
         while (atual)
         {
             Map *temp = atual;
-            atual = atual->next;
+            atual     = atual->next;
             free(temp->key);
             free(temp);
         }

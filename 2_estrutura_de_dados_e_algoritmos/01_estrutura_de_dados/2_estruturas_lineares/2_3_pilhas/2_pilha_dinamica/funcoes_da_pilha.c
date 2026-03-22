@@ -21,8 +21,8 @@ Stack *createStack(unsigned maxSize)
     }
 
     stack->maxSize = maxSize;
-    stack->top = -1;
-    stack->array = (int *)malloc(maxSize * sizeof(int));
+    stack->top     = -1;
+    stack->array   = (int *)malloc(maxSize * sizeof(int));
     if (stack->array == NULL)
     {
         printf("Erro ao alocar memória para o array da pilha\n");
@@ -126,8 +126,8 @@ void sortStack(Stack *stack)
             if (stack->array[j] > stack->array[j + 1])
             {
                 // Swap elements
-                int temp = stack->array[j];
-                stack->array[j] = stack->array[j + 1];
+                int temp            = stack->array[j];
+                stack->array[j]     = stack->array[j + 1];
                 stack->array[j + 1] = temp;
             }
         }

@@ -25,7 +25,8 @@ bool VerticeConectados(int pontoX, int pontoY)
             {0, 0, 1, 0, 0},
             {1, 1, 0, 1, 1},
             {0, 0, 1, 0, 1},
-            {0, 0, 1, 1, 1}};
+            {0, 0, 1, 1, 1}
+        };
 
     // Checa se há conexões entre os ponto dos vértices
     if (G[pontoX][pontoY] == true || G[pontoY][pontoX] == true)

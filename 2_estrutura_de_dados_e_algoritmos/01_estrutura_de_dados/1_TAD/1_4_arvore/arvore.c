@@ -9,9 +9,9 @@ struct no *criar_no(int valor)
     {
         return NULL;
     }
-    novo->valor = valor;
+    novo->valor    = valor;
     novo->esquerda = NULL;
-    novo->direita = NULL;
+    novo->direita  = NULL;
     return novo;
 }
 
@@ -105,7 +105,7 @@ int remover(struct no **raiz, int valor)
         if ((*raiz)->esquerda == NULL)
         {
             struct no *temp = *raiz;
-            *raiz = (*raiz)->direita;
+            *raiz           = (*raiz)->direita;
             free(temp);
         }
         else if ((*raiz)->direita == NULL)

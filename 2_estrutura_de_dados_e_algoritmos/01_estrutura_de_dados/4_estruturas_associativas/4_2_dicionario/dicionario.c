@@ -60,7 +60,7 @@ Dicionario *criarDicionario(size_t capacidade)
         free(dict);
         return NULL;
     }
-    dict->tamanho = 0;
+    dict->tamanho    = 0;
     dict->capacidade = capacidade;
     return dict;
 }

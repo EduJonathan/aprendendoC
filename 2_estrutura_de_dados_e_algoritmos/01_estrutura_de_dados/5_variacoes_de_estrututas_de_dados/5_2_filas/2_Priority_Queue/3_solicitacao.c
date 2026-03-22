@@ -61,8 +61,8 @@ void inicializarFila(Fila *fila)
         logErro("Ponteiro de fila inválido");
         return;
     }
-    fila->inicio = NULL;
-    fila->fim = NULL;
+    fila->inicio  = NULL;
+    fila->fim     = NULL;
     fila->tamanho = 0;
 }
 
@@ -106,13 +106,13 @@ size_t tamanhoFila(const Fila *fila)
  */
 static No *encontrarPosicaoInsercao(Fila *fila, int prioridade)
 {
-    No *atual = fila->inicio;
+    No *atual    = fila->inicio;
     No *anterior = NULL;
 
     while (atual != NULL && atual->prioridade >= prioridade)
     {
         anterior = atual;
-        atual = atual->proximo;
+        atual    = atual->proximo;
     }
     return anterior;
 }
@@ -157,9 +157,9 @@ void adicionarSolicitacao(Fila *fila, int andar, int prioridade)
         logErro("Falha na alocação de memória para nova solicitação");
         return;
     }
-    nova->andar = andar;
+    nova->andar      = andar;
     nova->prioridade = prioridade;
-    nova->proximo = NULL;
+    nova->proximo    = NULL;
 
     if (filaVazia(fila))
     {
@@ -218,7 +218,7 @@ SolicitacaoDados *removerSolicitacao(Fila *fila)
         free(removida);
         return NULL;
     }
-    dados->andar = removida->andar;
+    dados->andar      = removida->andar;
     dados->prioridade = removida->prioridade;
     free(removida);
     return dados;
@@ -254,6 +254,7 @@ bool contemAndar(const Fila *fila, int andar)
         return false;
 
     No *atual = fila->inicio;
+    
     while (atual != NULL)
     {
         if (atual->andar == andar)

@@ -13,9 +13,9 @@
  */
 void elementos(int array[], size_t tamanho, int *primeiroElemento, int *ElementoMeio, int *ultimoElemento)
 {
-    *primeiroElemento = array[0];         // Primeiro elemento
-    *ElementoMeio = array[tamanho / 2];   // Elemento do meio
-    *ultimoElemento = array[tamanho - 1]; // Ultimo elemento
+    *primeiroElemento = array[0];           // Primeiro elemento
+    *ElementoMeio     = array[tamanho / 2]; // Elemento do meio
+    *ultimoElemento   = array[tamanho - 1]; // Ultimo elemento
 }
 
 int soma_extremidades(int arr[], size_t tam, size_t first_extremo, size_t second_extremo)
@@ -32,12 +32,12 @@ int soma_extremidades(int arr[], size_t tam, size_t first_extremo, size_t second
 
 int main(int argc, char **argv)
 {
-    int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int array[10]  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     size_t tamanho = sizeof(array) / sizeof(array[0]);
 
     int primeiro = 0;
-    int meio = 0;
-    int ultimo = 0;
+    int meio     = 0;
+    int ultimo   = 0;
 
     elementos(array, tamanho, &primeiro, &meio, &ultimo);
 

@@ -37,7 +37,7 @@ Grafo *criarGrafo(int numVertices)
     }
 
     g->numVertices = numVertices;
-    g->matrizAdj = (bool **)malloc(numVertices * sizeof(bool *));
+    g->matrizAdj   = (bool **)malloc(numVertices * sizeof(bool *));
     if (g->matrizAdj == NULL)
     {
         fprintf(stderr, "Erro: Falha na alocação de memória para a matriz\n");
@@ -264,7 +264,8 @@ int main(int argc, char **argv)
         {1, 0, 1, 1, 1},
         {0, 1, 0, 0, 1},
         {1, 1, 0, 0, 1},
-        {0, 1, 1, 1, 0}};
+        {0, 1, 1, 1, 0}
+    };
         
     for (int i = 0; i < 5; i++)
     {

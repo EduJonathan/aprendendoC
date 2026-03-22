@@ -11,8 +11,8 @@
  */
 typedef enum
 {
-    PARADO = 0,   /**< Elevador parado */
-    SUBINDO = 1,  /**< Elevador subindo */
+    PARADO   = 0,   /**< Elevador parado */
+    SUBINDO  = 1,  /**< Elevador subindo */
     DESCENDO = -1 /**< Elevador descendo */
 } Direcao;
 
@@ -45,9 +45,10 @@ typedef struct elevador
  */
 void inicializarElevador(Elevador *elevador)
 {
-    elevador->andarAtual = 0;
-    elevador->direcao = PARADO;
+    elevador->andarAtual       = 0;
+    elevador->direcao          = PARADO;
     elevador->filaSolicitacoes = NULL;
+
     for (int i = 0; i < NUM_ANDARES; i++)
     {
         elevador->andaresChamados[i] = false;
@@ -68,7 +69,7 @@ No *criarNo(int andar)
         printf("Erro de alocação de memória.\n");
         return NULL;
     }
-    novoNo->andar = andar;
+    novoNo->andar   = andar;
     novoNo->proximo = NULL;
     return novoNo;
 }
@@ -101,11 +102,12 @@ void adicionarSolicitacao(Elevador *elevador, int andar)
 
     // Inserção na fila com base na direção e distância
     No **ptr = &(elevador->filaSolicitacoes);
+
     while (*ptr != NULL)
     {
         int distanciaAtual = abs((*ptr)->andar - elevador->andarAtual);
-        int distanciaNova = abs(andar - elevador->andarAtual);
-        bool mesmaDirecao = (elevador->direcao == SUBINDO && (*ptr)->andar >= elevador->andarAtual) ||
+        int distanciaNova  = abs(andar - elevador->andarAtual);
+        bool mesmaDirecao  = (elevador->direcao == SUBINDO && (*ptr)->andar >= elevador->andarAtual) ||
                             (elevador->direcao == DESCENDO && (*ptr)->andar <= elevador->andarAtual);
 
         if ((elevador->direcao != PARADO && mesmaDirecao && distanciaAtual < distanciaNova) ||
@@ -119,8 +121,8 @@ void adicionarSolicitacao(Elevador *elevador, int andar)
         }
     }
 
-    novoNo->proximo = *ptr;
-    *ptr = novoNo;
+    novoNo->proximo                  = *ptr;
+    *ptr                             = novoNo;
     elevador->andaresChamados[andar] = true;
 
     printf("Solicitação para o andar %d adicionada.\n", andar);
@@ -140,9 +142,10 @@ int removerSolicitacao(Elevador *elevador)
     {
         return -1; // Fila vazia
     }
-    No *temp = elevador->filaSolicitacoes;
-    int andar = temp->andar;
-    elevador->filaSolicitacoes = temp->proximo;
+
+    No *temp                         = elevador->filaSolicitacoes;
+    int andar                        = temp->andar;
+    elevador->filaSolicitacoes       = temp->proximo;
     elevador->andaresChamados[andar] = false;
     free(temp);
     return andar;
@@ -254,10 +257,11 @@ void processarSolicitacoes(Elevador *elevador)
 void liberarFila(Elevador *elevador)
 {
     No *atual = elevador->filaSolicitacoes;
+    
     while (atual != NULL)
     {
         No *temp = atual;
-        atual = atual->proximo;
+        atual    = atual->proximo;
         free(temp);
     }
     elevador->filaSolicitacoes = NULL;

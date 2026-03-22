@@ -14,9 +14,9 @@ void reverseStack(Stack **stack)
     while (curr)
     {
         Stack *next = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = next;
+        curr->next  = prev;
+        prev        = curr;
+        curr        = next;
     }
     *stack = prev;
 }
@@ -185,8 +185,8 @@ void generateStack(Stack **stack, DataType type)
         }
 
         node->value = value;
-        node->next = *stack;
-        *stack = node;
+        node->next  = *stack;
+        *stack      = node;
     }
 }
 
@@ -226,22 +226,21 @@ void sortStack(Stack **stack, DataType type)
     while (*stack)
     {
         Stack *node = *stack;
-        *stack = node->next;
+        *stack      = node->next;
 
         if (!sorted || compareValues(node->value, sorted->value, type) >= 0)
         {
             node->next = sorted;
-            sorted = node;
+            sorted     = node;
         }
         else
         {
             Stack *cur = sorted;
-            while (cur->next &&
-                   compareValues(node->value, cur->next->value, type) < 0)
+            while (cur->next && compareValues(node->value, cur->next->value, type) < 0)
                 cur = cur->next;
 
             node->next = cur->next;
-            cur->next = node;
+            cur->next  = node;
         }
     }
     *stack = sorted;

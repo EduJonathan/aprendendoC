@@ -27,7 +27,7 @@ void reverterArray(int array[], size_t tamanho)
 int main(int argc, char **argv)
 {
     // Inicializando um array
-    int array[5] = {0, 1, 2, 3, 4};
+    int array[5]   = {0, 1, 2, 3, 4};
     size_t tamanho = sizeof(array) / sizeof(array[0]);
 
     // Imprimindo o array original
