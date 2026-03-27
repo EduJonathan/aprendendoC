@@ -78,7 +78,7 @@ void freeHashTable(HashTable *ht)
         while (current != NULL)
         {
             HashNode *temp = current;
-            current = current->next;
+            current        = current->next;
             free(temp);
         }
     }
@@ -100,10 +100,12 @@ void insert(HashTable *ht, int key, int value)
         printf("Erro: Tabela hash não inicializada.\n");
         return;
     }
+
     int index = hashFunction(key, ht->size);
 
     // Verifica se a chave já existe
     HashNode *current = ht->table[index];
+
     while (current != NULL)
     {
         if (current->key == key)
@@ -122,9 +124,9 @@ void insert(HashTable *ht, int key, int value)
         printf("Erro: Falha na alocação de memória para o nó.\n");
         return;
     }
-    new_node->key = key;
-    new_node->value = value;
-    new_node->next = ht->table[index]; // Insere no início da lista
+    new_node->key    = key;
+    new_node->value  = value;
+    new_node->next   = ht->table[index]; // Insere no início da lista
     ht->table[index] = new_node;
 }
 
@@ -154,7 +156,7 @@ HashNode *search(HashTable *ht, int key)
         return NULL;
     }
 
-    int index = hashFunction(key, ht->size);
+    int index         = hashFunction(key, ht->size);
     HashNode *current = ht->table[index];
 
     while (current != NULL)
@@ -179,9 +181,9 @@ void removeKey(HashTable *ht, int key)
         return;
     }
 
-    int index = hashFunction(key, ht->size);
+    int index         = hashFunction(key, ht->size);
     HashNode *current = ht->table[index];
-    HashNode *prev = NULL;
+    HashNode *prev    = NULL;
 
     while (current != NULL)
     {
@@ -199,7 +201,7 @@ void removeKey(HashTable *ht, int key)
             printf("Chave %d removida.\n", key);
             return;
         }
-        prev = current;
+        prev    = current;
         current = current->next;
     }
     printf("Chave %d não encontrada.\n", key);

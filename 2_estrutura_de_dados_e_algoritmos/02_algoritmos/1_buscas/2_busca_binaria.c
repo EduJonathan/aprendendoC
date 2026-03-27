@@ -71,7 +71,7 @@ bool binary_search(int *array, size_t size, int alvo)
     int comparacoes = 0;
 
     // Inicializando as variáveis
-    int left = 0;
+    int left  = 0;
     int right = size - 1;
 
     // Enquanto o left for menor ou igual ao right

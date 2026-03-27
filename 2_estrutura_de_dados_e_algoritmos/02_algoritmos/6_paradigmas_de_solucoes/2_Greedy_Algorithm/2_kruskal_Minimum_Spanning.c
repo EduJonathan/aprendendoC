@@ -34,7 +34,8 @@ Aresta arestas[] = {
     {2, 4, 1},
     {3, 4, 5},
     {3, 5, 7},
-    {4, 5, 8}};
+    {4, 5, 8}
+};
 
 /// Número de arestas calculado automaticamente
 #define E (sizeof(arestas) / sizeof(arestas[0]))
@@ -78,18 +79,34 @@ void unir(Subconjunto subconj[], int x, int y)
     int yroot = encontrar(subconj, y);
 
     if (subconj[xroot].rank < subconj[yroot].rank)
-    {
         subconj[xroot].pai = yroot;
-    }
     else if (subconj[xroot].rank > subconj[yroot].rank)
-    {
         subconj[yroot].pai = xroot;
-    }
     else
     {
         subconj[yroot].pai = xroot;
         subconj[xroot].rank++;
     }
+}
+
+void imprimirMST(Aresta resultado[], int numArestas, int custoTotal)
+{
+    printf("\n=== Árvore Geradora Mínima (MST) - Algoritmo de Kruskal ===\n\n");
+    printf("Arestas selecionadas:\n");
+    printf("---------------------\n");
+    printf("Origem  Destino  Peso\n");
+    printf("---------------------\n");
+
+    for (int i = 0; i < numArestas; i++)
+    {
+        printf("  %d\t  %d\t   %d\n",
+               resultado[i].origem,
+               resultado[i].destino,
+               resultado[i].peso);
+    }
+
+    printf("---------------------\n");
+    printf("Custo total da MST: %d\n", custoTotal);
 }
 
 /**
@@ -100,21 +117,23 @@ void unir(Subconjunto subconj[], int x, int y)
  */
 void kruskalMST()
 {
-    Aresta resultado[V - 1]; ///< Vetor que armazena o resultado final da MST
-    int e = 0;               // índice para resultado[]
-    int i = 0;               // índice para arestas ordenadas
+    Aresta resultado[V - 1]; // Armazena as arestas da MST
+    int e          = 0;      // Índice para o vetor resultado
+    int i          = 0;      // Índice para percorrer as arestas ordenadas
     int custoTotal = 0;
 
+    // Ordena as arestas em ordem crescente de peso
     qsort(arestas, E, sizeof(Aresta), compararArestas);
 
+    // Aloca memória para a estrutura Union-Find
     Subconjunto *subconj = (Subconjunto *)malloc(V * sizeof(Subconjunto));
     if (!subconj)
     {
-        printf("Erro na alocação de memória.\n");
+        printf("Erro: Falha na alocação de memória.\n");
         return;
     }
 
-    // Inicializa subconjuntos
+    // Inicializa cada vértice como seu próprio conjunto
     for (int v = 0; v < V; v++)
     {
         subconj[v].pai = v;
@@ -125,9 +144,11 @@ void kruskalMST()
     while (e < V - 1 && i < E)
     {
         Aresta prox = arestas[i++];
+
         int x = encontrar(subconj, prox.origem);
         int y = encontrar(subconj, prox.destino);
 
+        // Se não formam ciclo, inclui a aresta na MST
         if (x != y)
         {
             resultado[e++] = prox;
@@ -136,24 +157,22 @@ void kruskalMST()
         }
     }
 
+    // Verifica se foi possível formar uma MST (grafo deve ser conexo)
     if (e != V - 1)
     {
-        printf("O grafo não é conexo. MST não encontrada.\n");
+        printf("Erro: O grafo não é conexo. Não foi possível gerar uma MST.\n");
     }
     else
     {
-        printf("Arestas da MST:\n");
-        for (i = 0; i < e; i++)
-        {
-            printf("%d -- %d == %d\n", resultado[i].origem, resultado[i].destino, resultado[i].peso);
-        }
-        printf("Custo total da MST: %d\n", custoTotal);
+        imprimirMST(resultado, e, custoTotal);
     }
+
     free(subconj);
 }
 
 int main(int argc, char **argv)
 {
+    printf("Executando Algoritmo de Kruskal para encontrar a MST...\n");
     kruskalMST();
     return 0;
 }

@@ -35,7 +35,7 @@
 void insertionSort(int *arr, size_t n)
 {
     int comparacoes = 0; // Contador de comparações
-    int trocas = 0;      // Contador de trocas
+    int trocas      = 0; // Contador de trocas
 
     if (arr == NULL || n <= 1)
     {
@@ -43,13 +43,13 @@ void insertionSort(int *arr, size_t n)
     }
 
     int temp = 0;
-    int j = 0;
+    int j    = 0;
 
     // Itera sobre o array a partir do segundo elemento
     for (size_t i = 1ull; i < n; i++)
     {
         temp = arr[i];
-        j = i - 1;
+        j    = i - 1;
 
         // Move os elementos maiores que 'temp' uma posição à frente
         while (j >= 0 && arr[j] > temp)

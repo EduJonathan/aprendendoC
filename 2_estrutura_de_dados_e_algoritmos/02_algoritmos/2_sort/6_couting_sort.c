@@ -39,7 +39,7 @@
 void countingSort(int *arr, int key, size_t size)
 {
     int comparacoes = 0; // Contador de comparações
-    int trocas = 0;      // Contador de trocas
+    int trocas      = 0; // Contador de trocas
 
     // Inicializa os arrays de contagem e resultado
     int *arr2 = (int *)calloc(key + 1, sizeof(int)); // Armazenar as contagens
@@ -100,7 +100,7 @@ void countingSort(int *arr, int key, size_t size)
 int main(int argc, char **argv)
 {
     int arr[] = {12, 4, 7, 9, 2, 6, 3, 11, 5, 10, 8, 1};
-    size_t n = sizeof(arr) / sizeof(arr[0]);
+    size_t n  = sizeof(arr) / sizeof(arr[0]);
 
     // O valor de "key" é o maior valor do array
     countingSort(arr, 12, n);

@@ -30,7 +30,7 @@
  * @param num2 O segundo número inteiro.
  * @return O valor do MDC entre num1 e num2.
  */
-int algoEuclids(int num1, int num2)
+int mdcIterativo(int num1, int num2)
 {
     num1 = abs(num1); // Garantir números positivos
     num2 = abs(num2); // Garantir números positivos
@@ -56,7 +56,7 @@ int algoEuclids(int num1, int num2)
  * @param num2 O segundo número inteiro.
  * @return O valor do MDC entre num1 e num2.
  */
-int euclidRecursivo(int num1, int num2)
+int mdcRecursivo(int num1, int num2)
 {
     num1 = abs(num1); // Garantir números positivos
     num2 = abs(num2); // Garantir números positivos
@@ -65,23 +65,69 @@ int euclidRecursivo(int num1, int num2)
     {
         return num1;
     }
-    return euclidRecursivo(num2, num1 % num2);
+    return mdcRecursivo(num2, num1 % num2);
+}
+
+/**
+ * @brief Exibe o resultado de forma formatada
+ *
+ * @param num1 Informa o primeiro valor
+ * @param num2 Informa o primeiro valor
+ */
+void exibirResultado(int num1, int num2)
+{
+    printf("\n=== Resultado do Algoritmo de Euclides ===\n");
+    printf("Números: %d e %d\n\n", num1, num2);
+
+    printf("MDC (versão iterativa)  : %d\n", mdcIterativo(num1, num2));
+    printf("MDC (versão recursiva) : %d\n", mdcRecursivo(num1, num2));
+
+    // Verificação extra (opcional)
+    if (mdcIterativo(num1, num2) == mdcRecursivo(num1, num2))
+    {
+        printf("\nAs duas implementações retornaram o mesmo resultado.\n");
+    }
+    else
+    {
+        printf("\nErro: as implementações divergem!\n");
+    }
 }
 
 int main(int argc, char **argv)
 {
-    int numero1 = 0;
-    int numero2 = 0;
+    int numero1 = 0, numero2 = 0;
 
-    // Solicita os números ao usuário
-    printf("Digite o primeiro numero inteiro: ");
-    scanf("%d", &numero1);
+    printf("=== Algoritmo de Euclides - MDC (GCD) ===\n\n");
 
-    printf("Digite o segundo numero inteiro: ");
-    scanf("%d", &numero2);
+    // Entrada do usuário
+    printf("Digite o primeiro número inteiro : ");
+    if (scanf("%d", &numero1) != 1)
+    {
+        printf("Erro: Entrada inválida.\n");
+        return 1;
+    }
 
-    // Exibe o resultado do MDC calculado pelas duas versões
-    printf("O MDC de %d e %d (versão iterativa) é: %d\n", numero1, numero2, algoEuclids(numero1, numero2));
-    printf("O MDC de %d e %d (versão recursiva) é: %d\n", numero1, numero2, euclidRecursivo(numero1, numero2));
+    printf("Digite o segundo número inteiro  : ");
+    if (scanf("%d", &numero2) != 1)
+    {
+        printf("Erro: Entrada inválida.\n");
+        return 1;
+    }
+
+    // Proteção contra divisão por zero (embora o algoritmo já trate)
+    if (numero1 == 0 && numero2 == 0)
+    {
+        printf("\nMDC(0, 0) não está definido.\n");
+        return 0;
+    }
+
+    exibirResultado(numero1, numero2);
+
+    // Exemplos adicionais para demonstração
+    printf("\n=== Exemplos adicionais ===\n");
+    printf("MDC(48, 18)     = %d\n", mdcIterativo(48, 18));
+    printf("MDC(1071, 462)  = %d\n", mdcIterativo(1071, 462));
+    printf("MDC(0, 25)      = %d\n", mdcIterativo(0, 25));
+    printf("MDC(-56, 32)    = %d\n", mdcIterativo(-56, 32));
     return 0;
 }

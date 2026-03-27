@@ -25,7 +25,7 @@
 int partition(int arr[], int low, int high)
 {
     int pivot = arr[high]; // Escolhe o último elemento como pivô
-    int i = low - 1;       // Índice do menor elemento
+    int i     = low - 1;   // Índice do menor elemento
 
     // Reorganiza o vetor para que os elementos menores que o pivô
     // fiquem à esquerda e os maiores fiquem à direita
@@ -37,15 +37,15 @@ int partition(int arr[], int low, int high)
 
             // Troca arr[i] e arr[j]
             int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+            arr[i]   = arr[j];
+            arr[j]   = temp;
         }
     }
 
     // Coloca o pivô na posição correta
-    int temp = arr[i + 1];
+    int temp   = arr[i + 1];
     arr[i + 1] = arr[high];
-    arr[high] = temp;
+    arr[high]  = temp;
     return i + 1;
 }
 
@@ -86,11 +86,11 @@ int quickSelection(int arr[], int low, int high, int k)
 
 int main(int argc, char **argv)
 {
-    int arr[] = {12, 3, 5, 7, 19, 1, 6};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int k = 4;
-
+    int arr[]  = {12, 3, 5, 7, 19, 1, 6};
+    int n      = sizeof(arr) / sizeof(arr[0]);
+    int k      = 4;
     int result = quickSelection(arr, 0, n - 1, k);
+
     printf("O %d-ésimo menor elemento é: %d\n", k, result);
 
     return 0;

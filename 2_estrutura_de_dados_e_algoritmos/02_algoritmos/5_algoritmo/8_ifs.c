@@ -28,28 +28,32 @@ typedef struct
     float nota;
     bool aprovado;
     const char *status;
-} NotaDoAluno;
+} GradeInfo;
 
-// Lookup table com acesso O(1)
-static const NotaDoAluno GRADE_NOTAS[] = {
-    {0.0,  false, "Reprovado - Insuficiente"},
-    {1.0,  false, "Reprovado - Insuficiente"},
-    {2.0,  false, "Reprovado - Insuficiente"},
-    {3.0,  false, "Reprovado - Insuficiente"},
-    {4.0,  false, "Reprovado - Insuficiente"},
-    {5.0,  false, "Reprovado - Recuperação"},
-    {6.0,  true,  "Aprovado  - Satisfatório"},
-    {7.0,  true,  "Aprovado  - Bom"},
-    {8.0,  true,  "Aprovado  - Muito Bom"},
-    {9.0,  true,  "Aprovado  - Excelente"},
-    {10.0, true,  "Aprovado  - Perfeito"}};
+// Tabela de lookup para status de notas (acesso O(1))
+static const GradeInfo GRADE_TABLE[] = {
+    {0.0f,  false, "Reprovado - Insuficiente"},
+    {1.0f,  false, "Reprovado - Insuficiente"},
+    {2.0f,  false, "Reprovado - Insuficiente"},
+    {3.0f,  false, "Reprovado - Insuficiente"},
+    {4.0f,  false, "Reprovado - Insuficiente"},
+    {5.0f,  false, "Reprovado - Recuperação"},
+    {6.0f,  true,  "Aprovado  - Satisfatório"},
+    {7.0f,  true,  "Aprovado  - Bom"},
+    {8.0f,  true,  "Aprovado  - Muito Bom"},
+    {9.0f,  true,  "Aprovado  - Excelente"},
+    {10.0f, true,  "Aprovado  - Perfeito"}
+};
 
-const int TOTAL_NOTAS = sizeof(GRADE_NOTAS) / sizeof(GRADE_NOTAS[0]);
+const int TOTAL_NOTAS = sizeof(GRADE_TABLE) / sizeof(GRADE_TABLE[0]);
 
-const char *obter_status_aprovacao(float nota)
+const char *obter_status_nota(float nota)
 {
+    if (nota < 0.0f || nota > 10.0f)
+        return "Nota inválida";
+
     int indice = (int)nota;
-    return (indice >= 0 && indice < TOTAL_NOTAS) ? GRADE_NOTAS[indice].status : "Nota inválida";
+    return GRADE_TABLE[indice].status;
 }
 
 const char *aluno_aprovado_simples(bool aprovado)
@@ -57,14 +61,18 @@ const char *aluno_aprovado_simples(bool aprovado)
     return aprovado ? "Aprovado" : "Reprovado";
 }
 
-const char *verificar_situacao_completa(float nota, int frequencia)
+const char *verificar_situacao_aluno(float nota, int frequencia)
 {
-    bool nota_aprovada = nota >= 6.0;
-    bool frequencia_aprovada = frequencia >= 75;
-    return (nota_aprovada && frequencia_aprovada)     ? "Aprovado"
-           : (!nota_aprovada && !frequencia_aprovada) ? "Reprovado por nota e frequência"
-           : (!nota_aprovada)                         ? "Reprovado por nota"
-                                                      : "Reprovado por frequência";
+    bool nota_ok = nota >= 6.0f;
+    bool freq_ok = frequencia >= 75;
+
+    if (nota_ok && freq_ok)
+        return "Aprovado";
+
+    if (!nota_ok && !freq_ok)
+        return "Reprovado por nota e frequência";
+
+    return nota_ok ? "Reprovado por frequência" : "Reprovado por nota";
 }
 
 // Exemplo 2: Evitando if's com tabela de lookup para classificação de caracteres
@@ -84,65 +92,68 @@ static CharCategory charLookup[128];
 // Função para inicializar a tabela de lookup com as classificações de caracteres
 void initCharLookup(void)
 {
-    // Laço para classificar caracteres especiais armazenando na tabela de lookup
+    // Inicializa tudo como caractere especial
     for (int i = 0; i < 128; i++)
     {
         charLookup[i] = SPECIAL;
     }
 
-    // Laço para classificar dígitos
+    // Dígitos
     for (int i = '0'; i <= '9'; i++)
     {
         charLookup[i] = DIGIT;
     }
 
-    // Classificar espaço
+    // Espaço
     charLookup[' '] = SPACE;
 
-    // Classificar vogais
+    // Vogais
     const char *vowels = "aeiouAEIOU";
     for (int i = 0; vowels[i]; i++)
     {
         charLookup[(unsigned char)vowels[i]] = VOWEL;
     }
 
-    // Classificar consoantes (tudo que não é vogal, dígito ou espaço)
+    // Consoantes (letras que não são vogais)
     for (int i = 'a'; i <= 'z'; i++)
     {
         if (strchr(vowels, i) == NULL)
-        {
             charLookup[i] = CONSONANT;
-        }
     }
 
     for (int i = 'A'; i <= 'Z'; i++)
     {
         if (strchr(vowels, i) == NULL)
-        {
             charLookup[i] = CONSONANT;
-        }
     }
 }
 
 // Função para classificar um caractere usando a tabela de lookup
 CharCategory classifyChar(char c)
 {
-    return (c < 128) ? charLookup[(unsigned char)c] : SPECIAL;
+    return (c >= 0 && c < 128) ? charLookup[(unsigned char)c] : SPECIAL;
 }
 
 // Função para contar categorias de caracteres em uma string
-void checaString(const char *string)
+void analisar_string(const char *str)
 {
+    if (!str)
+        return;
+
     int counts[CATEGORY_COUNT] = {0};
-    for (int i = 0; string[i] != '\0'; i++)
+
+    for (int i = 0; str[i] != '\0'; i++)
     {
-        counts[classifyChar(string[i])]++;
+        counts[classifyChar(str[i])]++;
     }
-    printf("Vogais: %d\n", counts[VOWEL]);
-    printf("Consoantes: %d\n", counts[CONSONANT]);
-    printf("Espaços: %d\n", counts[SPACE]);
-    printf("Caracteres especiais: %d\n", counts[SPECIAL]);
-    printf("Dígitos: %d\n", counts[DIGIT]);
+
+    printf("Análise da string: \"%s\"\n", str);
+    printf("   Vogais:          %d\n", counts[VOWEL]);
+    printf("   Consoantes:      %d\n", counts[CONSONANT]);
+    printf("   Espaços:         %d\n", counts[SPACE]);
+    printf("   Dígitos:         %d\n", counts[DIGIT]);
+    printf("   Especiais:       %d\n", counts[SPECIAL]);
+    printf("   Total caracteres: %zu\n\n", strlen(str));
 }
 
 // 3. Exemplo 3: Utilizando ponteiro para função
@@ -153,8 +164,18 @@ int subtract(int x) { return x - 1; }
 int multiply(int x) { return x * 2; }
 int divide(int x) { return x / 2; }
 
-// Tabela de funções
-static operation_func operations[] = {add, subtract, multiply, divide};
+// Tabela de operações (substitui múltiplos if/else)
+static operation_func operations[] = {
+    add,
+    subtract,
+    multiply,
+    divide};
+
+const char *operation_names[] = {
+    "Incrementar",
+    "Decrementar",
+    "Duplicar",
+    "Dividir por 2"};
 
 int process_operation(int op_type, int data)
 {
@@ -186,34 +207,40 @@ int main(int argc, char **argv)
 {
     initCharLookup();
 
-    printf("Teste de Notas:\n");
+    printf("=== BOAS PRÁTICAS COM CONTROLE DE FLUXO ===\n\n");
 
-    float test_notas[] = {7.0, 5.0, 11.0, 7.5};
-    int test_frequencias[] = {80, 70, 75, 80};
+    /* --- Teste 1: Notas de Aluno --- */
+    printf("1. Análise de Notas do Aluno\n");
+    printf("----------------------------\n");
 
-    for (int i = 0; i < 4; i++)
+    float notas[] = {7.0f, 5.0f, 9.5f, 3.0f, 10.0f, 11.0f};
+    int frequencias[] = {80, 70, 85, 90, 60, 75};
+
+    for (int i = 0; i < 6; i++)
     {
-        float nota = test_notas[i];
-        int freq = test_frequencias[i];
-        printf("Nota: %.1f, Frequência: %d%%\n", nota, freq);
-        printf("  Status: %s\n", obter_status_aprovacao(nota));
-        printf("  Simples: %s\n", aluno_aprovado_simples(nota >= 6.0));
-        printf("  Completo: %s\n\n", verificar_situacao_completa(nota, freq));
+        float nota = notas[i];
+        int freq = frequencias[i];
+
+        printf("Nota: %.1f | Frequência: %d%%\n", nota, freq);
+        printf("   → Status: %s\n", obter_status_nota(nota));
+        printf("   → Simples: %s\n", aluno_aprovado_simples(nota >= 6.0f));
+        printf("   → Completo: %s\n\n", verificar_situacao_aluno(nota, freq));
     }
 
-    printf("Teste de String:\n");
+    /* --- Teste 2: Análise de String --- */
+    printf("2. Análise de String com Tabela de Lookup\n");
+    printf("----------------------------------------\n");
+    analisar_string("Hello, World! 123 @#$ ABC123");
 
-    const char *str = "Hello, World! 123 @#$";
-    printf("String: %s\n", str);
-    checaString(str);
+    /* --- Teste 3: Operações com Ponteiro para Função --- */
+    printf("3. Operações usando Tabela de Ponteiros para Função\n");
+    printf("--------------------------------------------------\n");
 
-    printf("\nTeste de Operações:\n");
-
-    int data = 10;
-    const char *op_names[] = {"Adição", "Subtração", "Multiplicação", "Divisão"};
+    int valor = 10;
     for (int i = 0; i < 4; i++)
     {
-        printf("Operação %s sobre %d -> Resultado: %d\n", op_names[i], data, process_operation(i, data));
+        int resultado = process_operation(i, valor);
+        printf("%s(%d) = %d\n", operation_names[i], valor, resultado);
     }
 
     return 0;

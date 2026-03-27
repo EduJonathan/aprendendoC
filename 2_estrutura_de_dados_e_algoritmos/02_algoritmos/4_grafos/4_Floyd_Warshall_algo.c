@@ -64,17 +64,34 @@ int minimo(int a, int b)
  */
 void floyd_warshall(int **graph, int n)
 {
+    // Fase principal: para cada vértice intermediário k
     for (int k = 0; k < n; k++)
     {
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < n; j++)
             {
+                // Evita overflow: só atualiza se ambos os caminhos existem
                 if (graph[i][k] != INT_MAX && graph[k][j] != INT_MAX)
                 {
-                    graph[i][j] = minimo(graph[i][j], graph[i][k] + graph[k][j]);
+                    // Se a soma for menor que o caminho direto
+                    if (graph[i][k] + graph[k][j] < graph[i][j])
+                    {
+                        graph[i][j] = graph[i][k] + graph[k][j];
+                    }
                 }
             }
+        }
+    }
+
+    // Detecção de ciclo negativo
+    for (int i = 0; i < n; i++)
+    {
+        if (graph[i][i] < 0)
+        {
+            printf("\nATENÇÃO: Ciclo negativo detectado no grafo!\n");
+            printf("Os resultados podem não ser confiáveis.\n");
+            return;
         }
     }
 }
@@ -88,27 +105,49 @@ void floyd_warshall(int **graph, int n)
 int **allocate_graph(int n)
 {
     int **graph = (int **)malloc(n * sizeof(int *));
-    if (graph == NULL)
+    if (!graph)
     {
-        printf("Erro: Falha na alocação de memória.\n");
+        printf("Erro: Falha na alocação da matriz.\n");
         return NULL;
     }
 
     for (int i = 0; i < n; i++)
     {
         graph[i] = (int *)malloc(n * sizeof(int));
-        if (graph[i] == NULL)
+        if (!graph[i])
         {
-            printf("Erro: Falha na alocação de memória.\n");
+            printf("Erro: Falha na alocação da linha %d.\n", i);
+
+            // Libera o que já foi alocado
             for (int j = 0; j < i; j++)
-            {
                 free(graph[j]);
-            }
             free(graph);
             return NULL;
         }
     }
     return graph;
+}
+
+/**
+ * @brief Função para imprimir matriz
+ * 
+ * @param graph Parâmetro para informar o grafo
+ * @param titulo Parâmetro para informar o título do grafo exibido
+ */
+void print_matrix(int **graph, int n, const char *titulo)
+{
+    printf("\n%s:\n", titulo);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (graph[i][j] == INT_MAX)
+                printf(" INF ");
+            else
+                printf("%4d ", graph[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 /**
@@ -119,6 +158,9 @@ int **allocate_graph(int n)
  */
 void free_graph(int **graph, int n)
 {
+    if (!graph)
+        return;
+
     for (int i = 0; i < n; i++)
     {
         free(graph[i]);
@@ -191,70 +233,36 @@ int main(int argc, char **argv)
         }
 
         graph[origem][destino] = peso; // Directed graph
-        // For undirected graph, uncomment: graph[destino][origem] = peso;
+        // Se quiser grafo NÃO direcionado, descomente a linha abaixo:
+        // graph[destino][origem] = peso;
     }
 
-    // Exibe a matriz do grafo inicial
-    printf("\nMatriz do grafo inicial:\n");
-    for (int i = 0; i < vertices; i++)
-    {
-        for (int j = 0; j < vertices; j++)
-        {
-            if (graph[i][j] == INT_MAX)
-            {
-                printf("INF ");
-            }
-            else
-            {
-                printf("%3d ", graph[i][j]);
-            }
-        }
-        printf("\n");
-    }
+    // Mostra a matriz inicial
+    print_matrix(graph, vertices, "Matriz de Adjacência Inicial");
 
-    // Aplica o algoritmo de Floyd-Warshall
+    // Executa o algoritmo
     floyd_warshall(graph, vertices);
 
-    // Exibe a matriz resultante
-    printf("\nMatriz do Floyd-Warshall (caminhos mais curtos):\n");
-    for (int i = 0; i < vertices; i++)
-    {
-        for (int j = 0; j < vertices; j++)
-        {
-            if (graph[i][j] == INT_MAX)
-            {
-                printf("INF ");
-            }
-            else
-            {
-                printf("%3d ", graph[i][j]);
-            }
-        }
-        printf("\n");
-    }
+    // Mostra o resultado
+    print_matrix(graph, vertices, "Matriz de Distâncias Mínimas (Floyd-Warshall)");
 
-    // Exibe os caminhos mínimos
-    printf("\nCaminhos mínimos entre os vértices:\n");
+    // Exibe os caminhos mínimos de forma organizada
+    printf("\n=== Caminhos Mínimos ===\n");
     for (int i = 0; i < vertices; i++)
     {
         for (int j = 0; j < vertices; j++)
         {
             if (i != j)
             {
-                printf("<%d, %d> = ", i, j);
+                printf("De %d para %d: ", i, j);
                 if (graph[i][j] == INT_MAX)
-                {
-                    printf("INF\n");
-                }
+                    printf("Sem caminho\n");
                 else
-                {
                     printf("%d\n", graph[i][j]);
-                }
             }
         }
     }
 
-    // Libera a memória alocada
     free_graph(graph, vertices);
     return 0;
 }

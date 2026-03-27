@@ -25,13 +25,11 @@ GRAFO *inicializarGrafo(int nVertices)
         return NULL;
 
     GRAFO *grafo = (GRAFO *)malloc(sizeof(GRAFO));
-
     if (!grafo)
         return NULL;
 
     grafo->nVertices = nVertices;
     grafo->arestas = (int **)malloc(nVertices * sizeof(int *));
-
     if (!grafo->arestas)
     {
         free(grafo);
@@ -40,9 +38,10 @@ GRAFO *inicializarGrafo(int nVertices)
 
     for (int i = 0; i < nVertices; i++)
     {
-        grafo->arestas[i] = (int *)calloc(nVertices, sizeof(int)); // Inicializa com 0
+        grafo->arestas[i] = (int *)calloc(nVertices, sizeof(int)); // inicializa com 0
         if (!grafo->arestas[i])
         {
+            // Libera o que já foi alocado
             for (int j = 0; j < i; j++)
                 free(grafo->arestas[j]);
             free(grafo->arestas);
@@ -64,11 +63,10 @@ GRAFO *inicializarGrafo(int nVertices)
  */
 bool adicionarAresta(GRAFO *grafo, int origem, int destino, int peso)
 {
-    if (!grafo || origem < 0 || destino < 0 || origem >= grafo->nVertices || destino >= grafo->nVertices)
+    if (!grafo || origem < 0 || destino < 0 || origem >= grafo->nVertices || destino >= grafo->nVertices || peso <= 0)
     {
         return false;
     }
-
     grafo->arestas[origem][destino] = peso;
     return true;
 }
@@ -83,10 +81,12 @@ bool adicionarAresta(GRAFO *grafo, int origem, int destino, int peso)
  */
 int minDistance(const int *distancia, const bool *visitado, int n)
 {
-    int minVal = INT_MAX, minInd = -1;
+    int minVal = INT_MAX;
+    int minInd = -1;
+
     for (int v = 0; v < n; v++)
     {
-        if (!visitado[v] && distancia[v] <= minVal)
+        if (!visitado[v] && distancia[v] < minVal)
         {
             minVal = distancia[v];
             minInd = v;
@@ -101,19 +101,17 @@ int minDistance(const int *distancia, const bool *visitado, int n)
  * @param distancia Array com as distâncias mínimas dos vértices.
  * @param n Número total de vértices.
  */
-void printDistancias(const int *distancia, int n)
+void printDistancias(const int *distancia, int n, int src)
 {
-    printf("VERTICE   DISTANCIA\n");
+    printf("\n=== Distâncias mínimas a partir do vértice %d ===\n", src);
+    printf("Vértice\tDistância\n");
+    printf("-----------------\n");
     for (int i = 0; i < n; i++)
     {
         if (distancia[i] == INT_MAX)
-        {
-            printf("%d\tINFINITO\n", i);
-        }
+            printf("%d\t∞\n", i);
         else
-        {
             printf("%d\t%d\n", i, distancia[i]);
-        }
     }
 }
 
@@ -127,17 +125,11 @@ void imprimirCaminho(int *anterior, int destino)
 {
     if (anterior[destino] == -1)
     {
-        printf("Não há caminho de origem até este vértice.\n");
+        printf("%d", destino);
         return;
     }
-
-    printf("Caminho de origem até o vértice %d: ", destino);
-
-    // Para mostrar o caminho na ordem correta
-    if (anterior[destino] != -1)
-        imprimirCaminho(anterior, anterior[destino]);
-
-    printf("%d ", destino);
+    imprimirCaminho(anterior, anterior[destino]);
+    printf(" -> %d", destino);
 }
 
 /**
@@ -155,59 +147,77 @@ void imprimirCaminho(int *anterior, int destino)
 void dijkstra(const GRAFO *grafo, int src)
 {
     if (!grafo || src < 0 || src >= grafo->nVertices)
+    {
+        printf("Erro: Vértice de origem inválido.\n");
         return;
+    }
 
     int V = grafo->nVertices;
     int *distancia = (int *)malloc(V * sizeof(int));
     bool *visitado = (bool *)malloc(V * sizeof(bool));
-    int *anterior = (int *)malloc(V * sizeof(int)); // Vetor para armazenar o caminho
+    int *anterior  = (int *)malloc(V * sizeof(int));
 
     if (!distancia || !visitado || !anterior)
     {
+        printf("Erro: Falha na alocação de memória.\n");
         free(distancia);
         free(visitado);
         free(anterior);
         return;
     }
 
+    // Inicialização
     for (int i = 0; i < V; i++)
     {
         distancia[i] = INT_MAX;
-        visitado[i] = false;
-        anterior[i] = -1; // Nenhum vértice anterior por padrão
+        visitado[i]  = false;
+        anterior[i]  = -1;
     }
     distancia[src] = 0;
 
+    // Relaxamento das arestas (V-1 vezes)
     for (int count = 0; count < V - 1; count++)
     {
         int u = minDistance(distancia, visitado, V);
-
         if (u == -1)
-            break; // Todos os vértices alcançáveis já foram visitados
+            break; // não há mais vértices alcançáveis
 
         visitado[u] = true;
 
+        // Atualiza as distâncias dos vizinhos de u
         for (int v = 0; v < V; v++)
         {
-            if (!visitado[v] && grafo->arestas[u][v] && distancia[u] != INT_MAX &&
-                distancia[u] + grafo->arestas[u][v] < distancia[v])
+            if (!visitado[v] &&
+                grafo->arestas[u][v] != 0 && // existe aresta
+                distancia[u] != INT_MAX && distancia[u] + grafo->arestas[u][v] < distancia[v])
             {
                 distancia[v] = distancia[u] + grafo->arestas[u][v];
-                anterior[v] = u; // Atualiza o vértice anterior
+                anterior[v] = u;
             }
         }
     }
 
-    // Imprime as distâncias e o caminho
-    printDistancias(distancia, V);
+    // Exibe resultados
+    printDistancias(distancia, V, src);
+
+    printf("\n=== Caminhos mais curtos ===\n");
     for (int i = 0; i < V; i++)
     {
         if (i != src)
         {
-            imprimirCaminho(anterior, i);
-            printf("\n");
+            printf("De %d até %d: ", src, i);
+            if (distancia[i] == INT_MAX)
+            {
+                printf("Não existe caminho\n");
+            }
+            else
+            {
+                imprimirCaminho(anterior, i);
+                printf("  (custo: %d)\n", distancia[i]);
+            }
         }
     }
+
     free(distancia);
     free(visitado);
     free(anterior);
@@ -222,7 +232,7 @@ void liberarGrafo(GRAFO *grafo)
 {
     if (!grafo)
         return;
-
+        
     for (int i = 0; i < grafo->nVertices; i++)
     {
         free(grafo->arestas[i]);
@@ -234,10 +244,13 @@ void liberarGrafo(GRAFO *grafo)
 int main(int argc, char **argv)
 {
     GRAFO *grafo = inicializarGrafo(6);
-
     if (!grafo)
+    {
+        printf("Erro ao inicializar o grafo.\n");
         return EXIT_FAILURE;
+    }
 
+    // Adicionando as arestas (grafo direcionado)
     adicionarAresta(grafo, 0, 1, 4);
     adicionarAresta(grafo, 0, 2, 2);
     adicionarAresta(grafo, 1, 2, 3);
@@ -247,7 +260,9 @@ int main(int argc, char **argv)
     adicionarAresta(grafo, 3, 5, 1);
     adicionarAresta(grafo, 4, 5, 2);
 
+    printf("Executando Dijkstra a partir do vértice 0...\n");
     dijkstra(grafo, 0);
+
     liberarGrafo(grafo);
 
     return 0;

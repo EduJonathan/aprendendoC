@@ -54,8 +54,21 @@ typedef struct
 Queue *createQueue(int capacity)
 {
     Queue *q = (Queue *)malloc(sizeof(Queue));
+    if (!q)
+    {
+        printf("Erro: Falha na alocação da fila\n");
+        exit(EXIT_FAILURE);
+    }
+
     q->items = (Cell *)malloc(capacity * sizeof(Cell));
-    q->front = q->rear = -1;
+    if (!q->items)
+    {
+        free(q);
+        printf("Erro: Falha na alocação dos itens da fila\n");
+        exit(EXIT_FAILURE);
+    }
+
+    q->front    = q->rear = -1;
     q->capacity = capacity;
     return q;
 }
@@ -71,8 +84,13 @@ void enqueue(Queue *q, Cell item)
 {
     if (q->rear == q->capacity - 1)
     {
-        printf("Fila cheia\n");
-        return;
+        q->capacity *= 2;
+        q->items = (Cell *)realloc(q->items, q->capacity * sizeof(Cell));
+        if (!q->items)
+        {
+            printf("Erro: Falha ao redimensionar fila\n");
+            exit(EXIT_FAILURE);
+        }
     }
 
     if (q->front == -1)
@@ -88,11 +106,12 @@ Cell dequeue(Queue *q)
 {
     if (isEmpty(q))
     {
-        printf("Fila vazia\n");
-        return (Cell){-1, -1};
+        fprintf(stderr, "Erro: Tentativa de remover de fila vazia!\n");
+        exit(EXIT_FAILURE);
     }
-    
+
     Cell item = q->items[q->front];
+
     if (q->front == q->rear)
     {
         q->front = q->rear = -1;
@@ -142,8 +161,7 @@ bool isValid(int row, int col, int rows, int cols)
 int leeAlgorithm(int **grid, int rows, int cols, Cell start, Cell end)
 {
     // Verifica se start e end são válidos e não são obstáculos
-    if (!isValid(start.row, start.col, rows, cols) ||
-        !isValid(end.row, end.col, rows, cols) ||
+    if (!isValid(start.row, start.col, rows, cols) || !isValid(end.row, end.col, rows, cols) ||
         grid[start.row][start.col] == 0 || grid[end.row][end.col] == 0)
     {
         return -1;
@@ -182,9 +200,7 @@ int leeAlgorithm(int **grid, int rows, int cols, Cell start, Cell end)
 
             // Libera memória
             for (int i = 0; i < rows; i++)
-            {
                 free(dist[i]);
-            }
             free(dist);
             freeQueue(q);
 
@@ -199,8 +215,8 @@ int leeAlgorithm(int **grid, int rows, int cols, Cell start, Cell end)
 
             // Se a célula é válida, não é obstáculo e não foi visitada
             if (isValid(newRow, newCol, rows, cols) &&
-                grid[newRow][newCol] != 0 &&
-                dist[newRow][newCol] == -1)
+                grid[newRow][newCol] != 0 && // não é obstáculo
+                dist[newRow][newCol] == -1)  // ainda não visitado
             {
 
                 dist[newRow][newCol] = dist[curr.row][curr.col] + 1;
@@ -249,7 +265,8 @@ int main(int argc, char **argv)
         {1, 0, 1, 0, 1},
         {1, 1, 1, 0, 1},
         {0, 0, 0, 0, 1},
-        {1, 1, 1, 1, 1}};
+        {1, 1, 1, 1, 1}
+    };
 
     // Aloca grid dinamicamente
     int **grid = (int **)malloc(rows * sizeof(int *));
@@ -266,7 +283,7 @@ int main(int argc, char **argv)
     printGrid(grid, rows, cols);
 
     Cell start = {0, 0}; // Ponto inicial (canto superior esquerdo)
-    Cell end = {4, 4};   // Ponto final (canto inferior direito)
+    Cell end   = {4, 4}; // Ponto final (canto inferior direito)
 
     int distance = leeAlgorithm(grid, rows, cols, start, end);
 

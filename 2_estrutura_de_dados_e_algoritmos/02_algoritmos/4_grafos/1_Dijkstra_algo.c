@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 #include <stdbool.h>
 
 /**
@@ -30,8 +31,8 @@
  * @note É mais eficiente que Bellman-Ford em grafos densos com pesos positivos.
  */
 
-#define INF 9999
-#define MAX 10
+#define INF INT_MAX / 2 // Valor grande, mas seguro contra overflow
+#define MAX_VERTICES 20
 
 /**
  * @brief Implementação do algoritmo de Dijkstra para encontrar os caminhos mais
@@ -42,110 +43,125 @@
  * @param startNode Vértice inicial para o cálculo do caminho mínimo.
  * @return Retorna true se a execução do algoritmo for bem-sucedida.
  */
-bool dijkstra(int graph[MAX][MAX], int n, int startNode)
+void dijkstra(int graph[MAX_VERTICES][MAX_VERTICES], int n, int start)
 {
-    int custo[MAX][MAX] = {0}; // Matriz de custos (distâncias mínimas)
-    int distance[MAX] = {0};   // Vetor de distâncias mínimas para cada vértice
-    int pred[MAX] = {0};       // Vetor de predecessores de cada vértice
-    bool visited[MAX] = {0};   // Vetor de vértices visitados
-    int contador = 0;          // Contador de vértices visitados
-    int DistanciaMinima = 0;   // Distância mínima
-    int nextNode = 0;          // Próximo nó a ser visitado
+    int distance[MAX_VERTICES];
+    int predecessor[MAX_VERTICES];
+    bool visited[MAX_VERTICES];
 
-    // Inicializando a matriz de custos
+    // Inicialização
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
-        {
-            if (graph[i][j] == 0)
-            {
-                custo[i][j] = INF; // Arestas inexistentes têm custo infinito
-            }
-            else
-            {
-                custo[i][j] = graph[i][j]; // Arestas existentes têm o custo definido
-            }
-        }
+        distance[i]    = INF;
+        predecessor[i] = -1;
+        visited[i]     = false;
     }
 
-    // Inicializando os vetores de distâncias e predecessores
-    for (int i = 0; i < n; i++)
-    {
-        distance[i] = custo[startNode][i]; // Distância inicial a partir do nó de origem
-        pred[i] = startNode;               // O predecessor de cada vértice é o startNode
-        visited[i] = false;                // Nenhum vértice foi visitado inicialmente
-    }
+    distance[start] = 0;
 
-    distance[startNode] = 0;   // O custo do nó de origem para si mesmo é 0
-    visited[startNode] = true; // Marca o nó de origem como visitado
-    contador = -1;             // Inicializa o contador
-
-    // Executa o algoritmo de Dijkstra
-    while (contador < n - 1)
+    // Processa todos os vértices
+    for (int count = 0; count < n; count++)
     {
-        DistanciaMinima = INF; // Inicializa a distância mínima com infinito
+        // Encontra o vértice não visitado com menor distância
+        int minDist = INF;
+        int u = -1;
+
         for (int i = 0; i < n; i++)
         {
-            if (distance[i] < DistanciaMinima && !visited[i])
+            if (!visited[i] && distance[i] < minDist)
             {
-                DistanciaMinima = distance[i]; // Atualiza a distância mínima
-                nextNode = i;                  // Atualiza o próximo nó
+                minDist = distance[i];
+                u = i;
             }
         }
 
-        // Marca o próximo nó como visitado
-        visited[nextNode] = true;
+        // Se não há mais vértices alcançáveis, termina
+        if (u == -1)
+            break;
 
-        // Atualiza as distâncias para os vizinhos do próximo nó
-        for (int j = 0; j < n; j++)
+        visited[u] = true;
+
+        // Relaxa todas as arestas saindo de u
+        for (int v = 0; v < n; v++)
         {
-            if (!visited[j])
+            if (!visited[v] && graph[u][v] != 0 &&
+                distance[u] != INF && distance[u] + graph[u][v] < distance[v])
             {
-                if (DistanciaMinima + custo[nextNode][j] < distance[j])
-                {
-                    distance[j] = DistanciaMinima + custo[nextNode][j]; // Atualiza a distância
-                    pred[j] = nextNode;                                 // Atualiza o predecessor
-                }
+                distance[v] = distance[u] + graph[u][v];
+                predecessor[v] = u;
             }
         }
-
-        // Incrementa o contador de vértices visitados
-        contador++;
     }
 
-    // Exibe os resultados (distâncias e caminhos)
+    // ====================== EXIBIÇÃO DOS RESULTADOS ======================
+    printf("=== Resultados do Algoritmo de Dijkstra ===\n");
+    printf("Origem: vértice %d\n\n", start);
+
     for (int i = 0; i < n; i++)
     {
-        printf("O custo para o vértice %d é: %d\n", i, distance[i]);
-        printf("Caminho: %d ", i);
+        if (i == start)
+            continue;
 
-        int j = i;
+        printf("Para o vértice %d: ", i);
 
-        // Exibe o caminho a partir do vértice 'i' até o nó inicial
-        while (j != startNode)
+        if (distance[i] == INF)
         {
-            printf("<- %d ", j);
-            j = pred[j];
+            printf("Inalcançável (∞)\n");
+            continue;
         }
-        printf("<- %d\n", startNode);
+
+        printf("Distância = %d | Caminho: ", distance[i]);
+
+        // Reconstrói o caminho do destino até a origem
+        int path[MAX_VERTICES];
+        int count   = 0;
+        int current = i;
+
+        while (current != -1)
+        {
+            path[count++] = current;
+            current = predecessor[current];
+        }
+
+        // Imprime o caminho na ordem correta (origem → destino)
+        for (int j = count - 1; j >= 0; j--)
+        {
+            printf("%d", path[j]);
+            if (j > 0)
+                printf(" -> ");
+        }
+        printf("\n");
     }
-    return true; // Retorna verdadeiro indicando que o algoritmo foi executado com sucesso
 }
 
 int main(int argc, char **argv)
 {
-    int graph[MAX][MAX] = {
+    int graph[MAX_VERTICES][MAX_VERTICES] = {0};
+
+    // Grafo de exemplo (matriz de adjacência)
+    int exemplo[6][6] = {
         {0, 10, 0, 30, 0, 0},
         {10, 0, 50, 0, 0, 0},
         {0, 50, 0, 20, 10, 0},
         {30, 0, 20, 0, 60, 0},
         {0, 0, 10, 60, 0, 30},
-        {0, 0, 0, 0, 30, 0}};
+        {0, 0, 0, 0, 30, 0}
+    };
 
-    int numVertices = 6;
-    int startNode = 0; // O vértice inicial (por exemplo, 0)
+    int n     = 6;
+    int start = 0;
 
-    dijkstra(graph, numVertices, startNode);
+    // Copia o exemplo para o grafo
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            graph[i][j] = exemplo[i][j];
+        }
+    }
+    
+    printf("=== Algoritmo de Dijkstra - Caminho Mínimo ===\n\n");
+    dijkstra(graph, n, start);
 
     return 0;
 }

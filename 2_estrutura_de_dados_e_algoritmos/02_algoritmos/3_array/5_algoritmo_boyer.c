@@ -27,7 +27,7 @@
  */
 int majoridade(int v[], int n)
 {
-    int contador = 0;
+    int contador  = 0;
     int candidato = -1;
 
     // Primeira fase: encontrar um possível candidato
@@ -80,7 +80,7 @@ int majoridade(int v[], int n)
  */
 char majoridadeString(const char *texto)
 {
-    int contador = 0;
+    int contador   = 0;
     char candidato = '\0'; // Candidato é inicialmente nulo
 
     // Primeira fase: encontrar um possível candidato
@@ -125,8 +125,8 @@ char majoridadeString(const char *texto)
 
 int main(int argc, char **argv)
 {
-    int vetor[] = {3, 3, 4, 2, 4, 4, 2, 4, 4};
-    int n = sizeof(vetor) / sizeof(vetor[0]);
+    int vetor[]   = {3, 3, 4, 2, 4, 4, 2, 4, 4};
+    int n         = sizeof(vetor) / sizeof(vetor[0]);
     int resultado = majoridade(vetor, n);
 
     if (resultado != -1)
@@ -141,7 +141,7 @@ int main(int argc, char **argv)
     printf("\n--------------------------\n");
 
     const char *texto = "aabbccccaaa";
-    char result = majoridadeString(texto);
+    char result       = majoridadeString(texto);
 
     if (result != '\0')
     {
@@ -155,7 +155,7 @@ int main(int argc, char **argv)
     printf("\n--------------------------\n");
 
     const char *text = "aaaaaaabb";
-    char r = majoridadeString(text);
+    char r           = majoridadeString(text);
 
     if (r != '\0')
     {

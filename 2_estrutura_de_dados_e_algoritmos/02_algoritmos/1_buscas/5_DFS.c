@@ -30,7 +30,7 @@ pilha *initStack(int capacity)
         free(stack);
         return NULL;
     }
-    stack->top = -1;
+    stack->top      = -1;
     stack->capacity = capacity;
     return stack;
 }
@@ -49,6 +49,8 @@ void freeStack(pilha *stack)
 
 /**
  * @brief Verifica se a pilha está vazia.
+ *
+ * @param stack Informar estrutura
  */
 bool isEmpty(pilha *stack)
 {
@@ -57,6 +59,8 @@ bool isEmpty(pilha *stack)
 
 /**
  * @brief Remove um item da pilha.
+ * 
+ * @param stack Informar estrutura
  */
 int remover(pilha *stack)
 {
@@ -70,6 +74,9 @@ int remover(pilha *stack)
 
 /**
  * @brief Insere um valor na pilha.
+ *
+ * @param stack Informar estrutura
+ * @param valor Informar valor a inserir
  */
 void insert(pilha *stack, int valor)
 {

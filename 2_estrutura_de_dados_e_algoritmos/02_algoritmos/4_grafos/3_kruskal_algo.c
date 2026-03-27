@@ -46,7 +46,10 @@ typedef struct edge
  * @return Um valor negativo se a primeira aresta for menor, zero se forem iguais,
  * ou um valor positivo se a segunda for menor.
  */
-int compare(const void *a, const void *b) { return ((Edge *)a)->weight - ((Edge *)b)->weight; }
+int compare(const void *a, const void *b)
+{
+    return ((Edge *)a)->weight - ((Edge *)b)->weight;
+}
 
 /**
  * @brief Função para criar o grafo e suas arestas.
@@ -64,7 +67,7 @@ void createGraph(Edge **graph, int *numVertices, int *numEdges)
     {
         printf("Erro: Número de vértices deve ser positivo.\n");
         *numVertices = 0;
-        *numEdges = 0;
+        *numEdges    = 0;
         return;
     }
 
@@ -74,7 +77,7 @@ void createGraph(Edge **graph, int *numVertices, int *numEdges)
     {
         printf("Erro: Número de arestas deve ser não-negativo.\n");
         *numVertices = 0;
-        *numEdges = 0;
+        *numEdges    = 0;
         return;
     }
 
@@ -84,7 +87,7 @@ void createGraph(Edge **graph, int *numVertices, int *numEdges)
     {
         printf("Erro: Falha na alocação de memória para as arestas.\n");
         *numVertices = 0;
-        *numEdges = 0;
+        *numEdges    = 0;
         return;
     }
 
@@ -96,9 +99,9 @@ void createGraph(Edge **graph, int *numVertices, int *numEdges)
         {
             printf("Erro: Vértice de origem inválido.\n");
             free(*graph);
-            *graph = NULL;
+            *graph       = NULL;
             *numVertices = 0;
-            *numEdges = 0;
+            *numEdges    = 0;
             return;
         }
 
@@ -107,9 +110,9 @@ void createGraph(Edge **graph, int *numVertices, int *numEdges)
         {
             printf("Erro: Vértice de destino inválido.\n");
             free(*graph);
-            *graph = NULL;
+            *graph       = NULL;
             *numVertices = 0;
-            *numEdges = 0;
+            *numEdges    = 0;
             return;
         }
 
@@ -118,9 +121,9 @@ void createGraph(Edge **graph, int *numVertices, int *numEdges)
         {
             printf("Erro: Custo inválido.\n");
             free(*graph);
-            *graph = NULL;
+            *graph       = NULL;
             *numVertices = 0;
-            *numEdges = 0;
+            *numEdges    = 0;
             return;
         }
     }
@@ -203,7 +206,8 @@ void kruskal(Edge *graph, int numVertices, int numEdges)
 
     // Allocate memory for parent and rank arrays
     int *parent = (int *)malloc(numVertices * sizeof(int));
-    int *rank = (int *)malloc(numVertices * sizeof(int));
+    int *rank   = (int *)malloc(numVertices * sizeof(int));
+
     if (parent == NULL || rank == NULL)
     {
         printf("Erro: Falha na alocação de memória.\n");
@@ -212,27 +216,24 @@ void kruskal(Edge *graph, int numVertices, int numEdges)
         return;
     }
 
-    // Initialize parent and rank arrays
     for (int i = 0; i < numVertices; i++)
     {
         parent[i] = i;
-        rank[i] = 0;
+        rank[i]   = 0;
     }
 
     // Sort edges by weight
     qsort(graph, numEdges, sizeof(Edge), compare);
 
-    int mst_cost = 0;
+    int mst_cost  = 0;
     int mst_edges = 0;
 
     printf("\n\t>>ÁRVORE GERADORA MÍNIMA (MST) - ALGORITMO DE KRUSKAL<<\n");
-
-    // Process edges to form MST
     for (int i = 0; i < numEdges && mst_edges < numVertices - 1; i++)
     {
         int vertex1 = graph[i].startVertex;
         int vertex2 = graph[i].endVertex;
-        int cost = graph[i].weight;
+        int cost    = graph[i].weight;
 
         if (find(parent, vertex1) != find(parent, vertex2))
         {
@@ -243,7 +244,6 @@ void kruskal(Edge *graph, int numVertices, int numEdges)
         }
     }
 
-    // Check if MST was formed
     if (mst_edges != numVertices - 1)
     {
         printf("A árvore geradora mínima não pode ser formada. O grafo pode não ser conexo.\n");
@@ -253,7 +253,7 @@ void kruskal(Edge *graph, int numVertices, int numEdges)
         printf("Custo total da árvore geradora mínima: %d\n", mst_cost);
     }
 
-    // Free allocated memory
+    // Liberação da memória
     free(parent);
     free(rank);
 }

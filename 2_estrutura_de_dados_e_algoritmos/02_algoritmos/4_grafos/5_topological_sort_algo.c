@@ -51,8 +51,14 @@ typedef struct
 Node *createNode(int v)
 {
     Node *newNode = (Node *)malloc(sizeof(Node));
+
+    if (newNode == NULL)
+    {
+        printf("Falha na alocação do Nó\n");
+    }
+
     newNode->vertex = v;
-    newNode->next = NULL;
+    newNode->next   = NULL;
     return newNode;
 }
 
@@ -65,10 +71,15 @@ Node *createNode(int v)
 Graph *createGraph(int vertices)
 {
     Graph *graph = (Graph *)malloc(sizeof(Graph));
-    graph->numVertices = vertices;
 
-    graph->adjLists = (Node **)malloc(vertices * sizeof(Node *));
-    graph->inDegree = (int *)calloc(vertices, sizeof(int));
+    if (graph == NULL)
+    {
+        printf("Falha na alocação do grafo\n");
+    }
+    
+    graph->numVertices = vertices;
+    graph->adjLists    = (Node **)malloc(vertices * sizeof(Node *));
+    graph->inDegree    = (int *)calloc(vertices, sizeof(int));
 
     for (int i = 0; i < vertices; i++)
     {
@@ -87,8 +98,8 @@ Graph *createGraph(int vertices)
 void addEdge(Graph *graph, int src, int dest)
 {
     // Adiciona aresta de src para dest
-    Node *newNode = createNode(dest);
-    newNode->next = graph->adjLists[src];
+    Node *newNode        = createNode(dest);
+    newNode->next        = graph->adjLists[src];
     graph->adjLists[src] = newNode;
 
     // Incrementa o grau de entrada do vértice de destino
@@ -108,10 +119,16 @@ void addEdge(Graph *graph, int src, int dest)
 void topologicalSort(Graph *graph)
 {
     int *result = (int *)malloc(graph->numVertices * sizeof(int));
-    int index = 0;
+    int index   = 0;
 
     // Fila para vértices com grau de entrada zero
     int *queue = (int *)malloc(graph->numVertices * sizeof(int));
+
+    if (queue == NULL)
+    {
+        printf("Falha na alocação da fila\n");
+    }
+
     int front = 0, rear = -1;
 
     // Inicializa a fila com vértices de grau de entrada zero
@@ -142,7 +159,6 @@ void topologicalSort(Graph *graph)
             {
                 queue[++rear] = v;
             }
-
             temp = temp->next;
         }
 

@@ -37,10 +37,10 @@ binaryTree *criarArvore(int valor)
         printf("Erro: Falha na alocação de memória para o nó.\n");
         return NULL;
     }
-    new->valor = valor;
+    new->valor  = valor;
     new->coluna = 0; // Inicializado, mas será ajustado na inserção
-    new->left = NULL;
-    new->right = NULL;
+    new->left   = NULL;
+    new->right  = NULL;
     return new;
 }
 
@@ -91,7 +91,7 @@ void insert(binaryTree *new, binaryTree *tree)
     {
         if (tree->left == NULL)
         {
-            tree->left = new;
+            tree->left  = new;
             new->coluna = tree->coluna - 1;
         }
         else

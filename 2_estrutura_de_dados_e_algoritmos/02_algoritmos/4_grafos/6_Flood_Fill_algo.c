@@ -51,8 +51,22 @@ typedef struct
 Pilha *criarPilha(int capacidade)
 {
     Pilha *p = (Pilha *)malloc(sizeof(Pilha));
+
+    if (!p)
+    {
+        printf("Erro: Falha na alocação da pilha\n");
+        exit(EXIT_FAILURE);
+    }
+
     p->dados = (Ponto *)malloc(capacidade * sizeof(Ponto));
-    p->topo = -1; // Pilha vazia
+    if (!p->dados)
+    {
+        free(p);
+        printf("Erro: Falha na alocação dos dados da pilha\n");
+        exit(EXIT_FAILURE);
+    }
+
+    p->topo       = -1; // Pilha vazia
     p->capacidade = capacidade;
     return p;
 }
@@ -71,6 +85,12 @@ void empilhar(Pilha *p, Ponto ponto)
     {
         p->capacidade *= 2;
         p->dados = (Ponto *)realloc(p->dados, p->capacidade * sizeof(Ponto));
+
+        if (!p->dados)
+        {
+            printf("Erro: Falha ao redimensionar pilha\n");
+            exit(EXIT_FAILURE);
+        }
     }
     p->dados[++p->topo] = ponto;
 }
@@ -111,6 +131,9 @@ void liberarPilha(Pilha *p)
  */
 void floodFillPilha(int **matriz, int linhas, int colunas, int x, int y, int novoValor)
 {
+    if (x < 0 || x >= linhas || y < 0 || y >= colunas)
+        return;
+
     int valorOriginal = matriz[x][y];
     if (valorOriginal == novoValor)
         return; // Nada a fazer
@@ -141,11 +164,16 @@ void floodFillPilha(int **matriz, int linhas, int colunas, int x, int y, int nov
         {
             int novoX = i + dx[k];
             int novoY = j + dy[k];
-            empilhar(pilha, (Ponto){novoX, novoY});
-        }
-    }
 
-    liberarPilha(pilha);
+            // Só empilha se estiver dentro dos limites (otimização)
+            if (novoX >= 0 && novoX < linhas && novoY >= 0 && novoY < colunas && matriz[novoX][novoY] == valorOriginal)
+            {
+                empilhar(pilha, (Ponto){novoX, novoY});
+            }
+        }
+
+        liberarPilha(pilha);
+    }
 }
 
 // Função para imprimir a matriz
@@ -163,46 +191,41 @@ void imprimirMatriz(int **matriz, int linhas, int colunas)
 
 int main(int argc, char **argv)
 {
-    // Exemplo de matriz 5x5 (0 = fundo, 1 = área a preencher)
     int linhas = 5, colunas = 5;
+
+    // Alocação dinâmica da matriz
     int **matriz = (int **)malloc(linhas * sizeof(int *));
     for (int i = 0; i < linhas; i++)
     {
         matriz[i] = (int *)malloc(colunas * sizeof(int));
     }
 
-    // Preenche a matriz com um exemplo
+    // Matriz de exemplo
     int exemplo[5][5] = {
         {0, 0, 0, 0, 0},
         {0, 1, 1, 0, 0},
         {0, 1, 0, 1, 0},
         {0, 1, 1, 1, 0},
-        {0, 0, 0, 0, 0}};
+        {0, 0, 0, 0, 0}
+    };
 
-    // Copia para a matriz dinâmica
+    // Copia para a matriz alocada
     for (int i = 0; i < linhas; i++)
-    {
         for (int j = 0; j < colunas; j++)
-        {
             matriz[i][j] = exemplo[i][j];
-        }
-    }
 
     printf("=== Matriz Original ===\n");
     imprimirMatriz(matriz, linhas, colunas);
 
-    // Aplica Flood Fill a partir do ponto (2, 2) com o valor 2
+    // Aplicando Flood Fill a partir da posição (2,2) com valor 2
     floodFillPilha(matriz, linhas, colunas, 2, 2, 2);
 
     printf("\n=== Matriz Após Flood Fill ===\n");
     imprimirMatriz(matriz, linhas, colunas);
 
-    // Libera memória
+    // Liberação de memória
     for (int i = 0; i < linhas; i++)
-    {
         free(matriz[i]);
-    }
     free(matriz);
-
     return 0;
 }

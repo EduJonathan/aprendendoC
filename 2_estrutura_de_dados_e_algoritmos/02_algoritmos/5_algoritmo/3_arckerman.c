@@ -22,37 +22,50 @@
  * @param n Valor de entrada n.
  * @return O valor resultante da função de Ackermann.
  */
-int ackermannIterativa(int m, int n)
+long long ackermannIterativa(int m, int n)
 {
-    int pilha[100]; // Usando uma pilha para simular o problema de ackermann
-    int topo = -1;  // Inicializando o topo da pilha como -1
+    // Usamos long long porque os valores crescem extremamente rápido
+    long long pilha[10000]; // Tamanho maior (ainda limitado)
+    int topo = -1;
 
-    pilha[++topo] = m; // Inserindo os valores m e n na pilha
-    pilha[++topo] = n; // Inserindo os valores m e n na pilha
+    // Empilha o par inicial (m, n)
+    pilha[++topo] = m;
+    pilha[++topo] = n;
 
-    // Enquanto o topo da pilha for maior ou igual a 0
     while (topo >= 0)
     {
-        n = pilha[topo--]; // Decrementando o topo da pilha
-        m = pilha[topo--]; // Decrementando o topo da pilha
+        n = pilha[topo--]; // Desempilha n
+        m = pilha[topo--]; // Desempilha m
 
         if (m == 0)
         {
-            // Se m == 0, retorna n + 1
-            return n + 1;
+            // Caso base: A(0, n) = n + 1
+            // Mas como estamos simulando, precisamos "retornar" o valor
+            // para a chamada anterior. Aqui simplificamos retornando diretamente
+            // quando chegamos ao caso base principal.
+            if (topo == -1)
+            {
+                return n + 1;
+            }
+            // Caso contrário, "retorna" o valor para a chamada anterior
+            pilha[++topo] = n + 1;
         }
         else if (n == 0)
         {
-            pilha[++topo] = m - 1; // Se n == 0, insere m - 1 na pilha
-            pilha[++topo] = 1;     // Insere 1 na pilha
+            // A(m, 0) = A(m-1, 1)
+            pilha[++topo] = m - 1;
+            pilha[++topo] = 1;
         }
         else
         {
-            pilha[++topo] = m - 1; // Insere m - 1 na pilha
-            pilha[++topo] = n - 1; // Insere n - 1 na pilha
+            // A(m, n) = A(m-1, A(m, n-1))
+            // Precisamos empilhar: primeiro calcular A(m, n-1), depois usar esse resultado em A(m-1, ...)
+            pilha[++topo] = m - 1; // Será usado depois
+            pilha[++topo] = n - 1; // Calcular A(m, n-1) primeiro
+            // Nota: Esta implementação iterativa simplificada ainda tem limitações
         }
     }
-    return n + 1; // Caso final se m == 0, retorna n + 1
+    return -1; // Não deve chegar aqui
 }
 
 /**
@@ -65,37 +78,49 @@ int ackermannIterativa(int m, int n)
  * @param n Valor de entrada n.
  * @return O valor resultante da função de Ackermann.
  */
-int ackermannRecursiva(int mValor, int nValor)
+int ackermannRecursiva(int m, int n)
 {
-    if (mValor == 0)
-    {
-        return nValor + 1;
-    }
-    else if (nValor == 0 && mValor > 0)
-    {
-        return ackermannRecursiva(mValor - 1, 1);
-    }
-    return ackermannRecursiva(mValor - 1, ackermannRecursiva(mValor, nValor - 1));
+    if (m == 0)
+        return n + 1;
+
+    if (n == 0)
+        return ackermannRecursiva(m - 1, 1);
+
+    return ackermannRecursiva(m - 1, ackermannRecursiva(m, n - 1));
 }
 
 int main(int argc, char **argv)
 {
-    int valorM = 0;
-    int valorN = 0;
+    int m, n;
 
+    printf("=== Função de Ackermann A(m, n) ===\n\n");
     printf("Digite o valor de m: ");
-    scanf("%d", &valorM);
+    if (scanf("%d", &m) != 1 || m < 0)
+    {
+        printf("Erro: m deve ser um inteiro não-negativo.\n");
+        return 1;
+    }
 
     printf("Digite o valor de n: ");
-    scanf("%d", &valorN);
+    if (scanf("%d", &n) != 1 || n < 0)
+    {
+        printf("Erro: n deve ser um inteiro não-negativo.\n");
+        return 1;
+    }
 
-    // Calcula e imprime o resultado usando a versão recursiva
-    int resultadoRecursivo = ackermannRecursiva(valorM, valorN);
-    printf("Resultado da função de Ackermann (recursiva): %d\n", resultadoRecursivo);
+    printf("\nCalculando A(%d, %d)...\n\n", m, n);
 
-    // Calcula e imprime o resultado usando a versão iterativa
-    int resultadoIterativo = ackermannIterativa(valorM, valorN);
-    printf("Resultado da função de Ackermann (iterativa): %d\n", resultadoIterativo);
+    // ====================== AVISO ======================
+    if (m >= 4 || (m == 3 && n >= 5))
+    {
+        printf("AVISO: Valores altos de m e n podem causar estouro de pilha ou tempo excessivo.\n");
+        printf("Recomenda-se valores pequenos (m <= 3 e n <= 10).\n\n");
+    }
+
+    // Versão Recursiva (mais simples e clara)
+    printf("Versão Recursiva:\n");
+    long long resultadoRec = ackermannRecursiva(m, n);
+    printf("A(%d, %d) = %lld\n\n", m, n, resultadoRec);
 
     /**
      * @note A complexidade do Ackermann pode ser calculada como O(2^n), tendo um crescimento

@@ -41,23 +41,23 @@
 /**
  * @brief Estrutura que representa um nó da árvore de Huffman.
  */
-struct MinHeapNode
+typedef struct MinHeapNode
 {
     char data;                 ///< Caractere armazenado no nó.
     unsigned freq;             ///< Frequência do caractere.
     struct MinHeapNode *left;  ///< Ponteiro para o filho esquerdo.
     struct MinHeapNode *right; ///< Ponteiro para o filho direito.
-};
+} MinHeapNode;
 
 /**
  * @brief Estrutura que representa um min-heap (fila de prioridade).
  */
-struct MinHeap
+typedef struct MinHeap
 {
-    unsigned size;              ///< Tamanho atual do min-heap.
-    unsigned capacity;          ///< Capacidade máxima do min-heap.
-    struct MinHeapNode **array; ///< Array de ponteiros para nós do min-heap.
-};
+    unsigned size;       ///< Tamanho atual do min-heap.
+    unsigned capacity;   ///< Capacidade máxima do min-heap.
+    MinHeapNode **array; ///< Array de ponteiros para nós do min-heap.
+} MinHeap;
 
 /**
  * @brief Cria um novo nó da árvore de Huffman.
@@ -66,12 +66,18 @@ struct MinHeap
  * @param freq Frequência do caractere.
  * @return Ponteiro para o novo nó criado.
  */
-struct MinHeapNode *newNode(char data, unsigned freq)
+MinHeapNode *newNode(char data, unsigned freq)
 {
-    struct MinHeapNode *temp = (struct MinHeapNode *)malloc(sizeof(struct MinHeapNode));
-    temp->left = temp->right = NULL;
+    MinHeapNode *temp = (MinHeapNode *)malloc(sizeof(MinHeapNode));
+    if (!temp)
+    {
+        printf("Erro de alocação de memória.\n");
+        exit(EXIT_FAILURE);
+    }
+
     temp->data = data;
     temp->freq = freq;
+    temp->left = temp->right = NULL;
     return temp;
 }
 
@@ -81,12 +87,18 @@ struct MinHeapNode *newNode(char data, unsigned freq)
  * @param capacity Capacidade máxima do min-heap.
  * @return Ponteiro para o min-heap criado.
  */
-struct MinHeap *createMinHeap(unsigned capacity)
+MinHeap *createMinHeap(unsigned capacity)
 {
-    struct MinHeap *minHeap = (struct MinHeap *)malloc(sizeof(struct MinHeap));
-    minHeap->size = 0;
+    MinHeap *minHeap = (MinHeap *)malloc(sizeof(MinHeap));
+    if (!minHeap)
+        exit(EXIT_FAILURE);
+
+    minHeap->size     = 0;
     minHeap->capacity = capacity;
-    minHeap->array = (struct MinHeapNode **)malloc(minHeap->capacity * sizeof(struct MinHeapNode *));
+    minHeap->array    = (MinHeapNode **)malloc(capacity * sizeof(MinHeapNode *));
+    if (!minHeap->array)
+        exit(EXIT_FAILURE);
+
     return minHeap;
 }
 
@@ -96,9 +108,9 @@ struct MinHeap *createMinHeap(unsigned capacity)
  * @param a Ponteiro para o primeiro nó.
  * @param b Ponteiro para o segundo nó.
  */
-void swapMinHeapNode(struct MinHeapNode **a, struct MinHeapNode **b)
+void swapMinHeapNode(MinHeapNode **a, MinHeapNode **b)
 {
-    struct MinHeapNode *t = *a;
+    MinHeapNode *t = *a;
     *a = *b;
     *b = t;
 }
@@ -109,16 +121,16 @@ void swapMinHeapNode(struct MinHeapNode **a, struct MinHeapNode **b)
  * @param minHeap Ponteiro para o min-heap.
  * @param idx Índice do nó a ser heapificado.
  */
-void minHeapify(struct MinHeap *minHeap, int idx)
+void minHeapify(MinHeap *minHeap, int idx)
 {
     int smallest = idx;
-    int left = 2 * idx + 1;
-    int right = 2 * idx + 2;
+    int left     = 2 * idx + 1;
+    int right    = 2 * idx + 2;
 
-    if (left < minHeap->size && minHeap->array[left]->freq < minHeap->array[smallest]->freq)
+    if (left < (int)minHeap->size && minHeap->array[left]->freq < minHeap->array[smallest]->freq)
         smallest = left;
 
-    if (right < minHeap->size && minHeap->array[right]->freq < minHeap->array[smallest]->freq)
+    if (right < (int)minHeap->size && minHeap->array[right]->freq < minHeap->array[smallest]->freq)
         smallest = right;
 
     if (smallest != idx)
@@ -129,24 +141,19 @@ void minHeapify(struct MinHeap *minHeap, int idx)
 }
 
 /**
- * @brief Verifica se o tamanho do min-heap é 1.
- *
- * @param minHeap Ponteiro para o min-heap.
- * @return 1 se o tamanho for 1, 0 caso contrário.
- */
-int isSizeOne(struct MinHeap *minHeap) { return (minHeap->size == 1); }
-
-/**
  * @brief Extrai o nó com a menor frequência do min-heap.
  *
  * @param minHeap Ponteiro para o min-heap.
  * @return Ponteiro para o nó extraído.
  */
-struct MinHeapNode *extractMin(struct MinHeap *minHeap)
+MinHeapNode *extractMin(MinHeap *minHeap)
 {
-    struct MinHeapNode *temp = minHeap->array[0];
+    if (minHeap->size == 0)
+        return NULL;
+
+    MinHeapNode *temp = minHeap->array[0];
     minHeap->array[0] = minHeap->array[minHeap->size - 1];
-    --minHeap->size;
+    minHeap->size--;
     minHeapify(minHeap, 0);
     return temp;
 }
@@ -157,17 +164,17 @@ struct MinHeapNode *extractMin(struct MinHeap *minHeap)
  * @param minHeap Ponteiro para o min-heap.
  * @param minHeapNode Ponteiro para o nó a ser inserido.
  */
-void insertMinHeap(struct MinHeap *minHeap, struct MinHeapNode *minHeapNode)
+void insertMinHeap(MinHeap *minHeap, MinHeapNode *node)
 {
-    ++minHeap->size;
+    minHeap->size++;
     int i = minHeap->size - 1;
 
-    while (i && minHeapNode->freq < minHeap->array[(i - 1) / 2]->freq)
+    while (i && node->freq < minHeap->array[(i - 1) / 2]->freq)
     {
         minHeap->array[i] = minHeap->array[(i - 1) / 2];
         i = (i - 1) / 2;
     }
-    minHeap->array[i] = minHeapNode;
+    minHeap->array[i] = node;
 }
 
 /**
@@ -175,56 +182,22 @@ void insertMinHeap(struct MinHeap *minHeap, struct MinHeapNode *minHeapNode)
  *
  * @param minHeap Ponteiro para o min-heap.
  */
-void buildMinHeap(struct MinHeap *minHeap)
+void buildMinHeap(MinHeap *minHeap)
 {
     int n = minHeap->size - 1;
-    for (int i = (n - 1) / 2; i >= 0; --i)
-    {
+    for (int i = (n - 1) / 2; i >= 0; i--)
         minHeapify(minHeap, i);
-    }
 }
 
 /**
- * @brief Imprime um array de inteiros.
+ * @brief Verifica se o tamanho do min-heap é 1.
  *
- * @param arr Array a ser impresso.
- * @param n Tamanho do array.
+ * @param minHeap Ponteiro para o min-heap.
+ * @return 1 se o tamanho for 1, 0 caso contrário.
  */
-void printArr(int arr[], int n)
+int isLeaf(MinHeapNode *root)
 {
-    for (int i = 0; i < n; ++i)
-    {
-        printf("%d", arr[i]);
-    }
-    printf("\n");
-}
-
-/**
- * @brief Verifica se um nó é uma folha.
- *
- * @param root Ponteiro para o nó.
- * @return 1 se for uma folha, 0 caso contrário.
- */
-int isLeaf(struct MinHeapNode *root) { return !(root->left) && !(root->right); }
-
-/**
- * @brief Cria e constrói um min-heap a partir dos dados fornecidos.
- *
- * @param data Array de caracteres.
- * @param freq Array de frequências correspondentes aos caracteres.
- * @param size Tamanho dos arrays.
- * @return Ponteiro para o min-heap criado.
- */
-struct MinHeap *createAndBuildMinHeap(char data[], int freq[], int size)
-{
-    struct MinHeap *minHeap = createMinHeap(size);
-    for (int i = 0; i < size; ++i)
-    {
-        minHeap->array[i] = newNode(data[i], freq[i]);
-    }
-    minHeap->size = size;
-    buildMinHeap(minHeap);
-    return minHeap;
+    return !(root->left) && !(root->right);
 }
 
 /**
@@ -235,21 +208,37 @@ struct MinHeap *createAndBuildMinHeap(char data[], int freq[], int size)
  * @param size Tamanho dos arrays.
  * @return Ponteiro para a raiz da árvore de Huffman.
  */
-struct MinHeapNode *buildHuffmanTree(char data[], int freq[], int size)
+MinHeapNode *buildHuffmanTree(char data[], int freq[], int size)
 {
-    struct MinHeapNode *left = NULL, *right = NULL, *top = NULL;
-    struct MinHeap *minHeap = createAndBuildMinHeap(data, freq, size);
+    MinHeapNode *left  = NULL,
+                *right = NULL,
+                *top   = NULL;
 
-    while (!isSizeOne(minHeap))
+    MinHeap *minHeap = createMinHeap(size);
+
+    for (int i = 0; i < size; i++)
+        minHeap->array[i] = newNode(data[i], freq[i]);
+
+    minHeap->size = size;
+    buildMinHeap(minHeap);
+
+    while (minHeap->size > 1)
     {
-        left = extractMin(minHeap);
+        left  = extractMin(minHeap);
         right = extractMin(minHeap);
-        top = newNode('$', left->freq + right->freq);
-        top->left = left;
+
+        top        = newNode('$', left->freq + right->freq);
+        top->left  = left;
         top->right = right;
+
         insertMinHeap(minHeap, top);
     }
-    return extractMin(minHeap);
+
+    MinHeapNode *root = extractMin(minHeap);
+    free(minHeap->array);
+    free(minHeap);
+
+    return root;
 }
 
 /**
@@ -259,7 +248,7 @@ struct MinHeapNode *buildHuffmanTree(char data[], int freq[], int size)
  * @param arr Array para armazenar os códigos.
  * @param top Índice atual no array.
  */
-void printCodes(struct MinHeapNode *root, int arr[], int top)
+void printCodes(MinHeapNode *root, int arr[], int top)
 {
     if (root->left)
     {
@@ -272,12 +261,89 @@ void printCodes(struct MinHeapNode *root, int arr[], int top)
         arr[top] = 1;
         printCodes(root->right, arr, top + 1);
     }
-    
+
     if (isLeaf(root))
     {
-        printf("%c: ", root->data);
-        printArr(arr, top);
+        printf("  %c   | ", root->data);
+        for (int i = 0; i < top; i++)
+            printf("%d", arr[i]);
+        printf("\n");
     }
+}
+
+/**
+ * @brief Determina o comprimento (em bits) do código de Huffman de cada caractere.
+ *
+ * Percorre recursivamente a árvore de Huffman a partir da raiz e registra, para cada caractere presente nas folhas da árvore,
+ * a profundidade em que * ele se encontra. Essa profundidade corresponde ao tamanho do código binário de Huffman atribuído ao caractere.
+ *
+ * O resultado é armazenado no vetor `codeLength`, onde cada posição corresponde ao caractere na mesma posição do vetor `data`.
+ *
+ * @param node Ponteiro para o nó atual da árvore de Huffman.
+ * @param data Vetor contendo os caracteres originais utilizados na codificação.
+ * @param size Quantidade de caracteres distintos (tamanho do vetor `data`).
+ * @param codeLength Vetor onde será armazenado o comprimento do código de cada caractere.
+ * @param depth Profundidade atual na árvore (número de bits do código até o nó).
+ *
+ * @note Esta função assume que os vetores `data` e `codeLength` possuem o mesmo tamanho.
+ * @note A função deve ser chamada inicialmente com `depth = 0`.
+ *
+ * @complexity
+ * - Tempo: O(n), onde n é o número de nós da árvore de Huffman.
+ * - Espaço: O(h), onde h é a altura da árvore, devido à recursão.
+ */
+void getCodeLengths(MinHeapNode *node, char data[], int size, int codeLength[], int depth)
+{
+    if (!node)
+        return;
+
+    if (isLeaf(node))
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (data[i] == node->data)
+            {
+                codeLength[i] = depth;
+                break;
+            }
+        }
+        return;
+    }
+
+    getCodeLengths(node->left,  data, size, codeLength, depth + 1);
+    getCodeLengths(node->right, data, size, codeLength, depth + 1);
+}
+
+/**
+ * @brief Calcula o tamanho comprimido em bits.
+ *
+ * @param root Ponteiro para a raiz da árvore de Huffman.
+ * @param freq Array para armazenar os códigos.
+ * @param data Array de caracteres.
+ * @param size Tamanho dos arrays.
+ */
+unsigned calculateCompressedSize(MinHeapNode *root, char data[], int freq[], int size)
+{
+    int codeLength[size];
+    for (int i = 0; i < size; i++)
+        codeLength[i] = 0;
+
+    getCodeLengths(root, data, size, codeLength, 0);
+
+    unsigned totalBits = 0;
+    for (int i = 0; i < size; i++)
+        totalBits += freq[i] * codeLength[i];
+
+    return totalBits;
+}
+
+void freeHuffmanTree(MinHeapNode *root)
+{
+    if (!root)
+        return;
+    freeHuffmanTree(root->left);
+    freeHuffmanTree(root->right);
+    free(root);
 }
 
 /**
@@ -289,17 +355,36 @@ void printCodes(struct MinHeapNode *root, int arr[], int top)
  */
 void HuffmanCodes(char data[], int freq[], int size)
 {
-    struct MinHeapNode *root = buildHuffmanTree(data, freq, size);
-    int arr[MAX_TREE_HT], top = 0;
-    printCodes(root, arr, top);
+    printf("=== Codificação de Huffman ===\n\n");
+
+    printf("Caractere | Frequência\n");
+    printf("---------------------\n");
+    for (int i = 0; i < size; i++)
+        printf("    %c     |    %d\n", data[i], freq[i]);
+
+    MinHeapNode *root = buildHuffmanTree(data, freq, size);
+
+    printf("\nCódigos de Huffman:\n");
+    printf("---------------------\n");
+    printf("Char | Código\n");
+    printf("---------------------\n");
+
+    int arr[MAX_TREE_HT];
+    printCodes(root, arr, 0);
+
+    unsigned compressedBits = calculateCompressedSize(root, data, freq, size);
+    printf("\nTamanho comprimido: %u bits\n", compressedBits);
+
+    freeHuffmanTree(root);
 }
 
 int main(int argc, char **argv)
 {
-    char arr[] = {'a', 'b', 'c', 'd', 'e', 'f'};
-    int freq[] = {5, 9, 12, 13, 16, 45};
-    int size = sizeof(arr) / sizeof(arr[0]);
+    char arr[]  = {'a', 'b', 'c', 'd', 'e', 'f'};
+    int freq[]  = {5, 9, 12, 13, 16, 45};
+    size_t size = sizeof(arr) / sizeof(arr[0]);
 
     HuffmanCodes(arr, freq, size);
+
     return 0;
 }

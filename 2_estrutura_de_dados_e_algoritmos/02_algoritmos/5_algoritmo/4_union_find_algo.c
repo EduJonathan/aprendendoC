@@ -21,7 +21,7 @@ typedef struct
 {
     int *parent; /**< Array que armazena o pai de cada elemento */
     int *rank;   /**< Array que armazena o rank (altura aproximada da árvore) */
-    int n;       /**< Número total de elementos no conjunto */
+    int size;    /**< Número total de elementos no conjunto */
 } UnionFind;
 
 /**
@@ -32,16 +32,39 @@ typedef struct
  */
 UnionFind *uf_create(int size)
 {
-    UnionFind *uf = (UnionFind *)malloc(sizeof(UnionFind));
-    uf->n = size;
-    uf->parent = (int *)malloc(size * sizeof(int));
-    uf->rank = (int *)malloc(size * sizeof(int));
+    if (size <= 0)
+    {
+        printf("Erro: Tamanho deve ser positivo.\n");
+        return NULL;
+    }
 
+    UnionFind *uf = (UnionFind *)malloc(sizeof(UnionFind));
+    if (!uf)
+    {
+        printf("Erro: Falha na alocação da estrutura UnionFind.\n");
+        return NULL;
+    }
+
+    uf->size   = size;
+    uf->parent = (int *)malloc(size * sizeof(int));
+    uf->rank   = (int *)malloc(size * sizeof(int));
+
+    if (!uf->parent || !uf->rank)
+    {
+        printf("Erro: Falha na alocação de arrays.\n");
+        free(uf->parent);
+        free(uf->rank);
+        free(uf);
+        return NULL;
+    }
+
+    // Inicialização: cada elemento é seu próprio pai
     for (int i = 0; i < size; i++)
     {
         uf->parent[i] = i;
-        uf->rank[i] = 0;
+        uf->rank[i]   = 0;
     }
+
     return uf;
 }
 
@@ -56,12 +79,13 @@ UnionFind *uf_create(int size)
  */
 int uf_find(UnionFind *uf, int x)
 {
-    if (x < 0 || x >= uf->n)
+    if (!uf || x < 0 || x >= uf->size)
     {
-        fprintf(stderr, "Erro: índice %d fora dos limites.\n", x);
+        fprintf(stderr, "Erro: uf_find - índice %d inválido.\n", x);
         return -1;
     }
 
+    // Path Compression (otimização)
     if (uf->parent[x] != x)
     {
         uf->parent[x] = uf_find(uf, uf->parent[x]);
@@ -80,6 +104,9 @@ int uf_find(UnionFind *uf, int x)
  */
 void uf_union(UnionFind *uf, int x, int y)
 {
+    if (!uf)
+        return;
+
     int rootX = uf_find(uf, x);
     int rootY = uf_find(uf, y);
 
@@ -87,8 +114,9 @@ void uf_union(UnionFind *uf, int x, int y)
         return;
 
     if (rootX == rootY)
-        return;
+        return; // Já estão no mesmo conjunto
 
+    // Union by Rank
     if (uf->rank[rootX] < uf->rank[rootY])
     {
         uf->parent[rootX] = rootY;
@@ -114,12 +142,45 @@ void uf_union(UnionFind *uf, int x, int y)
  */
 int uf_connected(UnionFind *uf, int x, int y)
 {
+    if (!uf)
+        return 0;
+
     int rootX = uf_find(uf, x);
     int rootY = uf_find(uf, y);
-    
+
     if (rootX == -1 || rootY == -1)
         return 0;
+
     return rootX == rootY;
+}
+
+/**
+ * @brief Imprime o estado atual dos conjuntos (útil para debug)
+ *
+ * @param uf Ponteiro para a estrutura UnionFind.
+ */
+void uf_print_sets(UnionFind *uf)
+{
+    if (!uf)
+        return;
+
+    printf("\nEstado atual dos conjuntos (pai de cada elemento):\n");
+    printf("Elemento: ");
+    for (int i = 0; i < uf->size; i++)
+    {
+        printf("%3d ", i);
+    }
+    printf("\nPai     : ");
+    for (int i = 0; i < uf->size; i++)
+    {
+        printf("%3d ", uf->parent[i]);
+    }
+    printf("\nRank    : ");
+    for (int i = 0; i < uf->size; i++)
+    {
+        printf("%3d ", uf->rank[i]);
+    }
+    printf("\n\n");
 }
 
 /**
@@ -129,6 +190,8 @@ int uf_connected(UnionFind *uf, int x, int y)
  */
 void uf_destroy(UnionFind *uf)
 {
+    if (!uf)
+        return;
     free(uf->parent);
     free(uf->rank);
     free(uf);
@@ -139,26 +202,40 @@ int main(int argc, char **argv)
     int n = 10;
     UnionFind *uf = uf_create(n);
 
+    if (!uf)
+    {
+        return 1;
+    }
+
     // União entre elementos
+    printf("=== Union-Find (Disjoint Set Union) ===\n");
+    printf("Número de elementos: %d\n\n", n);
+
+    // Realizando uniões
+    printf("Realizando uniões:\n");
     uf_union(uf, 1, 2);
     uf_union(uf, 2, 3);
     uf_union(uf, 4, 5);
     uf_union(uf, 6, 7);
-    uf_union(uf, 5, 6);
-    uf_union(uf, 3, 7);
+    uf_union(uf, 5, 6); // Une os grupos {4,5} e {6,7}
+    uf_union(uf, 3, 7); // Une os dois grandes grupos
+
+    uf_print_sets(uf);
 
     // Verificações
-    printf("1 e 7 conectados? %s\n", uf_connected(uf, 1, 7) ? "Sim" : "Não");
-    printf("0 e 4 conectados? %s\n", uf_connected(uf, 0, 4) ? "Sim" : "Não");
-    printf("4 e 7 conectados? %s\n", uf_connected(uf, 4, 7) ? "Sim" : "Não");
+    printf("Verificações de conectividade:\n");
+    printf("1 e 7 estão conectados? %s\n", uf_connected(uf, 1, 7) ? "Sim" : "Não");
+    printf("0 e 4 estão conectados? %s\n", uf_connected(uf, 0, 4) ? "Sim" : "Não");
+    printf("4 e 7 estão conectados? %s\n", uf_connected(uf, 4, 7) ? "Sim" : "Não");
+    printf("8 e 9 estão conectados? %s\n", uf_connected(uf, 8, 9) ? "Sim" : "Não");
 
-    // Casos adicionais
-    printf("Unindo 8 com ele mesmo...\n");
+    // Teste com mesmo elemento
     uf_union(uf, 8, 8);
-    printf("8 e 8 conectados? %s\n", uf_connected(uf, 8, 8) ? "Sim" : "Não");
+    printf("\n8 e 8 estão conectados? %s\n", uf_connected(uf, 8, 8) ? "Sim" : "Não");
 
-    printf("Tentando unir elementos fora do intervalo (10 e 11)...\n");
-    uf_union(uf, 10, 11); // Fora dos limites, deve imprimir erro
+    // Teste com índices inválidos
+    printf("\nTentando unir elementos fora dos limites (10 e 11)...\n");
+    uf_union(uf, 10, 11); // Deve ignorar silenciosamente ou mostrar erro no find
 
     uf_destroy(uf);
     return 0;

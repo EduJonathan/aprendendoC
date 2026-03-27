@@ -26,7 +26,7 @@ int trocarMoedas(const int *moedas, size_t quantidade, int valor_alvo, int **moe
         return -1;
 
     int *minimo_moedas = malloc((valor_alvo + 1) * sizeof(int));
-    int *ultima_moeda = malloc((valor_alvo + 1) * sizeof(int));
+    int *ultima_moeda  = malloc((valor_alvo + 1) * sizeof(int));
 
     if (!minimo_moedas || !ultima_moeda)
     {
@@ -42,15 +42,14 @@ int trocarMoedas(const int *moedas, size_t quantidade, int valor_alvo, int **moe
     for (int i = 1; i <= valor_alvo; ++i)
     {
         minimo_moedas[i] = INT_MAX;
-        ultima_moeda[i] = -1;
+        ultima_moeda[i]  = -1;
     }
 
     for (size_t i = 0; i < quantidade; ++i)
     {
         for (int valor = moedas[i]; valor <= valor_alvo; ++valor)
         {
-            if (minimo_moedas[valor - moedas[i]] != INT_MAX &&
-                minimo_moedas[valor] > minimo_moedas[valor - moedas[i]] + 1)
+            if (minimo_moedas[valor - moedas[i]] != INT_MAX && minimo_moedas[valor] > minimo_moedas[valor - moedas[i]] + 1)
             {
                 minimo_moedas[valor] = minimo_moedas[valor - moedas[i]] + 1;
                 ultima_moeda[valor] = (int)i;
@@ -77,7 +76,7 @@ int trocarMoedas(const int *moedas, size_t quantidade, int valor_alvo, int **moe
     }
 
     int restante = valor_alvo;
-    int indice = 0;
+    int indice   = 0;
     while (restante > 0 && indice < total_moedas)
     {
         int indice_moeda = ultima_moeda[restante];
@@ -96,7 +95,7 @@ int main(int argc, char **argv)
 {
     int moedas_disponiveis[] = {1, 2, 3, 4};
     size_t quantidade_moedas = sizeof(moedas_disponiveis) / sizeof(moedas_disponiveis[0]);
-    int valor_desejado = 15;
+    int valor_desejado       = 15;
 
     int *moedas_utilizadas = NULL;
     int total_moedas = trocarMoedas(moedas_disponiveis, quantidade_moedas, valor_desejado, &moedas_utilizadas);

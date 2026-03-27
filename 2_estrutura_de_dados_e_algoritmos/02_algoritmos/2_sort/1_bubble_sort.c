@@ -30,7 +30,7 @@ void bubbleSort(int *arr, size_t n)
 {
     // Variáveis para contar comparações e trocas
     size_t comparacoes = 0;
-    size_t trocas = 0;
+    size_t trocas      = 0;
 
     // Loop externo que percorre o array até o penúltimo elemento
     for (size_t i = 0ull; i < n; i++)

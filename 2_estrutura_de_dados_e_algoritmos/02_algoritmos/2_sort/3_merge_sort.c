@@ -20,7 +20,7 @@ void merge(int *arr, int esquerda, int middle, int direita)
     int n2 = direita - middle;      // Tamanho do subarray da direita
 
     // Aloca arrays temporários dinamicamente
-    int *left = (int *)malloc((n1 + 1) * sizeof(int));
+    int *left  = (int *)malloc((n1 + 1) * sizeof(int));
     int *right = (int *)malloc((n2 + 1) * sizeof(int));
 
     if (left == NULL || right == NULL)

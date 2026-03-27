@@ -90,7 +90,7 @@ Ciclo findCycle(Funcao *fdata, int x0)
     }
 
     // Fase 2: encontrar início do ciclo (mu)
-    int mu = 0;
+    int mu   = 0;
     tortoise = x0;
     while (tortoise != hare)
     {

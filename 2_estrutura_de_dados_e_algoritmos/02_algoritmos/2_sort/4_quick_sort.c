@@ -55,15 +55,15 @@ void swap(int *a, int *b)
 void quick_sort(int *array, int low, int high)
 {
     int pivot = 0;
-    int i = 0;
-    int j = 0;
+    int i     = 0;
+    int j     = 0;
 
     // Verifica se a lista contém mais de um elemento
     if (low < high)
     {
         pivot = low;
-        i = low;
-        j = high;
+        i     = low;
+        j     = high;
 
         // Loop de partição
         while (i < j)
@@ -111,7 +111,7 @@ int main(int argc, char **argv)
 {
     // Array de exemplo
     int arr[] = {12, 4, 7, 9, 2, 6, 3, 11, 5, 10, 8, 1};
-    int n = sizeof(arr) / sizeof(arr[0]);
+    size_t n  = sizeof(arr) / sizeof(arr[0]);
 
     // Exibe o array original
     printf("Original array: \n");

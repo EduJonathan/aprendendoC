@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <ctype.h>
 #include <stdlib.h>
 
@@ -40,8 +41,8 @@ typedef struct
     int count;
 } Keyword;
 
-// Tabela de Lookup
-Keyword lookup_table[KEYMAX] = {
+/* Tabela de Lookup - Palavras-chave da linguagem C (C99/C11) */
+static const Keyword keywords[KEYMAX] = {
     {"auto",     0},
     {"break",    0},
     {"case",     0},
@@ -73,7 +74,21 @@ Keyword lookup_table[KEYMAX] = {
     {"unsigned", 0},
     {"void",     0},
     {"volatile", 0},
-    {"while",    0}};
+    {"while",    0}
+};
+
+/**
+ * @brief Mostra todas as palavras-chave disponíveis
+ */
+void mostrar_todas_palavras(void)
+{
+    printf("\n=== Palavras-chave da Linguagem C (%d) ===\n", KEYMAX);
+    for (int i = 0; i < KEYMAX; i++)
+    {
+        printf("%2d. %s\n", i + 1, keywords[i].word);
+    }
+    printf("\n");
+}
 
 /**
  * @brief Função de autocomplete que sugere palavras com base no prefixo fornecido.
@@ -82,56 +97,79 @@ Keyword lookup_table[KEYMAX] = {
  */
 void autocomplete(const char *prefix)
 {
-    int len = strlen(prefix);
-    if (len == 0)
+    if (prefix == NULL || strlen(prefix) == 0)
+    {
+        printf("Por favor, digite pelo menos um caractere.\n");
         return;
+    }
 
+    int len = strlen(prefix);
     int found = 0;
-    printf("\nSugestoes para '%s':\n", prefix);
+
+    printf("\nSugestões para '%s':\n", prefix);
     printf("---------------------------\n");
 
     for (int i = 0; i < KEYMAX; i++)
     {
-        // strncmp compara apenas até o comprimento do prefixo digitado
-        if (strncmp(prefix, lookup_table[i].word, len) == 0)
+        // Comparação case-insensitive usando strncmp
+        if (strncasecmp(prefix, keywords[i].word, len) == 0)
         {
-            printf("- %s\n", lookup_table[i].word);
+            printf("  → %s\n", keywords[i].word);
             found++;
         }
     }
 
     if (found == 0)
     {
-        printf("Nenhuma correspondencia encontrada.\n");
+        printf("Nenhuma palavra-chave encontrada com esse prefixo.\n");
     }
     else
     {
-        printf("Total: %d sugestao(oes).\n", found);
+        printf("\nTotal de sugestões: %d\n", found);
     }
 }
 
 int main(int argc, char **argv)
 {
-    char search[50];
+    char input[50];
+    bool running = true;
 
-    while (1)
+    printf("=== Autocomplete de Palavras-chave da Linguagem C ===\n");
+    printf("Digite prefixos (ex: 'in', 'st', 'vo') ou 'sair' para encerrar.\n");
+    printf("Digite 'todas' para ver todas as palavras-chave.\n\n");
+
+    while (running)
     {
-        printf("\nDigite um caractere (Exemplo: 'a') ou as iniciais de uma palavra (Exemplo: 'un') para autocomplete (ou 'sair'): ");
-        if (fgets(search, sizeof(search), stdin))
+        printf("\n> ");
+
+        if (fgets(input, sizeof(input), stdin) == NULL)
         {
-            // Remove o \n do fgets
-            search[strcspn(search, "\n")] = 0;
-
-            if (strcmp(search, "sair") == 0)
-                break;
-
-            // Converte para minúsculo para busca case-insensitive
-            for (int i = 0; search[i]; i++)
-                search[i] = tolower(search[i]);
-
-            autocomplete(search);
+            break;
         }
+
+        // Remove o caractere de nova linha
+        input[strcspn(input, "\n")] = '\0';
+
+        // Comando para sair
+        if (strcmp(input, "sair") == 0 || strcmp(input, "exit") == 0)
+        {
+            running = false;
+            continue;
+        }
+
+        // Mostrar todas as palavras
+        if (strcmp(input, "todas") == 0)
+        {
+            mostrar_todas_palavras();
+            continue;
+        }
+
+        // Converte para minúsculo e faz autocomplete
+        str_to_lower(input);
+        autocomplete(input);
     }
+
+    printf("\nPrograma encerrado. Obrigado!\n");
 
     return 0;
 }

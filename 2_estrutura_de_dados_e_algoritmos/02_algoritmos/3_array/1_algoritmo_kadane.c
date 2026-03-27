@@ -27,7 +27,7 @@
  */
 int kadane(int arr[], int n)
 {
-    int max_so_far = arr[0];      // Inicializa a soma máxima global com o primeiro elemento
+    int max_so_far      = arr[0]; // Inicializa a soma máxima global com o primeiro elemento
     int max_ending_here = arr[0]; // Inicializa a soma da subarray até o índice atual com o primeiro elemento
 
     // Itera pelo array a partir do segundo elemento
@@ -59,8 +59,8 @@ int kadane(int arr[], int n)
 int main(int argc, char **argv)
 {
     int arr[10] = {1, -2, 3, 4, -1, 2, 1, -5, 4, 3};
-    int n = 10;
-    int result = kadane(arr, n);
+    int n       = 10;
+    int result  = kadane(arr, n);
     printf("A soma máxima da subarray contígua é: %d\n", result);
     return 0;
 }

@@ -97,6 +97,7 @@ void lcs_sequence(const char *str1, const char *str2, char *output)
         dp[i] = (int *)malloc((n + 1) * sizeof(int));
         dp[i][0] = 0;
     }
+    
     for (size_t j = 0ull; j <= n; j++)
     {
         dp[0][j] = 0;

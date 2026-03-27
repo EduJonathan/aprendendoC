@@ -19,9 +19,9 @@ void swap(int *valor1, int *valor2)
  */
 void heapify(int *arr, size_t index, size_t size)
 {
-    size_t left = (2 * index) + 1; // Índice do filho esquerdo
+    size_t left  = (2 * index) + 1; // Índice do filho esquerdo
     size_t right = left + 1;       // Índice do filho direito
-    size_t max = index;            // Assume-se que o nó atual seja o maior
+    size_t max   = index;            // Assume-se que o nó atual seja o maior
 
     // Verifica se o filho esquerdo existe e é maior que o nó atual
     if (left < size && arr[left] > arr[max])
@@ -108,7 +108,7 @@ void heapSort(int *arr, size_t size)
 
 int main(int argc, char **argv)
 {
-    size_t n = 0ull;   // Tamanho do array
+    size_t n    = 0ull;   // Tamanho do array
     int arr[10] = {0}; // Array a ser ordenado
 
     printf("Insira o tamanho do array: ");

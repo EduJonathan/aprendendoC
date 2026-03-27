@@ -29,8 +29,8 @@ fila *initQueue(int capacity)
         free(queue);
         return NULL;
     }
-    queue->front = 0;
-    queue->rear = -1;
+    queue->front    = 0;
+    queue->rear     = -1;
     queue->capacity = capacity;
     return queue;
 }
@@ -126,6 +126,7 @@ int **allocateGraph(int v)
     for (int i = 0; i < v; i++)
     {
         adj[i] = (int *)calloc(v, sizeof(int)); // Inicializa com 0
+        
         if (adj[i] == NULL)
         {
             printf("Erro: Falha na alocação de memória.\n");

@@ -24,7 +24,7 @@
 void calcularFalhas(const char *padrao, int *falhas, int tamanhoPadrao)
 {
     falhas[0] = 0; // O primeiro valor do vetor de falhas é 0
-    int j = 0;     // Índice para o prefixo
+    int j     = 0; // Índice para o prefixo
 
     for (int i = 1; i < tamanhoPadrao; i++)
     {
@@ -55,7 +55,7 @@ void calcularFalhas(const char *padrao, int *falhas, int tamanhoPadrao)
 void calcularFalhas(char *padrao, int falhas[])
 {
     int tamanhoPadrao = strlen(padrao);
-    int indiceFalha = 0;
+    int indiceFalha   = 0;
 
     falhas[0] = -1; // O primeiro valor do vetor de falhas é sempre -1.
 
@@ -99,7 +99,7 @@ bool buscarPadrao(const char *texto, const char *padrao)
         return false;
     }
 
-    int tamanhoTexto = strlen(texto);
+    int tamanhoTexto  = strlen(texto);
     int tamanhoPadrao = strlen(padrao);
 
     // Aloca memória para o vetor de falhas

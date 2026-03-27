@@ -53,10 +53,10 @@ void selectionSort(int *arr, size_t n)
         // Se minIndex for diferente de i, troca os elementos nas posições i e minIndex
         if (minIndex != i)
         {
-            int temp = arr[i];      // Atribui o valor de arr[i] a temp
-            arr[i] = arr[minIndex]; // Atribui o valor de arr[minIndex] a arr[i]
-            arr[minIndex] = temp;   // Atribui o valor de temp a arr[minIndex]
-            swaps++;                // Conta as trocas
+            int temp      = arr[i];        // Atribui o valor de arr[i] a temp
+            arr[i]        = arr[minIndex]; // Atribui o valor de arr[minIndex] a arr[i]
+            arr[minIndex] = temp;          // Atribui o valor de temp a arr[minIndex]
+            swaps++;                       // Conta as trocas
         }
     }
 

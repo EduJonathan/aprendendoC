@@ -166,7 +166,7 @@ void multiplica_matrizes(const int A[][N], const int B[][N], int C[][N])
                 sum3 += A[i][k] * B[k][j + 3];
             }
 
-            C[i][j] = sum0;
+            C[i][j]     = sum0;
             C[i][j + 1] = sum1;
             C[i][j + 2] = sum2;
             C[i][j + 3] = sum3;
@@ -202,8 +202,16 @@ int main(int argc, char **argv)
     }
 
     int runs = 10; /* Aumentado para mais precisão */
-    double t1 = 0.0, t2 = 0.0, t3 = 0.0, t4 = 0.0;
-    unsigned long long s1 = 0, s2 = 0, s3 = 0, s4 = 0;
+    
+    double t1 = 0.0,
+           t2 = 0.0,
+           t3 = 0.0,
+           t4 = 0.0;
+
+    unsigned long long s1 = 0,
+                       s2 = 0,
+                       s3 = 0,
+                       s4 = 0;
 
     /* Warm-up: Executa uma vez para aquecer cache */
     soma_normal(array, SIZE);
@@ -249,13 +257,15 @@ int main(int argc, char **argv)
                    {6, 7, 8, 9, 10},
                    {11, 12, 13, 14, 15},
                    {16, 17, 18, 19, 20},
-                   {21, 22, 23, 24, 25}};
+                   {21, 22, 23, 24, 25}
+    };
 
     int B[N][N] = {{25, 24, 23, 22, 21},
                    {20, 19, 18, 17, 16},
                    {15, 14, 13, 12, 11},
                    {10, 9, 8, 7, 6},
-                   {5, 4, 3, 2, 1}};
+                   {5, 4, 3, 2, 1}
+    };
 
     int C[N][N] = {0};
 
@@ -309,8 +319,15 @@ int main(int argc, char **argv)
         big[i] = (int)(i % 100);
     }
 
-    double tb1 = 0, tb2 = 0, tb3 = 0, tb4 = 0;
-    unsigned long long sb1 = 0, sb2 = 0, sb3 = 0, sb4 = 0;
+    double tb1 = 0,
+           tb2 = 0,
+           tb3 = 0,
+           tb4 = 0;
+
+    unsigned long long sb1 = 0,
+                       sb2 = 0,
+                       sb3 = 0,
+                       sb4 = 0;
 
     /* Warm-up */
     soma_normal(big, TAM);
