@@ -46,9 +46,9 @@ void inserir_inicio(struct Estrutura **cabeca, int dado)
         fprintf(stderr, "Erro de alocacao");
         exit(EXIT_FAILURE);
     }
-    novo->dados = dado;
+    novo->dados   = dado;
     novo->proximo = *cabeca;
-    *cabeca = novo;
+    *cabeca       = novo;
 }
 
 // Nível 3 (***): Raro, mas permite mudar o ponteiro de ponteiro

@@ -15,11 +15,11 @@ struct IMCCategoria
  * @brief Tabela de categorias de IMC.
  */
 static const struct IMCCategoria categorias[] = {
-    {18.5, "Abaixo do peso"},
-    {25.0, "Peso normal"},
-    {30.0, "Sobrepeso"},
-    {35.0, "Obesidade grau I"},
-    {40.0, "Obesidade grau II"},
+    {18.5,     "Abaixo do peso"},
+    {25.0,     "Peso normal"},
+    {30.0,     "Sobrepeso"},
+    {35.0,     "Obesidade grau I"},
+    {40.0,     "Obesidade grau II"},
     {INFINITY, "Obesidade grau III"} // Ou FP_INFINITE
 };
 

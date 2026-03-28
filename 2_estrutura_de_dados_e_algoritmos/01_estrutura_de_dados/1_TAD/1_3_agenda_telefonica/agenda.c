@@ -176,8 +176,8 @@ struct contato **coletar_contatos(struct agenda *agenda, int *num_contatos)
             if (strcmp(contatos[j]->nome, contatos[j + 1]->nome) > 0)
             {
                 struct contato *temp = contatos[j];
-                contatos[j] = contatos[j + 1];
-                contatos[j + 1] = temp;
+                contatos[j]          = contatos[j + 1];
+                contatos[j + 1]      = temp;
             }
         }
     }

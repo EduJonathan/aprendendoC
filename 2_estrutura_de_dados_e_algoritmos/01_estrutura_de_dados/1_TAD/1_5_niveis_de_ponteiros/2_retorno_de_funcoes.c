@@ -67,7 +67,7 @@ struct s *criar_no(int valor)
         fprintf(stderr, "Erro: falha ao alocar memória para novo nó\n");
         return NULL;
     }
-    novo->valor = valor;
+    novo->valor   = valor;
     novo->proximo = NULL;
     printf("[criar_no *] Nó em %p | valor=%d | prox=%p\n", (void *)novo, novo->valor, (void *)novo->proximo);
     return novo;

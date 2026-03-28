@@ -111,7 +111,7 @@ int remover(struct no **raiz, int valor)
         else if ((*raiz)->direita == NULL)
         {
             struct no *temp = *raiz;
-            *raiz = (*raiz)->esquerda;
+            *raiz           = (*raiz)->esquerda;
             free(temp);
         }
         else
