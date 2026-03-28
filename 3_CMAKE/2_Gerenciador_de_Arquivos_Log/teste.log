@@ -1,0 +1,5 @@
+2025-12-16 10:30:15 INFO  Sistema iniciado com sucesso
+2025-12-16 10:32:40 ERROR Falha ao conectar ao banco de dados
+2025-12-16 10:35:22 WARN  Memória RAM em 85% de uso
+2025-12-16 10:40:10 INFO  Backup concluído
+2025-12-16 11:00:00 ERROR Divisão por zero detectada no módulo X

@@ -1,0 +1,40 @@
+# Build
+build/
+cmake_build/
+dist/
+
+# Objetos e binários
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.lib
+*.exe
+*.out
+*.gch
+
+# CMake (se vier a usar)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+compile_commands.json
+.ccls-cache/
+.cache/
+
+# Arquivos gerados pelo programa (saídas)
+*.txt          # ou deixe só os específicos abaixo se preferir ser mais seletivo
+meu_relatorio.txt
+relatorio.txt
+
+# Dependências manuais (se houver)
+obj/
+lib/
