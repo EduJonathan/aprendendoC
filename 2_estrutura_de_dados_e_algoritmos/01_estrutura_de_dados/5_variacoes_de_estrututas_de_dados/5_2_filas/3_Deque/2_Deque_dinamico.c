@@ -297,6 +297,7 @@ void displayDeque(Deque *deque)
 void DequeMenu(Deque *deque)
 {
     int opcao = 0, valor = 0;
+    
     while (1)
     {
         printf("\n--- Menu Deque Circular ---\n");
@@ -310,6 +311,7 @@ void DequeMenu(Deque *deque)
         printf("8. Exibir Deque\n");
         printf("0. Sair\n");
         printf("Escolha uma opção: ");
+
         if (scanf("%d", &opcao) != 1)
         {
             printf("Erro: Entrada inválida.\n");
