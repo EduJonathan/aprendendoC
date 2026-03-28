@@ -136,7 +136,7 @@ void kruskalMST()
     // Inicializa cada vértice como seu próprio conjunto
     for (int v = 0; v < V; v++)
     {
-        subconj[v].pai = v;
+        subconj[v].pai  = v;
         subconj[v].rank = 0;
     }
 

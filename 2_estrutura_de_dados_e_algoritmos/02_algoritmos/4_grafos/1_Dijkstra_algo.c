@@ -64,7 +64,7 @@ void dijkstra(int graph[MAX_VERTICES][MAX_VERTICES], int n, int start)
     {
         // Encontra o vértice não visitado com menor distância
         int minDist = INF;
-        int u = -1;
+        int u       = -1;
 
         for (int i = 0; i < n; i++)
         {

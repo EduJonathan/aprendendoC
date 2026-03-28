@@ -37,7 +37,7 @@ int trocarMoedas(const int *moedas, size_t quantidade, int valor_alvo, int **moe
     }
 
     minimo_moedas[0] = 0;
-    ultima_moeda[0] = -1;
+    ultima_moeda[0]  = -1;
 
     for (int i = 1; i <= valor_alvo; ++i)
     {

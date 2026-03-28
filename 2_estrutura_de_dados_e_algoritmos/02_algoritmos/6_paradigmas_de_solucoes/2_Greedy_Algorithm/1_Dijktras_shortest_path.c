@@ -29,7 +29,7 @@ GRAFO *inicializarGrafo(int nVertices)
         return NULL;
 
     grafo->nVertices = nVertices;
-    grafo->arestas = (int **)malloc(nVertices * sizeof(int *));
+    grafo->arestas   = (int **)malloc(nVertices * sizeof(int *));
     if (!grafo->arestas)
     {
         free(grafo);
@@ -152,7 +152,7 @@ void dijkstra(const GRAFO *grafo, int src)
         return;
     }
 
-    int V = grafo->nVertices;
+    int V          = grafo->nVertices;
     int *distancia = (int *)malloc(V * sizeof(int));
     bool *visitado = (bool *)malloc(V * sizeof(bool));
     int *anterior  = (int *)malloc(V * sizeof(int));

@@ -91,7 +91,7 @@ int ackermannRecursiva(int m, int n)
 
 int main(int argc, char **argv)
 {
-    int m, n;
+    int m = 0, n = 0;
 
     printf("=== Função de Ackermann A(m, n) ===\n\n");
     printf("Digite o valor de m: ");
