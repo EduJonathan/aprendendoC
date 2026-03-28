@@ -1,8 +1,10 @@
+/** @format */
+
 {
   "folders": [
     {
-      "path": "."
-    }
+      "path": ".",
+    },
   ],
   "settings": {
     "files.associations": {
@@ -69,7 +71,7 @@
       "lista_circular.h": "c",
       "fila.h": "c",
       "stdckdint.h": "c",
-      "stdc-predef.h": "c"
-    }
-  }
+      "stdc-predef.h": "c",
+    },
+  },
 }
