@@ -9,11 +9,11 @@ int main(int argc, char **argv)
     printf("\n==================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPOS DE DADOS PRIMITIVOS<==\n");
 
-    int numero_positivo = 98;  // Números inteiros positivos ou negativos
-    int numero_negativo = -98; // Números inteiros negativos
-    float real = 10.5;         // Valores com ponto flutuante (32 bits de precisão)
-    double PI = 3.14;          // Números reais com maior precisão (64 bits)
-    char letra = 'A';          // Caractere único
+    int numero_positivo = 98;   // Números inteiros positivos ou negativos
+    int numero_negativo = -98;  // Números inteiros negativos
+    float real          = 10.5; // Valores com ponto flutuante (32 bits de precisão)
+    double PI           = 3.14; // Números reais com maior precisão (64 bits)
+    char letra          = 'A';  // Caractere único
 
     /// OBS: O sinal de '=' significa atribuição/inicialização de um valor a variáveis.
 
@@ -26,12 +26,12 @@ int main(int argc, char **argv)
     printf("\n======================================================================\n");
     printf("\n\t==>SEÇÃO PARA VALORES BOOLEANOS<==\n");
 
-    bool True = true;
+    bool True  = true;
     bool False = false;
 
     // _Bool foi utilizado para valores booleanos em compiladores mais antigos.
     _Bool FALSE = true;
-    _Bool TRUE = false;
+    _Bool TRUE  = false;
 
     // "bool", "true" e "false" são definidos pela biblioteca <stdbool.h>.
     // Em versões mais antigas de C, era necessário usar "_Bool", mas isso já não é mais necessário.
@@ -51,10 +51,10 @@ int main(int argc, char **argv)
     printf("\n========================================================================\n");
     printf("\n\t==>SEÇÃO PARA CARACTERES LITERAIS (STRINGS)<==\n");
 
-    char ler[20] = "Olá, mundo";
-    char literal[] = {"Programar é muito legal."};
+    char ler[20]        = "Olá, mundo";
+    char literal[]      = {"Programar é muito legal."};
     char caracteres[12] = {'L', 'I', 'N', 'G', 'U', 'A', 'G', 'E', 'M', ' ', 'C'};
-    char Caracteres[] = {'H', 'E', 'L', 'L', 'O', ' ', 'W', 'O', 'R', 'L', 'D', '\0'};
+    char Caracteres[]   = {'H', 'E', 'L', 'L', 'O', ' ', 'W', 'O', 'R', 'L', 'D', '\0'};
     const char *leitura = "Obrigado Senhor Deus!";
 
     // O '\0' é um caractere especial que indica o fim da string em C.
@@ -71,10 +71,10 @@ int main(int argc, char **argv)
     printf("\n========================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPO (UNSIGNED)<==\n");
 
-    unsigned char UC = 'M';
-    unsigned U = 65535;
-    unsigned short US = 0;
-    unsigned long UL = 75;
+    unsigned char UC       = 'M';
+    unsigned U             = 65535;
+    unsigned short US      = 0;
+    unsigned long UL       = 75;
     unsigned long long ULL = 9e5; // Equivalente a 900000 (9 * 10^5)
 
     printf(" O VALOR DA VARIÁVEL 'UC'  É : %c\n", UC);    // %c -> para tipo Unsigned char
@@ -86,10 +86,10 @@ int main(int argc, char **argv)
     printf("\n========================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPO (SIGNED)<==\n");
 
-    signed char SC = 'A';
-    signed S = -32767;
-    signed short SS = 32767;
-    signed long SL = 6925451;
+    signed char SC       = 'A';
+    signed S             = -32767;
+    signed short SS      = 32767;
+    signed long SL       = 6925451;
     signed long long SLL = 263548868;
 
     printf(" O VALOR DA VARIÁVEL 'SC'  É : %c\n", SC);    // %c -> para tipo Signed Char
@@ -101,8 +101,8 @@ int main(int argc, char **argv)
     printf("\n========================================================================\n");
     printf("\n\t==>SEÇÃO FORMATADORES PARA TIPO (LONG)<==\n");
 
-    long L = 2147483647;
-    long long LL = -2147483647;
+    long L         = 2147483647;
+    long long LL   = -2147483647;
     long double LD = 3.14155896587458962548;
 
     printf(" O VALOR DA VARIÁVEL 'L'  É : %ld\n", L);     // %ld -> para tipo Long
@@ -129,8 +129,9 @@ int main(int argc, char **argv)
      * 2. Usar tipos como `double`, se a precisão extra não for necessária.
      * 3. Explorar bibliotecas de alta precisão como `MPFR` ou `GMP`.
      *
-     * Evite usar funções específicas de compilador sempre que possível,
-     * para manter o código portável.
+     * Evite usar funções específicas de compilador sempre que possível, para manter o código portável.
+     *
+     * Caso der erro em caso de sistema linux utilize: _builtin_printf(" O VALOR DA VARIÁVEL 'LD' É : %.18Lf\n", LD);
      */
 
     printf("\n======================================================================\n");

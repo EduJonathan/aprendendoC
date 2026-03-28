@@ -32,10 +32,10 @@ int main(int argc, char **argv)
     printf("\n=========================================================\n");
     printf("\n\t==>TIPOS INTEIROS<==\n");
 
-    unsigned int numeroSemSinal = 42U;                       // Ou o prefixo `u`
-    unsigned long outroNumeroLongo = 5678UL;                 // Ou o prefixo `ul`
-    long numeroLongo = 1234L;                                // Ou o prefixo `l`
-    long long numeroMuitoLongo = 123456789LL;                // Ou o prefixo `ll`
+    unsigned int numeroSemSinal              = 42U;          // Ou o prefixo `u`
+    unsigned long outroNumeroLongo           = 5678UL;       // Ou o prefixo `ul`
+    long numeroLongo                         = 1234L;        // Ou o prefixo `l`
+    long long numeroMuitoLongo               = 123456789LL;  // Ou o prefixo `ll`
     unsigned long long outroNumeroMuitoLongo = 987654321ULL; // Ou o prefixo `ll`
 
     printf(" Unsigned int       : %10u\n", numeroSemSinal);
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     // Exemplo de problema sem sufixo
     printf("\n\t==> EXEMPLO DE PROMOÇÃO DE TIPOS <==\n");
 
-    int x = 3000000000;         // Pode causar estouro em int de 32 bits
+    int x       = 3000000000;   // Pode causar estouro em int de 32 bits
     long long y = 3000000000LL; // Correto com sufixo LL
 
     printf("Sem sufixo (int): %d (comportamento indefinido)\n", x);

@@ -1,9 +1,9 @@
-#include <stdio.h>
-// stander input/output de extensão .h, arquivo que fornece funções para entrada e saída de dados
+#include <stdio.h> // stander input/output de extensão .h, arquivo que fornece funções para entrada e saída de dados
+
+// printf(print formatted): printf() é uma função de saída de texto e dados da linguagem C.
 
 int main(int argc, char **argv)
 {
-    // printf(print formatted): Função de saída de texto e dados.
     printf("OLÁ! ");
 
     printf("Este é meu 1º código, olá! meu nome é Eduardo e estou programando em C\n");

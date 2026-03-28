@@ -13,80 +13,87 @@ int main(int argc, char **argv)
 
     // SIZEOF: (Tamanho de/do): retorna o número de bytes que um tipo de dado ocupa na memória
     printf("\n>> TAMANHO EM BYTES DOS TIPOS INTEIROS <<\n");
-    printf("\n=================================================================\n");
+    printf("\n================================================================================\n");
 
-    printf(" QUANTIDADE DE BYTES DO TIPO INT : %zu bytes\n", sizeof(int));
-    printf(" QUANTIDADE DE BYTES DO TIPO SIGNED : %zu bytes\n", sizeof(signed));
-    printf(" QUANTIDADE DE BYTES DO TIPO SIGNED SHORT : %zu bytes\n", sizeof(signed short));
-    printf(" QUANTIDADE DE BYTES DO TIPO SIGNED LONG : %zu bytes\n", sizeof(signed long));
-    printf(" QUANTIDADE DE BYTES DO TIPO SIGNED LONG LONG : %zu bytes\n", sizeof(signed long long));
-    printf(" QUANTIDADE DE BYTES DO TIPO SHORT : %zu bytes\n", sizeof(short));
+    printf(" %-30s : %2zu bytes\n", "INT",              sizeof(int));
+    printf(" %-30s : %2zu bytes\n", "SIGNED",           sizeof(signed));
+    printf(" %-30s : %2zu bytes\n", "SIGNED SHORT",     sizeof(signed short));
+    printf(" %-30s : %2zu bytes\n", "SIGNED LONG",      sizeof(signed long));
+    printf(" %-30s : %2zu bytes\n", "SIGNED LONG LONG", sizeof(signed long long));
+    printf(" %-30s : %2zu bytes\n", "SHORT",            sizeof(short));
 
-    printf(" QUANTIDADE DE BYTES DO TIPO UNSIGNED : %zu bytes\n", sizeof(unsigned));
-    printf(" QUANTIDADE DE BYTES DO TIPO UNSIGNED SHORT : %zu bytes\n", sizeof(unsigned short));
-    printf(" QUANTIDADE DE BYTES DO TIPO UNSIGNED LONG : %zu bytes\n", sizeof(unsigned long));
-    printf(" QUANTIDADE DE BYTES DO TIPO UNSIGNED LONG LONG : %zu bytes\n", sizeof(unsigned long long));
+    printf(" %-30s : %2zu bytes\n", "UNSIGNED",           sizeof(unsigned));
+    printf(" %-30s : %2zu bytes\n", "UNSIGNED SHORT",     sizeof(unsigned short));
+    printf(" %-30s : %2zu bytes\n", "UNSIGNED LONG",      sizeof(unsigned long));
+    printf(" %-30s : %2zu bytes\n", "UNSIGNED LONG LONG", sizeof(unsigned long long));
 
-    printf(" QUANTIDADE DE BYTES DO TIPO LONG : %zu bytes\n", sizeof(long));
-    printf(" QUANTIDADE DE BYTES DO TIPO LONG LONG : %zu bytes\n", sizeof(long long));
+    printf(" %-30s : %2zu bytes\n", "LONG", sizeof(long));
+    printf(" %-30s : %2zu bytes\n", "LONG LONG", sizeof(long long));
 
-    printf("\n=================================================================\n");
+    printf("\n================================================================================\n");
     printf("\n\t>> TAMANHO EM BYTES DOS TIPOS FLOAT E DOUBLE <<\n\n");
 
-    printf(" QUANTIDADE DE BYTES DO TIPO FLOAT  : %zu bytes\n", sizeof(float));
-    printf(" QUANTIDADE DE BYTES DO TIPO DOUBLE : %zu bytes\n", sizeof(double));
-    printf(" QUANTIDADE DE BYTES DO TIPO LONG DOUBLE : %zu bytes\n", sizeof(long double));
+    printf(" %-30s : %2zu bytes\n", "FLOAT",       sizeof(float));
+    printf(" %-30s : %2zu bytes\n", "DOUBLE",      sizeof(double));
+    printf(" %-30s : %2zu bytes\n", "LONG DOUBLE", sizeof(long double));
 
-    printf("\n=================================================================\n");
+    printf("\n================================================================================\n");
     printf("\n\t>> TAMANHO EM BYTES DOS TIPOS CHAR <<\n\n");
 
-    printf(" QUANTIDADE DE BYTES DO TIPO CHAR  : %zu byte\n", sizeof(char));
-    printf(" QUANTIDADE DE BYTES DO TIPO SIGNED CHAR : %zu byte\n", sizeof(signed char));
-    printf(" QUANTIDADE DE BYTES DO TIPO UNSIGNED CHAR : %zu byte\n", sizeof(unsigned char));
+    printf(" %-30s : %2zu byte\n", "CHAR",          sizeof(char));
+    printf(" %-30s : %2zu byte\n", "SIGNED CHAR",   sizeof(signed char));
+    printf(" %-30s : %2zu byte\n", "UNSIGNED CHAR", sizeof(unsigned char));
 
-    printf("\n=================================================================\n");
+    printf("\n================================================================================\n");
 
     printf("\n\t>> TAMANHO EM BYTES DE OUTROS TIPOS <<\n\n");
-    printf("\n QUANTIDADE DE BYTES DO TIPO BOOL : %zu byte\n", sizeof(bool));
-    printf(" QUANTIDADE DE BYTES DO TIPO SIZE_T : %zu byte\n", sizeof(size_t));
 
-    printf("\n=================================================================\n");
+    printf(" %-30s : %2zu byte\n", "BOOL",   sizeof(bool));
+    printf(" %-30s : %2zu byte\n", "SIZE_T", sizeof(size_t));
+
+    printf("\n================================================================================\n");
     printf("\n\t>> DESCOBRINDO LIMITE MÁXIMO DE CADA TIPO DE DADO <<\n\n");
 
     printf("\n>> RANGE MÁXIMO TIPO CHAR <<\n");
+    printf("--------------------------------------------------------------------------------\n");
 
-    printf(" CHAR_MAX : %d  E CHAR_MIN : %d\n", CHAR_MAX, CHAR_MIN);
-    printf(" SIGNED CHAR_MAX : %d  E SIGNED CHAR_MIN : %d\n", SCHAR_MAX, SCHAR_MIN);
-    printf(" UNSIGNED CHAR_MAX : %u\n", UCHAR_MAX);
+    printf(" %-25s : %20d  |  %-20d\n", "CHAR",          CHAR_MAX,  CHAR_MIN);
+    printf(" %-25s : %20d  |  %-20d\n", "SIGNED CHAR",   SCHAR_MAX, SCHAR_MIN);
+    printf(" %-25s : %20u\n",           "UNSIGNED CHAR", UCHAR_MAX);
 
-    printf("\n=================================================================\n");
+    printf("\n================================================================================\n");
     printf("\n\t>> RANGE MÁXIMO DO TIPO INT, SIGNED E LONG <<\n\n");
+    printf("--------------------------------------------------------------------------------\n");
 
-    printf(" INT_MIN : %d  E INT_MAX : %d\n", INT_MIN, INT_MAX);
-    printf(" SHORT_MIN : %d  E SHORT_MAX : %d\n", SHRT_MIN, SHRT_MAX);
-    printf(" LONG_MIN : %ld E LONG_MAX : %ld\n", LONG_MIN, LONG_MAX);
-    printf(" SIGNED LONG_LONG_MIN : %lld E SIGNED LONG_LONG_MAX : %lld\n", LLONG_MIN, LLONG_MAX);
-    printf(" LONG_LONG_MIN : %lld E LONG_LONG_MAX : %lld\n", LLONG_MIN, LLONG_MAX);
+    printf(" %-25s : %20d  |  %-20d\n",     "INT",              INT_MAX,   INT_MIN);
+    printf(" %-25s : %20d  |  %-20d\n",     "SHORT",            SHRT_MAX,  SHRT_MIN);
+    printf(" %-25s : %20ld  |  %-20ld\n",   "LONG",             LONG_MAX,  LONG_MIN);
+    printf(" %-25s : %20lld  |  %-20lld\n", "SIGNED LONG LONG", LLONG_MAX, LLONG_MIN);
+    printf(" %-25s : %20lld  |  %-20lld\n", "LONG LONG",        LLONG_MAX, LLONG_MIN);
 
-    printf("\n=================================================================\n");
+    printf("\n================================================================================\n");
     printf("\n\t>> RANGE MÁXIMO DO TIPO INT UNSIGNED <<\n\n");
+    printf("--------------------------------------------------------------------------------\n");
 
-    printf(" UNSIGNED INT_MAX : %u\n", UINT_MAX);
-    printf(" UNSIGNED LONG_MAX : %lu\n", ULONG_MAX);
-    printf(" UNSIGNED LONG_LONG_MAX : %llu\n", ULLONG_MAX);
-    printf(" UNSIGNED SHORT_MAX : %u\n", USHRT_MAX);
+    printf(" %-25s : %20u\n",   "UNSIGNED INT",       UINT_MAX);
+    printf(" %-25s : %20lu\n",  "UNSIGNED LONG",      ULONG_MAX);
+    printf(" %-25s : %20llu\n", "UNSIGNED LONG LONG", ULLONG_MAX);
+    printf(" %-25s : %20u\n",   "UNSIGNED SHORT",     USHRT_MAX);
 
-    printf("\n=================================================================\n");
+    printf("\n================================================================================\n");
     printf("\n\t>> RANGE MÁXIMO DO TIPO DOUBLE E FLOAT <<\n\n");
+    printf("--------------------------------------------------------------------------------\n");
 
-    printf(" FLOAT_MIN : %g  E FLOAT_MAX : %g\n", FLT_MIN, FLT_MAX);
-    printf(" DOUBLE_MIN : %g  E DOUBLE_MAX : %g\n", DBL_MIN, DBL_MAX);
-    printf(" LONG_DOUBLE_MIN : %LE E LONG_DOUBLE_MAX : %LE\n", LDBL_MIN, LDBL_MAX);
+    printf(" %-20s : %-15g  |  %-15g\n",   "FLOAT",       FLT_MAX,  FLT_MIN);
+    printf(" %-20s : %-15g  |  %-15g\n",   "DOUBLE",      DBL_MAX,  DBL_MIN);
+    printf(" %-20s : %-15LE  |  %-15LE\n", "LONG DOUBLE", LDBL_MAX, LDBL_MIN);
 
     /**
      * @note Lembrando que esses limites (ranges) podem variar de acordo com
      * o sistema operacional, dependendo se ele é de 32 ou 64 bits.
      */
+
+    printf("\n================================================================================\n");
 
     return 0;
 }

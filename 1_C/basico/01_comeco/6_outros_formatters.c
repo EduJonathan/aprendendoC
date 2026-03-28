@@ -9,9 +9,9 @@ int main(int argc, char **argv)
 {
     printf("\n\t==> OUTROS FORMATADORES <==\n");
 
-    int OCTAL = 48;
-    int HEXADECIMAL = 69;
-    unsigned long int ULI = 45ul;
+    int OCTAL                   = 48;
+    int HEXADECIMAL             = 69;
+    unsigned long int ULI       = 45ul;
     unsigned long long int ULLI = 42ull;
 
     //================== OCTAL ==================//

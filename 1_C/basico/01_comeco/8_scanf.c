@@ -19,9 +19,9 @@ int main(int argc, char **argv)
 {
     printf("\n\t==>SCANF<==\n");
 
-    int idade = 0;
+    int idade  = 0;
     char letra = '\0';
-    float pi = 0.0f;
+    float pi   = 0.0f;
 
     printf(">> Quantos anos você tem : ");
     scanf("%d", &idade);
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
      */
 
     unsigned char caractere = '\0';
-    unsigned char letter = '\0';
+    unsigned char letter    = '\0';
 
     printf("\n>> Digite um caractere: ");
     scanf(" %c", &caractere);
