@@ -39,11 +39,11 @@ int main(int argc, char **argv)
 {
     // Matriz de adjacência
     int G[N][N] = {
-        {false, false, true, false, false},
-        {false, false, true, false, false},
-        {true, true, false, true, true},
-        {false, false, true, false, true},
-        {false, false, true, true, true}
+        {false, false, true,  false, false},
+        {false, false, true,  false, false},
+        {true,  true,  false, true,  true},
+        {false, false, true,  false, true},
+        {false, false, true,  true,  true}
     };
 
     // Imprimindo o grau de todos os vertices

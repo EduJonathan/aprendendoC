@@ -75,7 +75,7 @@ void inserirFilho(Node *pai, Node *novoNo, int posicao)
     else
     {
         Node *current = pai->filho;
-        int index = 0;
+        int index     = 0;
         while (current->irmao != NULL && index < posicao - 1)
         {
             current = current->irmao;

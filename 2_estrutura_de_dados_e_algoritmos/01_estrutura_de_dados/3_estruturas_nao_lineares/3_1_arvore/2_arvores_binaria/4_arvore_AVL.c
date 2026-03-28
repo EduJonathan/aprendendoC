@@ -90,7 +90,7 @@ struct Node *rightRotate(struct Node *y)
     struct Node *T2 = x->right;
 
     x->right = y;
-    y->left = T2;
+    y->left  = T2;
 
     y->height = maximo(height(y->left), height(y->right)) + 1;
     x->height = maximo(height(x->left), height(x->right)) + 1;
@@ -167,7 +167,7 @@ struct Node *insertNode(struct Node *node, int key)
     }
 
     node->height = 1 + maximo(height(node->left), height(node->right));
-    int balance = getBalance(node);
+    int balance  = getBalance(node);
 
     // Rotação à direita (LL)
     if (balance > 1 && key < node->left->key)
@@ -264,7 +264,7 @@ struct Node *deleteNode(struct Node *root, int key)
         {
             return root; // Não deveria ocorrer, mas evita falhas
         }
-        root->key = temp->key;
+        root->key   = temp->key;
         root->right = deleteNode(root->right, temp->key);
     }
 

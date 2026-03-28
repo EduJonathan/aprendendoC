@@ -114,8 +114,8 @@ void liberarArvore(ArvoreBalanceada *tree)
 int main(int argc, char **argv)
 {
     // Array ordenado
-    int arr[] = {1, 2, 3, 4, 5, 6, 7};
-    int size = sizeof(arr) / sizeof(arr[0]);
+    int arr[]   = {1, 2, 3, 4, 5, 6, 7};
+    size_t size = sizeof(arr) / sizeof(arr[0]);
 
     // Constrói a árvore balanceada
     ArvoreBalanceada *root = balancearArvore(arr, 0, size - 1);

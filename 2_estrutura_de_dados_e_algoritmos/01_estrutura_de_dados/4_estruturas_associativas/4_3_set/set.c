@@ -180,9 +180,9 @@ int main(int argc, char **argv)
 
     imprimirConjunto(s);
 
-    printf("Contém 1? %s\n", contemElemento(s, 1) ? "Sim" : "Não");
+    printf("Contém 1? %s\n",  contemElemento(s, 1) ?  "Sim" : "Não");
     printf("Contém 10? %s\n", contemElemento(s, 10) ? "Sim" : "Não");
-    printf("Contém 3? %s\n", contemElemento(s, 3) ? "Sim" : "Não");
+    printf("Contém 3? %s\n",  contemElemento(s, 3) ?  "Sim" : "Não");
 
     liberarConjunto(s);
     return 0;
