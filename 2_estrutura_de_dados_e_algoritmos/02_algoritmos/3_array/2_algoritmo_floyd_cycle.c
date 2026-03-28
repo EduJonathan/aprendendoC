@@ -37,6 +37,11 @@ typedef struct
  */
 int f(Funcao *fdata, int x)
 {
+    if (x < 0 || x >= fdata->size)
+    {
+        fprintf(stderr, "\nErro: Índice %d fora dos limites!\n", x);
+        exit(1);
+    }
     return fdata->func[x];
 }
 

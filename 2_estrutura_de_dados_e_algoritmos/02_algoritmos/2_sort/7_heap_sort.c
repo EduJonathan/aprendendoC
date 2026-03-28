@@ -5,7 +5,7 @@
 void swap(int *valor1, int *valor2)
 {
     int temp = 0;
-    temp = *valor1;
+    temp    = *valor1;
     *valor1 = *valor2;
     *valor2 = temp;
 }
@@ -108,8 +108,8 @@ void heapSort(int *arr, size_t size)
 
 int main(int argc, char **argv)
 {
-    size_t n    = 0ull;   // Tamanho do array
-    int arr[10] = {0}; // Array a ser ordenado
+    size_t n    = 0ull; // Tamanho do array
+    int arr[10] = {0};  // Array a ser ordenado
 
     printf("Insira o tamanho do array: ");
     scanf("%zu", &n);

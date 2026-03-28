@@ -163,7 +163,7 @@ void colunas(binaryTree *tree, int *min, int *max)
     {
         *max = tree->coluna;
     }
-    colunas(tree->left, min, max);
+    colunas(tree->left,  min, max);
     colunas(tree->right, min, max);
 }
 

@@ -126,7 +126,7 @@ char majoridadeString(const char *texto)
 int main(int argc, char **argv)
 {
     int vetor[]   = {3, 3, 4, 2, 4, 4, 2, 4, 4};
-    int n         = sizeof(vetor) / sizeof(vetor[0]);
+    size_t n      = sizeof(vetor) / sizeof(vetor[0]);
     int resultado = majoridade(vetor, n);
 
     if (resultado != -1)

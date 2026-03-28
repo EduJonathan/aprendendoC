@@ -27,6 +27,9 @@
  */
 int kadane(int arr[], int n)
 {
+    if (n == 0)
+        return 0;
+
     int max_so_far      = arr[0]; // Inicializa a soma máxima global com o primeiro elemento
     int max_ending_here = arr[0]; // Inicializa a soma da subarray até o índice atual com o primeiro elemento
 

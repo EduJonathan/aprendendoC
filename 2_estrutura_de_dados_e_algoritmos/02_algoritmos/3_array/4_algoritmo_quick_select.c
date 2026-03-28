@@ -87,7 +87,7 @@ int quickSelection(int arr[], int low, int high, int k)
 int main(int argc, char **argv)
 {
     int arr[]  = {12, 3, 5, 7, 19, 1, 6};
-    int n      = sizeof(arr) / sizeof(arr[0]);
+    size_t n   = sizeof(arr) / sizeof(arr[0]);
     int k      = 4;
     int result = quickSelection(arr, 0, n - 1, k);
 
