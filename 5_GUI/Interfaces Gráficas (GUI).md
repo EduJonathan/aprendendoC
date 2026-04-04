@@ -9,7 +9,7 @@ Diferente de aplicações em modo texto (como consoles), a GUI depende de elemen
 - ícones
 - caixas de diálogo
 - entradas de texto
-- seletores (checkbox, dropdown etc.)
+- seletores (`checkbox`, `dropdown` etc.)
 
 Esses componentes permitem que o usuário execute ações de forma intuitiva, utilizando
 principalmente o mouse, o teclado e, em sistemas modernos, até toque.
